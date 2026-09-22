@@ -1,3 +1,91 @@
+# RLX recovery tools
+
+Shell tools for recovering a cobas 6800 / 8800 (RLX) instrument when the
+RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
+
+| Script | Purpose |
+|--------|---------|
+| [`factory-reset.sh`](#rlx-factory-reset-over-the-local-api-recovery) | Trigger a Factory Reset via the local maintenance API. |
+| [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
+
+Both are meant to run **from the instrument over SSH**, and both gate any
+destructive action behind a typed **GCS + UI-impossible** consent prompt.
+
+---
+
+# RLX Software Update from the shell
+
+`software-update.sh` lets you see what the update subsystem is doing and, when
+the UI can't, stage a package and trigger the offline upgrade directly.
+
+> ## ⚠️ Use policy (install mode)
+> The `install` action must only be used **when instructed by GCS** and **when
+> the normal Software Upgrade via the UI is not possible**. Triggering an
+> offline upgrade **reboots** the instrument; a bad/unsigned/incomplete package
+> can fail on reboot and roll back — possibly to the same broken state. Run
+> `status` first and confirm with GCS.
+
+### How the update works (what the tool drives)
+
+1. **Upload/verify** — the RLX-Maintenance UI hands the package to the
+   `softwareupdate` .NET container, which verifies its signature against
+   `integrity.cer`, extracts it, and stages installable packages into
+   `…/software-update/pending-updates/`.
+2. **Apply-after-reboot** — the install is driven by the OSAL message
+   **`SoftwareUpgradeOffline`**, which arms the next boot to isolate
+   `rlx-upgrade.target`; on reboot `rlx-upgrade-{init,preupgrade,offline,postupgrade}`
+   apply the update (disk-space check, offline apt upgrade, docker upgrade),
+   then the box reboots into the new version. `swupdate.py` is the standard
+   orchestrator (run by `install.d/8_softwareupdate`).
+
+`software-update.sh install` reproduces step 2: it stages the package (to the
+spool file, or reuses what's already staged) and issues `SoftwareUpgradeOffline`.
+
+### Seeing status (read-only)
+
+```bash
+./software-update.sh status            # one-shot
+./software-update.sh status --watch    # refresh every 5s (--interval N to change)
+```
+
+It reads state from sources that **don't depend on the (possibly broken)
+rlx-web/nginx path**:
+
+- OSAL `GetSoftwareUpgradeStatus` (NOT_RUNNING / IN_PROGRESS / SUCCESSFUL / FAILED)
+- lock files `/run/osal-upgrade.lock`, `/opt/roche/etc/.rlx-app-upgrade`
+- staged packages (`upgrade.tar.xz` spool file, `pending-updates/`)
+- `software_update_status.json`, and the last line of `rlx-software-history.log`
+- a quick health probe of the rlx-web backend on `:8086` (flags the stall that
+  can itself cause the black screen)
+
+### Triggering an update
+
+```bash
+# Stage and install a platform package you have on disk:
+sudo ./software-update.sh install --file /path/to/Package.tar.xz
+
+# Install a package that already failed/half-staged on the box:
+sudo ./software-update.sh install --staged
+
+# Or run the standard post-install orchestrator (installs what's in
+# pending-updates, only if OSAL status is UPGRADE_SUCCESSFUL):
+sudo ./software-update.sh install --orchestrator
+```
+
+By default the current version is kept as a rollback target
+(`--no-keep-current` to disable). You must type `yes` (consent) and then
+`INSTALL` (final confirmation). The instrument reboots to apply the update;
+watch it come back with `./software-update.sh status --watch`.
+
+### If nothing installs
+
+If `status` shows OSAL `FAILED` / `pending-updates/` empty right after an
+upload, the failure was in **upload/verification** (the `softwareupdate`
+container), not the apply step — triggering `SoftwareUpgradeOffline` won't
+help. Check `journalctl CONTAINER_NAME=softwareupdate` and hand that to GCS.
+
+---
+
 # RLX Factory Reset over the local API (recovery)
 
 A CLI way to trigger the cobas 6800 / 8800 **Factory Reset** when the
