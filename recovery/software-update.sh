@@ -25,7 +25,7 @@
 # --------------------------------------------------------------------------
 #  USE POLICY
 #  The 'install' mode must ONLY be used:
-#    * when instructed to do so by GCS (Global Customer Support), AND
+#    * when instructed to do so by GCS, AND
 #    * when the normal Software Upgrade via the RLX-Maintenance UI is not
 #      possible (e.g. black screen / UI unreachable).
 #  Triggering an offline upgrade reboots the instrument. A bad, unsigned or
@@ -210,13 +210,13 @@ printf '  and apply the update on the next boot.\n\n'
 # ---- consent gate ---------------------------------------------------------
 printf '  %s%s  USE POLICY - PLEASE READ  %s\n\n' "$BOLD" "$YEL" "$RST"
 printf '  Only use this:\n'
-printf '    %s1.%s when instructed by %sGCS%s (Global Customer Support), %sand%s\n' "$BOLD" "$RST" "$BOLD" "$RST" "$BOLD" "$RST"
+printf '    %s1.%s when instructed by %sGCS%s, %sand%s\n' "$BOLD" "$RST" "$BOLD" "$RST" "$BOLD" "$RST"
 printf '    %s2.%s when the normal Software Upgrade via the UI is not possible.\n\n' "$BOLD" "$RST"
 printf '  A bad/unsigned/incomplete package can fail on reboot and roll back.\n'
 printf '  Run "%s status %s" first and confirm with GCS.\n\n' "$(basename "$0")" ""
 printf '  %sDo you confirm both conditions are met?%s Type %syes%s to continue: ' "$BOLD" "$RST" "$GRN" "$RST"
 read -r CONSENT
-case "$CONSENT" in yes|YES|Yes) ok "Consent recorded." ;;
+case "$CONSENT" in yes|YES|Yes) ok "Confirmed." ;;
     *) printf '\n'; bad "Consent not given (\"${CONSENT:-<empty>}\"). Aborting - nothing changed."; exit 2 ;;
 esac
 hr
