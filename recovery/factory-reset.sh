@@ -20,7 +20,7 @@
 # --------------------------------------------------------------------------
 #  USE POLICY
 #  This tool must ONLY be used:
-#    * when explicitly instructed to do so by GCS (Global Customer Support),
+#    * when explicitly instructed to do so by GCS,
 #      AND
 #    * when a normal Factory Reset through the RLX-Maintenance UI is NOT
 #      possible (for example: a black screen after a downgrade).
@@ -106,11 +106,6 @@ printf '\n'
 printf '  This utility triggers the same %sFactory Reset%s that the RLX-Maintenance\n' "$BOLD" "$RST"
 printf '  UI performs, but over the local maintenance API. Use it only when the\n'
 printf '  UI cannot be reached.\n\n'
-printf '  What it does:\n'
-inf "Authenticates against the local RLX maintenance API (${BASE})"
-inf "Calls the factory-reset endpoint the UI button uses"
-inf "The instrument reverts to its factory system snapshot and ${BOLD}reboots${RST}"
-printf '\n'
 printf '  %s%s What this means:%s current system state is discarded and the\n' "$BOLD" "$YEL" "$RST"
 printf '  instrument returns to its factory snapshot. This is not reversible.\n'
 printf '\n'
@@ -123,8 +118,7 @@ printf '\n'
 printf '  %s%s  USE POLICY — PLEASE READ  %s\n' "$BOLD" "$YEL" "$RST"
 printf '\n'
 printf '  This tool must ONLY be used:\n\n'
-printf '    %s1.%s when you have been instructed to do so by %sGCS%s\n' "$BOLD" "$RST" "$BOLD" "$RST"
-printf '       (Global Customer Support), %sand%s\n' "$BOLD" "$RST"
+printf '    %s1.%s when you have been instructed to do so by %sGCS%s, %sand%s\n' "$BOLD" "$RST" "$BOLD" "$RST" "$BOLD" "$RST"
 printf '    %s2.%s when a normal Factory Reset through the RLX-Maintenance UI\n' "$BOLD" "$RST"
 printf '       is %snot possible%s (e.g. a black screen after a downgrade).\n' "$BOLD" "$RST"
 printf '\n'
@@ -133,7 +127,7 @@ printf '\n'
 printf '  %sDo you confirm both conditions are met?%s Type %syes%s to continue: ' "$BOLD" "$RST" "$GRN" "$RST"
 read -r CONSENT
 case "${CONSENT}" in
-    yes|YES|Yes) ok "Consent recorded." ;;
+    yes|YES|Yes) ok "Confirmed." ;;
     *) printf '\n'; bad "Consent not given (\"${CONSENT:-<empty>}\"). Aborting — nothing was changed."; exit 2 ;;
 esac
 hr
@@ -141,13 +135,13 @@ hr
 # ==========================================================================
 #  3. Credentials
 # ==========================================================================
-printf '\n  Enter your RLX-Maintenance credentials.\n\n'
+printf '\n  Enter your credentials.\n\n'
 printf '  User [%s]: ' "$USER_NAME"
 read -r INPUT_USER
 [ -n "$INPUT_USER" ] && USER_NAME="$INPUT_USER"
-printf '  Password: '
+printf '  Token: '
 read -rs PASSWORD; printf '\n'
-[ -n "$PASSWORD" ] || die "No password entered. Aborting."
+[ -n "$PASSWORD" ] || die "No token entered. Aborting."
 
 COOKIE_JAR="$(mktemp -t rlx-reset.XXXXXX)"
 JSON_LOGIN=$(printf '{"username":"%s","password":"%s"}' "$USER_NAME" "$PASSWORD")
@@ -164,7 +158,7 @@ LOGIN_CODE=$("${CURL[@]}" -o /dev/null -w '%{http_code}' \
 
 case "$LOGIN_CODE" in
     200) ok "Authenticated as '${USER_NAME}'." ;;
-    400|401) die "Login rejected (HTTP ${LOGIN_CODE}). Check the username/password." 3 ;;
+    400|401) die "Login rejected (HTTP ${LOGIN_CODE}). Check the user/token." 3 ;;
     000) die "Could not reach ${BASE}. Is rlx-web/nginx running? Try --direct." 4 ;;
     *)   die "Unexpected login response (HTTP ${LOGIN_CODE})." 5 ;;
 esac
