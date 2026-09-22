@@ -1,0 +1,15 @@
+/.
+/opt
+/opt/roche
+/opt/roche/etc
+/opt/roche/etc/mollab
+/opt/roche/etc/mollab/private
+/opt/roche/etc/mollab/private/rabbitmq
+/opt/roche/etc/mollab/private/rabbitmq/definitions
+/opt/roche/etc/mollab/private/rabbitmq/definitions/samplesupplymodule_definition.json
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/newgen-samplesupplymodule-configuration
+/usr/share/doc/newgen-samplesupplymodule-configuration/changelog.gz
+/usr/share/doc/newgen-samplesupplymodule-configuration/copyright

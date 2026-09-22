@@ -1,0 +1,165 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.tiprackmagazine.d.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerZAxisInitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ManualLoadTipRack",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ManualUnloadTipRack",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ParkTipRackMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.UnloadTipRack",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ReinitializeTipRackMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ForcedReinitializeTipRackMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.PrepareTipRackMagazineShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.ReadTipRackMagazineSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.DisableTipRackMagazineActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.MoveTipRackMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.tiprackmagazine.d.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    }
+  ]
+}

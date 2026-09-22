@@ -1,0 +1,7 @@
+89953d5a768ad7fbee0e5cbf7034c90e  opt/roche/etc/mollab/private/amplification-plate-transfer-position/config/newgen-ModuleConfiguration.xsd
+3c76c1b1c40344687b20b43e406c3641  opt/roche/etc/mollab/private/amplification-plate-transfer-position/config/newgen-adtransferposition-motionconfig.xml
+666c03b154200bb07601678352164a08  opt/roche/etc/mollab/private/amplification-plate-transfer-position/config/newgen-adtransferposition-parampool.xml
+8b93ab63641d3cc3f84b74d8087f9f68  opt/roche/etc/mollab/private/amplification-plate-transfer-position/startup/ecc.xml
+16a6767d57f99a24ee22816dd3d3a1e5  opt/roche/etc/mollab/private/amplification-plate-transfer-position/startup/ecs.xml
+4cea908c63a6f7ec967cbefaeb21d3bc  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-adtransferposition-515-mam-config.xml
+7590d7c71f4df171dfd0d5c5d8cb190f  opt/roche/etc/mollab/private/rabbitmq/definitions/amplificationplatetransferposition_definition.json

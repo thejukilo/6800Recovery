@@ -1,0 +1,13 @@
+[Unit]
+Description=Test Automation plugin
+After=newgen-xorg.service
+
+[Service]
+User=roche
+ExecStart=/opt/roche/home/startup_newgen-autotesttools.sh
+ExecStop=/usr/bin/pkill Xorg
+KillMode=none
+Restart=on-success
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="4D7F3965100AF4234731A5C140B7C08A06787B8287E7" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettorIndex" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved pipettor</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPAddress" Type="String">
+          <data:Description>
+            <base:Title>Balance IP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The IPAddress of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>192.168.95.248</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPPort" Type="Integer">
+          <data:Description>
+            <base:Title>TCP Port Adress of the balance</base:Title>
+          </data:Description>
+          <data:Value>8001</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeForBalance" Type="Double" Unit="sec" Format="%.2n">
+          <data:Description>
+            <base:Title>Balance wait Time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait Time for the balance</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>4</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>130E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>430E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredDiluentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Diluent Volume</base:Title>
+          </data:Description>
+          <data:Value>44E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter800" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter SSW 800</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use for 800ul pipetting.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>8893befa-0be7-4846-95c5-8c2c7bf6b6f1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter50" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for SSW 50</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use for 50ul pipetting.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>a8b643e9-c14e-4b4f-bdd2-70ca56f96293</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter10" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for SSW 10</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use for 10ul pipetting.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0a593c1a-122d-4b8e-ad91-1265bc694768</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalancePreparationAspirateVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Prepare balance aspirate volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspirate volume that shall be aspirated when the balance is being prepared.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>500E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalancePreparationWashVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Prepare balance wash volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash volume for the wash reagent wash when the balance is being prepared.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>40E-06</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalancePreparationDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Prepare balance dispense volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The dispense volume that shall be dispensed when the balance is being prepared.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>800E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Number of Repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of Aspriations and Dispensions during the initial dispnse.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Initial dispense volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The dispense volume that shall be dispensed during the initial dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>800E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Number of Repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of Aspriations and Dispensions during the multi dispnse.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseWashVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Multi dispense wash volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash volume for the wash reagent wash during the multi dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>40E-06</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Multi dispense volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MultiDispenseVolume that shall be aspirated and dispensed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>50E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBCleanupAspirateVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Cleanup aspirate volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspirate volume that shall be aspirated during the cleanup.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>500E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCleanupWashVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Cleanup wash volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash volume for the wash reagent wash during the cleanup.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>40E-06</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCalibrationFactorLowerBound" Type="Double">
+          <data:Description>
+            <base:Title>Calibration Factor Minimum</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The lower value of the valid calibration factor range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0.85</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCalibrationFactorUpperBound" Type="Double">
+          <data:Description>
+            <base:Title>Calibration Factor Maximum</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The upper value of the valid calibration factor range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>1.15</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="r800ulFactor" Type="Double">
+          <data:Description>
+            <base:Title>800Ul Factor Valid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the calculated 800ul factor is within range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pCalibrationFactorUpperBound" />
+            <data:Condition Operator="GE" Parameter="pCalibrationFactorLowerBound" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="r50ulFactor" Type="Double">
+          <data:Description>
+            <base:Title>50Ul Factor Valid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the calculated 50ul factor is within range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pCalibrationFactorUpperBound" />
+            <data:Condition Operator="GE" Parameter="pCalibrationFactorLowerBound" />
+          </data:Validation>
+        </data:Result>
+        <data:Group Name="Calibration Factors" Display="Table">
+          <data:Description>Calibration Factor Summary</data:Description>
+          <data:Result Name="rLabel" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactors" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactors" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactors" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactors" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Result Name="rInitialDispenseVolumes" Type="Double" Format="%.2n" Unit="ul" Array="true">
+          <data:Description>
+            <base:Title>Initial Dispense Volumes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initial dispense volumes in micro liters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInitialDispenseMeanVolume" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Initial Dispense Mean Volume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initial dispense mean volume in micro liters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseVolumes" Type="Double" Format="%.2n" Unit="ul" Array="true">
+          <data:Description>
+            <base:Title>Multi-Dispense Volumes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Multi dispense volumes in micro liters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseMeanVolume" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Multi-Dispense Mean Volume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Multi-dispense mean volume in micro liters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceSerialNumber" Type="String">
+          <data:Description>
+            <base:Title>Balance Serial Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The serialnumber (I4) of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceVersion" Type="String">
+          <data:Description>
+            <base:Title>Balance Firmware Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The firmware version of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceType" Type="String">
+          <data:Description>
+            <base:Title>Balance Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The type of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irAbortAndReset">
+          <data:Description>
+            <base:Title>Error Occured</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the check shall abort and reset the factors.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

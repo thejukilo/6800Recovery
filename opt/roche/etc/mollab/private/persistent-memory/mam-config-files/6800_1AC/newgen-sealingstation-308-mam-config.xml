@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:util="http://www.roche.com/util"
+		 xsi:schemaLocation="MAM_ProjectConfig_1.00.03.xsd">
+	<csmConfig>
+		<csm name="Sealingstation308" seid="672" moduleId="308">
+			<parPool type="uint32" structure="scalar" id="10"
+				name="OpCountNumberOfInitializationsStarted" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="11"
+				name="OpCountNumberOfInitializationsCompleted" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="12"
+				name="OpCountNumberOfSealsStarted" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="13"
+				name="OpCountNumberOfSealsCompleted" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="14"
+				name="OpCountNumberOfSealsAborted" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="15"
+				name="OpCountNumberOfShuttleMovements" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="16"
+				name="OpCountTotalHeatingTime" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+			<parPool type="uint32" structure="scalar" id="17"
+				name="OpCountTotalReadyTime" defaultValue="0">
+				<persistDef memoryId="2102" periodInSec="-1" />
+			</parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

@@ -1,0 +1,11 @@
+/.
+/etc
+/etc/roche.certs
+/usr
+/usr/sbin
+/usr/sbin/install-roche-certs.sh
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlxprj-cx800-test
+/usr/share/doc/rlxprj-cx800-test/changelog.gz
+/usr/share/doc/rlxprj-cx800-test/copyright

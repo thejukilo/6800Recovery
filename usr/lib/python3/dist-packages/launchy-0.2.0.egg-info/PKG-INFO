@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: launchy
+Version: 0.2.0
+Summary: Asyncio sub process wrapper
+Home-page: https://github.com/neolynx/launchy
+License: LGPL
+Keywords: asyncio,process,sub process
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Classifier: Topic :: Utilities
+License-File: LICENSE

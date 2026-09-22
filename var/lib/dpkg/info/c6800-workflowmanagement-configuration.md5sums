@@ -1,0 +1,5 @@
+eff7e8c31b37b6e2d7653c0ea2791730  opt/roche/etc/mollab/private/rabbitmq/definitions/workflowManagement_definition.json
+4fc5c6a8b02523703623e5564ecaff3c  opt/roche/etc/mollab/private/workflow-management/appsettings.json
+9769fab75e39b26691b8e3296df63fae  opt/roche/etc/mollab/private/workflow-management/serilog.json
+d630ce736922b3a0f5dd5d083df17b24  usr/share/doc/c6800-workflowmanagement-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/c6800-workflowmanagement-configuration/copyright

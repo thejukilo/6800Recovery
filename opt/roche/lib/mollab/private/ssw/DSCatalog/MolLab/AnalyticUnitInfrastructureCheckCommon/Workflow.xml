@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="213E57F24F6A2973FAE7299DCC5AFA927A59FABA6544" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitInfrastructureCheckCommon" ID="TRQ597629">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserOpenServiceDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Service Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the service door and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="AnalyticUnit_Service_Door.jpg" Hash="F0014236A2BCC1E1A2B263C7434FAC912DE58F08" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyServiceDoorIsOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Service Door Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the service door of analytic unit is open through its light barrier state.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserCloseServiceDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Service Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the service door and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyServiceDoorIsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Service Door Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the service door of analytic unit is closed through its light barrier state.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TurnOnHousingFan">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Turn On The Housing Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Turn on the housing fan.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rAnalyticUnitFirmwareVersion" NextStep="ConfirmHousingFan">
+            <workflow:Condition Operator="NE" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="TurnOnThermalCyclerFans">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Turn On The Thermal Cycler Fans</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Turn on the 2 thermal cycler fans.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8 -->
+      <ds:Step Name="ConfirmHousingFan" Type="Confirm" Result="rConfirmHousingFan">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Housing Fan On</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the housing fan is working and the airflow direction is correct (airflow direction from outside to inside), then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="AnalyticUnit_Fan_Housing.jpg" Hash="1F9C28A40AF8BE88E1F83FDE28E7C82A3A393B71" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rAnalyticUnitFirmwareVersion" NextStep="ConfirmFan1">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+          <workflow:Decision Result="rAnalyticUnitFirmwareVersion" NextStep="SetThermalCyclerFansUndefined">
+            <workflow:Condition Operator="NE" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SetThermalCyclerFansUndefined">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Set Cycler Fans Undefined</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="Completed" />
+      </ds:Step>
+      <!-- Requirement step 9 -->
+      <ds:Step Name="ConfirmFan1" Type="Confirm" Result="irConfirmLeftFan">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Thermal Cycler Fan 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the thermal cycler fan 1 (left fan) is working and the airflow direction is correct (airflow direction from outside to inside), then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="AnalyticUnit_Fan_Left_ThermalCycler.jpg" Hash="B936952EFD45DEE30EC500B593E26A3AE061DA3F" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetConfirmFan1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Set Confirm Thermal Cycler Fan 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10 -->
+      <ds:Step Name="ConfirmFan2" Type="Confirm" Result="irConfirmRightFan">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Thermal Cycler Fan 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the thermal cycler fan 2 (right fan) is working and the airflow direction is correct (airflow direction from outside to inside)., then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="AnalyticUnit_Fan_Right_ThermalCycler.jpg" Hash="BF865E95E38210252AA7F54B0C76ED92F3EE2844" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetConfirmFan2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Set Confirm Thermal Cycler Fan 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

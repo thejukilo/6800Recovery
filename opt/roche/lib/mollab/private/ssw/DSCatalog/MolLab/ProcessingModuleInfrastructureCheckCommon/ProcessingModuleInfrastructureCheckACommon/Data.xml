@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F19CBA1C364F814969B70C55234ECDB36569F122AFAC" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="ProcessingModuleInfrastructureCheckACommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pFanRampUpTime" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>FanTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pBlindTime" Unit="sec" Type="Integer">
+          <data:Description>
+            <base:Title>BlindTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+          <data:Value>ProcessingModuleA</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

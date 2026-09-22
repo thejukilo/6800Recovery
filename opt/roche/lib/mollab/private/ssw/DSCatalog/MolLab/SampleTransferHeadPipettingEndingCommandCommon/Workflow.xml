@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7C09C2BCA951A1CB4F259F197A69ECDA82BA99F49171" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingEndingCommandCommon" ID="SampleTransferHeadPipettingEndingCommandCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initializing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing, please wait.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveBalance" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please disconnect and remove the onboard weighing system.</base:Paragraph>
+              <base:Paragraph>Please empty the remaining fluid in the weighing pan.</base:Paragraph>
+              <base:Paragraph>Then press "Next".</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformUserAboutMove" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After pressing next, the tip rack will be moved from the [R.irFromPosition] position to the [R.irToPosition] position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MovingTipRack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being moved from the [R.irFromPosition] position to the [R.irToPosition] position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveTipRack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the tip rack from the transfer position and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EvaluateFinished">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irCheckFinished" NextStep="InformUserAboutMove">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Unloading5PositionRack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unloading 5-position rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the 5-position rack is unloaded.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Remove5PositionRack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove 5-position rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the 5-position rack.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

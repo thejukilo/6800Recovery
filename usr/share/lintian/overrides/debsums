@@ -1,0 +1,2 @@
+# This is actually on purpose as no version of the GPL was ever mentioned
+debsums: copyright-refers-to-symlink-license usr/share/common-licenses/GPL

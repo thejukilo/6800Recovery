@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="796F66776984FC90B55DEA073D169934FEF7E9AAB274" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitLoadingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>True if the check is to be executed by OPS.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="pAnalyticUnitId">
+          <data:Description>
+            <base:Title>The Cycler to use to calculate the results.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: A1, A2, B1, B2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="Integer" Name="pLoops">
+          <data:Description>
+            <base:Title>Number of loops</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The number of loops to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irLoopsRemaining" Type="Integer">
+          <data:Description>
+            <base:Title>Remaining Loops</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The number of remaining loops.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rOpenSucceeded" Type="Boolean">
+          <data:Description>
+            <base:Title>Open Succeeded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if opening of the drawer succeeded. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPlateDetectionSensorWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Plate Detection Sensor Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if plate detection sensor is working. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPressSucceeded" Type="Boolean">
+          <data:Description>
+            <base:Title>Press Succeeded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if press succeeded. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReleaseSucceeded" Type="Boolean">
+          <data:Description>
+            <base:Title>Release Succeeded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if release succeeded. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCloseSucceeded" Type="Boolean">
+          <data:Description>
+            <base:Title>Close Succeeded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if closing of the drawer succeeded. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

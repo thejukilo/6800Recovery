@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="21" Name="DistanceBetweenTubes" Value="0.02300" Type="double" Array="false" Description="relative distance between the tubes in m" />
+  <ParameterPoolEntry ID="22" Name="RackBarcodeLabelPosition" Value="0.03875" Type="double" Array="false" Description="absolute rack barcode position in m" />
+  <ParameterPoolEntry ID="23" Name="RackHandoverPosition" Value="0.12500" Type="double" Array="false" Description="absolute rack handover position in m" />
+  <ParameterPoolEntry ID="24" Name="GetNewRackPosition" Value="0.20800" Type="double" Array="false" Description="absolute get new rack position in m" />
+  <ParameterPoolEntry ID="25" Name="FirstTubePosition" Value="0.13075" Type="double" Array="false" Description="absolute first tube position in m" />
+  <ParameterPoolEntry ID="26" Name="TransferHandoverPosition" Value="0.00400" Type="double" Array="false" Description="absolute transfer handover position in m" />
+  <ParameterPoolEntry ID="28" Name="WaitForSSCRemoveRackFromBuffer" Value="1" Type="uint32" Array="false" Description="Time RackHandler waits during a rack transfer that SSC removes rack from buffer in seconds" />
+  <ParameterPoolEntry ID="29" Name="NumberOfWaitLoops" Value="25" Type="uint8" Array="false" Description="Number of loops RackHandler waits that the SSC removes rack from buffer" />
+  <ParameterPoolEntry ID="32" Name="CalibrationImagesDownloadEnable" Value="true" Type="bool" Array="false" Description="Enables/Disables the download of the calibration images (default == enabled == true)" />
+  <ParameterPoolEntry ID="33" Name="RackTubeBackwardBacklashDistance" Value="0.004" Type="double" Array="false" Description="Add a backward relative distance to the tube position to eliminate backlash when advancing the rack" />
+  <ParameterPoolEntry ID="36" Name="MoveRackToSampleSupplyModuleRetries" Value="1" Type="uint8" Array="false" Description="Number of times the procedure retries to move the rack to SSM after anomalies" />
+</ModuleConfiguration>

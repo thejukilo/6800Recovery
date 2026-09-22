@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+	<csmConfig>
+		<csm name="SamplePipettorTransfer" seid="218" moduleId="601">
+			<parPool type="uint8" structure="array" id="100" name="ConfigData_AirPump1"
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="101" name="ConfigData_AirPump2" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="102" name="ConfigData_AirPump3"
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+			
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="103" name="ConfigData_AirPump4" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="104" name="ConfigData_ModularZ18_1" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="105" name="ConfigData_ModularZ18_2" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="106" name="ConfigData_ModularZ18_3" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="107" name="ConfigData_ModularZ18_4" 
+			                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+				<persistDef memoryId="3960" periodInSec="-1"/>
+			</parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

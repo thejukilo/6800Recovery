@@ -1,0 +1,237 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.mainhandler.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InfrastructureStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.AirflowScreenStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlYAxisParked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MoveMainHandlerToTargetPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.PickUpCarrierWithMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.PutDownCarrierWithMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.ReinitializeMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.ForcedReinitializeMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.TeachMainHandlerWorkingArea",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.TurnAmplificationPlateCover",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.CalibrateMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.DisableMainHandlerActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.CleanMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.PrepareMainHandlerShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.RotateMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.RotateBackMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.ReadMainHandlerSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MoveSingleAxis",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.CloseMainHandlerGripper",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.mainhandler.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.OpenMainHandlerGripper",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.heatingstation.a2.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.CloseHeatingStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.MoveIncubator",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.OpenHeatingStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.ReinitializeHeatingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.ForcedReinitializeHeatingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.SetTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.StartRegulate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.StopRegulate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.ReadHeatingStationPresenceSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.StartFan",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.StopFan",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.WriteHardwareInformation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.WriteSensorCalibration",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.GetCurrentStates",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.DisableHeatingStationActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.PrepareHeatingStationShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.ReadHeatingStationCurrentTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.heatingstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.ReadHeatingStationSensorStates",
+      "arguments": {}
+    }
+  ]
+}

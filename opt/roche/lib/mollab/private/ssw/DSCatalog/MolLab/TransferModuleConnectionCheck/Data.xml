@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="E8B913DA720B35CEC54DEE4CD9DAFD78A21F76CA3ACD" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TransferModuleConnectionCheck">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Type="String" Name="pModuleId">
+          <data:Description>
+            <base:Title>Instrument Configuration</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rTipRackMagazineStates" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Tip Rack Magazine States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The states of the tip rack magazines.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTipRackMagazineStatesOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Tip Rack Magazine States Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all the states of the tip rack magazines "Ready".</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInfrastructure" Type="String">
+          <data:Description>
+            <base:Title>Transfer Module Infrastructure State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module infrastructure state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferModuleDrawerState" Type="String">
+          <data:Description>
+            <base:Title>Transfer Module Drawer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module drawer state (also known as reagent cassette drawer state)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferModuleControlState" Type="String">
+          <data:Description>
+            <base:Title>Transfer Module Control State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module control state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPlateHandlerState" Type="String">
+          <data:Description>
+            <base:Title>Transfer Module Handler State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module handler state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSampleTransferState" Type="String">
+          <data:Description>
+            <base:Title>Sample Transfer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample transfer state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRackHandlerState" Type="String">
+          <data:Description>
+            <base:Title>Rack Handler State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack handler state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRackScannerState" Type="String">
+          <data:Description>
+            <base:Title>Rack Barcode Reader State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack barcode reader state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rOutputConveyorState" Type="String">
+          <data:Description>
+            <base:Title>Output Conveyor State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Output conveyor state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferXYZGripperState" Type="String">
+          <data:Description>
+            <base:Title>Transfer Module Gripper State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module gripper state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSampleRecognitionCamera" Type="String">
+          <data:Description>
+            <base:Title>Sample Recognition Camera State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample recognition camera state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rConsumableParkState" Type="String">
+          <data:Description>
+            <base:Title>Consumable Park State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Consumable park state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRFIDReaderState" Type="String">
+          <data:Description>
+            <base:Title>Rfid Reader State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>RFID reader state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentStorageHandlerState" Type="String">
+          <data:Description>
+            <base:Title>Reagent Storage Handler State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent storage handler state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

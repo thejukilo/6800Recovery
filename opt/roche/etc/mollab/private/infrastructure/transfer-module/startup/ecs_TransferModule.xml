@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-infrastructure">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false"/>
+        <CSMSpecific ModuleID="900" ProviderSocket="/opt/CSM_900.sock">
+          <CDIDefinition SwitchName="observer-cdi" DeviceName="SC_Fuseboard_Infrastructure" />
+          <CDIDefinition SwitchName="sms-cdi" DeviceName="SC_Fuseboard_SMS_Rollo" />
+          <CDIDefinition SwitchName="powerbox1-cdi" DeviceName="SC_Fuseboard_PowerSupplyMain" />
+          <CDIDefinition SwitchName="powerbox2-cdi" DeviceName="0" />
+          <CDIDefinition SwitchName="ClimateSensor-cdi" DeviceName="SC_Infrastructure_ClimateSensor" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/settings/config/infrastructure-parampool-samplecell.xml" />
+          <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/infrastructure-sms-config.xml" />
+          <CommandLineSwitch SwitchName="--powerbox1-serialport" Value="2" />
+          <CommandLineSwitch SwitchName="--powerbox2-serialport" Value="0" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--ModuleId" Value="TransferModule" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.infrastructure.transfermodule.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.infrastructure.transfermodule.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.infrastructure.transfermodule.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.infrastructure.transfermodule.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

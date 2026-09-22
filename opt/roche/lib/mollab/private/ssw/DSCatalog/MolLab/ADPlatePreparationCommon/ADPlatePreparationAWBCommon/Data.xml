@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="760C338A7152B9768A405EACE5DEC78BE0F1FE892BD1" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="ADPlatePreparationAWBCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module.</base:Title>
+          </data:Description>
+          <data:Value>A</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pUseWashReagent" Type="Boolean">
+          <data:Description>
+            <base:Title>Dispense Wash Reagent</base:Title>
+          </data:Description>
+          <data:Value>True</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>145E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>390E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Pipetting Volume</base:Title>
+          </data:Description>
+          <data:Value>50E-9</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolumeBeforePipetting" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+          <data:Value>20E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolumeAfterPipetting" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+          <data:Value>20E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

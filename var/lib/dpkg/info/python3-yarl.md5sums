@@ -1,0 +1,16 @@
+d79771b08347a2f2f6dd6cebb95ee1d0  usr/lib/python3/dist-packages/yarl-1.8.2.egg-info/PKG-INFO
+68b329da9893e34099c7d8ad5cb9c940  usr/lib/python3/dist-packages/yarl-1.8.2.egg-info/dependency_links.txt
+a1ff5a4e65c82a8183d96066e813e070  usr/lib/python3/dist-packages/yarl-1.8.2.egg-info/requires.txt
+27964b21b4567dc07a0f989ae2cbaa05  usr/lib/python3/dist-packages/yarl-1.8.2.egg-info/top_level.txt
+0f51547095a6a7b710c9e08700542a70  usr/lib/python3/dist-packages/yarl/__init__.py
+051a686bfc74ac1a24ea1ffb48ad084b  usr/lib/python3/dist-packages/yarl/__init__.pyi
+30252ecffa2869cacc801c3621a4625a  usr/lib/python3/dist-packages/yarl/_quoting.py
+80a9fadac15c78c0c486a93bb669c692  usr/lib/python3/dist-packages/yarl/_quoting_c.cpython-311-x86_64-linux-gnu.so
+1893d23f721bda983bf523358cf70826  usr/lib/python3/dist-packages/yarl/_quoting_c.pyi
+19535324751c9edc388699084db2841e  usr/lib/python3/dist-packages/yarl/_quoting_py.py
+32982382f2a250fd21234a3180d36a4b  usr/lib/python3/dist-packages/yarl/_url.py
+82b5ec96b7c1ae29602d8f32543a967e  usr/lib/python3/dist-packages/yarl/py.typed
+f657f6ebc3b646c001b9c683fc1fe4ad  usr/share/doc/python3-yarl/changelog.Debian.amd64.gz
+8d3621906a4e58b984fed178d258e2ac  usr/share/doc/python3-yarl/changelog.Debian.gz
+2a2969b6ce9deaf7165ef9b723023d57  usr/share/doc/python3-yarl/changelog.gz
+3e3fb0f4be1d8f9cfda666b316b0f25e  usr/share/doc/python3-yarl/copyright

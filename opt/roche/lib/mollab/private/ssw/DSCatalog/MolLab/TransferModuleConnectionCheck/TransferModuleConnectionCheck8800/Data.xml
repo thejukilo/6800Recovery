@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="BA72C583249A89B4FFE3EE937A69157187C0B878BED8" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TransferModuleConnectionCheck8800">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Type="String" Name="pModuleId">
+          <data:Description>
+            <base:Title>Instrument Configuration</base:Title>
+          </data:Description>
+          <data:Value>B</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

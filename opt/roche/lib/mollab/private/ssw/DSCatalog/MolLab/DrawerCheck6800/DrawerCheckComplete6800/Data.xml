@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="2F3D3DFF09660DC18C1A0D09428B6DA4E4166D9B00A4" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="DrawerCheck6800">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pCheckConsumablesDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Check consumables drawer.</base:Title>
+          </data:Description>
+          <data:Value>true</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCheckReagentCassetteDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Check reagent cassette drawer.</base:Title>
+          </data:Description>
+          <data:Value>true</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList />
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

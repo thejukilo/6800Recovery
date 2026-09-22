@@ -1,0 +1,43 @@
+<ExperimentDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="ADImprecisionRun 1.0" SchemaVersion="2.0" xmlns="http://schemas.roche.com/2018/03/PcrProfile">
+    <Programs>
+        <Program Name="Incubation" NumberOfCycles="1" MeasurementType="Quantification">
+            <Steps>
+                <Step TargetTemperature="55" HoldTime="600" RampRate="4.4">
+                    <NoAcquisition />
+                </Step>
+            </Steps>
+        </Program>
+        <Program Name="Measurement" NumberOfCycles="30" MeasurementType="Quantification">
+            <Steps>
+                <Step TargetTemperature="55" HoldTime="10" RampRate="2.2">
+                    <SingleAcquisition MeasureTimebox="20" AcquisitionId="1">
+                        <Channels>
+                            <Channel Name="Coumarin 343" TargetNumber="1" ExcitationId="1" EmissionId="1">
+                                <ManualMeasuringMode IntegrationTime="0.3" />
+                            </Channel>
+                            <Channel Name="5-FAM" TargetNumber="2" ExcitationId="2" EmissionId="2">
+                                <ManualMeasuringMode IntegrationTime="0.5" />
+                            </Channel>
+                            <Channel Name="6-HEX" TargetNumber="3" ExcitationId="3" EmissionId="3">
+                                <ManualMeasuringMode IntegrationTime="0.3" />
+                            </Channel>
+                            <Channel Name="JA270" TargetNumber="4" ExcitationId="4" EmissionId="4">
+                                <ManualMeasuringMode IntegrationTime="0.3" />
+                            </Channel>
+                            <Channel Name="Cy5.5" TargetNumber="5" ExcitationId="5" EmissionId="5">
+                                <ManualMeasuringMode IntegrationTime="1.1" />
+                            </Channel>
+                        </Channels>
+                    </SingleAcquisition>
+                </Step>
+            </Steps>
+        </Program>
+        <Program Name="Cooling" NumberOfCycles="1" MeasurementType="Quantification">
+            <Steps>
+                <Step TargetTemperature="40" HoldTime="120" RampRate="2.2">
+                    <NoAcquisition />
+                </Step>
+            </Steps>
+        </Program>
+    </Programs>
+</ExperimentDefinition>

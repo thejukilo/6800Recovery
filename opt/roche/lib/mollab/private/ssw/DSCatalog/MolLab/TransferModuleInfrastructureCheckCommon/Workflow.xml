@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="96E94DD1A0F185E8FF4E0BAFC9324C7D3412FFFCB5BB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="TransferModuleInfrastructureCheckCommon" ID="TransferModuleInfrastructureCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InfrastructurePrepareMovement" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirFlowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Air Flow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the air flow screen is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetFan" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The HEPA filter fan on top of the transfer module will be started and stopped after
+                [P.pFanRampUpTime] seconds.
+              </base:Paragraph>
+              <base:Paragraph>When pressing 'Next', the HEPA filter fan will be turned on. Listen carefully if the fan is starting. Alternatively, check the fan on top of the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="HEPA_Filter_and_Fan_TM.jpg" Hash="7AB4FB59112170B8E79185728E00C257EE361652" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetFanAndReadSpeed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The fan is working.</base:Paragraph>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetFanWorkingConfirm" Type="Confirm" Result="rFanWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Could the fan be heard?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRotatingLightConfirm" Type="Confirm" Result="rRotatingLightWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rotating Service Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is the yellow rotating service light working?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLighting" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to check the module light.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingBlueAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should switch to blue.</base:Paragraph>
+              <base:Paragraph>Check if all LEDs are lit.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingOffAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should be off.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingWhiteAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should be white.</base:Paragraph>
+              <base:Paragraph>Check if all LEDs are lit.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingConfirm" Type="Confirm" Result="rLightingWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the light function according to the indications (blue, off, white)?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StatusLightInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to check the status light on top of the instrument.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetInstrumentStateIndicatorYellow" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Yellow Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light should be yellow.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetInstrumentStateIndicatorGreen" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Green Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light should be green.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetInstrumentStateIndicatorRed" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Red Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light should be red.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 17 -->
+      <ds:Step Name="SetInstrumentStateIndicatorAlternatePrepare" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>
+                After pressing 'Next', the status light will alternate [R.irAlternateLightRepetitions] times between the colors green, yellow and red. Afterwards, the light will flash green.
+              </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 18: Alternating colors -->
+      <ds:Step Name="SetInstrumentStateIndicatorGreenYellowRedAlternating">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light colors should change from green to yellow to red [R.irAlternateLightRepetitions] times.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 19: Yellow -->
+      <ds:Step Name="SetInstrumentStateIndicatorBlinkingYellow" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light should be blinking yellow.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 20: Green -->
+      <ds:Step Name="SetInstrumentStateIndicatorBlinkingGreen" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light should be blinking green.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 21: Confirm working -->
+      <ds:Step Name="SetInstrumentStateIndicatorConfirm" Type="Confirm" Result="rStatusLightWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the status light change according to the indications (static yellow, static green and static red. Alternating between light colors: green, yellow and red. flashing yellow and flashing green)?
+              </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 22: AirflowScreen -->
+      <ds:Step Name="AirflowScreen" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to move the airflow screen down and up.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveAirflowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveAirflowScreenConfirm" Type="Confirm" Result="rAirflowScreenWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the airflow screen move down and up?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckFuseBoard">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fuseboard</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The fuses are being checked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PreparationForTemperatureSensorStep" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After pressing 'Next', the system will allow you [P.pTemperatureSensorWarmupTimeout] seconds to warm up the
+                working area sensor by [P.pTemperatureSensorWarmupValue] °C.
+              </base:Paragraph>
+              <base:Paragraph>The working area sensor is located on the work surface next to the teach tool park position.</base:Paragraph>
+              <base:Paragraph>Warm up the temperature sensor with the fingers.
+              </base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: Unscrew the sensor to have a better heat transfer.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInfrastructureCheck_CheckTemperaturesPrepare.jpg" Hash="E1149FDF70C6377582DC5E5C989A3A49131E8F60" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckTemperatureOfWorkingAreaSensor">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Temperature of The Working Area Sensor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please warm up the working area sensor and see if temperature of the sensor increases.
+              </base:Paragraph>
+              <base:Paragraph>Current temperature of the working area sensor: [R.rWorkingAreaTemperatureSensorAfter] °C
+              </base:Paragraph>
+              <base:Paragraph>Current temperature of the module ceiling sensor: [R.rCeilingTemperatureSensorAfter] °C
+              </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rInternalLoopDone" NextStep="CheckTemperatureOfWorkingAreaSensor">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="VerifyHumidity">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Humidity</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying if the humidity sensor reading is within the specified range...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup Step</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

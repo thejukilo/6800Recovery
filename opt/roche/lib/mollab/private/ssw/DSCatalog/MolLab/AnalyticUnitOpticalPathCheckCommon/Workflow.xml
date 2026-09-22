@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A82EF9B20F542F890F4ACC259A14B67E14762A1ADEC6" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitOpticalPathCheckCommon" ID="TRQ597629">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ValidateCyclerVersion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Validate Cycler Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>This check is only supported by analytic cycler version 2c. Validating...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening analytic unit drawer...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserLoadReferenceDevice" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Reference Device</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Once the analytic unit drawer is opened, please load the reference device and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDrawerAndVerifyPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The analytic unit drawer will be closed and presence of amplification plate verified.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LedReading">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Reading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The LED light source will be turned on and intensity for every channel will be measured.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReleaseReferenceDevice" Result="irHandleError">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="MarkerRecognition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Marker Recognition</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Executing marker recognition command and capturing potential error codes...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReleaseReferenceDevice" Result="irHandleError">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SetupFilters">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Setup Filters</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Setting the excitation filter and the emission filter to combination 1,1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LedReadingFiltered">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Reading Filtered</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Retrieving the LED light source intensity for excitation and emission filter combination 1,1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PressReferenceDevice">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Press Reference Device.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The reference device will be pressed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DetermineCameraExposure">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Determine Camera Exposure</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Determining camera exposure time for image acquisitions to achieve a camera saturation between 20% and 50%...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReleaseReferenceDevice" Result="irHandleError">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="DetectUnitFluorescence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Detect Unit Fluorescence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Triggering command Detection Unit fluorescence signal measurements of 𝑁 = 30 with determined camera exposure time filter combination 1,1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReleaseReferenceDevice" Result="irHandleError">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CalculateWellSignals">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Calculate Well Signals</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculating the well signals and storing results, including all calculation parameters, except camera raw values, for the 𝑁 = 30 acquisitions...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReleaseReferenceDevice">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Release Reference Device</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Release reference device</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TurnOffLed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Turn Off Led</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Turn off led.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait to cool down reference device then open the analytic unit drawer...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserUnloadReferenceDevice" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Reference Device</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Once analytic unit drawer is opened, please remove the reference device and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDrawerAndVerifyAbsence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close analytic unit drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The analytic unit drawer will be closed and absence of amplification plate verified.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExceptionPropagation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Exceptions are re-thrown here to be handled in the Completed step.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Completed step</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

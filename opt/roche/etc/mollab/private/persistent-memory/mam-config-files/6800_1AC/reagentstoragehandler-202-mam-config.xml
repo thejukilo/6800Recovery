@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd" xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<csmConfig>
+<csm name="CSM_ReagentStorageHandler" seid="341" moduleId="202">
+   <dataPool type="uint8" structure="scalar" id="6" name="RSTaught"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="480" id="50" name="PersistedCassette01"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="480" id="51" name="PersistedCassette02"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="480" id="52" name="PersistedCassette03"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="480" id="53" name="PersistedCassette04"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="54" name="PersistedCassette05"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="55" name="PersistedCassette06"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="56" name="PersistedCassette07"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="57" name="PersistedCassette08"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="58" name="PersistedCassette09"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="59" name="PersistedCassette10"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="60" name="PersistedCassette11"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="61" name="PersistedCassette12"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="62" name="PersistedCassette13"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="63" name="PersistedCassette14"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="64" name="PersistedCassette15"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="65" name="PersistedCassette16"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="16" id="66" name="PersistedCassettesTypes"
+             defaultValue="0">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </dataPool>
+   <parPool type="uint32" structure="scalar" id="28" name="OpCountNbrOfServiceDoorOpenings"
+            defaultValue="0"
+            minValue="0"
+            maxValue="0xffffffff">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </parPool>
+   <parPool type="uint16" structure="scalar" id="29" name="OpCountNbrOfInitializations"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      <persistDef memoryId="3760" periodInSec="14400"/>
+   </parPool>
+   <parPool type="uint32" structure="scalar" id="30" name="OpCountNbrOfDCMovements"
+            defaultValue="0"
+            minValue="0"
+            maxValue="0xffffffff">
+      <persistDef memoryId="3760" periodInSec="14400"/>
+   </parPool>
+   <parPool type="uint32" structure="scalar" id="31" name="OpCountNbrOfSMCMovements"
+            defaultValue="0"
+            minValue="0"
+            maxValue="0xffffffff">
+      <persistDef memoryId="3760" periodInSec="14400"/>
+   </parPool>
+   <parPool type="uint8" structure="array" noElements="100" id="32" name="ConfigData_1"
+            defaultValue="0"
+            minValue="0"
+            maxValue="0xff ">
+      <persistDef memoryId="3760" periodInSec="-1"/>
+   </parPool>
+</csm>
+</csmConfig>
+
+</dia:mam>
+

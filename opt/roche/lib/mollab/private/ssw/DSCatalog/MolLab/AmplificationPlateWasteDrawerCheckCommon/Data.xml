@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="2A5E573C9BE92EFDDDC2BD0CA99834D77E2D3C921987" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AmplificationPlateWasteDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rPosition1Ok">
+          <data:Description>
+            <base:Title>Position 1 Sensor Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensor on amplification plate drawer position 1 is working correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rPosition2Ok">
+          <data:Description>
+            <base:Title>Position 2 Sensor Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensor on amplification plate drawer position 2 is working correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rConfirmLocked">
+          <data:Description>
+            <base:Title>Drawer Lock Confirmed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirms that the amplification plate waste drawer is locked.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

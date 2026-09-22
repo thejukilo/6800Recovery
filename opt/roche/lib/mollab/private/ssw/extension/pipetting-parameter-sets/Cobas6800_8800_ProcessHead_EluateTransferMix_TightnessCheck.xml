@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipParamFile xsi:noNamespaceSchemaLocation="PipParams.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PipParamFileHeader>
+    <tipType>NewGen_ETip</tipType>
+    <xsdFileName>PipParams.xsd</xsdFileName>
+    <xsdVersion>7.0</xsdVersion>
+    <physicalID>698b99a2-d475-4552-922a-148da16e436d</physicalID>
+    <logicalID>Cobas6800_8800_ProcessHead_EluateTransferMix_TightnessCheck</logicalID>
+    <description>Pipetting Parameter Set for the Eluat Transfer and the Eluate Mixing with
+      Sip&amp;Spit. (Pipettor: Process Head, Tip: E-tip, Container: P-plate and AD-Plate) [baseline independent]</description>
+    <fileName>Cobas6800_8800_ProcessHead_EluateTransferMix_TightnessCheck.xml</fileName>
+    <lastModified>31.10.2023 10:53:13</lastModified>
+    <version>13.30</version>
+  </PipParamFileHeader>
+  <Parameters>
+    <Global>											  
+	  <LAG>0</LAG>
+      <TAG>0</TAG>
+    </Global> 
+    <MovePumpAbs>
+			<mvPumpAbsPreDelay>2</mvPumpAbsPreDelay>
+			<mvPumpAbsVel>8E-8</mvPumpAbsVel>
+			<MovePumpAbsAdditional>
+				<mvPumpAbsAcc>0.3E-06</mvPumpAbsAcc>
+			</MovePumpAbsAdditional>
+    </MovePumpAbs>
+  </Parameters>
+</PipParamFile>

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. /usr/lib/rlx-osal-plugin-addon/rlx-addon.inc.sh
+
+PACKAGE_NAME=$1
+PACKAGE_VERSION=$2
+
+starttime=`date -R`
+
+remove_addon "${PACKAGE_NAME}"
+retval=$?
+
+if [ $retval -eq 0 ]; then
+    success=1
+else
+    success=0
+fi
+
+log_history "$starttime;$PACKAGE_NAME;$PACKAGE_VERSION;remove;$success"
+
+exit $retval

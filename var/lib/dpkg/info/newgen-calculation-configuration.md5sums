@@ -1,0 +1,5 @@
+8555fcad345a1ee16796ff72e4f91b0f  opt/roche/etc/mollab/private/calculation/appsettings.json
+17954b7dfc9f796d2dc01da12509c846  opt/roche/etc/mollab/private/calculation/serilog.json
+76af0ae3c1f0f3798083709833278da8  opt/roche/etc/mollab/private/rabbitmq/definitions/calculation_definition.json
+5469c0d045848a4bd903378f9ab9fc97  usr/share/doc/newgen-calculation-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-calculation-configuration/copyright

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5DD63BC1AC66787B8F6F69A7F29D875DBEDA213714F3" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="TransferModuleConnectionCheck" ID="[SSW-TRQ-101366]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitializeModules" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All modules are being initialized... </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadStatus">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Status</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the status of all modules are read.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- Variability Target for cobas(r) 6800-2AC -->
+<vt:NodeTargets xmlns="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:vt="https://www.roche.com/x800/PostBuildVariabilityTarget"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="https://www.roche.com/x800/PostBuildVariabilityTarget NodeTargetSchema.xsd">
+    
+    <!-- Note: Operations are executed in the order of definition -->    
+    <vt:FolderNode
+            LocationRelativeToBase="." 
+            MatchingPattern="*8800"    
+            RequestedAction="Remove"/>
+
+    <vt:FolderNode 
+            LocationRelativeToBase="." 
+            MatchingPattern="*Common"  
+            RequestedAction="Inspect">
+
+        <!-- Note: "Base" folder here refers to the folder of the parent element -->
+        <vt:FolderNode 
+                LocationRelativeToBase="." 
+                MatchingPattern="*8800" 
+                RequestedAction="Remove"/>
+
+    </vt:FolderNode>
+    
+    <vt:FileNode 
+            LocationRelativeToBase="." 
+            MatchingPattern="ProductCatalog.xml" 
+            RequestedAction="Remove"/>
+
+    <vt:FileNode
+            LocationRelativeToBase="."
+            MatchingPattern="ProductCatalog8800.xml"
+            RequestedAction="Remove"/>
+
+    <vt:FileNode 
+            LocationRelativeToBase="." 
+            MatchingPattern="CX800.*Instrument8800*.Product.xml"   
+            RequestedAction="Remove"/>
+            
+    <vt:FileNode 
+            LocationRelativeToBase="." 
+            MatchingPattern="ProductCatalog6800.xml" 
+            RequestedAction="Move" 
+            CopyOrMoveLocationRelativeToBase="." 
+            CopyOrMoveName="ProductCatalog.xml"/>
+
+    <vt:FileNode 
+            LocationRelativeToBase="." 
+            MatchingPattern="ProductCatalog6800.xml"   
+            RequestedAction="Remove"/>  
+
+</vt:NodeTargets>

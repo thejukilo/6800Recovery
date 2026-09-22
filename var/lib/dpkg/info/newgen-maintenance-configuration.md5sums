@@ -1,0 +1,9 @@
+9c741fe0dd50dbdea0df7c108024905b  opt/roche/etc/mollab/private/maintenance/action-settings-limits.json
+df18b74f094303b0417cdfa97c8ae8b4  opt/roche/etc/mollab/private/maintenance/appsettings.json
+2afb985ff9d8f64392209d11ad361a33  opt/roche/etc/mollab/private/maintenance/serilog.json
+cd71aa7d43eec6e975f02efc16d44500  opt/roche/etc/mollab/private/rabbitmq/definitions/maintenance_counters_definition.json
+c5ffe05b7982bebd4761875c2154765f  opt/roche/etc/mollab/private/rabbitmq/definitions/maintenance_execution_definition.json
+9e26f0d4254fe0a2b9cf0c5dbabee862  opt/roche/etc/mollab/private/rabbitmq/definitions/maintenance_scheduling_definition.json
+72c23a4b2a1f8ebaa435e33e7cec7d0a  opt/roche/etc/mollab/private/rabbitmq/definitions/maintenance_settings_definition.json
+e5ea84757a4fd5405b52bd3f54329757  usr/share/doc/newgen-maintenance-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-maintenance-configuration/copyright

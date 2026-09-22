@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F258DECABC709839BF734110604EFF32C29EDAEF5B1D" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitOpticalPathCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pAnalyticUnitId" Type="String">
+          <data:Description>
+            <base:Title>The Cycler to use to calculate the results.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: A1, A2, B1, B2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pNumAcquisitions" Type="Integer">
+          <data:Description>
+            <base:Title>Number of Acquisitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of acquisitions.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>30</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxIterationsDetermineExposure" Type="Integer">
+          <data:Description>
+            <base:Title>Max Iterations Determine Exposure</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of maximum iterations to determine the camera exposure.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxImprecisionPercent" Type="Double">
+          <data:Description>
+            <base:Title>Max Imprecision Percent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum well signal imprecision in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0.5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxNonUniformityPeakToValleyPercent" Type="Double">
+          <data:Description>
+            <base:Title>Maximum Non Uniformity</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum non uniformity peak to valley over all wells.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>45</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMinCameraSaturationPercent" Type="Integer">
+          <data:Description>
+            <base:Title>Minimum Camera Saturation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Minimum camera saturation in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>20</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxCameraSaturationPercent" Type="Integer">
+          <data:Description>
+            <base:Title>Maximum Camera Saturation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum camera saturation in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>50</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMinCameraExposureMillis" Type="Integer">
+          <data:Description>
+            <base:Title>Minimum Camera Exposure</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Minimum camera exposure in milliseconds.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxCameraExposureMillis" Type="Integer">
+          <data:Description>
+            <base:Title>Maximum Camera Exposure</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum camera exposure in milliseconds.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2000</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pReferenceDeviceCoolDownTime" Type="Integer">
+          <data:Description>
+            <base:Title>Reference device cool down time (s)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait time in seconds to let the reference device temperature stabilize.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>30</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMinMeanSignal" Type="Double">
+          <data:Description>
+            <base:Title>Minimum mean signal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The minimum mean signal for the single well mean aquisition check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxMeanSignal" Type="Double">
+          <data:Description>
+            <base:Title>Maximum mean signal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum mean signal for the single well mean aquisition check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>100</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rMarkerDetectionParameters" Type="String">
+          <data:Description>
+            <base:Title>Marker Detection Parameters</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Marker detection parameters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rExecutionError" Type="String">
+          <data:Description>
+            <base:Title>Error Executing Command</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReferenceChannelValue" Type="Double">
+          <data:Description>
+            <base:Title>Reference Channel Value 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reference channel value for excitation and filter position 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rReferenceChannelValues" Type="String" Array="true">
+          <data:Description>
+            <base:Title>5 Reference Channels' Counts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED light source intensity for all 5 channels.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rOutRangeEprom" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Channels Out of Range (Eprom)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>List of all channels reported out of range defined in EPROM. Empty if all in range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSingleWellAcquisitionsMeanCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Single Well Acquisitions Mean Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the mean values for every well position over all N measurements is in the range [10, 1000]. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMeanSignal" Type="Double">
+          <data:Description>
+            <base:Title>Mean Signal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Mean value of all well position's signal mean values.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMaxSignal" Type="Double">
+          <data:Description>
+            <base:Title>Maximum Signal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum value of all well positions signal mean values.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMinSignal" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Signal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Minimum value of all well positions signal mean values.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rNonUniformityPeakToValleyPercent" Type="Double">
+          <data:Description>
+            <base:Title>Non Uniformity</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Non uniformity peak to valley over all wells.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxNonUniformityPeakToValleyPercent" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMaxImprecisionPercent" Type="Double">
+          <data:Description>
+            <base:Title>Max Signal Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum well signal imprecision in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxImprecisionPercent" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraExposureUsedMillis" Type="Integer">
+          <data:Description>
+            <base:Title>Camera Exposure Used (Ms)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera exposure used, in milliseconds, for the fluorescence detection.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxCameraExposureMillis" />
+            <data:Condition Operator="GE" Parameter="pMinCameraExposureMillis" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMeanSignalsPerWellOverAllAcquisitions" Type="Double" Array="true" Size="96">
+          <data:Description>
+            <base:Title>Mean Signals Per Well</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The mean well intensity measurements over all 30 acquisitions per well for each of the 96 wells.</base:Paragraph>
+              <base:Paragraph>Flattened [8x12] matrix. Row[A-H] Colum[1-12].</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irHandleError" Type="Boolean">
+          <data:Description>
+            <base:Title>Indicates that the error should be handled.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

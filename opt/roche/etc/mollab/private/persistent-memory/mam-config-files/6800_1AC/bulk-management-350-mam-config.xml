@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="ProcessCell_A_BulkManagement" seid="676" moduleId="350">
+       <dataPool type="double" structure="array" noElements="3" id="9"
+                 name="LiquidWasteContainerFillVolume"
+                 defaultValue="0.0">
+          <persistDef memoryId="3220" periodInSec="-1"/>
+       </dataPool>
+       <dataPool type="double" structure="scalar" id="17"
+                 name="InternalReservoirFillVolume"
+                 defaultValue="0.0">
+          <persistDef memoryId="3220" periodInSec="-1"/>
+       </dataPool>
+       <dataPool type="bool" structure="array" noElements="2" id="30"
+                 name="DiluentDegassed"
+                 defaultValue="false">
+          <persistDef memoryId="3220" periodInSec="-1"/>
+       </dataPool>
+       <dataPool type="bool" structure="array" noElements="2" id="31"
+                 name="LysysDegassed"
+                 defaultValue="false">
+          <persistDef memoryId="3220" periodInSec="-1"/>
+       </dataPool>
+       <dataPool type="int64" structure="scalar" id="32"
+                 name="WashReagentOpenTime"
+                 defaultValue="0">
+          <persistDef memoryId="3220" periodInSec="-1"/>
+       </dataPool>
+       <dataPool type="uint8" structure="scalar" id="33"
+                 name="WashReagentOpenStabilityDurationInDays"
+                 defaultValue="0">
+           <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+        <dataPool type="uint64" structure="scalar" id="34"
+                 name="WashReagentSapNumber"
+                 defaultValue="0">
+            <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+        <dataPool type="int8" structure="array" noElements="6" id="35"
+                  name="WashReagentKitLot"
+                  defaultValue="0">
+            <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+        <dataPool type="int64" structure="scalar" id="36"
+                  name="WashReagentExpirationDate"
+                  defaultValue="0">
+            <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+        <dataPool type="bool" structure="scalar" id="37"
+                  name="WashReagentInvalidated"
+                  defaultValue="0">
+            <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+        <dataPool type="bool" structure="scalar" id="38"
+                  name="WashReagentOverTemperature"
+                  defaultValue="0">
+            <persistDef memoryId="3220" periodInSec="-1"/>
+        </dataPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

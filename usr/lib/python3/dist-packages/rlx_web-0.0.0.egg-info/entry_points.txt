@@ -1,0 +1,2 @@
+[console_scripts]
+rlx-web = rlx_web:mainloop

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="DCE1642AC19D36FF68DC082C89E37AFA050689F2EFB3" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitLoadingCheckA1Common">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Type="String" Name="pAnalyticUnitId">
+          <data:Description>
+            <base:Title>Analytic module ID</base:Title>
+          </data:Description>
+          <data:Value>A1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>True if the check is to be executed by OPS.</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="Integer" Name="pLoops">
+          <data:Description>
+            <base:Title>Number of loops</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The number of loops to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>1</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

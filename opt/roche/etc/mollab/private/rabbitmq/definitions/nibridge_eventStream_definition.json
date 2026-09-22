@@ -1,0 +1,23 @@
+{
+    "queues": [
+        {
+            "name": "addon.nibridge.q",
+            "vhost": "/",
+            "durable": false,
+            "auto_delete": false,
+            "arguments": {
+                "x-message-ttl": 3600000
+            }
+        }
+    ],
+    "bindings": [
+        {
+            "source": "roche.events.tx",
+            "vhost": "/",
+            "destination": "addon.nibridge.q",
+            "destination_type": "queue",
+            "routing_key": "#",
+            "arguments": {}
+        }
+    ]
+}

@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="52CFDB0E7251D62930BAD7B987186796F0CB13C0EFFE" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsWorkflow.xsd">
+  <ds:TestFunction Name="InstrumentBeltCheck6800" ID="InstrumentBeltCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Re-initializing required modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirFlowScreens">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Air Flow Screens</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening the air flow screens of all modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DisableTransfers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disable Transfers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Disabling transfers...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FrequencyMeterSerialNumber" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Frequency meter serial number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please enter the frequency meter serial number.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rFrequencyMeterSerialNumber">
+            <workflow:Description>Serial Number</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SCPlateHandlerSX" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer module handler X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: Push the sample transfer head all the way to the front of the module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the transfer module handler X axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pSC_PlateHandlerS_X_LE] and [P.pSC_PlateHandlerS_X_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Plate_handler_S_X.jpg" Hash="A0072D609F263CA5705C637FA450E6EDB281E383" />
+          <workflow:Input Result="rSC_PlateHandlerS_X">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SCPlateHandlerSYLeft" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer module handler Y left</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: Push the sample transfer head all the way to the front of the module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the left transfer module handler Y axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pSC_PlateHandlerS_Y_Left_LE] and [P.pSC_PlateHandlerS_Y_Left_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModule_HandlerY_Left.jpg" Hash="3774518E998D2AC84C37C7EEA4C08C04408687C6" />
+          <workflow:Input Result="rSC_PlateHandlerS_Y_Left">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SCPlateHandlerSYRight" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer module handler Y right</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measure the tension of the right transfer module handler Y axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pSC_PlateHandlerS_Y_Right_LE] and [P.pSC_PlateHandlerS_Y_Right_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModule_HandlerY_Right.jpg" Hash="523DA444566F3B85E21A9847EBF91B11DF43570B" />
+          <workflow:Input Result="rSC_PlateHandlerS_Y_Right">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SCTransferSYLeft" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sample transfer head Y left</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: Push the sample transfer head all the way to the front of the module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the left sample transfer unit Y axis through the hole as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pSC_TransferS_Y_Left_LE] and [P.pSC_TransferS_Y_Left_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Transfer_S_left_zoomed.jpg" Hash="3CC39BF3DD03901A59EC1AE6F92CB2D1E9890323" />
+          <workflow:Input Result="rSC_TransferS_Y_Left">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SCTransferSYRight" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sample transfer head Y right</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: Push the sample transfer head all the way to the back of the module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the right sample transfer unit Y axis through the hole as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pSC_TransferS_Y_Right_LE] and [P.pSC_TransferS_Y_Right_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Transfer_S_right_zoomed.jpg" Hash="ED6354614C8AD2301C62655732E25EB5737FAE4A" />
+          <workflow:Input Result="rSC_TransferS_Y_Right">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PCAPlateHandlerPXFront" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing module handler A X front</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measure the tension of the front processing module handler X axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pPCA_PlateHandlerP_X_Front_LE] and [P.pPCA_PlateHandlerP_X_Front_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Plate_handler_P_X_front.jpg" Hash="CD548078533D1634BCF1EBB8DA0D6DEDA97E2EB5" />
+          <workflow:Input Result="rPCA_PlateHandlerP_X_Front">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PCAPlateHandlerPXBack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing module handler A X back</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measure the tension of the rear processing module handler X axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pPCA_PlateHandlerP_X_Back_LE] and [P.pPCA_PlateHandlerP_X_Back_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Plate_handler_P_X_back.jpg" Hash="0AC62148A3E07E4F2C41BB3EDE34C6BBC567DB10" />
+          <workflow:Input Result="rPCA_PlateHandlerP_X_Back">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PCAPlateHandlerPY" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing module handler A Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measure the tension of the processing module handler Y axis lower belt as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pPCA_PlateHandlerP_Y_LE] and [P.pPCA_PlateHandlerP_Y_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Plate_handler_P_Y.jpg" Hash="68532C08A8FA103D1CA76A005FB364348BAA8416" />
+          <workflow:Input Result="rPCA_PlateHandlerP_Y">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PCAReagentHeadY" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reagent transfer unit A Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: Move the reagent transfer head to the back of the module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the reagent transfer unit Y axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pPCA_ReagentHead_Y_LE] and [P.pPCA_ReagentHead_Y_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Transfer_R_Y.jpg" Hash="C567B82D633C098CDC81CC4220C1221589525E7F" />
+          <workflow:Input Result="rPCA_ReagentHead_Y">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CCStackerHandlerX" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Main handler X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: The main handler has to be placed at the maximum right.</base:Paragraph>
+              <base:Paragraph></base:Paragraph>
+              <base:Paragraph>Measure the tension of the main handler X axis as shown in the picture.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pCC_StackerHandler_X_LE] and [P.pCC_StackerHandler_X_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Main_handler_X_300.jpg" Hash="1B07BFF44BC7B9EC262CFD83AD6D91209581228C" />
+          <workflow:Input Result="rCC_StackerHandler_X">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADCPlateHandlerAZ" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Analytic module Z</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Precondition: The amplification plate handler has to be moved to the top most position.</base:Paragraph>
+              <base:Paragraph></base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measure the tension of the amplification plate handler Z axis as shown in the picture. The back belt has to be measured.</base:Paragraph>
+              <base:Paragraph>Please enter the measured value.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: If the tension is not in range please adjust the belt according to the service documentation.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Measured values in Hz must be between [P.pADC_PlateHandlerA_Z_LE] and [P.pADC_PlateHandlerA_Z_GE].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Amplification_plate_handler_Z.jpg" Hash="0446E01C7EAAB55C1B05424C58085849721FD89C" />
+          <workflow:Input Result="rADC_PlateHandlerA_Z">
+            <workflow:Description>Enter the measured value [Hz]</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EnableTransfers" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Re-enabling Transfers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Re-enabling transfers...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

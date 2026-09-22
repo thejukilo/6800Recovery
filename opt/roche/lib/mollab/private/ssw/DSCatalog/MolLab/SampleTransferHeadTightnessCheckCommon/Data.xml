@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7F974A4519316738FA8D4899C7B890E217512BC07B5D" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTightnessCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pPumpStartPositionHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpStartPosition</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPumpMovementHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpMovement</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pInitialPressureDifferenceHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>InitialPressureDifference</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitNegativeHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitNegative</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitPositiveHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitPositive</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pStabilizationTimeHigh" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>StabilizationTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pMeasurementTimeHigh" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>MeasurementTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Perform the tightness check first with low parameters if true.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameterFileGuid" Type="String">
+          <data:Description>
+            <base:Title>PipettingParameter</base:Title>
+          </data:Description>
+          <data:Value>ad485cca-fd60-424f-b99b-5f95969639ea</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTime" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>WaitTime</base:Title>
+          </data:Description>
+          <data:Value>300</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPumpStartPositionLow" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpStartPosition</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPumpMovementLow" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpMovement</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pInitialPressureDifferenceLow" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>InitialPressureDifference</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitNegativeLow" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitNegative</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitPositiveLow" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitPositive</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pStabilizationTimeLow" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>StabilizationTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pMeasurementTimeLow" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>MeasurementTime</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irTeachToolPresent" Type="Boolean">
+          <data:Description>
+            <base:Title>Teach Tool Presence Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The teach tool shall be present as a precondition.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTightnessCheckResultsHigh" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Tightness Check Results High</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The results of the pipettors for highest parameters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTightnessCheckResultsLow" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Tightness Check Results Low</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The results of the pipettors lowest parameters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTightnessCheckHighPassed" Type="String">
+          <data:Description>
+            <base:Title>Tightness Check High Passed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The tightness check high passed on all pipettors.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="False" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTightnessCheckLowPassed" Type="String">
+          <data:Description>
+            <base:Title>Tightness Check Low Passed (Ops)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The tightness check low passed on all pipettors (OPS only).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="False" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

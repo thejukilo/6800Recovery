@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="0330DDFD45EE808D146AC0067D14EBE70216874CA040" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ProcessingModuleInfrastructureCheckCommon" ID="ProcessingModuleInfrastructureCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InfrastructurePrepareMovement" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa1Fan" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 1 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>When pressing 'Next', the fan "HEPA 1" will be turned on. Listen carefully if the fan is starting. Alternatively, check the fan on top of the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Hepa_1_PM_Filter_Fan.jpg" Hash="82193BC215C70FD346DD3E7B116E9CBC6DA00600" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa1FanAuto">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 1 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while hepa 1 fan is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa1FanWorking" Type="Confirm" Result="rHepa1FanWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 1 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the hepa 1 fan work correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa2Fan" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 2 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>When pressing 'Next', the fan "HEPA 2" will be turned on. Listen carefully if the fan is starting. Alternatively, check the fan on top of the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Hepa_2_PM_Filter_Fan.jpg" Hash="EA7E241AF5AA3E4B34ADE5D0DBB5B4781DC836D3" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa2FanAuto">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 2 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while hepa 2 fan is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetHepa2FanWorking" Type="Confirm" Result="rHepa2FanWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>HEPA 2 Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the hepa 2 fan work correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetAirFan" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Set Air Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Press 'Next' to start the air fan. The fan will be running for the next 70 seconds.</base:Paragraph>
+              <base:Paragraph>Listen if the fan is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInfrastructureCheck_Air_Fan.jpg" Hash="2B70F3DC58C0463C65C2BCF7F8F224855551E94D" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetAirFanAuto">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Air Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the air fan is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetAirFanWorking" Type="Confirm" Result="rAirFanWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Air Fan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the air fan work correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRotatingLightConfirm" Type="Confirm" Result="rRotatingLightWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Service Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is the orange rotating service light functioning?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLighting" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Press 'Next' to check the module light.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingBlueAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should be blue.</base:Paragraph>
+              <base:Paragraph>Check that all LEDs are lit.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingOffAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should be off.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingWhiteAction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The module light should be white.</base:Paragraph>
+              <base:Paragraph>Check that all LEDs are lit.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetLightingConfirm" Type="Confirm" Result="rLightingWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Module Light</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the light function as indicated (blue, off, white)?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AirflowScreen" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to move the airflow screen down and up.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveAirflowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveAirflowScreenConfirm" Type="Confirm" Result="rAirflowScreenWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did the Airflow Screen move down and up?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckFuseBoard">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fuseboard</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The fuses are being checked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 23 -->
+      <ds:Step Name="PreparationForTemperatureSensorStep" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare for Sensor Warm Up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After pressing 'Next', the system will record the reference temperature once and then allow you [P.pTemperatureSensorWarmupTimeout] seconds to warm up the
+                work area sensor by [P.pTemperatureSensorWarmupValue] °C.
+              </base:Paragraph>
+              <base:Paragraph>The work area sensor is located on the rear right side of the processing module.</base:Paragraph>
+              <base:Paragraph>Warm up the temperature sensor with the fingers.</base:Paragraph>
+              <base:Paragraph>Note: Unscrew the sensor to have a better heat transfer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInfrastructureCheck_CheckTemperaturesPrepare.jpg" Hash="ACB1D7BB2E0D496E96517D8765D6BD6022E64D89" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RecordInitialTemperature">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Record Initial Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initial temperature is recorded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckTemperatureOfWorkingAreaSensor">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manual Warm Up of Sensor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please warm up the working area sensor and check if the sensor temperature increases.
+              </base:Paragraph>
+              <base:Paragraph>Current temperature of the working area sensor: [R.rWorkingAreaTemperatureSensorAfter] °C
+              </base:Paragraph>
+              <base:Paragraph>Current temperature of the module ceiling sensor: [R.rCeilingTemperatureSensorAfter] °C
+              </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rInternalLoopDone" NextStep="CheckTemperatureOfWorkingAreaSensor">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup Step</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

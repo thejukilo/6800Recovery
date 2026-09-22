@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6223898DE4044819DB29A828DA89A4D1BCFC729DB9A4" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="LysisDiluentDrawerCheckCommon" ID="SSW-TRQ-1193068">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenLysisDiluentDrawerAction" Type="Confirm" Result="rLysisDiluentDrawerPushedOut">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Opening Lysis/Diluent Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Lysis/Diluent drawer is being pushed out. Please confirm that the drawer is successfully pushed out. </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenLysisDiluentDrawerInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Lysis/Diluent Drawer Completely</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the lysis/diluent drawer of the processing module completely and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLysisDiluentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Lysis/Diluent Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while Lysis/Diluent containers are being unlocked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadFullLysisDiluentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Full Lysis/Diluent Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load two full lysis and two full diluent containers and close the aspiration arms...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Looped for two containers -->
+      <ds:Step Name="PreparingForVerification">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparing For Verification</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while preparing for container verification...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyLysisDiluentAspirationArmClosed" Type="Confirm" Result="irVerifyAspirationArmClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Lysis Aspiration Arms Closed And Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the aspiration arm for [R.irCurrentContainerName] container is closed and locked, and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfImminentLedFunctionalityCheck" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check Imminent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for [R.irCurrentContainerName]  will be turned off for three seconds followed by 'Red' for three seconds and then 'Green' once 'Next' is pressed. Please be ready...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for [R.irCurrentContainerName] is being turned off for three seconds, to 'Red' for the following three seconds and finally set to 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmFunctionalityOfLysisDiluentContainerLed" Type="Confirm" Result="irLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm User Of The LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the LED for [R.irCurrentContainerName] was turned off for three seconds, set to 'Red' for three seconds and then set to 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLysisDiluentAspirationArmToRemoveContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Lysis/Diluent Aspiration Arm</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking lysis/diluent aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitContainerRemoval">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Lysis/Diluent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspiration arm for [R.irCurrentContainerName] container has been unlocked. Please:</base:Paragraph>
+              <base:Paragraph>1 - Remove [R.irCurrentContainerName] container</base:Paragraph>
+              <base:Paragraph>2 - Close and lock the [R.irCurrentContainerName] aspiration arm</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The step will automatically proceed once the above actions are undertaken.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- For diluents, we skip the next two steps and jump directly to the final stage of the loop. This is because 'MinFillLevel' sensors
+                   are no longer used for diluents -->
+          <workflow:Decision Result="irIsDiluent" NextStep="UnlockLysisDiluentContainersToReplaceContainer">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnlockLysisContainersToInsertEmptyContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Lysis Aspiration Arm</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking [R.irCurrentContainerName] aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitEmptyLysisContainerInsertion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load An Empty Lysis Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load an empty container in [R.irCurrentContainerName] position and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLysisDiluentContainersToReplaceContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Lysis/Diluent Aspiration Arm</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking [R.irCurrentContainerName] aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- For diluents, we skip the next two steps and jump directly to the final stage of the loop. This is because 'MinFillLevel' sensors
+                       are no longer used for diluents -->
+          <workflow:Decision Result="irIsDiluent" NextStep="AwaitLysisContainerReplacement">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="AwaitDiluentContainerReplacement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Diluent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspiration arm for [R.irCurrentContainerName] container has been unlocked. Please:</base:Paragraph>
+              <base:Paragraph>1 - Place a full container in [R.irCurrentContainerName] position</base:Paragraph>
+              <base:Paragraph>2 - Close and lock the aspiration arm of [R.irCurrentContainerName] position</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>This step will automatically proceed once the aforementioned actions are undertaken.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <!-- Note: If we reach this step, it means we're dealing with diluents, and the loop is not over yet -->
+        <workflow:Flow NextStep="PreparingForVerification" />
+      </ds:Step>
+      <ds:Step Name="AwaitLysisContainerReplacement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Lysis Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspiration arm for [R.irCurrentContainerName] container has been unlocked. Please:</base:Paragraph>
+              <base:Paragraph>1 - Remove the current [R.irCurrentContainerName] container</base:Paragraph>
+              <base:Paragraph>2 - Place a full container in [R.irCurrentContainerName] position</base:Paragraph>
+              <base:Paragraph>3 - Close and lock the aspiration arm of [R.irCurrentContainerName] position</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>This step will automatically proceed once the aforementioned actions are undertaken.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- If the user forgets to remove AD Plate then repeat the step -->
+          <workflow:Decision Result="irCurrentContainerIndex" NextStep="PreparingForVerification">
+            <workflow:Condition Operator="LE" Value="4" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- End of loop for the three containers -->
+      <ds:Step Name="CloseLysisDiluentDrawerAction" Type="Confirm" Result="rLysisDiluentDrawerClosedAndLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Lysis/Diluent Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please push-in and close the lysis/diluent drawer and then confirm that it has been closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckAndRecordTemperature">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Recording Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Recording the temperature..</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

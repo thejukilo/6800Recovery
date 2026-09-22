@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F5DE1EDF5324995B5BE8EEC91C1D134D3C12B15D1E79" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="MainHandlerHandlingCheck6800" ID="MainHandlerHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EnsureTransferPositionsAreEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure transfer positions are empty.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirFlowTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening the transfer module airflow screen.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirFlowProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening the processing module A airflow screen.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenTransferModuleDrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="LoadReagentCassette">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadReagentCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a reagent cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadControlCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a control cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRackD">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a tip rack into magazine D.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRackE">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a tip rack into magazine E.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseTransferModuleDrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="OpenProcessModuleADrawer">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenProcessModuleADrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the processing module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="LoadPPlateF">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadPPlateF">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a processing plate into magazine F.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadPPlateG">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a processing plate into magazine G.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadADPlateI">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a full amplification plate cassette into magazine I.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadADPlateJ">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a full amplification plate cassette into magazine J.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadMGPCassetteH">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load an MGP cassette into magazine H.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseProcessModuleADrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the processing module A drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="TransferControlToTransferModule">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="TransferControlToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The control cassette is moved to the transfer module..</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferReagentToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The reagent cassette is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StoreReagentCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The reagent cassette is stored in the reagent storage.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StoreControlCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The control cassette is stored in the reagent storage.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferTipRackDToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The tip rack is moved to the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferTipRackFromTransferModuleToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The tip rack is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferTipRackEToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handling</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The tip rack is moved to the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 24: Remove tip racks -->
+      <ds:Step Name="RemoveTipRacks" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the tip rack from the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Please remove the tip rack from the transfer module transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 25 -->
+      <ds:Step Name="TransferPPlateFToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer P-Plate To TM (I)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The processing plate is moved to the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 26 -->
+      <ds:Step Name="TransferPPlateFromTransferModuleToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer P-Plate To PM</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The processing plate is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 27 -->
+      <ds:Step Name="TransferPPlateGToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move P-Plate to TM (II)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The processing plate is moved to the transfer module.</base:Paragraph>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 28 -->
+      <ds:Step Name="RemovePPlates" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manually Remove P-Plates</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the processing plates from the transfer positions of the transfer module and processing module and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 29 -->
+      <ds:Step Name="TransferMGPCassetteHToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move MGP Cassette to PM</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The MGP cassette is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 30 -->
+      <ds:Step Name="RemoveMGP" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manually Remove MGP Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the MGP cassette from the transfer positions of the processing module A and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 31 -->
+      <ds:Step Name="TransferADPlateIToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer AD-Plate to PM</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The amplification plate is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 -->
+      <ds:Step Name="TransferADPlateFromProcessModuleAToADModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>AD-Plate to Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The amplification plate is moved to the amplification plate transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 33 -->
+      <ds:Step Name="TransferADPlateJToProcessModuleA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer AD-Plate to PM</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+              <base:Paragraph>The amplification plate is moved to the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 34 -->
+      <ds:Step Name="RemoveADs" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manually Remove AD-Plates</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the amplification plates from the transfer position of the processing module A and the amplification plate transfer position from the analytic module and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 35 -->
+      <ds:Step Name="ParkAdPlateTransfer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park AD-Plate Transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate transfer is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Preparation for steps 36/37: open the transfer module drawer to enable user to remove reagent and control cassettes. -->
+      <ds:Step Name="OpenTransferModuleDrawerCleanup" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manually Open TM Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="RemoveReagentCassette">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 36: Instruct user to remove reagent cassettes -->
+      <ds:Step Name="RemoveReagentCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Reagent Cassettes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the reagent cassette and then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 37: Instruct user to remove control cassettes -->
+      <ds:Step Name="RemoveControlCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the control cassette and then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Complete steps 36/37: request user to close drawer manually -->
+      <ds:Step Name="CloseTransferModuleDrawerCleanup" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manually Close TM Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true" Delay="500">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="Cleanup">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software cleans up resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

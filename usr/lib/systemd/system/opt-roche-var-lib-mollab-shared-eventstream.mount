@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/eventstream to /opt/roche/var/lib/mollab/shared/eventstream
+
+[Mount]
+What=/mnt/data/shared/eventstream
+Where=/opt/roche/var/lib/mollab/shared/eventstream
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

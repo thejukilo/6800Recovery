@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="779F36F97219FFFDBD4011524E36D979D1B0AD2634CF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingFillBalanceCheckCommon" ID="SampleTransferHeadPipettingFillBalanceCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="EnsurePipettingIntro" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Precondition</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify the correct placement of the onboard weighing system.</base:Paragraph>
+              <base:Paragraph>Then press "Next"</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareInitStart" NextState="true" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to initialize the module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareInit">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDownHolders">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceVessel" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Weighing Pan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure the correct weighing pan is mounted on the onboard weighing system.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceVessel.jpg" Hash="95F53F734F59CDA2943C206835823AFE4B36E9F2" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FillBalance">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fill Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDownHolders" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

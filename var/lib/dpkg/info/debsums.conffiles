@@ -1,0 +1,4 @@
+/etc/cron.daily/debsums
+/etc/cron.monthly/debsums
+/etc/cron.weekly/debsums
+/etc/default/debsums

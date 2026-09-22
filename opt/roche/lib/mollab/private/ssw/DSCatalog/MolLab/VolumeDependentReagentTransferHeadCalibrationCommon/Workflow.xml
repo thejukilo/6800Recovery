@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7083F2CFB2AAB5EB13DF40E02CFD6B907B28E76AC0CE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckCommon" ID="VolumeDependentReagentTransferHeadCalibrationCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement steps 1 to 6 -->
+      <ds:Step Name="PrepareAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the instrument is prepared for the check...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="ConnectBalance">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ConnectBalance">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare Balance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The connection to the onboard weighing system is now being checked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RetrieveCorrectionFactor">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Retrieve Correction Factor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading microgear pump correction factor...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareBalance">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Balance Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The onboard weighing system is being prepared and the instrument made ready for dispensation.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndReset" NextStep="Cleanup">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PerformInitialDispense">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initial Dispense</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the pipetting is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndReset" NextStep="Cleanup">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PerformMultiDispense">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Multi Dispense</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the pipetting is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndReset" NextStep="Cleanup">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Calculation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Calculation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the calculation is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the cleanup is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndReset" NextStep="WriteFactors">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ResetFactors">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reset Factors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the previously saved correction factors are written...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WriteFactors">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Write Factors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the new correction factors are written...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

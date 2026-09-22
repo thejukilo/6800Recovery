@@ -1,0 +1,17 @@
+# This is a transient unit file, created programmatically via the systemd API. Do not edit.
+[Scope]
+Slice=user-100.slice
+
+[Unit]
+Description=Session 2 of User fsr
+Wants=user-runtime-dir@100.service
+Wants=user@100.service
+After=systemd-logind.service
+After=user-runtime-dir@100.service
+After=user@100.service
+RequiresMountsFor=/opt/roche/fsr
+
+[Scope]
+SendSIGHUP=yes
+OOMPolicy=continue
+TasksMax=infinity

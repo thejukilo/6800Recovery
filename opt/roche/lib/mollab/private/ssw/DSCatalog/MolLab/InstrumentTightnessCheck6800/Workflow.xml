@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="1AD6417F8384DAFB727BC61AAB46241FBF0C05DC6B8A" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="InstrumentTightnessCheck6800" ID="[SSW-TRQ-122857]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the instrument is initialized.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UploadPipettingParameters">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Upload Pipetting Parameters</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the pipetting parameters are uploaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirflowScreens">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open airflow screens</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the airflow screens are opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="CheckForTeachToolPresence">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CheckForTeachToolPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking For Teach Tools Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while teach-tool presence is detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irTeachToolPresent" NextStep="ExecuteSampleAndReagentTransferHeadTightnessCheck">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UserInstructedToProvideTheTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Provide The Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teach tool was not found to be present on the teach tool park position in transfer module.</base:Paragraph>
+              <base:Paragraph>Please place the teach tool on the teach tool park position in the transfer module and then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Location_teach_tool_park_position.jpg" Hash="AECA0756414AB534A583E942B147C8F1703DEB72" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="CheckForTeachToolPresence" />
+      </ds:Step>
+      <ds:Step Name="ExecuteSampleAndReagentTransferHeadTightnessCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Execute the sample and reagent transfer head tightness checks</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the sample and reagent transfer head are executed in parallel.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveTeachToolFromTransferModuleToProcessingModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move the teach tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teach tool is moved from the transfer module to the processing module...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExecuteProcessTransferHeadA1TightnessCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Execute Process Head Tightness Check A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tightness check is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveTeachToolAndOpenDownholders">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Get Results</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the downholders are opening and the teach tool is moved from tip rack position 1 to tip rack position 2.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExecuteProcessTransferHeadA2TightnessCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Execute Process Head Tightness Check A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tightness check is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveTeachToolFromProcessingModuleToTransferModule">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Get Results</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the downholders are opened and the teach tool is moved from the processing module to the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

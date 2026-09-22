@@ -1,0 +1,14 @@
+96ff16d179a28088f753ba18641e14ff  opt/roche/etc/mollab/private/main-handler/config/6800-mainhandler-headinfo.xml
+53d65d827a805d7a5382d576bd177442  opt/roche/etc/mollab/private/main-handler/config/6800-mainhandler-motionconfig.xml
+89ae8d6f9760489feaa9cbb760cc7b73  opt/roche/etc/mollab/private/main-handler/config/6800-mainhandler-positioning.xml
+4c7e69a9dcbb49ac18bd69e75fb94016  opt/roche/etc/mollab/private/main-handler/config/mainhandler-config.xml
+02448f4d48f5f920d32cb2a6c74f99a8  opt/roche/etc/mollab/private/main-handler/config/mainhandler-config.xsd
+85319a28cde38045babfab6d161b3e25  opt/roche/etc/mollab/private/main-handler/config/mainhandler-positionmapping.xml
+309144f31d0bfcdecb3820e51191512f  opt/roche/etc/mollab/private/main-handler/config/mainhandler-processflow.xml
+f3d43f4b9374076e9939c05736ee8080  opt/roche/etc/mollab/private/main-handler/config/mainhandler-processflow.xsd
+b352268027286e13bedfdb7842fc1f1d  opt/roche/etc/mollab/private/main-handler/startup/ecc.xml
+1097fd1fef47041747d2755808377c94  opt/roche/etc/mollab/private/main-handler/startup/ecs_6800.xml
+2bbe66242581f358c1524c17391e9fa1  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/mainhandler-201-mam-config.xml
+5fed431ff8da26f1369a7336438b7080  opt/roche/etc/mollab/private/rabbitmq/definitions/mainhandler_definition.json
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/main-handler/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/main-handler/fwr_00000604_MotionControl_2.03.03.0000.srec

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="8068671D565477D7B298E8C9006FA3BFCC1B4F07C1FB" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitDetectionFunctionalityCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Type="String" Name="pAnalyticUnitId">
+          <data:Description>
+            <base:Title>The Cycler to use to calculate the results.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: A1, A2, B1, B2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="Double" Name="pReferenceChannelValueMin" Array="true">
+          <data:Description>
+            <base:Title>Reference Channel Minimum Values</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reference channel minimum values per channel.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>12540</data:Value>
+          <data:Value>4130</data:Value>
+          <data:Value>5860</data:Value>
+          <data:Value>14670</data:Value>
+          <data:Value>3950</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="Double" Name="pReferenceChannelValueMax" Array="true">
+          <data:Description>
+            <base:Title>Reference Channel Maximum Values</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reference channel maximum values per channel.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>46390</data:Value>
+          <data:Value>19420</data:Value>
+          <data:Value>27710</data:Value>
+          <data:Value>53400</data:Value>
+          <data:Value>19010</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rMarkerDetectionParameters" Type="String">
+          <data:Description>
+            <base:Title>Marker Detection Parameters</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Marker detection parameters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMarkerDetectionParametersReadError" Type="String">
+          <data:Description>
+            <base:Title>Marker Detection Parameters Reading Error</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Marker detection parameters reading error.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReferenceChannelValues" Type="Double" Array="true">
+          <data:Description>
+            <base:Title>5 Reference Channels' Counts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED light source intensity for all 5 channels.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rOutRangeXml" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Channels Out of Range (Xml)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>List of all channels reported out of range defined in the xml. Empty if all in range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rOutRangeEprom" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Channels Out of Range (Eprom)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>List of all channels reported out of range defined in EPROM. Empty if all in range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLedLightSourceTemperatureCelcius" Type="Double">
+          <data:Description>
+            <base:Title>Led Source Temperature (C)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED source temperature in Celcius.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="110" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraTemperatureCelcius" Type="Double">
+          <data:Description>
+            <base:Title>Camera Temperature (C)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera temperature in Celcius.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="50" />
+            <data:Condition Operator="GE" Value="10" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

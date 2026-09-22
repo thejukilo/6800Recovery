@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="37562A3FBF8C3B13C1ED4D5FC21EC055FB88689AEA8E" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="RackTransportCheckAfterLoadToError10Common">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pTargetPositionName" Type="String">
+          <data:Description>
+            <base:Title>TargetPositionName</base:Title>
+          </data:Description>
+          <data:Value>ErrorConveyorBelt</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Repetitions</base:Title>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

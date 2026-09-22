@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotionConfig xsi:noNamespaceSchemaLocation="lib_00000100_MotionControl_MotionConfig_1.06.00.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Motor MotorName="Downholder" DeviceId="1" HomePosition="0.00">
+		<Device>
+			<MotorType>DC</MotorType>
+			<UnitBase>0.234148839326354</UnitBase>
+			<PositionDirection>Forward</PositionDirection>
+			<SampleRate>5000Hz</SampleRate>
+			<EmergencyStop>Off</EmergencyStop>
+		</Device>
+		<TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+			<TrajectoryPlannerSet Id="0">
+				<VelocityLimit>1285.0</VelocityLimit>
+				<AccelerationLimit>4285.0</AccelerationLimit>
+				<DecelerationLimit>4285.0</DecelerationLimit>
+				<LowerPositionLimit>-100</LowerPositionLimit>
+				<UpperPositionLimit>100</UpperPositionLimit>
+				<JerkLimit>1000000</JerkLimit>
+			</TrajectoryPlannerSet>
+			<DynamicSet>
+				<DynamicSetIndex>0</DynamicSetIndex>
+				<DesiredVelocity>64.0</DesiredVelocity>
+				<DesiredAcceleration>857.0</DesiredAcceleration>
+				<DesiredDeceleration>857.0</DesiredDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>1</DynamicSetIndex>
+				<DesiredVelocity>257.0</DesiredVelocity>
+				<DesiredAcceleration>428.0</DesiredAcceleration>
+				<DesiredDeceleration>428.0</DesiredDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>2</DynamicSetIndex>
+				<DesiredVelocity>257.0</DesiredVelocity>
+				<DesiredAcceleration>428.0</DesiredAcceleration>
+				<DesiredDeceleration>428.0</DesiredDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>3</DynamicSetIndex>
+				<DesiredVelocity>127.0</DesiredVelocity>
+				<DesiredAcceleration>214.0</DesiredAcceleration>
+				<DesiredDeceleration>214.0</DesiredDeceleration>
+			</DynamicSet>
+		</TrajectoryPlanner>
+		<PositionController Id="0">
+			<PValue>10</PValue>
+			<DValue>0.05</DValue>
+			<IValue>100</IValue>
+			<ISaturation>1</ISaturation>
+			<CurrentLimit>1</CurrentLimit>
+			<ControlDeviationLimit>0.1674</ControlDeviationLimit>
+			<ControlStructure>ClosedLoop</ControlStructure>
+			<ControllerType>Position</ControllerType>
+			<FeedbackSign>Negative</FeedbackSign>
+		</PositionController>
+		<CurrentController>
+			<PValue>50</PValue>
+			<IValue>1000000.0</IValue>
+			<ISaturation>1111</ISaturation>
+			<ControlDeviationLimit>10.0</ControlDeviationLimit>
+		</CurrentController>
+		<Encoder>
+			<EncoderType>IncrementPosition</EncoderType>
+			<NumberOfLines>128</NumberOfLines>
+		</Encoder>
+		<SingleBitInput PortName="InitSensorDH">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>1</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Rising</ActiveEdge>
+		</SingleBitInput>
+		<SingleBitInput PortName="PlateDetectionRising">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>2</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Rising</ActiveEdge>
+			<DebouncingEdge>Both</DebouncingEdge>
+			<DebouncingTime>0.1</DebouncingTime>
+			<SuspendTime>0.0</SuspendTime>
+		</SingleBitInput>
+		<SingleBitInput PortName="PlateDetectionFalling">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>2</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Falling</ActiveEdge>
+			<DebouncingEdge>Both</DebouncingEdge>
+			<DebouncingTime>0.1</DebouncingTime>
+			<SuspendTime>0.0</SuspendTime>
+		</SingleBitInput>
+		<MotorConfigDC>
+			<MotorConstant>0.0254</MotorConstant>
+			<TerminalResistance>78.8</TerminalResistance>
+			<TerminalInductance>0.000254</TerminalInductance>
+			<ThermalLimit>125</ThermalLimit>
+			<ThermalResistanceWindingToHousing>0.0</ThermalResistanceWindingToHousing>
+			<ThermalTimeConstantWinding>11</ThermalTimeConstantWinding>
+			<ThermalResistanceHousingToAmbient>0.0</ThermalResistanceHousingToAmbient>
+			<ThermalTimeConstantHousing>362</ThermalTimeConstantHousing>
+		</MotorConfigDC>
+		<Plant>
+			<MassInertia>0</MassInertia>
+			<GravitationalTorque>0</GravitationalTorque>
+			<VelocityDependantFriction>0</VelocityDependantFriction>
+			<VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+			<HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+		</Plant>
+		<Init>
+			<InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+			<InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+			<AdditionalMoveDynamicSetIndex>1</AdditionalMoveDynamicSetIndex>
+			<InitSubConfig InitID="0">
+				<InitType>Sensor</InitType>
+				<InitDirection>Forward</InitDirection>
+				<InitPos>0.0</InitPos>
+                <InitState>Initialized</InitState>
+  				<InitMoveDistanceBefore>0.0</InitMoveDistanceBefore>
+				<InitMoveDistanceAfter>0.0</InitMoveDistanceAfter>
+				<RelatedPortName>InitSensorDH</RelatedPortName>
+		    </InitSubConfig>
+		</Init>
+        <Counters>
+            <MoveCounter>
+                <PoolType>ParameterPool</PoolType>
+                <PoolId>104</PoolId>
+            </MoveCounter>
+            <InitCounter>
+                <PoolType>ParameterPool</PoolType>
+                <PoolId>102</PoolId>
+            </InitCounter>
+        </Counters>
+	</Motor>
+	<Motor MotorName="Magnets" DeviceId="0" HomePosition="0.00">
+		<Device>
+			<MotorType>DC</MotorType>
+			<UnitBase>0.46667</UnitBase>
+			<PositionDirection>Forward</PositionDirection>
+			<SampleRate>5000Hz</SampleRate>
+			<EmergencyStop>Off</EmergencyStop>
+		</Device>
+		<TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+			<TrajectoryPlannerSet Id="0">
+				<VelocityLimit>642.9</VelocityLimit>
+				<AccelerationLimit>2142.8</AccelerationLimit>
+				<DecelerationLimit>2142.8</DecelerationLimit>
+				<LowerPositionLimit>-360</LowerPositionLimit>
+				<UpperPositionLimit>360</UpperPositionLimit>
+				<JerkLimit>1000000</JerkLimit>
+			</TrajectoryPlannerSet>
+			<DynamicSet>
+				<DynamicSetIndex>0</DynamicSetIndex>
+				<DesiredVelocity>32.14</DesiredVelocity>
+				<DesiredAcceleration>428.5</DesiredAcceleration>
+				<DesiredDeceleration>428.5</DesiredDeceleration>			
+				<DesiredJerkAcceleration>350000</DesiredJerkAcceleration>
+				<DesiredJerkDeceleration>350000</DesiredJerkDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>1</DynamicSetIndex>
+				<DesiredVelocity>128.6</DesiredVelocity>
+				<DesiredAcceleration>214.3</DesiredAcceleration>
+				<DesiredDeceleration>214.3</DesiredDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>2</DynamicSetIndex>
+				<DesiredVelocity>128.6</DesiredVelocity>
+				<DesiredAcceleration>214.3</DesiredAcceleration>
+				<DesiredDeceleration>214.3</DesiredDeceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>3</DynamicSetIndex>
+				<DesiredVelocity>64.3</DesiredVelocity>
+				<DesiredAcceleration>107.1</DesiredAcceleration>
+				<DesiredDeceleration>107.1</DesiredDeceleration>
+			</DynamicSet>
+		</TrajectoryPlanner>
+		<PositionController Id="0">
+			<PValue>8</PValue>
+			<DValue>0.06</DValue>
+			<IValue>1.5</IValue>
+			<ISaturation>1.0</ISaturation>
+			<CurrentLimit>6.0</CurrentLimit>
+			<ControlDeviationLimit>6.428</ControlDeviationLimit>
+			<ControlStructure>ClosedLoop</ControlStructure>
+			<ControllerType>Position</ControllerType>
+			<FeedbackSign>Negative</FeedbackSign>
+		</PositionController>
+		<CurrentController>
+			<PValue>50</PValue>
+			<IValue>1000000.0</IValue>
+			<ISaturation>1111</ISaturation>
+			<ControlDeviationLimit>10.0</ControlDeviationLimit>
+		</CurrentController>
+		<Encoder>
+			<EncoderType>IncrementPosition</EncoderType>
+			<NumberOfLines>128</NumberOfLines>
+		</Encoder>
+		<SingleBitInput PortName="InitSensorMG">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>0</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Rising</ActiveEdge>
+		</SingleBitInput>
+		<MotorConfigDC>
+			<MotorConstant>0.0254</MotorConstant>
+			<TerminalResistance>78.8</TerminalResistance>
+			<TerminalInductance>0.000387</TerminalInductance>
+			<ThermalLimit>125</ThermalLimit>
+			<ThermalResistanceWindingToHousing>10.5</ThermalResistanceWindingToHousing>
+			<ThermalTimeConstantWinding>11</ThermalTimeConstantWinding>
+			<ThermalResistanceHousingToAmbient>21.3</ThermalResistanceHousingToAmbient>
+			<ThermalTimeConstantHousing>362</ThermalTimeConstantHousing>
+		</MotorConfigDC>		
+		<Plant>
+			<MassInertia>0</MassInertia>
+			<GravitationalTorque>0</GravitationalTorque>
+			<VelocityDependantFriction>0</VelocityDependantFriction>
+			<VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+			<HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+		</Plant>
+		<Init>
+			<InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+			<InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+			<AdditionalMoveDynamicSetIndex>0</AdditionalMoveDynamicSetIndex>
+			<InitSubConfig InitID="0">
+				<InitType>Sensor</InitType>
+				<InitDirection>Forward</InitDirection>
+				<InitPos>0.0</InitPos>
+				<InitState>Initialized</InitState>
+				<InitMoveDistanceBefore>0.0</InitMoveDistanceBefore>
+				<InitMoveDistanceAfter>-90.0</InitMoveDistanceAfter>
+				<RelatedPortName>InitSensorMG</RelatedPortName>
+			</InitSubConfig>
+		</Init>
+        <Counters>
+            <MoveCounter>
+                <PoolType>ParameterPool</PoolType>
+                <PoolId>103</PoolId>
+            </MoveCounter>
+            <InitCounter>
+                <PoolType>ParameterPool</PoolType>
+                <PoolId>101</PoolId>
+            </InitCounter>
+        </Counters>
+    </Motor>
+    <InitFlow FlowID="0">
+        <SequenceConfigID>0</SequenceConfigID>
+        <SequenceConfigID>1</SequenceConfigID> 
+        <SequenceConfigID>2</SequenceConfigID>
+        <SequenceConfigID>3</SequenceConfigID>  
+    </InitFlow>
+    <InitFlow FlowID="1">
+        <SequenceConfigID>0</SequenceConfigID>
+        <SequenceConfigID>1</SequenceConfigID> 
+        <SequenceConfigID>3</SequenceConfigID> 
+        <SequenceConfigID>2</SequenceConfigID>
+    </InitFlow>
+
+    <InitSequence SequenceID="0">
+        <InitPattern RelatedMotorName="Downholder">
+            <!-- TBD -->
+            <InitStep>
+                <InitSingleStep>
+                    <InitID>0</InitID>
+                </InitSingleStep>
+            </InitStep>
+        </InitPattern>
+     </InitSequence>
+
+    <InitSequence SequenceID="1">
+        <InitPattern RelatedMotorName="Downholder">
+            <MoveAxis>
+                <DynamicSetIndex>0</DynamicSetIndex>
+                    <MoveConfig>
+                        <MovePosition>65.0</MovePosition>
+                    </MoveConfig>
+            </MoveAxis>
+        </InitPattern>
+    </InitSequence>  
+
+     <InitSequence SequenceID="2">
+       <InitPattern RelatedMotorName="Magnets">
+            <!-- TBD -->
+            <InitStep>
+                <InitSingleStep>
+                    <InitID>0</InitID>
+                </InitSingleStep>
+            </InitStep>
+        </InitPattern>
+    </InitSequence>
+   
+   <InitSequence SequenceID="3">
+        <InitPattern RelatedMotorName="Downholder">
+            <MoveAxis>
+                <DynamicSetIndex>0</DynamicSetIndex>
+                    <MoveConfig>
+                        <MovePosition>-38.0</MovePosition>
+                    </MoveConfig>
+            </MoveAxis>
+        </InitPattern>
+    </InitSequence>
+</MotionConfig>

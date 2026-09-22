@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-transfer-module-control">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="5" Verbose="false" />
+        <CSMSpecific ModuleID="630" ProviderSocket="/opt/CSM_630.sock">
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <CSMDefinition ConnectedModuleID="601" CSMName="SamplePipettorTransfer-id" ConnectToSocket="/opt/CSM_601.sock" />
+          <CSMDefinition ConnectedModuleID="608" CSMName="PlateHandlerSampleCell-id" ConnectToSocket="/opt/CSM_608.sock" />
+          <CommandLineSwitch SwitchName="--ParameterPool" Value="${UNITCONFIGPATH}/settings/config/transfer-module-control-parampool.xml" />
+          <CommandLineSwitch SwitchName="--SamplePipettorTransfer-socket" Value="/opt/CSM_601.sock" />
+          <CommandLineSwitch SwitchName="--PlateHandlerSampleCell-socket" Value="/opt/CSM_608.sock" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.transfermodulecontrol.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.transfermodulecontrol.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.transfermodulecontrol.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.transfermodulecontrol.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="sample-pipettortransfer-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="601" ProviderSocket="/opt/CSM_601.sock">
+              <CSMDefinition CSMName="Pipettor_1-id" ConnectedModuleID="602" ConnectToSocket="/opt/CSM_602.sock" />
+              <CSMDefinition CSMName="Pipettor_2-id" ConnectedModuleID="603" ConnectToSocket="/opt/CSM_603.sock" />
+              <CSMDefinition CSMName="Pipettor_3-id" ConnectedModuleID="604" ConnectToSocket="/opt/CSM_604.sock" />
+              <CSMDefinition CSMName="Pipettor_4-id" ConnectedModuleID="605" ConnectToSocket="/opt/CSM_605.sock" />
+              <CSMDefinition CSMName="Transfer-id" ConnectedModuleID="606" ConnectToSocket="/opt/CSM_606.sock" />
+              <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+              <CommandLineSwitch SwitchName="--pathConfigParamXMLFile" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-parampool.xml" />
+              <CommandLineSwitch SwitchName="--pathPositioningXMLFile" Value="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+              <CommandLineSwitch SwitchName="--Pipettor_1-socket" Value="/opt/CSM_602.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_2-socket" Value="/opt/CSM_603.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_3-socket" Value="/opt/CSM_604.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_4-socket" Value="/opt/CSM_605.sock" />
+              <CommandLineSwitch SwitchName="--Transfer-socket" Value="/opt/CSM_606.sock" />
+              <CommandLineSwitch SwitchName="--CycleTime" Value="10" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+          <ConnectedCSMs>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="602">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="SC_Pipettor1_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="SC_Pipettor1_MC_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="SC_Pipettor1_MC_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="SC_Pipettor1_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="SC_Pipettor1_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/sample-transfer/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="3" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="0" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_602.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-602" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="603">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="SC_Pipettor2_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="SC_Pipettor2_MC_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="SC_Pipettor2_MC_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="SC_Pipettor2_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="SC_Pipettor2_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/sample-transfer/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="3" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="1" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_603.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-603" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="604">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="SC_Pipettor3_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="SC_Pipettor3_MC_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="SC_Pipettor3_MC_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="SC_Pipettor3_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="SC_Pipettor3_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/sample-transfer/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="3" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="2" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_604.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-604" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="605">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="SC_Pipettor4_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="SC_Pipettor4_MC_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="SC_Pipettor4_MC_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="SC_Pipettor4_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="SC_Pipettor4_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/sample-transfer/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/sample-pipettortransfer-newgen/config/sample-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="3" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="3" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_605.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-605" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="sampletransfer">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="606" ProviderSocket="/opt/CSM_606.sock">
+                  <CDIDefinition SwitchName="MotorY-cdi" DeviceName="SC_ProcessPark_TransferS" />
+                  <CDIDefinition SwitchName="MotorXAirPipettor1" DeviceName="SC_Pipettor1_MC_MotorXAirPipettor1" />
+                  <CDIDefinition SwitchName="MotorXAirPipettor2" DeviceName="SC_Pipettor2_MC_MotorXAirPipettor2" />
+                  <CDIDefinition SwitchName="MotorXAirPipettor3" DeviceName="SC_Pipettor3_MC_MotorXAirPipettor3" />
+                  <CDIDefinition SwitchName="MotorXAirPipettor4" DeviceName="SC_Pipettor4_MC_MotorXAirPipettor4" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/sampletransfer/config/sampletransfer-config.xml" />
+                  <XMLConfigurationFile SwitchName="--MotionConfig" XMLFileName="${UNITCONFIGPATH}/sampletransfer/config/sampletransfer-motion-config.xml" />
+                  <XMLConfigurationFile SwitchName="--Positioning" XMLFileName="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+                  <XMLConfigurationFile SwitchName="--ReferencePointOffset" XMLFileName="${ICSHAREPATH}/teaching-data/sampletransfer-reference-point-offset.xml" />
+                  <XMLConfigurationFile SwitchName="--RoutingConfigPath" XMLFileName="${UNITCONFIGPATH}/sampletransfer/config/sampletransfer-exclusion-area.xml" />
+                  <CommandLineSwitch SwitchName="--CycleTime" Value="10" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+          </ConnectedCSMs>
+        </ConnectedCSM>
+        <!-- Plate handler sample cell -->
+        <ConnectedCSM FileName="transfer-xyz-gripper">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="608" ProviderSocket="/opt/CSM_608.sock">
+              <CDIDefinition SwitchName="MotorX-cdi" DeviceName="SC_PlateHandler_1_MotorX" />
+              <CDIDefinition SwitchName="MotorY-cdi" DeviceName="SC_PlateHandler_2_MotorY" />
+              <CDIDefinition SwitchName="MotorZ-cdi" DeviceName="SC_PlateHandler_1_MotorZ" />
+              <CDIDefinition SwitchName="MotorGripper-cdi" DeviceName="SC_PlateHandler_1_MotorGripper" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/transfer-module-control-platehandler-config.xml" />
+              <XMLConfigurationFile SwitchName="--MotionConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer-module-control-platehandler-motion-config.xml" />
+              <XMLConfigurationFile SwitchName="--Positioning" XMLFileName="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+              <XMLConfigurationFile SwitchName="--ReferencePointOffset" XMLFileName="${ICSHAREPATH}/teaching-data/samplecell-platehandler-reference-point-offset.xml" />
+              <XMLConfigurationFile SwitchName="--RoutingConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer-module-control-platehandler-exclusion-areas.xml" />
+              <XMLConfigurationFile SwitchName="--HeadInfo" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer-module-control-platehandler-headinfo.xml" />
+              <XMLConfigurationFile SwitchName="--PositionMappingPath" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer-module-control-platehandler-position-mapping.xml" />
+              <CommandLineSwitch SwitchName="--CycleTime" Value="0" />
+              <!-- sporadic Procedure Container -->
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

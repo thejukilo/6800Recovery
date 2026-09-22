@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="1D234C089B669AD0430075B58CE333BE74946E616522" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitLoadingCheckCommon" ID="TRQ597629">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 & 2 [A1] -->
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="OpenDrawerAndLoadPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Plate on Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Once the analytic unit drawer is opened, please load the sealed amplification plate with the barcode facing back and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4, [A2] start... -->
+      <ds:Step Name="CloseDrawerAndVerifyPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The analytic unit drawer will be closed and presence of amplification plate verified.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="PressMwp">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Press Amplification Plate.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pressing the amplification plate...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="ReleaseMwp">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Release Amplification Plate.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Releasing the amplification plate...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7, [A2] end. Conditional repeat... -->
+      <ds:Step Name="OpenDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the analytic unit drawer is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoopsRemaining" NextStep="CloseDrawerAndVerifyPresence">
+            <workflow:Condition Operator="GE" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 8 -->
+      <ds:Step Name="RemovePlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Once analytic unit drawer is opened, please remove the amplification plate and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="CloseDrawerAndVerifyAbsence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Analytic Unit Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The analytic unit drawer will be closed and absence of amplification plate verified.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cleanup resources.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

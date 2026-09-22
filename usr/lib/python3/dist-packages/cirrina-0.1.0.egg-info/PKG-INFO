@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: cirrina
+Version: 0.1.0
+Summary: Opinionated asynchronous web framework based on aiohttp
+Home-page: https://github.com/neolynx/cirrina
+License: LGPL
+Keywords: asyncio,web,framework,opinionated,awesome
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Classifier: Topic :: Utilities
+License-File: LICENSE

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <!-- Unit ReagentStorageHandler -->
+    <ConnectedCSM FileName="newgen-reagentstoragehandler">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="202" ProviderSocket="/opt/CSM_202.sock">
+          <CDIDefinition SwitchName="DrawerMotor-cdi" DeviceName="SC_TipStackerCD_MC_DrawerMotor" />
+          <CDIDefinition SwitchName="SliderMotor-cdi" DeviceName="SC_TipStackerCD_SMS_SliderMotor" />
+          <CDIDefinition SwitchName="ReagentStorage-cdi" DeviceName="SC_ReagentStorage_ReagentStorage" />
+          <CSMDefinition CSMName="RFID-id" ConnectedModuleID="203" ConnectToSocket="/opt/CSM_203.sock" />
+          <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/reagentstoragehandler-motionconfig.xml" />
+          <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/reagentstoragehandler-sms-config.xml" />
+          <CommandLineSwitch SwitchName="--parameter_pool_configuration_path" Value="${UNITCONFIGPATH}/settings/config/reagentstoragehandler-config.xml" />
+          <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.reagentstoragehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.reagentstoragehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.reagentstoragehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.reagentstoragehandler.q" />
+          <CommandLineSwitch SwitchName="--RFID-socket" Value="/opt/CSM_203.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="rfidreader" StackSize_kbytes="256">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="203" ProviderSocket="/opt/CSM_203.sock">
+              <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="SC_ReagentDrawer_RHC_RFIDReader" />
+              <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+              <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+              <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+              <CommandLineSwitch SwitchName="--serial_port_id" Value="2" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

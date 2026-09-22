@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="BasicTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="uint8"/>
+			<xs:enumeration value="int8"/>
+			<xs:enumeration value="uint16"/>
+			<xs:enumeration value="int16"/>
+			<xs:enumeration value="uint32"/>
+			<xs:enumeration value="int32"/>
+			<xs:enumeration value="bool"/>
+			<xs:enumeration value="double"/>
+			<xs:enumeration value="float"/>
+			<xs:enumeration value="string"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ParameterPoolEntryType">
+		<xs:attribute name="Name" type="xs:string" use="optional"/>
+		<xs:attribute name="ID" type="xs:int" use="required"/>
+		<xs:attribute name="Type" type="BasicTypes" use="required"/>
+		<xs:attribute name="Array" type="xs:boolean" use="required"/>
+		<xs:attribute name="Value" type="xs:string" use="required"/>
+		<xs:attribute name="Description" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ModuleConfigurationType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="ParameterPoolEntry" type="ParameterPoolEntryType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ModuleConfiguration" type="ModuleConfigurationType">
+		<xs:annotation>
+			<xs:documentation>Contains the default entries for the configuarion pool</xs:documentation>
+		</xs:annotation>
+		<xs:unique name="ConfigurationPoolID">
+			<xs:selector xpath="ConfigurationPoolEntry"/>
+			<xs:field xpath="@ID"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>

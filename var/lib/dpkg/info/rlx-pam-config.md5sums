@@ -1,0 +1,7 @@
+a1544c2399763e67eb36a4c1c5161c5c  usr/share/doc/rlx-pam-config/changelog.gz
+b09e141d73a2f5692eae00318d10f07c  usr/share/doc/rlx-pam-config/copyright
+a9518398210e440c0eaeab871921431b  usr/share/pam-configs/rlx
+c43ab87b0d8260731929b06776d311ea  usr/share/pam-configs/rlx-access
+cef09e36eebeb9a01d7c21dafac0dea9  usr/share/pam-configs/rlx-faillock
+2179b2a2329980828aa872390ee90825  usr/share/pam-configs/rlx-faillock-preauth
+cf20acff5d7d5fdfeb0f9695f8cc8bf0  usr/share/pam-configs/rlx-securetty

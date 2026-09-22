@@ -1,0 +1,26 @@
+{
+  "Serilog": {
+    "Using" : [
+      "Serilog.Sinks.File",
+      "Serilog.Settings.Configuration",
+      "Serilog.Enrichers.Thread",
+      "Roche.MolLab.Logging.Serilog"
+    ],
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "/data/shared/logs/ServiceSoftware_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][SSW][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 314572800
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+	  "ExcludedNamePrefixes": [ "Roche.NewGen.ServiceSoftware.", "Roche.MolLab." ]
+  }
+}

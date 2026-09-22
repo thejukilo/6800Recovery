@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F073AB11674C6968F6C0DC309A1F05299F9936910738" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="MainHandlerTeach6800" ID="MainHandlerTeach6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irReagentCassettePresent" NextStep="VerifyConsumableDrawerState">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CheckForCassetteOnReagentStorageHandler" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Cassette on Reagent Storage Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the cassette present on the reagent storage handler and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FinalVerifyCassetteOnReagentStorageHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cassette presence on reagent storage handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking for one last time if a cassette is present on the reagent storage handler.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyConsumableDrawerState">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Transfer Module and Processing Module Drawers State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying the state of the transfer module and processing module drawers to ensure they are closed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irConsumableDrawerWasOpen" NextStep="VerifyTransferPositionsPresenceSensorState">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ParkReagentStorageHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Parking Reagent Storage Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the reagent storage handler to be parked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckForConsumableDrawersState" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Transfer Module and/or Processing Module Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module and/or processing module drawers were found to be open. Please ensure that they are closed and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FinalVerifyConsumableDrawerState">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Module and Processing Module Drawer State Final Verification</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking for one last time if transfer module and processing module drawers are closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTransferPositionsPresenceSensorState">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Transfer Positions Sensor States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying transfer module and processing module transfer positions to ensure no consumable is present...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irConsumablesPresentOnTransferPositions" NextStep="MovingHandlersOutOfCollisionPath">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CheckForTransferPositionsBeingEmpty" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty Transfer Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Consumables were found on transfer positions of either processing module or transfer module. Please have them removed and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FinalVerifyTransferPositionEmptiness">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer position sensors final verification</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking for one last time if transfer module and processing module transfer positions are empty.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MovingHandlersOutOfCollisionPath">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Handlers Out Of Collision Path</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module handler and processing module handler are being moved out of the way...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ParallelTeaching">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Multiple Teachings in Parallel</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent Storage is being taught in parallel with the main handler on the transfer module drawer and processing module drawer. Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachTransferModuleTransferPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching on Transfer Module Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Main handler is being taught on the transfer module transfer position, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachProcessingModuleTransferPositionA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching on Processing Module Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Main handler is being taught on the processing module transfer position, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachReagentDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching on Transfer Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Main handler is being taught on the transfer module drawer, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachAmplificationPlateTransferPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teach on Amplification Plate Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Main handler is being taught on the amplification plate transfer position, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Finalization">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Finalization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Finalizing, the check is about to be concluded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,14 @@
+3219ed48c75114f8935428049000b206  usr/bin/getsubids
+8329992a5ba85cadf294e343948bb8aa  usr/bin/newgidmap
+1c866793fb6959a0707a3ab4e82099b8  usr/bin/newuidmap
+ac3f76f2fa4d5af0fd55c8a7fb4550c7  usr/share/doc/uidmap/NEWS.Debian.gz
+e4343bc1c35d7b374ef4709b6e45cfb4  usr/share/doc/uidmap/changelog.Debian.amd64.gz
+c52577e6164594b004d9301e3c4c82c4  usr/share/doc/uidmap/changelog.Debian.gz
+76acb0f2c68a79b867f2ae5f3d7aac1f  usr/share/doc/uidmap/changelog.gz
+b421f2c7316ef9958c2d87a76a434119  usr/share/doc/uidmap/copyright
+01a0175133f34103bc1ecbc6c4f37cf7  usr/share/lintian/overrides/uidmap
+81bda62e8c357c27e4f8127e4734c1b6  usr/share/man/fr/man1/newgidmap.1.gz
+29fc05d35380cfc61285e0dc2b1eb492  usr/share/man/fr/man1/newuidmap.1.gz
+f9fdd894487b318e9d31fca9a18dbb8a  usr/share/man/man1/getsubids.1.gz
+1c306dbb9c8f533aec14f0020327892e  usr/share/man/man1/newgidmap.1.gz
+b38af30a372e685ead89a8e6ca77662c  usr/share/man/man1/newuidmap.1.gz

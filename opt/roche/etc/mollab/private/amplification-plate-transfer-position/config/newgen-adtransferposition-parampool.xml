@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+	<ParameterPoolEntry ID="1" Type="double" Value="2.5" Array="false" Name="PositionLoad"/>
+	<ParameterPoolEntry ID="2" Type="double" Value="0" Array="false" Name="PositionCenter"/>
+	<ParameterPoolEntry ID="3" Type="double" Value="-2.5" Array="false" Name="PositionUnload"/>
+	<ParameterPoolEntry ID="4" Type="uint32" Value="5000" Array="false" Name="MovementTimeout"/>
+</ModuleConfiguration>

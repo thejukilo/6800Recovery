@@ -1,0 +1,10 @@
+﻿{
+  "CleanInstrument": {
+    "MaximalFrequencyInWeeks": 1,
+    "MaximalGracePeriodInDays": 2
+  },
+  "SampleTransferHeadTeachAndTightnessCheck": {
+    "MaximalFrequencyInWeeks": 1,
+    "MaximalGracePeriodInDays": 2
+  }
+}

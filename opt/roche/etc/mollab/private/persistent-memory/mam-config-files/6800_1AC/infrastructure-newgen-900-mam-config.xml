@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_Infrastructure" seid="221" moduleId="900">
+      <parPool type="uint32" structure="scalar" id="231" name="OpCountCellLightingWhite" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="232" name="OpCountCellLightingBlue" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="340" name="OpCountFanHEPA1" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="341" name="OpCountFanHEPA2" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="342" name="OpCountFanAir" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="343" name="OpCountFanReserve" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="int16" structure="scalar" id="530" name="TrendReadOnlyMaxTemperatureProcessing" defaultValue="0" minValue="-1000" maxValue="1000">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="int16" structure="scalar" id="531" name="TrendReadOnlyMaxTemperatureCell" defaultValue="0" minValue="-1000" maxValue="1000">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="int16" structure="scalar" id="532" name="TrendReadOnlyMaxTemperatureReserve" defaultValue="0" minValue="-1000" maxValue="1000">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="1100" name="OpCountReadOnlyPowerSupply0" defaultValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="1101" name="OpCountReadOnlyPowerSupply1" defaultValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="1120" name="OpCountBlindMoves" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="1121" name="OpCountBlindMoveInits" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

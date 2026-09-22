@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B40F64809C6F327762A5D22588248F8B0F4423EA5E21" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="InterlockCheck6800" ID="InterlockCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="CloseFrontDoors" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Front Doors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close all doors manually and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while any necessary initialization actions are done...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckAllDoorsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check All Doors Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while instrument verifies that all doors are closed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PreparationOpenFrontCovers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation for Opening Front Covers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Caution, the following steps will open the front covers of both the transfer and processing modules one at a time.</base:Paragraph>
+              <base:Paragraph>Please make sure that the monitor arm is out of the way by placing it in front of the analytic module.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to proceed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenTransferModuleFrontDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Front Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the transfer module front cover completely with the open/close covers button and press 'Next'.</base:Paragraph>
+              <base:Paragraph>Note: Hold down the button until the cover is fully open.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenProcessingModuleAFrontDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Front Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the processing module front cover completely with the open/close covers button and press 'Next'.</base:Paragraph>
+              <base:Paragraph>Note: Hold down the button until the cover is fully open.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADModule" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Analytic Module Front Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the front door of the analytic module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenProcessingModuleDrawerA" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the processing module drawer using the manual unlock inside the processing module.</base:Paragraph>
+              <base:Paragraph>Then swing open the drawer releasing the red lever and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseProcessingModuleDrawerA" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Processing Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the drawer, first engaging the red lever, then pushing the processing module drawer and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenTransferModuleBack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Rear Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the upper rear door of the transfer module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenProcessingModuleBackA" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Rear Door </base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the upper rear door of the processing module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenReagentStorage" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Reagent Storage Service Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the reagent storage service door and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TurnServiceSwitchNormalMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Turn the service switch screw counterclockwise to normal mode, as shown in the picture, and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="InterlockCheck_ServiceSwitch_Running.jpg" Hash="BBE60B21E430C82C004C68919425C76A8A931F74" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseAllDoors" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close All Doors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close all doors opened previously, with exception of the transfer and processing module front covers.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to proceed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManualCloseDoorTransferModule" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Transfer Module Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the transfer module front cover completely with the open/close covers button.</base:Paragraph>
+              <base:Paragraph>Note: Press and hold the button until the cover is completely closed.</base:Paragraph>
+              <base:Paragraph>Press 'Next' once the cover is completely closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManualCloseDoorProcessingModuleA" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Processing Module Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the processing module front cover completely with the open/close covers button.</base:Paragraph>
+              <base:Paragraph>Note: Press and hold the button until the cover is completely closed.</base:Paragraph>
+              <base:Paragraph>Press 'Next' once the cover is completely closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckAllDoorsLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check All Doors Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check that all doors are in state locked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TurnServiceSwitchServiceMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Turn the service switch screw clockwise to service mode, as shown in picture, and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="InterlockCheck_ServiceSwitch_ServiceMode.jpg" Hash="35E59B10BE509962EF0BB98395FCB835A6EFFCCE" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RoboticStop" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Emergency Stop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press the red emergency stop button and then 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyRoboticStop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Emergency Stop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if emergency stop succeeded.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RebootInstrument" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reboot the Instrument</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Press 'Finish' to end the check. After the check is finished, reboot the instrument to recover from the emergency stop.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

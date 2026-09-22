@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A09C0DC9736626D22D02FADD1D3566BDBFFD771AD374" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="BalanceCalibrationCheckCommon" ID="[UCQ5190]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Start" NextState="true" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Start</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please prepare the balance with the round metal weighing pan, adapter and windshield.</base:Paragraph>
+              <base:Paragraph>If possible, the balance should be installed and powered on for 30 minutes in advance to stabilize.</base:Paragraph>
+              <base:Paragraph>Keep the reference weight ready near the installed balance and only use the tweezer to move it.</base:Paragraph>
+              <base:Paragraph>The balance adjustment (calibration) process starts when you press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BalanceCalibrationStart.jpg" Hash="2CAB3951C3BE4FEDCAAAF125B82F67CA487344EE" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConnectBalance" Type="Auto">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Connecting Balance...</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Connecting to the balance...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AskUserToEnsureThatTheWeighingPanIsEmpty" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Ensure Weighing Pan Is Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the weighing pan is placed on the balance and that it is empty.</base:Paragraph>
+              <base:Paragraph>Then, press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="InitializeBalanceAndStartCalibration" />
+      </ds:Step>
+      <ds:Step Name="CalibrationFailed10g" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Calibration Failed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The 10g calibration failed.</base:Paragraph>
+              <base:Paragraph>Unload the 10g reference weight from the weighing pan if present.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue. The check will then wait 10 seconds before running the calibration again.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BalanceCalibrationEmpty.jpg" Hash="29A79742DBF682062EDA83D5C4BADD166A38EC92" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StabilizeBalance">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Stabilizing Balance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Letting the balance stabilize for 10s ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="InitializeBalanceAndStartCalibration" />
+      </ds:Step>
+      <ds:Step Name="CalibrationFailed0g">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Calibration Failed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The 0g calibration failed.</base:Paragraph>
+              <base:Paragraph>The check will wait 10 seconds before running the calibration again.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InitializeBalanceAndStartCalibration">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialize Balance And Start Calibration</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+              <base:Paragraph>Starting the calibration by measuring the empty scale...</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rBalanceTaredWithEmptyWeighingPan" NextStep="CalibrationFailed0g">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceReferenceWeight">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Reference Weight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+              <base:Paragraph>Place the 10g reference weight into the weighing pan.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Attention: The weight must only be touched with the tweezers!</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BalanceCalibration.jpg" Hash="1C742C606FDC709D7D8167977FC559E563B420D5" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rBalanceTaredWithReferenceWeight" NextStep="CalibrationFailed10g">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadReferenceWeight">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Reference Weight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+              <base:Paragraph>Unload the 10g reference weight from the weighing pan.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BalanceCalibrationEmpty.jpg" Hash="29A79742DBF682062EDA83D5C4BADD166A38EC92" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DecideToolReplacement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tool Replacement</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsSampleHead" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="WeightboatReplace" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace The Tool Weighing Pan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Replace the weighing pan for calibration with the tool weight boat and cover it with the draft shield.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Reagent_head_pip_windshield.jpg" Hash="50F084EB831DF9699E36736DE89D24E12ACDD2EB" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disconnecting balance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Disconnecting balance.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

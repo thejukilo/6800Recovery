@@ -1,0 +1,8 @@
+# This is private data. Do not parse.
+OPER_STATE=routable
+CARRIER_STATE=carrier
+ADDRESS_STATE=routable
+IPV4_ADDRESS_STATE=routable
+IPV6_ADDRESS_STATE=off
+ONLINE_STATE=online
+DNS=162.132.241.1

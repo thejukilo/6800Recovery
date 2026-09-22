@@ -1,0 +1,33 @@
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-interlock" EnableExecPrefix="false" StackSize_kbytes="256">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="800" ProviderSocket="/opt/CSM_800.sock">
+          <CDIDefinition SwitchName="fuseboard-interlock-trigger-cdi" DeviceName="SC_Fuseboard_InterlockTrigger" />
+          <CDIDefinition SwitchName="fuseboard-movableinstrument-lock-cdi" DeviceName="PCA_Fuseboard_MovableInstrumentLock" />
+          <CDIDefinition SwitchName="interlock-serialport-cdi" DeviceName="SC_Fuseboard_Interlock" />
+          <CDIDefinition SwitchName="doorcontrol-serialport-cdi" DeviceName="SC_Fuseboard_SUSPA" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/settings/config/newgen-interlock-parampool.xml" />
+          <CommandLineSwitch SwitchName="--InterlockSerialPortID" Value="0" />
+          <CommandLineSwitch SwitchName="--DoorControlSerialPortID" Value="1" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.safetyinterlock.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.safetyinterlock.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.safetyinterlock.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.safetyinterlock.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+
+</ECPSWConfiguration>

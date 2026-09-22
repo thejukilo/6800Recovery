@@ -1,0 +1,9 @@
+{
+  "appID": "UI-ServiceSoftware",
+  "appOrder": 80,
+  "appLabel": "12.FHO.AppLibrary.UI.ServiceSoftware",
+  "entryPoint": "https://localhost:5001/ui.service-software/index.html",
+  "roles": ["X800.RSR"],
+  "iconPath": "https://localhost:5001/ui.service-software/ui.service-software.svg",
+  "isDmApp": false
+}

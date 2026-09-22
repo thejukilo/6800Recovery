@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com">
+  <csmConfig>
+    <csm name="Locking" seid="304" moduleId="232">
+      <parPool type="uint32" structure="scalar" id="101" name="OpCountNbrOfEjections"
+               defaultValue="0"
+               minValue="0"
+               maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2050" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="102" name="OpCountNbrOfUnlocks"
+               defaultValue="0"
+               minValue="0"
+               maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2050" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="103" name="OpCountNbrOfLocks"
+               defaultValue="0"
+               minValue="0"
+               maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2050" periodInSec="14400"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

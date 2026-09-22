@@ -1,0 +1,17 @@
+
+[:python_version < "3.8"]
+
+[aiomcache]
+aiomcache>=0.5.2
+
+[aioredis]
+aioredis>=2.0.0
+
+[pycrypto]
+cryptography
+
+[pynacl]
+pynacl
+
+[secure]
+cryptography

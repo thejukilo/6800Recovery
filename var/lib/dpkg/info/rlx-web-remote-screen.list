@@ -1,0 +1,11 @@
+/.
+/etc
+/etc/nginx
+/etc/nginx/locations.d
+/etc/nginx/locations.d/rlx-web-remote-screen.conf
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlx-web-remote-screen
+/usr/share/doc/rlx-web-remote-screen/changelog.gz
+/usr/share/doc/rlx-web-remote-screen/copyright

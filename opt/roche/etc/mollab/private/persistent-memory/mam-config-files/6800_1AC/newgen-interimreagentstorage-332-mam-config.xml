@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+         xmlns:util="http://www.roche.com/util"
+         xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_InterimReagentStorage" seid="145" moduleId="332">
+		   <dataPool type="uint8" structure="array" noElements="6" id="114" 
+				name="StoragePositionOccupied"
+				defaultValue="0">
+				<persistDef memoryId="3500" periodInSec="-1"/>
+		   </dataPool>
+		   <dataPool type="bool" structure="array" noElements="6" id="27" 
+				name="CassetteOverTempFlag"
+				defaultValue="false">
+				<persistDef memoryId="3500" periodInSec="-1"/>
+		   </dataPool>
+		   <parPool type="uint8" structure="array" noElements="100" id="2"
+		   		name="ConfigData_1"
+				defaultValue="0"
+				minValue="0"
+				maxValue="255">
+				<persistDef memoryId="3500" periodInSec="-1"/>
+   			</parPool>
+   			<parPool type="uint8" structure="array" noElements="100" id="3"
+   				name="ConfigData_2"
+				defaultValue="0"
+				minValue="0"
+				maxValue="255">
+      			<persistDef memoryId="3500" periodInSec="-1"/>
+   			</parPool>
+   			<parPool type="uint8" structure="array" noElements="100" id="4"
+   				name="ConfigData_3"
+				defaultValue="0"
+				minValue="0"
+				maxValue="255">
+				<persistDef memoryId="3500" periodInSec="-1"/>
+   			</parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

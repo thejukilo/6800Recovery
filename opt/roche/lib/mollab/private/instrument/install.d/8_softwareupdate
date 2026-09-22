@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Start the Python script
+/opt/roche/lib/mollab/private/software-update/swupdate.py

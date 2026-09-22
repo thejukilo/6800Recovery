@@ -1,0 +1,15 @@
+2f22eb88b6f367af24cfdf93f84e6b6e  usr/share/doc/rlx-firewall/changelog.gz
+ebd1f4a48cb86d4e59e2b874e4ee3e8a  usr/share/doc/rlx-firewall/copyright
+8763b165fe71cd354a4b3c313fdf77ff  usr/share/rlx-firewall/filters/10_drop-forward-external.nft
+c6d40fb061ee3c5a8691ba3b05559609  usr/share/rlx-firewall/filters/20_ftp-passive.nft
+928ff504cbce6ec7e9539488cc566434  usr/share/rlx-firewall/forward/15_rlx.nft
+61bdded8a64faff0dc8d301ba2635fc8  usr/share/rlx-firewall/input/20_ftp.nft
+e2aac944906d3a00a0db2aca1c2c0ef8  usr/share/rlx-firewall/input/20_http.nft
+99532bfc7a703387d1791522e7a6aa13  usr/share/rlx-firewall/input/20_https.nft
+105df0651b1f944e45735ad9f6a3906b  usr/share/rlx-firewall/input/20_openvpn.nft
+d9038b028ac9b175ff599a3ab8ccf44b  usr/share/rlx-firewall/input/20_ping-accept.nft
+f2b5d6197065c4efe6a9c5360463996c  usr/share/rlx-firewall/input/20_snmp.nft
+1aaff615c4a39c371ad115f8392b49f2  usr/share/rlx-firewall/input/20_ssh.nft
+b455d9377d532ba0d8fdc5a5934f5dba  usr/share/rlx-firewall/output/10_policy-drop.nft
+b7aad86a5a99c6d5d01b8cc8593d9a4b  usr/share/rlx-firewall/output/15_rlx.nft
+af2aa45ff390271e9ba724ba2348131e  usr/share/rlx-firewall/output/90_logging.nft

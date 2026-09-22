@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F1F5C009BE2AEA196EEEC4F353B897B166E116AB1870" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="MovablePlatformCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList />
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="EnableMovablePlatform">
+          <data:Description>
+            <base:Title>Enable Movable Platform</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The movable platform was successfully enabled.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="MovablePlatformInterlockUnlocked">
+          <data:Description>
+            <base:Title>Movable Interlock Module Unlocked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Interlock module for movable platform is unlocked.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="MaintenancePositionReached">
+          <data:Description>
+            <base:Title>Maintenance Position Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Instrument has been moved to the maintenance position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="MovablePlatformInterlockLocked">
+          <data:Description>
+            <base:Title>Movable Interlock Module Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Interlock module for movable platform is locked.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="HomePositionReached">
+          <data:Description>
+            <base:Title>Home Position Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Instrument has been moved back to the home position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

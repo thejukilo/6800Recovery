@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A90838BB51741CACE1CB9977338C767FA92BE92F1AF9" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="MovablePlatformCheckCommon" ID="R-101258">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EnableMove">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enable Platform to Move</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Enabling movable platform....</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PressFrontButton" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move to Maintenance Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Press and hold the move instrument to the front button on the instrument until the maintenance position is reached.</base:Paragraph>
+              <base:Paragraph>After moving the instrument press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckInterlockUnlocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Interlock Module State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking the state of the interlock module...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PressBackButton" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move to Home Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Press and hold the move instrument to the back button on the instrument to return it to the home position.</base:Paragraph>
+              <base:Paragraph>After moving the instrument press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DisableMove">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disable Platform to Move</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Disabling movable platform...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckInterlockLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Interlock Module State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking the state of the interlock module...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

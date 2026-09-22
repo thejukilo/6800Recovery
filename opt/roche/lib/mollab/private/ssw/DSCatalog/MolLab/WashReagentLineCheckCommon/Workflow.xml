@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="0CB44878AC1E179240EA65224C0B790A42EEF7509B9F" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="WashReagentLineCheckCommon" ID="WashReagentLineCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the module is initializing ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SelectSource" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid source selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one wash reagent container position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_WashReagentLine_Source.jpg" Hash="1E571AB93D75A4D10DE42899774E2BB33C7A22D8" />
+          <workflow:Input Result="rSelectedWashReagentContainerPosition">
+            <workflow:Description>The selected wash position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChooseDestination">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select destination based on off-system liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectDestination" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="SelectDestinationOffSystemLiquidWaste" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectDestination" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid destination selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one liquid waste position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_LiquidLine_Destination.jpg" Hash="D1449AEBC788DCB8E5EEFAC87D5FE8E299B0AD72" />
+          <workflow:Input Result="rSelectedWasteContainerPosition">
+            <workflow:Description>The selected liquid waste container position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow NextStep="PrepareSelectedCombination" />
+      </ds:Step>
+      <ds:Step Name="SelectDestinationOffSystemLiquidWaste" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid destination selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one liquid waste position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_LiquidLine_Destination.jpg" Hash="D1449AEBC788DCB8E5EEFAC87D5FE8E299B0AD72" />
+          <workflow:Input Result="irSelectedWasteContainerPositionOffSystemLiquidWaste">
+            <workflow:Description>The selected liquid waste container position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareSelectedCombination">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare source and destination</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Preparing the values for the selected combination of source and destination.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open drawer and unlock containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the drawers completely and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChooseEmptyLiquidWasteFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select waste containers based on off-system liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="EmptyLiquidWasteFirst" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="EmptyLiquidWasteFirstOffSystemLiquidWaste" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload, empty and load liquid waste containers 1, 2 and 3 and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="ArrangeWashReagentContainers" />
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteFirstOffSystemLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload, empty and load liquid waste containers 2 and 3 and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ArrangeWashReagentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Lock wash reagent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pull up all aspiration arms, rearrange the loaded wash reagent containers or load a wash reagent container with valid RFID for wash reagent container [R.irSelectedWashReagentContainerId], if necessary, and close the aspiration arm of the wash reagent container [R.irSelectedWashReagentContainerId].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="FillWashReagentReservoir" Result="rWashReagentContainerHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReplaceWashReagentContainerFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace wash reagent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Not enough volume or invalid RFID detected. Replace the wash reagent container [R.irSelectedWashReagentContainerId] with a full container and a valid RFID and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReplaceWashReagentContainerFirst" Result="rWashReagentContainerHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FillWashReagentReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fill wash reagent reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait until the wash reagent reservoir is filled.</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckFillLevelOfReservoir" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Validate fill level of wash reagent reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirm that the internal wash reagent reservoir is full.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: The wash reagent reservoir is full when the orange light on the top proximity sensor is on. Wash reagent will be approximately 2cm from the top of the container.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="InternalWashReagentReserviour_level.jpg" Hash="1914C33FDC59FC4C74323EF4820A107CD217B5DE" />
+          <workflow:Input Result="irReservoirIsFull">
+            <workflow:Description>Select your option:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="ReservoirToWasteInformation" Result="irReservoirIsFull">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FailureNotification" Result="irReservoirIsFull">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReservoirToWasteInformation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash reagent reservoir to liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>800 ml will be transferred from the wash reagent reservoir to the selected liquid waste container.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromInternalReservoirToLiquidWasteContainer]</base:Paragraph>
+              <base:Paragraph>Press 'Next’ to continue.</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_WashReagentLine_FromInternalReservoir.jpg" Hash="2B66F61F87FFC59AD44E3F54652504CC98CA2A59" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferringFromReservoirToWasteContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring liquid from reservoir to waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring 800 ml from the wash reagent reservoir to the selected liquid waste container.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromInternalReservoirToLiquidWasteContainer]</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_WashReagentLine_FromInternalReservoir.jpg" Hash="2B66F61F87FFC59AD44E3F54652504CC98CA2A59" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmWashReagentWasTransferred" Type="Confirm" Result="rTransferFromReservoirToWasteSuccessful">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm liquid was transferred</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirm that the liquid was transferred from the wash reagent reservoir to the liquid waste container [R.irSelectedWasteContainerId].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="FailureNotification" Result="rTransferFromReservoirToWasteSuccessful">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="TransferWashReagentToWashReagentReservoir" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer wash reagent to reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>800 ml will be transferred from the wash reagent container [R.irSelectedWashReagentContainerId] to the wash reagent reservoir.</base:Paragraph>
+              <base:Paragraph>Observe the relevant sections of the tubing and press 'Next’.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromWashReagentToInternalReservoir]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The transfer starts by pressing 'Next'.</base:Paragraph>
+              <base:Paragraph>Note: The liquid waste has been unlocked, make sure to close the waste cap to be able to proceed. </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_WashReagentLine_ToInternalReservoir.jpg" Hash="5662EBAF4FFA7DA1F2A95FBBBD609A685EF2333D" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ValidateWashReagentFillLevel">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Validate the fill level</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Validating the fill level of the wash reagent container [R.irSelectedWashReagentContainerId].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="TransferringWashReagentToWashReagentReservoir" Result="rWashReagentContainerHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReplaceWashReagentContainerSecond">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace wash reagent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Replace the wash reagent container [R.irSelectedWashReagentContainerId] with minimum 850 ml volume and a valid RFID and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="ValidateWashReagentFillLevel" />
+      </ds:Step>
+      <ds:Step Name="TransferringWashReagentToWashReagentReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring wash reagent to reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring 800 ml of wash reagent from the wash reagent container [R.irSelectedWashReagentContainerId] to the wash reagent reservoir.</base:Paragraph>
+              <base:Paragraph>Observe the relevant sections of the tubing.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromWashReagentToInternalReservoir]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_WashReagentLine_ToInternalReservoir.jpg" Hash="5662EBAF4FFA7DA1F2A95FBBBD609A685EF2333D" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RepetitionFlow">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select next step</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectNextStep" Result="irRepetitionsRemaining">
+            <workflow:Condition Operator="GT" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="SelectNextStepWithoutRepeat" Result="irRepetitionsRemaining">
+            <workflow:Condition Operator="LE" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectNextStep" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify transfer of wash reagent to wash reagent reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that wash reagent was transferred from the wash reagent container [R.irSelectedWashReagentContainerId] to the wash reagent reservoir and select one of the following options:</base:Paragraph>
+              <base:Paragraph>Yes - The liquid was transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>No - The liquid was not transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>Repeat transfer - Repeat the liquid transfer from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromWashReagentToInternalReservoir]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="irLiquidTransferredOption">
+            <workflow:Description>Select your option:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="LiquidTransferSucceeded" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FailureNotification" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FillWashReagentReservoir" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectNextStepWithoutRepeat" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify transfer of wash reagent to wash reagent reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that wash reagent was transferred from the wash reagent container [R.irSelectedWashReagentContainerId] to the wash reagent reservoir and select one of the following options:</base:Paragraph>
+              <base:Paragraph>Yes - The liquid was transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>No - The liquid was not transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rPathFromWashReagentToInternalReservoir]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Description>Select your option:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="LiquidTransferSucceeded" Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FailureNotification" Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FailureNotification" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Failed confirmation steps</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The liquid was not transferred and/or the min fill level sensor failed.</base:Paragraph>
+              <base:Paragraph>Check the tubing based on the liquid path as shown in the image and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="WashReagentLiquidLine_Full.jpg" Hash="BE56975D133251F122B4989EB7FE9E8C196FD6DD" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="CloseAllWashReagentContainers" />
+      </ds:Step>
+      <ds:Step Name="LiquidTransferSucceeded">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluates selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseAllWashReagentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Lock all wash reagent containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Replace the wash reagent container if empty and close all the aspiration arms of the wash reagent containers.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteSecond">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure that all liquid waste containers are empty and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the wash/waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

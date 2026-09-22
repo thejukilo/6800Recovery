@@ -1,0 +1,15 @@
+/.
+/lib
+/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu/security
+/lib/x86_64-linux-gnu/security/pam_fsr.so.1.0.5
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libpam-fsr
+/usr/share/doc/libpam-fsr/changelog.gz
+/usr/share/doc/libpam-fsr/copyright
+/usr/share/pam-configs
+/usr/share/pam-configs/fsr
+/lib/x86_64-linux-gnu/security/pam_fsr.so
+/lib/x86_64-linux-gnu/security/pam_fsr.so.1

@@ -1,0 +1,7 @@
+*************************RSA2L Version : [V0.0.0.0] Logging started at 072504 *************************
+
+2026-09-22T07:26:35.043Z RSA2L_INTERFACE : [c6800IM_10001] -> ERROR Returned from Gateway [28]
+2026-09-22T07:26:35.043Z RSA2L_INTERFACE : [c6800IM_10001] -> ERROR Returned from Gateway [28]
+2026-09-22T07:26:35.048Z RSA2L_INTERFACE : [c6800IM_10001] -> ERROR Failure in getting response from Gateway
+2026-09-22T07:26:35.048Z RSA2L_INTERFACE : [c6800IM_10001] -> ERROR Failure in getting response from Gateway
+2026-09-22T07:26:35.049Z RSA2L_INTERFACE : [c6800IM_10001] -> ERROR Could not connect to Gateway

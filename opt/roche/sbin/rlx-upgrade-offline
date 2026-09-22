@@ -1,0 +1,91 @@
+#!/bin/sh
+
+WORK_DIR=$1
+KEEP_CURRENT_VERSION=$2
+if [ -z "$KEEP_CURRENT_VERSION" ]; then
+    KEEP_CURRENT_VERSION=0
+fi
+success=0
+starttime=`date -R`
+
+finish()
+{ # no log_error in here
+    last_ret=$?
+
+    bootid=""
+    if [ -f /.rlx-bootid ]; then
+        bootid=`cat /.rlx-bootid`
+    fi
+
+    # write software history entry
+    version=`cat $WORK_DIR/archive/releaseversion`
+    ts=`stat -c %y $WORK_DIR/upgrade.start | tr -d - | tr -d : | sed 's/ /T/' | sed 's/\.[0-9]\+ //'`
+    echo "$starttime;$version;$ts;$success;$bootid" >> /opt/roche/var/log/rlx-software-history.log
+
+    if [ $success -eq 0 ]; then
+        echo "*E: Error upgrading the system" >&2
+    fi
+
+    rm -f /etc/apt/sources.list
+    test ! -e /etc/apt/sources.list.save || mv -f /etc/apt/sources.list.save /etc/apt/sources.list
+    set +x
+    exit $last_ret
+}
+trap finish INT TERM EXIT
+
+. /usr/lib/rlx-osal/rlx-upgrade.inc.sh
+
+if [ -z "$WORK_DIR" ]; then
+    log_error "no work dir specified"
+fi
+
+errlog=$WORK_DIR/rlx-upgrade.log
+exec >> $errlog 2>&1
+set -x
+
+# source upgrade info
+. $WORK_DIR/archive/upgrade.info
+
+. /rlx-upgrade
+if [ -n "$DESCRIPTION" ]; then
+    log_notice "$DESCRIPTION"
+fi
+
+version=`cat $WORK_DIR/archive/releaseversion`
+log_info "New software version: $version"
+plymouth_upgrade_progress 5
+
+do_docker=0
+if [ -e /opt/roche/etc/docker-compose.yml ]; then
+  if [ -f $WORK_DIR/archive/docker-containers.tar -o -f $WORK_DIR/archive/docker-containers.dedup.tar ]; then
+    do_docker=1
+  fi
+fi
+
+# FIXME: do in cpp
+rm -f /run/rlx-upgrade.success
+
+log_info "Verifying required disk space: ${UPGRADE_MINFREE}MB"
+verify_diskspace
+
+
+if [ $do_docker -eq 1 ]; then
+    log_info "Extracting docker containers ..."
+    plymouth_upgrade_progress 10
+    docker_reduplicate
+fi
+
+log_info "Upgrading the operating system ..."
+plymouth_upgrade_progress 20
+apt_upgrade
+
+if [ $do_docker -eq 1 ]; then
+    log_info "Upgrading docker containers ..."
+    plymouth_upgrade_progress 80
+    docker_upgrade
+fi
+
+plymouth_upgrade_progress 90
+finalize_upgrade
+
+success=1

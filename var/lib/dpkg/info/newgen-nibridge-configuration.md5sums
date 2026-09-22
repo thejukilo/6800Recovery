@@ -1,0 +1,8 @@
+88a01b168f160297ff700248053fb532  opt/roche/etc/mollab/private/ni-bridge/cacerts/ca-cert.pem
+c46017c0c79738b69e7a9302b61aaa6c  opt/roche/etc/mollab/private/ni-bridge/cacerts/claim-cert.pem
+33ddb7231b406d354a9e993c844aa3fb  opt/roche/etc/mollab/private/ni-bridge/cacerts/claim-privkey.pem
+e8729159f08a6d859292cdd75d8ce72b  opt/roche/etc/mollab/private/ni-bridge/config.yaml.template
+c8a4307ad9585f85ddd638c6ea78c660  opt/roche/etc/mollab/private/rabbitmq/definitions/nibridge_eventStream_definition.json
+eed7d899bbd83e3c253af15c8999e353  opt/roche/lib/mollab/private/instrument/install.d/5_nibridge
+6b3ac81753f623793e897f3b3ac65ca1  usr/share/doc/newgen-nibridge-configuration/changelog.gz
+6cc8740dcf86627a5ac081d10c2115eb  usr/share/doc/newgen-nibridge-configuration/copyright

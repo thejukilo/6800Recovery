@@ -1,0 +1,7 @@
+82368f1693ba1f2d1f2a57fe70175772  usr/share/doc/rlx-user-permissions/changelog.gz
+afde7b92530feaf53982409f3c99495b  usr/share/doc/rlx-user-permissions/copyright
+b9f0424f6c1729832853ccc5afec2376  usr/share/rlx-user-permissions/etc/security/limits.d/01-roche.conf
+d5e2140864469b94899cc7311c60e503  usr/share/rlx-user-permissions/etc/sudoers.d/01-roche
+afdd2886fba712bbc266406b193e5ee7  usr/share/rlx-user-permissions/etc/udev/rules.d/98-block_all_usb.rules
+e5b9c3bcd89d4da622513350b5d45fc9  usr/share/rlx-user-permissions/etc/udev/rules.d/99-gpio.rules
+a388496ac36a21eddb29b92dc32aba13  usr/share/rlx-user-permissions/etc/udev/rules.d/99-uionetx.rules

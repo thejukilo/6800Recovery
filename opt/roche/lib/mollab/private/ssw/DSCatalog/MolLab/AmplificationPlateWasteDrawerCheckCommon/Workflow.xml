@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="EE328978752399105FEB92841FAD573ADDE8748A3529" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AmplificationPlateWasteDrawerCheckCommon" ID="TRQ597635">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the amplification plate drawer completely.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceAmplificationPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place an amplification plate in the amplification plate waste drawer position 1.</base:Paragraph>
+              <base:Paragraph>Ensure that there is no amplification plate on amplification plate waste drawer position 2.</base:Paragraph>
+              <base:Paragraph>Close the amplification plate waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyPosition1Occupied2Empty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Possitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that position 1 is occupied and 2 is empty, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmLocked" Type="Confirm" Result="rConfirmLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confim Lock</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the amplification plate waste drawer is locked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the amplification plate drawer completely.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MovePlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Move the amplification plate in the amplification plate waste drawer from position 1 to position 2.</base:Paragraph>
+              <base:Paragraph>Close the amplification plate waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyPosition1Empty2Occupied">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that position 1 is empty and 2 is occupied, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the amplification plate completely.</base:Paragraph>
+              <base:Paragraph>Then remove the amplification plate.</base:Paragraph>
+              <base:Paragraph>Then close the amplification plate waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,6 @@
+db1965ccb3380618ddf66739af36ab36  lib/systemd/system/rlx-setup.service
+e29316877395ae12d6fa639025bc753a  opt/roche/sbin/rlx-create-efi-boot.sh
+6f1e699d6617ff260128da226c299237  opt/roche/sbin/rlx-setup
+f114783e9d9933ef874602de4b9de4dd  opt/roche/share/rlx-osal/grub.cfg.tmpl
+eade108e5f4eee795395d8cdc1e58aad  usr/share/doc/rlx-setup/changelog.gz
+490747c76377965238588afe8f1184ab  usr/share/doc/rlx-setup/copyright

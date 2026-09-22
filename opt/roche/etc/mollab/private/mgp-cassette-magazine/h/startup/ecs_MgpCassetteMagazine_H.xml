@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-mgpcassettemagazine">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="212" ProviderSocket="/opt/CSM_212.sock">
+          <CDIDefinition SwitchName="MagazineMotor-cdi" DeviceName="PCA_PPStacker_MC_StackerMotor3" />
+          <CSMDefinition CSMName="RFIDReader-id" ConnectedModuleID="213" ConnectToSocket="/opt/CSM_213.sock" />
+          <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/mgpcassettemagazine-motionconfig.xml" />
+          <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+          <CommandLineSwitch SwitchName="--param_pool_config_path" Value="${UNITCONFIGPATH}/settings/config/mgpcassettemagazine-parampool.xml" />
+          <CommandLineSwitch SwitchName="--MagazineId" Value="H" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.mgpcassettemagazine.h.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.mgpcassettemagazine.h.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.mgpcassettemagazine.h.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.mgpcassettemagazine.h.q" />
+          <CommandLineSwitch SwitchName="--RFIDReader-socket" Value="/opt/CSM_213.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="rfidreader" StackSize_kbytes="128">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="213" ProviderSocket="/opt/CSM_213.sock">
+              <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_PPStacker_RHC_RFIDReader" />
+              <CommandLineSwitch SwitchName="--serial_port_id" Value="2" />
+              <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+              <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+              <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

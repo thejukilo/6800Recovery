@@ -1,0 +1,4 @@
+# It's just a helper tool
+python3-dotenv: library-package-name-for-application usr/bin/dotenv
+# It's just a helper tool
+python3-dotenv: application-in-library-section python usr/bin/dotenv

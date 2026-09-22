@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="AntennaId" Value="1" Type="int32" Array="false" Description="" />                  
+  <ParameterPoolEntry ID="8" Name="OverTemperatureThreshold" Value="3700" Type="uint16" Array="false" Description="" />
+</ModuleConfiguration>
+
+
+
+
+
+

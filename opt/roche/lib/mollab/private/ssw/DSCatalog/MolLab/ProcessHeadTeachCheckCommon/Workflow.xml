@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="3BFDCB4338F70F3E90AB1B928619B75B1630B5E451FE" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ProcessHeadTeachCheckCommon" ID="ProcessHeadTeachCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ParkAllHeads">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park All Processing Module Heads</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing module heads are parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rDoPreTeach" NextStep="PlaceTeachTool">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PreTeachToolInstall" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pre Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please install the pre-teach tool between the heating station 1 and the separation station 1.</base:Paragraph>
+              <base:Paragraph>Note: The pre-teach tool has to be screwed down using the heating station screw.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Place_pre_teach_tool.jpg" Hash="CE5F183FBFD191883A59113EE7E4AA77965F6AF4" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PreTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pre Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PreTeachToolRemove" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pre Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>CAUTION! Make sure to remove the pre-teach tool!</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a teach tool on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Load_Teach_Tool_Processing_module.jpg" Hash="401BB661CC4BDAFE4BBBEFE27B3DB67F3A2096BD" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Teach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the teach tool from the processing module transfer position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DisplayTeachingOffsetValues" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching Offset Values</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calulcated X-axis and Y-axis offsets for the Processing Transfer Heads:</base:Paragraph>
+              <base:Paragraph>- Reference Head: Processing Head [R.rProcessingTransferHeadOffsetRefPipettor]</base:Paragraph>
+              <base:Paragraph>- X-offset between front and rear Head: [R.rProcessingTransferHeadXOffsetmm] mm</base:Paragraph>
+              <base:Paragraph>- Y-offset between front and rear Head: [R.rProcessingTransferHeadYOffsetmm] mm</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please consult the service documentation to check if further action is necessary given the current offset values.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Press 'Finish' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

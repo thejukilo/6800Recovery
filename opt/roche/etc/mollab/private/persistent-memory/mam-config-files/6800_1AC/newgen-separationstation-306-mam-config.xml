@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="../../MAM_ProjectConfig_1.00.03.xsd">
+  <csmConfig>
+    <csm name="ProcessCell_ADPark" seid="124" moduleId="306">
+      <dataPool type="uint32" structure="scalar" id="6" name="PlateType"
+        defaultValue="0">
+        <persistDef memoryId="2136" periodInSec="-1"/>
+      </dataPool>
+      <parPool type="uint8" structure="array" id="100" name="ConfigData_1"
+        defaultValue="0"
+        minValue="0"
+        maxValue="255"
+        noElements="100">
+        <persistDef memoryId="2136" periodInSec="0"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="101" name="OpCountMagnetsInitializations"
+        defaultValue="0"
+        minValue="0"
+        maxValue="65535">
+        <persistDef memoryId="2136" periodInSec="0"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="102" name="OpCountDownholderInitializations"
+        defaultValue="0"
+        minValue="0"
+        maxValue="65535">
+        <persistDef memoryId="2136" periodInSec="0"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="103" name="OpCountMagnetsMovements"
+        defaultValue="0"
+        minValue="0"
+        maxValue="4294967295">
+        <persistDef memoryId="2136" periodInSec="0"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="104" name="OpCountDownholderMovements"
+        defaultValue="0"
+        minValue="0"
+        maxValue="4294967295">
+        <persistDef memoryId="2136" periodInSec="0"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

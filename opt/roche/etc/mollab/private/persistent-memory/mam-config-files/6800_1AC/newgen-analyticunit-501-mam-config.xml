@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         
+         xmlns:fn="http://www.w3.org/2005/02/xpath-functions"         
+         xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+ <csmConfig>
+  <csm name="AnalyticalCycler_A2" seid="186" moduleId="501">
+     <parPool type="uint32" structure="scalar" id="13" name="OpCountInitStarted" defaultValue="0" minValue="0" maxValue="4294967295">
+	<persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="14" name="OpCountInitCompleted" defaultValue="0" minValue="0" maxValue="4294967295">
+        <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="15" name="OpCountADProcessStarted" defaultValue="0" minValue="0" maxValue="4294967295">
+        <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="16" name="OpCountADProcessCompleted" defaultValue="0" minValue="0" maxValue="4294967295">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="17" name="OpCountADProcessAborted" defaultValue="0" minValue="0" maxValue="4294967295">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="18" name="OpCountLoadingMovements" defaultValue="0" minValue="0" maxValue="4294967295">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="19" name="OpCountCoverHeaterMovements" defaultValue="0" minValue="0" maxValue="4294967295">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint32" structure="scalar" id="20" name="OpCountTotalLEDOperatingTime" defaultValue="0" minValue="0" maxValue="4294967295">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="27" name="ConfigData_1" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="28" name="ConfigData_2" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="29" name="ConfigData_3" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="30" name="ConfigData_4" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="31" name="ConfigData_5" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="32" name="ConfigData_6" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="33" name="ConfigData_7" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="34" name="ConfigData_8" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="35" name="ConfigData_9" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="36" name="ConfigData_10" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="37" name="ConfigData_11" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="38" name="ConfigData_12" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="39" name="ConfigData_13" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="40" name="ConfigData_14" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="41" name="ConfigData_15" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="42" name="ConfigData_16" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="43" name="ConfigData_17" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="44" name="ConfigData_18" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="45" name="ConfigData_19" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+     <parPool type="uint8" structure="array" noElements="100" id="46" name="ConfigData_20" defaultValue="0" minValue="0" maxValue="255">
+       <persistDef memoryId="3160" periodInSec="-1"/>
+     </parPool>
+  </csm>
+</csmConfig>
+</dia:mam>

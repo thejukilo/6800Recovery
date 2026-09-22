@@ -1,0 +1,7 @@
+[Unit]
+Description=RLX Upgrade
+Requires=network.target
+Conflicts=rescue.service rescue.target default.target
+Wants=rlx-osal.service systemd-networkd.service systemd-resolved.service rlx-web.service nginx.service docker.socket
+After=network.target network-online.target nss-lookup.target systemd-networkd.service systemd-resolved.service
+AllowIsolate=yes

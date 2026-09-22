@@ -1,0 +1,213 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.runmanagement.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.ResumeRunStarts",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.PostponeRunStarts",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.StartRunManually",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.ConnectionToDataManagerEstablished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.ConnectionToDataManagerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.ClottedTipPositionsCapacityChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.RunStartAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.RunStartDisallowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AssembledRunsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.RunScheduleChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunResourceManagement.MissingResourcesChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderStartInitiated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderRevoked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.ScheduledStartTimeElapsed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.RunExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.RunExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.ControlWorkOrderCreated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.MolecularProcessOptimizationModeEnabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.MolecularProcessOptimizationModeDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runmanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFailed",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+Template: rlx-user-permissions/sudoless-gpio
+Type: boolean
+Default: false
+Description: Do you want to allow access to GPIO without root privileges?
+
+Template: rlx-user-permissions/sudoless-uionetx
+Type: boolean
+Default: false
+Description: Do you want to allow access to uio netx card without root privileges?
+
+Template: rlx-user-permissions/disable-usb
+Type: boolean
+Default: false
+Description: Do you want to disable access to all usb devices?

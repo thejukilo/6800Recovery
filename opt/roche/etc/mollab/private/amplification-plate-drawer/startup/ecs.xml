@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-amplificationplatedrawer">
+      <CSMConfigureParameters>
+        <System RealtimePriority="55" MiddlewarePriority="80" TraceLevel="7" Verbose="false" />
+        <CSMSpecific ModuleID="514" ProviderSocket="/opt/CSM_514.sock">
+          <CDIDefinition SwitchName="adoutputdrawer-cdi" DeviceName="AC_PlateHandler_2_MC_ADOutputDrawer" />
+          <CDIDefinition SwitchName="ejector-cdi" DeviceName="AC_PlateHandler_2_SMS_PusherADOutputDrawer" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/amplificationplatedrawer-motion-config.xml" />
+          <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/settings/config/amplificationplatedrawer-parampool-config.xml" />
+          <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/amplificationplatedrawer-sms-config.xml" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.amplificationplatedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.amplificationplatedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.amplificationplatedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.amplificationplatedrawer.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

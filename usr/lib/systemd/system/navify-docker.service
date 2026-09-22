@@ -1,0 +1,14 @@
+[Unit]
+Description=Start Navify Docker Service
+After=docker.service
+Requires=docker.service network-online.target
+ConditionPathExists=!/opt/roche/var/lib/.navify-docker-succeeded
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/default/navify-docker
+ExecStart=/usr/bin/docker run --privileged --env HTTP_PROXY --env HTTPS_PROXY --pull=always --pid=host --userns=host $IMAGE_NAME $ARGS_STR
+ExecStartPost=/bin/touch /opt/roche/var/lib/.navify-docker-succeeded
+
+[Install]
+WantedBy=multi-user.target

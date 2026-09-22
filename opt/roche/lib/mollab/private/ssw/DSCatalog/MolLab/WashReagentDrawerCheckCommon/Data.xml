@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B2B6D32959672C59D81A04329B362642D6D3FAAA9958" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="WashReagentDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <!-- Internal Results -->
+        <data:Result Name="irCurrentContainerIndex" Type="Integer">
+          <data:Description>
+            <base:Title>Wash Reagent Container Loop Counter</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLedFunctionalityCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify LED functionality check transition off, red and then green.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irVerifyAspirationCapsClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>User verifies that the aspiration arms is closed.</base:Title>
+          </data:Description>
+        </data:Result>
+        <!-- Check-Wide Result -->
+        <data:Result Name="rWashReagentDrawerConfirmedOpen" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Overture Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirms that the drawer is opened.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSensorConfirmsDrawerBeingOpened" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Overture Validated By Sensor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensors confirms that the drawer is opened.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Wash Reagent 1 Container Results -->
+        <data:Result Name="rWashReagent1VerifyCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 Arm Closure Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of the aspiration arm for Wash Reagent 1 was closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent1LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent1SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent1SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent1SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent1SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 1 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Wash Reagent 2 Container Results -->
+        <data:Result Name="rWashReagent2VerifyCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 Arm Closure Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of the aspiration arm for Wash Reagent 2 was closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent2LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent2SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent2SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent2SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent2SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 2 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Wash Reagent 3 Container Results -->
+        <data:Result Name="rWashReagent3VerifyCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 Arm Closure Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of the aspiration arm for Wash Reagent 3 was closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent3LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent3SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent3SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent3SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWashReagent3SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Wash Reagent 3 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Post loop results -->
+        <data:Result Name="rWashReagentDrawerClosedAndLocked" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Closure And Lock Detection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Drawer closure and lock detection at the end of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSensorCheckingWashReagentDrawerClosedAndLocked" Type="Boolean">
+          <data:Description>
+            <base:Title>Sensor Checking Drawer Closure And Lock</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensor readback of drawer closure and lock.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

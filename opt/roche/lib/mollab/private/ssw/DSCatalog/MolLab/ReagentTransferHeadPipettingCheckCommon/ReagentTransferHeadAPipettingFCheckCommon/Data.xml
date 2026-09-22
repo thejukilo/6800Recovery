@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="303A7A5F9CF1A05968CDAF4ADEA2D569DD50F26E675E" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadAPipettingFCheckCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Module ID</base:Title>
+          </data:Description>
+          <data:Value>A</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipIndex" Type="String">
+          <data:Description>
+            <base:Title>PipIndex</base:Title>
+          </data:Description>
+          <data:Value>F</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

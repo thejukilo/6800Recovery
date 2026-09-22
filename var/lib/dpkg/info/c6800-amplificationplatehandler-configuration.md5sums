@@ -1,0 +1,12 @@
+10ac1b82c1355608a7a364b8a427aade  opt/roche/etc/mollab/private/amplification-plate-handler/config/6800-newgen-amplificationplatehandler-exclusion-areas.xml
+ad3c68ed4d8813ccef3822fcdccd2c11  opt/roche/etc/mollab/private/amplification-plate-handler/config/6800-newgen-amplificationplatehandler-headinfo.xml
+7e815f69b5b4c276a2298b09e577a7af  opt/roche/etc/mollab/private/amplification-plate-handler/config/6800-newgen-amplificationplatehandler-motionconfig.xml
+f337e4ec959bda3613970fff16048b79  opt/roche/etc/mollab/private/amplification-plate-handler/config/newgen-amplificationplatehandler-config.xml
+48dbd09c15d3d05f5cefe14a52921f0a  opt/roche/etc/mollab/private/amplification-plate-handler/config/newgen-amplificationplatehandler-parampool.xml
+98858be81255cbcaca186cea6f03c186  opt/roche/etc/mollab/private/amplification-plate-handler/config/newgen-amplificationplatehandler-position-mapping.xml
+a8aa79a3e487e84d1edd341e0119bb35  opt/roche/etc/mollab/private/amplification-plate-handler/startup/ecc.xml
+71af34af2cee32b8e2d74cb2c8619c31  opt/roche/etc/mollab/private/amplification-plate-handler/startup/ecs_6800.xml
+c771f380d96698194b7dd95b8e2da110  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-amplificationplatehandler-520-mam-config.xml
+2478b4783c90a335738214b9fa75f374  opt/roche/etc/mollab/private/rabbitmq/definitions/amplificationplatehandler_definition.json
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/amplification-plate-handler/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/amplification-plate-handler/fwr_00000604_MotionControl_2.03.03.0000.srec

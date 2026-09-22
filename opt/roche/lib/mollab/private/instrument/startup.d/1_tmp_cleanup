@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Clean the content of tmp
+rm -rfv /mnt/tmp/shared/*
+rm -rfv /mnt/tmp/private/**/*

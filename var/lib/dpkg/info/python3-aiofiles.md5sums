@@ -1,0 +1,15 @@
+97b45cd78c536d9063f8dbe620920360  usr/lib/python3/dist-packages/aiofiles-23.1.0.dist-info/METADATA
+631f6ade478d2c364c352f07a3d4bb24  usr/lib/python3/dist-packages/aiofiles-23.1.0.dist-info/RECORD
+b65598d0aa0cfe0f390246499e741adb  usr/lib/python3/dist-packages/aiofiles-23.1.0.dist-info/WHEEL
+d54a640c11847638f81a1b5b99e698a7  usr/lib/python3/dist-packages/aiofiles/__init__.py
+a3ff0c5d9e8444d3de3c1e2264a6ce73  usr/lib/python3/dist-packages/aiofiles/base.py
+90483cf9833a16f912b6d12f2dfe5511  usr/lib/python3/dist-packages/aiofiles/os.py
+7a6878f0bb9ea8945c0308aac9556bc0  usr/lib/python3/dist-packages/aiofiles/ospath.py
+2c467f476d12cfea011db81570c941a8  usr/lib/python3/dist-packages/aiofiles/tempfile/__init__.py
+fd64d07ab9137789ef538e8168c99da6  usr/lib/python3/dist-packages/aiofiles/tempfile/temptypes.py
+d66baf51f6a4e11dedab8d913470629f  usr/lib/python3/dist-packages/aiofiles/threadpool/__init__.py
+be8dde60e70018d68abf5e8d5d93d31b  usr/lib/python3/dist-packages/aiofiles/threadpool/binary.py
+6c892cf89da0cab73ea511ae013d4d81  usr/lib/python3/dist-packages/aiofiles/threadpool/text.py
+950b704c2899d8afe8c2793e4b173484  usr/lib/python3/dist-packages/aiofiles/threadpool/utils.py
+eed6301528fc9ad239f94ab00a7c77b1  usr/share/doc/python3-aiofiles/changelog.Debian.gz
+17a4271ef3061093edd161e02a2658a5  usr/share/doc/python3-aiofiles/copyright

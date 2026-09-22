@@ -1,0 +1,16 @@
+/.
+/opt
+/opt/roche
+/opt/roche/var
+/opt/roche/var/lib
+/opt/roche/var/log
+/opt/roche/var/log/journal
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlxprj-cx800-config-test
+/usr/share/doc/rlxprj-cx800-config-test/changelog.gz
+/usr/share/doc/rlxprj-cx800-config-test/copyright
+/var
+/var/log
+/var/log/journal

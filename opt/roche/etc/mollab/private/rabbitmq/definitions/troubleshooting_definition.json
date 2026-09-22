@@ -1,0 +1,37 @@
+{
+  "queues": [
+      {
+        "name": "roche.newgen.troubleshooting.q",
+        "vhost": "/",
+        "durable": false,
+        "auto_delete": false,
+        "arguments": {}
+      }
+    ],
+  "bindings": [
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.troubleshooting.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.ScanFieldbus",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.troubleshooting.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.FieldbusScanFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.troubleshooting.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    }
+  ]
+}

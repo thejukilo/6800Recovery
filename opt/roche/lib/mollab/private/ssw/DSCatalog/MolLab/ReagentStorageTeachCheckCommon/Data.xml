@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F5565C19709BE35A5A9740F2079EF342318F715B818C" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TeachReagentStorage">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsModule" Type="Boolean">
+          <data:Description>
+            <base:Title>If the Test is a module Test</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rTeachingReagentStorage" Type="Boolean">
+          <data:Description>
+            <base:Title>Teaching of Reagent Storage Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching of Reagent Storage Successful</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

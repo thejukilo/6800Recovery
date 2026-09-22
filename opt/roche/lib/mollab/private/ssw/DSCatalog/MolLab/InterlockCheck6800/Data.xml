@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="942B9C2CB584C88C0BF9CFBFD53CA52A33C64A33CF12" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="InterlockCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pMoveDoorButtonTimeoutSeconds" Type="Double" Unit="">
+          <data:Description>
+            <base:Title>Move door button timeout in seconds</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Defines the maximum time in seconds the user is given to move the door using the hardware button.</base:Paragraph>
+              <base:Paragraph>Allowed range: [0.1-60s]</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>59</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="TransferModuleFrontDoorClosed">
+          <data:Description>
+            <base:Title>Transfer Module Front Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module front door is closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="TransferModuleFrontDoorOpen">
+          <data:Description>
+            <base:Title>Transfer Module Front Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module front door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleAFrontDoorClosed">
+          <data:Description>
+            <base:Title>Processing Module A Front Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A front door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleAFrontDoorOpen">
+          <data:Description>
+            <base:Title>Processing Module A Front Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A front door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="AdModuleLeftDoorClosed">
+          <data:Description>
+            <base:Title>Analytic Module Left Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Analytic module left door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="AdModuleLeftDoorOpen">
+          <data:Description>
+            <base:Title>Analytic Module Left Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Analytic module left door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleADrawerClosed">
+          <data:Description>
+            <base:Title>Processing Module A Drawer Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A drawer door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleADrawerOpen">
+          <data:Description>
+            <base:Title>Processing Module A Drawer Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A drawer door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="TransferModuleBackDoorClosed">
+          <data:Description>
+            <base:Title>Transfer Module Back Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module back door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="TransferModuleBackDoorOpen">
+          <data:Description>
+            <base:Title>Transfer Module Back Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module back door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleABackDoorClosed">
+          <data:Description>
+            <base:Title>Processing Module A Back Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A back door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ProcessModuleABackDoorOpen">
+          <data:Description>
+            <base:Title>Processing Module A Back Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A back door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ReagentStorageClosed">
+          <data:Description>
+            <base:Title>Reagent Storage Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent storage door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="ReagentStorageOpen">
+          <data:Description>
+            <base:Title>Reagent Storage Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent storage door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="EuchnerModuleTransferModuleFrontDoorOK">
+          <data:Description>
+            <base:Title>Interlock TM Front Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module front door interlock is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="EuchnerModuleTransferModuleBackDoorOK">
+          <data:Description>
+            <base:Title>Interlock TM Back Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer module back door interlock is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="EuchnerModuleProcessModuleAFrontDoorOK">
+          <data:Description>
+            <base:Title>Interlock PM B Front Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A front door interlock is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="EuchnerModuleProcessModuleABackDoorOK">
+          <data:Description>
+            <base:Title>Interlock PM A Back Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module A back door interlock is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="EuchnerModuleADModuleLeftFrontDoorOK">
+          <data:Description>
+            <base:Title>Interlock Analytic Module Left Front Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Analytic module left front door interlock is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rRoboticStop">
+          <data:Description>
+            <base:Title>The robotic stop works and can be reset</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The robotic stop works and can be reset.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

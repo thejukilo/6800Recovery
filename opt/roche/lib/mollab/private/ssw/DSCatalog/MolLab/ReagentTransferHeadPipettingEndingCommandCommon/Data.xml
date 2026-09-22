@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="4ECCF91890E7A1629F3A7000904ED7BD86FEA3BDD94B" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadPipettingEndingCommandCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Identity of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="PipettingVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Pipettingvolume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Volume that has to be dispensed into the balance vessel.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0.0000025</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>365E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rIsBalanceRemoved" Type="Boolean">
+          <data:Description>
+            <base:Title>Is Balance Removed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is the balance and balance holder removed?</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPipettingEndingSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Reagent Transfer Head Pipetting Ending Success</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inidicates whether this check has successfully completed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

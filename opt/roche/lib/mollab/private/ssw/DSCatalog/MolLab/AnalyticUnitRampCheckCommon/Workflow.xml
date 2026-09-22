@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="090FD66209DD140E3162E3A21E1696AB52EEE296BDCA" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitRampCheckCommon" ID="AnalyticUnitRampCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareInitAnalyticModule" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="HeatUpCoverHeater">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Heat-up Cover Heater</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the cover heater is prepared...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADTray">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Opening</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer opens...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManuallyLoadADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please manually load the prepared amplification plate on the opened drawer.</base:Paragraph>
+              <base:Paragraph>The barcode shall be facing the back of the instrument.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseADTray">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Closing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer closes.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExecuteADProcess">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Process Execution</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is executed ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADTray2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Opening</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer opens...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the amplification plate and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseADTray2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Closing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer closes...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StopHeating" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Stop Heating</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Final step called in any case to stop heating the cover heater, if still heating.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

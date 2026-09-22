@@ -1,0 +1,26 @@
+#!/bin/sh
+
+. /usr/lib/rlx-osal-plugin-addon/rlx-addon.inc.sh
+
+ADDON_ARCHIVE=$1
+DEST_DIR=$2
+
+if [ -z "$DEST_DIR" ]; then
+    log_error "Empty destination directory"
+fi
+
+if [ ! -f $ADDON_ARCHIVE ]; then
+    log_error "Addon file does not exist: $ADDON_ARCHIVE"
+fi
+
+# Make sure destination is empty
+rm -rf $DEST_DIR
+mkdir -p $DEST_DIR
+
+log_info "Extracting $ADDON_ARCHIVE to $DEST_DIR"
+
+tar xf $ADDON_ARCHIVE -C $DEST_DIR >> $ADDON_LOG 2>&1
+
+# Fix permissions so the DEST_DIR can be removed by roche user
+log_info "Fixing permissions to $DEST_DIR"
+chown -R roche:roche $DEST_DIR

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+if [ -f /opt/roche/var/lib/docker-compose/.env ]; then
+    sed -i '/^HTTPS\?_PROXY=/d' /opt/roche/var/lib/docker-compose/.env
+    if [ -f /opt/roche/etc/rlx/http-proxy.conf ];then
+        . /opt/roche/etc/rlx/http-proxy.conf
+
+        if [ ! -z "$USER" ] && [ ! -z "$PASSWORD" ]; then
+            HTTP_PROXY="http://$USER:$PASSWORD@$PROXY_SERVER"
+        else
+            HTTP_PROXY="http://$PROXY_SERVER"
+        fi
+
+        /bin/echo "HTTP_PROXY=$HTTP_PROXY" >> /opt/roche/var/lib/docker-compose/.env
+        /bin/echo "HTTPS_PROXY=$HTTP_PROXY" >> /opt/roche/var/lib/docker-compose/.env
+    fi
+
+    systemctl restart rlx-docker-compose.service
+fi

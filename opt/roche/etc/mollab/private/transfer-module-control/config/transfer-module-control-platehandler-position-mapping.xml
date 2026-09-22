@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PositionMappingConfig xsi:noNamespaceSchemaLocation="lib_00000207_HandlingUtilities_PositioningMappingConfig_0.01.00.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<PositionMapping>
+	<!-- PPlate double stage gripping-->
+		<LogicalPosition>
+			<Carrier>
+				<CarrierID>4001</CarrierID>
+				<SubPositionID>7</SubPositionID>
+			</Carrier>
+			<Container>
+				<ContainerID>7016</ContainerID>
+			</Container>
+		</LogicalPosition>
+		<MoveTypeConfig>
+			<MoveTypeList>
+        <MoveType>50</MoveType> <!-- Pick -->
+        <MoveType>51</MoveType> <!-- PickNonRouted -->
+			</MoveTypeList>
+			<WayPointAfter>
+				<LogicalPosition>
+					<Carrier>
+						<CarrierID>4001</CarrierID>
+						<SubPositionID>8</SubPositionID>
+					</Carrier>
+					<Container>
+						<ContainerID>7116</ContainerID>
+					</Container>
+				</LogicalPosition>
+			</WayPointAfter>
+		</MoveTypeConfig>
+	</PositionMapping>
+</PositionMappingConfig>

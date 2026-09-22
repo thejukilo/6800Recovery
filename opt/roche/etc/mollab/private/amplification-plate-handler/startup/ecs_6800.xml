@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-amplificationplatehandler">
+      <CSMConfigureParameters>
+        <System RealtimePriority="55" MiddlewarePriority="80" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="520" ProviderSocket="/opt/CSM_520.sock">
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <CSMDefinition ConnectedModuleID="513" CSMName="PlateHandlerADCell-id" ConnectToSocket="/opt/CSM_513.sock" />
+          <CommandLineSwitch SwitchName="--ParameterPool" Value="${UNITCONFIGPATH}/settings/config/newgen-amplificationplatehandler-parampool.xml" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.amplificationplatehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.amplificationplatehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.amplificationplatehandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.amplificationplatehandler.q" />
+          <CommandLineSwitch SwitchName="--PlateHandlerADCell-socket" Value="/opt/CSM_513.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <!-- Plate handler ADCell -->
+        <ConnectedCSM FileName="transfer-xyz-gripper">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="513" ProviderSocket="/opt/CSM_513.sock">
+              <CDIDefinition SwitchName="MotorX-cdi" DeviceName="AC_PlateHandler_1_MotorX" />
+              <CDIDefinition SwitchName="MotorY-cdi" DeviceName="AC_PlateHandler_1_MotorY" />
+              <CDIDefinition SwitchName="MotorZ-cdi" DeviceName="AC_PlateHandler_2_MC_MotorZ" />
+              <CDIDefinition SwitchName="MotorGripper-cdi" DeviceName="AC_PlateHandler_1_MotorGripper" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/newgen-amplificationplatehandler-config.xml" />
+              <XMLConfigurationFile SwitchName="--MotionConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/6800-newgen-amplificationplatehandler-motionconfig.xml" />
+              <XMLConfigurationFile SwitchName="--Positioning" XMLFileName="${UNITCONFIGPATH}/NewGen_ADCell_Positioning.xml" />
+              <XMLConfigurationFile SwitchName="--ReferencePointOffset" XMLFileName="${ICSHAREPATH}/teaching-data/6800-amplificationplatehandler-reference-point-offset.xml" />
+              <XMLConfigurationFile SwitchName="--RoutingConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/6800-newgen-amplificationplatehandler-exclusion-areas.xml" />
+              <XMLConfigurationFile SwitchName="--HeadInfo" XMLFileName="${UNITCONFIGPATH}/settings/config/6800-newgen-amplificationplatehandler-headinfo.xml" />
+              <XMLConfigurationFile SwitchName="--PositionMappingPath" XMLFileName="${UNITCONFIGPATH}/settings/config/newgen-amplificationplatehandler-position-mapping.xml" />
+              <CommandLineSwitch SwitchName="--CycleTime" Value="0" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="186407A2BB2DBE654F91EDD14F433C6E2D649F61F2F5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="PlateHandlerPHandlingCheckCommon" ID="TRQ999999">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The processing module is being initialized...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareCheckNoPlateLightBarrier" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare For Consumable Not-present Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Make sure that there is no consumable left on the module surface.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckNoPlateLightBarrier" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Consumables Not Present</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' for the system to evaluate presence sensor on all required positions:</base:Paragraph>
+              <base:Paragraph>- Transfer position</base:Paragraph>
+              <base:Paragraph>- Separation station 1 and 2</base:Paragraph>
+              <base:Paragraph>- Heating station 1 and 2</base:Paragraph>
+              <base:Paragraph>- Tip rack park position 1 and 2</base:Paragraph>
+              <base:Paragraph>- Amplification plate park position</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckNoPlateLightBarrierDecision">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Consumable Not-present Detection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process in running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlacePPlateOnHandoverPC" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place an empty processing plate in the transfer position of the processing module with the barcode facing to the front of the instrument and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementSepStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the separation station 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateCheckDownholderSepStation1" Type="Confirm" Result="rPPlateDownholderSep1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Separation Station 1 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the processing plate is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementHeatStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Heating Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the heating station 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateCheckDownholderHeatStation1" Type="Confirm" Result="rPPlateDownholderHeat1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Heating Station 1 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the processing plate is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementHandoverPC">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the transfer position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementSepStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the separation station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateCheckDownholderSepStation2" Type="Confirm" Result="rPPlateDownholderSep2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Separation Station 2 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the processing plate is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementHeatStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Heating Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the heating station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateCheckDownholderHeatStation2" Type="Confirm" Result="rPPlateDownholderHeat2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Heating Station 2 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the processing plate is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PPlateDeliveryMovementHandoverPC1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Plate To Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is being moved to the transfer position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManualRemovePPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manual Clean-up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the processing plate.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceADPlateOnHandoverPC" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place an empty amplification plate in the transfer position of the processing module with the barcode facing to the front of the instrument.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementADPark">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Amplification Plate Park Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being transferred to amplification plate park position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateDownholderADPark" Type="Confirm" Result="rADPlateDownholderADPark">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate Park Position Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the amplification plate is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementSepStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being moved to separation station 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementHeatStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Heating Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being moved to heating station 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementHeatStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Heating Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being moved to heating station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementSepStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being moved to separation station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ADPlateMovementSealerTray">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate To Sealing Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate is being moved to the sealing station...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManualRemoveADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manual Clean-up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the amplification plate from the sealing station.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceCTROnHandoverPC" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place an empty tip rack in the transfer position of the processing module with the barcode facing towards the front of the instrument.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRMovementProcessPark1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack To Tip Rack Park Position 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being moved to the tip rack park position 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRDownholderProcessPark1" Type="Confirm" Result="rCTRDownholderProcessPark1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack Park Position 1 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the tip rack is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRMovementHandOver">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack To Transfer Position.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being moved to the transfer position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRMovementProcessPark2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack To Tip Rack Park Position 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being moved to the tip rack park position 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRDownholderProcessPark2" Type="Confirm" Result="rCTRDownholderProcessPark2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack Park Position 2 Downholder Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the tip rack is held in place by the downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CTRMovementHandOver1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack To Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being moved to the transfer position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ManualRemoveCTR" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Manual Clean-up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the tip rack and press 'Next' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

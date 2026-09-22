@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="FDC1B3CC4E48D7A56A33516B5E136227DFD1394DD2EE" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ExtendedPrimeCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTrackFluidics" Type="Boolean">
+          <data:Description>
+            <base:Title>Track fluidics</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPerformReservoirToOverflow" Type="Boolean">
+          <data:Description>
+            <base:Title>Whether to overfill the wash reagent reservoir to overflow.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pEmptyLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Decision if the user has to empty the wash/waste at the end of the check.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pModuleIndex" Type="Integer">
+          <data:Description>
+            <base:Title>Index of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParametersWB" Type="String">
+          <data:Description>
+            <base:Title>The pipettor parameter set for the wash buffer</base:Title>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParametersLB" Type="String">
+          <data:Description>
+            <base:Title>The pipettor parameter set for the lysis buffer</base:Title>
+          </data:Description>
+          <data:Value>37aa0559-ad4f-42e9-a43b-b098cb66b9bf</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep1" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 1</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep2" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 2</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep3" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 3</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep4" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 4</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep5" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 5</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep6" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 6</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep7" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 7</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep8" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 8</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep9" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 9</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep10" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 10</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep11" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 11</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep12" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 12</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep13" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 13</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep13OffSystem" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in off system step 13</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep14" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 14</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep15" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 15</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irOffSystemLiquidWasteValveName" Type="String">
+          <data:Description>
+            <base:Title>The name of the valve used for the off system liquid waste.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irHasOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Tells if the instrument is in the offsystem configuration.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irEmptyLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Decision if the user has to empty the wash/waste at the end of the check.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irPerformReservoirToOverflow" Type="Boolean">
+          <data:Description>
+            <base:Title>Whether to overfill the wash reagent reservoir to overflow.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInitSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Init Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Init was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep1Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step1 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 1 was successful.</base:Paragraph>
+              <base:Paragraph>From the Lysis reagent bottle 1 to the Wash Station</base:Paragraph>
+              <base:Paragraph>On-system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S10 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S10 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep2Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step2 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 2 was successful.</base:Paragraph>
+              <base:Paragraph>From the Lysis reagent bottle 2 to Wash Station</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 2</base:Paragraph>
+              <base:Paragraph>(via S11 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S39)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S11 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep3Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step3 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 3 was successful.</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From Lysis reagent bottle 1 to Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S10 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From Lysis reagent bottle 1 to off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S10 - S22 - Degassing Pump - S23 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep4Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step4 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 4 was successful.</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>The Wash reagent reservoir is emptied to the Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S21 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>The Wash reagent reservoir is emptied to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S21 - S22 - Degassing Pump - S23 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep5Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step5 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 5 was successful.</base:Paragraph>
+              <base:Paragraph>The Wash reagent reservoir is filled with Wash reagent 1</base:Paragraph>
+              <base:Paragraph>(via S1 - S4 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep6Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step6 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 6 was successful.</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Wash Station</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep7Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step7 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 7 was successful.</base:Paragraph>
+              <base:Paragraph>The Wash reagent reservoir is filled with Wash reagent 2</base:Paragraph>
+              <base:Paragraph>(via S2 - S5 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep8Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step8 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 8 was successful.</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Wash Station</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 2</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S39)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep9Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step9 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 9 was successful.</base:Paragraph>
+              <base:Paragraph>The Wash reagent reservoir is filled with Wash reagent 3</base:Paragraph>
+              <base:Paragraph>(via S3 - S6 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep10Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step10 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 10 was successful.</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Wash Station</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 3</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S40)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep11Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step11 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 11 was successful.</base:Paragraph>
+              <base:Paragraph>From the diluent bottle 1 to the Wash Station</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste station 1</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 1 to Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S15 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S33 - S29 - Process Waste Pump - S30 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 1 to off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S15 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S33 - S29 - Process Waste Pump - S30 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep12Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step12 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 12 was successful.</base:Paragraph>
+              <base:Paragraph>From the diluent bottle 2 to the Wash Station</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Station 2</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 2 to Liquid Waste Container 2</base:Paragraph>
+              <base:Paragraph>(via S16 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S34 - S31 - Process Waste Pump - S32 - S39)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 2 to off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S16 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S34 - S31 - Process Waste Pump - S32 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep13Successful" Type="Boolean">
+          <data:Description>
+            <base:Title>Step13 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 13 was successful.</base:Paragraph>
+              <base:Paragraph>On system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the diluent bottle 1 to the Liquid Waste Container 1</base:Paragraph>
+              <base:Paragraph>(via S15 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+              <base:Paragraph>Off system liquid waste:</base:Paragraph>
+              <base:Paragraph>From the diluent bottle 1 to the off system liquid waste</base:Paragraph>
+              <base:Paragraph>(via S15 - S22 - Degassing Pump - S23 - S44(PMA)/S45(PMB) - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rStep14Successful" Type="Integer">
+          <data:Description>
+            <base:Title>Step14 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 14 was successful.</base:Paragraph>
+              <base:Paragraph>From the Wash reagent 1 to the Wash reagent reservoir</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Overflow Container</base:Paragraph>
+              <base:Paragraph>(via S1 - S4 - S7 - Wash Buffer Pump - S8 - Wash Reagent Reservoir - S24 - S25)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2</data:Value>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>Overflow is not tested.</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Overflow is working.</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Overflow is not working.</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rStep15Successful" Type="Integer">
+          <data:Description>
+            <base:Title>Step15 Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the Step 15 was successful.</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Wash Station</base:Paragraph>
+              <base:Paragraph>From the Wash Station to Overflow Container</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S41)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2</data:Value>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>Overflow is not tested.</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Overflow is working.</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Overflow is not working.</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rOverflowBottleSensorCheckOK" Type="Integer">
+          <data:Description>
+            <base:Title>Overflow Bottle Sensor Check Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks the overflow bottle sensor</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="N/A" Value="0">
+              <data:Description>Overflow sensor is not tested.</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Overflow sensor is working.</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Overflow sensor is not working.</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep1Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep2Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep3Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep6Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep8Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep10Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep11Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep12Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep13Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep13OffSystemMl" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep14Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiVolumeStep15Ml" Type="Double">
+          <data:Description>
+            <base:Title>Volume in ml for UI</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume in ml for UI</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,59 @@
+Template: rlx-user/name
+Type: string
+Default: roche
+Description: Name:
+ Enter the name of the user.
+
+Template: rlx-user/encrypted-format
+Type: boolean
+Default: false
+Description: Supply encrypted password?
+
+Template: rlx-user/password
+Type: password
+Default:
+Description: Password:
+ Enter the password for the user.
+
+Template: rlx-user/home
+Type: string
+Default: /home/roche
+Description: Home directory:
+ Enter the path where the user's home directory
+ should be created.
+
+Template: rlx-user/uid
+Type: string
+Default: 3000
+Description: UID:
+ Enter the UID of the user.
+
+Template: rlx-user/gid
+Type: string
+Default: 3000
+Description: GID:
+ Enter the GID of the user's primary group.
+
+Template: rlx-user/groups
+Type: string
+Default: dialout,sudo
+Description: Groups:
+ Enter the groups to which the user should belong.
+ Use comma separation if entering multiple groups.
+
+Template: rlx-user/login-shell
+Type: string
+Default: /bin/bash
+Description: Login shell:
+ Enter the user's login shell.
+
+Template: rlx-user/home-permissions
+Type: string
+Description: Permissions:
+ Enter the file mode bits (permissions) of the user's home folder.
+
+Template: rlx-user/umask
+Type: string
+Default: 0007
+Description: umask:
+ Enter the umask value for user.

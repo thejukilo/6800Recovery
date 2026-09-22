@@ -1,0 +1,17 @@
+{
+  "creator": {
+    "specVersion": "1.0.0",
+    "rudi": "GTIN^07613336206355^10001",
+    "creationDate": "2026-09-22T07:26:22.0964633Z"
+  },
+  "device": {
+    "rudi": "GTIN^07613336206355^10001",
+    "configurationItems": [
+      {
+        "version": "2.0.0.1348808",
+        "name": "SW.2.0.0.1348808",
+        "category": "SystemSoftware"
+      }
+    ]
+  }
+}

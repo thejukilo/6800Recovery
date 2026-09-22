@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6E4A31C7C35B9CB6D63F63BE8346DB917476BF4FEABA" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="HeatingStationFunctionalCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pLowTargetTemperature" Type="Integer">
+          <data:Description>
+            <base:Title>Target Temperature for The Low Regulation.</base:Title>
+          </data:Description>
+          <data:Value>40</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pHighTargetTemperature" Type="Integer">
+          <data:Description>
+            <base:Title>Target Temperature for The High Regulation.</base:Title>
+          </data:Description>
+          <data:Value>90</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTemperatureTolerance" Type="Integer">
+          <data:Description>
+            <base:Title>Temperature Tolerance During Regulation.</base:Title>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rConfirmDownholderHS1" Type="Boolean">
+          <data:Description>
+            <base:Title>Downholder Confirmation Heating Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Downholder Confirmation Heating Station 1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rConfirmDownholderHS2" Type="Boolean">
+          <data:Description>
+            <base:Title>Downholder Confirmation Heating Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Downholder Confirmation Heating Station 2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1HeatedInTimeLow" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 Heated Up in Time Low Temp.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 Heated Up in Time Low Temp.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1HeatedInTimeHigh" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 Heated Up in Time High Temp.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 Heated Up in Time High Temp.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1FirstMeasurementLowValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 Low Measurement One Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 Low Measurement One Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1SecondMeasurementLowValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 Low Measurement Two Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 Low Measurement Two Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1FirstMeasurementHighValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 High Measurement One Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 High Measurement One Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1SecondMeasurementHighValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 1 High Measurement Two Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 High Measurement Two Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2HeatedInTimeLow" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 Heated Up in Time Low Temp.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 Heated Up in Time Low Temp.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2HeatedInTimeHigh" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 Heated Up in Time High Temp.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 Heated Up in Time High Temp.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2FirstMeasurementLowValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 Low Measurement One Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 Low Measurement One Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2SecondMeasurementLowValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 Low Measurement Two Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 Low Measurement Two Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2FirstMeasurementHighValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 High Measurement One Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 High Measurement One Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2SecondMeasurementHighValid" Type="Boolean">
+          <data:Description>
+            <base:Title>Heating Station 2 High Measurement Two Valid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 High Measurement Two Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1MeasuredTemperatures" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Heating Station 1 Measurements</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 1 Measurements</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rHeatingStation2MeasuredTemperatures" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Heating Station 2 Measurements</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating Station 2 Measurements</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

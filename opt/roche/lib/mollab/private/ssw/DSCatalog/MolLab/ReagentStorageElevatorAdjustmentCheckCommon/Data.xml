@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="1D3A58EA098BEB5B86DAC4C260B74FE103F8C8E399C4" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentStorageElevatorAdjustmentCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irInternalCurrentCorrectionState" Type="Integer">
+          <data:Description>
+            <base:Title>Valid Correction Value</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The entered correction value state.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="Succees" Value="0">
+              <data:Description>Succees</data:Description>
+            </data:Member>
+            <data:Member Name="BoundaryReached" Value="1">
+              <data:Description>BoundaryReached</data:Description>
+            </data:Member>
+            <data:Member Name="OutOfRangeError" Value="2">
+              <data:Description>OutOfRangeError</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rManualAdjustmentDone">
+          <data:Description>
+            <base:Title>Reagent Storage Is Adjusted Manually.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent Storage Is Adjusted Manually.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInternalCurrentCorrection" Type="Integer" Unit="1/10 mm">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rFinalCorrection" Type="Integer" Unit="1/10 mm">
+          <data:Description>
+            <base:Title>No Validation. the Final Correction in 1/10 Mm.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>No Validation. the Final Correction in 1/10 Mm.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rVerifyTeach">
+          <data:Description>
+            <base:Title>Verify If the Gap Is Now Saved.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify If the Gap Is Now Saved.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5AD6E870F1DE56CCD6238E204E0C70EC7F2B2EDC575A" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsWorkflow.xsd">
+  <ds:TestFunction Name="BarcodeScannerAdjustmentCommon" ID="BarcodeScannerAdjustmentCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="GetImageAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Get Image</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+              <base:Paragraph>The barcode scanner takes a picture and saves it.</base:Paragraph>
+              <base:Paragraph>[R.irWarningTextJadak] </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AdjustmentDecision" Type="Confirm" Result="rInternalDecision">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please compare the reference picture shown above with the picture taken by the camera: Navigate to the service images tab in the File Explorer, and open the latest Barcode Scanner Adjustment picture. Afterwards, return to Service Software. For correct adjustment: </base:Paragraph>
+              <base:Paragraph>The horizontal red line should be on the upper edge of the white square.
+                The vertical red line should be in the middle of the white square and aligned with the tube rotator.</base:Paragraph>
+              <base:Paragraph>Is the scanner aligned as described?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BarcodeScannerAdjustment.jpg" Hash="563F926F1E92D8A90E76A2885ABDC6D3B8DB7820" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rInternalDecision" NextStep="PostProcessing">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Adjustment" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjustment</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please adjust the barcode scanner mechanically in accordance with the service documentation.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' when the adjustment is done</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rInternalDecision" NextStep="GetImageAction">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PostProcessing">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjustment</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The images are being deleted.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

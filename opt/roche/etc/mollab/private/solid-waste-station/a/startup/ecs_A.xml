@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-solidwastestation">
+      <CSMConfigureParameters>
+        <System RealtimePriority="55" MiddlewarePriority="80" TraceLevel="7" Verbose="false" />
+        <CSMSpecific ModuleID="303" ProviderSocket="/opt/CSM_303.sock">
+          <CDIDefinition SwitchName="DownholderProcessPark1-cdi" DeviceName="PCA_ProcessTransfer_Downholder1" />
+          <CDIDefinition SwitchName="DownholderProcessPark2-cdi" DeviceName="PCA_ProcessTransfer_Downholder2" />
+          <CDIDefinition SwitchName="ConsumableWasteMotorNew-cdi" DeviceName="PCA_PlateHandler_2_MotorY_Waste_New" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/settings/config/consumablewaste-parampool.xml" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/consumablewaste-motionconfig.xml" />
+          <CommandLineSwitch SwitchName="--StationId" Value="A" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.solidwastestation.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.solidwastestation.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.solidwastestation.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.solidwastestation.a.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

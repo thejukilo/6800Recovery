@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+  xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_BulkWashWasteDrawer" seid="181" moduleId="329">
+      <parPool type="uint8" structure="array" noElements="100" id="100" name="ConfigData_1" defaultValue="20">
+        <persistDef memoryId="3220" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint8" structure="array" noElements="100" id="101" name="ConfigData_2" defaultValue="20">
+        <persistDef memoryId="3220" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="200" name="OpCountContainerUnlockingBD" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2118" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="201" name="OpCountRFIDAccessBD" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2118" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="202" name="OpCountDrawerEjectionsBD" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2118" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="203" name="OpCountContainerUnlockingWB" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2120" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="204" name="OpCountRFIDAccessWB" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2120" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="205" name="OpCountContainerUnlockingLW" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2120" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="206" name="OpCountDrawerEjectionsWWD" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2120" periodInSec="14400" />
+      </parPool>
+      <parPool type="bool" structure="array" noElements="3" id="300" name="MaxFillLevelDetected" defaultValue="0" minValue="0"
+        maxValue="1">
+        <persistDef memoryId="2120" periodInSec="-1" />
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

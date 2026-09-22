@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="C9067156950E915B957CF962E20FC7EF3B584E6E6681" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ResetReagentTransferHeadCorrectionFactorsCommon" ID="ResetReagentTransferHeadCorrectionFactorsCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initialitzing...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChannelSelection" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Channel Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Information:</base:Paragraph>
+              <base:Paragraph>A reset of 1-factor correction factor and 3-factor correction factors (volume-dependent factors) shall only be executed after a micro gear pump replacement, as instructed by service documentation or the global support desk.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Select all the channels where the correction factors shall be reset.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Microgear_identification.jpg" Hash="A5EDD27A264A77B7A73089F2B543E57485209761" />
+          <workflow:Input Result="irChannelASelected">
+            <workflow:Description>Reset channel A correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelBSelected">
+            <workflow:Description>Reset channel B correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelCSelected">
+            <workflow:Description>Reset channel C correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelDSelected">
+            <workflow:Description>Reset channel D correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelESelected">
+            <workflow:Description>Reset channel E correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelFSelected">
+            <workflow:Description>Reset channel F correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelGSelected">
+            <workflow:Description>Reset channel G correction factors</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irChannelHSelected">
+            <workflow:Description>Reset channel H correction factors</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChannelSelectionConversion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Channel Selection Conversion</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Converting channel selection...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAnyChannelSelected" NextStep="ChannelSelection">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ChannelSelectionConfirmation" Type="Confirm" Result="irChannelSelectionConfirmation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Channel Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Selected reagent transfer head channel(s): [R.irSelectedChannels].</base:Paragraph>
+              <base:Paragraph>Please confirm the selection.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmationEvaluation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirmation Evaluation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking channel confirmation...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irChannelSelectionConfirmation" NextStep="ChannelSelection">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="NotSelectedChannelEvaluation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Channel Evaluation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Evaluating selected channels...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ResetFactors">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reset Factors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the correction factors are being reset...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

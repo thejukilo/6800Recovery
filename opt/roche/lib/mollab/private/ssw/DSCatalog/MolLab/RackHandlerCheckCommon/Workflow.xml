@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="0729DE6D6CFAA62E1131A8BF87247FDB4A9D08126E83" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="RackHandlerCheckCommon" ID="RackHandlerCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irBypassSSM" NextStep="LoadRackWithoutSampleSource">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadRackWithSampleSource" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Loading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure that the sample supply module is initialized.</base:Paragraph>
+              <base:Paragraph>Load the 5-position rack without stabilizers (MPA rack) containing five sample tubes on the input buffer and wait until the rack has reached the input line position before pressing 'Next'.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="RackHandlerCheck_sInsertFivePositionRackWithoutStabilizers1.jpg" Hash="84966BC2255E89C45308F88BD23B906003CBD723" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="LoadRack1" />
+      </ds:Step>
+      <ds:Step Name="LoadRackWithoutSampleSource" Type="Next">
+        <!-- Step2 - Alternative-Flow (1): Loading without SSM present (OPS mode) -->
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Loading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load a 5-position rack without stabilizers (MPA rack) containing five sample tubes on the rack handler input.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="LoadRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Loading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="FivePositionRackWithoutStabilizersToAllPositionsMovement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Move</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irInternalLoopCount" NextStep="FivePositionRackWithoutStabilizersToAllPositionsMovement">
+            <workflow:Condition Operator="GT" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision Result="irInternalLoopCount" NextStep="FivePositionRackWithoutStabilizersToOutput">
+            <workflow:Condition Operator="LE" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="FivePositionRackWithoutStabilizersToOutput">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack To Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irBypassSSM" NextStep="FivePositionRackWithoutStabilizersRemoveFromRackHandlerTray">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="FivePositionRackWithoutStabilizersRemoveFromSampleSource" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Rack From Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place an empty tray in the output tray buffer and press the output buffer button on the SSM.</base:Paragraph>
+              <base:Paragraph>Press 'Next' once the tray is in position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="RackHandlerCheck_sFivePositionRackWithoutStabilizersRemoveFromOutput.jpg" Hash="0CC05034E3CF477EC6E13C1BEE541024D46DE6B5" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="EnterBarcode" />
+        <!-- Note: The next step is bypassed as it will apply only to Alternative-Path 2 (no SSM Present) -->
+      </ds:Step>
+      <ds:Step Name="FivePositionRackWithoutStabilizersRemoveFromRackHandlerTray" Type="Next">
+        <!-- Step6 - Alternative-Flow (2): Unloading without SSM present (OPS mode) -->
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Rack From Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the 5-positon rack without stabilizers from the rack handler output, and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EnterBarcode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enter Rack and Tube Barcodes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Enter the rack barcode ID and the barcode IDs of the 5 inserted tubes.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>IMPORTANT: The camera is case sensitive. Please enter the letter as written on tube barcodes.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="RackHandlerCheck_sEnterBarcode.jpg" Hash="1EC193AC2AFF69307EB287DBC6BF0D4E5553E6C7" />
+          <workflow:Input Result="irRackBarcodeUser">
+            <workflow:Description>The rack barcode ID</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irTube1BarcodeUser">
+            <workflow:Description>Last four digits of the Tube-1's barcode</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irTube2BarcodeUser">
+            <workflow:Description>Last four digits of the Tube-2's barcode</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irTube3BarcodeUser">
+            <workflow:Description>Last four digits of the Tube-3's barcode</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irTube4BarcodeUser">
+            <workflow:Description>Last four digits of the Tube-4's barcode</workflow:Description>
+          </workflow:Input>
+          <workflow:Input Result="irTube5BarcodeUser">
+            <workflow:Description>Last four digits of the Tube-5's barcode</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irBypassSSM" NextStep="LoadRack2WithoutSampleSource">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadRack2WithSampleSource" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load The Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reload the rack containing the five sample tubes on the input buffer and wait until the rack has been forwarded to the input rail.</base:Paragraph>
+              <base:Paragraph>Ensure that all sample barcodes are facing the back of the rack (tubes need to be turned by the tube rotator).</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="RackHandlerCheck_sInsertFivePositionRackWithoutStabilizers2.jpg" Hash="9F5A92493112AF5ED921C7DCCA20E3D798316CCE" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="LoadRack2" />
+      </ds:Step>
+      <ds:Step Name="LoadRack2WithoutSampleSource" Type="Next">
+        <!-- Step8 - Alternative-Flow (3): Loading without SSM present (OPS mode) -->
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load The Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reload the rack containing the five sample tubes on the rack handler input.</base:Paragraph>
+              <base:Paragraph>Ensure that all sample barcodes are facing the back of the rack (tubes need to be turned by the tube rotator).</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Loading And Tube Reading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FivePositionRackWithoutStabilizersToErrorOut">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack To Error Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irBypassSSM" NextStep="UserUnloadWithoutSampleSource">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UserUnloadWithSampleSource" Type="Confirm" Result="rIsRackUnloaded">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Unload</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The rack is transferred to the error line.</base:Paragraph>
+              <base:Paragraph>Please remove the rack from the sample supply module error line and press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Is the rack unloaded?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="Complete" />
+      </ds:Step>
+      <ds:Step Name="UserUnloadWithoutSampleSource" Type="Next">
+        <!-- Step12 - Alternative-Flow (4): Unloading without SSM present (OPS mode) -->
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rack Unload</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The 5-position rack without stabilizers (MPA rack) is transferred to the rack handler error output.</base:Paragraph>
+              <base:Paragraph>Please remove the rack from the rack handler error output and press 'Next' to continue</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Complete">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Complete</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Completing the check, please wait....</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

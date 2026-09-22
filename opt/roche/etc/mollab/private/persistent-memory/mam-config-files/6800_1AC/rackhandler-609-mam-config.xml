@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_RackHandler" seid="178" moduleId="609">
+      <dataPool type="enum" structure="scalar" id="26" name="LastUsedBuffer" defaultValue="0">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="bool" structure="scalar" id="32" name="RackOnOutConveyorPresent" defaultValue="false">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="bool" structure="scalar" id="33" name="RackOnErrorOutConveyorPresent" defaultValue="false">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="bool" structure="scalar" id="34" name="RackLeftOutConveyorNotTakenBySSC" defaultValue="false">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="bool" structure="scalar" id="35" name="RackLeftErrorOutConveyorNotTakenBySSC" defaultValue="false">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </dataPool>
+      <parPool type="uint8" structure="array" noElements="100" id="12" name="ConfigData_1" defaultValue="0" minValue="0" maxValue="0xFF">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="13" name="OpCountInitSpring" defaultValue="0" minValue="0" maxValue="0xFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <!-- Always remains 0 since it is never initialized!! The motor is not part of the InitFlow! -->
+      <parPool type="uint16" structure="scalar" id="14" name="OpCountInitTubeRotator" defaultValue="0" minValue="0" maxValue="0xFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="15" name="OpCountInitGripper" defaultValue="0" minValue="0" maxValue="0xFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="16" name="OpCountInitConveyor" defaultValue="0" minValue="0" maxValue="0xFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="17" name="OpCountMoveSpring" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="18" name="OpCountMoveTubeRotator" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="19" name="OpCountMoveGripper" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="20" name="OpCountMoveConveyor" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2018" periodInSec="14400"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

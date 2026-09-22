@@ -1,0 +1,7 @@
+pam_fsr.so.1 libpam-fsr #MINVER#
+ LIBFSRPAM_0.1.0@LIBFSRPAM_0.1.0 1.5.0.2.rlx1
+ pam_sm_acct_mgmt@LIBFSRPAM_0.1.0 1.5.0.2.rlx1
+ pam_sm_authenticate@LIBFSRPAM_0.1.0 1.5.0.2.rlx1
+ pam_sm_close_session@LIBFSRPAM_0.1.0 1.5.0.2.rlx1
+ pam_sm_open_session@LIBFSRPAM_0.1.0 1.5.0.2.rlx1
+ pam_sm_setcred@LIBFSRPAM_0.1.0 1.5.0.2.rlx1

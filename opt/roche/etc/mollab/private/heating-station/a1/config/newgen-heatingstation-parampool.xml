@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="RegulatorPGain" Value="1.5,1.0" Type="double" Array="true" Description="The proportional gain of the temperature regulator." />
+  <ParameterPoolEntry ID="2" Name="RegulatorIGain" Value="0.5,0.5" Type="double" Array="true" Description="The integral gain of the temperature regulator." />
+  <ParameterPoolEntry ID="3" Name="RegulatorDGain" Value="2.5,2.5" Type="double" Array="true" Description="The differential gain of the temperature regulator." />
+  <ParameterPoolEntry ID="4" Name="RegulatorISaturation" Value="3.0,2.0" Type="double" Array="true" Description="The saturation of the integral part of the regulator." />
+  <ParameterPoolEntry ID="5" Name="RegulatorCycleTime" Value="2.0,2.0" Type="double" Array="true" Description="The cycle time of the temperature regulator" />
+  <ParameterPoolEntry ID="15" Name="TempMaxCurrent" Value="3.5,4.0" Type="double" Array="true" Description="The maximum current for the heating circuit (upper limit for the current regulator)." />
+  <ParameterPoolEntry ID="16" Name="DownholderPositions" Value="-38.0,65.0" Type="int32" Array="true" Description="The two positions of the downholder (hold (1) and released (0) position) in encoder increments" />
+  <ParameterPoolEntry ID="17" Name="ZPositions" Value="-90,90" Type="double" Array="true" Description="The 2 Z positions defined in ° (angle)" />
+  <ParameterPoolEntry ID="20" Name="EnableFanMonitoring" Value="1" Type="bool" Array="false" Description="Enable oder Disable the Fan Monitoring" />
+</ModuleConfiguration>
+

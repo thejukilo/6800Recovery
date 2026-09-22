@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="9C325A002EA966A7AFF20FDE408A6B77C94355DA7C65" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentStorageCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxTempDiff" Type="Double" Unit="°C">
+          <data:Description>
+            <base:Title>The maximum difference allowed between the temperature displayed and the one measured.</base:Title>
+          </data:Description>
+          <data:Value>1.0</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irOpenDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Open Drawer to Be Closed.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open Drawer to Be Closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleReagent">
+          <data:Description>
+            <base:Title>Reagent Handling Is Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent Handling is OK.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleRMC">
+          <data:Description>
+            <base:Title>Rmc Handling Is Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>RMC Handling is OK.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rRFIDofRMC">
+          <data:Description>
+            <base:Title>Rfid of Rmc Is Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>RFID of RMC is OK.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rRFIDofReagent">
+          <data:Description>
+            <base:Title>Rfid of Reagent Is Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>RFID of reagent is OK.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rTempManual">
+          <data:Description>
+            <base:Title>Temperature on Display</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature displayed on the backside of the reagent storage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rTempRead">
+          <data:Description>
+            <base:Title>Temperature Read</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature read by the software.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rLoadSuccessful">
+          <data:Description>
+            <base:Title>Load of Reagents Was Successfully Read</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If the load of the reagents was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irCassetteRemovedDuringLoading">
+          <data:Description>
+            <base:Title>irCassetteRemovedDuringLoading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>irCassetteRemovedDuringLoading.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="False" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTempOk">
+          <data:Description>
+            <base:Title>Temperature Is Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature is OK.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

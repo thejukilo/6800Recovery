@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B4BDE798C4A6BF43BBD8F7E316E3B42517D83B9BE3E2" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentStorageElevatorAdjustmentCheckCommon" ID="TRQ527231">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Precondition" NextState="true" Type="Confirm" Result="rManualAdjustmentDone">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Precondition</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The reagent storage has to be adjusted according to service documentation.</base:Paragraph>
+              <base:Paragraph>Has the reagent storage been manually adjusted correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rManualAdjustmentDone" NextStep="Completed">
+            <workflow:Condition Operator="NE" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="InitAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AdjustElevatorInstruction" Type="Next">
+        <workflow:GUI InputValidation="true">
+          <workflow:Description>
+            <base:Title>Adjust Elevator</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>This step has to be repeated until the reagent storage elevator is correctly adjusted in Y direction.</base:Paragraph>
+              <base:Paragraph>-</base:Paragraph>
+              <base:Paragraph>To exit the adjustment process enter a zero (0).</base:Paragraph>
+              <base:Paragraph>The new entered value will be stored in the reagent storage.</base:Paragraph>
+              <base:Paragraph>-</base:Paragraph>
+              <base:Paragraph>Please place the adjustment tool onto the reagent storage elevator and compare the gaps in front and back of the tool.</base:Paragraph>
+              <base:Paragraph>If the gap in the front of the adjustment tool is bigger, enter a negative correction value. (-1 = -0.1mm). The adjustment will be done towards the front of the instrument.</base:Paragraph>
+              <base:Paragraph>If the gap in the back of the adjustment tool is bigger, enter a positive correction value. (+1 = +0.1mm). The adjustment will be done towards the back of the instrument.</base:Paragraph>
+              <base:Paragraph>-</base:Paragraph>
+              <base:Paragraph>Remove the adjustment tool, enter the value below and then press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph>Caution: If adjustment tool is not removed before pressing 'Next', a collision may occur.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ReagentStorageElevatorAdjustment_ToolPlacement.jpg" Hash="B7BB9B9DB87BFE31058555A0403DFB465F0AC503" />
+          <workflow:Input Result="rInternalCurrentCorrection">
+            <workflow:Description>Correction value</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AdjustElevator">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjusting Elevator</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the elevator is being adjusted.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irInternalCurrentCorrectionState" NextStep="CorrectionValueBoundaryReached">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+          <workflow:Decision Result="irInternalCurrentCorrectionState" NextStep="CorrectionValueOutOfRangeError">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+          <workflow:Decision Result="rInternalCurrentCorrection" NextStep="AdjustElevatorInstruction">
+            <workflow:Condition Operator="NE" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision Result="rInternalCurrentCorrection" NextStep="MoveElevator">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CorrectionValueOutOfRangeError" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjusting Elevator Failed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The entered correction value: [R.rInternalCurrentCorrection] was out of range.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to enter another value.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="AdjustElevatorInstruction" />
+      </ds:Step>
+      <ds:Step Name="CorrectionValueBoundaryReached" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjusting Elevator Failed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The entered correction value: [R.rInternalCurrentCorrection] exceeds the maximum negative mechanical distance.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to enter another value.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="AdjustElevatorInstruction" />
+      </ds:Step>
+      <ds:Step Name="MoveElevator">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move Elevator</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Move the elevator to the Rfid reading position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTeach" Type="Confirm" Result="rVerifyTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjustment Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the adjustment tool and confirm that the position is centered.</base:Paragraph>
+              <base:Paragraph>Caution: Please remove the adjustment tool before pressing 'Next' to continue.
+              </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

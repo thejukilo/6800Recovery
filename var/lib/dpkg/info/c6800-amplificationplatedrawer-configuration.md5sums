@@ -1,0 +1,11 @@
+17b43de8b49057cb27714d6cd63bbd3e  opt/roche/etc/mollab/private/amplification-plate-drawer/config/amplificationplatedrawer-motion-config.xml
+91838b50f5b8bd5c56e12a9c7b6080a0  opt/roche/etc/mollab/private/amplification-plate-drawer/config/amplificationplatedrawer-parampool-config.xml
+2a735f10484946ab56d8b47dbd89e1c1  opt/roche/etc/mollab/private/amplification-plate-drawer/config/amplificationplatedrawer-sms-config.xml
+c16140a77c3ee4a44ef51e045af2d560  opt/roche/etc/mollab/private/amplification-plate-drawer/startup/ecc.xml
+ca27597000289354041926267a159dc2  opt/roche/etc/mollab/private/amplification-plate-drawer/startup/ecs.xml
+d480a31f2115f5604d72e29e2ec5a0b6  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-amplificationplatedrawer-514-mam-config.xml
+7a86f095f0188327b75e67a8a99e5bac  opt/roche/etc/mollab/private/rabbitmq/definitions/amplificationplatedrawer_definition.json
+2fe239a2ed61f96b1a9944ce625245cf  opt/roche/lib/mollab/firmware/amplification-plate-drawer/fwr_00000170_ResourceHandlingController_1.04.02.0000.srec
+85f47199dad46a4dba8b40bebe426878  opt/roche/lib/mollab/firmware/amplification-plate-drawer/fwr_00000171_SMStage_2.06.02.2202.srec
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/amplification-plate-drawer/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/amplification-plate-drawer/fwr_00000604_MotionControl_2.03.03.0000.srec

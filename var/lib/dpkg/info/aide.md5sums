@@ -1,0 +1,9 @@
+c1dd2aa237696f7c8b734a08eb7f9f43  usr/bin/aide
+bee5153c803dce322fc40293db98aa61  usr/share/doc/aide/NEWS.Debian.gz
+1b653e962378242b0cd3501c4ff94a1e  usr/share/doc/aide/SECURITY.md.gz
+e9167ff5a9e733e70b1cf1237f6a2381  usr/share/doc/aide/TODO.Debian
+5a30d0338e26f338ea74128a4d2604b2  usr/share/doc/aide/changelog.Debian.gz
+238723e63c0ce7814d928e889370d925  usr/share/doc/aide/changelog.gz
+6b1b25082e1415e6f171aa78571ef6cc  usr/share/doc/aide/copyright
+a334d3f9ca13e1e39e3c9038cbe07bf0  usr/share/man/man1/aide.1.gz
+7386cbeba080cc84fa321b4541a6a79f  usr/share/man/man5/aide.conf.5.gz

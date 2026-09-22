@@ -1,0 +1,6 @@
+{
+	"Device" : {
+		"SerialNo" : "%SerialNumberPlaceholder%",
+		"RoutingType" : "%RoutingTypePlaceholder%"
+	}
+}

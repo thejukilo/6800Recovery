@@ -1,0 +1,5 @@
+dcff9fbd95f9558af62ce32a91af3350  opt/roche/etc/mollab/private/instrument-state/appsettings.json
+1965872b7cab508138bc1465e446c31a  opt/roche/etc/mollab/private/instrument-state/serilog.json
+5ce486a71571cc34e44d30fa2eb41220  opt/roche/etc/mollab/private/rabbitmq/definitions/instrumentState_definition.json
+f5345b5f4ddac68f42f1806a6036a85b  usr/share/doc/c6800-instrumentstate-configuration/changelog.gz
+5edb34ef695b2b12940f4b94013633b7  usr/share/doc/c6800-instrumentstate-configuration/copyright

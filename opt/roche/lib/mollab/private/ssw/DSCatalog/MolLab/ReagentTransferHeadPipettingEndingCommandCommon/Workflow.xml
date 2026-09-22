@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6838BD3F1A2CEC2624FD947F6B6F21AD18C595FB464D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadPipettingEndingCommandCommon" ID="ReagentTransferHeadPipettingEndingCommandCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="InformUserBalanceRemovalPreparation">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="InformUserBalanceRemovalPreparation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation For Removal Of The Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The onboard weighing system will be reset and disconnected. Both the reagent transfer head and processing heads will be positioned to facilitate the removal of the balance.</base:Paragraph>
+              <base:Paragraph>Caution: The heads will be moving. Press 'Next' to start.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="RemoveBalanceMovement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Positioning Reagent Transfer Head and Processing Heads</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the heads are being moved to facilitate onboard weighing system removal...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="RemoveBalance" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The onboard weighing system can now be removed. Please remember to empty the remaining fluid in the weighing boat, and press 'Next' when onboard weighing system is removed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="RemoveBalanceConfirm" Type="Confirm" Result="rIsBalanceRemoved">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Onboard Weighing System Removal Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Did you successfully remove the onboard weighing system, including onboard weighing system holder?</base:Paragraph>
+              <base:Paragraph>Please also ensure to reattach the work surface cover.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ReagentHeadPipettingEnding_sRemoveBalanceConfirm.jpg" Hash="CDE54A80CD7C7E68A07590FF0445BA3298961C1B" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="ReagentWashStationDraining">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reagent Wash Station Draining</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent wash station will be drained during this process. Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Finish" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Finish</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Finishing service check...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

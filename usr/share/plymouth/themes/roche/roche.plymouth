@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Roche
+Description=Roche Diagnostics RLX bootsplash script
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/roche
+ScriptFile=/usr/share/plymouth/themes/roche/roche.script

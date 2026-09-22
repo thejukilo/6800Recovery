@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="C7DA7BC2B562DA8038BE1388F68814BCC050593BE188" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AmplificationPlateHandlerTeachCommon" ID="AmplificationPlateHandlerTeachCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching the amplification plate drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachTransferPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching the amplification plate transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TeachUnits">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching the analytic unit(s).</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

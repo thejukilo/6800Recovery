@@ -1,0 +1,15 @@
+da90739e75139edfdf470b414fa9a992  lib/systemd/system/systemd-coredump.socket
+5fa35e317f84ba94bced278bf1275978  lib/systemd/system/systemd-coredump@.service
+56916860e87fa7bd72676871508e0cee  lib/systemd/systemd-coredump
+7091df974c50a48a487de857a9a83d76  usr/bin/coredumpctl
+ef5981eee63298fe11ffebf1655089c6  usr/lib/sysctl.d/50-coredump.conf
+f5d74491a2b2c5f6f216dfc9b48deecb  usr/lib/sysusers.d/systemd-coredump.conf
+4b15e61c995ca798cf6c6f3bc30e3752  usr/share/bash-completion/completions/coredumpctl
+6eb135b4151ac6d07c1600ef3beafcd4  usr/share/doc/systemd-coredump/NEWS.Debian.gz
+b2189ad01256e961e08307d300f2dac6  usr/share/doc/systemd-coredump/changelog.Debian.gz
+b16a86fb841b001b52a5c5caccf526c2  usr/share/doc/systemd-coredump/copyright
+134d849b48cf88bea461444d55c05ad7  usr/share/lintian/overrides/systemd-coredump
+53ddcdb1e2d527c4f3671cc714fed549  usr/share/man/man1/coredumpctl.1.gz
+f0e442ca8b0ad079855c39b5009c78b9  usr/share/man/man5/coredump.conf.5.gz
+9ed6aae46dd1b75a3ad8c75d740396f0  usr/share/man/man8/systemd-coredump.8.gz
+43d98ecd1977381b513f166a5abdbf25  usr/share/zsh/vendor-completions/_coredumpctl

@@ -1,0 +1,541 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.bulkmanagement.a.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.WashingNeedlesStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.NeedlesWashed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.WashingNeedlesFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispenseBulkReagentToProcessingPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispensedBulkReagentToProcessingPlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispenseBulkReagentToProcessingPlateFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SelectDiluentContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SelectLysisContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SelectWashReagentContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SelectLiquidWasteContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SetContainerIndicator",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.FillWashReagentReservoir",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.EmptyWashReagentReservoir",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DegasDiluentContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DegasLysisContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.UnlockBulkContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.PushOpenBulkDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.PullInBulkDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.PerformBulkReagentsInventory",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.TeachInternalReservoir",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.StopDrainingOrFlushing",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DrainReagentWashStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.FillInternalReservoirOverVolume",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DecrementFillLevelBulkReagent",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.OpenLiquidWasteStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.CloseLiquidWasteStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadOverflowBottleSensor",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadLiquidWasteStationPresenceSensor",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.FlushProcessWasteStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReinitializeBulkManagement",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ForcedReinitializeBulkManagement",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.UnlockWashWasteDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LockWashWasteDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.OpenWashWasteDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.GetCurrentStates",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ActivateNoRFIDMode",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DeactivateNoRFIDMode",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DegasOrDrainReservoir",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.UnlockLiquidWasteContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DisableAutomaticContainerSelection",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.EnableAutomaticContainerSelection",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DisableAutomaticDraining",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.EnableAutomaticDraining",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DecrementRemainingLiquidWasteVolume",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SwitchValve",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispensingIntoLiquidWasteStationStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispensedIntoLiquidWasteStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispensingIntoLiquidWasteStationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DispenseWashReagentToAmplificationPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.PrepareBulkManagementShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DisableBulkManagementActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SetWashReagentReservoirOverTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.StartDrainingProcessWasteStations",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadBulkManagementSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadBulkTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.SetBulkContainerVolumeToZero",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.GetCalculatedWasteFillLevels",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadLevelSensorStates",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadBulkContainerRfidData",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.bulkmanagement.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ReadPusherInitSensors",
+      "arguments": {}
+    }
+  ]
+}

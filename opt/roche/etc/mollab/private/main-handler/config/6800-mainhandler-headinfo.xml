@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HeadInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="lib_00000207_HandlingUtilities_HeadInfoConfig_0.02.02.xsd">
+  <MasterReferencePoint>2050</MasterReferencePoint>
+  <MasterTool>0</MasterTool>
+  <TeachSaveOffsetZ>0.01</TeachSaveOffsetZ>
+  <ReferencePointList>
+    <ReferencePoint>
+      <ReferencePointID>2050</ReferencePointID>
+      <!-- RefPoint_SC_StackerModule_1 -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>16</X_PreTeachID>
+      <Y_PreTeachID>17</Y_PreTeachID>
+      <Z_PreTeachID>18</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2051</ReferencePointID>
+      <!-- RefPoint_SC_StackerModule_2 -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>19</X_PreTeachID>
+      <Y_PreTeachID>20</Y_PreTeachID>
+      <Z_PreTeachID>21</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2056</ReferencePointID>
+      <!-- RefPoint_SCHandover_Left -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>22</X_PreTeachID>
+      <Y_PreTeachID>23</Y_PreTeachID>
+      <Z_PreTeachID>24</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2057</ReferencePointID>
+      <!-- RefPoint_SCHandover_Right -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>25</X_PreTeachID>
+      <Y_PreTeachID>26</Y_PreTeachID>
+      <Z_PreTeachID>27</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2054</ReferencePointID>
+      <!-- RefPoint_ReagentElevator -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>28</X_PreTeachID>
+      <Y_PreTeachID>29</Y_PreTeachID>
+      <Z_PreTeachID>30</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2052</ReferencePointID>
+      <!-- RefPoint_PC1_StackerModule_1 -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>31</X_PreTeachID>
+      <Y_PreTeachID>32</Y_PreTeachID>
+      <Z_PreTeachID>33</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2053</ReferencePointID>
+      <!-- RefPoint_PC1_StackerModule_2 -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>34</X_PreTeachID>
+      <Y_PreTeachID>35</Y_PreTeachID>
+      <Z_PreTeachID>36</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2058</ReferencePointID>
+      <!-- RefPoint_PC1Handover_Left -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>37</X_PreTeachID>
+      <Y_PreTeachID>38</Y_PreTeachID>
+      <Z_PreTeachID>39</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2059</ReferencePointID>
+      <!-- RefPoint_PC1Handover_Right -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>40</X_PreTeachID>
+      <Y_PreTeachID>41</Y_PreTeachID>
+      <Z_PreTeachID>42</Z_PreTeachID>
+    </ReferencePoint>
+    <ReferencePoint>
+      <ReferencePointID>2055</ReferencePointID>
+      <!-- RefPoint_ADTransferPosition -->
+      <ToolID>0</ToolID>
+      <X_PreTeachID>55</X_PreTeachID>
+      <Y_PreTeachID>56</Y_PreTeachID>
+      <Z_PreTeachID>57</Z_PreTeachID>
+    </ReferencePoint>
+  </ReferencePointList>
+  <TeachCycles>
+    <RefPoint_Shape Cycles="2" Type="Circular"/>
+  </TeachCycles>
+  <ToolInfoList>
+    <ToolInfo ToolID="0">
+      <ToolOffset>
+        <ToolOffset>
+          <X_Shift>0.0</X_Shift>
+          <Y_Shift>0.0</Y_Shift>
+          <Z_Shift>0.0</Z_Shift>
+        </ToolOffset>
+      </ToolOffset>
+      <ToolDimension>
+        <FrontLeftCorner>
+          <X_Position>0.0</X_Position>
+          <Y_Position>0.0</Y_Position>
+          <Z_Position>0.0</Z_Position>
+        </FrontLeftCorner>
+        <RearRightCorner>
+          <X_Position>0.0</X_Position>
+          <Y_Position>0.0</Y_Position>
+          <Z_Position>0.0</Z_Position>
+        </RearRightCorner>
+      </ToolDimension>
+      <DetectionOffset>
+        <X_Shift>0.0</X_Shift>
+        <Y_Shift>0.0305</Y_Shift>
+        <Z_Shift>-0.0155</Z_Shift>
+      </DetectionOffset>
+      <DetectionDimension>
+        <FrontLeftCorner>
+          <X_Position>0.0</X_Position>
+          <Y_Position>0.0</Y_Position>
+          <Z_Position>0.0</Z_Position>
+        </FrontLeftCorner>
+        <RearRightCorner>
+          <X_Position>0.0</X_Position>
+          <Y_Position>0.0</Y_Position>
+          <Z_Position>0.0</Z_Position>
+        </RearRightCorner>
+      </DetectionDimension>
+      <TeachConfigAxis>
+        <RelatedAxisName>MotorX</RelatedAxisName>
+        <TeachSettlingTime>0.5</TeachSettlingTime>
+        <TeachOffset>
+          <X_Shift>0.0</X_Shift>
+          <Y_Shift>0.0</Y_Shift>
+          <Z_Shift>-0.005</Z_Shift>
+        </TeachOffset>
+      </TeachConfigAxis>
+      <TeachConfigAxis>
+        <RelatedAxisName>MotorRZ</RelatedAxisName>
+        <TeachSettlingTime>0.5</TeachSettlingTime>
+        <TeachOffset>
+          <X_Shift>0.0</X_Shift>
+          <Y_Shift>0.0</Y_Shift>
+          <Z_Shift>-0.005</Z_Shift>
+        </TeachOffset>
+      </TeachConfigAxis>
+      <TeachConfigAxis>
+        <RelatedAxisName>MotorH</RelatedAxisName>
+        <TeachSettlingTime>0.5</TeachSettlingTime>
+        <TeachOffset>
+          <X_Shift>0.0</X_Shift>
+          <Y_Shift>0.0</Y_Shift>
+          <Z_Shift>-0.005</Z_Shift>
+        </TeachOffset>
+      </TeachConfigAxis>
+      <TeachConfigAxis>
+        <RelatedAxisName>MotorZ</RelatedAxisName>
+        <TeachSettlingTime>0.5</TeachSettlingTime>
+        <TeachOffset>
+          <X_Shift>0.0</X_Shift>
+          <Y_Shift>0.0</Y_Shift>
+          <Z_Shift>0.0</Z_Shift>
+        </TeachOffset>
+      </TeachConfigAxis>
+    </ToolInfo>
+  </ToolInfoList>
+</HeadInfo>

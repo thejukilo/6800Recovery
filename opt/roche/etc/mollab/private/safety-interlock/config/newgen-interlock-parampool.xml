@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <ParameterPoolEntry ID="1" Name="CommunicationTimeout"     Value="550"  Type="uint16" Array="false" Description="Communication Timeout in msec" />
+  <ParameterPoolEntry ID="6" Name="DoorMoveDelay"            Value="1200" Type="uint16" Array="false" Description="Defines the delay between the start of several doors" />
+  <ParameterPoolEntry ID="7" Name="DoorPollingDelay"         Value="200"  Type="uint16" Array="false" Description="Defines the delay the polling of the SecurityButtton/MotorState before/during a move" />
+  <ParameterPoolEntry ID="8" Name="WaitForButtonPressedTime" Value="60000" Type="uint16" Array="false" Description="Defines the max wait time the button has to be pressed (in ms)" />
+  <ParameterPoolEntry ID="9" Name="DoorLockTimeout"          Value="3000" Type="uint16" Array="false" Description="Defines the timeout when the door is closed/locked until the state in the DataPool is updated (in ms)" />
+</ModuleConfiguration>

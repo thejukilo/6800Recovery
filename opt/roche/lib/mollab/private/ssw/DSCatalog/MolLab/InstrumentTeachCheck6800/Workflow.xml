@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6B2805CE6FE5BE952F0EEAC045D188872BB2DC8D0E08" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="InstrumentTeachCheck6800" ID="[TRQ1698-2]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="CheckForTeachToolPresence">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement Step #5 -->
+      <ds:Step Name="CheckForTeachToolPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking For Teach Tools Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while teach-tool presence is detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irIsTeachToolPresent" NextStep="VerifyConsumableDrawersState">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UserInstructedToProvideTheTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Provide The Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teach tool was not found to be present on the teach tool park position in transfer module.</base:Paragraph>
+              <base:Paragraph>Please place the teach tool on the teach tool park position in the transfer module and then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Location_teach_tool_park_position.jpg" Hash="AECA0756414AB534A583E942B147C8F1703DEB72" />
+        </workflow:GUI>
+        <workflow:Flow NextStep="CheckForTeachToolPresence" />
+      </ds:Step>
+      <!-- Requirement Step #4 -->
+      <ds:Step Name="VerifyConsumableDrawersState">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Drawers State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking drawers state. Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irConsumableDrawerWasOpen" NextStep="PrepareForTeach">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UserAskedToCloseDrawers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Drawers Detected</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close open drawers: [R.irOpenDrawersFound]</base:Paragraph>
+              <base:Paragraph>Once closed, press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="VerifyConsumableDrawersState" />
+      </ds:Step>
+      <!-- Requirement Step #4, #5 and #6 -->
+      <ds:Step Name="PrepareForTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare For Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while parking handlers and opening airflow screens...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step #9 -->
+      <ds:Step Name="FirstBatchTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>First Batch Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The following actions are undertaken in parallel in this step:</base:Paragraph>
+              <base:Paragraph>- Rack Handler Teach</base:Paragraph>
+              <base:Paragraph>- Reagent Storage Teach</base:Paragraph>
+              <base:Paragraph>- Interim Reagent Storage Teach (Processing Module A)</base:Paragraph>
+              <base:Paragraph>- Main Handler Calibration</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step #9 -->
+      <ds:Step Name="PrepareForPreTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation for Pre-Teach of Procesing Transfer Head (A)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing module (A) is being prepared for processing transfer head pre-teach...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- In case of error, jump to 'MainTeachingProcessing' -->
+          <workflow:Decision Result="irErrorEncountered" NextStep="MainTeachingProcessing">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement Step #10 -->
+      <ds:Step Name="PreTeachToolInstall" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Install Pre-Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please install the pre-teach tool between the heating station 1 and the separation station 1 from the rear.</base:Paragraph>
+              <base:Paragraph>Note: The teach tool has to be screwed down using the heating station screw.</base:Paragraph>
+              <base:Paragraph>Warning: Transfer arms are already moving, be careful.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Place_pre_teach_tool.jpg" Hash="CE5F183FBFD191883A59113EE7E4AA77965F6AF4" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- In case of error, jump to 'RemovePreTeachTool' -->
+          <workflow:Decision Result="irErrorEncountered" NextStep="RemovePreTeachTool">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement Step #11 -->
+      <ds:Step Name="ProcessingModuleAProcessingTransferHeadPreTeach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Processing Transfer Head (A) Pre-Teaching</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while processing transfer head of processing module A is being pre-taught...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step #12 -->
+      <ds:Step Name="RemovePreTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Uninstall Pre-Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the pre-teach tool from the rear.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step #13 -->
+      <ds:Step Name="MainTeachingProcessing">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Instrument Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the instrument is being taught...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step #14 -->
+      <ds:Step Name="RelocationOfTeachingTool">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching Tool Reloaction To Transfer Module</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teaching tool is being moved back to transfer module's teach tool park position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- End of teaching -->
+      <ds:Step Name="TeachingComplete">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Instrument Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teach is performed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DisplayTeachingOffsetValues" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching Offset Values</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculated Y-axis offsets for the Sample Transfer Heads:</base:Paragraph>
+              <base:Paragraph>- Sample Head A: Reference Head (Always 0 mm)</base:Paragraph>
+              <base:Paragraph>- Sample Head B: [R.rYOffsetABmm] mm</base:Paragraph>
+              <base:Paragraph>- Sample Head C: [R.rYOffsetACmm] mm</base:Paragraph>
+              <base:Paragraph>- Sample Head D: [R.rYOffsetADmm] mm</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Maximum calculated Y-offset: [R.rMaxYOffsetmm] mm between Heads [R.rMaxYOffsetPair].</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Calculated X-axis and Y-axis offsets for the Processing Transfer Heads (PMA):</base:Paragraph>
+              <base:Paragraph>- Reference Head: Processing Head [R.rProcessingTransferHeadOffsetRefPipettor]</base:Paragraph>
+              <base:Paragraph>- X-offset between front and rear Head: [R.rProcessingTransferHeadXOffsetmm] mm</base:Paragraph>
+              <base:Paragraph>- Y-offset between front and rear Head: [R.rProcessingTransferHeadYOffsetmm] mm</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please consult the service documentation to check if further action is necessary given the current offset values.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Press 'Finish' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

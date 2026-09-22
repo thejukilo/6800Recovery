@@ -1,0 +1,9 @@
+Name: FSR Authentication (api config)
+Default: yes
+Priority: 999
+Auth-Type: Primary
+Auth-Initial:
+        [success=end user_unknown=ignore auth_err=die default=ignore]   pam_fsr.so -c :
+Auth:
+        [success=end user_unknown=ignore auth_err=die default=ignore]   pam_fsr.so -c :
+

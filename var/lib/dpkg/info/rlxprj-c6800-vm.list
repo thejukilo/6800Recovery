@@ -1,0 +1,12 @@
+/.
+/etc
+/etc/nftables.d
+/etc/nftables.d/output
+/etc/nftables.d/output/20_6800-im.nft
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlxprj-c6800-vm
+/usr/share/doc/rlxprj-c6800-vm/changelog.gz
+/usr/share/doc/rlxprj-c6800-vm/copyright
+/usr/share/rlxprj-c6800-vm

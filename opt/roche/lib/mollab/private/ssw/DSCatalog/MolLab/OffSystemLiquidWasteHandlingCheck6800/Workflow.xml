@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="42E5026A3516D103369B4992AA665371B30EF8D8B654" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="OffSystemLiquidWasteHandlingCheck6800" ID="OffSystemLiquidWasteHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the module is initializing ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmOffSystemLiquidWasteUpgradeInstalled" Type="Confirm" Result="irHasOffSystemLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm upgrade installed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirm that the off-system liquid waste upgrade was installed and that the end of the tube S48 is placed in an empty liquid waste container to collect the used liquids.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="EmptyLiquidWasteContainer_S48.jpg" Hash="154B4EC3DA8E5CF165BFD51ECE9FA6D70BE06E98" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="Cleanup" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenBulkDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open bulk drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait until the bulk reagent drawer is pushed out before opening the drawer manually and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadDiluentContainer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load diluent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pull up aspiration arm of diluent container 1.</base:Paragraph>
+              <base:Paragraph>Load a diluent bottle filled with deionized water on the diluent position 1 of the bulk drawer of the processing module and close the aspiration arm.</base:Paragraph>
+              <base:Paragraph>Do not close the bulk drawer of the processing module and press ‘Next’ to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWasteDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open waste drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait for the click sound before opening the wash/waste drawer manually and pull out the liquid waste drawer and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadWasteContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load 3 empty liquid waste containers and close the dispense caps.</base:Paragraph>
+              <base:Paragraph>Do not close the wash/waste drawer of the processing module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferDiluent1ToContainerInformation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer diluent to container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>840 ml will be transferred from diluent position 1 to the container which is placed at the end of the tubing S48 (via S15 - S18 - S22 - Degasing Pump - S23 - S44 - check valve - S48).</base:Paragraph>
+              <base:Paragraph>Press ‘Next’ to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="OffSystemLiquidWaste_FluidicPath_6800.jpg" Hash="94BF3D38DDC01353ACBE471DADBB3DAD734A8D10" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferringDiluent1ToContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring diluent to container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring 840 ml from diluent position 1 to the container which is placed at the end of the tubing S48 (via S15 - S18 - S22 - Degasing Pump - S23 - S44 - check valve - S48).</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking the dispense caps of liquid waste positions 1, 2 and 3 and the aspiration arm of diluent position 1.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTransfer" Type="Confirm" Result="rTransferSuccessful">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that liquid was transferred through the off-system liquid waste tubing of the processing module to the liquid waste container at the end of the tube S48.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Unload the 3 liquid waste containers, verify that no liquid was transferred to liquid waste containers 1 and 2 and 3, and load the empty liquid waste containers and close the dispense caps.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Unload the diluent bottle from diluent position 1 and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="VerifyTightness" Result="rTransferSuccessful">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="DegassingInformation" Result="rTransferSuccessful">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="VerifyTightness" Type="Confirm" Result="rTightnessSuccessful">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify tightness</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Visually check the tightness of:</base:Paragraph>
+              <base:Paragraph>- Valve block 3</base:Paragraph>
+              <base:Paragraph>- Tube S44 connection to valve block 3.</base:Paragraph>
+              <base:Paragraph>- Tube S44 connection to check valve located in the lower part of the transfer module.</base:Paragraph>
+              <base:Paragraph>- Tube S48 connection to check valve located in the lower part of the transfer module.</base:Paragraph>
+              <base:Paragraph>Please confirm the visual tightness.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="OffSystemLiquidWaste_CheckTightness_6800.jpg" Hash="9FB6C0B0594076D98D22F1F640A031BA8F140221" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="RetightenConnectionsInformation" Result="rTightnessSuccessful">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CloseDrawers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close bulk and waste drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the lysis/diluent drawer and wash/waste drawer and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="DegassingInformation" />
+      </ds:Step>
+      <ds:Step Name="RetightenConnectionsInformation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Retighten connections</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Retighten the identified untight connections and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DegassingInformation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer air to container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>1680 ml air will be transferred from diluent position 1 via the degassing pump to the container at the end of the S48 tube to dry the tubing (via S15 - S18 - S22 - Degasing Pump - S23 - S44 - check valve - S48), which will take approximately 328 seconds when 'Next' is pressed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="OffSystemLiquidWaste_FluidicPath_6800.jpg" Hash="94BF3D38DDC01353ACBE471DADBB3DAD734A8D10" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Degassing">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring air to container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring 1680 ml air from diluent position 1 via the degassing pump to the container at the end of the S48 tube to dry the tubing (via S15 - S18 - S22 - Degasing Pump - S23 - S44 - check valve - S48), which will take approximately 328 seconds.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

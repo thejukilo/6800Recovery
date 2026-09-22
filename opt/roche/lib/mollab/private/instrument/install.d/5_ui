@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# generate certificate material for secure communication between UI, UiApi and other system components
+#
+# overview of the generated material:
+#
+# x800-certificate-key.pem   A single unencrypted RSA private key with strength 2048.
+# x800-CA.pem                A single self-signed certificate.
+# x800-certificate.pem       A certificate chain consisting of 2 certificates.
+#                            The first certificate in the file is signed by the certificate x800-CA.pem.
+#                            The second certificate in the file is identical to x800-CA.pem.
+# x800-certificate.p12       A PKCS#12 archive file containing 1 certificate and 1 key, encrypted with an empty-string password.
+#                            The certificate is identical to the first certificate in x800-certificate.pem.
+#                            The key is identical to the key in x800-certificate-key.pem.
+
+# Parameters
+RSA_KEY_LENGTH="2048"
+CERTIFICATE_VALIDITY_IN_DAYS="36500"
+CA_CERT_SUBJECT="/CN=x800Deb/ST=Zug/C=CH/emailAddress=riku.malminiemi@roche.com/O=Roche Diagnostics/OU=RMD"
+CERT_SUBJECT="/CN=localhost/ST=Zug/C=CH/emailAddress=riku.malminiemi@roche.com/O=Roche Diagnostics/OU=RMD"
+CERT_SUBJECT_ALT_NAME="DNS:localhost"
+CERT_KEY_USAGE="digitalSignature,nonRepudiation,keyEncipherment"
+
+# Certificate material files
+CERTIFICATE_MATERIAL_PATH="/opt/roche/var/lib/mollab/shared/certificates"
+PRIVATE_KEY_PATH="$CERTIFICATE_MATERIAL_PATH/x800-certificate-key.pem"
+CA_CERT_PATH="$CERTIFICATE_MATERIAL_PATH/x800-CA.pem"
+CERT_CHAIN_PATH="$CERTIFICATE_MATERIAL_PATH/x800-certificate.pem"
+PKCS12_PATH="$CERTIFICATE_MATERIAL_PATH/x800-certificate.p12"
+
+# Temporary files
+TMP_PATH="/opt/roche/var/lib/mollab/private/ui/tmp"
+CSR_PATH="$TMP_PATH/x800-certificate.csr"
+CERT_PATH="$TMP_PATH/x800-certificate.crt"
+OPENSSL_EXTFILE_PATH="$TMP_PATH/openssl.cnf"
+
+echo "Begin generating certificate material ..."
+
+echo "Generating RSA private key ..."
+openssl genrsa -out "$PRIVATE_KEY_PATH" "$RSA_KEY_LENGTH"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+
+echo "Generating CA self-signed certificate ..."
+openssl req -new -x509 -days "$CERTIFICATE_VALIDITY_IN_DAYS" -key "$PRIVATE_KEY_PATH" -out "$CA_CERT_PATH" -subj "$CA_CERT_SUBJECT"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+
+echo "Generating certificate chain, part 1: create CSR ..."
+openssl req -new -key "$PRIVATE_KEY_PATH" -out "$CSR_PATH" -subj "$CERT_SUBJECT"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+echo "Generating certificate chain, part 2: create certificate ..."
+# See "man x509" and "man x509v3_config" for details about the structure of the extensions file.
+# Very important is subjectAltName: This must be present and have as value the hostname used for the HTTP requests.
+cat << EOF >"$OPENSSL_EXTFILE_PATH"
+basicConstraints=CA:FALSE
+keyUsage=$CERT_KEY_USAGE
+subjectAltName=$CERT_SUBJECT_ALT_NAME
+EOF
+openssl x509 -req -in "$CSR_PATH" -days "$CERTIFICATE_VALIDITY_IN_DAYS" -CA "$CA_CERT_PATH" -CAkey "$PRIVATE_KEY_PATH" -set_serial 1 -extfile "$OPENSSL_EXTFILE_PATH" -out "$CERT_PATH"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+echo "Generating certificate chain, part 3: stitching chain file ..."
+cat "$CERT_PATH" "$CA_CERT_PATH" >"$CERT_CHAIN_PATH"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+
+# The "-passout pass:" parameter uses an empty-string password to encrypt the PKCS#12 content.
+# To generate the PKCS12 file without any encryption at all add the following parameters to the command below
+#   -keypbe NONE -certpbe NONE
+# This tells openssl to use the cipher "NONE" for encrypting the key/certificate material. The empty-string password
+# is thus simply ignored.
+echo "Generating PKCS#12 archive ..."
+openssl pkcs12 -export -in "$CERT_PATH" -inkey "$PRIVATE_KEY_PATH" -out "$PKCS12_PATH" -passout pass:
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+
+echo "Cleaning up temporary files"
+rm "$CSR_PATH" "$CERT_PATH" "$OPENSSL_EXTFILE_PATH"
+if test $? -ne 0; then echo "Failed"; exit 1; fi
+
+echo "All certificate material generated successfully"
+exit 0

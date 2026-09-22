@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case "${MolLab_InstrumentType:?}" in
+    6800*)
+        InstrumentType="6800"
+        ;;
+    *)
+        InstrumentType="$MolLab_InstrumentType"
+        ;;
+esac
+
+echo "Updating NI Bridge configuration..."
+sed \
+  -e "s/INSTRUMENT_SERIAL_NUMBER/${MolLab_SerialNumber:?}/" \
+  -e "s/INSTRUMENT_TYPE/${InstrumentType}/" \
+  -e "s/INSTRUMENT_NAME/${MolLab_SerialNumber:?}/" \
+  -e "s/INSTRUMENT_REF/0/" \
+  -e "s/INSTRUMENT_GTIN/${MolLab_Gtin:?}/" \
+  -i /opt/roche/var/lib/mollab/private/ni-bridge/config.yaml

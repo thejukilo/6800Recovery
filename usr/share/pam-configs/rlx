@@ -1,0 +1,8 @@
+Name: RLX
+Default: yes
+Priority: 330
+
+Session-Type: Additional
+Session:
+	required	pam_limits.so
+	optional	pam_umask.so

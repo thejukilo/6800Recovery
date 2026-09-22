@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="AD1F04A88D5BFF029570C0A676C9039DF1830DA8DA7A" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="BarcodeScannerCalibrationCommon" ID="BarcodeScannerCalibrationCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irWithSampleSupply" NextStep="LoadCalibrationRackWithoutSampleSupply">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadCalibrationRackWithSampleSupply" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Calibration Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load the calibration rack via the sample supply module and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BarcodeScannerCalibration_LoadCalibRackWithSampleSource.jpg" Hash="9652C3C503DF57533738BA7130246725D07AE4BF" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irWithSampleSupply" NextStep="Calibration">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadCalibrationRackWithoutSampleSupply" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Calibration Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load the calibration rack in the sample transport unit.</base:Paragraph>
+              <base:Paragraph>Press "Next" when the calibration rack is loaded.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4: execute barcode scanner calibration -->
+      <ds:Step Name="Calibration">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Barcode Scanner Calibration</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running. This step can take as much as 10 minutes depending on the installed camera.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Warning: Please do NOT soft-restart the instrument before the image acquisition is complete, as it can cause the camera and consequently rack handler unit to get in a permanent error state.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irWithSampleSupply" NextStep="RemoveCalibrationRackWithoutSampleSupply">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveCalibrationRackWithSampleSupply" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Calibration Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the calibration rack from the sample supply module by pressing the output tray button.</base:Paragraph>
+              <base:Paragraph>An empty output tray has to be placed in the sample supply module. Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="BarcodeScannerCalibration_sCalibrateRackRemoveFromOutput.jpg" Hash="0CC05034E3CF477EC6E13C1BEE541024D46DE6B5" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irWithSampleSupply" NextStep="EvaluateCameraType">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveCalibrationRackWithoutSampleSupply" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the calibration rack from the rack handler output and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EvaluateCameraType">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluate Camera Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking camera type to determine calibration instructions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irIsCognex" NextStep="EvaluateCalibrationSuccessfulCognex">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EvaluateCalibrationSuccessfulJadak" Type="Confirm" Result="rCalibrationSuccessful">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluate Calibration Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please compare the reference picture shown above with the picture taken by the Jadak camera: Navigate to the service images tab in the File Explorer, and open the latest Barcode Scanner Calibration picture.</base:Paragraph>
+              <base:Paragraph>Afterwards, return to Service Software. For correct adjustment:</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>- Make sure that the upper part of the calibration rack (indicated in red) covers the space between the grey vertical lines.</base:Paragraph>
+              <base:Paragraph>- Crosscheck that the white background is centered (Distance A must be as equal as possible).</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Does the picture meet the required criteria?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Calibration_Jadak.jpg" Hash="27B1D08BA5D43E8AAD37AC2B4A756B6330134DE1" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rCalibrationSuccessful" NextStep="Finish">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="rCalibrationSuccessful" NextStep="Adjustment">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EvaluateCalibrationSuccessfulCognex" Type="Confirm" Result="rCalibrationSuccessful">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluate Calibration Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please compare the reference picture shown above with the picture taken by the Cognex camera: Navigate to the service images tab in the File Explorer, and open the latest Barcode Scanner Calibration picture.</base:Paragraph>
+              <base:Paragraph>Afterwards, return to Service Software. For correct adjustment:</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>- Make sure that the upper part of the calibration rack is centered horizontally in the white area.</base:Paragraph>
+              <base:Paragraph>- Distance A should be equal on the left and right hand side.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Does the picture meet the required criteria?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Calibration_Cognex.jpg" Hash="392E06232D75884EE84D4C05510D6E3A85D36DB0" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rCalibrationSuccessful" NextStep="Finish">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Adjustment" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Adjustment</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please adjust the barcode scanner mechanically according to the service documentation.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' when the adjustment is done.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Finish">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Finished</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check finished.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

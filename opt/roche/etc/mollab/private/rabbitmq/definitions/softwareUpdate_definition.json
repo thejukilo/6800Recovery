@@ -1,0 +1,256 @@
+{
+  "queues": [
+    {
+      "name": "roche.mollab.softwareupdate.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {
+      }
+    },
+    {
+      "name": "roche.mollab.softwareupdate.tracing.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.FirmwareUpdated",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.NoPendingFirmwareUpdatesDetected",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.FirmwareUpdateFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentShutDownStarted",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentServiceStarted",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentInitializationStarted",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CopyFromUsbStorageDeviceFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CopyFromUsbStorageDeviceFinished",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.InitSoftwareUpdateFinished",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.InitSoftwareUpdateFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RemoveSnapshotFinished",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RemoveSnapshotFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.AddonPackageLoaded",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.LoadAddonPackageFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.AddonPackageInstallationFinished",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.InstallAddonPackageFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.UpdateSoftwareFailed",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.UiApi.UserLoggedIn",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.UiApi.UserLoggedOut",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.CancelSoftwareUpdatePackages",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.DismissSoftwareUpdatePackages",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.ImportUpdateFilesFromUsb",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.MarkSoftwareUpdatePackages",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.PrepareSoftwareUpdateShutdown",
+      "arguments": {
+      }
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.softwareupdate.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.SoftwareUpdate.RestoreSoftwareUpdatePackages",
+      "arguments": {
+      }
+    }
+  ]
+}

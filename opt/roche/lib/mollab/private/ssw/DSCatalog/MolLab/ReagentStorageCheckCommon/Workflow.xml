@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="D1A4ACB313E4C392F4A437BA266EEAC0C01CCAB2C4A7" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentStorageCheckCommon" ID="ReagentStorageCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DetectOpenDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Detecting Open Transfer Module Drawer</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irOpenDrawer" NextStep="CloseReagentDrawer">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irOpenDrawer" NextStep="OpenReagentDrawerAction">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenReagentDrawerAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the transfer module drawer completely.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadRMCAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a control cassette.</base:Paragraph>
+              <base:Paragraph>The control cassette will be stored.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rRFIDofRMC" NextStep="RejectLoadedCassette">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadReagentAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Reagent Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a reagent cassette.</base:Paragraph>
+              <base:Paragraph>The reagent cassette will be stored.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rRFIDofReagent" NextStep="RejectLoadedCassette">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadReagent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Reagent Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The reagent cassette is being unloaded...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please remove the reagent cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadRMC">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The control cassette is being unloaded...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please remove the control cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rRFIDofReagent" NextStep="CloseReagentDrawer">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CloseReagentDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Transfer Module Drawer.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the transfer module drawer and ensure that it is completely closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOpenDrawer" NextStep="DetectOpenDrawer">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="rRFIDofRMC" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision Result="rRFIDofReagent" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EnterTemp" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Temperature Displayed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please enter the temperature displayed on the back of the reagent storage.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rTempManual">
+            <workflow:Description>The temperature displayed on the back of the reagent storage</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadTemp">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Read Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature of the reagent storage is being read...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="Completed" />
+      </ds:Step>
+      <ds:Step Name="RejectLoadedCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove The Cassette.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rRFIDofRMC" NextStep="CloseReagentDrawer">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision Result="rRFIDofReagent" NextStep="UnloadRMC">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

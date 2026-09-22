@@ -1,0 +1,7 @@
+8b575228e1912eb40838d125a29f9a98  opt/roche/etc/mollab/private/rabbitmq/definitions/transferModule_definition.json
+ea9320e31f03f3a1a94c274649245200  opt/roche/etc/mollab/private/transfer-module/appsettings.json
+39a3292c7bce348718a0892ff7197199  opt/roche/etc/mollab/private/transfer-module/pipetting-parameter-sets/Cobas6800_8800_SampleHead_ARUP.xml
+7bc6ccac47bc9038f208fbe1e05ca6af  opt/roche/etc/mollab/private/transfer-module/pipetting-parameter-sets/Cobas6800_8800_SampleHead_FilterCalibration.xml
+169bbc57b5410e5555e39471df4829e0  opt/roche/etc/mollab/private/transfer-module/serilog.json
+61927c93ab533fede81e58101cb02ac5  usr/share/doc/newgen-transfermodule-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-transfermodule-configuration/copyright

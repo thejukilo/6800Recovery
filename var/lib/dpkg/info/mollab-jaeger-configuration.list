@@ -1,0 +1,14 @@
+/.
+/opt
+/opt/roche
+/opt/roche/var
+/opt/roche/var/lib
+/opt/roche/var/lib/mollab
+/opt/roche/var/lib/mollab/private
+/opt/roche/var/lib/mollab/private/jaeger
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/mollab-jaeger-configuration
+/usr/share/doc/mollab-jaeger-configuration/changelog.gz
+/usr/share/doc/mollab-jaeger-configuration/copyright

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="MagnetPositions"     Value="-90.0,90.0,90.0" Type="double" Array="true"  Description="The 2 magnet positions defined in ° (angle)" />
+  <ParameterPoolEntry ID="2" Name="DownholderPositions" Value="-38.0,65.0,40.0" Type="int32"  Array="true"  Description="The two positions of the downholder (hold (1) and released (0) position) in encoder increments" />
+  <ParameterPoolEntry ID="5" Name="UsePPlateCentering"  Value="true"            Type="bool"   Array="false" Description="Flag to define, if the P plate centering is available (true) or not (false)" />
+</ModuleConfiguration>
+

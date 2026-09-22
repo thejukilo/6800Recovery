@@ -1,0 +1,8 @@
+105874d626f2378ff487eae6a92bb107  lib/systemd/system/mollab-instrument-service.service
+95075f6786d79b1b9d4709cf93bd7e66  opt/roche/home/profile.d/load_envvars.sh
+add09c726c5b42167671d5c820961819  opt/roche/lib/mollab/private/instrument/logging.sh
+ab8958740750233c165dc84c10276faf  opt/roche/lib/mollab/private/instrument/shutdown.sh
+aefa342d270756b3d462f8435259ceef  opt/roche/lib/mollab/private/instrument/startup.d/2_install
+bc4cf1473d9637bd7b478763f423b3a0  opt/roche/lib/mollab/private/instrument/startup.sh
+8994506bb467abe082d6cb439db62dbb  usr/share/doc/mollab-instrument-service/changelog.gz
+6cc8740dcf86627a5ac081d10c2115eb  usr/share/doc/mollab-instrument-service/copyright

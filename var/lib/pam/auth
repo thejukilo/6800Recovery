@@ -1,0 +1,14 @@
+Module: fsr-rlx
+[success=end user_unknown=ignore auth_err=die default=ignore]   pam_fsr.so -c :
+Module: fsr
+[success=end user_unknown=ignore auth_err=die default=ignore]	pam_fsr.so
+Module: rlx-securetty
+required	pam_securetty.so
+Module: rlx-faillock-preauth
+required        pam_faillock.so preauth deny=3 even_deny_root unlock_time=300
+Module: rlx-access
+required	pam_access.so	accessfile=/etc/security/access.conf.rlx
+Module: unix
+[success=end default=ignore]	pam_unix.so nullok try_first_pass
+Module: rlx-faillock
+[success=end default=ignore]    pam_faillock.so authfail deny=3 even_deny_root unlock_time=300

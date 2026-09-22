@@ -1,0 +1,6 @@
+92b3f164384b7a785d802eec040330ed  usr/bin/X0tigervnc
+88355d87a632feb5b76674ad34600f5f  usr/bin/x0tigervncserver
+d88b68b41415826599a2a25680552715  usr/share/doc/tigervnc-scraping-server/changelog.Debian.gz
+5fff30d6a6c242fade0d7f62cc9f06f7  usr/share/doc/tigervnc-scraping-server/copyright
+cb5373a0df175a90826cf0780ef6ad32  usr/share/man/man1/X0tigervnc.1.gz
+3464b5f14ed3fd7db747380b6d6aa37c  usr/share/man/man1/x0tigervncserver.1.gz

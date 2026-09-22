@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="D4B515D37B1E2CC6E844B6520FD93C9529D6DBBC34B5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ProcessTransferHeadTightnessCheckCommon" ID="ProcessTransferHeadTightnessCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place teach tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the teach tool on the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Load_Teach_Tool_Processing_module.jpg" Hash="401BB661CC4BDAFE4BBBEFE27B3DB67F3A2096BD" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveTeachTool">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move teach tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teach tool is being moved...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PerformTightnessCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Execute tightness check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tightness check is being performed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadTeachTool">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload teach tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teach tool is being unloaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove teach tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the teach tool from the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

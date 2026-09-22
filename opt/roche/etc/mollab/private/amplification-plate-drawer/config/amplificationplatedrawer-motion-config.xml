@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotionConfig xsi:noNamespaceSchemaLocation="lib_00000100_MotionControl_MotionConfig_@MOTIONLIB_XSD@.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<NoMotor NoMotorName="ADOutputDrawer_IO">
+		<Device>
+			<MotorType>PeripheralDevice</MotorType>
+			<UnitBase>1</UnitBase>
+			<PositionDirection>Forward</PositionDirection>
+			<SampleRate>1250Hz</SampleRate>
+			<EmergencyStop>Off</EmergencyStop>
+		</Device>
+				
+		<SingleBitInput PortName="ADOD.LB.LOCK.DRAWER">
+			<TypeOfInput>Slow</TypeOfInput>
+			<PhysicalInputNumber>1</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Falling</ActiveEdge>
+		</SingleBitInput>
+		
+		<SingleBitOutput PortName="ADOD.SOL.LOCK.DRAWER">
+			<TypeOfOutput>ProFET</TypeOfOutput>
+			<PhysicalOutputPort>0</PhysicalOutputPort>
+			<InitValue>false</InitValue>
+		</SingleBitOutput>
+		
+		<ProFETOutput PortName="ADOD.SOL.LOCK.DRAWER">
+			<FullOnTime>0.3</FullOnTime>
+			<PWMDutyCycle>15</PWMDutyCycle>
+			<Timeout>0</Timeout>
+			<OpenLoadCheckEnable>Enabled</OpenLoadCheckEnable>
+			<CouplingEvent>Disabled</CouplingEvent>
+		</ProFETOutput>
+
+
+	</NoMotor>
+</MotionConfig>

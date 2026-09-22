@@ -1,0 +1,445 @@
+{
+  "queues": [
+    {
+      "name": "roche.mollab.operatingsystemgateway.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.DataCollection.ProblemReportGenerationCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentInitializationStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentShutDownCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.DeleteFilesFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.DiskMonitorTimerElapsed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.MaintenanceWebAccessRequested",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.MaintenanceWebAccessRevoked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RevokeMaintenanceWebAccessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RevokeShellAccessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.ScreenSharingStopped",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.ShellAccessRequested",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.ShellAccessRevoked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.StopScreenSharingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.TakeScreenshotFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.UnitStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.DeleteFiles",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.DisableRemoteAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.EnableRemoteAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.AcceptMobileDeviceConnection",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.ApplySoftwareUpdate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CancelSoftwareUpdate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CheckSoftwareIntegrity",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CopyFilesToUsbStorageDevice",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CopyFromUsbStorageDevice",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.CreateSystemReport",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.DisconnectAllMobileDevices",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetDiskFreeList",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetInstalledAddonPackages",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetShellAccessStatus",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetSnapshotList",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetSoftwareUpdateStatus",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GetUsbStorageFileSystemEntries",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GrantMaintenanceWebAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.GrantShellAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.InitSoftwareUpdate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.InstallAddonPackage",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.LoadAddonPackage",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RejectMaintenanceWebAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RejectMobileDeviceConnection",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RejectShellAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RemoveSnapshot",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RestartSystem",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RestoreSnapshot",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RevokeMaintenanceWebAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.RevokeShellAccess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.SetNTPServers",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.ShutdownSystem",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.StartScreenSharing",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.StopScreenSharing",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.TakeScreenshot",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.OsalACL.UpdateSoftware",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.StartDockerContainer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.operatingsystemgateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.OperatingSystemGateway.TryStartScreenSharing",
+      "arguments": {}
+    }
+  ]
+}

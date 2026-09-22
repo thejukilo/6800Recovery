@@ -1,0 +1,34 @@
+[up 5.86s] ds-identify 
+policy loaded: mode=search report=false found=all maybe=all notfound=disabled
+no datasource_list found, using default: MAAS ConfigDrive NoCloud AltCloud Azure Bigstep CloudSigma CloudStack DigitalOcean Vultr AliYun Ec2 GCE OpenNebula OpenStack OVF SmartOS Scaleway Hetzner IBMCloud Oracle Exoscale RbxCloud UpCloud VMware LXD NWCS
+DMI_PRODUCT_NAME=VMware7,1
+DMI_SYS_VENDOR=VMware, Inc.
+DMI_PRODUCT_SERIAL=VMware-56 4d c9 9a 85 5a ff ec-93 cc c4 0a b9 4c 17 29
+DMI_PRODUCT_UUID=9ac94d56-5a85-ecff-93cc-c40ab94c1729
+PID_1_PRODUCT_NAME=unavailable
+DMI_CHASSIS_ASSET_TAG=No Asset Tag
+DMI_BOARD_NAME=440BX Desktop Reference Platform
+FS_LABELS=
+ISO9660_DEVS=
+KERNEL_CMDLINE=BOOT_IMAGE=/root/boot/vmlinuz-6.1.0-23-amd64 root=UUID=9367830a-c9e5-4bbb-824d-e8252e0bb934 ro rootflags=subvol=root ipv6.disable=1 panic=3600 systemd.show_status=0 loglevel=0 vt.global_cursor_default=0 rd.loglevel=0 rd.udev.log-priority=0 udev.log-priority=0 biosdevname=0 net.ifnames=0 rlx_bootid=1 efi=runtime quiet splash
+VIRT=vmware
+UNAME_KERNEL_NAME=Linux
+UNAME_KERNEL_RELEASE=6.1.0-23-amd64
+UNAME_KERNEL_VERSION=#1 SMP PREEMPT_DYNAMIC Debian 6.1.99-1 (2024-07-15)
+UNAME_MACHINE=x86_64
+UNAME_NODENAME=x800-instrument
+UNAME_OPERATING_SYSTEM=GNU/Linux
+DSNAME=
+DSLIST=MAAS ConfigDrive NoCloud AltCloud Azure Bigstep CloudSigma CloudStack DigitalOcean Vultr AliYun Ec2 GCE OpenNebula OpenStack OVF SmartOS Scaleway Hetzner IBMCloud Oracle Exoscale RbxCloud UpCloud VMware LXD NWCS
+MODE=search
+ON_FOUND=all
+ON_MAYBE=all
+ON_NOTFOUND=disabled
+pid=326 ppid=311
+is_container=false
+is_ds_enabled(IBMCloud) = true.
+ec2 platform is 'Unknown'.
+is_ds_enabled(IBMCloud) = true.
+Running on vmware but rpctool query returned 1: No value found
+No ds found [mode=search, notfound=disabled]. Disabled cloud-init [1]
+[up 6.11s] returning 1

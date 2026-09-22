@@ -1,0 +1,12 @@
+[Unit]
+Description=RLX Remote Screen
+After=network.target
+
+[Service]
+User=roche
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/x0vncserver -SecurityTypes None -AlwaysShared
+Restart=always
+RestartSec=5
+KillMode=mixed

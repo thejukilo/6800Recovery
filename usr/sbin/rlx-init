@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -f /rlx-upgrade ]; then
+    . /rlx-upgrade
+fi
+
+if [ "$UPGRADE_STATUS" = "inprogress-rlx" ]; then # rlx upgrade target for RLX upgrade stage only
+    exec /lib/systemd/systemd --unit=rlx-upgrade.target
+else
+    exec /lib/systemd/systemd $@
+fi

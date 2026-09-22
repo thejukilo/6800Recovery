@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5271561602A06D146D58BCAD37B6C4CFB566A788B7C2" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="RackHandlerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInternalLoopCount" Type="Integer">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+          </data:Description>
+          <data:Value>5</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rSuccessfulMoves" Type="String" Array="true" Size="6">
+          <data:Description>
+            <base:Title>Succesful Rack Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Succesful rack moves.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rFailedMove" Type="String">
+          <data:Description>
+            <base:Title>Failed Rack Move</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The failed rack move.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCanLoad" Type="Boolean">
+          <data:Description>
+            <base:Title>Rack Can Be Loaded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack can be loaded.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCanReachEdges" Type="Boolean">
+          <data:Description>
+            <base:Title>Rack Can Be Transferred to Edges</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack can be transferred to edges.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCanUnloadViaErrorLane" Type="Boolean">
+          <data:Description>
+            <base:Title>Rd5 Rack Can Be Transferred to Error Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack can be transferred to error output.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCanUnloadViaOutputLane" Type="Boolean">
+          <data:Description>
+            <base:Title>Rd5 Rack Can Be Transferred to Output</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rack can be transferred to output.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irBypassSSM" Type="Boolean">
+          <data:Description>
+            <base:Title>Should Ssm Be Bypassed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If set, the user will need to remove the rack directly from output.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irRackBarcodeUser">
+          <data:Description>
+            <base:Title>Rack Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User rack number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irRackBarcode">
+          <data:Description>
+            <base:Title>Rack Barcode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read rack number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube1BarcodeUser">
+          <data:Description>
+            <base:Title>Tube 1 Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User tube 1 number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube2BarcodeUser">
+          <data:Description>
+            <base:Title>Tube 2 Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User tube 2 number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube3BarcodeUser">
+          <data:Description>
+            <base:Title>Tube 3 Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User tube 3 number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube4BarcodeUser">
+          <data:Description>
+            <base:Title>Tube 4 Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User tube 4 number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube5BarcodeUser">
+          <data:Description>
+            <base:Title>Tube 5 Barcode User</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User tube 5 number entry.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube1Barcode">
+          <data:Description>
+            <base:Title>Read Tube 1 Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read tube 1 number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube2Barcode">
+          <data:Description>
+            <base:Title>Read Tube 2 Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read tube 2 number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube3Barcode">
+          <data:Description>
+            <base:Title>Read Tube 3 Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read tube 3 number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube4Barcode">
+          <data:Description>
+            <base:Title>Read Tube 4 Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read tube 4 number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irTube5Barcode">
+          <data:Description>
+            <base:Title>Read Tube 5 Number</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Read tube 5 number.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBarcodeMatches" Type="String">
+          <data:Description>
+            <base:Title>Matched Barcodes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Barcodes for which the read values match the values input by the user.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBarcodeMismatches" Type="String">
+          <data:Description>
+            <base:Title>Mismatched Barcodes</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Barcodes for which the read values mismatch the values input by the user.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irInternalLoopCount" Type="Integer">
+          <data:Description>
+            <base:Title>Rack Movement Loop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal counter for the rack movement.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rIsRackUnloaded" Type="Boolean">
+          <data:Description>
+            <base:Title>Rack Unloaded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is the rack unloaded</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

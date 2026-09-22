@@ -1,0 +1,3 @@
+/etc/X11/xorg.conf.d/90-vm.conf
+/etc/default/rlx-osal
+/etc/nftables.d/input/21_simapi.nft

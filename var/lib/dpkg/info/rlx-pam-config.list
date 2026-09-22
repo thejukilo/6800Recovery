@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlx-pam-config
+/usr/share/doc/rlx-pam-config/changelog.gz
+/usr/share/doc/rlx-pam-config/copyright
+/usr/share/pam-configs
+/usr/share/pam-configs/rlx
+/usr/share/pam-configs/rlx-access
+/usr/share/pam-configs/rlx-faillock
+/usr/share/pam-configs/rlx-faillock-preauth
+/usr/share/pam-configs/rlx-securetty

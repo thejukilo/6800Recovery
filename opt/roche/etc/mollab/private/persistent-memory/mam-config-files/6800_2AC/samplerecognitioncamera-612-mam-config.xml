@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_SampleRecognitionCamera" seid="280" moduleId="612">
+      <parPool type="int32" structure="scalar" id="300" name="TimeOfLastValidCalibration" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2017" periodInSec="-1"/>
+      </parPool>
+      <parPool type="uint8" structure="array" noElements="12" id="301" name="CurrentFWRVersion" defaultValue="0" minValue="0" maxValue="0xFF">
+        <persistDef memoryId="2017" periodInSec="-1"/>
+      </parPool>
+      <parPool type="uint8" structure="array" noElements="100" id="350" name="ConfigData_1" defaultValue="0" minValue="0" maxValue="0xFF">
+        <persistDef memoryId="3740" periodInSec="-1"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

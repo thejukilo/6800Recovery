@@ -1,0 +1,14 @@
+[Unit]
+Description=MolLab Instrument
+Before=plymouth-quit.service
+After=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=roche
+ExecStart=/opt/roche/lib/mollab/private/instrument/startup.sh
+ExecStop=/opt/roche/lib/mollab/private/instrument/shutdown.sh
+
+[Install]
+WantedBy=graphical.target

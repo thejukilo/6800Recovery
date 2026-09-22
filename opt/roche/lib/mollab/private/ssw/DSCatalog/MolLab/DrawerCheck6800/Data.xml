@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="732FE0B95F6C30F07EC477191CE9F501D7B6840B50F9" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="DrawerCheck6800Common">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pCheckConsumablesDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Check consumables drawer.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pCheckReagentCassetteDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Check reagent cassette drawer.</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irCheckReagentCassetteDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Reagent Cassette Drawer.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check Reagent Cassette Drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irCheckConsumableDrawerA" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Processing Module Drawer a.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check Processing Module Drawer a.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irOpenDrawer" Type="String">
+          <data:Description>
+            <base:Title>Open Drawer to Be Closed.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open Drawer to Be Closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irReagentCassetteDrawerOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Reagent Cassette Drawer Is Working Correctly.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent Cassette Drawer Is Working Correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irConsumableDrawerAOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Consumable Drawer a Is Working Correctly.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Consumable Drawer a Is Working Correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rCheckedDrawers" Type="String" Array="true">
+          <data:Description>
+            <base:Title>The Tested Drawers.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Tested Drawers.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rAllDrawersOk" Type="Boolean">
+          <data:Description>
+            <base:Title>All Drawers Are Working Correctly.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All Drawers Are Working Correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,6 @@
+271c7d4ad9853ffdad98304c035fc9f3  opt/roche/etc/mollab/private/rabbitmq/definitions/runResourceManagement_assaySpecificResources_definition.json
+12f954d788414d0b6fef5ab2a926cadf  opt/roche/etc/mollab/private/rabbitmq/definitions/runResourceManagement_genericResources_definition.json
+585794a5949c5e986a69c3143e4f6aa3  opt/roche/etc/mollab/private/run-resource-management/appsettings.json
+ec2f06e996f2a8e0306c86026b70a7fc  opt/roche/etc/mollab/private/run-resource-management/serilog.json
+1e6d9c0cc340ce3448b7eaaa1847aa6b  usr/share/doc/newgen-runresourcemanagement-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-runresourcemanagement-configuration/copyright

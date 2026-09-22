@@ -1,0 +1,26 @@
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "shared-data/logs/UI.Api_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][UA][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 314572800
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+    "ExcludedNamePrefixes": [ "Roche.NewGen.UiApi.", "Roche.CX800.", "Roche.MolLab.", "Launcher." ]
+  }
+}

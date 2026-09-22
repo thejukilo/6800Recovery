@@ -1,0 +1,117 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.datamanagergateway.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.ConnectionToDataManagerEstablished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.ConnectionToDataManagerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.TestDefinitionDataUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.BarcodeSettingsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.LabLocalizationSettingsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.RackRangeSettingsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.ListOfAvailableAnalysisPackagesChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.ControlAllocationRulesChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.UiApi.InstrumentRegistered",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.UiApi.InstrumentUnregistered",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.FromDM.DataManagerSoftwareConfigurationChanged",
+      "arguments": {}
+    }
+  ]
+}

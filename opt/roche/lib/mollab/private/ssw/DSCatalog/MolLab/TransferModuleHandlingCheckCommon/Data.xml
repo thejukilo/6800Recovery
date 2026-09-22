@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="72448027954818F9A19E19DC7A3C2B9BEF0CD184472E" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TransferModuleHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pConsumableType" Type="String">
+          <data:Description>
+            <base:Title>Name of the consumable</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irCheckFinished" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Were all positions testet.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irNextPosition" Type="String">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The next position to move the consumable after the current move has taken place.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irPositionToConfirmMoveTo" Type="String">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The next position to move the consumable once the 'Next' button is pressed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irCurrentPosition" Type="String">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The current position the plate has been moved to.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rPositionsEmpty" Type="String" Array="true" Size="3">
+          <data:Description>
+            <base:Title>Light Barrier States When Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>States of the light barriers when positions should be empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rPositionsOccupied" Type="String" Array="true" Size="3">
+          <data:Description>
+            <base:Title>Light Barrier States When Occupied</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>States of the light barriers when position should be occupied by consumable.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irDownholderClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Downholders Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Was the downholder closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDownholdersClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Downholders Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the downholders closed when applicable during the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rFailingDownholders" Type="String">
+          <data:Description>
+            <base:Title>Failing Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Downholders which are not working as intended.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="None" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rEmptyPositionsOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Required Positions Are Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if all required positions are empty at start.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rOccupiedPositionsOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Occupied Positions Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Were all occupied positions recognized correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRfidData" Type="String" Array="true" Size="4">
+          <data:Description>
+            <base:Title>Rfid Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>States of the Rfid reader when controlCassetteParkPosition is occupied by control cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rRfidOk" Type="Boolean">
+          <data:Description>
+            <base:Title>All Rfid States Valid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all Rfid states Valid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:Product Instrument="MolLab" Name="CX800.InstrumentInstallationQualification(IQ)Cobas6800" ArtNr="09575154001" Version="1.0.0.0000" Hash="19CD7FFCAA6EB8B1D66C841B8E12589FAE7B6906CB9E" xmlns:base="urn:base" xmlns:product="urn:product" xmlns:group="urn:group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:test="urn:test" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../Tools/Schemas/LabCore.Diagnose/dsProduct.xsd">
+  <ds:Description>
+    <base:Title>Instrument Installation Qualification (IQ) Cobas 6800</base:Title>
+    <base:Paragraphs>
+      <base:Paragraph />
+      <base:Paragraph>This Product contains all Installation Qualification checks for the cobas 6800 instrument.</base:Paragraph>
+      <base:Paragraph>Please ensure that the instrument is running in service mode before starting the tests.</base:Paragraph>
+    </base:Paragraphs>
+  </ds:Description>
+  <ds:TestFunction Name="InstrumentBeltCheck6800">
+    <!-- Auto-Generated text from description file. -->
+    <product:Description>
+      <base:Title>Instrument belt check 6800</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Checks if the belt tension from all instrument modules are within the predefined ranges.</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Precondition: The instrument is in interlock service mode</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Required Time: 15 minutes </base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Required Equipment: Belt tension measuring tool</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+  </ds:TestFunction>
+  <ds:TestFunction Name="InstrumentConnectionCheck6800">
+    <!-- Auto-Generated text from description file. -->
+    <product:Description>
+      <base:Title>Instrument connection check 6800</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Checks the connection and state of all modules. Attempts to reinitialize modules that are not ready.</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Preconditions: None</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Required Time: 2 minutes</base:Paragraph>
+        <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+        <base:Paragraph>Required Equipment: None</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+  </ds:TestFunction>
+</ds:Product>

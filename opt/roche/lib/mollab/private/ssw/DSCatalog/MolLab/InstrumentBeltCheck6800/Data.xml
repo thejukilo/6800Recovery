@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="304BD935054B0470CAA122F9A0B372CB4FEFCBD70412" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="InstrumentBeltCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pSC_PlateHandlerS_X_GE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S X maximum range</base:Title>
+          </data:Description>
+          <data:Value>36.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_PlateHandlerS_X_LE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S X minimum range</base:Title>
+          </data:Description>
+          <data:Value>32.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_PlateHandlerS_Y_Left_GE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S Y Left maximum range</base:Title>
+          </data:Description>
+          <data:Value>31.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_PlateHandlerS_Y_Left_LE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S Y Left minimum range</base:Title>
+          </data:Description>
+          <data:Value>27.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_PlateHandlerS_Y_Right_GE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S Y Right maximum range</base:Title>
+          </data:Description>
+          <data:Value>31.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_PlateHandlerS_Y_Right_LE" Type="Double">
+          <data:Description>
+            <base:Title>SC plate handler S Y Right minimum range</base:Title>
+          </data:Description>
+          <data:Value>27.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_TransferS_Y_Left_GE" Type="Double">
+          <data:Description>
+            <base:Title>SC transfer S Y Left maximum range</base:Title>
+          </data:Description>
+          <data:Value>33.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_TransferS_Y_Left_LE" Type="Double">
+          <data:Description>
+            <base:Title>SC transfer S Y Left minimum range</base:Title>
+          </data:Description>
+          <data:Value>30.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_TransferS_Y_Right_GE" Type="Double">
+          <data:Description>
+            <base:Title>SC transfer S Y Right maximum range</base:Title>
+          </data:Description>
+          <data:Value>33.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSC_TransferS_Y_Right_LE" Type="Double">
+          <data:Description>
+            <base:Title>SC transfer S Y Right minimum range</base:Title>
+          </data:Description>
+          <data:Value>30.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_X_Front_GE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P X Front maximum range</base:Title>
+          </data:Description>
+          <data:Value>43.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_X_Front_LE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P X Front minimum range</base:Title>
+          </data:Description>
+          <data:Value>37.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_X_Back_GE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P X Back maximum range</base:Title>
+          </data:Description>
+          <data:Value>43.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_X_Back_LE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P X Back minimum range</base:Title>
+          </data:Description>
+          <data:Value>37.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_Y_GE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P Y maximum range</base:Title>
+          </data:Description>
+          <data:Value>23</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_PlateHandlerP_Y_LE" Type="Double">
+          <data:Description>
+            <base:Title>PCA plate handler P Y minimum range</base:Title>
+          </data:Description>
+          <data:Value>21</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_ReagentHead_Y_GE" Type="Double">
+          <data:Description>
+            <base:Title>PCA reagent head Y maximum range</base:Title>
+          </data:Description>
+          <data:Value>23.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPCA_ReagentHead_Y_LE" Type="Double">
+          <data:Description>
+            <base:Title>PCA reagent head Y minimum range</base:Title>
+          </data:Description>
+          <data:Value>20.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCC_StackerHandler_X_GE" Type="Double">
+          <data:Description>
+            <base:Title>&gt;CC stacker handler X maximum range</base:Title>
+          </data:Description>
+          <data:Value>16.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCC_StackerHandler_X_LE" Type="Double">
+          <data:Description>
+            <base:Title>&gt;CC stacker handler X minimum range</base:Title>
+          </data:Description>
+          <data:Value>12.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pADC_PlateHandlerA_Z_GE" Type="Double">
+          <data:Description>
+            <base:Title>&gt;ADC plate handler A Z maximum range</base:Title>
+          </data:Description>
+          <data:Value>22.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pADC_PlateHandlerA_Z_LE" Type="Double">
+          <data:Description>
+            <base:Title>&gt;ADC plate handler A Z minimum range</base:Title>
+          </data:Description>
+          <data:Value>18.0</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Serial" Name="rFrequencyMeterSerialNumber">
+          <data:Description>
+            <base:Title>Frequency Meter</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Serialnumber of the FrequencyMeter that has been entered by the user.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rSC_PlateHandlerS_X" Unit="Hz">
+          <data:Description>
+            <base:Title>Sc Plate Handler S X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sc Plate Handler S X</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pSC_PlateHandlerS_X_GE" />
+            <data:Condition Operator="GE" Parameter="pSC_PlateHandlerS_X_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rSC_PlateHandlerS_Y_Left" Unit="Hz">
+          <data:Description>
+            <base:Title>Sc Plate Handler S Y Left</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sc Plate Handler S Y Left</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pSC_PlateHandlerS_Y_Left_GE" />
+            <data:Condition Operator="GE" Parameter="pSC_PlateHandlerS_Y_Left_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rSC_PlateHandlerS_Y_Right" Unit="Hz">
+          <data:Description>
+            <base:Title>Sc Plate Handler S Y Right</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sc Plate Handler S Y Right</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pSC_PlateHandlerS_Y_Right_GE" />
+            <data:Condition Operator="GE" Parameter="pSC_PlateHandlerS_Y_Right_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rSC_TransferS_Y_Left" Unit="Hz">
+          <data:Description>
+            <base:Title>Sc Transfer S Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sc Transfer S Y</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pSC_TransferS_Y_Left_GE" />
+            <data:Condition Operator="GE" Parameter="pSC_TransferS_Y_Left_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rSC_TransferS_Y_Right" Unit="Hz">
+          <data:Description>
+            <base:Title>Sc Transfer S Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sc Transfer S Y</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pSC_TransferS_Y_Right_GE" />
+            <data:Condition Operator="GE" Parameter="pSC_TransferS_Y_Right_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rPCA_PlateHandlerP_X_Front" Unit="Hz">
+          <data:Description>
+            <base:Title>Pca Plate Handler P X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pca Plate Handler P X</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pPCA_PlateHandlerP_X_Front_GE" />
+            <data:Condition Operator="GE" Parameter="pPCA_PlateHandlerP_X_Front_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rPCA_PlateHandlerP_X_Back" Unit="Hz">
+          <data:Description>
+            <base:Title>Pca Plate Handler P X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pca Plate Handler P X</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pPCA_PlateHandlerP_X_Back_GE" />
+            <data:Condition Operator="GE" Parameter="pPCA_PlateHandlerP_X_Back_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rPCA_PlateHandlerP_Y" Unit="Hz">
+          <data:Description>
+            <base:Title>Pca Plate Handler P Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pca Plate Handler P Y</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pPCA_PlateHandlerP_Y_GE" />
+            <data:Condition Operator="GE" Parameter="pPCA_PlateHandlerP_Y_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rPCA_ReagentHead_Y" Unit="Hz">
+          <data:Description>
+            <base:Title>Pca Reagent Head Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pca Reagent Head Y</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pPCA_ReagentHead_Y_GE" />
+            <data:Condition Operator="GE" Parameter="pPCA_ReagentHead_Y_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rCC_StackerHandler_X" Unit="Hz">
+          <data:Description>
+            <base:Title>Cc Stacker Handler X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cc Stacker Handler X</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pCC_StackerHandler_X_GE" />
+            <data:Condition Operator="GE" Parameter="pCC_StackerHandler_X_LE" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rADC_PlateHandlerA_Z" Unit="Hz">
+          <data:Description>
+            <base:Title>Adc Plate Handler a Z</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Adc Plate Handler a Z</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pADC_PlateHandlerA_Z_GE" />
+            <data:Condition Operator="GE" Parameter="pADC_PlateHandlerA_Z_LE" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

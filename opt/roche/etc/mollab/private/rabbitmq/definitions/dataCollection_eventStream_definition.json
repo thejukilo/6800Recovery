@@ -1,0 +1,21 @@
+{
+  "queues": [
+    {
+      "name": "roche.mollab.datacollection.tracing.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "amq.rabbitmq.trace",
+      "vhost": "/",
+      "destination": "roche.mollab.datacollection.tracing.q",
+      "destination_type": "queue",
+      "routing_key": "publish.#",
+      "arguments": {}
+    }
+  ]
+}

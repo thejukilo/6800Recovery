@@ -1,0 +1,8 @@
+ct helper ftp-passive {
+	type "ftp" protocol tcp;
+}
+
+chain PREROUTING {
+	type filter hook prerouting priority filter;
+	tcp dport 21 ct helper set "ftp-passive"
+}

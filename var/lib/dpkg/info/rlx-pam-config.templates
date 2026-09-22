@@ -1,0 +1,5 @@
+Template: rlx-pam-config/allowed-users
+Type: string
+Default: roche
+Description: Allowed users:
+ Enter comma separated list of users which should be allowed to log in.

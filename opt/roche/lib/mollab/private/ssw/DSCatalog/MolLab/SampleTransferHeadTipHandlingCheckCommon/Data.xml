@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="95B92DCDFDB91F6D5DC060F0075C123CCD69FDC733EB" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTipHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pIsModule" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal parameter</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pLoops" Type="Integer">
+          <data:Description>
+            <base:Title>Internal parameter</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="irSkipUnloadConfirmation">
+          <data:Description>
+            <base:Title>Skip Unload Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Skip unload confirmation step when unloading the consumables.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rIsModule">
+          <data:Description>
+            <base:Title>Is Module</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>It is a module check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rTipHandlingProcessPark1" Array="true" Size="12">
+          <data:Description>
+            <base:Title>Tip Handling Process Park 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>TipHandling at processparkposition 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rTipHandlingProcessPark2" Array="true" Size="12">
+          <data:Description>
+            <base:Title>Tip Handling Process Park 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>TipHandling at processparkposition 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Integer" Name="rInternalLoops">
+          <data:Description>
+            <base:Title>Count of Loops in the Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The count of loops in the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Integer" Name="rLoopsRemaining">
+          <data:Description>
+            <base:Title>Number of Loops Remaining After the Check.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of loops remaining after the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rConfirmation">
+          <data:Description>
+            <base:Title>Were All the Tips Picked Up and Put Down Correctly?</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Were all the tips picked up and put down correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="true" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

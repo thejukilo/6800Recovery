@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="ProcessingPlateMagazine.G" seid="680" moduleId="218">
+      <dataPool type="uint8" structure="array" noElements="16" id="16" name="Barcode1" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="17" name="BarcodeLength1" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="array" noElements="16" id="18" name="Barcode2" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="19" name="BarcodeLength2" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="array" noElements="16" id="20" name="Barcode3" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="21" name="BarcodeLength3" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="array" noElements="16" id="22" name="Barcode4" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="23" name="BarcodeLength4" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="24" name="BarcodeCount" defaultValue="0">
+        <persistDef memoryId="3680" periodInSec="-1"/>
+      </dataPool>
+       <parPool type="uint16" structure="scalar" id="23" name="OpCountNbrOfInitializations"
+                defaultValue="0"
+                minValue="0"
+                maxValue="65535">
+          <persistDef memoryId="2411" periodInSec="14400"/>
+       </parPool>
+       <parPool type="uint32" structure="scalar" id="24" name="OpCountNbrOfMovements"
+                defaultValue="0"
+                minValue="0"
+                maxValue="4294967295">
+          <persistDef memoryId="2411" periodInSec="14400"/>
+       </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

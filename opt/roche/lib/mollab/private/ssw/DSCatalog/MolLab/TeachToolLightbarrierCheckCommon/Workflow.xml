@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="CD3A6BEB7196C56C570A017FB7847C141CA06DE7F24D" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="TeachToolLightbarrierCheckCommon" ID="TRQ563774">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The transfer module is being initialized.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceTeachTool" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Teach Tool</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure a teach tool is placed on the teach tool park position and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckTeachToolPresenceBeforeMoveOut">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Light Barrier before Moving the Teach Tool Out</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking the state of the teach tool park position light barrier.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckTeachToolAbsence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Light Barrier after Moving the Teach Tool Out</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking the state of the teach tool park position light barrier.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckTeachToolPresenceAfterMoveBack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Light Barrier after Moving the Teach Tool Back In</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking the state of the teach tool park position light barrier.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

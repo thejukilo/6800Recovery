@@ -1,0 +1,15 @@
+/etc/chrony/conf.d/10-ssm.conf
+/etc/docker/daemon.json
+/etc/fsr-authentication.keys
+/etc/nftables.d/input/20_https.nft
+/etc/nftables.d/input/20_ntp.nft
+/etc/nftables.d/input/20_ssh.nft
+/etc/nginx/locations.d/x800.conf
+/etc/profile.d/roche-path.sh
+/etc/ssl/private/x800-certificate-key.pem
+/etc/ssl/private/x800-certificate.p12
+/etc/ssl/x800-certificate.pem
+/etc/sysctl.d/20-ping-group-range.conf
+/etc/sysctl.d/50-coredump.conf
+/etc/systemd/coredump.conf.d/coredump.conf
+/etc/systemd/systemd.conf.d/limitcore.conf

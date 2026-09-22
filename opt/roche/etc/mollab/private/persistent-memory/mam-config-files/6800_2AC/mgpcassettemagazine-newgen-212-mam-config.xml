@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd" xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<csmConfig>
+
+<csm name="MgpCassetteMagazine" seid="681" moduleId="212">
+   <dataPool type="uint8" structure="array" noElements="120" id="11" name="RFIDData1" defaultValue="0">
+      <persistDef memoryId="3560" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="scalar" id="12" name="RFIDDataLength1" defaultValue="0">
+      <persistDef memoryId="3560" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="array" noElements="120" id="13" name="RFIDData2" defaultValue="0">
+      <persistDef memoryId="3560" periodInSec="-1"/>
+   </dataPool>
+   <dataPool type="uint8" structure="scalar" id="14" name="RFIDDataLength2" defaultValue="0">
+      <persistDef memoryId="3560" periodInSec="-1"/>
+   </dataPool>
+   <parPool type="uint16" structure="scalar" id="23" name="OpCountNbrOfInitializations"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      <persistDef memoryId="2411" periodInSec="14400"/>
+   </parPool>
+   <parPool type="uint32" structure="scalar" id="24" name="OpCountNbrOfMovements"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      <persistDef memoryId="2411" periodInSec="14400"/>
+   </parPool>
+</csm>
+
+</csmConfig>
+
+</dia:mam>

@@ -1,0 +1,4 @@
+c7ef1741e1583e96dc9a3dd9f5af9eca  lib/systemd/system/newgen-xorg.service
+aee3a8dc1cad98979e4d81963438a4ca  opt/roche/home/startup_newgen-xorg.sh
+8a010a8d399da03c5fd4665c27e28e56  usr/share/doc/newgen-xorg/changelog.gz
+8c3b3ba293e08015bad0cd94102f079a  usr/share/doc/newgen-xorg/copyright

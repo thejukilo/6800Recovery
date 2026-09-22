@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPConfiguration.xsd">
+  <ICApplicationInfo ICApplicationName="newgen-fieldbusgateway" ICApplicationVersion="X" />
+  <StartConfigurationID>6800_1AC_FieldbusGateway</StartConfigurationID>
+  <ECPConfiguration ConfigurationID="6800_1AC_FieldbusGateway">
+    <ECPSWConfigurationFile>ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <DisableHWCommunication DisableHWCommunication="false" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="6800_2AC_FieldbusGateway">
+    <ECPSWConfigurationFile>ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <DisableHWCommunication DisableHWCommunication="false" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="8800_FieldbusGateway">
+    <ECPSWConfigurationFile>ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <DisableHWCommunication DisableHWCommunication="false" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="6800_1AC_FieldbusGateway-sim">
+    <ECPSWConfigurationFile>sim-ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <!-- REB-2022-10-11 Simulacrum will start communication layer. -->
+    <DisableHWCommunication DisableHWCommunication="true" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="6800_2AC_FieldbusGateway-sim">
+    <ECPSWConfigurationFile>sim-ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <!-- REB-2022-10-11 Simulacrum will start communication layer. -->
+    <DisableHWCommunication DisableHWCommunication="true" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="8800_FieldbusGateway-sim">
+    <ECPSWConfigurationFile>sim-ecs.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="true" CANNodeBootFWR="false" CANNodeAppFWR="true" ThirdPartyFWR="true" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="true" />
+    <!-- REB-2022-10-11 Simulacrum will start communication layer. -->
+    <DisableHWCommunication DisableHWCommunication="true" />
+  </ECPConfiguration>
+  <SystemConfiguration>
+    <Toolchain></Toolchain>
+    <BackboneStartCDI>16</BackboneStartCDI>
+    <BackboneInterfacePort>enp7s0</BackboneInterfacePort>
+    <DefaultStackSize_kbytes>256</DefaultStackSize_kbytes>
+    <Shutdown_TimeBeforeSendSIGKill_sec>60</Shutdown_TimeBeforeSendSIGKill_sec>
+    <Startup_TimeBeforeNextCSMHierarchy_sec>1</Startup_TimeBeforeNextCSMHierarchy_sec>
+    <FTPPath>${HOME}/ftp/</FTPPath>
+  </SystemConfiguration>
+  <EnvironmentConfiguration>
+    <EnvBINPath>/opt/roche/bin/</EnvBINPath>
+    <!-- REB-2022-10-10: Startup comlayer with ecp systemmanager, to ensure its started, when fieldbus module gets started. -->
+    <CommunicationLayer FileName="comlayer">
+      <System RealtimePriority="80" MiddlewarePriority="81" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+      <MasterPriority>82</MasterPriority>
+      <Master>udp</Master>
+      <BCISocket>/tmp/BCI-Startup.sock</BCISocket>
+      <CycleLength>1000</CycleLength>
+      <UDPAddress>192.168.102.10</UDPAddress>
+      <CommandLineSwitch SwitchName="--unit-full-name" Value="FieldbusGateway" />
+      <CommandLineSwitch SwitchName="--unit-short-name" Value="FBG" />
+      <CommandLineSwitch SwitchName="--unit-instance-id" Value="" />
+    </CommunicationLayer>
+  </EnvironmentConfiguration>
+</ECP>

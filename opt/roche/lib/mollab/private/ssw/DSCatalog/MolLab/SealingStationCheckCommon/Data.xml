@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="69E02FED77183504ADD4E57866732F5FF85EA7A9612D" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SealingStationCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pSealingTemperatureInCelsius" Type="Double" Unit="Celsius">
+          <data:Description>
+            <base:Title>The temperature in degree Celsius at which the amplification plate is sealed.</base:Title>
+          </data:Description>
+          <data:Value>160</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSealingDurationInSeconds" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>The duration in seconds the heating block is pressed onto the amplification plate.</base:Title>
+          </data:Description>
+          <data:Value>1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSealerHeatUpTimeout" Type="Double" Unit="min">
+          <data:Description>
+            <base:Title>How long (minutes) to wait for the sealer to heat up before timeout.</base:Title>
+          </data:Description>
+          <data:Value>12</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rSealing" Type="Boolean">
+          <data:Description>
+            <base:Title>Sealing Success</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sealing Success</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rConfirmation" Type="Boolean">
+          <data:Description>
+            <base:Title>Sealing Visual Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sealing Visual Confirmation</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

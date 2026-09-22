@@ -1,0 +1,8 @@
+{
+  "appID": "UI-Maintenance",
+  "appOrder": 50,
+  "appLabel": "12.FHO.AppLibrary.UI.Maintenance",
+  "entryPoint": "maintenance",
+  "roles": ["X800.Operator", "X800.RSR"],
+  "isDmApp": false
+}

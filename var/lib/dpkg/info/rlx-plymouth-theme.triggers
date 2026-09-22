@@ -1,0 +1,2 @@
+activate update-grub
+activate update-initramfs

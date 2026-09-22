@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/tmp/private/software-update to /opt/roche/var/lib/mollab/private/software-update/tmp
+
+[Mount]
+What=/mnt/tmp/private/software-update
+Where=/opt/roche/var/lib/mollab/private/software-update/tmp
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

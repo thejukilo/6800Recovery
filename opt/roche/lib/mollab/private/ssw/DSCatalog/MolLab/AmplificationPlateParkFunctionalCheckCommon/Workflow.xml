@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="59C419E5E378951281E86394288E5B7A2CA742D30D36" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AmplificationPlateParkFunctionalCheckCommon" ID="TRQ989735">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement Step 1: Initialization -->
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 2: OpenAirFlowScreen -->
+      <ds:Step Name="OpenAirFlowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Air Flow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the air flow screen is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 3: ParkMainHandler -->
+      <ds:Step Name="ParkMainHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Main Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while Main Handler is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 4: ParkProcessingModuleHandler -->
+      <ds:Step Name="ParkProcessingModuleHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Processing Module Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while Processing Module Handler is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 5: PlaceADPlate -->
+      <ds:Step Name="PlaceADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the amplification plate on the transfer position with the barcode facing the front and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 6: VerifyADPlateLoaded [E1] -->
+      <ds:Step Name="VerifyADPlateOnTransfer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify AD Plate on Transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software verifies that an amplification plate is present on the transfer position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 7: LoadADPlate -->
+      <ds:Step Name="LoadADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load AD Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software executes the following actions:</base:Paragraph>
+              <base:Paragraph>- transfers the amplification plate to the amplification plate park position</base:Paragraph>
+              <base:Paragraph>- closes the down holders</base:Paragraph>
+              <base:Paragraph>- verifies the light barrier state</base:Paragraph>
+              <base:Paragraph>- parks the processing module handler on the Park position</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 8: Confirm Downholders Closed -->
+      <ds:Step Name="ConfirmDownholders" Type="Confirm" Result="rDownHoldersWorking">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Downholders Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please manually check and confirm that the amplification plate is held by down holders and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 9: ADPlateFromParkToTransfer -->
+      <ds:Step Name="UnloadADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>AD Plate to Transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software executes the following actions:</base:Paragraph>
+              <base:Paragraph>- opens the down holders</base:Paragraph>
+              <base:Paragraph>- transfers the amplification plate from the amplification plate park position to the transfer position</base:Paragraph>
+              <base:Paragraph>- verifies the light barrier state</base:Paragraph>
+              <base:Paragraph>- parks the processing module handler on the Park position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 10 -->
+      <ds:Step Name="RemoveADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove AD Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the amplification plate and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 11 -->
+      <ds:Step Name="VerifyFanStartStop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Fan Start Stop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software verifies the fan can start and stop.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 12 -->
+      <ds:Step Name="VerifyTargetTemperatureReached">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Target Temperature Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The service software will start the cooling of the amplification plate park position with target temperature [P.pTargetTemperatureCelsius]°C and verify that the target temperature of [P.pTargetTemperatureCelsius]°C +/- [P.pMaxAllowedTempDevCelsius]°C can be reached within less than or equal to [P.pTimeLimitReachTargetTempMinutes] minutes and record the time needed. (average temperature of returned measured temperatures within range)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 13 -->
+      <ds:Step Name="MeasureTemperaturesA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Measure Temperature Deviation (I)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software executes the following actions:</base:Paragraph>
+              <base:Paragraph>- First temperature measurement 5 seconds after the target temperature of 5°C +/- 4°C degrees is reached</base:Paragraph>
+              <base:Paragraph>- Verify that the difference between the target temperature (5°C) and the measured temperatures is less than 5°C</base:Paragraph>
+              <base:Paragraph>- Record the measured temperatures and maximum temperature deviation</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 14 -->
+      <ds:Step Name="MeasureTemperaturesB">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Measure Temperature Deviation (II)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software executes the following actions:</base:Paragraph>
+              <base:Paragraph>- Second temperature measurement 5 seconds after the first temperature measurement</base:Paragraph>
+              <base:Paragraph>- Verify that the difference between the target temperature (5°C) and the measured temperatures is less than 5°C</base:Paragraph>
+              <base:Paragraph>- Record the measured temperatures and maximum temperature deviation</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 15 -->
+      <ds:Step Name="MeasureTemperaturesC">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Measure Temperature Deviation (III)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software executes the following actions:</base:Paragraph>
+              <base:Paragraph>- Executes the third temperature measurement 5 seconds after the second temperature measurement</base:Paragraph>
+              <base:Paragraph>- Verify that the difference between the target temperature (5°C) and the measured temperatures is less than 5°C</base:Paragraph>
+              <base:Paragraph>- Record the measured temperatures and maximum temperature deviation</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement Step 16 -->
+      <ds:Step Name="StopRegulatingTemperature" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Stop Regulating Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now stop regulating the temperature.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

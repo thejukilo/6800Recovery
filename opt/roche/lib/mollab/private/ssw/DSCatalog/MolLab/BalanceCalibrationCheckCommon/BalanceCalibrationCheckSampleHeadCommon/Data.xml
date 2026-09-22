@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="ADEA8EAE9822A501CEAA1F412E3EC01429218A419B3C" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="BalanceCalibrationCheckSampleHeadCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsSampleHead" Type="Boolean">
+          <data:Description>
+            <base:Title>Is sample transfer head</base:Title>
+          </data:Description>
+          <data:Value>True</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList />
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

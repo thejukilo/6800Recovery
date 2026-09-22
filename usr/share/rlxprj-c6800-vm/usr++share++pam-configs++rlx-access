@@ -1,0 +1,7 @@
+Name: RLX pam_access configuration
+Default: yes
+Priority: 290
+
+Auth-Type: Primary
+Auth:
+	required	pam_access.so	accessfile=/etc/security/access.conf.rlx

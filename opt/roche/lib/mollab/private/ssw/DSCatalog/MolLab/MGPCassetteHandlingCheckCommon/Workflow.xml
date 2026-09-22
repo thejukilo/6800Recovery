@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="1846DCEB7ADAA4E6C472FD659E968681530A9BE27986" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="MGPCassetteHandlingCheckCommon" ID="MGPCassetteHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare and Init</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the involved modules are being initialized...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceMGPCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place MGP Cassette on Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place the MGP cassette on the transfer position of the processing module [P.pModuleId] and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveMGPToShaker">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move MGP to MGP Cassette Shaker</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette is being moved to the MGP cassette shaker...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadRFID">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Read RFID</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The RFID is being read...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckLocking" Type="Confirm" Result="rFixedTightly">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check MGP Locking</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is the MGP cassette fixed tightly to the MGP cassette shaker?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ShakeMGP">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Shake MGP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette is being shaked for [P.pShakeTime] seconds...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadMGPManually" Type="Confirm" Result="rManualUnload">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload MGP Manually</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please manually unlock the MGP cassette shaker and unload the MGP cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

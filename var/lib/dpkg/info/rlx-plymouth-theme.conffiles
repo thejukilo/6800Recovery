@@ -1,0 +1,5 @@
+/etc/initramfs-tools/scripts/init-bottom/plymouth
+/etc/systemd/system/console-setup.service.d/override.conf
+/etc/systemd/system/plymouth-poweroff.service.d/override.conf
+/etc/systemd/system/plymouth-reboot.service.d/override.conf
+/etc/systemd/system/plymouth-start.service.d/override.conf

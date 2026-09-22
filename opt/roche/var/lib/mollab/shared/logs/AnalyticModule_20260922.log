@@ -1,0 +1,148 @@
+[2026-09-22T07:25:04.3553873Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Bootstrapping unit 'AnalyticModule' with version '1.0.1+1345054.a2d12aec668f680ca8c4edb1e9bab7fcb354e542' ...[EOL]
+[2026-09-22T07:25:04.7443506Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Local time zone: (UTC) Coordinated Universal Time[EOL]
+[2026-09-22T07:25:04.7447477Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Configuring unit 'AnalyticModule' ...[EOL]
+[2026-09-22T07:25:07.9639166Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Starting unit 'AnalyticModule' ...[EOL]
+[2026-09-22T07:25:08.0691639Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM][1]Initializing Messagebus ...[EOL]
+[2026-09-22T07:25:53.2148313Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM][1]Connected successfully to 'amqp://rabbitmq-server:5672'[EOL]
+[2026-09-22T07:25:54.1544489Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][1]Publishing event 'UnitStateChanged' with args OldState: 'PoweredOff', NewState: 'StartingUp', TraceContext: '<null>' ...[EOL]
+[2026-09-22T07:25:57.1641680Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Configured instance with 'Enabled: 'True', IntervalSeconds: '30', Counters: '<empty>''[EOL]
+[2026-09-22T07:25:57.1655115Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Starting up instance ...[EOL]
+[2026-09-22T07:25:57.1663965Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Enabling counters of 'System.Runtime' ...[EOL]
+[2026-09-22T07:26:22.0748763Z][AM][I][Maintenance.MaintenanceActionExecutionProvider][1]New trigger MaintenanceAction: '('NotStarted', '<null>')' on stream ...[EOL]
+[2026-09-22T07:26:25.6284779Z][AM][I][Pcr.Measurement.ReagentCassetteCalibrationParametersProvider][1]New trigger '<empty>' on stream ...[EOL]
+[2026-09-22T07:26:25.6948824Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][1]New trigger '<empty>' on stream ...[EOL]
+[2026-09-22T07:26:31.5918050Z][AM][I][Surveillance.SurveillanceEventHandler][1]New trigger 'IsAmplificationPlateHandlerOperational: 'False', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'False', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'False'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'False', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'False', DistinctOperationalStates: '4'' on stream ...[EOL]
+[2026-09-22T07:26:31.6107963Z][AM][I][Surveillance.SurveillanceEventHandler][1]Publishing event 'AnalyticModuleOperationalStateChanged' with args State: 'NotOperational', AmplificationPlateDrawerState: 'NotOperational', AnalyticUnits: ''AnalyticUnitId: 'A1', State: 'NotOperational'', 'AnalyticUnitId: 'A2', State: 'NotOperational''', TraceContext: '<null>' ...[EOL]
+[2026-09-22T07:26:32.0281161Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM.Distribution][1]Start receiving messages ...[EOL]
+[2026-09-22T07:26:32.0427167Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][1]Publishing event 'UnitStateChanged' with args OldState: 'StartingUp', NewState: 'StartedUp', TraceContext: '<null>' ...[EOL]
+[2026-09-22T07:26:32.0438909Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Unit 'AnalyticModule' successfully started[EOL]
+[2026-09-22T08:28:39.9635892Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Bootstrapping unit 'AnalyticModule' with version '1.0.1+1345054.a2d12aec668f680ca8c4edb1e9bab7fcb354e542' ...[EOL]
+[2026-09-22T08:28:40.3184506Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Local time zone: (UTC) Coordinated Universal Time[EOL]
+[2026-09-22T08:28:40.3188579Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Configuring unit 'AnalyticModule' ...[EOL]
+[2026-09-22T08:28:44.2386629Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Starting unit 'AnalyticModule' ...[EOL]
+[2026-09-22T08:28:44.4409259Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM][1]Initializing Messagebus ...[EOL]
+[2026-09-22T08:29:23.4478752Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM][1]Connected successfully to 'amqp://rabbitmq-server:5672'[EOL]
+[2026-09-22T08:29:23.9107485Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][1]Publishing event 'UnitStateChanged' with args OldState: 'PoweredOff', NewState: 'StartingUp', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:29:24.7601934Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Configured instance with 'Enabled: 'True', IntervalSeconds: '30', Counters: '<empty>''[EOL]
+[2026-09-22T08:29:24.7613492Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Starting up instance ...[EOL]
+[2026-09-22T08:29:24.7621536Z][AM][I][PerformanceMonitoring.PerformanceCounterListener][1]Enabling counters of 'System.Runtime' ...[EOL]
+[2026-09-22T08:29:49.5037143Z][AM][I][Maintenance.MaintenanceActionExecutionProvider][1]New trigger MaintenanceAction: '('NotStarted', '<null>')' on stream ...[EOL]
+[2026-09-22T08:29:53.3338367Z][AM][I][Pcr.Measurement.ReagentCassetteCalibrationParametersProvider][1]New trigger '<empty>' on stream ...[EOL]
+[2026-09-22T08:29:53.3760382Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][1]New trigger '<empty>' on stream ...[EOL]
+[2026-09-22T08:30:01.2205125Z][AM][I][Surveillance.SurveillanceEventHandler][1]New trigger 'IsAmplificationPlateHandlerOperational: 'False', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'False', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'False'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'False', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'False', DistinctOperationalStates: '4'' on stream ...[EOL]
+[2026-09-22T08:30:01.2488250Z][AM][I][Surveillance.SurveillanceEventHandler][1]Publishing event 'AnalyticModuleOperationalStateChanged' with args State: 'NotOperational', AmplificationPlateDrawerState: 'NotOperational', AnalyticUnits: ''AnalyticUnitId: 'A1', State: 'NotOperational'', 'AnalyticUnitId: 'A2', State: 'NotOperational''', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:30:05.5411909Z][AM][I][Messaging.RabbitMQ.RabbitMQClient.AM.Distribution][1]Start receiving messages ...[EOL]
+[2026-09-22T08:30:05.6882845Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][1]Publishing event 'UnitStateChanged' with args OldState: 'StartingUp', NewState: 'StartedUp', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:30:05.6945408Z][AM][I][Launcher.AnalyticModuleBootstrapper][1]Unit 'AnalyticModule' successfully started[EOL]
+[2026-09-22T08:30:54.3499742Z][AM][I][UnitLifecycle.UnitLifecycleProcessManager][10]Initialization of the unit 'AnalyticModule' with activity id '00-dd82d13ed26ec30b58a7827c44aa343a-87c1572f2bcef9d3-01' started[EOL]
+[2026-09-22T08:30:54.3505709Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][10]Publishing event 'UnitStateChanged' with args OldState: 'StartedUp', NewState: 'Initializing', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-87c1572f2bcef9d3-01' ...[EOL]
+[2026-09-22T08:30:54.3747105Z][AM][I][UnitLifecycle.UnitInitializationProcessManager][10]Waiting until all dependent units are initialized ...[EOL]
+[2026-09-22T08:31:01.7941895Z][AM][I][Surveillance.SurveillanceEventHandler][10]New trigger 'IsAmplificationPlateHandlerOperational: 'False', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'True', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'False'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'False', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'False', DistinctOperationalStates: '4'' on stream ...[EOL]
+[2026-09-22T08:31:01.9520763Z][AM][I][Surveillance.SurveillanceEventHandler][14]New trigger 'IsAmplificationPlateHandlerOperational: 'True', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'True', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'False'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'False', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'False', DistinctOperationalStates: '4'' on stream ...[EOL]
+[2026-09-22T08:31:02.0275293Z][AM][I][Drawer.DrawerStateChangedEventHandler][14]New trigger AggregateStateChangedToError: '('False', '00-5c7a9002a615559d700f32bcd0705c8f-a22fd60a85407ad4-01')' on stream ...[EOL]
+[2026-09-22T08:31:02.0546069Z][AM][I][Surveillance.SurveillanceEventHandler][14]New trigger 'IsAmplificationPlateHandlerOperational: 'True', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'True', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'False'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'True', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'False', DistinctOperationalStates: '5'' on stream ...[EOL]
+[2026-09-22T08:31:02.0569336Z][AM][I][Surveillance.SurveillanceEventHandler][14]Publishing event 'AnalyticModuleOperationalStateChanged' with args State: 'NotOperational', AmplificationPlateDrawerState: 'Operational', AnalyticUnits: ''AnalyticUnitId: 'A1', State: 'NotOperational'', 'AnalyticUnitId: 'A2', State: 'NotOperational''', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:02.4147965Z][AM][I][ModuleMonitoring.PositionsOccupancyStateProvider][15]New trigger ''AmplificationPlateTransferPosition': 'False'' on stream ...[EOL]
+[2026-09-22T08:31:02.4342022Z][AM][I][Pcr.Transfer.Positions.PositionSensorStateProvider][15]Handling event 'AmplificationPlatePresenceChanged' with args IsPresent: 'False', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-861f8c9af433abe7-01' on stream ...[EOL]
+[2026-09-22T08:31:02.4388990Z][AM][I][Pcr.Transfer.Positions.AmplificationPlateTransferPositionPublisher][15]New trigger AmplificationPlatePresenceChanged: 'False' on stream ...[EOL]
+[2026-09-22T08:31:02.4437707Z][AM][I][Pcr.Transfer.Positions.AmplificationPlateTransferPositionPublisher][15]Publishing event 'AmplificationPlateTransferPositionStateChanged' with args AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:02.4993255Z][AM][I][Pcr.Transfer.Positions.AmplificationPlateTransferPositionPublisher][15]New trigger AmplificationPlatePresenceChanged: 'False' on stream ...[EOL]
+[2026-09-22T08:31:02.5587350Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]Handling event 'AmplificationPlateTransferPositionStateChanged' with args AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' on stream ...[EOL]
+[2026-09-22T08:31:02.5644809Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger '
+Run of the amplification plate on transfer position: 'None. Transfer position empty'
+
+Analytic units state: '<n/a>'
+
+Drawer unlocking disabled: 'False'
+Can drawer unlocking be disabled: 'False'
+
+No pending loading requests
+No pending unloading from analytic unit requests
+No pending unloading from transfer position requests
+' on stream ...[EOL]
+[2026-09-22T08:31:03.2432405Z][AM][I][Surveillance.SurveillanceEventHandler][10]New trigger 'IsAmplificationPlateHandlerOperational: 'True', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'True', AreAnalyticUnitsOperational: ''A1': 'False', 'A2': 'True'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'True', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'True', DistinctOperationalStates: '22'' on stream ...[EOL]
+[2026-09-22T08:31:03.2450766Z][AM][I][Surveillance.SurveillanceEventHandler][10]Publishing event 'AnalyticModuleOperationalStateChanged' with args State: 'Operational', AmplificationPlateDrawerState: 'Operational', AnalyticUnits: ''AnalyticUnitId: 'A1', State: 'NotOperational'', 'AnalyticUnitId: 'A2', State: 'Operational''', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:03.3220706Z][AM][I][Drawer.DrawerStateChangedEventHandler][10]Handling event 'DrawerStateChanged' with args OldState: 'Unknown', NewState: 'ClosedLocked', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-ddb1efac963fcbf4-01' on stream ...[EOL]
+[2026-09-22T08:31:03.4125298Z][AM][I][Drawer.AmplificationPlateDrawer][10]Publishing event 'DrawerUsageStateChanged' with args State: 'UnlockingDisallowed', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-ddb1efac963fcbf4-01' ...[EOL]
+[2026-09-22T08:31:03.8343616Z][AM][I][Surveillance.SurveillanceEventHandler][10]New trigger 'IsAmplificationPlateHandlerOperational: 'True', IsAmplificationPlateStillOnAmplificationPlateHandlerAfterPutDown: 'False', IsAmplificationPlateTransferPositionOperational: 'True', AreAnalyticUnitsOperational: ''A1': 'True', 'A2': 'True'', AnalyticUnitHeatingErrors: '<empty>', IsAmplificationPlateDrawerOperational: 'True', AreAnalyticUnitsFree: ''A1': 'True', 'A2': 'True'', IsAmplificationPlateTransferPositionFree: 'True', IsOperational: 'True', DistinctOperationalStates: '38'' on stream ...[EOL]
+[2026-09-22T08:31:03.8346150Z][AM][I][Surveillance.SurveillanceEventHandler][10]Publishing event 'AnalyticModuleOperationalStateChanged' with args State: 'Operational', AmplificationPlateDrawerState: 'Operational', AnalyticUnits: ''AnalyticUnitId: 'A1', State: 'Operational'', 'AnalyticUnitId: 'A2', State: 'Operational''', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:04.1463368Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][10]Received analytic unit 'A2' hardware info with data 'ExcitationFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', EmissionFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', BlockSerialNumber: '00000000', ReferenceChannelSerialNumber: '0000000000', LedSerialNumber: '0000000000', CameraSerialNumber: '0000000000', DataReductionVersion: 'DataReduction2', ThermalCyclerFirmwareVersion: 'ThermalCyclerV2''[EOL]
+[2026-09-22T08:31:04.1809519Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][10]New trigger ''A2': 'EmissionFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', ExcitationFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''''' on stream ...[EOL]
+[2026-09-22T08:31:04.1886325Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][10]Received analytic unit 'A1' hardware info with data 'ExcitationFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', EmissionFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', BlockSerialNumber: '00000000', ReferenceChannelSerialNumber: '0000000000', LedSerialNumber: '0000000000', CameraSerialNumber: '0000000000', DataReductionVersion: 'DataReduction3', ThermalCyclerFirmwareVersion: 'ThermalCyclerV2''[EOL]
+[2026-09-22T08:31:04.1944158Z][AM][I][Pcr.Measurement.AnalyticUnitHardwareInformationProvider][10]New trigger ''A1': 'EmissionFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', ExcitationFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0'''', 'A2': 'EmissionFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''', ExcitationFilters: 'Position: '1', Wavelength: 'Unit: 'M', Amount: '0'', Position: '2', Wavelength: 'Unit: 'M', Amount: '0'', Position: '3', Wavelength: 'Unit: 'M', Amount: '0'', Position: '4', Wavelength: 'Unit: 'M', Amount: '0'', Position: '5', Wavelength: 'Unit: 'M', Amount: '0''''' on stream ...[EOL]
+[2026-09-22T08:31:04.2486193Z][AM][I][ModuleMonitoring.PositionsOccupancyStateProvider][10]New trigger ''AnalyticUnitA1': 'False', 'AmplificationPlateTransferPosition': 'False'' on stream ...[EOL]
+[2026-09-22T08:31:04.2621612Z][AM][I][Pcr.Transfer.Positions.PositionSensorStateProvider][10]Handling event 'AmplificationPlatePresenceStateChanged' with args AnalyticUnitId: 'A1', TraceContext: '00-a5a20a3e4d856ab40f6f3435c0d7e98e-39b3d002ee448cae-01', PresenceState: 'NotPresent' on stream ...[EOL]
+[2026-09-22T08:31:04.2713543Z][AM][I][Pcr.Transfer.Positions.AnalyticUnitPositionPublisher.A1][10]Publishing event 'AnalyticUnitPositionStateChanged' with args AnalyticUnitId: 'A1', AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:04.4424424Z][AM][I][ModuleMonitoring.PositionsOccupancyStateProvider][10]New trigger ''AnalyticUnitA1': 'False', 'AnalyticUnitA2': 'False', 'AmplificationPlateTransferPosition': 'False'' on stream ...[EOL]
+[2026-09-22T08:31:04.4426820Z][AM][I][Pcr.Transfer.Positions.PositionSensorStateProvider][10]Handling event 'AmplificationPlatePresenceStateChanged' with args AnalyticUnitId: 'A2', TraceContext: '00-c54fcfbc15647b78e768450aefd5fd13-c8dd83ab609e1b13-01', PresenceState: 'NotPresent' on stream ...[EOL]
+[2026-09-22T08:31:04.4427618Z][AM][I][Pcr.Transfer.Positions.AnalyticUnitPositionPublisher.A2][10]Publishing event 'AnalyticUnitPositionStateChanged' with args AnalyticUnitId: 'A2', AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' ...[EOL]
+[2026-09-22T08:31:04.5137107Z][AM][I][Initialization.InitializationStateProvider][10]New trigger InitializationState: 'Ready' on stream ...[EOL]
+[2026-09-22T08:31:04.5217456Z][AM][I][UnitLifecycle.UnitInitializationProcessManager][15]All dependent units are initialized. Proceeding with the initialization process ...[EOL]
+[2026-09-22T08:31:04.5628258Z][AM][I][UnitLifecycle.UnitLifecycleStateMachine][15]Publishing event 'UnitStateChanged' with args OldState: 'Initializing', NewState: 'Operational', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-87c1572f2bcef9d3-01' ...[EOL]
+[2026-09-22T08:31:04.5651423Z][AM][I][UnitLifecycle.UnitLifecycleProcessManager][15]Initialization of the unit 'AnalyticModule' with activity id '00-dd82d13ed26ec30b58a7827c44aa343a-87c1572f2bcef9d3-01' completed[EOL]
+[2026-09-22T08:31:04.5991023Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger 'State: 'UnlockingDisallowed', TraceContext: '00-dd82d13ed26ec30b58a7827c44aa343a-ddb1efac963fcbf4-01', Timestamp: '2026-09-22 08:31:03.325Z'' on stream ...[EOL]
+[2026-09-22T08:31:04.5997952Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger '
+Run of the amplification plate on transfer position: 'None. Transfer position empty'
+
+Analytic units state: '<n/a>'
+
+Drawer unlocking disabled: 'True'
+
+No pending loading requests
+No pending unloading from analytic unit requests
+No pending unloading from transfer position requests
+' on stream ...[EOL]
+[2026-09-22T08:31:04.6160717Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]Handling event 'AnalyticUnitPositionStateChanged' with args AnalyticUnitId: 'A1', AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' on stream ...[EOL]
+[2026-09-22T08:31:04.6654008Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger '
+Run of the amplification plate on transfer position: 'None. Transfer position empty'
+
+Analytic units state:
+
+Analytic unit 'A1': 'Empty'
+
+Drawer unlocking disabled: 'True'
+
+No pending loading requests
+No pending unloading from analytic unit requests
+No pending unloading from transfer position requests
+' on stream ...[EOL]
+[2026-09-22T08:31:04.6836692Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]Handling event 'AnalyticUnitPositionStateChanged' with args AnalyticUnitId: 'A2', AmplificationPlate: '<null>', RunId: '<null>', TraceContext: '<null>' on stream ...[EOL]
+[2026-09-22T08:31:04.6883561Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger '
+Run of the amplification plate on transfer position: 'None. Transfer position empty'
+
+Analytic units state:
+
+Analytic unit 'A1': 'Empty'
+Analytic unit 'A2': 'Empty'
+
+Drawer unlocking disabled: 'True'
+
+No pending loading requests
+No pending unloading from analytic unit requests
+No pending unloading from transfer position requests
+' on stream ...[EOL]
+[2026-09-22T08:31:12.1736640Z][AM][I][Drawer.InstrumentStateChangedEventHandler][14]Handling event 'InstrumentStateChanged' with args OldState: 'Initializing', NewState: 'Standby', TraceContext: '00-096a14d08ddfa8652d114d8f390ec520-0d37330fa2f71cf3-01' on stream ...[EOL]
+[2026-09-22T08:31:12.1928771Z][AM][I][Drawer.AmplificationPlateDrawer][14]Publishing event 'DrawerUsageStateChanged' with args State: 'UnlockingAllowed', TraceContext: '00-096a14d08ddfa8652d114d8f390ec520-0d37330fa2f71cf3-01' ...[EOL]
+[2026-09-22T08:31:12.2064984Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger 'State: 'UnlockingAllowed', TraceContext: '00-096a14d08ddfa8652d114d8f390ec520-0d37330fa2f71cf3-01', Timestamp: '2026-09-22 08:31:12.192Z'' on stream ...[EOL]
+[2026-09-22T08:31:12.2067577Z][AM][I][Pcr.Transfer.Coordination.AnalyticModuleStateProvider][10]New trigger '
+Run of the amplification plate on transfer position: 'None. Transfer position empty'
+
+Analytic units state:
+
+Analytic unit 'A1': 'Empty'
+Analytic unit 'A2': 'Empty'
+
+Drawer unlocking disabled: 'False'
+Can drawer unlocking be disabled: 'True'
+
+No pending loading requests
+No pending unloading from analytic unit requests
+No pending unloading from transfer position requests
+' on stream ...[EOL]
+[2026-09-22T08:31:12.2479142Z][AM][I][TestDefinitionData.TestDefinitionDataEventHandler][10]Handling event 'TestDefinitionDataUpdated' with args NewlyAvailableAssayIds: '<empty>', TraceContext: '<null>' on stream ...[EOL]
+[2026-09-22T08:31:12.3615733Z][AM][I][TestDefinitionData.Instrument.TestDefinitionDataLoader][10]Loading TestDefinitionData.Instrument from repositories ...[EOL]
+[2026-09-22T08:31:12.3699289Z][AM][I][TestDefinitionData.ReadOnlyRepository<Roche.CX800.TestDefinitionData.Instrument.MediaTypes.MediaType>][10]Loading from files '' ...[EOL]
+[2026-09-22T08:31:12.3706359Z][AM][I][TestDefinitionData.ReadOnlyRepository<Roche.CX800.TestDefinitionData.Instrument.Processes.TransferProcesses.TransferProcess>][10]Loading from files '' ...[EOL]
+[2026-09-22T08:31:12.3709898Z][AM][I][TestDefinitionData.ReadOnlyRepository<Roche.CX800.TestDefinitionData.Instrument.Processes.PcrProcesses.PcrProcess>][10]Loading from files '' ...[EOL]
+[2026-09-22T08:31:12.3713615Z][AM][I][TestDefinitionData.ReadOnlyRepository<Roche.CX800.TestDefinitionData.Instrument.Assays.Assay>][10]Loading from files '' ...[EOL]
+[2026-09-22T08:31:12.3714775Z][AM][I][TestDefinitionData.Instrument.TestDefinitionDataLoader][10]TestDefinitionData.Instrument successfully loaded[EOL]

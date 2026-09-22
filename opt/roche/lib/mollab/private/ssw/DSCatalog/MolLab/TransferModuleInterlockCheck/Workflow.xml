@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="8A7630F2023350BA4E99F01D3907DC9D1D89C5C955B3" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="TransferModuleInterlockCheck" ID="TransferModuleInterlockCheck">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="CloseAllDoorsFirst" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close All Doors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the transfer module front cover, the reagent storage service door and place the key in the interlock module (type lock) of the transfer module upper rear door, and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_AllDoors_Closed.jpg" Hash="012B33679D7207D2F86B09933A2B520B6DB5885F" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while any necessary initialization actions are done...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="VerifyAllDoorsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify All Doors Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the transfer module front cover, transfer module upper rear door, reagent storage service door are reported as closed by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="OpenTransferModuleFrontDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Front Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the transfer module front cover completely with the open/close covers button and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_FrontCover_Open.jpg" Hash="D485AA7D1A94839D07003977ACA27C37CC81264C" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="VerifyOpenTransferModuleFrontDoor">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify the Transfer Module Front Cover is Opened</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the transfer module front cover state is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="OpenTransferModuleBack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Rear Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the key from the interlock module (type lock) of the transfer module upper rear door and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_Rear_Open.jpg" Hash="C7E8E009D9D1A89B1BE4E24E68E9407317BEAF78" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="VerifyOpenTransferModuleBack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify the Transfer Module Back is Opened</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the transfer module upper rear door state is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8 -->
+      <ds:Step Name="OpenReagentStorage" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Reagent Storage Service Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the reagent storage service door from the rear of the transfer module and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_ReagentStorageServiceDoor_Open.jpg" Hash="DFF972AD02AD1903556E24D5FAC8DEBD6045450E" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 9 -->
+      <ds:Step Name="VerifyOpenReagentStorage">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify the Reagent Service Door is is Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the reagent storage service door state is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10 -->
+      <ds:Step Name="TurnServiceSwitchNormalMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Disable the interlock service mode by turning the service mode switch counter clockwise and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Standalone_ServiceSwitch_Running.jpg" Hash="9461E313F0E20D028FCEDD4C5DB44BAB369C6D9C" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11 -->
+      <ds:Step Name="CloseAllDoors" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close All Doors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place the key in the interlock module (type lock) of the transfer module upper rear door and close the reagent storage service door from the rear of the transfer module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_RearAndReagentStorageServiceDoor_Closed.jpg" Hash="51268467CC197AD59520D03738E587048C53E3D6" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 12 -->
+      <ds:Step Name="ManualCloseDoorTransferModule" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Transfer Module Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the transfer module front cover completely with the open/close covers button. </base:Paragraph>
+              <base:Paragraph>Press 'Next' once the cover is completely closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_FrontCover_Closed.jpg" Hash="27F1D74986E6A49E3A6FFFB030B69F13155A16CB" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 13 -->
+      <ds:Step Name="VerifyAllDoorsLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify All Doors Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the transfer module front cover and the transfer module upper rear door are reported as closed and locked closed and locked by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 14 -->
+      <ds:Step Name="TurnServiceSwitchServiceMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Enable the interlock service mode by turning the service mode switch clockwise.</base:Paragraph>
+              <base:Paragraph>Remove the key from the interlock module (type lock) from the transfer module upper rear door and press 'Finish'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="TransferModuleInterlockCheck_Rear_Open_ServiceSwitch_ServiceMode.jpg" Hash="2373A1FEADA59B356903DC728C19413443616781" />
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

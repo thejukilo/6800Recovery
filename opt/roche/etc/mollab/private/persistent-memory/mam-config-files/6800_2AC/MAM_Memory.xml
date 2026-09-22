@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam
+  xmlns:dia="http://dia.roche.com"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <projConfig id="300" name="6800_1AC" dataVersion="212"/>
+  <memoryConfig>
+    <!--        Volatile       -->
+    <memory     id="999999"    type="volatile" name="volatile"                               location="not_used"                                                                                  size="0"/>
+    <memory     id="999998"    type="volatile" name="volatile"                               location="not_used"                                                                                  size="0"/>
+
+    <!--        EEPROM         -->
+
+    <!--        SampleCell     -->
+    <memory     id="2004"      type="eeprom"   name="MAM_SC_Fuseboard"                       location="MAM_SC_Fuseboard"                                                                          size="8192" />
+    <memory     id="2006"      type="eeprom"   name="MAM_SC_Pipettor1_MC"                    location="MAM_SC_Pipettor1_MC"                                                                       size="512" />
+    <memory     id="2008"      type="eeprom"   name="MAM_SC_Pipettor2_MC"                    location="MAM_SC_Pipettor2_MC"                                                                       size="512" />
+    <memory     id="2010"      type="eeprom"   name="MAM_SC_Pipettor3_MC"                    location="MAM_SC_Pipettor3_MC"                                                                       size="512" />
+    <memory     id="2012"      type="eeprom"   name="MAM_SC_Pipettor4_MC"                    location="MAM_SC_Pipettor4_MC"                                                                       size="512" />
+    <memory     id="2013"      type="eeprom"   name="MAM_SC_ProcessPark_TransferS"           location="MAM_SC_ProcessPark_TransferS"                                                              size="512" />
+    <memory     id="2014"      type="eeprom"   name="MAM_SC_PlateHandler_1"                  location="MAM_SC_PlateHandler_1"                                                                     size="512" />
+    <memory     id="2015"      type="eeprom"   name="MAM_SC_PlateHandler_2"                  location="MAM_SC_PlateHandler_2"                                                                     size="512" />
+    <memory     id="2016"      type="eeprom"   name="MAM_SC_SampleIO_MC"                     location="MAM_SC_SampleIO_MC"                                                                        size="512" />
+    <memory     id="2017"      type="eeprom"   name="MAM_SC_SampleIO_RHC"                    location="MAM_SC_SampleIO_RHC"                                                                       size="512" />
+    <memory     id="2018"      type="eeprom"   name="MAM_SC_SampleIO_RHC_MC"                 location="MAM_SC_SampleIO_RHC_MC"                                                                    size="512" />
+    <!-- !! Please check the location before enabling this entry
+    <memory     id="2050"      type="eeprom"   name="MAM_ReagentCassetteDrawer_DrawerLock"   location="not_used"                                                                                  size="0" />  -->
+    <memory     id="2050"      type="file"     name="MAM_ReagentCassetteDrawer_DrawerLock"   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_ReagentCassetteDrawer_DrawerLock.mem"   size="10000"/>
+
+    <!--        ProcessCellA   -->
+    <memory     id="2102"      type="eeprom"   name="MAM_PCA_Fuseboard"                      location="MAM_PCA_Fuseboard"                                                                         size="8192" />
+    <memory     id="2104"      type="eeprom"   name="MAM_PCA_Pipettor1_2"                    location="MAM_PCA_Pipettor1_2"                                                                       size="512" />
+    <memory     id="2106"      type="eeprom"   name="MAM_PCA_Pipettor3_4"                    location="MAM_PCA_Pipettor3_4"                                                                       size="512" />
+    <memory     id="2108"      type="eeprom"   name="MAM_PCA_Pipettor5_6"                    location="MAM_PCA_Pipettor5_6"                                                                       size="512" />
+    <memory     id="2110"      type="eeprom"   name="MAM_PCA_Pipettor7_8"                    location="MAM_PCA_Pipettor7_8"                                                                       size="512" />
+    <memory     id="2112"      type="eeprom"   name="MAM_PCA_SensorModul"                    location="MAM_PCA_SensorModul"                                                                       size="512" />
+    <memory     id="2114"      type="eeprom"   name="MAM_PCA_FluidSystem_MC"                 location="MAM_PCA_FluidSystem_MC"                                                                    size="512" />
+    <memory     id="2116"      type="eeprom"   name="MAM_PCA_InterimReagentStorage_RHC"      location="MAM_PCA_InterimReagentStorage_RHC"                                                         size="512" />
+    <memory     id="2117"      type="eeprom"   name="MAM_PCA_MGPMixer"                       location="MAM_PCA_MGPMixer"                                                                          size="512" />
+    <memory     id="2118"      type="eeprom"   name="MAM_PCA_BulkDrawer_RHC"                 location="MAM_PCA_BulkDrawer_RHC"                                                                    size="512" />
+    <memory     id="2120"      type="eeprom"   name="MAM_PCA_WashWasteDrawer_RHC"            location="MAM_PCA_WashWasteDrawer_RHC"                                                               size="512" />
+    <memory     id="2122"      type="eeprom"   name="MAM_PCA_ProcessHeadBack_MC1"            location="MAM_PCA_ProcessHeadBack_MC1"                                                               size="512" />
+    <memory     id="2125"      type="eeprom"   name="MAM_PCA_ProcessHeadFront_MC1"           location="MAM_PCA_ProcessHeadFront_MC1"                                                              size="512" />
+    <memory     id="2128"      type="eeprom"   name="MAM_PCA_ProcessTransfer"                location="MAM_PCA_ProcessTransfer"                                                                   size="512" />
+    <memory     id="2129"      type="volatile" name="MAM_PCA_HeatingStationConnector_1"      location="not_used"                                                                                  size="512" />
+    <memory     id="2130"      type="eeprom"   name="MAM_PCA_HeatingStation1"                location="MAM_PCA_HeatingStation1"                                                                   size="512" />
+    <memory     id="2131"      type="volatile" name="MAM_PCA_HeatingStationConnector_2"      location="not_used"                                                                                  size="512" />
+    <memory     id="2132"      type="eeprom"   name="MAM_PCA_HeatingStation2"                location="MAM_PCA_HeatingStation2"                                                                   size="512" />
+    <memory     id="2136"      type="eeprom"   name="MAM_PCA_SeparationStation1"             location="MAM_PCA_SeparationStation1"                                                                size="512" />
+    <memory     id="2137"      type="eeprom"   name="MAM_PCA_SeparationStation2"             location="MAM_PCA_SeparationStation2"                                                                size="512" />
+    <memory     id="2138"      type="eeprom"   name="MAM_PCA_PlateHandler_2"                 location="MAM_PCA_PlateHandler_2"                                                                    size="512" />
+    <memory     id="2139"      type="eeprom"   name="MAM_PCA_PlateHandler_1"                 location="MAM_PCA_PlateHandler_1"                                                                    size="512" />
+    <memory     id="2140"      type="eeprom"   name="MAM_PCA_ADParkPosition"                 location="MAM_PCA_ADParkPosition"                                                                    size="512" />
+
+    <!--        ADCell         -->
+    <memory     id="2301"      type="eeprom"   name="MAM_AC_PlateHandler_1"                  location="MAM_AC_PlateHandler_1"                                                                     size="512" />
+    <memory     id="2302"      type="eeprom"   name="MAM_AC_PlateHandler_2_RHC"              location="MAM_AC_PlateHandler_2_RHC"                                                                 size="512" />
+    <memory     id="2303"      type="eeprom"   name="MAM_AC_PlateHandler_2_RHC_MC"           location="MAM_AC_PlateHandler_2_RHC_MC"                                                              size="512" />
+    <!--<memory id="2306"      type="eeprom"   name="MAM_AC_A1_LoadingModul"                 location="MAM_AC_A1_LoadingModul"                                                                    size="512" />-->
+    <!--<memory id="2309"      type="eeprom"   name="MAM_AC_A2_LoadingModul"                 location="MAM_AC_A2_LoadingModul"                                                                    size="512" />-->
+
+    <!--        ConsumableCell -->
+    <memory     id="2401"      type="eeprom"   name="MAM_SC_StackerHandler_2"                location="MAM_SC_StackerHandler_2"                                                                   size="512"   />
+    <memory     id="2402"      type="eeprom"   name="MAM_SC_StackerHandler_1"                location="MAM_SC_StackerHandler_1"                                                                   size="512"   />
+    <memory     id="2414"      type="eeprom"   name="MAM_SC_TipStackerCD_RHC_MC"             location="MAM_SC_TipStackerCD_RHC_MC"                                                                size="512"   />
+
+    <!--        Files          -->
+
+    <!--        SampleCell     -->
+    <memory     id="3260"      type="file"     name="MAM_ConsumablePark"                     location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_ConsumablePark.mem"                     size="10000" />
+    <memory     id="3440"      type="file"     name="MAM_Infrastructure_TransferModule"      location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_Infrastructure_TransferModule.mem"      size="10000" />
+    <memory     id="3740"      type="file"     name="MAM_RackHandler"                        location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_RackHandler.mem"                        size="10000" />
+    <memory     id="3960"      type="file"     name="MAM_TransferModuleControl"              location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_TransferModuleControl.mem"              size="10000" />
+
+    <!--        ProcessCellA   -->
+    <memory     id="2150"      type="file"     name="MAM_ConsumablesDrawerA_DrawerLock"      location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_ConsumablesDrawerA_DrawerLock.mem"      size="10000"/>
+    <memory     id="3220"      type="file"     name="MAM_BulkManagement_A"                   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_BulkManagement_A.mem"                   size="10000" />
+    <memory     id="3280"      type="file"     name="MAM_CoolingStation_A"                   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_CoolingStation_A.mem"                   size="10000" />
+    <memory     id="3400"      type="file"     name="MAM_HeatingStation_A1"                  location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_HeatingStation_A1.mem"                  size="10000" />
+    <memory     id="3420"      type="file"     name="MAM_HeatingStation_A2"                  location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_HeatingStation_A2.mem"                  size="10000" />
+    <memory     id="3460"      type="file"     name="MAM_Infrastructure_ProcessingModuleA"   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_Infrastructure_ProcessingModuleA.mem"   size="10000" />
+    <memory     id="3500"      type="file"     name="MAM_InterimReagentStorage_A"            location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_InterimReagentStorage_A.mem"            size="10000" />
+    <memory     id="3620"      type="file"     name="MAM_ProcessingModuleControlA"           location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_ProcessingModuleControlA.mem"           size="10000" />
+    <memory     id="3800"      type="file"     name="MAM_SealingStationA"                    location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SealingStationA.mem"                    size="10000" />
+    <memory     id="3840"      type="file"     name="MAM_SeparationStationA"                 location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SeparationStationA.mem"                 size="10000" />
+    <memory     id="4000"      type="file"     name="MAM_SolidWasteStationA"                 location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SolidWasteStationA.mem"                 size="10000" />
+
+    <!--        ADCell         -->
+    <memory     id="3000"      type="file"     name="MAM_AmplificationPlateDrawer"           location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AmplificationPlateDrawer.mem"           size="10000" />
+    <memory     id="3020"      type="file"     name="MAM_AmplificationPlateHandler"          location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AmplificationPlateHandler.mem"          size="10000" />
+    <memory     id="3120"      type="file"     name="MAM_AmplificationPlateTransferPosition" location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AmplificationPlateTransferPosition.mem" size="10000" />
+    <memory     id="3140"      type="file"     name="MAM_AnalyticUnit_A1"                    location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AnalyticUnit_A1.mem"                    size="10000" />
+    <memory     id="3160"      type="file"     name="MAM_AnalyticUnit_A2"                    location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AnalyticUnit_A2.mem"                    size="10000" />
+
+    <!--        ConsumableCell -->
+    <memory     id="2404"      type="file"     name="MAM_PCA_ADStacker_RHC_MC"               location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_PCA_ADStacker_RHC_MC.mem"               size="10000"/>
+    <memory     id="2411"      type="file"     name="MAM_PCA_PPlateStacker_RHC_MC"           location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_PCA_PPlateStacker_RHC_MC.mem"           size="10000"/>
+    <memory     id="3040"      type="file"     name="MAM_AmplificationPlateMagazine_I"       location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AmplificationPlateMagazine_I.mem"       size="10000" />
+    <memory     id="3060"      type="file"     name="MAM_AmplificationPlateMagazine_J"       location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_AmplificationPlateMagazine_J.mem"       size="10000" />
+    <memory     id="3320"      type="file"     name="MAM_DrawerLock_ReagentCassetteDrawer"   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_DrawerLock_ReagentCassetteDrawer.mem"   size="10000" />
+    <memory     id="3340"      type="file"     name="MAM_DrawerLock_ConsumableDrawerA"       location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_DrawerLock_ConsumableDrawerA.mem"       size="10000" />
+    <memory     id="3540"      type="file"     name="MAM_MainHandler"                        location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_MainHandler.mem"                        size="32768" />
+    <memory     id="3560"      type="file"     name="MAM_PCA_MgpCassetteMagazine_H"          location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_PCA_MgpCassetteMagazine_H.mem"          size="10000"/>
+    <memory     id="3660"      type="file"     name="MAM_PCA_ProcessingPlateMagazineF"       location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_PCA_ProcessingPlateMagazineF.mem"       size="10000"/>
+    <memory     id="3680"      type="file"     name="MAM_PCA_ProcessingPlateMagazineG"       location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_PCA_ProcessingPlateMagazineG.mem"       size="10000"/>
+    <memory     id="3760"      type="file"     name="MAM_ReagentStorageHandler"              location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_ReagentStorageHandler.mem"              size="10000" />
+    <memory     id="3920"      type="file"     name="MAM_SC_TipRackMagazineD"                location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SC_TipRackMagazineD.mem"                size="10000"/>
+    <memory     id="3940"      type="file"     name="MAM_SC_TipRackMagazineE"                location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SC_TipRackMagazineE.mem"                size="10000"/>
+
+    <!--        Instrument     -->
+    <memory     id="3380"      type="file"     name="MAM_Fieldbus_Gateway"                   location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_Fieldbus_Gateway.mem"                   size="10000" />
+    <memory     id="3600"      type="file"     name="MAM_Persistent_Memory"                  location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_Persistent_Memory.mem"                  size="10000" />
+    <memory     id="3780"      type="file"     name="MAM_SafetyInterlock"                    location="$ICSHAREPATH/persistent-memory/persistent-data/MAM_SafetyInterlock.mem"                    size="10000" />
+
+  </memoryConfig>
+</dia:mam>

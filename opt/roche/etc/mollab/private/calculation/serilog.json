@@ -1,0 +1,20 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "shared-data/logs/Calculation_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][CA][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 524288000
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+    "ExcludedNamePrefixes": [ "Roche.NewGen.Calculation.", "Roche.CX800.", "Roche.MolLab." ]
+  }
+}

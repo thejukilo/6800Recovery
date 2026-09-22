@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="E4893A6C7114B9827B694908E76F1CB190CD1A943064" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadUltrasonicCheckCommon" ID="ReagentTransferHeadUltrasonicCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="PlacePPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a cobas omni processing plate on the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="VerifyTransferPositionIsNotEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position Not Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the transfer position of the processing module [P.pModuleId] is not empty...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="LoadPPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8 -->
+      <ds:Step Name="DoScanStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Scanning On Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 9 -->
+      <ds:Step Name="TransferFirstPPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer First Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring processing plate from separation station 1 to separation station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10 -->
+      <ds:Step Name="DoScanStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Scanning On Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11 -->
+      <ds:Step Name="PlaceSecondPPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Second Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place another cobas omni processing plate on the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 12 -->
+      <ds:Step Name="VerifyTransferPositionIsNotEmpty2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position Not Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the transfer position of the processing module [P.pModuleId] is not empty...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 13 -->
+      <ds:Step Name="LoadSecondPPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 14 -->
+      <ds:Step Name="DoScanInSequence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Multiple Scans On Both Separation Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 15 -->
+      <ds:Step Name="ReturnPlate1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 16 -->
+      <ds:Step Name="RemovePPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the cobas omni processing plate from the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 17 -->
+      <ds:Step Name="ReturnPlate2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 18 -->
+      <ds:Step Name="RemoveSecondPPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Second Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the second cobas omni processing plate from the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Press 'Next' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

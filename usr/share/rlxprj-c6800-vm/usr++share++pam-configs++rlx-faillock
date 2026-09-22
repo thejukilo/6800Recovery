@@ -1,0 +1,6 @@
+Name: RLX faillock configuration
+Default: yes
+Priority: 254
+Auth-Type: Primary
+Auth:
+        [success=end default=ignore]    pam_faillock.so authfail deny=3 even_deny_root unlock_time=300

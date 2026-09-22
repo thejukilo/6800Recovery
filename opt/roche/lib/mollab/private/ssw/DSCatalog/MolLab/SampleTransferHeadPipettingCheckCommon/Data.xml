@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B21004E634C38EA6F1AEF53117B92851588F38894549" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pPipettorName" Type="String">
+          <data:Description>
+            <base:Title>Pipettor to Use</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPAddress" Type="String">
+          <data:Description>
+            <base:Title>Balance IP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The IP address of the mettler toledo cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>192.168.95.248</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPPort" Type="Integer">
+          <data:Description>
+            <base:Title>TCP Port Adress of the balance</base:Title>
+          </data:Description>
+          <data:Value>8001</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxLowVolInaccuracy" Type="Double">
+          <data:Description>
+            <base:Title>Max Low Vol Inaccuracy</base:Title>
+          </data:Description>
+          <data:Value>3.5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxLowVolImprecision" Type="Double">
+          <data:Description>
+            <base:Title>Max Low Vol Imprecision</base:Title>
+          </data:Description>
+          <data:Value>1.35</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxHighVolInaccuracy" Type="Double">
+          <data:Description>
+            <base:Title>Max High Vol Inaccuracy</base:Title>
+          </data:Description>
+          <data:Value>3.0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxHighVolImprecision" Type="Double">
+          <data:Description>
+            <base:Title>Max High Vol Imprecision</base:Title>
+          </data:Description>
+          <data:Value>1.5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>Sample Transfer Head Pipetting Parameters</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample transfer head pipetting parameters.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>ad485cca-fd60-424f-b99b-5f95969639ea</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pLowVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Low Volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The low volume that shall be aspirated and dispensed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>100E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pHighVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>High Volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The high volume that shall be aspirated and dispensed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>850E-09</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rBalanceConnected" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Connected</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The balance connected successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBalanceSerial" Type="String">
+          <data:Description>
+            <base:Title>Balance Serial</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The serial number (I4) of the mettler toledo cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceType" Type="String">
+          <data:Description>
+            <base:Title>Balance Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The type specification (I2) of the mettler toledo cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDispenseLowVolumes" Type="Double" Format="%.2n" Unit="ul" Array="true" Size="10">
+          <data:Description>
+            <base:Title>Dispense Low Volume (ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The amount that has been dispensed after aspiration (LowVol) (ul).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDispenseLowVolumesAverage" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Dispense Low Volume Average (ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense low volume average (ul).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDispenseLowVolumeInaccuracyPercent" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Dispense Low Volume Inaccuracy (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense low volume inaccuracy (%).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxLowVolInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDispenseLowVolumeImprecisionPercent" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Dispense Low Volume Imprecision (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense low volume imprecision (%)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxLowVolImprecision" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDispenseHighVolumes" Type="Double" Format="%.2n" Unit="ul" Array="true" Size="10">
+          <data:Description>
+            <base:Title>Dispense High Volume (ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The amount that has been dispensed after aspiration (HighVol) (ul).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDispenseHighVolumesAverage" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Dispense High Volume Average (ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense high volume average (ul).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDispenseHighVolumeInaccuracyPercent" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Dispense High Volume Inaccuracy (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense high volume inaccuracy (%)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxHighVolInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDispenseHighVolumeImprecisionPercent" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Dispense High Volume Imprecision (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense high volume imprecision (%)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxHighVolImprecision" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

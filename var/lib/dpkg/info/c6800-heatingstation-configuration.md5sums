@@ -1,0 +1,14 @@
+0ec1f5f61d823692224617e621add840  opt/roche/etc/mollab/private/heating-station/a1/config/newgen-heatingstation-motionconfig.xml
+7b0f58966c1861267be40863a7bb0e2a  opt/roche/etc/mollab/private/heating-station/a1/config/newgen-heatingstation-parampool.xml
+eb3cd195de13ae9bdf5a7798291993a9  opt/roche/etc/mollab/private/heating-station/a1/startup/ecc.xml
+6e38738283c4cc2cadc5fcd42aa8e73c  opt/roche/etc/mollab/private/heating-station/a1/startup/ecs_A1.xml
+0ec1f5f61d823692224617e621add840  opt/roche/etc/mollab/private/heating-station/a2/config/newgen-heatingstation-motionconfig.xml
+7b0f58966c1861267be40863a7bb0e2a  opt/roche/etc/mollab/private/heating-station/a2/config/newgen-heatingstation-parampool.xml
+eb3cd195de13ae9bdf5a7798291993a9  opt/roche/etc/mollab/private/heating-station/a2/startup/ecc.xml
+3012c26d8ae688985477580ec697694d  opt/roche/etc/mollab/private/heating-station/a2/startup/ecs_A2.xml
+e958a28996dececedcaf0c9a1a7b41d8  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-heatingstation-304-mam-config.xml
+d2fdcb8f2c62bc06cc660cb3666a6395  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-heatingstation-305-mam-config.xml
+b49d606f677f7a0d979649b1586b07a3  opt/roche/etc/mollab/private/rabbitmq/definitions/heatingstation_a1_definition.json
+df976dd7fb1504ed809ae80ad6290e01  opt/roche/etc/mollab/private/rabbitmq/definitions/heatingstation_a2_definition.json
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/heating-station/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/heating-station/fwr_00000604_MotionControl_2.03.03.0000.srec

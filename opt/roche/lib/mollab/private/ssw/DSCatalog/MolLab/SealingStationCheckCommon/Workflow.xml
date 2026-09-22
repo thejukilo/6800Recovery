@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="DFE3A70AE7D4A50FBEA63CDD0826D66DC409807519DD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SealingStationCheckCommon" ID="SealingStationCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1: Reinit &  2 [A1]: Conditionally park main handler -->
+      <ds:Step Name="PrepareAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3: open air flow screen -->
+      <ds:Step Name="OpenAirFlowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the airflow screen is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadADPlateonHandOver" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load AD Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>An amplification plate is required</base:Paragraph>
+              <base:Paragraph>Please place an amplification plate on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Please turn the frame of the amplification plate so that the barcode is facing the rear of the instrument.</base:Paragraph>
+              <base:Paragraph>The foil should touch the wells on the amplification plate.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to seal the amplification plate.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadADPlateAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The sealing station is warming up; this may take a few minutes.</base:Paragraph>
+              <base:Paragraph>It will attempt to load the amplification plate as soon as it reaches the optimum temperature.</base:Paragraph>
+              <base:Paragraph>Please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SealingAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sealing Action</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PutADPlateBackToHandoverPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Confirmation" Type="Confirm" Result="rConfirmation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sealed Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the sealed amplification plate and control it visually.</base:Paragraph>
+              <base:Paragraph>Is the amplification plate sealed correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The sealing station is turned off and its drawer left in the open position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RHCConfig xsi:noNamespaceSchemaLocation="/opt/roche/config/xsd/RHCConfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RHC Name="RHC">
+    <PWM OutputPortID="0" Name="RHC.Locking">
+      <PWMPortMode>SingleMode</PWMPortMode>
+      <PWMState>OFF</PWMState>
+      <Ratio>100</Ratio>
+      <ReduceTime>1000</ReduceTime>
+      <ReduceRatio>17</ReduceRatio> <!-- 13-jun-2022 Fabian Heinzer checked solenoid usage with 17% -->
+      <SafetyTimeout>0</SafetyTimeout>
+      <StateSemaphore>Disabled</StateSemaphore>
+      <CircuitLoadSetting>
+        <CircuitLoadDetection>No</CircuitLoadDetection>
+        <CircuitLoadMinimum>0</CircuitLoadMinimum>
+        <CircuitLoadMaximum>0</CircuitLoadMaximum>
+      </CircuitLoadSetting>
+    </PWM>
+    <DigitalInput IntputPortID="5" Name="RHC.CloseSensor">
+      <SignalPolarity>HighActive</SignalPolarity>
+      <EventSource>
+        <TriggerSource>Both</TriggerSource>
+        <SamplingTime>100</SamplingTime>
+        <EventMode>Recurring</EventMode>
+        <SuspendTime>0</SuspendTime>
+        <DebouncingTime>0</DebouncingTime>
+      </EventSource>
+    </DigitalInput>
+    <DigitalInput IntputPortID="6" Name="RHC.LockingSensor">
+      <SignalPolarity>HighActive</SignalPolarity>
+      <EventSource>
+        <TriggerSource>Both</TriggerSource>
+        <SamplingTime>100</SamplingTime>
+        <EventMode>Recurring</EventMode>
+        <SuspendTime>0</SuspendTime>
+        <DebouncingTime>0</DebouncingTime>
+      </EventSource>
+    </DigitalInput>
+  </RHC>
+</RHCConfig>

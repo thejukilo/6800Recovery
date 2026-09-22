@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="202FBA233919401BAA07791E525EB9C47870AAE31046" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="ReagentStorageHandlerRfidOrderCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Name="rAntennaPositionInfo" Type="String">
+          <data:Description>
+            <base:Title>Position of Rfid Antennas</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Position of RFID antennas:</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rRfidOrderCorrect">
+          <data:Description>
+            <base:Title>The Rfid Antennas Are Correct Connected.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The RFID antennas are correctly connected.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

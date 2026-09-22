@@ -1,0 +1,17 @@
+337d439ad7280ec9cb7eeac63e449fc5  usr/lib/python3/dist-packages/aioamqp-0.15.0.egg-info/PKG-INFO
+68b329da9893e34099c7d8ad5cb9c940  usr/lib/python3/dist-packages/aioamqp-0.15.0.egg-info/dependency_links.txt
+d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/aioamqp-0.15.0.egg-info/requires.txt
+56cc7296adb6a8497e96b0b83ee79410  usr/lib/python3/dist-packages/aioamqp-0.15.0.egg-info/top_level.txt
+be9db687f61d9355bd9d49f433d7130d  usr/lib/python3/dist-packages/aioamqp/__init__.py
+c10c5dbba5d8112c10f4f49d9c7f875f  usr/lib/python3/dist-packages/aioamqp/channel.py
+4501702ab3fbab17a9acce54048aac97  usr/lib/python3/dist-packages/aioamqp/constants.py
+f51889a9eee30f9a989b83f57bde182f  usr/lib/python3/dist-packages/aioamqp/envelope.py
+ad582b01982d383452c56e6ecd348852  usr/lib/python3/dist-packages/aioamqp/exceptions.py
+8350a086913dc6fbf911d6cc60ba388e  usr/lib/python3/dist-packages/aioamqp/frame.py
+34d2601a065431c4e81aa57bfbe170c6  usr/lib/python3/dist-packages/aioamqp/properties.py
+a95ee142db3f5dbd924a3c7a41183260  usr/lib/python3/dist-packages/aioamqp/protocol.py
+5db020a6e23526c50ab975641cc70613  usr/lib/python3/dist-packages/aioamqp/version.py
+2ca5c887ce961b5029acf3aea2047a4a  usr/share/doc/python3-aioamqp/README.rst
+90052bfaf79fabbcb05e5514b54eb687  usr/share/doc/python3-aioamqp/changelog.Debian.gz
+4bdaa6ef10cf6c628a0914b1ea4fa18e  usr/share/doc/python3-aioamqp/changelog.gz
+99c882da204abea55c3f596c9cb199da  usr/share/doc/python3-aioamqp/copyright

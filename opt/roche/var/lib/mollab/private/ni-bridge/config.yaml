@@ -1,0 +1,50 @@
+device:
+  device_topic_prefix: ''
+  shadow_name: device_shadow
+  client_id: ni-bridge
+  endpoint: rabbitmq-server
+  port: 5672
+  username: addon
+  password: $addon_2023!
+  spec_version: '1.0'
+  privacy: false
+  rudi_gtin: 07613336206355
+  rudi_ref: '0'
+  instrument_type: '6800'
+  instrument_name: '10001'
+  instrument_serial_number: '10001'
+  source_id_type: CONFIG
+  unify_events: true
+iot:
+  iot_topic_prefix: Roche/navify/integrator/
+  iot_service_topic_prefix: Roche/navify/iot
+  shadow_name: iot_shadow
+  client_registration_status: CERTIFICATE_ROTATION_REQUESTED
+  client_id: ni-bridge
+  endpoint: ecs-molecular-broker.navify-anywhere.labnet.roche.com
+  port: 50035
+  ca_path: /bridgedata/cacerts/ca-cert.pem
+  client_cert_path: /bridgedata/certs/client-certificate.pem.crt
+  client_priv_key_path: /bridgedata/certs/iot-privkey.pem
+  client_pub_key_path: /bridgedata/certs/iot-pubkey.pem
+  claim_cert_path: /bridgedata/cacerts/claim-cert.pem
+  claim_priv_key_path: /bridgedata/cacerts/claim-privkey.pem
+  provisioning_type: FLEET
+  provisioning_template_name: c68-8800-prov-templ
+  message_variant: st.023.00-v2
+features:
+  amqp:
+    iot_pub_failed_storage: /bridgedata/events_to_publish
+    iot_vhost: /
+    iot_auth_mechanism: EXTERNAL
+    iot_events_exchange: iot.events.tx
+    iot_requests_exchange: null
+    iot_requests_queue: null
+    iot_registration_csr_rsp: null
+    iot_registration_reg_rsp: null
+    iot_registration_cfg_rsp: iot.cfgrsp.CLIENT_ID.q
+    device_vhost: /
+    device_events_exchange: roche.events.tx
+    device_events_queue: addon.nibridge.q
+    device_requests_exchange: null
+    device_requests_queue: null

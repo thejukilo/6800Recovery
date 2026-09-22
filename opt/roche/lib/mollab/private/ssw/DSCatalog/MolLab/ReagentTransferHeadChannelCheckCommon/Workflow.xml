@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6D0B694F33E5A075C585682DE301CA8020CC3C8A0C32" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadChannelCheckCommon" ID="TRQ706868">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the Initialization process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="PlacePPlate1">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlacePPlate1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a cobas omni processing plate on the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadPPlate1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlacePPlate2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a cobas omni processing plate on the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadPPlate2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Wash">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait during the Wash of the reagent transfer head...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PipetAForm">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pipetting</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the reagent transfer head pipettes 500ul of wash reagent into the two processing plates with the following pattern...</base:Paragraph>
+              <base:Paragraph>Separation Station 1:</base:Paragraph>
+              <base:Paragraph>- Channel A | Well A1</base:Paragraph>
+              <base:Paragraph>- Channel B | Well B2</base:Paragraph>
+              <base:Paragraph>- Channel C | Well C3</base:Paragraph>
+              <base:Paragraph>- Channel D | Well D4</base:Paragraph>
+              <base:Paragraph>- Channel E | Well E5</base:Paragraph>
+              <base:Paragraph>- Channel F | Well F6</base:Paragraph>
+              <base:Paragraph>Separation Station 2:</base:Paragraph>
+              <base:Paragraph>- Channel G | Well G1</base:Paragraph>
+              <base:Paragraph>- Channel H | Well H2</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UltraSonicCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Ultrasonic Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the liquid level sensor checks that the 500ul of wash reagent was pipetted into the two processing plates with the following pattern...</base:Paragraph>
+              <base:Paragraph>Separation Station 1:</base:Paragraph>
+              <base:Paragraph>- Channel A | Well A1</base:Paragraph>
+              <base:Paragraph>- Channel B | Well B2</base:Paragraph>
+              <base:Paragraph>- Channel C | Well C3</base:Paragraph>
+              <base:Paragraph>- Channel D | Well D4</base:Paragraph>
+              <base:Paragraph>- Channel E | Well E5</base:Paragraph>
+              <base:Paragraph>- Channel F | Well F6</base:Paragraph>
+              <base:Paragraph>Separation Station 2:</base:Paragraph>
+              <base:Paragraph>- Channel G | Well G1</base:Paragraph>
+              <base:Paragraph>- Channel H | Well H2</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnPlate1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemovePPlate1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the cobas omni processing plate from the transfer position of the processing module [P.pModuleId].</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnPlate2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemovePPlate2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Second Cobas Omni Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the second cobas omni processing plate from the transfer position of the processing module [P.pModuleId], then press 'Finish'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The instrument will now try to open the separation station(s) downholders. PLease wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

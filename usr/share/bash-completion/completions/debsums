@@ -1,0 +1,13 @@
+_have debsums &&
+_debsums()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+    else
+        COMPREPLY=( $(_xfunc dpkg _comp_dpkg_installed_packages "$cur") )
+    fi
+} &&
+complete -F _debsums -o default debsums

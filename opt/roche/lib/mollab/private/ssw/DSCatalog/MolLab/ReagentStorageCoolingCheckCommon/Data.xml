@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="2550115CBE2F91961C54C56251943933D826F40414E6" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentStorageCooling">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList></data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="irAlreadyCooledDown">
+          <data:Description>
+            <base:Title>Storage Already Cooled</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Storage is already cooled to 8 degrees.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoopDone">
+          <data:Description>
+            <base:Title>Loop Temperature Measurement</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Loop the temperature measurement until it is true.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irReagentStorageOpened">
+          <data:Description>
+            <base:Title>Reagent Storage Opened</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent storage door is opened</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="irUiCurrentReagentStorageTemperature" Unit="°C" Format="%.2n">
+          <data:Description>
+            <base:Title>Current Reagent Storage Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Current reagent storage temperature.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="irUiRemainingTimeAllowed" Unit="min" Format="%.1n">
+          <data:Description>
+            <base:Title>Remaining Time Allowed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remaining time until the cooling has to be finished.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="irUiTargetTemperature" Unit="°C" Format="%.2n">
+          <data:Description>
+            <base:Title>Target Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature the reagent storage has to reach in time.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTemperatureCheckPassed">
+          <data:Description>
+            <base:Title>Temperature Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature check was successful</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rInitialReagentStorageTemperature" Unit="°C" Format="%.2n">
+          <data:Description>
+            <base:Title>Initial Reagent Storage Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initial reagent storage temperature</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

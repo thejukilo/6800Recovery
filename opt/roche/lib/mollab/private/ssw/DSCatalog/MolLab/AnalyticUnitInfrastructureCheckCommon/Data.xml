@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="98944D153FB3F888E77C6E39707133AA503AFEA3AD85" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitInfrastructureCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Specific for operations check flag.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="pAnalyticUnitId">
+          <data:Description>
+            <base:Title>The Cycler to use to calculate the results.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: A1, A2, B1, B2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="Double" Name="pBlockCyclerFansSpeedPercent">
+          <data:Description>
+            <base:Title>Block Cycler Fans Speed Percent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The speed to set both block cycler fans, in percentage of its maximum.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rAnalyticUnitFirmwareVersion" Type="Integer">
+          <data:Description>
+            <base:Title>The analytic unit firmware version.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The analytic unit firmware version.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="Unkown" Value="0">
+              <data:Description>Unknown firmware version.</data:Description>
+            </data:Member>
+            <data:Member Name="AnalyticUnitV1" Value="1">
+              <data:Description>Analytic unit V1</data:Description>
+            </data:Member>
+            <data:Member Name="AnalyticUnitV2" Value="2">
+              <data:Description>Analytic unit V2</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rConfirmHousingFan" Type="Boolean">
+          <data:Description>
+            <base:Title>Housing Fan User Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the user has confirmed that the housing fan is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irConfirmLeftFan" Type="Boolean">
+          <data:Description>
+            <base:Title>Left Fan User Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the user has confirmed that the left fan is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irConfirmRightFan" Type="Boolean">
+          <data:Description>
+            <base:Title>Right Fan User Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the user has confirmed that the right fan is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rServiceDoorOpen" Type="Boolean">
+          <data:Description>
+            <base:Title>Service Door Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the service door light barrier of the analytic unit reports opened. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rServiceDoorClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Service Door Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the service door light barrier of the analytic unit reports closed. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rConfirmLeftFan" Type="Integer">
+          <data:Description>
+            <base:Title>Left Fan User Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Succeeded if the user has confirmed that the left fan is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>Left fan is not tested.</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Left fan is working.</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Left fan is not working.</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rConfirmRightFan" Type="Integer">
+          <data:Description>
+            <base:Title>Right Fan User Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Succeeded if the user has confirmed that the right fan is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>Right fan is not tested.</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Right fan is working.</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Right fan is not working.</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

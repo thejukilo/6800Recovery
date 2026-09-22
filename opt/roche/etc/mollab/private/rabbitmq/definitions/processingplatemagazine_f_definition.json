@@ -1,0 +1,165 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.processingplatemagazine.f.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerZAxisInitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ManualLoadProcessingPlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ManualUnloadProcessingPlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ParkProcessingPlateMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.UnloadProcessingPlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ReinitializeProcessingPlateMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ForcedReinitializeProcessingPlateMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.PrepareProcessingPlateMagazineShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ReadProcessingPlateMagazineSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.DisableProcessingPlateMagazineActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.MoveProcessingPlateMagazine",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.processingplatemagazine.f.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    }
+  ]
+}

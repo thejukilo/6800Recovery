@@ -1,0 +1,8 @@
+{
+  "appID": "UI-Counters",
+  "appOrder": 60,
+  "appLabel": "12.FHO.AppLibrary.UI.Counters",
+  "entryPoint": "counters",
+  "roles": ["X800.RSR"],
+  "isDmApp": false
+}

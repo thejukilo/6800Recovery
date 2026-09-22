@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="3E5DECE39991E891359BA98E37BFE1F579C889017DD7" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="WashReagentReservoirAndDegassingCheckCommon" ID="WashReagentReservoirAndDegassingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="TeachReservoir">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="TeachReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash reagent reservoir will be taught by filling and draining the wash reagent reservoir several times.</base:Paragraph>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FillReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Filling Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Filling the wash reagent reservoir. </base:Paragraph>
+              <base:Paragraph>Observe the LED sequence of the maximum level sensor (off - green - green and orange - orange).</base:Paragraph>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmReservoirIsFull" Type="Confirm" Result="rInternalReservoirFilled">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirm the reservoir is filled up to the maximum fill level sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Wash_Reagent_Reservoir_Full.jpg" Hash="3504811617237421C9851D42AF289C722FEFD470" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DrainReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Draining Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EmptyOverflowBottle" Type="Next" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty Overflow Bottle</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Empty the overflow bottle and then press 'Finish' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

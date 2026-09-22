@@ -1,0 +1,141 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.sealingstation.a.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.ReinitializeSealingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.ForcedReinitializeSealingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.HeatUpSealingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.OpenSealingStationDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.CloseSealingStationDrawer",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.StopHeatingSealingStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.Seal",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.DisableSealingStationActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.PrepareSealingStationShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.sealingstation.a.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    }
+  ]
+}

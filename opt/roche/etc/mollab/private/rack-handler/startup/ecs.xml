@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-rackhandler">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="609" ProviderSocket="/opt/CSM_609.sock">
+          <CDIDefinition SwitchName="GripperMotor-cdi" DeviceName="SC_SampleIO_MC_GripperMotor" />
+          <CDIDefinition SwitchName="TubeTurnerMotor-cdi" DeviceName="SC_SampleIO_MC_TubeTurnerMotor" />
+          <CDIDefinition SwitchName="SpringMotor-cdi" DeviceName="SC_SampleIO_MC_SpringMotor" />
+          <CDIDefinition SwitchName="Conveyor-cdi" DeviceName="SC_SampleIO_SMS_Conveyor" />
+          <CDIDefinition SwitchName="Sensor-cdi" DeviceName="SC_SampleIO_RHC_Sensor" />
+          <CSMDefinition ConnectedModuleID="612" CSMName="SampleRecognitionCamera-id" ConnectToSocket="/opt/CSM_612.sock" />
+          <CSMDefinition ConnectedModuleID="610" CSMName="Transfer-id" ConnectToSocket="/opt/CSM_610.sock" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/rackhandler-motionconfig.xml" />
+          <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/settings/config/rackhandler-parampool.xml" />
+          <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/rackhandler-sms-config.xml" />
+          <XMLConfigurationFile SwitchName="--RHCConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/rackhandler-rhc-config.xml" />
+          <CommandLineSwitch SwitchName="--SampleRecognitionCamera-socket" Value="/opt/CSM_612.sock" />
+          <CommandLineSwitch SwitchName="--Transfer-socket" Value="/opt/CSM_610.sock" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <!-- Rabbitmq config -->
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.rackhandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.rackhandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.rackhandler.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.rackhandler.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <!-- SampleIO - Rack Handler -->
+        <ConnectedCSM FileName="transfer-xyz-gripper">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="610" ProviderSocket="/opt/CSM_610.sock">
+              <CDIDefinition SwitchName="MotorX-cdi" DeviceName="SC_SampleIO_MotorX" />
+              <CDIDefinition SwitchName="MotorY-cdi" DeviceName="SC_SampleIO_MotorY" />
+              <CDIDefinition SwitchName="MotorZ-cdi" DeviceName="SC_SampleIO_MotorZ" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/transfer/rackhandler-transfer-config.xml" />
+              <XMLConfigurationFile SwitchName="--MotionConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer/rackhandler-transfer-motionconfig.xml" />
+              <XMLConfigurationFile SwitchName="--RoutingConfigPath" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer/rackhandler-transfer-exclusion-areas.xml" />
+              <XMLConfigurationFile SwitchName="--Positioning" XMLFileName="${UNITCONFIGPATH}/NewGen_SampleCell_Positioning.xml" />
+              <XMLConfigurationFile SwitchName="--HeadInfoPath" XMLFileName="${UNITCONFIGPATH}/settings/config/transfer/rackhandler-transfer-headinfo.xml" />
+              <XMLConfigurationFile SwitchName="--ReferencePointOffset" XMLFileName="${ICSHAREPATH}/teaching-data/rackhandler-transfer-reference-point-offset.xml" />
+              <CommandLineSwitch SwitchName="--CycleTime" Value="0" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="newgen-samplerecognitioncamera">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="612" ProviderSocket="/opt/CSM_612.sock">
+              <CDIDefinition SwitchName="serialport-cdi" DeviceName="SC_SampleIO_RHC_JadakImager" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/newgen-samplerecognitioncamera/config/samplerecognitioncamera-parampool.xml" />
+              <CommandLineSwitch SwitchName="--serialPortID" Value="1" />
+              <CommandLineSwitch SwitchName="--errorReportImagesPath" Value="${ICERRORIMAGEPATH}" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

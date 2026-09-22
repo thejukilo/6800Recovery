@@ -1,0 +1,2 @@
+SUBSYSTEMS=="pci",ATTRS{vendor}=="0x15cf",ATTRS{device}=="0x0000",PROGRAM="/bin/bash -c 'chown root:uio /sys/class/uio/uio%n/device/config; chmod g+rw /sys/class/uio/uio%n/device/config'"
+SUBSYSTEM=="uio", KERNEL=="uio[0-9]*", GROUP="uio", MODE="0660"

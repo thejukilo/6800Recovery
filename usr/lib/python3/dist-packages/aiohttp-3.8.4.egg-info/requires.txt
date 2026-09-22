@@ -1,0 +1,12 @@
+
+[:python_version < "3.7"]
+
+[:python_version < "3.8"]
+asynctest==0.13.0
+
+[speedups]
+Brotli
+aiodns
+
+[speedups:python_version < "3.10"]
+cchardet

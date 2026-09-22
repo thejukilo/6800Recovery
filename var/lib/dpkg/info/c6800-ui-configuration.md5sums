@@ -1,0 +1,6 @@
+9b6994e10d9e8e733e9178c81cd09db1  lib/systemd/system/opt-roche-var-lib-mollab-private-ui-tmp.mount
+7bd05f5529d0508f3884afe01cce7ab9  lib/systemd/system/opt-roche-var-lib-mollab-shared-exports.mount
+becd53f8dfa3c9ff9d5798fa45219f63  opt/roche/etc/mollab/private/ui/pdfs/application.pdf
+7a69877fbe7b3af5d9e0220e43bee526  opt/roche/lib/mollab/private/instrument/install.d/5_ui
+d3f72bd82074785ba4d49405740d4387  usr/share/doc/c6800-ui-configuration/changelog.gz
+6cc8740dcf86627a5ac081d10c2115eb  usr/share/doc/c6800-ui-configuration/copyright

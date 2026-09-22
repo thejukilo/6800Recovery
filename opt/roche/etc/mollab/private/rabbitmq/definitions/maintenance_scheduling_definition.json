@@ -1,0 +1,621 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.maintenance.scheduling.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.StartMaintenanceAction",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.ScheduleMaintenanceTransition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.MaintenanceStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.EnterMaintenanceAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.EnterMaintenanceDisallowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentThroughputChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.EnterMaintenance",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.AmplificationPlateTransferPositionStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.AmplificationPlateNotDetectedInTransferPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.AmplificationPlateTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.PcrExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.PcrExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.CleanupAmplificationPlateHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.PcrProcessCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.PcrProcessCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.PcrProcessCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.PcrProcessCompleted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.PcrProcessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.PcrProcessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.PcrProcessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.PcrProcessFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceWindow.MaintenanceWindowConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceSettingsUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.RacksDetectedWhichCanNotBeUnloaded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.CarrierTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.WorkOrderExecutionAborted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.CleanupTransferModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.ClottedTipRackUsageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleRackUsageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TipsDisposedOnParkPositionWithSampleTransferHead",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TipsDisposedOnParkPositionDuringInitializationWithSampleTransferHead",
+      "arguments": {}
+    },
+    {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.scheduling.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlStateChanged",
+        "arguments": {}
+      },    
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ParkPositionSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.CarrierTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.CarrierTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.CleanupProcessingModuleHandlerAndHeadsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.CleanupProcessingModuleHandlerAndHeadsFailed",
+      "arguments": {}
+    },
+    {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.scheduling.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleHeadsControllerStateChanged",
+        "arguments": {}
+    },
+    {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.scheduling.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleHeadsControllerStateChanged",
+        "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.CarrierTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.CleanupMainHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.TurningAmplificationPlateCoverFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AssembledRunsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerHandlerOccupied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerOutputErrorConveyorOccupied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStartsPostponed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStartsResumed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceActionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceStepFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceWindowStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceWindowFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceWindowMidnightPassed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.scheduling.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceActionScheduleChanged",
+      "arguments": {}
+    }
+  ]
+}

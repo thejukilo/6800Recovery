@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Parameters are optimized for the new CTR Cassette! -->
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="Position0" Value="0.3382" Type="double" Array="false" Description="Postion0 in m, Maschinell Load" />
+  <ParameterPoolEntry ID="2" Name="Position1" Value="0.3152" Type="double" Array="false" Description="Postion1 in m, Normal Position with 1 Cas" />
+  <ParameterPoolEntry ID="3" Name="Position2" Value="0.2122" Type="double" Array="false" Description="Postion2 in m, Normal Position with 2 Cas" />
+  <ParameterPoolEntry ID="4" Name="Position3" Value="0.1092" Type="double" Array="false" Description="Postion3 in m, Normal Position with 3 Cas" />
+  <ParameterPoolEntry ID="5" Name="Position4" Value="0.0062" Type="double" Array="false" Description="Postion4 in m, Normal Position with 4 Cas" />
+  <ParameterPoolEntry ID="6" Name="Unload" Value="0.023" Type="double" Array="false" Description="Relative Move for Maschinell Unload" />
+  <ParameterPoolEntry ID="7" Name="UserUnload" Value="0.055" Type="double" Array="false" Description="Relative Move for User Unload" />
+  <ParameterPoolEntry ID="8" Name="Load" Value="-0.08" Type="double" Array="false" Description="Abs. Move Actually Position + Load" />
+  <ParameterPoolEntry ID="9" Name="UserLoad" Value="0.040" Type="double" Array="false" Description="Defined as: Maschinell Load + UserLoad" />
+  <ParameterPoolEntry ID="10" Name="CheckConsumableOffset" Value="0.005" Type="double" Array="false" Description="" />
+  <ParameterPoolEntry ID="11" Name="ReadLabelOffset" Value="0.010" Type="double" Array="false" Description="Relativ offset to move up before start reading" />
+  <ParameterPoolEntry ID="12" Name="ReadLabelMoveDistance" Value="0.014" Type="double" Array="false" Description="Move Distance to ensure that whole Label was read." />
+  <ParameterPoolEntry ID="13" Name="MechanicalPosCorrection" Value="0.0004" Type="double" Array="false" Description="Mechanical Tolerance correction Value" />
+  <ParameterPoolEntry ID="14" Name="ReferencePointToNormalPositionOffset" Value="-0.002" Type="double" Array="false" Description="Offset of LBInput Interrupt Position to desired normal position" />
+  <ParameterPoolEntry ID="15" Name="ConsumableHeightTolerance" Value="0.007" Type="double" Array="false" Description="Desired Tolerance within the consumable height has to be" />
+  <ParameterPoolEntry ID="16" Name="WaitTimeLoad" Value="15" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="17" Name="WaitTimeUserLoad" Value="15" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="18" Name="WaitTimeBeforeGetSignal" Value="2" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="19" Name="Capacity" Value="4" Type="uint8" Array="false" Description="" />
+  <ParameterPoolEntry ID="20" Name="IsStandaloneModeEnabled" Value="0" Type="bool" Array="false" Description="Enable or disable standalone mode: true indicates that no main handler is present." />
+</ModuleConfiguration>

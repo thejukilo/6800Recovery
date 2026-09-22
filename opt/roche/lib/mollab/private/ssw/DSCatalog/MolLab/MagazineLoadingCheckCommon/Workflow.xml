@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="75A2B02364DC261B24FE00DFAC33C046DC3182B0B7D4" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="MagazineLoadingCheckCommon" ID="[SSW-TRQ-xxxxx]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Init Consumable Loading Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the consumable loading area is initializing...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the [P.pDrawerName] manually completely after hearing the 'click'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="EmptyMagazine">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EmptyMagazine" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty Magazine</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If the [P.pMagazineName] is not empty, please unload all [P.pConsumableName]s.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irLoadedConsumables" NextStep="RfIdDecision">
+            <workflow:Condition Operator="LE" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RfIdDecision">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>RFID Decision</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasRfId" NextStep="LoadMagazine">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="irIsAdCassette" NextStep="GetBarcodeAD">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="GetBarcode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enter Barcode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>For the next step you need [P.pConsumableCount] [P.pConsumableName](s).</base:Paragraph>
+              <base:Paragraph>For the consumable that you are going to load first, enter the last four digits of its barcode and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rExpectedBarcodeEnding">
+            <workflow:Description>Barcode last 4 digits:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow NextStep="LoadMagazine" />
+      </ds:Step>
+      <ds:Step Name="GetBarcodeAD" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Barcode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>For the next step you need [P.pConsumableCount] [P.pConsumableName](s).</base:Paragraph>
+              <base:Paragraph>Please enter the last four digits of the barcode of the top most amplification plate, of the amplification plate cassette, and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rExpectedBarcodeEnding">
+            <workflow:Description>Barcode digits:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadMagazine" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Magazine</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load the [P.pMagazineName] with [P.pConsumableCount] [P.pConsumableName]s.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irLoadedConsumables" NextStep="UnloadMagazine">
+            <workflow:Condition Operator="GE" Parameter="pConsumableCount" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadMagazine" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Magazine</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>You can now unload the [P.pMagazineName].</base:Paragraph>
+              <base:Paragraph>For this you have to remove [P.pConsumableCount] [P.pConsumableName]s.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irLoadedConsumables" NextStep="CloseDrawer">
+            <workflow:Condition Operator="LE" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CloseDrawer" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the [P.pDrawerName] manually after hearing the 'click'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irDrawerStateOk" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

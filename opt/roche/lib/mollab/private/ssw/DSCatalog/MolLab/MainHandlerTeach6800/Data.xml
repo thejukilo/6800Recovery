@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="164F317E36A78D01FA9677CEF0113CAC323B72793BF6" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="MainHandlerTeach6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Name="irReagentCassettePresent" Type="Boolean">
+          <data:Description>
+            <base:Title>Check for Reagent Cassette Presence on Reagent Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>No reagent cassettes should be placed on Reagent-Elevator which would lead to a crash.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irConsumableDrawerWasOpen" Type="Boolean">
+          <data:Description>
+            <base:Title>Consumable Drawers Open State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Consumable drawers must be closed for this check to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irConsumablesPresentOnTransferPositions" Type="Boolean">
+          <data:Description>
+            <base:Title>Consumable Present on Transfer Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>No consumables must be present on transfer-positions for this check to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTransferModuleDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Transfermoduledrawer Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleDrawerA" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Processing Module Drawer (a) Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on processing module (A) drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentDrawer" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Reagent Drawer Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on the reagent drawer area.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentStorageTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught Reagent Storage</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if reagent storage was properly taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferModuleTransferPosition" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Transfer Module Transfer Position Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on transfer module's transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleTransferPositionA" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Processing Module (a) Transfer Position Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on processing module's transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateTransferPosition" Type="Boolean">
+          <data:Description>
+            <base:Title>Taught on Amplification Plate Transfer Position Area</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if main handler is successfully taught on amplification plate transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

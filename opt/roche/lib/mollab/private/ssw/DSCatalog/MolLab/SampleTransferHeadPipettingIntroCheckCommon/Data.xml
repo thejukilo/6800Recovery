@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5183756CEAA5EDD92C57FD92475350856AC0FC793E13" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingIntroCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>sample transfer head QC Pipetting</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>sample transfer head QC Pipetting.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>ad485cca-fd60-424f-b99b-5f95969639ea</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rLightBarrierTeachToolPark2" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Placed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Balance placed (LightBarrier)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rOwsVersion" Type="Integer">
+          <data:Description>
+            <base:Title>Ows Version Used</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ows Version Used</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="None" Value="0">
+              <data:Description>Choose a version</data:Description>
+            </data:Member>
+            <data:Member Name="WMC15-SH/01 (old version)" Value="1">
+              <data:Description>WMC15-SH/01 (old version)</data:Description>
+            </data:Member>
+            <data:Member Name="SPC115-100 (new version)" Value="2">
+              <data:Description>SPC115-100 (new version)</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1"  Name="DrawerClosePosition" Value="0.0" Type="float" Array="false" Description="Position to Close Drawer" />
+  <ParameterPoolEntry ID="2"  Name="DrawerOpenPosition" Value="0.235" Type="float" Array="false" Description="Position to Open Drawer" />
+  <ParameterPoolEntry ID="3"  Name="DrawerMoveSlowDistance" Value="0.030" Type="float" Array="false" Description="Distance to Move Drawer Slow, because of Human Interaction" />
+  <ParameterPoolEntry ID="4"  Name="MaxMoveSliderSteps" Value="11000" Type="uint32" Array="false" Description="Max. Steps to Move Slider" />
+  <ParameterPoolEntry ID="5"  Name="WaitTimeLoadCassette" Value="20" Type="uint16" Array="false" Description="Sensor Glaettung bei Load" />
+  <ParameterPoolEntry ID="6"  Name="StartTempOfCooledOnboardRegion" Value="8.0" Type="float" Array="false" Description="Temperature wher CooledOnboardTime starts" />
+  <ParameterPoolEntry ID="7"  Name="EndTempOfCooledOnboardRegion" Value="25.0" Type="float" Array="false" Description="Temperature wher CooledOnboardTime ends" />
+  <ParameterPoolEntry ID="8"  Name="StartTempOfOvertempRegion" Value="37.0" Type="float" Array="false" Description="Temperature wher OverTempTime starts" />
+  <ParameterPoolEntry ID="9"  Name="HandoverRMC1Position" Value="959641" Type="uint32" Array="false" Description="Defines the Z- Psotion of Elevator to handover RMC to Stackerhandler (1 == 0.586um)" />
+  <ParameterPoolEntry ID="10" Name="HandoverReagentPosition" Value="938822" Type="uint32" Array="false" Description="Defines the Z- Psotion of Elevator to handover Reagent to Stackerhandler" />
+  <ParameterPoolEntry ID="11" Name="HandoverDrawerPosition" Value="915273" Type="uint32" Array="false" Description="Defines the Z- Psotion of Elevator to handover item to ReagentDrawer" />
+  <ParameterPoolEntry ID="12" Name="RFIDReadPosition" Value="906740" Type="uint32" Array="false" Description="Defines the Z- Position of Elevator to Read the RFID tags on item" />
+  <ParameterPoolEntry ID="13" Name="ParkPosition" Value= "597450" Type="uint32" Array="false" Description="Defines the Z- Position of Elevator where the Parkposition shall be (No Collision of ReagentDrawer)" />
+  <ParameterPoolEntry ID="14" Name="TeachPosition" Value="967320" Type="uint32" Array="false" Description="Defines the Z- Position of Elevator to move where the Stackerhandler can be teached" />
+  <ParameterPoolEntry ID="15" Name="HandoverRMC2Position" Value="954522" Type="uint32" Array="false" Description="Defines the Z- Position of Elevator to handover RMC2 cassettes" />
+  <ParameterPoolEntry ID="16" Name="PLC_Temp_Threshold" Value="500" Type="uint16" Array="false" Description="maximal value of internal PLC Board temperature in 1/10°C" />
+  <ParameterPoolEntry ID="17" Name="ControlUnit_Temp" Value="400" Type="uint16" Array="false" Description="maximal value of Control Unit in 1/10°C" />
+  <ParameterPoolEntry ID="18" Name="CoolerTemp_Discrepancy" Value="20" Type="uint16" Array="false" Description="maximal discrepancy between DataLogger Temp and Regulation Temp in 1/10°C" />
+  <ParameterPoolEntry ID="19" Name="OverTemp_Warning" Value="80" Type="uint16" Array="false" Description="threshold of warning on over temperature in 1/10°C, range [55 .. 255]" />
+  <ParameterPoolEntry ID="20" Name="OverTemp_Error" Value="250" Type="uint16" Array="false" Description="threshold of error on over temperature in 1/10°C, range [55 .. 255]" />
+  <ParameterPoolEntry ID="21" Name="UnderTemp_Warning" Value="20" Type="uint16" Array="false" Description="threshold of warning on under temperature in 1/10°C, range [5 .. 35]" />
+  <ParameterPoolEntry ID="22" Name="UnderTemp_Error" Value="10" Type="uint16" Array="false" Description="threshold of error on under temperature in 1/10°C, range [5 .. 35]" />
+  <ParameterPoolEntry ID="23" Name="OverHumidity_Error" Value="100" Type="uint16" Array="false" Description="threshold of error on over humidity in prozent" />
+  <ParameterPoolEntry ID="24" Name="CoolerActivation_Ratio" Value="70" Type="uint16" Array="false" Description="maximal value for on/off ratio of cooler in prozent " />
+  <ParameterPoolEntry ID="25" Name="CoolerActivation_TimeFrame" Value="48" Type="uint16" Array="false" Description="Rolling timing frame for observation in hours" />
+  <ParameterPoolEntry ID="26" Name="HumiditySuppression_Delay" Value="5" Type="uint16" Array="false" Description="Suppression of Humidity observation after close door for 5-10 min" />
+  <ParameterPoolEntry ID="27" Name="CoolerReportPeriod" Value="1" Type="uint8" Array="false" Description="Defines the report period of cooler. 0:off 1-59min. " />
+  <ParameterPoolEntry ID="50" Name="CooldownTempToReachBeforeStorageCondition" Value="7.0" Type="float" Array="false" Description="Defines at which Temperature the ReagentStorage has to be cooled down before the state changes to storage." />
+</ModuleConfiguration>
+

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="804DD13C409D736362819FF07E318CDD0FC5D58E91A2" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ValveBlockCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Operations execution</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipParamsWB" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter file (WB)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cobas6800_8800_ReagentHead_WBPipetting_TightnessCheck</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParamsLB" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter file (LB)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cobas6800_8800_ReagentHead_LBPipetting_Prime</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>37aa0559-ad4f-42e9-a43b-b098cb66b9bf</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Operations execution</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if check is to be executed in operations.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Off-System Liquid Waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if off-system liquid waste is enabled.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <!-- [E2] -->
+        <data:Result Name="rVerifyStep17" Type="Boolean">
+          <data:Description>
+            <base:Title>Valves V4 and V6 (S12 and S22) and V11 (S35 and S38) [or V12 (S44)]</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 200 ml was transferred from the lysis reagent bottle 1 to the liquid waste via degassing pump.</base:Paragraph>
+              <base:Paragraph>- valves V4 and V6 (connectors S12 and S22)</base:Paragraph>
+              <base:Paragraph>- valve V11 and connectors S35 and S38 (enabled on-system liquid waste handling) or valve V12 and connector S44 (enabled off-system liquid waste handling)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E3] -->
+        <data:Result Name="rVerifyStep19" Type="Boolean">
+          <data:Description>
+            <base:Title>Valve V9 (Connectors S27 and S28)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 200 ml was transferred from the lysis reagent bottle 2 to the liquid waste container via the wash station.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E4] -->
+        <data:Result Name="rVerifyStep21" Type="Boolean">
+          <data:Description>
+            <base:Title>Valve V5 (Connectors S15 and S18)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 200 ml was transferred from the diluent reagent bottle 1 to the liquid waste container via degassing pump.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E5] -->
+        <data:Result Name="rVerifyStep24" Type="Boolean">
+          <data:Description>
+            <base:Title>Valves V10 (Connectors S33, S29 and S30) and V12 (Connector S39)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 200 ml was transferred from the diluent bottle reagent 2 to the liquid waste container via wash station and liquid waste station 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E6] -->
+        <data:Result Name="rVerifyStep25" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 and/or 3 Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify and confirm that there is no liquid present in the liquid waste containers 1 and/or 3.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E7] -->
+        <data:Result Name="rVerifyStep27" Type="Boolean">
+          <data:Description>
+            <base:Title>Valve V1 (Connectors S2, S5 and S7) and Valve V7 (Connectors S21 and S22)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that liquid was transferred from wash reagent container 2 to liquid waste through wash reagent reservoir.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E8] -->
+        <data:Result Name="rVerifyStep30" Type="Boolean">
+          <data:Description>
+            <base:Title>Valve V1 (Connectors S3, S6 and S7) and Valve V7 (Connectors S21 and S22)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the liquid was transferred from wash reagent container 3 to liquid waste container 3 through wash reagent reservoir.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E9] -->
+        <data:Result Name="rVerifyStep31" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 and/or 2 Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the liquid waste containers 1 and/or 2 are empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E10] -->
+        <data:Result Name="rVerifyStep33" Type="Boolean">
+          <data:Description>
+            <base:Title>Valve V10 (Connectors S34, S31 and S32)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 200 ml was transferred from the diluent reagent bottle 1 to the liquid waste container via wash station and liquid waste station 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E11] -->
+        <data:Result Name="rVerifyStep34" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 and/or 3 Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the liquid waste containers 2 and/or 3 are empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E12] -->
+        <data:Result Name="rVerifyStep37" Type="Boolean">
+          <data:Description>
+            <base:Title>Connector S41</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that 300 ml was transferred from diluent bottle 1 to overflow bottle through the wash station.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E13] -->
+        <data:Result Name="rVerifyStep38" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 and/or 2 and/or 3 Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the liquid waste containers 1 and/or 2 and/or 3 are empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E14] -->
+        <data:Result Name="rVerifyStep41" Type="Boolean">
+          <data:Description>
+            <base:Title>Relief Valve</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the liquid was transferred from wash reagent container 1 to overflow bottle through wash reagent reservoir and pressure relief valve.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E15] -->
+        <data:Result Name="rVerifyStep47" Type="Boolean">
+          <data:Description>
+            <base:Title>Connector S46 and Pumps and Valve blocks</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify the tightness of connector S46 and the absence of droplets on the pump and valve block.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- [E16] -->
+        <data:Result Name="rOverFlowBottleFilledFromLiquidWasteStations" Type="Boolean">
+          <data:Description>
+            <base:Title>Connectors S42 and S43</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the wash reagent poured from the liquid waste stations 1 and 2 to the overflow bottle.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

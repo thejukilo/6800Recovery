@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="C6E23E132A5E5CF390459736F32C2FD8B064C1E35429" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="WasteConsumablesCheckCommon" ID="WasteConsumablesCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement steps 1 to 6 -->
+      <ds:Step Name="PrepareAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the instrument is prepared for the check...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irGcsShallEmptyContainerAtStart" NextStep="GcsReplaceSolidWasteBagAtStartOpenDrawer">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="irGcsShallEmptyContainerAtStart" NextStep="LoadTipRack1">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 6: A2 [GCS execution - Solid waste level >=75%] -->
+      <ds:Step Name="GcsReplaceSolidWasteBagAtStartOpenDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Solid waste container fill level was detected to be [R.rSolidWasteFillLevelAtStart]% full.</base:Paragraph>
+              <base:Paragraph>Unlocking the wash/waste drawer for solid waste bag replacement...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="GcsReplaceSolidWasteBagAtStartCloseDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace Waste Bag</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Solid waste container fill level was detected to be [R.rSolidWasteFillLevelAtStart]% full.</base:Paragraph>
+              <base:Paragraph>Once unlocked, please completely open the wash/waste drawer manually.</base:Paragraph>
+              <base:Paragraph>Then replace the solid waste bag and close back the wash/waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7: load the first tip rack on the transfer position -->
+      <ds:Step Name="LoadTipRack1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place First Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please put the first tip rack on the transfer position of the processing module and press 'Next' to load it.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRack1Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading First Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the tip rack is being loaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ParkTipRack1Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the first tip rack is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10 -->
+      <ds:Step Name="ControlDownholdersClosedLiquidWasteStation1" Type="Confirm" Result="rCheckDownholdersLiquidStation1Closed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Downholders Liquid Waste Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please check that the downholders from liquid waste station 1 are closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11 -->
+      <ds:Step Name="LoadPPlate1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please put the first processing plate on the transfer position of the processing module and press 'Next' to load it.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadPPlate1Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load First Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the first processing plate is being loaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 14 -->
+      <ds:Step Name="LoadTipRack2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please put the second tip rack on the transfer position of the processing module and press 'Next' to load it.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 15 & 16 -->
+      <ds:Step Name="LoadTipRack2Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the second tip rack is being loaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 16 (Part II) -->
+      <ds:Step Name="ParkTipRack2Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the second tip rack is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 17 -->
+      <ds:Step Name="ControlDownholdersClosedLiquidWasteStation2" Type="Confirm" Result="rCheckDownholdersLiquidStation2Closed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Downholders Liquid Waste Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please check that the downholders from liquid waste station 2 are closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 18 -->
+      <ds:Step Name="LoadPPlate2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please put the second processing plate on the transfer position of the processing module and press 'Next' to load it.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 19 & 20 -->
+      <ds:Step Name="LoadPPlate2Action">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing plate is loaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 21 -->
+      <ds:Step Name="WasteConsumables" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Waste Consumables</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to waste all consumables.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement steps 22 to 27 -->
+      <ds:Step Name="WasteTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Waste Tip Rack 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wasting tip rack 1, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WastePPlateAndInsert1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Waste P-Plate and Insert 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wasting p-plate and insert 1, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WasteTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Waste Tip Rack 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wasting tip rack 2, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WastePPlateAndInsert2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Waste P-Plate and Insert 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wasting p-plate and insert 2, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irIsOperationsCheck" NextStep="OpenWasteDrawer">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="irIsOperationsCheck" NextStep="Finish">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 28 [A3]: 1) Execution in operations - Removal of consumables from solid waste bag -->
+      <ds:Step Name="OpenWasteDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Wash/waste drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Once unlocked, please completely open the wash/waste drawer manually and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 28 [A3]: 2) remove the consumables from the solid waste container and to close the wash/waste drawer -->
+      <ds:Step Name="OpsRemoveConsumables">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Consumables</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove all the consumables from the solid waste container and close back the wash/waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 28 [A3]: 3) sets the consumable fill level to zero -->
+      <ds:Step Name="ResetSolidWasteLevel">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reset Solid Container Level</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Resetting the solid waste container level...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 29 -->
+      <ds:Step Name="Finish" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Finish</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cleaning up and finishing the check...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/remote-service to /opt/roche/var/lib/mollab/shared/remote-service
+
+[Mount]
+What=/mnt/data/shared/remote-service
+Where=/opt/roche/var/lib/mollab/shared/remote-service
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

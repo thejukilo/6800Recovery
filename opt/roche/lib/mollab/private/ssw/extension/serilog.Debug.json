@@ -1,0 +1,6 @@
+{
+  "@jdt.merge": {
+    "@jdt.path": "$.Serilog.WriteTo",
+    "@jdt.value": [ { "Name": "Console" } ]
+  }
+}

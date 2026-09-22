@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="FCE6F3CDAD8F0C02226C03106049D4E0C3CD3488D04D" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AmplificationPlateParkFunctionalCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pTargetTemperatureCelsius" Type="Double" Unit="Celsius">
+          <data:Description>
+            <base:Title>The target cooling temperature in C°.</base:Title>
+          </data:Description>
+          <data:Value>5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTimeLimitReachTargetTempMinutes" Type="Integer" Unit="min">
+          <data:Description>
+            <base:Title>Timeout in minutes for cooling station to reach the target temperature.</base:Title>
+          </data:Description>
+          <data:Value>30</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxAllowedTempDevCelsius" Type="Integer" Unit="Celsius">
+          <data:Description>
+            <base:Title>The maximum allowed temperature deviation from the target cooling temperature, in C°.</base:Title>
+          </data:Description>
+          <data:Value>4</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rCoolingStationPresenceSensor">
+          <data:Description>
+            <base:Title>Cooling Station Presence Sensor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the cooling station presence sensor is working properly. False otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rFanStartStop">
+          <data:Description>
+            <base:Title>Fan Start/Stop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Can start and stop cooling station fan.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rTargetTemperatureAsMeasured" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>Target Temperature as Measured</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature value first measured after the target temperature was reached.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rTimeToReachTargetTempMinutes" Unit="min" Format="%.1f">
+          <data:Description>
+            <base:Title>Time to Reach Target Temperature (min)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measured time in minutes to first reach the target temperature.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pTimeLimitReachTargetTempMinutes" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Array="true" Size="2" Name="rMeasuredTemperaturesA" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>Measured Temperature A</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measured Temperature A</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Array="true" Size="2" Name="rMeasuredTemperaturesB" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>Measured Temperature B</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measured Temperature B</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Array="true" Size="2" Name="rMeasuredTemperaturesC" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>Measured Temperature C</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measured Temperature C</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rMeasuredTemperaturesMaxDevA" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>The max temperature deviated A</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rMeasuredTemperaturesMaxDevB" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>The max temperature deviated B</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rMeasuredTemperaturesMaxDevC" Unit="°C" Format="%.1f">
+          <data:Description>
+            <base:Title>The max temperature deviated C</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rMeasuredTemperatureAOK">
+          <data:Description>
+            <base:Title>The temperature measured externally corresponds with the internal A.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature measured externally corresponds with the internal A.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rMeasuredTemperatureBOK">
+          <data:Description>
+            <base:Title>The temperature measured externally corresponds with the internal B.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature mesured externally corresponds with the internal B.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rMeasuredTemperatureCOK">
+          <data:Description>
+            <base:Title>The temperature measured externally corresponds with the internal C.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature mesured externally corresponds with the internal C.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rDownHoldersWorking">
+          <data:Description>
+            <base:Title>Downholders working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Downholders working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

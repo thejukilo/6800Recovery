@@ -1,0 +1,7 @@
+/etc/nftables.conf.rlx
+/etc/nftables.d/forward/10_policy-drop.nft
+/etc/nftables.d/forward/90_logging.nft
+/etc/nftables.d/input/10_policy-drop.nft
+/etc/nftables.d/input/15_rlx.nft
+/etc/nftables.d/input/21_ping-drop.nft
+/etc/nftables.d/input/90_logging.nft

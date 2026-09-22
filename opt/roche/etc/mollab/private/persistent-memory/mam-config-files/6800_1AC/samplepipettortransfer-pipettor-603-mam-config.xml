@@ -1,0 +1,135 @@
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+<csmConfig>
+<csm moduleId="603" name="Pipettor_NewGen" seid="506">
+  <dataPool defaultValue="0" id="2" name="TipState" structure="scalar" type="uint32">
+    <persistDef memoryId="3960" periodInSec="-1" />
+  <!--From row 148-->
+<!--Data size differ from sheets definition: x bytes-->
+</dataPool>
+  <dataPool defaultValue="0" id="11" name="TipLength" structure="scalar" type="double">
+    <persistDef memoryId="3960" periodInSec="-1" />
+  <!--From row 149-->
+<!--Data size differ from sheets definition: x bytes-->
+</dataPool>
+  <parPool defaultValue="0" id="72" maxValue="255" minValue="0" name="ConfigData_1" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="3960" periodInSec="-1" />
+  <!--From row 110-->
+<!--Data size differ from sheets definition: 176 bytes-->
+</parPool>
+  <parPool defaultValue="0" id="73" maxValue="255" minValue="0" name="ConfigData_2" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="3960" periodInSec="-1" />
+  <!--From row 112-->
+<!--Data size differ from sheets definition: 176 bytes-->
+</parPool>
+  <parPool defaultValue="0" id="74" maxValue="255" minValue="0" name="ConfigData_3" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="75" maxValue="255" minValue="0" name="ConfigData_4" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="76" maxValue="255" minValue="0" name="ConfigData_5" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="77" maxValue="255" minValue="0" name="ConfigData_6" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="78" maxValue="255" minValue="0" name="ConfigData_7" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="79" maxValue="255" minValue="0" name="ConfigData_8" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="80" maxValue="255" minValue="0" name="ConfigData_9" noElements="100" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="81" maxValue="255" minValue="0" name="ConfigDataSerialNr" noElements="9" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="82" maxValue="255" minValue="0" name="ConfigDataArticleNr" noElements="11" structure="array" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="1" id="102" maxValue="10" minValue="0.1" name="CalibPump1CorrectionGain" structure="scalar" type="double">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="108" maxValue="1" minValue="-1" name="CalibSqueezerOffset" structure="scalar" type="float">
+    <persistDef memoryId="999998" periodInSec="0" />
+  <!--From row 55-->
+</parPool>
+  <parPool defaultValue="1" id="109" maxValue="10" minValue="0.1" name="CalibPump2CorrectionGain" structure="scalar" type="double">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="10000" id="110" maxValue="20000" minValue="5000" name="CalibPressureSensorCorrectionGain" structure="scalar" type="uint16">
+    <persistDef memoryId="999998" periodInSec="0" />
+  <!--From row 57-->
+</parPool>
+  <parPool defaultValue="0" id="111" maxValue="10000" minValue="-10000" name="CalibPressureSensorCorrectionOffset" structure="scalar" type="int16">
+    <persistDef memoryId="999998" periodInSec="0" />
+  <!--From row 56-->
+</parPool>
+  <parPool defaultValue="0" id="112" maxValue="10" minValue="-10" name="CalibAirpumpOffset" structure="scalar" type="float">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="201" maxValue="65535" minValue="0" name="OpCountInitPump1" structure="scalar" type="uint16">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 128-->
+</parPool>
+  <parPool defaultValue="0" id="202" maxValue="65535" minValue="0" name="OpCountInitPump2" structure="scalar" type="uint16">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="203" maxValue="65535" minValue="0" name="OpCountInitSqueeze" structure="scalar" type="uint16">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 129-->
+</parPool>
+  <parPool defaultValue="0" id="204" maxValue="65535" minValue="0" name="OpCountInitZAxis" structure="scalar" type="uint16">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 127-->
+</parPool>
+  <parPool defaultValue="0" id="206" maxValue="0xFFFFFFFF" minValue="0" name="OpCountMovementsPump1" structure="scalar" type="uint32">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 132-->
+</parPool>
+  <parPool defaultValue="0" id="207" maxValue="0xFFFFFFFF" minValue="0" name="OpCountMovementsPump2" structure="scalar" type="uint32">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="208" maxValue="0xFFFFFFFF" minValue="0" name="OpCountMovementsSqueeze" structure="scalar" type="uint32">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 133-->
+</parPool>
+  <parPool defaultValue="0" id="209" maxValue="0xFFFFFFFF" minValue="0" name="OpCountMovementsZAxis" structure="scalar" type="uint32">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 131-->
+</parPool>
+  <parPool defaultValue="0" id="211" maxValue="0xFFFFFFFF" minValue="0" name="OpCountZBrake" structure="scalar" type="uint32">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 138-->
+</parPool>
+  <parPool defaultValue="0" id="212" maxValue="0xFFFFFFFF" minValue="0" name="OpCountValve1" structure="scalar" type="uint32">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="213" maxValue="0xFFFFFFFF" minValue="0" name="OpCountValve2" structure="scalar" type="uint32">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="214" maxValue="0xFFFFFFFF" minValue="0" name="OpCountValve3" structure="scalar" type="uint32">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="215" maxValue="0xFFFFFFFF" minValue="0" name="OpCountValve4" structure="scalar" type="uint32">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="0" id="216" maxValue="0xFFFFFFFF" minValue="0" name="OpCounterNumberOfGetTips" structure="scalar" type="uint32">
+    <persistDef memoryId="2008" periodInSec="14400" />
+  <!--From row 136-->
+</parPool>
+  <parPool defaultValue="0" id="217" maxValue="1" minValue="0" name="SlowStartPump" structure="scalar" type="uint8">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="1.0" id="230" maxValue="2.0" minValue="0.1" name="LowVolumeCorrection" noElements="2" structure="array" type="float">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="1.0" id="231" maxValue="2.0" minValue="0.1" name="MidVolumeCorrection" noElements="2" structure="array" type="float">
+    <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+  <parPool defaultValue="1.0" id="232" maxValue="2.0" minValue="0.1" name="HighVolumeCorrection" noElements="2" structure="array" type="float">
+      <persistDef memoryId="999999" periodInSec="0" />
+  </parPool>
+<!--Value OpCountTotalRuntime not found in template /home/wangp24/Work/git/pipettor-newgen-var/opt/mam_config.xml--></csm></csmConfig>
+</dia:mam>

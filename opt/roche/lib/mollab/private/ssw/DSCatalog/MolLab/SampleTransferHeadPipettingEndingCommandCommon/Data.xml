@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7164B42CEFBB20E8A7191F1213A8DB655865038472F2" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingEndingCommandCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Name="irCheckFinished" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Were all positions testet.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irFromPosition" Type="String">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irToPosition" Type="String">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

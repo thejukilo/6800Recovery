@@ -1,0 +1,111 @@
+#!/usr/bin/python3
+
+import os
+import yaml
+import subprocess
+import sys
+
+
+class Installer:
+    def __init__(self, filename, addon_dir, hookpath):
+        self.filename = filename
+        self.addon_dir = addon_dir
+        self.hookpath = hookpath
+        self.servicedata = {}
+
+
+    def load_configuration(self):
+        with open(self.filename, "r") as f:
+            self.servicedata = yaml.safe_load(f)
+
+
+    def run_cmd(self, cmd):
+        subprocess.run(cmd, shell=True, check=True)
+
+
+    def install(self, name, service):
+
+        def run_hook(hooktype):  # hooktype = preinst, postinst
+            if self.hookpath:
+                hook = f"{self.hookpath}/{name}_{hooktype}.sh"
+                if os.path.isfile(hook):
+                    print(f"running {hooktype} script: {hook}")
+                    try:
+                        self.run_cmd(hook)
+                    except Exception as e:
+                        print(f"Exception: {e}")
+                        return False
+            return True
+
+        if not run_hook("preinst"):
+            return False
+
+        helmconfigpath = service.get("helmconfig")
+
+        helm_chart_path = f"{self.addon_dir}/{name}-{service['version']}.tgz"
+        if os.path.isfile(helm_chart_path):
+            helm_install = f"helm upgrade --install {service['servicename']} {helm_chart_path} {service['extra']}"
+
+            namespace = service.get("namespace")
+            if namespace:
+                helm_install = f"{helm_install} -n {namespace} --create-namespace"
+            if helmconfigpath:
+                helm_install = f"{helm_install} -f {helmconfigpath}"
+
+            print(helm_install)
+            try:
+                self.run_cmd(helm_install)
+            except Exception as e:
+                print(f"Exception: {e}")
+                return False
+        else:
+            print("helm chart not found so skipping install phase")
+
+        if not run_hook("postinst"):
+            return False
+
+        return True
+
+
+    def install_service(self):
+        for name, service in self.servicedata.items():
+            print(f"installing: {name}")
+
+            if not service.get("servicename"):
+                print("Error: no service name")
+                return False
+
+            if not service.get("version"):
+                 print("Warning: no service version")
+                 continue  # skip, it can be virtual service
+
+            if not self.install(name, service):
+                print("Error: installing service")
+                return False
+
+
+if __name__ == "__main__":
+    n = len(sys.argv)
+
+    if n < 3:
+        print("service configuration file or addon directory was not provided")
+        sys.exit(1)
+
+    if n > 1:
+        service_configuration = sys.argv[1]
+        addon_dir = sys.argv[2]
+
+    hookpath = None
+    if n > 3:
+        hookpath = sys.argv[3]
+
+    os.environ["KUBECONFIG"] = "/opt/roche/home/.kube/config"
+    installer = Installer(service_configuration, addon_dir, hookpath)
+
+    try:
+        installer.load_configuration()
+    except:
+        print("cannot load configuration")
+        sys.exit(1)
+
+    installer.install_service()

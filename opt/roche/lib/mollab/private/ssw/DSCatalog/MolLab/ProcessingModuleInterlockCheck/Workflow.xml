@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6F96A22568FDBEDDEB350C9912F7FE81CD354982BDC4" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ProcessingModuleInterlockCheck" ID="ProcessingModuleInterlockCheck">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="CloseFrontDoors" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Front Doors</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the processing module front cover and place the key in the interlock module (type lock) of the processing module upper rear door and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_AllDoors_Closed.jpg" Hash="85F003570986F8A9E63BF35933555ADCA4C4B8B2" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializes the used units, if not in state Ready.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="VerifyAllDoorsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify All Doors Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the processing module front cover and the processing module upper rear door are reported as closed by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="OpenProcessingModuleFrontDoor" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Front Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the processing module front cover completely with the open/close covers button and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_FrontCover_Open.jpg" Hash="1D0BF2868EFBDA5C8FDADA08029A24F3489DDCAF" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="VerifyOpenProcessingModuleFrontDoor">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Front Cover State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the processing module front cover state is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="OpenProcessingModuleDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open manually the processing module drawer with the lever inside the processing module.</base:Paragraph>
+              <base:Paragraph>Open the red lever and swing out the drawer to open the interlock module (type safety switch).</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_Drawer_Open.jpg" Hash="5B8BFA2F5C9DA668D505477A866C72F1D41EC3F3" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="VerifyOpenProcessingModuleDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Processing Module Drawer Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the processing module drawer interlock module (type safety switch) state is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8 -->
+      <ds:Step Name="OpenProcessingModuleBack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Rear Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the key from the interlock module (type lock) of the processing module upper rear door and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_Rear_Unlocked.jpg" Hash="4CA79285AC029BD1C67A222EDF1EE47D57AE07E6" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 9 -->
+      <ds:Step Name="VerifyOpenProcessingModuleBack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Processing Module Rear Door Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the processing module upper rear door is reported as open by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10 -->
+      <ds:Step Name="TurnServiceSwitchNormalMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Disable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Disable the interlock service mode by turning the service mode switch counter clockwise and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Standalone_ServiceSwitch_Running.jpg" Hash="9461E313F0E20D028FCEDD4C5DB44BAB369C6D9C" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11 -->
+      <ds:Step Name="CloseAllDoors" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Drawer and Rear Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place the key in the interlock module (type lock) of the processing module upper rear door.</base:Paragraph>
+              <base:Paragraph>Swing back the processing module drawer, close the red lever and close the processing module drawer.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to proceed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_RearAndDrawer_Closed.jpg" Hash="5A668B2883A6E343C895696716204B74E8B22411" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 12 -->
+      <ds:Step Name="ManualCloseDoorProcessingModule" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Processing Module Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the processing module front cover completely with the open/close covers button.</base:Paragraph>
+              <base:Paragraph>Note: Press and hold the button until the cover is completely closed.</base:Paragraph>
+              <base:Paragraph>Press 'Next' once the cover is completely closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_FrontCover_Closed.jpg" Hash="535082807E398A287DE8558076363EEA720E3C0D" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 13 -->
+      <ds:Step Name="VerifyAllDoorsLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify All Doors Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the processing module front cover and the processing module upper rear door are reported as closed and locked by the safety interlock unit.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 14 -->
+      <ds:Step Name="TurnServiceSwitchServiceMode" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Enable Interlock Service Mode</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Enable the interlock service mode by turning the service mode switch clockwise.</base:Paragraph>
+              <base:Paragraph>Remove the key from the interlock module (type lock) from the processing module upper rear door and press 'Finish'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleInterlockCheck_Rear_Open_ServiceSwitch_ServiceMode.jpg" Hash="8DDFABD9258B61DED65525CEA052CA8CC069853E" />
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

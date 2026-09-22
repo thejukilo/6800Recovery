@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotionConfig xsi:noNamespaceSchemaLocation="lib_00000100_MotionControl_MotionConfig_@lib_00000100_MotionControl_MotionConfig_Schema_Version@.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Motor MotorName="GripperMotor" DeviceId="0" HomePosition="0.0">
+    <Device>
+      <MotorType>DC</MotorType>
+      <UnitBase>87.692308</UnitBase>
+      <PositionDirection>Forward</PositionDirection>
+      <SampleRate>5000Hz</SampleRate>
+      <EmergencyStop>Off</EmergencyStop>
+    </Device>
+    <TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+      <TrajectoryPlannerSet Id="0">
+        <VelocityLimit>3.4</VelocityLimit>
+        <AccelerationLimit>11.39</AccelerationLimit>
+        <DecelerationLimit>11.39</DecelerationLimit>
+        <LowerPositionLimit>0.0</LowerPositionLimit>
+        <UpperPositionLimit>0.21</UpperPositionLimit>
+        <JerkLimit>1000000</JerkLimit>
+      </TrajectoryPlannerSet>
+      <DynamicSet>
+        <DynamicSetIndex>0</DynamicSetIndex>
+        <DesiredVelocity>0.02</DesiredVelocity>
+        <DesiredAcceleration>11.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>1</DynamicSetIndex>
+        <DesiredVelocity>1.5</DesiredVelocity>
+        <DesiredAcceleration>4.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>2</DynamicSetIndex>
+        <DesiredVelocity>1.0</DesiredVelocity>
+        <DesiredAcceleration>0.7</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>3</DynamicSetIndex>
+        <DesiredVelocity>1.5</DesiredVelocity>
+        <DesiredAcceleration>4.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>4</DynamicSetIndex>
+        <DesiredVelocity>1.0</DesiredVelocity>
+        <DesiredAcceleration>1.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>5</DynamicSetIndex>
+        <DesiredVelocity>1.5</DesiredVelocity>
+        <DesiredAcceleration>4.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>6</DynamicSetIndex>
+        <DesiredVelocity>0.5</DesiredVelocity>
+        <DesiredAcceleration>1.0</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>7</DynamicSetIndex>
+        <DesiredVelocity>0.2</DesiredVelocity>
+        <DesiredAcceleration>1.5</DesiredAcceleration>
+        <DesiredDeceleration>1.5</DesiredDeceleration>
+        <DesiredJerkAcceleration>5.75</DesiredJerkAcceleration>
+        <DesiredJerkDeceleration>5.75</DesiredJerkDeceleration>
+      </DynamicSet>
+    </TrajectoryPlanner>
+    <PositionController Id="0">
+      <PValue>35</PValue>
+      <DValue>0.05</DValue>
+      <IValue>500</IValue>
+      <ISaturation>2.5</ISaturation>
+      <CurrentLimit>2.5</CurrentLimit>
+      <ControlDeviationLimit>0.0011</ControlDeviationLimit>
+      <ControlStructure>ClosedLoop</ControlStructure>
+      <ControllerType>Position</ControllerType>
+      <FeedbackSign>Negative</FeedbackSign>
+    </PositionController>
+    <EndOfMove>
+      <!-- Proposal 23-NOV-2022 -->
+      <TrackingTime>0</TrackingTime> <!-- would delay the next move and prolong the whole run -->
+      <StaticControlDeviationLimit>0.0011</StaticControlDeviationLimit> <!-- same value as for <ControlDeviationLimit> -->
+      <TimeOut>0</TimeOut> <!-- would delay the next move and prolong the whole run -->
+      <StaticISaturation>0.9</StaticISaturation>
+      <StaticCurrentLimit>0.9</StaticCurrentLimit> <!-- max. required current after movement is 0.6A, max. allowed continous motor current is 1.37A -->
+    </EndOfMove>
+    <CurrentController>
+      <PValue>80</PValue>
+      <IValue>700000</IValue>
+      <ISaturation>1024</ISaturation>
+      <ControlDeviationLimit>5</ControlDeviationLimit>
+    </CurrentController>
+    <Encoder>
+      <EncoderType>IncrementPosition</EncoderType>
+      <NumberOfLines>500</NumberOfLines>
+    </Encoder>
+    <MultipleBitInput PortName="InitBumperGripper">
+      <TypeOfInput>MotorCurrent</TypeOfInput>
+      <TriggerLevel>2.0</TriggerLevel>
+      <ActiveEdge>Rising</ActiveEdge>
+    </MultipleBitInput>
+    <MotorConfigDC>
+      <MotorConstant>0.0208</MotorConstant>
+      <TerminalResistance>1.64</TerminalResistance>
+      <TerminalInductance>0.000186</TerminalInductance>
+      <ThermalLimit>155</ThermalLimit>
+      <ThermalResistanceWindingToHousing>5.1</ThermalResistanceWindingToHousing>
+      <ThermalTimeConstantWinding>29.2</ThermalTimeConstantWinding>
+      <ThermalResistanceHousingToAmbient>14.4</ThermalResistanceHousingToAmbient>
+      <ThermalTimeConstantHousing>543</ThermalTimeConstantHousing>
+    </MotorConfigDC>
+    <Plant>
+      <MassInertia>0</MassInertia>
+      <GravitationalTorque>0</GravitationalTorque>
+      <VelocityDependantFriction>0</VelocityDependantFriction>
+      <VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+      <HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+    </Plant>
+    <Init>
+      <InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+      <InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+      <AdditionalMoveDynamicSetIndex>0</AdditionalMoveDynamicSetIndex>
+      <InitSubConfig InitID="0">
+        <InitType>Bumper</InitType>
+        <InitDirection>Backward</InitDirection>
+        <InitPos>0</InitPos>
+        <InitState>Initialized</InitState>
+        <InitMoveDistanceAfter>0.01</InitMoveDistanceAfter>
+        <RelatedPortName>InitBumperGripper</RelatedPortName>
+      </InitSubConfig>
+    </Init>
+    <Counters>
+      <MoveCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>19</PoolId>
+      </MoveCounter>
+      <InitCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>15</PoolId>
+      </InitCounter>
+    </Counters>
+  </Motor>
+  <Motor MotorName="SpringMotor" DeviceId="1" HomePosition="0.0">
+    <Device>
+      <MotorType>DC</MotorType>
+      <UnitBase>1350</UnitBase>
+      <PositionDirection>Backward</PositionDirection>
+      <SampleRate>1250Hz</SampleRate>
+      <EmergencyStop>Off</EmergencyStop>
+    </Device>
+    <TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+      <TrajectoryPlannerSet Id="0">
+        <VelocityLimit>0.2</VelocityLimit>
+        <AccelerationLimit>0.74</AccelerationLimit>
+        <DecelerationLimit>0.74</DecelerationLimit>
+        <LowerPositionLimit>-0.006</LowerPositionLimit>
+        <UpperPositionLimit>0.021</UpperPositionLimit>
+        <JerkLimit>1000000</JerkLimit>
+      </TrajectoryPlannerSet>
+      <DynamicSet>
+        <DynamicSetIndex>0</DynamicSetIndex>
+        <DesiredVelocity>0.0074</DesiredVelocity>
+        <DesiredAcceleration>0.074</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>1</DynamicSetIndex>
+        <DesiredVelocity>0.04</DesiredVelocity>
+        <DesiredAcceleration>0.74</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>2</DynamicSetIndex>
+        <DesiredVelocity>0.04</DesiredVelocity>
+        <DesiredAcceleration>0.74</DesiredAcceleration>
+      </DynamicSet>
+    </TrajectoryPlanner>
+    <PositionController Id="0">
+      <PValue>5</PValue>
+      <DValue>0.05</DValue>
+      <IValue>700</IValue>
+      <ISaturation>1.0</ISaturation>
+      <CurrentLimit>1.0</CurrentLimit>
+      <ControlDeviationLimit>0.1</ControlDeviationLimit>
+      <ControlStructure>ClosedLoop</ControlStructure>
+      <ControllerType>Position</ControllerType>
+      <FeedbackSign>Negative</FeedbackSign>
+    </PositionController>
+    <EndOfMove>
+      <!-- Proposal 23-NOV-2022 -->
+      <TrackingTime>0</TrackingTime> <!-- would delay the next move and prolong the whole run -->
+      <StaticControlDeviationLimit>0.1</StaticControlDeviationLimit> <!-- same value as for <ControlDeviationLimit> -->
+      <TimeOut>0</TimeOut> <!-- would delay the next move and prolong the whole run -->
+      <StaticISaturation>0.25</StaticISaturation>
+      <StaticCurrentLimit>0.25</StaticCurrentLimit> <!-- max. required current after movement is 0.2A, max. allowed continous motor current is 0.35A -->
+    </EndOfMove>
+    <CurrentController>
+      <PValue>50</PValue>
+      <IValue>500000</IValue>
+      <ISaturation>1101</ISaturation>
+      <ControlDeviationLimit>5</ControlDeviationLimit>
+    </CurrentController>
+    <Encoder>
+      <EncoderType>IncrementPosition</EncoderType>
+      <NumberOfLines>128</NumberOfLines>
+    </Encoder>
+    <MultipleBitInput PortName="InitBumper">
+      <TypeOfInput>MotorCurrent</TypeOfInput>
+      <TriggerLevel>0.5</TriggerLevel>
+      <ActiveEdge>Rising</ActiveEdge>
+    </MultipleBitInput>
+    <MotorConfigDC>
+      <MotorConstant>0.0212</MotorConstant>
+      <TerminalResistance>21</TerminalResistance>
+      <TerminalInductance>0.00137</TerminalInductance>
+      <ThermalLimit>125</ThermalLimit>
+      <ThermalResistanceWindingToHousing>6</ThermalResistanceWindingToHousing>
+      <ThermalTimeConstantWinding>10.1</ThermalTimeConstantWinding>
+      <ThermalResistanceHousingToAmbient>20</ThermalResistanceHousingToAmbient>
+      <ThermalTimeConstantHousing>540</ThermalTimeConstantHousing>
+    </MotorConfigDC>
+    <Plant>
+      <MassInertia>0</MassInertia>
+      <GravitationalTorque>0</GravitationalTorque>
+      <VelocityDependantFriction>0</VelocityDependantFriction>
+      <VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+      <HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+    </Plant>
+    <Init>
+      <InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+      <InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+      <AdditionalMoveDynamicSetIndex>0</AdditionalMoveDynamicSetIndex>
+      <InitSubConfig InitID="0">
+        <InitType>Bumper</InitType>
+        <InitDirection>Backward</InitDirection>
+        <InitPos>-0.0043</InitPos>
+        <InitState>Initialized</InitState>
+        <InitMoveDistanceBefore>0</InitMoveDistanceBefore>
+        <InitMoveDistanceAfter>0.0043</InitMoveDistanceAfter>
+        <RelatedPortName>InitBumper</RelatedPortName>
+      </InitSubConfig>
+    </Init>
+    <Counters>
+      <MoveCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>17</PoolId>
+      </MoveCounter>
+      <InitCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>13</PoolId>
+      </InitCounter>
+    </Counters>
+  </Motor>
+  <Motor MotorName="TubeTurnerMotor" DeviceId="2" HomePosition="0.0">
+    <Device>
+      <MotorType>DC</MotorType>
+      <UnitBase>5.4</UnitBase>
+      <PositionDirection>Backward</PositionDirection>
+      <SampleRate>1250Hz</SampleRate>
+      <EmergencyStop>Off</EmergencyStop>
+    </Device>
+    <TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+      <TrajectoryPlannerSet Id="0">
+        <VelocityLimit>2.0</VelocityLimit>
+        <AccelerationLimit>20.0</AccelerationLimit>
+        <DecelerationLimit>20.0</DecelerationLimit>
+        <LowerPositionLimit>-94.81</LowerPositionLimit>
+        <UpperPositionLimit>94.81</UpperPositionLimit>
+        <JerkLimit>1000000</JerkLimit>
+      </TrajectoryPlannerSet>
+      <DynamicSet>
+        <DynamicSetIndex>0</DynamicSetIndex>
+        <DesiredVelocity>0.82</DesiredVelocity>
+        <DesiredAcceleration>4</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>1</DynamicSetIndex>
+        <DesiredVelocity>1</DesiredVelocity>
+        <DesiredAcceleration>4</DesiredAcceleration>
+      </DynamicSet>
+    </TrajectoryPlanner>
+    <PositionController Id="0">
+      <PValue>5</PValue>
+      <DValue>0.05</DValue>
+      <IValue>100</IValue>
+      <ISaturation>2.0</ISaturation>
+      <CurrentLimit>1.0</CurrentLimit>
+      <ControlDeviationLimit>0.1</ControlDeviationLimit>
+      <ControlStructure>ClosedLoop</ControlStructure>
+      <ControllerType>Position</ControllerType>
+      <FeedbackSign>Negative</FeedbackSign>
+    </PositionController>
+    <EndOfMove>
+      <!-- Proposal 23-NOV-2022 -->
+      <TrackingTime>0</TrackingTime> <!-- would delay the next move and prolong the whole run -->
+      <StaticControlDeviationLimit>0.1</StaticControlDeviationLimit> <!-- same value as for <ControlDeviationLimit> -->
+      <TimeOut>0</TimeOut> <!-- would delay the next move and prolong the whole run -->
+      <StaticISaturation>0.25</StaticISaturation>
+      <StaticCurrentLimit>0.25</StaticCurrentLimit> <!-- max. required current after movement is 0.2A, max. allowed continous motor current is 0.35A -->
+    </EndOfMove>
+    <CurrentController>
+      <PValue>50</PValue>
+      <IValue>500000</IValue>
+      <ISaturation>1101</ISaturation>
+      <ControlDeviationLimit>5</ControlDeviationLimit>
+    </CurrentController>
+    <Encoder>
+      <EncoderType>IncrementPosition</EncoderType>
+      <NumberOfLines>128</NumberOfLines>
+    </Encoder>
+    <MotorConfigDC>
+      <MotorConstant>0.0212</MotorConstant>
+      <TerminalResistance>21</TerminalResistance>
+      <TerminalInductance>0.00137</TerminalInductance>
+      <ThermalLimit>125</ThermalLimit>
+      <ThermalResistanceWindingToHousing>6</ThermalResistanceWindingToHousing>
+      <ThermalTimeConstantWinding>10.1</ThermalTimeConstantWinding>
+      <ThermalResistanceHousingToAmbient>20</ThermalResistanceHousingToAmbient>
+      <ThermalTimeConstantHousing>540</ThermalTimeConstantHousing>
+    </MotorConfigDC>
+    <Plant>
+      <MassInertia>0</MassInertia>
+      <GravitationalTorque>0</GravitationalTorque>
+      <VelocityDependantFriction>0</VelocityDependantFriction>
+      <VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+      <HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+    </Plant>
+    <Init>
+      <InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+      <InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+      <AdditionalMoveDynamicSetIndex>0</AdditionalMoveDynamicSetIndex>
+      <InitSubConfig InitID="0">
+        <InitType>SetPos</InitType>
+        <InitPos>0.0</InitPos>
+        <InitState>Initialized</InitState>
+      </InitSubConfig>
+    </Init>
+    <Counters>
+      <MoveCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>18</PoolId>
+      </MoveCounter>
+      <InitCounter>
+        <PoolType>ParameterPool</PoolType>
+        <PoolId>14</PoolId>
+      </InitCounter>
+    </Counters>
+  </Motor>
+  <InitFlow FlowID="1">
+    <SequenceConfigID>1</SequenceConfigID>
+  </InitFlow>
+  <InitSequence SequenceID="1">
+    <InitPattern RelatedMotorName="GripperMotor">
+      <InitStep>
+        <InitSingleStep>
+          <InitID>0</InitID>
+        </InitSingleStep>
+      </InitStep>
+    </InitPattern>
+    <InitPattern RelatedMotorName="SpringMotor">
+      <InitStep>
+        <InitSingleStep>
+          <InitID>0</InitID>
+        </InitSingleStep>
+      </InitStep>
+    </InitPattern>
+  </InitSequence>
+</MotionConfig>

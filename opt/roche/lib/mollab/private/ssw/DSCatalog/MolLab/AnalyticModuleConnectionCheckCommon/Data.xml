@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="50D8F1AF97E14892DA4BEA30A62653B0E7027301FA92" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="AnalyticModuleConnectionCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pCheckVariant" Type="String">
+          <data:Description>
+            <base:Title>Check Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check type parameter to split the checks into the different versions.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rAnalyticUnitStateSuccess" Type="Boolean">
+          <data:Description>
+            <base:Title>Analytic Unit State Result</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates if all analytic unit states are ok.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rAnalyticUnitStates" Array="true">
+          <data:Description>
+            <base:Title>State of Each Analytic Unit.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>State of Each Analytic Unit.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateDrawerState" Type="String">
+          <data:Description>
+            <base:Title>Amplification Plate Drawer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Amplification plate drawer state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateHandlerState" Type="String">
+          <data:Description>
+            <base:Title>Amplification Plate Handler State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Amplification plate handler state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateTransferPositionState" Type="String">
+          <data:Description>
+            <base:Title>Amplification Plate Transfer Position State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Amplification plate transfer position state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

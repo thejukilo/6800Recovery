@@ -1,0 +1,8 @@
+94af9cf4dcdee5ab13c701b9151b9800  opt/roche/etc/mollab/private/cooling-station/a/config/newgen-coolingstation-motionconfig.xml
+be13826770ff61f0de10e526899d5a99  opt/roche/etc/mollab/private/cooling-station/a/config/newgen-coolingstation-parampool.xml
+22b40b71991933431e1a274677f8846f  opt/roche/etc/mollab/private/cooling-station/a/startup/ecc.xml
+7fd12f3796d2664647b3f8269ee3429e  opt/roche/etc/mollab/private/cooling-station/a/startup/ecs_A.xml
+3b03fa071149f25e69c728522abd07e0  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-coolingstation-302-mam-config.xml
+bff2714bdc965454f7eccd79caeeb560  opt/roche/etc/mollab/private/rabbitmq/definitions/coolingstation_a_definition.json
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/cooling-station/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/cooling-station/fwr_00000604_MotionControl_2.03.03.0000.srec

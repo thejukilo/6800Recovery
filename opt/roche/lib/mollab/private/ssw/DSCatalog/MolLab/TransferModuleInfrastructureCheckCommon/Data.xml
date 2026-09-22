@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="76F746ED270543E2A8E127D74977F0CAFF6203783AA3" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TransferModuleInfrastructureCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pHumiditySensorMax" Type="Double">
+          <data:Description>
+            <base:Title>Maximum value for the humidity sensors.</base:Title>
+          </data:Description>
+          <data:Value>100</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pHumiditySensorMin" Type="Double">
+          <data:Description>
+            <base:Title>Minimum value for the humidity sensors.</base:Title>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTemperatureSensorWarmupTimeout" Unit="sec" Type="Integer">
+          <data:Description>
+            <base:Title>Temperature sensor warm up timeout</base:Title>
+          </data:Description>
+          <data:Value>60</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTemperatureSensorWarmupValue" Unit="°C" Type="Double" Format="%.1n">
+          <data:Description>
+            <base:Title>Temperature sensor warm up value in degrees.</base:Title>
+          </data:Description>
+          <data:Value>2</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxTemperature" Type="Integer" Unit="°C">
+          <data:Description>
+            <base:Title>Maximum temperature</base:Title>
+          </data:Description>
+          <data:Value>40</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMinFanSpeed" Type="Integer" Unit="rpm">
+          <data:Description>
+            <base:Title>Minimum fan speed</base:Title>
+          </data:Description>
+          <data:Value>2000</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pFanRampUpTime" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>The time to ramp up the fan</base:Title>
+          </data:Description>
+          <data:Value>70</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBlindTime" Unit="sec" Type="Integer">
+          <data:Description>
+            <base:Title>Indicator wait time</base:Title>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAlternateLightRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Amount of times to alternate light colors.</base:Title>
+          </data:Description>
+          <data:Value>5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxHumiditySensorDeviation" Type="Integer">
+          <data:Description>
+            <base:Title>The Highest Allowed Humidity Sensor Deviation %.</base:Title>
+          </data:Description>
+          <data:Value>10</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irAlternateLightRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Used to display pAlternateLightRepetitions.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rHepa1FanSpeed" Type="Integer" Unit="rpm">
+          <data:Description>
+            <base:Title>The Hepafilter 1 Fan Speed in Rpms</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Hepafilter 1 Fan Speed in Rpms</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="GE" Parameter="pMinFanSpeed" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rFanWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Fan Is Working Correctly</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Fan Is Working Correctly</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRotatingLightWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Rotating Light Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Rotating Light Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLightingWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>The Work Area Light Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Work Area Light Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rStatusLightWorking">
+          <data:Description>
+            <base:Title>Status Light Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The status light is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAirflowScreenWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Blind Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Blind Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBrokenFuses" Type="String" Array="true" Size="68">
+          <data:Description>
+            <base:Title>Fuse States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Fuse States</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rFusesOK" Type="Boolean">
+          <data:Description>
+            <base:Title>All Fuses Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All Fuses Ok</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWorkingAreaTemperatureSensorBefore" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Temperature Processing Area Sensor Before</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature Processing Area Sensor Before</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWorkingAreaTemperatureSensorAfter" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Temperature Processing Area Sensor After</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature Processing Area Sensor After</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWorkingAreaTemperatureSensorDelta" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Temperature Processing Area Sensor Delta</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature Processing Area Sensor Delta</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCeilingTemperatureSensorBefore" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Ceiling Temperature Sensor Before</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ceiling Temperature Sensor Before</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCeilingTemperatureSensorAfter" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Ceiling Temperature Sensor After</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ceiling Temperature Sensor After</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCeilingTemperatureSensorDelta" Type="Double" Unit="° C" Format="%.1n">
+          <data:Description>
+            <base:Title>Ceiling Temperature Sensor Delta</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ceiling Temperature Sensor Delta</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxTemperature" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTemperatureSensorsCorrect" Type="Boolean">
+          <data:Description>
+            <base:Title>Are the Temperature Sensors Correct</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are the Temperature Sensors Correct</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInternalLoopDone" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal Loop Done</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal Loop Done</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMainPowerBoxFanAndTemperatureWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Fan Fail or Temperature Too High in the 1St Powersupply.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Fan Fail or Temperature Too High in the 1St Powersupply.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAnalyticUnitPowerBoxFanAndTemperatureWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Fan Fail or Temperature Too High in the 2Nd Powersupply.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Fan Fail or Temperature Too High in the 2Nd Powersupply.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHumidityValue1" Type="Double">
+          <data:Description>
+            <base:Title>Humidity Value Sensor 1 (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reported humidity sensor 1 measurement in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pHumiditySensorMax" />
+            <data:Condition Operator="GE" Parameter="pHumiditySensorMin" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHumidityValue2" Type="Double">
+          <data:Description>
+            <base:Title>Humidity Value Sensor 2 (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reported humidity sensor 2 measurement in percentage.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pHumiditySensorMax" />
+            <data:Condition Operator="GE" Parameter="pHumiditySensorMin" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHumidityDeviation" Type="Double">
+          <data:Description>
+            <base:Title>Humidity Deviation (%)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Absolute deviation between both humidity sensor values in percentage, validated against the defined tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMaxHumiditySensorDeviation" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="10" Name="DownholderPositions" Value="-38, 65" Type="double" Array="true" Description="The two positions of the downholder (close (1) and open (0) position)" />
+</ModuleConfiguration>
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F640A1AD421B7AB19F1672173B3015B0B3BCC71C4073" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="RackTransportCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pTargetPositionName" Type="String">
+          <data:Description>
+            <base:Title>TargetPositionName</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Repetitions</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rRackTransportCheckSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Rack Transport Check Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The rack transport check was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irRepetitionsCompleted" Type="Integer">
+          <data:Description>
+            <base:Title>Repetition Count</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates the amount of repetitions that have been completed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

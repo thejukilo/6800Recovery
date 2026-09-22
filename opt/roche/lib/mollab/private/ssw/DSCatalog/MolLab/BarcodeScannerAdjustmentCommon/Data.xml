@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="D4392CE5BF11C5FE28C51C71DE6B3F27F7B760E5F570" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="BarcodeScannerAdjustmentCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pCalibrationImagesRootDirectory" Type="String">
+          <data:Description>
+            <base:Title>Root Directory Calibration Images</base:Title>
+          </data:Description>
+          <data:Value>/data/shared/service-images/</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rAdjustmentSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Adjustment Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The adjustment was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraType" Type="String">
+          <data:Description>
+            <base:Title>Camera Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether it is a Jadak or Cognex Camera.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraFirmware" Type="String">
+          <data:Description>
+            <base:Title>Camera Firmware</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera Firmware details.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraFirmwareRevision" Type="String">
+          <data:Description>
+            <base:Title>Camera Firmware Revision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera Firmware Revision details.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInternalDecision" Type="Boolean">
+          <data:Description>
+            <base:Title>Flow Decision for Adjustment Loop</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Flow Decision for Adjustment Loop</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irWarningTextJadak">
+          <data:Description>
+            <base:Title>Internal Result to output additional instruction for Jadak cameras</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal Result to output additional instruction for Jadak cameras</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInternalPath" Type="String">
+          <data:Description>
+            <base:Title>Display Name for Adjustment Image</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Display Name for Adjustment Image</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

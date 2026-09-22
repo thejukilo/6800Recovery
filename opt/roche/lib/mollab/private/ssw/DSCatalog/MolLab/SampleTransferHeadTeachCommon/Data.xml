@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="602F73D752AA3367A30F5E4B6B0E2D5F0439C813AFC7" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTeachCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsModule" Type="Boolean" Unit="">
+          <data:Description>
+            <base:Title>Internal parameter</base:Title>
+          </data:Description>
+          <data:Value>false</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rTeaching" Type="Boolean">
+          <data:Description>
+            <base:Title>Teaching Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching Successful</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetABmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset B</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor B (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetACmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset C</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor C (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetADmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset D</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor D (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rMaxYOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Maximum Teaching Offset Value</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head maximum teaching Y offset in millimeters between any two piepettors.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMaxYOffsetPair" Type="String">
+          <data:Description>
+            <base:Title>STH Maximum Teaching Offset Pair</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head pipettor pair with maximum teaching Y offset.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

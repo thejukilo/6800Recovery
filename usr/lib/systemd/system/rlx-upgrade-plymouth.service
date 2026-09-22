@@ -1,0 +1,19 @@
+[Unit]
+Description=Show Plymouth Upgrade Screen
+DefaultDependencies=no
+Wants=systemd-ask-password-plymouth.path
+Before=systemd-ask-password-plymouth.service plymouth-start.service
+Conflicts=plymouth-start.service
+ConditionKernelCommandLine=!plymouth.enable=0
+ConditionKernelCommandLine=!nosplash
+ConditionVirtualization=!container
+
+[Service]
+ExecStart=/sbin/plymouthd --pid-file=/run/plymouth/pid --no-boot-log --mode=system-upgrade
+ExecStartPost=-/bin/plymouth show-splash display-message --text="[Roche] System is upgrading ...\n" system-update --progress=1 pause-progress
+Type=forking
+KillMode=none
+SendSIGKILL=no
+
+[Install]
+WantedBy=rlx-upgrade.target

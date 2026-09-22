@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="D73AF4D0FE6645A7C3DAFF66CB7A10C65A6BB143EC22" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="InterimReagentStorageCoolingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pRocheCassetteUniqueIdentifier" Type="String">
+          <data:Description>
+            <base:Title>Roche Unique Identifier</base:Title>
+          </data:Description>
+          <data:Value>6644341190</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPollingTime" Type="Integer">
+          <data:Description>
+            <base:Title>The temperature polling time (seconds)</base:Title>
+          </data:Description>
+          <data:Value>1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPermittedCoolingTime" Type="Integer">
+          <data:Description>
+            <base:Title>The temperature polling time (seconds)</base:Title>
+          </data:Description>
+          <data:Value>600</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pExpectedTemperatureDifference" Type="Double">
+          <data:Description>
+            <base:Title>The temperature difference to reach.</base:Title>
+          </data:Description>
+          <data:Value>1.0</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rTemperatureCheckPassed">
+          <data:Description>
+            <base:Title>Temperature Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature check was successful</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTimeOut">
+          <data:Description>
+            <base:Title>Timeout for Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The elapsed time was greater than the permitted cooling time.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="False" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rCurrentTemperature" Unit="°C" Format="%.1n">
+          <data:Description>
+            <base:Title>Current Interim Reagent Storage Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Current interim reagent storage temperature.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Integer" Name="rElapsedSeconds">
+          <data:Description>
+            <base:Title>Elapsed Seconds</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The elapsed time in seconds since starting the temperature regulation.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoopDone">
+          <data:Description>
+            <base:Title>Loop Temperature Measurement</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Loop the temperature measurement until it is true.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irNextStoragePosition">
+          <data:Description>
+            <base:Title>Current Storage Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates the last interim reagent storage position of the cassette.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Integer" Name="irRemainingStoragePositions">
+          <data:Description>
+            <base:Title>Remaining Storage Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates the remaining interim reagent storage positions to be tested.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

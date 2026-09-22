@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="3FA38F396B3EF2B819223FE4BF090BDFDD53E229CFE0" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadPipettingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPAddress" Type="String">
+          <data:Description>
+            <base:Title>Balance IP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The IPAddress of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>192.168.95.248</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPPort" Type="Integer">
+          <data:Description>
+            <base:Title>TCP Port Adress of the balance</base:Title>
+          </data:Description>
+          <data:Value>8001</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeForBalance" Type="Double" Unit="sec" Format="%.2n">
+          <data:Description>
+            <base:Title>Balance wait Time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait Time for the balance</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>4</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeBetweenMedianValues" Type="Double" Unit="sec" Format="%.2n">
+          <data:Description>
+            <base:Title>Balance wait Time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait Time for the balance</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pValueCountForMedianWeight" Type="Integer">
+          <data:Description>
+            <base:Title>Value count for median weight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Count of measurements to build the median weight value</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>11</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pUsedNetWeightCommand" Type="String">
+          <data:Description>
+            <base:Title>Used NetWeight Command</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Used NetWeight Command</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>SI</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipIndex" Type="String">
+          <data:Description>
+            <base:Title>Index of the involved reagent Pipettor (A-H)</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter800" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter SSW 800</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>8893befa-0be7-4846-95c5-8c2c7bf6b6f1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter50" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for SSW 50</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>a8b643e9-c14e-4b4f-bdd2-70ca56f96293</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameter10" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for SSW 10</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The pipetting parameter to use.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0a593c1a-122d-4b8e-ad91-1265bc694768</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Initial dispense repetitions</base:Title>
+          </data:Description>
+          <data:Value>3</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Initial Pipettingvolume m3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The Volume that has to be dispensed into the balance vessel.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>8E-07</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseOuterRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Multi dispense outer repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>MultiDispenseOuterRepetitions</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseOuterRepetitionsLow" Type="Integer">
+          <data:Description>
+            <base:Title>Multi dispense outer repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>MultiDispenseOuterRepetitions</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseInnerRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Multi dispense inner repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Multi dispense inner repetitions</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseInnerRepetitionsLowVolume" Type="Integer">
+          <data:Description>
+            <base:Title>Multi dispense inner repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Multi dispense inner repetitions</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Multi dispense volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MultiDispenseVolume that shall be aspirated and dispensed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>50E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseLowVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Multi dispense volume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MultiDispenseVolume that shall be aspirated and dispensed for LowVolume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>10E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAspirationDispenseRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Number of Repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of Aspriations and Dispensions.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>16</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAspirationDispenseVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>LowVolume (m3)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The low Volume that shall be aspirated and dispensed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>10E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAspirationOverdrawInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Aspiration Overdraw</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Aspiration Overdraw according to pipfile</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0E-09</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolumeInCubicMeters" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Wash volume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wash volume</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>40E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseMaxInaccuracy" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Initial Dispense Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the initial dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxInaccuracy" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the multi dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3.8</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxImprecision" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Maximum Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum imprecision of the multi dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>1.2</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxInaccuracyLowVol" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Low Volume Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the aspiration dispense low volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>7.5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxImprecisionLowVol" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Low Volume Maximum Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum imprecision of the multi dispense low volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3.7</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>170E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredDiluentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>44E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>525E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rInitializationSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Initialization Success</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initialization state.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBalanceSerial" Type="Serial">
+          <data:Description>
+            <base:Title>Balance Serial</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The serialnumber (I4) of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceVersion" Type="String">
+          <data:Description>
+            <base:Title>Balance Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The version of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceTemp" Type="String" Unit="°C">
+          <data:Description>
+            <base:Title>Balance Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceConnected" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Connected</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Balance connected</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeInMicroLiter" Type="Double" Array="true" Size="5" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Initial Dispense Volume (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The amount that has been dispensed initially (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeMicroLiterAverage" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Initial Dispense Average (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Average for Initial Dispense (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeInaccuracy" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Initial Dispense Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for Initial Dispense</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pInitialDispenseMaxInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeMeasurement1Inaccuracy" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Initial Dispense Inaccuracy for Measurement 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for Initial Dispense</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pInitialDispenseMaxInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeMeasurement2Inaccuracy" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Initial Dispense Inaccuracy for Measurement 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for Initial Dispense</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pInitialDispenseMaxInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInitialDispenseVolumeMeasurement3Inaccuracy" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Initial Dispense Inaccuracy for Measurement 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for Initial Dispense</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pInitialDispenseMaxInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMultiDispenseVolumeMicroLiter" Type="Double" Array="true" Size="18" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Multi Dispense Volume (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The amount that has been Multidispensed. (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseVolumeMicroLiterAverage" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Multi Dispense High Volume Average (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Average for MultiDispense (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseInaccuracy" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Multi Dispense High Volume Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for MultiDispense Volumes</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMultiDispenseMaxInaccuracy" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMultiDispenseImprecision" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Multi Dispense High Volume Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Imprecision for Multi Dispense Volumes</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMultiDispenseMaxImprecision" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMultiDispenseVolumeMicroLiterLow" Type="Double" Array="true" Size="18" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Multi Dispense Low Volume (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The amount that has been Multidispensed. (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseVolumeMicroLiterLowAverage" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Multi Dispense Low Volume Average (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Average for MultiDispense Low (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMultiDispenseInaccuracyLowVol" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Multi Dispense Low Volume Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Inaccuracy for MultiDispense Volumes</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMultiDispenseMaxInaccuracyLowVol" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMultiDispenseImprecisionLowVol" Type="Double" Unit="%" Format="%.2f">
+          <data:Description>
+            <base:Title>Multi Dispense Low Volume Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Imprecision for Multi Dispense Volumes</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Parameter="pMultiDispenseMaxImprecisionLowVol" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

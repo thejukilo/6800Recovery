@@ -1,0 +1,12 @@
+7c81b67d1c72e5c0dffd5d69a4c313eb  usr/share/doc/golang-github-containers-image/README.md
+604e2d136fb350ae17a5cbf13fe5fd29  usr/share/doc/golang-github-containers-image/changelog.Debian.gz
+254db2468b0475598f202e3fda22c347  usr/share/doc/golang-github-containers-image/copyright
+9179bea51c3a103c00362ae52dc3366c  usr/share/doc/golang-github-containers-image/examples/registries.conf
+cb0b60083a146db96e47f89cd9d5e6b7  usr/share/man/man5/containers-auth.json.5.gz
+1a34b3c606a239bc73705b543731f0f2  usr/share/man/man5/containers-certs.d.5.gz
+6cad662f97461c97b17ad0a88fd80773  usr/share/man/man5/containers-policy.json.5.gz
+2ac5ec2e12aadc28359782b6ca79b9bf  usr/share/man/man5/containers-registries.conf.5.gz
+b3cea2089af17a50282cd29021cf3638  usr/share/man/man5/containers-registries.conf.d.5.gz
+3a05cc7527e77101306c2926f7e09225  usr/share/man/man5/containers-registries.d.5.gz
+1d4764e34ddbeec8d0c1a81b7993accc  usr/share/man/man5/containers-signature.5.gz
+7e3d56bcb67a9b2a9b90b92c73dd71f2  usr/share/man/man5/containers-transports.5.gz

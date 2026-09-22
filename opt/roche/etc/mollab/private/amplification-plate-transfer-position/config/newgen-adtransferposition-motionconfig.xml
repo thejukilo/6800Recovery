@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotionConfig xsi:noNamespaceSchemaLocation="lib_00000100_MotionControl_MotionConfig_@MOTIONLIB_XSD@.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Motor MotorName="ADTransferPosition_MotorX" HomePosition="0.0">
+		<Device>
+			<MotorType>Stepper</MotorType>
+			<UnitBase>1</UnitBase>
+			<PositionDirection>Backward</PositionDirection>
+			<SampleRate>1250Hz</SampleRate>
+			<EmergencyStop>Off</EmergencyStop>
+		</Device>
+		<TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+			<TrajectoryPlannerSet Id="0">
+				<VelocityLimit>50</VelocityLimit>
+				<AccelerationLimit>100</AccelerationLimit>
+				<DecelerationLimit>100</DecelerationLimit>
+				<LowerPositionLimit>-10</LowerPositionLimit>
+				<UpperPositionLimit>10</UpperPositionLimit>
+				<JerkLimit>1000</JerkLimit>
+			</TrajectoryPlannerSet>
+			<DynamicSet>
+				<DynamicSetIndex>0</DynamicSetIndex>
+				<DesiredVelocity>1</DesiredVelocity>
+				<DesiredAcceleration>5</DesiredAcceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>1</DynamicSetIndex>
+				<DesiredVelocity>1</DesiredVelocity>
+				<DesiredAcceleration>60</DesiredAcceleration>
+			</DynamicSet>
+			<DynamicSet>
+				<DynamicSetIndex>2</DynamicSetIndex>
+				<DesiredVelocity>20</DesiredVelocity>
+				<DesiredAcceleration>3</DesiredAcceleration>
+			</DynamicSet>
+		</TrajectoryPlanner>
+		<PositionController Id="0">
+			<PValue>1</PValue>
+			<DValue>0.05</DValue>
+			<IValue>2.0</IValue>
+			<ISaturation>6</ISaturation>
+			<CurrentLimit>2</CurrentLimit>
+			<ControlDeviationLimit>10</ControlDeviationLimit>
+			<ControlStructure>OpenLoop</ControlStructure>
+			<ControllerType>Position</ControllerType>
+			<FeedbackSign>Negative</FeedbackSign>
+		</PositionController>
+		<CurrentController>
+			<PValue>200</PValue>
+			<IValue>700000</IValue>
+			<ISaturation>1111</ISaturation>
+			<ControlDeviationLimit>1.6</ControlDeviationLimit>
+		</CurrentController>
+
+
+		
+		<SingleBitInput PortName="PositionLB1_Rising">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>10</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Rising</ActiveEdge>
+		</SingleBitInput>
+		
+		<SingleBitInput PortName="PositionLB1_Falling">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>10</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Falling</ActiveEdge>
+		</SingleBitInput>
+		
+		<SingleBitInput PortName="PositionLB2_Rising">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>11</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Rising</ActiveEdge>
+		</SingleBitInput>
+		
+		<SingleBitInput PortName="PositionLB2_Falling">
+			<TypeOfInput>Fast</TypeOfInput>
+			<PhysicalInputNumber>11</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Falling</ActiveEdge>
+		</SingleBitInput>
+		
+		<SingleBitInput PortName="ADPlateDetection">
+			<TypeOfInput>Slow</TypeOfInput>
+			<PhysicalInputNumber>0</PhysicalInputNumber>
+			<SignalInverting>NotInverted</SignalInverting>
+			<ActiveEdge>Falling</ActiveEdge>
+		</SingleBitInput>
+		
+
+			
+		<MotorConfigStepper>
+			<StepsPerRotation>200</StepsPerRotation>
+			<PhaseResistance>6.2</PhaseResistance>
+			<PhaseInductance>11.6e-3</PhaseInductance>
+			<PhaseMovingCurrent>0.65</PhaseMovingCurrent>
+			<PhaseStoppingCurrent>0.2</PhaseStoppingCurrent>
+			<ThermalLimit>130</ThermalLimit>
+			<ThermalResistanceWindingToHousing>0.36</ThermalResistanceWindingToHousing>
+			<ThermalTimeConstantWinding>960</ThermalTimeConstantWinding>
+			<ThermalResistanceHousingToAmbient>2.91</ThermalResistanceHousingToAmbient>
+			<ThermalTimeConstantHousing>1080</ThermalTimeConstantHousing>
+		</MotorConfigStepper>
+
+		<Plant>
+			<MassInertia>0</MassInertia>
+			<GravitationalTorque>0</GravitationalTorque>
+			<VelocityDependantFriction>0</VelocityDependantFriction>
+			<VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+			<HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+		</Plant>
+
+		
+		<Init>
+			<InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+			<InitDynamicSetIndexNormal>1</InitDynamicSetIndexNormal>
+			<AdditionalMoveDynamicSetIndex>2</AdditionalMoveDynamicSetIndex>
+			<InitSubConfig InitID="0">
+				<InitType>Sensor</InitType>
+				<InitDirection>Forward</InitDirection>
+				<InitPos>0</InitPos>
+				<InitState>Initialized</InitState> 
+				<InitMoveDistanceAfter>0</InitMoveDistanceAfter>
+				<RelatedPortName>PositionLB1_Rising</RelatedPortName>
+			</InitSubConfig>
+		</Init>
+		
+		
+	</Motor>
+</MotionConfig>

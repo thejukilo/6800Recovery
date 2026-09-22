@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd" xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<csmConfig>
+<csm name="AmplificationPlateMagazine.J" seid="682" moduleId="206">
+   <parPool type="uint16" structure="scalar" id="23" name="OpCountNbrOfInitializations"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      <persistDef memoryId="2404" periodInSec="14400"/>
+   </parPool>
+   <parPool type="uint32" structure="scalar" id="24" name="OpCountNbrOfMovements"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      <persistDef memoryId="2404" periodInSec="14400"/>
+   </parPool>
+</csm>
+</csmConfig>
+</dia:mam>

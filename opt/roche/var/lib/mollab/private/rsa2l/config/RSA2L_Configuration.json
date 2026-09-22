@@ -1,0 +1,74 @@
+{
+  "Rsa2lSettings": {
+    "BasicSettings": {
+      "GatewayIP": "162.132.241.10",
+      "GatewayPort": 8082,
+      "GatewayCommandsURL": "/2016/04/commands",
+      "GatewayHeartbeatURL": "/2016/04/NewResources",
+      "GatewayStoragePathURL": "/2016/04/storagePathRequests",
+      "GatewayHandleReferenceURL": "/2016/04/HandleReferencedUploadCommand",
+      "GatewayNotificationsURL": "/2016/04/notifications",
+      "GatewayIsSecured": true,
+      "HeartbeatInterval": 5,
+      "MaxRegRetries": 30,
+      "RegSynchronizeInterval": "PT1D",
+      "SwidSynchronizeInterval": "PT1D",
+      "CheckDiskSpaceInterval": 600
+    },
+    "MonitorSettings": {
+      "MonitorFolders": "Y",
+      "HighWaterMark": {
+        "Maxlimit": 23,
+        "Action": "d"
+      },
+      "Warninglimit": {
+        "Maxlimit": 24,
+        "SendAlarm": "y"
+      }
+    },
+    "DownloadSettings": {
+      "DownloadEnabled": true,
+      "DownloadRule": "Overwrite",
+      "MaxDownloadRetries": 3
+    },
+    "UploadSettings": {
+      "UploadEnabled": true,
+      "MaxUploadRetries": 3,
+      "UploadFolderScanInterval": "PT30S",
+      "RetentionPeriod": "PT30D"
+    },
+    "LogSettings": {
+      "RetentionPeriod": 5,
+      "MaxLogFileSize": 4,
+      "LogDebug": "false"
+    },
+    "ErrorMessages": {
+      "OUTCOME_CODE_OK": "OK",
+      "RSA2L_ERR_DEVICE_NOT_REGISTERED": "Device Not Registered",
+      "RSA2L_ERR_COMMAND_NOT_SUPPORTED": "Command Not Supported",
+      "RSA2L_ERR_DATAID_NOT_SUPPORTED": "Download Failed",
+      "RSA2L_ERR_INSUFFICENT_SPACE": "Error Insufficent Space for Download",
+      "RSA2L_ERR_PACKAGE_ALREADY": "Error Package Already Exists on the Device",
+      "RSA2L_ERR_PACKAGE_DELETE": "Error Package cannot be Deleted",
+      "RSA2L_ERR_TUNNELING_FAILURE": "Error Failed to Create Tunnel Due to HOST Not Running",
+      "RSA2L_ERR_DOWNLOAD_FAILED": "DataId For GetDataCommand Not Supported",
+      "RSA2L_ERR_CHECKSUM_FAILED": "Checksum for file downloaded mismatch"
+    },
+    "UserConfigurable": {
+      "InstrumentConfigPath": "/app/RSA2L/config",
+      "InstrumentConfigFileName": "InstrumentConfig.json",
+      "UploadFolderPath": "/app/gateway",
+      "UploadFolder": "upload",
+      "DownloadFolderPath": "/app/gateway/download",
+      "DownloadFolder": "download",
+      "ResetFolderPath": "/app/gateway/reset",
+      "TempFolderPath": "/app/gateway/temp",
+      "FailedUploadFolderPath": "/app/gateway/temp/failed-upload",
+      "FailedDownloadFolderPath": "/app/gateway/temp/failed-download",
+      "LogFolderPath": "/app/shared-data/logs/rsa2l",
+      "SWInventoryPath": "/app/data/inventory",
+      "RegistrationDataPath": "/app/data/reginfo",
+      "CertificatesPath": "/app/data/certs"
+    }
+  }
+}

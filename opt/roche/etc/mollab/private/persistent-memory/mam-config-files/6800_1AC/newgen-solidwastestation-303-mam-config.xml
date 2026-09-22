@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+		 xmlns:util="http://www.roche.com/util" 
+		 xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+	<csmConfig>
+	  <csm name="CSM_ConsumableWaste" seid="00000461" moduleId="303">
+		  <parPool type="uint8" structure="array" noElements="100" id="1" name="ConfigData_1"
+		      defaultValue="0" minValue="0" maxValue="255">
+		    <persistDef memoryId="4000" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint8" structure="array" noElements="100" id="2" name="ConfigData_2"
+		      defaultValue="0" minValue="0" maxValue="255">
+		    <persistDef memoryId="4000" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint8" structure="array" noElements="100" id="3" name="ConfigData_3"
+          defaultValue="0" minValue="0" maxValue="255">
+        <persistDef memoryId="4000" periodInSec="-1"/>
+   		</parPool>
+		  <parPool type="uint16" structure="scalar" id="4" name="OpCountInitProcessPark1"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="5" name="OpCountInitProcessPark2"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="6" name="OpCountInitSolidWaste"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="7" name="OpCountMoveProcessPark1"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="8" name="OpCountMoveProcessPark2"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="9" name="OpCountMoveSolidWaste"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="double" structure="scalar" id="11" name="SolidWasteFillLevel"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2138" periodInSec="-1"/>
+		  </parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

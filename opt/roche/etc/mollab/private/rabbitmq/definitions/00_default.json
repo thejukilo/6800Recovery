@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "name": "roche",
+      "password_hash": "XFxoFjnQMICwOTp0+SC2jfkX/2s5lNrbWrFgG77tX2Ujxt69",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ["administrator"]
+    },
+    {
+      "name": "addon",
+      "password_hash": "TgrDcvTPLAYA547pQ0hp74fahHKWn9a7XP+/E5hidiki0rbs",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": []
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "roche",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "addon",
+      "vhost": "/",
+      "configure": "^addon\\..+\\.q$",
+      "write": ".*",
+      "read": "^(?>roche\\..+\\.[dt]x|addon\\..+\\.q|amq\\.gen.+)$"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "roche.requests.dx",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "roche.events.tx",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,4045 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.maintenance.execution.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.CancelMaintenanceAction",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.ConfirmManualMaintenanceStep",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.SkipOptionalMaintenanceStep",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.StartMaintenanceExecution",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.DrawerLockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.EjectingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.UnlockingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.DrawerLockReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.DrawerLockReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.DrawerLockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.EjectingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.UnlockingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.DrawerLockReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.DrawerLockReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.DrawerLockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.EjectingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.UnlockingDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.DrawerLockReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.DrawerLockReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.AmplificationPlateDrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.AmplificationPlateDrawerReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.AmplificationPlateDrawerReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.UnlockDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerWorkingAreaTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.TeachingAmplificationPlateHandlerWorkingAreaFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.PositionChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.MovingToLoadPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.MovingToUnloadPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.MovingToCenterPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.AmplificationPlateTransferPositionReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.AmplificationPlateTransferPositionReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.AmplificationPlateTransferPositionActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.DisablingAmplificationPlateTransferPositionActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.CleanupAmplificationPlateHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.AnalyticUnitReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.AnalyticUnitReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.AnalyticUnitReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.AnalyticUnitReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.AnalyticUnitReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.AnalyticUnitReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.AnalyticUnitReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.AnalyticUnitReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.LoadingTrayStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.LoadingTrayStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.LoadingTrayStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.LoadingTrayStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.OpeningLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.OpeningLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.OpeningLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.OpeningLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ClosingLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.ClosingLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.ClosingLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.ClosingLoadingTrayFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.AnalyticUnitStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A2.AnalyticUnitStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B1.AnalyticUnitStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.B2.AnalyticUnitStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.UnexpectedCarriersRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.CleanupSealingStationFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.CleanupSealingStationFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.CleanupSealingStationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.CleanupSealingStationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.RackHandlerPositionsEmptied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.EmptyRackHandlerPositionsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.RackHandlerTeachingPositionsEmptied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.EmptyRackHandlerTeachingPositionsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.SampleTransferHeadTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TeachingSampleTransferHeadFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.SampleTransferHeadTightnessChecked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.SampleTransferHeadTightnessCheckFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleHandlerTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TeachingTransferModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleControlActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.DisablingTransferModuleControlActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.TransferModuleHandlerReachedTargetPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.MovingTransferModuleHandlerToTargetPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.CarrierPickedUpWithTransferModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.PickingUpCarrierWithTransferModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.CarrierPutDownWithTransferModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModuleControl.PuttingDownCarrierWithTransferModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.TeachingRackHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.DisablingRackHandlerActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RackHandler.RackHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ConsumableParkActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.DisablingConsumableParkActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ConsumableParkReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ConsumableParkReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ParkPositionDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.OpeningParkPositionDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ConsumableParkStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkManagementActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkManagementActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DisablingBulkManagementActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.DisablingBulkManagementActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkManagementReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkManagementReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkManagementReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkManagementReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.ContainerHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.ContainerHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.OpeningLiquidWasteStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.OpeningLiquidWasteStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LiquidWasteStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.LiquidWasteStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LiquidWasteStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.LiquidWasteStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkDrawerPushed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkDrawerPushed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkDrawerPushFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkDrawerPushFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DrawerHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.DrawerHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.UnlockingBulkContainerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.UnlockingBulkContainerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashWasteDrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashWasteDrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashWasteDrawerUnlockFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashWasteDrawerUnlockFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashWasteDrawerOpeningFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashWasteDrawerOpeningFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LiquidWasteContainerContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.LiquidWasteContainerContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.UnlockingLiquidWasteContainerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.UnlockingLiquidWasteContainerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashWasteDrawerLockFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashWasteDrawerLockFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentReservoirStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentReservoirStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentContainerSelectionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentContainerSelectionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkContainerPositionContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkContainerPositionContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.FluidSystemHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.FluidSystemHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentReservoirEmptied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentReservoirEmptied",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.EmptyingWashReagentReservoirFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.EmptyingWashReagentReservoirFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentReservoirFillingFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentReservoirFillingFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.FillingWashReagentReservoirFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.FillingWashReagentReservoirFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.DisablingInterimReagentStorageActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.DisablingInterimReagentStorageActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.RegulationStopped",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.RegulationStopped",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.StoppingRegulationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.StoppingRegulationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.TeachingInterimReagentStorageFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.TeachingInterimReagentStorageFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.SealingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.SealingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.DisablingSealingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.DisablingSealingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.SealingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.SealingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.SealingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.SealingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.SealingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.SealingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.SealingStationDrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.SealingStationDrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.A.OpeningSealingStationDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SealingStation.B.OpeningSealingStationDrawerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.SolidWasteStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.SolidWasteStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.DisablingSolidWasteStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.DisablingSolidWasteStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.SolidWasteStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.SolidWasteStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.SolidWasteStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.SolidWasteStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.WasteStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.WasteStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.OpeningTipRackParkPositionDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.OpeningTipRackParkPositionDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.TipRackParkPositionDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.TipRackParkPositionDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.TipRackParkPositionStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.TipRackParkPositionStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.SolidWasteFillLevelReset",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.ClosingTipRackParkPositionDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.ClosingTipRackParkPositionDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.SolidWasteFillLevelReset",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.TipRackParkPositionPresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.TipRackParkPositionPresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.DisablingHeatingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.DisablingHeatingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.DisablingHeatingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.DisablingHeatingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationOpeningDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationOpeningDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationOpeningDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationOpeningDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A1.HeatingStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.A2.HeatingStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B1.HeatingStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.HeatingStation.B2.HeatingStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.SeparationStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.SeparationStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.SeparationStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.SeparationStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.DisablingSeparationStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.DisablingSeparationStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.DisablingSeparationStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.DisablingSeparationStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.SeparationStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.SeparationStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.SeparationStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.SeparationStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.SeparationStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.SeparationStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.SeparationStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.SeparationStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.SeparationStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.SeparationStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.SeparationStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.SeparationStationDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.OpeningSeparationStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.OpeningSeparationStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.OpeningSeparationStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.OpeningSeparationStationDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A1.SeparationStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.SeparationStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B1.SeparationStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.B2.SeparationStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.DisablingAmplificationPlateHandlerActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.DisablingMainHandlerActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerReachedTargetPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MovingMainHandlerToTargetPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.MainHandlerWorkingAreaTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.TeachingMainHandlerWorkingAreaFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.CarrierPickedUpWithMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.PickingUpCarrierWithMainHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.CarrierPutDownWithMainHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MainHandler.PuttingDownCarrierWithMainHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.AmplificationPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.AmplificationPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.AmplificationPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.AmplificationPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.DisablingAmplificationPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.DisablingAmplificationPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.DisablingAmplificationPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.DisablingAmplificationPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.AmplificationPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.AmplificationPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.AmplificationPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.AmplificationPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.AmplificationPlateCassettePresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.AmplificationPlateCassettePresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.AmplificationPlateCassettePresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.AmplificationPlateCassettePresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.AirflowScreenStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.AirflowScreenStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.AirflowScreenStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.OpeningAirflowScreenFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.OpeningAirflowScreenFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.OpeningAirflowScreenFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InfrastructureReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.InfrastructureReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.InfrastructureReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InfrastructureReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.InfrastructureReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.InfrastructureReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InfrastructureActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.DisablingInfrastructureActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.WorkAreaLampStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.WorkAreaLampStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.WorkAreaLampStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.SettingWorkAreaLampFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.SettingWorkAreaLampFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.SettingWorkAreaLampFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.InfrastructureActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.InfrastructureActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.DisablingInfrastructureActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.DisablingInfrastructureActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InfrastructureStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.InfrastructureStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleB.InfrastructureStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.StoppedShakingMgpCassette",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.StoppedShakingMgpCassette",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.StoppingShakingMgpCassetteFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.StoppingShakingMgpCassetteFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleControlActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleControlActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleControlReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleControlReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleControlReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleControlReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.DisablingProcessingModuleControlActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.DisablingProcessingModuleControlActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.MgpCassetteShakerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.MgpCassetteShakerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleHeadsControllerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleHeadsControllerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ReagentPipettorsReachedToHomePosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ReagentPipettorsReachedToHomePosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.MovingReagentPipettorsToHomePositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.MovingReagentPipettorsToHomePositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleHandlerReachedTargetPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleHandlerReachedTargetPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.MovingProcessingModuleHandlerToTargetPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.CarrierPickedUpWithProcessingModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.PickingUpCarrierWithProcessingModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.CarrierPickedUpWithProcessingModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.PickingUpCarrierWithProcessingModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.CarrierPutDownWithProcessingModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.PuttingDownCarrierWithProcessingModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.CarrierPutDownWithProcessingModuleHandler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.PuttingDownCarrierWithProcessingModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.MovingProcessingModuleHandlerToTargetPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleHandlerTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleHandlerTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingModuleHandlerTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingModuleHandlerTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ReagentTransferHeadTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ReagentTransferHeadTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ReagentTransferHeadTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ReagentTransferHeadTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingTransferHeadTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingTransferHeadTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ProcessingTransferHeadTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ProcessingTransferHeadTeachingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.ReagentTransferHeadNeedlesWashed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.ReagentTransferHeadNeedlesWashed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.WashingReagentTransferHeadNeedlesFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.WashingReagentTransferHeadNeedlesFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.NeedleBentCheckFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.NeedleBentCheckFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.BentNeedlesChecked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.BentNeedlesChecked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.UnexpectedCarriersDetected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.CleanupProcessingModuleHandlerAndHeadsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.CleanupProcessingModuleHandlerAndHeadsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.DisablingReagentStorageHandlerActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentElevatorMovedToTeachPosition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.MovingReagentElevatorToTeachPositionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerParked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ParkingReagentStorageHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageTaught",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.CassettePresenceSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.TeachingReagentStorageFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ProcessingPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.ProcessingPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.ProcessingPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.ProcessingPlateMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.DisablingProcessingPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.DisablingProcessingPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.DisablingProcessingPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.DisablingProcessingPlateMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ProcessingPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.ProcessingPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.ProcessingPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.ProcessingPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ProcessingPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.ProcessingPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.ProcessingPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.ProcessingPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ProcessingPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.ProcessingPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.ProcessingPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.ProcessingPlateMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.F.ProcessingPlateMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.G.ProcessingPlateMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.K.ProcessingPlateMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingPlateMagazine.L.ProcessingPlateMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.MgpCassetteMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.MgpCassetteMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.DisablingMgpCassetteMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.DisablingMgpCassetteMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.MgpCassetteMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.MgpCassetteMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.TipRackMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.TipRackMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.TipRackMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.TipRackMagazineActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.DisablingTipRackMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.DisablingTipRackMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.DisablingTipRackMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.DisablingTipRackMagazineActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.TipRackMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.TipRackMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.TipRackMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.TipRackMagazineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.TipRackMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.TipRackMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.TipRackMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.TipRackMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.DisablingCoolingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.DisablingCoolingStationActuatorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.CoolingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.CoolingStationActuatorsDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.CoolingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.CoolingStationReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.CoolingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.CoolingStationReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.OpeningAmplificationPlateParkDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.OpeningAmplificationPlateParkDownholderFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.AmplificationPlateParkDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.AmplificationPlateParkDownholderStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.A.CoolingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.CoolingStation.B.CoolingStationStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.AmplificationPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.AmplificationPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.AmplificationPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.AmplificationPlateMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.AmplificationPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.AmplificationPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.AmplificationPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.AmplificationPlateMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.MgpCassetteMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.MgpCassetteMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.MgpCassetteMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.MgpCassetteMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.H.MgpCassetteMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.MgpCassetteMagazine.M.MgpCassetteMagazineContentChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.TipRackMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.TipRackMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.TipRackMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.TipRackMagazineReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.A.TipRackMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.B.TipRackMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.D.TipRackMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TipRackMagazine.E.TipRackMagazineReinitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.ServiceDoorMovementButtonDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.ServiceDoorMovementButtonEnabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.EnablingServiceDoorMovementButtonFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.LockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.UnlockingDoorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.LockingDoorsFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.DoorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.MovingDoorFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.PowerLineStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.EnableMovablePlatformFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.DisableMovablePlatformFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.MovablePlatformStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockReinitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockInitializationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Maintenance.MaintenanceActionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateTransferPosition.AmplificationPlateTransferPositionStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ConsumablePark.ParkPositionSensorStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.A.InterimReagentStorageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InterimReagentStorage.B.InterimReagentStorageStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ReagentStorageHandler.ReagentStorageHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.CleanupTransferModuleHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.CleanupMainHandlerFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.maintenance.execution.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.RacksDetectedWhichCanNotBeUnloaded",
+      "arguments": {}
+    }
+  ]
+}

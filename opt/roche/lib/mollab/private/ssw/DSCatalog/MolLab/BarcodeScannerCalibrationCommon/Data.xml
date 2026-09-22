@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="FD394EC5A223B0D5F5B487026D32C2D367C4604529C7" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="BarcodeScannerCalibrationCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>No Sample Supply Module Attached</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pCalibrationImagesRootDirectory" Type="String">
+          <data:Description>
+            <base:Title>Root Directory Calibration Images</base:Title>
+          </data:Description>
+          <data:Value>/data/shared/service-images/</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rCalibrationSuccessful">
+          <data:Description>
+            <base:Title>User Evaluation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calibration was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irWithSampleSupply">
+          <data:Description>
+            <base:Title>Sample Supply Available</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Supply Available</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irIsCognex">
+          <data:Description>
+            <base:Title>Internal Result to Determine Workflow</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Different instruction text will be shown according to the value of this variable</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rCameraType" Type="String">
+          <data:Description>
+            <base:Title>Camera Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether it is a Jadak or Cognex Camera.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraFirmware" Type="String">
+          <data:Description>
+            <base:Title>Camera Firmware</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera Firmware details.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCameraFirmwareRevision" Type="String">
+          <data:Description>
+            <base:Title>Camera Firmware Revision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Camera Firmware Revision details.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="26218CCC966190EAC2DE1E6F389C5736CC00C0D80008" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ValveBlockCheckCommon" ID="ValveBlockCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="LoadPipettingParameterFiles">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Pipetting Parameter Files</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the pipetting parameter files are loaded...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3: The service software parks the processing module handler on the Park position. -->
+      <ds:Step Name="ParkProcessingModuleHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Processing Module Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing module handler is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4: The service software opens the airflow screen of the processing module, if not open. -->
+      <ds:Step Name="OpenProcessingModuleAirFlowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Air Flow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing module air flow screen is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irIsOperationsCheck" NextStep="UserPlaceTipRack1">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 5: [A2] The service software parks the main handler on the MainHandlerParkPosition. -->
+      <ds:Step Name="ParkMainHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Main Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the main handler is parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6: The service software instructs the user to place the first tip rack on the transfer position of the processing module and to press 'Next'. -->
+      <ds:Step Name="UserPlaceTipRack1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the first tip rack on the transfer position of the processing module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7: The service software verifies that the transfer position is not empty. -->
+      <ds:Step Name="VerifyTransferPositionNotEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position Is Not Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while transfer position presence is verified...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8:  transfers the tip rack to the LiquidWasteStation1 -->
+      <ds:Step Name="TransferTipRackToLiquidWasteStation1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Tip Rack To Liquid Waste Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the first tip rack is transferred to the liquid waste station 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 9:  transfers the tip rack without the waste insert to TipRackParkPosition1 -->
+      <ds:Step Name="TransferTipRackToTipRackParkPosition1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Tip Rack To Tip Rack Park Position 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the first tip rack is transferred to park position 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 10: user to place the second tip rack on the transfer position of the processing module and to press 'Next'. -->
+      <ds:Step Name="UserPlaceTipRack2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the second tip rack on the transfer position of the processing module and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11: verifies that the transfer position is not empty -->
+      <ds:Step Name="VerifyTransferPositionNotEmpty2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position Is Not Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while transfer position presence is verified...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 12: transfers the tip rack 2 to the LiquidWasteStation2 -->
+      <ds:Step Name="TransferTipRack2ToLiquidWasteStation2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Tip Rack 2 To Liquid Waste Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the second tip rack is transferred to the liquid waste station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 13: transfers the tip rack without the waste insert to TipRackParkPosition2 -->
+      <ds:Step Name="TransferTipRack2ToTipRackParkPosition2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Tip Rack 2 to Tip Rack Park 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the second tip rack is transferred to the park position 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="UnlockArmsAndOpenDrawersOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 14 on-system liquid waste -->
+      <ds:Step Name="UnlockArmsAndOpenDrawers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Arms And Open Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software performs the following operations:</base:Paragraph>
+              <base:Paragraph>- unlock and push out the wash/waste drawer</base:Paragraph>
+              <base:Paragraph>- push out the lysis/diluent drawer</base:Paragraph>
+              <base:Paragraph>- unlocks all aspiration arms and waste dispense caps of liquid waste containers 1,2 and 3</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 15 on-system liquid waste -->
+      <ds:Step Name="UserUnloadAllContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload All Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload all wash reagent containers and close the wash reagent aspiration arms</base:Paragraph>
+              <base:Paragraph>- unload, empty and load the liquid waste containers 1,2 and 3, and close the waste dispense caps</base:Paragraph>
+              <base:Paragraph>- unload all diluent and lysis reagent bottles and close the aspiration arms</base:Paragraph>
+              <base:Paragraph>- keep the drawers open</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="ReagentBottle1ToLiquidWasteContainer1" />
+      </ds:Step>
+      <!-- Requirement step 14 off-system liquid waste -->
+      <ds:Step Name="UnlockArmsAndOpenDrawersOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Arms And Open Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software performs following operations:</base:Paragraph>
+              <base:Paragraph>- unlock and push out the wash/waste drawer</base:Paragraph>
+              <base:Paragraph>- push out the lysis/diluent drawer</base:Paragraph>
+              <base:Paragraph>- unlocks all aspiration arms and waste dispense caps of liquid waste containers 2 and 3</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 15 off-system liquid waste -->
+      <ds:Step Name="UserUnloadAllContainersOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload All Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload all wash reagent containers and close the wash reagent aspiration arms</base:Paragraph>
+              <base:Paragraph>- load empty liquid waste containers 2 and 3, and close the waste dispense caps</base:Paragraph>
+              <base:Paragraph>- unload all diluent and lysis reagent bottles and close the aspiration arms</base:Paragraph>
+              <base:Paragraph>- keep the drawers open</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 16 -->
+      <ds:Step Name="ReagentBottle1ToLiquidWasteContainer1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Lysis Position 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After lysis position 1 is unlocked, please load a full lysis reagent bottle and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="TransferLysisViaDegasOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 17 (on-system liquid waste handling) -->
+      <ds:Step Name="TransferLysisViaDegas">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Lysis 1 to Waste 1 Via Degassing Pump</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml is transferred from the lysis reagent bottle 1 to the liquid waste position 1 via degassing pump (via S10 - S12 - V4 - V6 - S22 - Degassing Pump - S23 - V11 - S35 - S38)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserUnloadLysis1AndWaste1" Type="Confirm" Result="rVerifyStep17">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Lysis 1 and Waste 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the lysis reagent bottle 1 aspiration arm and the liquid waste container 1 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the lysis reagent bottle 1 and the liquid waste container 1 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from lysis reagent bottle 1 to liquid waste container 1 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load it back on the liquid waste container on position 1 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the lysis position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadLysis2" />
+      </ds:Step>
+      <!-- Requirement step 17 (off-system liquid waste handling) -->
+      <ds:Step Name="TransferLysisViaDegasOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Lysis 1 to Waste 2 Via Degassing Pump</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml is transferred from the lysis reagent bottle 1 to the liquid waste position 2 via degassing pump (via S10 - S12 - V4 - V6 - S22 - Degassing Pump - S23 - V12 - S36 - S39)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserUnloadLysis1AndWaste1OSLW" Type="Confirm" Result="rVerifyStep17">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Lysis 1 and Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the lysis reagent bottle 1 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the lysis reagent bottle 1 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from lysis reagent bottle 1 to liquid waste container 2 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load it back on the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the lysis position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 18 -->
+      <ds:Step Name="UserLoadLysis2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Lysis Reagent Position 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After lysis position 2 is unlocked, please load a full lysis reagent bottle and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="TransferLysis2ToWaste1ViaWashStationOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 19 -->
+      <ds:Step Name="TransferLysis2ToWaste1ViaWashStation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Lysis 2 To Waste 1 Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml is transferred from the lysis reagent bottle 2 to the liquid waste container 1 via the wash station (via S11 - S13 - V4 - V6- S14 - Reagent Head - Wash Station - S26 - Reagent Wash Pump - S27 - V9 - S28 - V11 - S35 - S38)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserUnloadLysis2AndWaste1" Type="Confirm" Result="rVerifyStep19">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Lysis 2 And Waste 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the lysis reagent bottle 2 aspiration arm and the liquid waste container 1 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the lysis reagent bottle 2 and the liquid waste container 1 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from lysis reagent bottle 2 to liquid waste container 1 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load it back on the liquid waste container on position 1 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the lysis position 2</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="Diluent1ToLiquidWaste1" />
+      </ds:Step>
+      <!-- Requirement step 19 (off-system) -->
+      <ds:Step Name="TransferLysis2ToWaste1ViaWashStationOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Lysis 2 To Waste 2 Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml is transferred from the lysis reagent bottle 2 to the liquid waste container 2 via the wash station (via S11 - S13 - V4 - V6- S14 - Reagent Head - Wash Station - S26 - Reagent Wash Pump - S27 - V9 - S28 - V12 - S36 - S39)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UserUnloadLysis2AndWaste1OSLW" Type="Confirm" Result="rVerifyStep19">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Lysis 2 And Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the lysis reagent bottle 2 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the lysis reagent bottle 2 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from lysis reagent bottle 2 to liquid waste container 2 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load it back on the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the lysis position 2</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 20 -->
+      <ds:Step Name="Diluent1ToLiquidWaste1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Diluent Position 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After diluent position 1 is unlocked, please load a full diluent reagent bottle and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="TransferDiluentViaDegasOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 21 (on-system liquid waste handling) -->
+      <ds:Step Name="TransferDiluentViaDegas">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 1 To Waste 1 Via Degassing Pump</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml from the diluent reagent bottle 1 is transferred to the liquid waste container 1 via degassing pump (via S15 - S18 - V5 - V8 - S22 - Degassing Pump - S23 - V11 - S35 - S38)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadDiluent1AndWaste1" Type="Confirm" Result="rVerifyStep21">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 1 And Waste 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 1 aspiration arm and the liquid waste container 1 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the diluent reagent bottle 1 and the liquid waste container 1 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 1 to liquid waste container 1 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load the liquid waste container on position 1 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadDiluent2" />
+      </ds:Step>
+      <!-- Requirement step 21 (off-system liquid waste handling) -->
+      <ds:Step Name="TransferDiluentViaDegasOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 1 To Waste 2 Via Degassing Pump</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while 200 ml from the diluent reagent bottle 1 is transferred to the liquid waste container 2 via degassing pump (via S15 - S18 - V5 - V8 - S22 - Degassing Pump - S23 - V12 - S36 - S39)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadDiluent1AndWaste1OSLW" Type="Confirm" Result="rVerifyStep21">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 1 And Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 1 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the diluent reagent bottle 1 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 1 to liquid waste container 2 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 22 -->
+      <ds:Step Name="UserLoadDiluent2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Diluent 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After diluent position 2 is unlocked, please load a full diluent reagent bottle and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 23 -->
+      <ds:Step Name="TransferDiluent2ToWaste2ViaWashStation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 2 To Waste 2 Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software transfers 200 ml from the diluent bottle reagent 2 to the liquid waste container 2 via wash reagent station and liquid waste station 1 (via S15 - S18 - V5 - V8 - S19 - ReagentHead - WashStation - S26 - ReagentWashPump - S27 - V9 - V10 - S33 - S29 - ProcessWastePump - S30 - V12 - S36 - S39)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 24 -->
+      <ds:Step Name="UnloadDiluent2AndWaste2" Type="Confirm" Result="rVerifyStep24">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 2 and Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 2 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the diluent reagent bottle 2 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 2 to liquid waste container 2 (approx. 200 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 2</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="VerifyLiquidWasteContainers1And3OSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 25: Verify liquid waste containers (1 and) 3 (on-system liquid waste handling) -->
+      <ds:Step Name="VerifyLiquidWasteContainers1And3" Type="Confirm" Result="rVerifyStep25">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Containers 1 and 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense caps of the liquid waste containers 1 and 3.</base:Paragraph>
+              <base:Paragraph>Please unload the liquid waste containers when the dripping has stopped.</base:Paragraph>
+              <base:Paragraph>Verify and confirm there is no liquid present in the liquid waste containers.</base:Paragraph>
+              <base:Paragraph>Then load the liquid waste containers back on the respective positions and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadWashReagent2" />
+      </ds:Step>
+      <ds:Step Name="VerifyLiquidWasteContainers1And3OSLW" Type="Confirm" Result="rVerifyStep25">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Container 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense cap of the liquid waste container 3.</base:Paragraph>
+              <base:Paragraph>Please unload the liquid waste container when the dripping has stopped.</base:Paragraph>
+              <base:Paragraph>Verify and confirm there is no liquid present in the liquid waste container.</base:Paragraph>
+              <base:Paragraph>Then load the liquid waste container back on the respective position and close the waste dispense cap.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 26 -->
+      <ds:Step Name="UserLoadWashReagent2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Container 2 to Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>After wash reagent position 2 is unlocked, please load a full wash reagent container, close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="TransferWash2ToWaste1ViaReservoirOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 27 (on-system liquid waste handling) -->
+      <ds:Step Name="TransferWash2ToWaste1ViaReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Wash 2 To Waste 1 Via Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software fills the wash reagent reservoir from the wash reagent container 2 until full (via S2 - S5 - V1 - S7 - Wash Buffer Pump - S8) and empties the wash reagent reservoir into liquid waste container 1 (via S21 - V7 - S22 - Degassing Pump - S23 - V11 - S35 - S38)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadWashReagent2AndWaste1" Type="Confirm" Result="rVerifyStep27">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Wash Reagent 2 and Waste 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the wash reagent container 2 aspiration arm and the liquid waste container 1 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the wash reagent container 2 and the liquid waste container 1 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from wash reagent container 2 to liquid waste container 1 (approx. 850 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container and load the liquid waste container on position 1 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the wash reagent container 2</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadWashReagent3" />
+      </ds:Step>
+      <!-- Requirement step 27 (off-system liquid waste handling) -->
+      <ds:Step Name="TransferWash2ToWaste1ViaReservoirOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Wash 2 To Waste 2 Via Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the service software fills the wash reagent reservoir from the wash reagent container 2 until full (via S1 - S4 - V1 - S7 - Wash Buffer Pump - S8) and empties the wash reagent reservoir into liquid waste container 2 (via S21 - V7 - S22 - Degassing Pump - S23 - V12 - S36 - S39)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadWashReagent2AndWaste1OSLW" Type="Confirm" Result="rVerifyStep27">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Wash Reagent 2 and Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the wash reagent container 2 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the wash reagent container 2 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from wash reagent container 2 to liquid waste container 2 (approx. 850 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container and load the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the wash reagent container 2</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 28 -->
+      <ds:Step Name="UserLoadWashReagent3">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Wash Reagent 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the wash reagent position 3.</base:Paragraph>
+              <base:Paragraph>Afterwards, please load a full wash reagent container and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 29 -->
+      <ds:Step Name="TransferWashReagent3ToWasteViaReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Wash Reagent 3 To Waste 3 Via Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software fills the wash reagent reservoir until full from the wash reagent container 3 (via S3 - S6 - V1 - S7 - Wash Buffer Pump - S8) and then empties it into liquid waste container 3 (S21 - V7 - S22 - Degassing Pump - S23 - V13 - S37 - S40)...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 30 -->
+      <ds:Step Name="UnloadWashReagent3AndWasteContainer" Type="Confirm" Result="rVerifyStep30">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Wash Reagent Container 3 and Waste Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the wash reagent container 3 aspiration arm and the liquid waste container 3 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the wash reagent container 3 and the liquid waste container 3 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from wash reagent container 3 to liquid waste container 3 (approx. 850 ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container, load it back on position 3 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the wash reagent container 3</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="VerifyLiquidWasteContainers1And2OSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 31 (on-system liquid waste handling)-->
+      <ds:Step Name="VerifyLiquidWasteContainers1And2" Type="Confirm" Result="rVerifyStep31">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Containers 1 and 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense caps of the liquid waste containers 1 and 2.</base:Paragraph>
+              <base:Paragraph>Please unload the liquid waste containers when the dripping has stopped.</base:Paragraph>
+              <base:Paragraph>Verify and confirm that there is no liquid present in the liquid waste containers.</base:Paragraph>
+              <base:Paragraph>Finally load the liquid waste containers back on the respective positions, close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadDiluent1" />
+      </ds:Step>
+      <ds:Step Name="VerifyLiquidWasteContainers1And2OSLW" Type="Confirm" Result="rVerifyStep31">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Container 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense cap of the liquid waste container 2.</base:Paragraph>
+              <base:Paragraph>Please unload the liquid waste container when the dripping has stopped.</base:Paragraph>
+              <base:Paragraph>Verify and confirm that there is no liquid present in the liquid waste container.</base:Paragraph>
+              <base:Paragraph>Finally load the liquid waste container back on the respective position, close the waste dispense cap.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 -->
+      <ds:Step Name="UserLoadDiluent1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Diluent Reagent Bottle 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent position 1. Afterwards, please load a full diluent reagent bottle, close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="TransferDiluent1ToWasteViaWashStationOSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 33 (on-system liquid waste handling) -->
+      <ds:Step Name="TransferDiluent1ToWasteViaWashStation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 1 To Waste 1 Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software transfers 200 ml from the diluent reagent bottle 1 to the liquid waste container 1 via wash station and liquid waste station 2 (via S15 - S18 - ReagentHead - WashStation - S26 - ReagentWashPump - S27 - V9 - V10 - S34 - S31 - ProcessWastePump - S32 - V11 - S35 - S38) by flushing the liquid waste station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadDiluent1AndWaste1Again" Type="Confirm" Result="rVerifyStep33">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 1 aspiration arm and the liquid waste container 1 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the diluent reagent bottle 1 and the liquid waste container 1 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 1 to liquid waste container 1 (approx. 200ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container and load the liquid waste container on position 1 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="VerifyLiquidWasteContainers2And3" />
+      </ds:Step>
+      <!-- Requirement step 33 (off-system liquid waste handling) -->
+      <ds:Step Name="TransferDiluent1ToWasteViaWashStationOSLW">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 1 To Waste 2 Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software transfers 200 ml from the diluent reagent bottle 1 to the liquid waste container 2 via wash station and liquid waste station 2 (via S15 - S18 - ReagentHead - WashStation - S26 - ReagentWashPump - S27 - V9 - V10 - S34 - S31 - ProcessWastePump - S32 - V12 - S36 - S39) by flushing the liquid waste station 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadDiluent1AndWaste1AgainOSLW" Type="Confirm" Result="rVerifyStep33">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 1 aspiration arm and the liquid waste container 2 waste dispense cap.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- unload the diluent reagent bottle 1 and the liquid waste container 2 (once the dripping has stopped)</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 1 to liquid waste container 2 (approx. 200ml)</base:Paragraph>
+              <base:Paragraph>- empty the liquid waste container and load the liquid waste container on position 2 and close the waste dispense cap</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 34 -->
+      <ds:Step Name="VerifyLiquidWasteContainers2And3" Type="Confirm" Result="rVerifyStep34">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Containers 2 and 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense caps of the liquid waste containers 2 and 3.</base:Paragraph>
+              <base:Paragraph>Afterwards, when the dripping has stopped, unload the liquid waste containers. </base:Paragraph>
+              <base:Paragraph>Then verify and confirm there is no liquid present in liquid waste containers 2 and 3, load the liquid waste containers 2 and 3 respectively on positions 2 and 3 and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 35 -->
+      <ds:Step Name="UserLoadDiluent11">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Diluent Bottle 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent position 1. Afterwards, please load a full diluent reagent bottle and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 36 -->
+      <ds:Step Name="TransferDiluent1ToOverflowViaWashStation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Diluent 1 To Overflow Via Wash Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software transfers 300 ml from the diluent reagent bottle 1 to the waste station (via S15 - S18 - V5 - V8 - S19 - ReagentHead - WashStation - S41) by washing the reagent transfer head needles without draining...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 37 -->
+      <ds:Step Name="UnloadDiluent1AndOverflow" Type="Confirm" Result="rVerifyStep37">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Diluent 1 and Overflow</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the diluent reagent bottle 1 aspiration arm.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- once the dripping has stopped, unload the diluent reagent bottle 1 and the overflow bottle</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from diluent reagent bottle 1 to overflow bottle (approx. 175ml)</base:Paragraph>
+              <base:Paragraph>- empty the overflow bottle and load it back</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the diluent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOffSystemLiquidWaste" NextStep="VerifyLiquidWasteContainers1And2And3OSLW">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 38 (on-system liquid waste handling) -->
+      <ds:Step Name="VerifyLiquidWasteContainers1And2And3" Type="Confirm" Result="rVerifyStep38">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Containers 1, 2 and 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense caps of the liquid waste containers 1, 2 and 3.</base:Paragraph>
+              <base:Paragraph>Afterwards, when the dripping has stopped, unload the liquid waste containers. </base:Paragraph>
+              <base:Paragraph>Verify and confirm that there is no liquid present in the liquid waste containers.</base:Paragraph>
+              <base:Paragraph>Load the liquid waste containers back on the respective positions and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="UserLoadWashReagent1" />
+      </ds:Step>
+      <!-- Requirement step 38 (off-system liquid waste handling) -->
+      <ds:Step Name="VerifyLiquidWasteContainers1And2And3OSLW" Type="Confirm" Result="rVerifyStep38">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Containers 2 and 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the waste dispense caps of the liquid waste containers 2 and 3.</base:Paragraph>
+              <base:Paragraph>Afterwards, when the dripping has stopped, unload the liquid waste containers. </base:Paragraph>
+              <base:Paragraph>Verify and confirm that there is no liquid present in the liquid waste containers.</base:Paragraph>
+              <base:Paragraph>Load the liquid waste containers back on the respective positions and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 39 -->
+      <ds:Step Name="UserLoadWashReagent1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Wash Reagent 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service Software will now unlock the wash reagent position 1. Afterwards, please load a full wash reagent container, close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 40 -->
+      <ds:Step Name="WashReagent1ToOverflow">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Wash Reagent 1 to Overflow via Reservoir and Relief Valve</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software transfers 1200 ml from the wash reagent container 1 and overfills the wash reagent reservoir (via S1 - S4 - S7 - Wash Buffer Pump - S8 - S24 - S25). The excess liquid is transferred to the overflow bottle (via S9 - ReagentHead - WashStation - S41).</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 41 -->
+      <ds:Step Name="UnloadWashReagent1AndOverflow" Type="Confirm" Result="rVerifyStep41">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Wash Reagent 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the wash reagent 1 aspiration arm.</base:Paragraph>
+              <base:Paragraph>Afterwards, please perform the following operations:</base:Paragraph>
+              <base:Paragraph>- once the dripping has stopped, unload the wash reagent 1 and the overflow bottle</base:Paragraph>
+              <base:Paragraph>- verify that liquid has been transferred from wash reagent 1 to overflow bottle (approx. 200ml)</base:Paragraph>
+              <base:Paragraph>- empty the overflow bottle and load it back</base:Paragraph>
+              <base:Paragraph>- close the aspiration arm on the wash reagent position 1</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 42 -->
+      <ds:Step Name="ParkProcessingModuleHeadsStep">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Processing Transfer Heads</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while processing transfer heads are parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 43 -->
+      <ds:Step Name="OpenDownholders" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The downholders of the liquid waste stations and the tip rack park positions will now be opened.</base:Paragraph>
+              <base:Paragraph>Afterwards, please remove the waste inserts and the tip racks and press 'Next'...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irIsOperationsCheck" NextStep="OverflowLiquidWasteStations">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement 44 [A4] Execution by GCS -->
+      <ds:Step Name="DrainWashStationToLiquidWaste2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drain Wash Station to Waste2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software drains the wash station to liquid waste container 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="EmptyWaste2" />
+      </ds:Step>
+      <!-- [->A4] -->
+      <!-- Requirement step 44 -->
+      <ds:Step Name="OverflowLiquidWasteStations" Type="Confirm" Result="rOverFlowBottleFilledFromLiquidWasteStations">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Overflow Liquid Waste Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please perform the following actions:</base:Paragraph>
+              <base:Paragraph>- pour approximately 200 ml of wash reagent into the overflow openings of liquid waste stations 1 and 2</base:Paragraph>
+              <base:Paragraph>- verify visually that the liquid flows from liquid waste station 1 and 2 to the overflow bottle</base:Paragraph>
+              <base:Paragraph>- empty the overflow bottle and load it back</base:Paragraph>
+              <base:Paragraph>- confirm that the liquid was transferred successfully</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 45 -->
+      <ds:Step Name="DrainStations">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drain Wash and Liquid Waste Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while service software drains the wash and liquid waste stations...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 46 -->
+      <ds:Step Name="EmptyWaste2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty Liquid Waste Container 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now unlock the cap of liquid waste container 2. Please unload and empty it, load it back and close its cap.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- [A4->] -->
+      <!-- Requirement step 47 -->
+      <ds:Step Name="VerifyTightness" Type="Confirm" Result="rVerifyStep47">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Tightness</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please visually verify the tightness of connector S46 and the absence of droplets on the pump and valve block from the rear of the instrument.</base:Paragraph>
+              <base:Paragraph>Confirm if successful.</base:Paragraph>
+              <base:Paragraph>Consult the “Fluid System Overview” (service documentation) for further information.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Pumps_Valves_And_DegassingPump_Connectors_S22_S46.jpg" Hash="483F975DEC84ABF4B1BB6A6EDB95EB3B4A5ACBCB" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 48 -->
+      <ds:Step Name="UserCloseWasteDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the wash/waste drawer and the lysis/diluent drawer and press 'Next'...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="Cleanup" />
+      </ds:Step>
+      <!-- All Exception Flows -->
+      <ds:Step Name="ParkProcessingTransferHeadsOnException" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Parks Processing Transfer Heads</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing transfer heads are parked...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDownholdersOnException">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while downholders are opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 49 [A3]: re-enable the RFID tracking -->
+      <ds:Step Name="Cleanup">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cleaning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-analyticunit">
+      <CSMConfigureParameters>
+        <System RealtimePriority="72" MiddlewarePriority="77" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="501" ProviderSocket="/opt/CSM_501.sock">
+          <CSMDefinition CSMName="Photometer-id" ConnectedModuleID="502" ConnectToSocket="/opt/CSM_502.sock" />
+          <CSMDefinition CSMName="ThermoCycler-id" ConnectedModuleID="503" ConnectToSocket="/opt/CSM_503.sock" />
+          <CSMDefinition CSMName="LoadingTrayControl-id" ConnectedModuleID="516" ConnectToSocket="/opt/CSM_516.sock" />
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/newgen-analyticunit-parampool.xml" />
+          <CommandLineSwitch SwitchName="--Photometer-socket" Value="/opt/CSM_502.sock" />
+          <CommandLineSwitch SwitchName="--ThermoCycler-socket" Value="/opt/CSM_503.sock" />
+          <CommandLineSwitch SwitchName="--LoadingTrayControl-socket" Value="/opt/CSM_516.sock" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.analyticunit.a2.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.analyticunit.a2.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.analyticunit.a2.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.analyticunit.a2.q" />
+          <CommandLineSwitch SwitchName="--ModuleId" Value="A2" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="photometer-newgen" EnableExecPrefix="false">
+          <CSMConfigureParameters>
+            <System RealtimePriority="45" MiddlewarePriority="81" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="502" ProviderSocket="/opt/CSM_502.sock">
+              <CDIDefinition SwitchName="DetControllerCtrl-cdi" DeviceName="AC_A2_DetectionControl_det" />
+              <CDIDefinition SwitchName="DetFilterWheelsCtrl-cdi" DeviceName="AC_A2_DetectionControl_filterwheels" />
+              <CDIDefinition SwitchName="DetPhotometerLEDCtrl-cdi" DeviceName="AC_A2_DetectionControl_photoled" />
+              <CDIDefinition SwitchName="DetRefChanCtrl-cdi" DeviceName="AC_A2_DetectionControl_refch" />
+              <CDIDefinition SwitchName="DetPhotometerEEPROMCtrl-cdi" DeviceName="AC_A2_DetectionControl_photoeeprom" />
+              <CDIDefinition SwitchName="RedControllerCtrl-cdi" DeviceName="AC_A2_DataReduction_red" />
+              <CDIDefinition SwitchName="RedCameraCtrl-cdi" DeviceName="AC_A2_DataReduction_camera" />
+              <CDIDefinition SwitchName="RedAlgoCtrl-cdi" DeviceName="AC_A2_DataReduction_algo" />
+              <CDIDefinition SwitchName="RedInternalCtrl-cdi" DeviceName="AC_A2_DataReduction_internal" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/photometer-newgen/config/photometer_config.xml" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="thermo-cycler-newgen" EnableExecPrefix="false">
+          <CSMConfigureParameters>
+            <System RealtimePriority="45" MiddlewarePriority="81" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="503" ProviderSocket="/opt/CSM_503.sock">
+              <CDIDefinition SwitchName="BlockCtrl-cdi" DeviceName="AC_A2_ThermoCycler_blockctrl" />
+              <CDIDefinition SwitchName="CoverCtrl-cdi" DeviceName="AC_A2_ThermoCycler_coverctrl" />
+              <CDIDefinition SwitchName="CyclerCtrl-cdi" DeviceName="AC_A2_ThermoCycler_cyclerctrl" />
+              <CDIDefinition SwitchName="TempLoggerCtrl-cdi" DeviceName="AC_A2_ThermoCycler_temploggerctrl" />
+              <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/thermo-cycler-newgen/config/thermocycler_config.xml" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="loading-tray-control" EnableExecPrefix="false">
+          <CSMConfigureParameters>
+            <System RealtimePriority="45" MiddlewarePriority="81" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="516" ProviderSocket="/opt/CSM_516.sock">
+              <CDIDefinition SwitchName="CoverCtrl-cdi" DeviceName="AC_A2_LoadingModul_CoverMotor" />
+              <CDIDefinition SwitchName="DrawerCtrl-cdi" DeviceName="AC_A2_LoadingModul_DrawerMotor" />
+              <CDIDefinition SwitchName="MonitorCtrl-cdi" DeviceName="AC_A2_LoadingModul_MonitorDevice" />
+              <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/loading-tray-control/config/loading-tray-control-config.xml" />
+              <CommandLineSwitch SwitchName="--MotionConfig-file-path" Value="${UNITCONFIGPATH}/loading-tray-control/config/loading-tray-control-motion-config.xml" />
+              <CommandLineSwitch SwitchName="--SMSConfig-file-path" Value="${UNITCONFIGPATH}/loading-tray-control/config/loading-tray-control-sms-config.xml" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

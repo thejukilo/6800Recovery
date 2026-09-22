@@ -1,0 +1,10 @@
+[Unit]
+Description=RLX Auth Shell
+ConditionPathIsDirectory=!/var/run/rlx-remote-access/sh/sessions
+
+[Service]
+Type=oneshot
+ExecStart=install -g fsr -o fsr -d /var/run/rlx-remote-access/sh/sessions
+
+[Install]
+WantedBy=multi-user.target

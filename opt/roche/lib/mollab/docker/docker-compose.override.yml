@@ -1,0 +1,139 @@
+services:
+  fieldbusgateway:
+    cpuset: "0"
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    environment:
+      - MolLab_Simulated=1
+    extra_hosts:
+      - simhw:10.0.2.2
+      - newgen-simhw:10.0.2.2
+  persistentmemory:
+    cpuset: "0"
+  analyticunit.a2:
+    environment:
+      - MolLab_Simulated=1
+  analyticunit.a1:
+    environment:
+      - MolLab_Simulated=1
+  analyticunit.b2:
+    environment:
+      - MolLab_Simulated=1
+  analyticunit.b1:
+    environment:
+      - MolLab_Simulated=1
+  bulkmanagement.a:
+    environment:
+      - MolLab_Simulated=1
+  bulkmanagement.b:
+    environment:
+      - MolLab_Simulated=1
+  coolingstation.a:
+    environment:
+      - MolLab_Simulated=1
+  coolingstation.b:
+    environment:
+      - MolLab_Simulated=1
+  drawerlock.reagentcassettedrawer:
+    environment:
+      - MolLab_Simulated=1
+  drawerlock.consumablesdrawer.a:
+    environment:
+      - MolLab_Simulated=1
+  drawerlock.consumablesdrawer.b:
+    environment:
+      - MolLab_Simulated=1
+  heatingstation.a1:
+    environment:
+      - MolLab_Simulated=1
+  heatingstation.a2:
+    environment:
+      - MolLab_Simulated=1
+  heatingstation.b1:
+    environment:
+      - MolLab_Simulated=1
+  heatingstation.b2:
+    environment:
+      - MolLab_Simulated=1
+  reagentstoragehandler:
+    environment:
+      - MolLab_Simulated=1
+  transfermodulecontrol:
+    environment:
+      - MolLab_Simulated=1
+  rackhandler:
+    environment:
+      - MolLab_Simulated=1
+  loggingserver:
+    environment:
+      - LOG_MAX_SIZE=0
+  simhw:
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-simhw:1.6.0.1336045
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    container_name: simhw
+    hostname: newgen-simhw
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    ports:
+      - "12384:12384"
+    volumes:
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp/bci
+      - /opt/roche/var/lib/mollab/private/simhw/simdata:/root/simdata
+      - /opt/roche/var/lib/mollab/private/simhw/simloading-default:/opt/roche/simloading-default
+      - /opt/roche/var/lib/mollab/private/simhw/curves:/opt/roche/share/host/curves/
+      - /opt/roche/var/lib/mollab/private/amplification-plate-handler/teaching-data:/opt/roche/teaching-data/amplification-plate-handler
+      - /opt/roche/var/lib/mollab/private/interim-reagent-storage/a/teaching-data:/opt/roche/teaching-data/interim-reagent-storage-a
+      - /opt/roche/var/lib/mollab/private/interim-reagent-storage/b/teaching-data:/opt/roche/teaching-data/interim-reagent-storage-b
+      - /opt/roche/var/lib/mollab/private/main-handler/teaching-data:/opt/roche/teaching-data/main-handler
+      - /opt/roche/var/lib/mollab/private/processing-module-control/a/teaching-data:/opt/roche/teaching-data/processing-module-control-a
+      - /opt/roche/var/lib/mollab/private/processing-module-control/b/teaching-data:/opt/roche/teaching-data/processing-module-control-b
+      - /opt/roche/var/lib/mollab/private/rack-handler/teaching-data:/opt/roche/teaching-data/rack-handler
+      - /opt/roche/var/lib/mollab/private/transfer-module-control/teaching-data:/opt/roche/teaching-data/transfer-module-control
+      - /opt/roche/var/lib/mollab/private/persistent-memory/persistent-data:/opt/roche/persistent-data
+    environment:
+      - SKIP_CLEANSIMDATA=1
+      - MolLab_Simulated=1
+      - MolLab_InstrumentType
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    pids_limit: -1
+    user: root
+  simsamplesupply:
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-samplesupplymodule.simulator
+    container_name: simsamplesupply
+    hostname: newgen-samplesupplymodule
+    ports:
+      - "5000:5000"
+    volumes:
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+    user: root
+  simapi:
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-simapi:1.1.0.1335394
+    container_name: simapi
+    profiles: [ "6800_1AC", "6800_2AC", "8800" ]
+    hostname: newgen-simapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - /opt/roche/var/lib/mollab/shared/logs:/var/log # enable livelog functionality to parse simhwlog
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    user: root
+    extra_hosts:
+      - simhw:10.0.2.2
+      - newgen-simhw:10.0.2.2

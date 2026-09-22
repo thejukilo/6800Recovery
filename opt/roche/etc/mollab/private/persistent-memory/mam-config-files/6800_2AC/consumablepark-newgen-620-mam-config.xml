@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+		 xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+	<csmConfig>
+	  <csm name="CSM_ConsumablePark" seid="364" moduleId="620">
+		  <parPool type="uint8" structure="array" noElements="100" id="3" name="ConfigData_1"
+		      defaultValue="0" minValue="0" maxValue="255">
+		    <persistDef memoryId="3260" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint8" structure="array" noElements="100" id="4" name="ConfigData_2"
+		      defaultValue="0" minValue="0" maxValue="255">
+		    <persistDef memoryId="3260" periodInSec="-1"/>
+		  </parPool>
+		  <parPool type="uint8" structure="array" noElements="100" id="5" name="ConfigData_3"
+          defaultValue="0" minValue="0" maxValue="255">
+        <persistDef memoryId="3260" periodInSec="-1"/>
+   		</parPool>
+		  <parPool type="uint16" structure="scalar" id="6" name="OpCountInitProcessPark1"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2013" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="7" name="OpCountInitProcessPark2"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2013" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="8" name="OpCountMoveProcessPark1"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2013" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="9" name="OpCountMoveProcessPark2"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2013" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="10" name="OpCountInitPPlate48ParkA"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="11" name="OpCountInitPPlate48ParkB"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint16" structure="scalar" id="12" name="OpCountInitReadingStation"
+		      defaultValue="0" minValue="0" maxValue="0xFFFF">
+		    <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="13" name="OpCountMovePPlate48ParkA"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="14" name="OpCountMovePPlate48ParkB"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		  <parPool type="uint32" structure="scalar" id="15" name="OpCountMoveReadingStation"
+		      defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+		    <persistDef memoryId="2014" periodInSec="14400"/>
+		  </parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

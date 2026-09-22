@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="8709580B4E062F8972DF22963B816AE02D8D8C58BE9A" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="FlushMaintenanceCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pHasOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Has off system liquid waste</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pDrainTime" Type="Integer">
+          <data:Description>
+            <base:Title>Drain time of individual drains in seconds.</base:Title>
+          </data:Description>
+          <data:Value>2</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pTimeBetweenDrains" Type="Integer">
+          <data:Description>
+            <base:Title>Time between individual drains in seconds.</base:Title>
+          </data:Description>
+          <data:Value>60</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pDrainTimeBothStations" Type="Integer">
+          <data:Description>
+            <base:Title>Drain time of both stations in seconds.</base:Title>
+          </data:Description>
+          <data:Value>60</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashReagentFlushVolume" Type="Double">
+          <data:Description>
+            <base:Title>Wash reagent flush volume in m^3.</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashReagentFlushOffSystemVolume" Type="Double">
+          <data:Description>
+            <base:Title>Wash reagent flush volume in m^3.</base:Title>
+          </data:Description>
+          <data:Value>840E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParamsReagentHeadWB" Type="String">
+          <data:Description>
+            <base:Title>The reagent head pipettor parameter set for the wash buffer</base:Title>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irHasOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Has off system liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the internal liquid waste containers should be user or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irOpenLiquidWasteDownholders" Type="Boolean">
+          <data:Description>
+            <base:Title>Open Downholders In Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the downholders shall be opened in the cleanup or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUiDisplayError" Type="String">
+          <data:Description>
+            <base:Title>Error Message</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Text to display an error if present.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Integer" Name="rAreLiquidWasteStationsDrained">
+          <data:Description>
+            <base:Title>Liquid Waste Stations Drained</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User evaluation of empty liquid waste stations after drain.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="0" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="Yes" Value="0">
+              <data:Description>Yes</data:Description>
+            </data:Member>
+            <data:Member Name="No, Repeat" Value="1">
+              <data:Description>No, repeat</data:Description>
+            </data:Member>
+            <data:Member Name="No" Value="2">
+              <data:Description>No</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rBothWasteInsertsPresent" Type="Boolean">
+          <data:Description>
+            <base:Title>Both Waste Inserts Present</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detected both waste inserts on the liquid waste stations.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWasteStationsAreCleanAndEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste Stations Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User evaluation of empty and clean liquid waste stations at the end of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

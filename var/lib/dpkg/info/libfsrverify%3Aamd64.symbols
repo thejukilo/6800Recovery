@@ -1,0 +1,17 @@
+libfsrverify.so.2 libfsrverify #MINVER#
+ LIBFSRVERIFY_2.7.0@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_Fini@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_Fini_r@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_GenerateAndStoreUnlockCode@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_GenerateAndStoreUnlockCode_r@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_InitLoadFromFile@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_InitLoadFromFile_r@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_InitLoadFromString@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_InitLoadFromString_r@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_ParseToken@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_VerifyToken@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_VerifyTokenWithQuickAccess@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_VerifyTokenWithQuickAccess_r@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_VerifyToken_r@LIBFSRVERIFY_2.7.0 2.7.0
+ fsrverify_VerifyUnlockToken@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1
+ fsrverify_VerifyUnlockToken_r@LIBFSRVERIFY_2.7.0 2.7.0.3.rlx1

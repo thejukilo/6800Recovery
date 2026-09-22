@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="040A5C8D68E75E011A0A232F4F1222A29DCE13EDF5A0" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="RackTransportCheckCommon" ID="TRQ352309">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initialization</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadMPARack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Please Load MPA Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' when the required amount of racks has been forwarded to the input rail.</base:Paragraph>
+              <base:Paragraph>If there are racks on the error rail, remove them.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadMPARackMovement" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer MPA Rack To Target Position - Load MPA rack - Movement</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the movement has finished...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irRepetitionsCompleted" NextStep="Completed">
+            <workflow:Condition Operator="GE" Parameter="pRepetitions" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+              <base:Paragraph>Please press 'Finish' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

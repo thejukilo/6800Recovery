@@ -1,0 +1,6 @@
+71c7c85c8af95179360a69d47592b7c5  opt/roche/etc/mollab/private/rabbitmq/definitions/runPlanning_planning_definition.json
+b8ad1bc0d0b7bbe4e5b902c5b298fe7b  opt/roche/etc/mollab/private/rabbitmq/definitions/runPlanning_validation_definition.json
+803b659e4ac4c8fb0c4ebcb41b86cefa  opt/roche/etc/mollab/private/run-planning/appsettings.json
+418e4af6b713c683e8b5e5e1cbdc12f4  opt/roche/etc/mollab/private/run-planning/serilog.json
+d202dcdb08156047d4d279694afd1175  usr/share/doc/newgen-runplanning-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-runplanning-configuration/copyright

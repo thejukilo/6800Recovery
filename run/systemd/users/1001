@@ -1,0 +1,7 @@
+# This is private data. Do not parse.
+NAME=roche
+STATE=lingering
+STOPPING=no
+RUNTIME=/run/user/1001
+REALTIME=1790065705216555
+MONOTONIC=8672303

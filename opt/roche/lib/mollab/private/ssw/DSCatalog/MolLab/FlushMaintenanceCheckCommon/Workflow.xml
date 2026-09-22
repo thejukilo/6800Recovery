@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="4631E5A2D7D4033BC0E24F9B51B1CD3FE1984AD196BF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="FlushMaintenanceCheckCommon" ID="FlushMaintenanceCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the processing module is being initialized...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Preparation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the processing module is being prepared.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadWashReagent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Wash Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the wash waste drawer completely.</base:Paragraph>
+              <base:Paragraph>Load a full wash reagent container on wash reagent container position 1 and close the reagent aspiration arm.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: The wash waste drawer will remain open until instructed otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="FillLiquidWasteInstruction">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Liquid Waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All liquid waste containers have been unlocked.</base:Paragraph>
+              <base:Paragraph>Ensure all of them are empty (replace the liquid waste container when necessary).</base:Paragraph>
+              <base:Paragraph>Lock all the waste dispense caps by opening and then closing them again.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: The wash waste drawer will remain open until instructed otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="FillLiquidWasteInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fill Liquid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Lift the splash guards (make sure to wear gloves) and carefully pour NaOH solution, up to the overflow hole (approx. 140 ml), into each of the liquid waste stations of the processing module.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Ensure that the liquid waste stations are not overfilled since this will cause liquid to be delivered to the overflow container.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Once both liquid waste stations are filled press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph />
+              <base:Paragraph>Note: The fill level shall not exceed the overflow hole.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Fill_NaOH_LiquidWasteStation.jpg" Hash="A7C5E3A90D73F09FFF803D7437EE55D6A088E67E" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="DrainLiquidWasteStationOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="DrainLiquidWasteStationOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drain each Liquid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the liquid waste stations are repeatedly drained, in turn, into all 3 liquid waste containers.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>This step will take approximately 10 minutes to complete.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Within the 10 minutes the service software will execute the following actions 3 times:</base:Paragraph>
+              <base:Paragraph>    -   drain both liquid waste stations for 2 seconds into liquid waste container 1,</base:Paragraph>
+              <base:Paragraph>    -   wait 60 seconds.</base:Paragraph>
+              <base:Paragraph>    -   drain both liquid waste stations for 2 seconds into liquid waste container 2,</base:Paragraph>
+              <base:Paragraph>    -   wait 60 seconds.</base:Paragraph>
+              <base:Paragraph>    -   drain both liquid waste stations for 2 seconds into liquid waste container 3,</base:Paragraph>
+              <base:Paragraph>    -   wait 60 seconds.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph />
+              <base:Paragraph>Note: More NaOH solution can be added during the process if the liquid waste stations run empty. It is expected that the liquid waste stations run empty after a short time (~2-3 minutes). Adding additional NaOH solution (not exceeding the level of the overflow hole) will have an enhanced cleaning effect, it is not required though.</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Liquid_waste_lines.jpg" Hash="65C52F158C110E51A3BF1FBA9EB2F8E295ED3166" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="DrainBothLiquidWasteStations">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="DrainLiquidWasteStationOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drain each Liquid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the liquid waste stations are repeatedly drained into the liquid waste container 1.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>This step will take approximately 10 minutes to complete.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Within the 10 minutes the service software will execute the following actions 9 times:</base:Paragraph>
+              <base:Paragraph>    -   drain both liquid waste stations for 2 seconds into liquid waste container 1,</base:Paragraph>
+              <base:Paragraph>    -   wait 60 seconds.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph />
+              <base:Paragraph>Note: More NaOH solution can be added during the process if the liquid waste stations run empty. It is expected that the liquid waste stations run empty after a short time (~2-3 minutes). Adding additional NaOH solution (not exceeding the level of the overflow hole) will have an enhanced cleaning effect, it is not required though.</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Liquid_waste_lines.jpg" Hash="65C52F158C110E51A3BF1FBA9EB2F8E295ED3166" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DrainBothLiquidWasteStations">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drain Both Liquid Waste Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the liquid waste stations are drained for 60 seconds.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyLiquidWasteStationState" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Station State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that both liquid waste stations are completely empty and select one of the following options:</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Yes - Both liquid waste stations are empty.</base:Paragraph>
+              <base:Paragraph>No, repeat - The drain for both liquid waste stations will be repeated.</base:Paragraph>
+              <base:Paragraph>No - Both liquid waste stations are not empty.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>After the selection, press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: If the liquid waste stations are not empty and clean, please refer to the service documentation to address unblocking the liquid lines.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rAreLiquidWasteStationsDrained">
+            <workflow:Description>Are both liquid waste stations drained successfully?</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="HandleStateDecision">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Handle State Decision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Handle user decision.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rAreLiquidWasteStationsDrained" NextStep="DrainBothLiquidWasteStations">
+            <workflow:Condition Operator="EQ" Value="No, Repeat" />
+          </workflow:Decision>
+          <workflow:Decision Result="rAreLiquidWasteStationsDrained" NextStep="ErrorCleanup">
+            <workflow:Condition Operator="EQ" Value="No" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FillWashReagentReservoir">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Fill Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the wash reagent reservoir is filled.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceWasteInsertsInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Waste Inserts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place waste inserts on both liquid waste stations and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Place_Waste_Inserts_New.jpg" Hash="9E24B9E9367883A785E04E4DF068C973BE36DA55" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckWasteInserts">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Waste Inserts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while verifying that both waste inserts are present.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rBothWasteInsertsPresent" NextStep="PlaceWasteInsertsInstruction">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="FlushLiquidWasteStationsOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FlushLiquidWasteStationsOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Flush Liquid Waste Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the liquid waste stations are flushed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Liquid_waste_lines_wash_New.jpg" Hash="BD6B476560B37594E58152511114430B5B8035CD" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="CleanupStart">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FlushLiquidWasteStationsOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Flush Liquid Waste Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the liquid waste stations are flushed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Liquid_waste_lines_wash_New.jpg" Hash="BD6B476560B37594E58152511114430B5B8035CD" />
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Info: there is a normal cleanup without NextState="true" so that the results can still be set when everything is all right -->
+      <ds:Step Name="CleanupStart">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup Start</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOpenLiquidWasteDownholders" NextStep="OpenLiquidWasteStationDownholder">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="ReplaceLiquidWasteContainers">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="CloseWashWasteDrawer">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ErrorCleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup Start</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>[R.irUiDisplayError]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOpenLiquidWasteDownholders" NextStep="OpenLiquidWasteStationDownholder">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="ReplaceLiquidWasteContainers">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="CloseWashWasteDrawer">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenLiquidWasteStationDownholder">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Downholder</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening liquid waste station downholders.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>[R.irUiDisplayError]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LiquidWasteStationCleanup" Type="Confirm" Result="rLiquidWasteStationsAreCleanAndEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup Liquid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>- Remove all waste inserts from the liquid waste stations.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>- Ensure that the splash guards are placed correctly on all liquid waste stations.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>- Ensure that the overflow bottle is empty, if not, empty it.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Wait for two to three minutes to allow liquid waste stations to be fully emptied. Confirm that both liquid waste stations are clean and empty and then press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>[R.irUiDisplayError]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="CloseWashWasteDrawer">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReplaceLiquidWasteContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace Liquid Waste Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>[R.irUiDisplayError]</base:Paragraph>
+              <base:Paragraph>All liquid waste containers have been unlocked.</base:Paragraph>
+              <base:Paragraph>Ensure all of them are empty (replace the liquid waste container when necessary).</base:Paragraph>
+              <base:Paragraph>Lock all the waste dispense caps by opening and then closing them again.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Note: The wash waste drawer will remain open until instructed otherwise.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseWashWasteDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Wash Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>[R.irUiDisplayError]</base:Paragraph>
+              <base:Paragraph>Close the wash/waste drawer to finish the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

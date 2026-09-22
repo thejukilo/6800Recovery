@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6797C387FAF9ADDA4C76E8C797785932FA19692784C0" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tests/Schemas/dsData.xsd">
+  <ds:TestFunction Name="ADPlatePreparationCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ID of the involved processing module.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Pipetting Volume</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolumeBeforePipetting" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolumeAfterPipetting" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pSealingTemperatureInCelsius" Type="Double" Unit="Celsius">
+          <data:Description>
+            <base:Title>The temperature in degree Celsius at which the amplification plate is sealed.</base:Title>
+          </data:Description>
+          <data:Value>160</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSealingDurationInSeconds" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>The duration in seconds the heating block is pressed onto the amplification plate.</base:Title>
+          </data:Description>
+          <data:Value>1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pSealerHeatUpTimeout" Type="Double" Unit="min">
+          <data:Description>
+            <base:Title>How long (minutes) to wait for the sealer to heat up before timeout.</base:Title>
+          </data:Description>
+          <data:Value>12</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pUseWashReagent" Type="Boolean">
+          <data:Description>
+            <base:Title>Dispense Wash Reagent</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>Pipetting Parameter Set</base:Title>
+          </data:Description>
+          <data:Value>59ea0034-4d9c-4bc7-bdc2-8ce34f3b2ab1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRocheCassetteUniqueIdentifier" Type="String">
+          <data:Description>
+            <base:Title>Roche Unique Identifier</base:Title>
+          </data:Description>
+          <data:Value>6644341190</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rCassetteRfidIdentifier" Type="String">
+          <data:Description>
+            <base:Title>Cassette Identifier</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cassette Identifier</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rCassetteRfidExpiryDate" Type="String">
+          <data:Description>
+            <base:Title>Cassette Expiry Date</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cassette Expiry Date</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rCassetteRfidRemainingTests" Type="Integer">
+          <data:Description>
+            <base:Title>Cassette Remaining Tests</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cassette Remaining Tests</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rCassetteRfidRemainingRuns" Type="Integer">
+          <data:Description>
+            <base:Title>Cassette Remaining Runs</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cassette Remaining Runs</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irUseWashReagent" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irAbortAndUnloadCassette" Type="Boolean">
+          <data:Description>
+            <base:Title>When True, Skip Rest of Check Until Unloadcassette Step.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>When True, Skip Rest of Check Until Unloadcassette Step.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irShowInvalidRfidDetails" Type="Boolean">
+          <data:Description>
+            <base:Title>When True, Show Why Rfid Is Invalid.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>When True, Show Why Rfid Is Invalid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irRemainingRunsInfo" Type="String">
+          <data:Description>
+            <base:Title>Cassette Remaining Runs Info After Check Completion</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Cassette Remaining Runs Info After Check Completion</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

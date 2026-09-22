@@ -1,0 +1,8 @@
+{
+  "appID": "UI-RunManager",
+  "appOrder": 20,
+  "appLabel": "12.FHO.AppLibrary.UI.RunManager",
+  "entryPoint": "run-manager",
+  "roles": ["X800.Operator", "X800.RSR"],
+  "isDmApp": false
+}

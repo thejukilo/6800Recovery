@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B6A268A4C235D553B20023A42626C7981465FA8E7B42" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="InterimReagentStorageCoolingCheckCommon" ID="InterimReagentStorageCoolingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenAirflowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the airflow screen is opened...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Park">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Head and Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Parks the main handler on the MainHandlerParkPosition.</base:Paragraph>
+              <base:Paragraph>Parks the reagent transfer head on the FirstParkPosition.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExecuteInventory">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Execute Inventory</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Execute the inventory of the interim reagent storage.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyEmptyStorage">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Storage is Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies that the interim reagent storage is empty.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place a reagent cassette on the transfer position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTransferPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that the transfer position is not empty.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferCassetteToStorage">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Cassette to Storage</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer the reagent cassette from the transfer position to the interim reagent storage loading station and read the RFID.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StoreCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Store Cassette and Verify Positions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Service software will now store the reagent cassette in position 0, and subsequently transfer it to the remaining 5 positions and verify its presence by reading the RFID for each of them.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Position under test: [R.irNextStoragePosition]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irRemainingStoragePositions" NextStep="StoreCassette">
+            <workflow:Condition Operator="GE" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RetrieveAndTransferCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Retrieve and Transfer Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Retrieve the reagent cassette.</base:Paragraph>
+              <base:Paragraph>Transfer the reagent cassette from the interim reagent storage loading station to the transfer position.</base:Paragraph>
+              <base:Paragraph>Park the processing module handler on the park position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the cassette from the transfer position and press "Next".</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DetectAndRegulateTemperature">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Detect and Regulate Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detect the initial temperature of the interim reagent storage and start to regulate the temperature to reach a difference of 10°C.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MeasureAndVerifyTemperatureLoop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Measure and Verify Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifies if:</base:Paragraph>
+              <base:Paragraph>- The elapsed time is equal or less than 10 minutes.</base:Paragraph>
+              <base:Paragraph>- Temperature difference of 1°C is reached.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The time elapsed since the start of the temperature regulation: [R.rElapsedSeconds] seconds.</base:Paragraph>
+              <base:Paragraph>The current temperature in the interim reagent storage: [R.rCurrentTemperature]°C.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoopDone" NextStep="MeasureAndVerifyTemperatureLoop">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

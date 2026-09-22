@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="35E2947A3CC0CECD32CA990E3093467160C7F758D0FD" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitDetectionFunctionalityCheckCommon" ID="TRQ597629">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ValidateCyclerVersion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Validate Cycler Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>This check is only supported by analytic cycler version 2c. Validating...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="LedCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The LED light source will be turned on and intensity for every channel will be measured.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 3 -->
+      <ds:Step Name="MarkerRecognition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Marker Recognition</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Executing marker recognition command and capturing potential error codes...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 6 -->
+      <ds:Step Name="DetermineCameraHotPixels">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Determine Camera Hot Pixels</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Determining camera hot pixels...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyLedAndCameraTemperatures">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify LED and Camera Temperatures</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify LED and camera temperatures...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

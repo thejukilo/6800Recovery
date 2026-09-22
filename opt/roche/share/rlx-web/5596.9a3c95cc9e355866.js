@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrlx_web=self.webpackChunkrlx_web||[]).push([[5596],{25596:(_,n,c)=>{c.d(n,{Hu:()=>p});var e=c(54438),o=c(60177),i=c(86600);let p=(()=>{class t{static#t=this.\u0275fac=function(a){return new(a||t)};static#a=this.\u0275mod=e.$C({type:t});static#e=this.\u0275inj=e.G2t({imports:[i.yE,o.MD,i.yE]})}return t})()}}]);

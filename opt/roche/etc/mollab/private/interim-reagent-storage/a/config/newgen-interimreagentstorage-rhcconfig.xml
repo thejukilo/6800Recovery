@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RHCConfig xsi:noNamespaceSchemaLocation="/opt/roche/config/xsd/RHCConfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RHC Name="RHCTemperatureControlConfig">
+    <PWM OutputPortID="0" Name="FanWarmSide">
+      <PWMPortMode>SingleMode</PWMPortMode>
+      <PWMState>OFF</PWMState>
+      <Ratio>100</Ratio>
+      <ReduceTime>0</ReduceTime>
+      <ReduceRatio>0</ReduceRatio>
+      <SafetyTimeout>0</SafetyTimeout>
+      <StateSemaphore>Disabled</StateSemaphore>
+      <CircuitLoadSetting>
+        <CircuitLoadDetection>Min</CircuitLoadDetection>
+        <CircuitLoadMinimum>100</CircuitLoadMinimum>
+        <CircuitLoadMaximum>0</CircuitLoadMaximum>
+      </CircuitLoadSetting>
+    </PWM>
+    <PWM OutputPortID="1" Name="FanColdSide">
+      <PWMPortMode>SingleMode</PWMPortMode>
+      <PWMState>OFF</PWMState>
+      <Ratio>100</Ratio>
+      <ReduceTime>0</ReduceTime>
+      <ReduceRatio>0</ReduceRatio>
+      <SafetyTimeout>0</SafetyTimeout>
+      <StateSemaphore>Disabled</StateSemaphore>
+      <CircuitLoadSetting>
+        <CircuitLoadDetection>Min</CircuitLoadDetection>
+        <CircuitLoadMinimum>100</CircuitLoadMinimum>
+        <CircuitLoadMaximum>0</CircuitLoadMaximum>
+      </CircuitLoadSetting>
+    </PWM>
+    <PowerBridge OutputPortID="0" Name="Peltier">
+      <UsedByTemperatureController>True</UsedByTemperatureController>
+      <BridgeState>OFF</BridgeState>
+      <CurrentDirection>Positive</CurrentDirection>
+      <PWMRatio>100</PWMRatio>
+      <Diagnostics>OFF</Diagnostics>
+      <MaximumCurrent>8000</MaximumCurrent>
+      <SafetyTimeout>2000</SafetyTimeout>
+      <MinimumVoltage>15000</MinimumVoltage>
+    </PowerBridge>
+    <TemperatureController OutputPortID="0" Name="TemperatureController">
+      <PowerBridge>Peltier</PowerBridge>
+      <ControlAnalogInputPortID>ControlSensor</ControlAnalogInputPortID>
+      <MonitorAnalogInputPortID>MonitorSensor</MonitorAnalogInputPortID>
+      <ControllerType>PI</ControllerType>
+      <ControllerFunction>Cooling</ControllerFunction>
+      <CurrentDirection>Positive</CurrentDirection>
+      <SamplingTime>10000</SamplingTime>
+      <Fan1>
+        <PWMName>FanWarmSide</PWMName>
+        <ReduceRatio>0</ReduceRatio>
+        <ReduceLimit>0</ReduceLimit>
+      </Fan1>
+      <Fan2>
+        <PWMName>FanColdSide</PWMName>
+        <ReduceRatio>0</ReduceRatio>
+        <ReduceLimit>0</ReduceLimit>
+      </Fan2>
+      <PWMRatioLimit>100</PWMRatioLimit>
+      <InitialPWMRatioLimit>0</InitialPWMRatioLimit>
+      <InitialPWMLimitTime>0</InitialPWMLimitTime>
+      <MaximumCurrent>8000</MaximumCurrent>
+      <MinimumVoltage>15000</MinimumVoltage>
+      <ControllerState>Disabled</ControllerState>
+      <SetPointTemperature>2300</SetPointTemperature>
+      <PIDParameter>
+        <ControlLoop>Control1</ControlLoop>
+        <KR>-788</KR>
+        <Tn>196470</Tn>
+        <Tv>10</Tv>
+        <Tc>10</Tc>
+      </PIDParameter>
+      <InspectionParameter>
+        <UpperWarningThreshold>201</UpperWarningThreshold>
+        <LowerWarningThreshold>1499</LowerWarningThreshold>
+        <UpperErrorThreshold>1401</UpperErrorThreshold>
+        <LowerErrorThreshold>2101</LowerErrorThreshold>
+        <TempReadyTimeout>6000</TempReadyTimeout>
+        <MonitorDeviation>300</MonitorDeviation>
+        <TempWarningTimeout>0</TempWarningTimeout>
+      </InspectionParameter>
+    </TemperatureController>
+    <AnalogInput InputPortID="0" Name="ControlSensor">
+      <UsedByTemperatureController>True</UsedByTemperatureController>
+      <InputType>Temperature</InputType>
+      <ReferenceVoltage>0</ReferenceVoltage>
+      <Oversampling>10</Oversampling>
+    </AnalogInput>
+    <AnalogInput InputPortID="1" Name="MonitorSensor">
+      <UsedByTemperatureController>True</UsedByTemperatureController>
+      <InputType>Temperature</InputType>
+      <ReferenceVoltage>0</ReferenceVoltage>
+      <Oversampling>10</Oversampling>
+    </AnalogInput>
+  </RHC>
+</RHCConfig>

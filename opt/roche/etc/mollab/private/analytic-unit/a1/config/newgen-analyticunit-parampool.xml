@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="MinRadius" Value="20" Type="uint8" Array="false" Description="Minimal allowed radius [pixel]" />
+  <ParameterPoolEntry ID="2" Name="MaxRadius" Value="70" Type="uint8" Array="false" Description="Maximal allowed radius [pixel]" />
+  <ParameterPoolEntry ID="3" Name="MinIntegrationTime" Value="10" Type="uint16" Array="false" Description="Minimal allowed integration time [ms]" />
+  <ParameterPoolEntry ID="4" Name="MaxIntegrationTime" Value="60000" Type="uint16" Array="false" Description="Maximal allowed integration time [ms]" />  
+  <ParameterPoolEntry ID="5" Name="MinFilterPosition" Value="0" Type="uint8" Array="false" Description="Minimal allowed filter position" />
+  <ParameterPoolEntry ID="6" Name="MaxFilterPosition" Value="5" Type="uint8" Array="false" Description="Maximal allowed filter position" />
+  <ParameterPoolEntry ID="7" Name="MinVolume" Value="20" Type="uint8" Array="false" Description="Minimal allowed volume [micro liter]" />
+  <ParameterPoolEntry ID="8" Name="MaxVolume" Value="100" Type="uint8" Array="false" Description="Maximal allowed volume [micro liter]" />
+  <ParameterPoolEntry ID="9" Name="MinTargetTemp" Value="20.0" Type="float" Array="false" Description="Minimal allowed target block temperature [°C]" />
+  <ParameterPoolEntry ID="10" Name="MaxTargetTemp" Value="120.0" Type="float" Array="false" Description="Maximal allowed target block temperature [°C]" />
+  <ParameterPoolEntry ID="11" Name="PercentageLimitMinLEDIntensity" Value="110" Type="uint16" Array="false" Description="If, during an ADProcess, the LED intensity doesn't reach this limit a warning event will be sent [%]" />
+  <ParameterPoolEntry ID="12" Name="SensorOutPositionTolerance" Value="0.2" Type="float" Array="false" Description="Maximal allowed difference between the current loading tray position and the position measured during the teaching [cm]" />
+</ModuleConfiguration>

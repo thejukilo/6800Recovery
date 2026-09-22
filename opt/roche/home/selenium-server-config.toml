@@ -1,0 +1,8 @@
+[node]
+detect-drivers = false
+
+[[node.driver-configuration]]
+max-sessions = 100
+display-name = "Instrument"
+stereotype = "{\"browserName\": \"chrome\", \"platformName\": \"Linux\", \"goog:chromeOptions\": {\"binary\": \"/opt/roche/var/lib/mollab/private/ui/ui.browser/ui.browser\"}}"
+webdriver-executable = '/opt/roche/home/chromedriver'

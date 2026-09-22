@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A74FC54883832B440410C24CD3C207E4C45875A39BE5" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentStorageCooling" ID="ReagentStorageCooling">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckIfTMServiceDoorIsOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking Door State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irReagentStorageOpened" NextStep="GetInitialTemperature">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CloseBackDoorReagentStorage" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Service Door</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the reagent storage service door.</base:Paragraph>
+              <base:Paragraph>After closing of the service door please press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="CheckIfTMServiceDoorIsOpen" />
+      </ds:Step>
+      <ds:Step Name="GetInitialTemperature">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Get Initial Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Gets the initial reagent storage temperature</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="Completed" Result="irAlreadyCooledDown">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CheckTemperature">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Cooling Of Reagent Storage</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+              <base:Paragraph>The reagent storage is cooling down to [R.irUiTargetTemperature] °C and it's current temperature is [R.irUiCurrentReagentStorageTemperature] °C. </base:Paragraph>
+              <base:Paragraph>This process has to be finished in [R.irUiRemainingTimeAllowed] minutes.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoopDone" NextStep="CheckTemperature">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Completed Step</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

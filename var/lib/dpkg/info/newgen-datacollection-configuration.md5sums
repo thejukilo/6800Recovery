@@ -1,0 +1,13 @@
+791203dd97ea7394b9c4f2ff00ee8a47  lib/systemd/system/opt-roche-var-lib-mollab-private-data\x2dcollection-tmp.mount
+dc615241c3cd06dcd267af554f072d0b  lib/systemd/system/opt-roche-var-lib-mollab-shared-eventstream.mount
+e5978e229d18862c0c66c2ab859c5491  lib/systemd/system/opt-roche-var-lib-mollab-shared-problem\x2dreports.mount
+392300952206ce05d3243ab71bb3ea58  lib/systemd/system/opt-roche-var-lib-mollab-shared-system\x2dreports.mount
+0bbe2bff6558e7c6056d8dcde49f0edf  opt/roche/etc/mollab/private/data-collection/appsettings.json
+8927920d6c70ed951f8ec53858fca518  opt/roche/etc/mollab/private/data-collection/certificates/rdh-encryption-newgen.crt
+874436218ef54365c8206034b9105f75  opt/roche/etc/mollab/private/data-collection/extract-pressure-data/ExtractPressureData.bat
+9f29d742e21f3b6334ce4605259c81b9  opt/roche/etc/mollab/private/data-collection/extract-pressure-data/ExtractPressureData.ps1
+5858aaf2d4d0b1c33dc6f63cc7a6172c  opt/roche/etc/mollab/private/data-collection/serilog.json
+1432bab0ad617c72f194a33993b443d8  opt/roche/etc/mollab/private/rabbitmq/definitions/dataCollection_definition.json
+9486705fd8d472e5c75be71c0642d146  opt/roche/etc/mollab/private/rabbitmq/definitions/dataCollection_eventStream_definition.json
+f94dff88fffd42d855a9760ee5dee5f4  usr/share/doc/newgen-datacollection-configuration/changelog.gz
+5edb34ef695b2b12940f4b94013633b7  usr/share/doc/newgen-datacollection-configuration/copyright

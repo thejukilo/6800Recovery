@@ -1,0 +1,13 @@
+/.
+/etc
+/etc/apt
+/etc/apt/apt.conf.d
+/etc/apt/apt.conf.d/77recommends
+/etc/apt/apt.conf.d/77translations
+/etc/inputrc.rlx
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlx-base
+/usr/share/doc/rlx-base/changelog.gz
+/usr/share/doc/rlx-base/copyright

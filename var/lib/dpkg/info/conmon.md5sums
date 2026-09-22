@@ -1,0 +1,6 @@
+1612cae72ca710ae71f120ca3ed8b13f  usr/bin/conmon
+9bbcad50e6cf450d73360e125b728903  usr/share/doc/conmon/README.md
+4ad1a03a23aaf7d19b760905fd5ecdd9  usr/share/doc/conmon/changelog.Debian.gz
+70cd7d3d81dec76c53894b148c99bbe1  usr/share/doc/conmon/changelog.gz
+bad2d5912b9cd444b7528568e71e3e21  usr/share/doc/conmon/copyright
+53bf439b396ea73bfb0ca689224ec900  usr/share/man/man8/conmon.8.gz

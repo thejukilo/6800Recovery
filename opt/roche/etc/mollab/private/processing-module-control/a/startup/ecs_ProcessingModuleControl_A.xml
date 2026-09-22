@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <!-- Unit ProcessingModuleControl A -->
+    <ConnectedCSM FileName="newgen-processing-module-control">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="300" ProviderSocket="/opt/CSM_300.sock">
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <CSMDefinition ConnectedModuleID="301" CSMName="PlateHandlerProcessCell-id" ConnectToSocket="/opt/CSM_301.sock" />
+          <CSMDefinition ConnectedModuleID="309" CSMName="ProcessPipettorTransfer-id" ConnectToSocket="/opt/CSM_309.sock" />
+          <CSMDefinition ConnectedModuleID="326" CSMName="MGPMixer-id" ConnectToSocket="/opt/CSM_326.sock" />
+          <CSMDefinition ConnectedModuleID="315" CSMName="ReagentPipettorTransfer-id" ConnectToSocket="/opt/CSM_315.sock" />
+          <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+          <CommandLineSwitch SwitchName="--ParameterPool" Value="${UNITCONFIGPATH}/settings/config/processing-module-control-parampool.xml" />
+          <CommandLineSwitch SwitchName="--ComponentId" Value="A" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.processingmodulecontrol.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.processingmodulecontrol.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.processingmodulecontrol.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.processingmodulecontrol.a.q" />
+          <CommandLineSwitch SwitchName="--PlateHandlerProcessCell-socket" Value="/opt/CSM_301.sock" />
+          <CommandLineSwitch SwitchName="--ProcessPipettorTransfer-socket" Value="/opt/CSM_309.sock" />
+          <CommandLineSwitch SwitchName="--MGPMixer-socket" Value="/opt/CSM_326.sock" />
+          <CommandLineSwitch SwitchName="--ReagentPipettorTransfer-socket" Value="/opt/CSM_315.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>                              
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <!-- PlateHandler processcell -->
+        <ConnectedCSM FileName="transfer-xyz-gripper">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="301" ProviderSocket="/opt/CSM_301.sock">
+              <CDIDefinition SwitchName="MotorX-cdi" DeviceName="PCA_PlateHandler_2_MotorX" />
+              <CDIDefinition SwitchName="MotorY-cdi" DeviceName="PCA_PlateHandler_1_MotorY" />
+              <CDIDefinition SwitchName="MotorZ-cdi" DeviceName="PCA_PlateHandler_1_MotorZ" />
+              <CDIDefinition SwitchName="MotorGripper-cdi" DeviceName="PCA_PlateHandler_1_MotorGripper" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/processing-module-control-platehandler-config.xml" />
+              <XMLConfigurationFile SwitchName="--MotionConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/processing-module-control-platehandler-motion-config.xml" />
+              <XMLConfigurationFile SwitchName="--Positioning" XMLFileName="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+              <XMLConfigurationFile SwitchName="--RoutingConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/processing-module-control-platehandler-exclusion-areas.xml" />
+              <XMLConfigurationFile SwitchName="--HeadInfo" XMLFileName="${UNITCONFIGPATH}/settings/config/processing-module-control-platehandler-headinfo.xml" />
+              <XMLConfigurationFile SwitchName="--PositionMappingPath" XMLFileName="${UNITCONFIGPATH}/settings/config/processing-module-control-platehandler-position-mapping.xml" />
+              <CommandLineSwitch SwitchName="--ReferencePointOffset" Value="${ICSHAREPATH}/teaching-data/processcell-platehandler-reference-point-offset.xml" />
+              <CommandLineSwitch SwitchName="--CycleTime" Value="0" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="transfer-xyz-gripper-301" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="mgpmixer-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="326" ProviderSocket="/opt/CSM_326.sock">
+              <CDIDefinition SwitchName="Motiondownholdermotor-cdi" DeviceName="PCA_MGPMixer_Downholder" />
+              <CDIDefinition SwitchName="Motionmotorwithlengthcompensation-cdi" DeviceName="PCA_MGPMixer_Shaker1" />
+              <CDIDefinition SwitchName="Motionmotorwithoutlengthcompensation-cdi" DeviceName="PCA_MGPMixer_Shaker2" />
+              <CSMDefinition ConnectedModuleID="327" CSMName="RFIDReader-id" ConnectToSocket="/opt/CSM_327.sock" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/mgpmixer-newgen/config/mgpmixer-newgen-motionconfig.xml" />
+              <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/mgpmixer-newgen/config/mgpmixer-newgen-parampool.xml" />
+              <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+              <CommandLineSwitch SwitchName="--RFIDReader-socket" Value="/opt/CSM_327.sock" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+          <ConnectedCSMs>
+            <ConnectedCSM FileName="rfidreader" StackSize_kbytes="128">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="327" ProviderSocket="/opt/CSM_327.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_MGPMixer_RHC_RFIDReader" />
+                  <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--enableParserLog" Value="1" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+          </ConnectedCSMs>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="reagent-pipettortransfer-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="315" ProviderSocket="/opt/CSM_315.sock">
+              <CSMDefinition CSMName="Pipettor_1-id" ConnectedModuleID="316" ConnectToSocket="/opt/CSM_316.sock" />
+              <CSMDefinition CSMName="Pipettor_2-id" ConnectedModuleID="317" ConnectToSocket="/opt/CSM_317.sock" />
+              <CSMDefinition CSMName="Pipettor_3-id" ConnectedModuleID="318" ConnectToSocket="/opt/CSM_318.sock" />
+              <CSMDefinition CSMName="Pipettor_4-id" ConnectedModuleID="319" ConnectToSocket="/opt/CSM_319.sock" />
+              <CSMDefinition CSMName="Transfer-id" ConnectedModuleID="324" ConnectToSocket="/opt/CSM_324.sock" />
+              <CSMDefinition CSMName="UltrasonicSensor-id" ConnectedModuleID="325" ConnectToSocket="/opt/CSM_325.sock" />
+              <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+              <CommandLineSwitch SwitchName="--Pipettor_1-socket" Value="/opt/CSM_316.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_2-socket" Value="/opt/CSM_317.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_3-socket" Value="/opt/CSM_318.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_4-socket" Value="/opt/CSM_319.sock" />
+              <CommandLineSwitch SwitchName="--Transfer-socket" Value="/opt/CSM_324.sock" />
+              <CommandLineSwitch SwitchName="--UltrasonicSensor-socket" Value="/opt/CSM_325.sock" />
+              <CommandLineSwitch SwitchName="--pathPositioningXMLFile" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+              <CommandLineSwitch SwitchName="--pathConfigParamXMLFile" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-parampool.xml" />
+              <CommandLineSwitch SwitchName="--pathHeadInfoXMLFile" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-headinfo.xml" />
+              <CommandLineSwitch SwitchName="--pathPipParamMappingFile" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipparammapping.txt" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+          <ConnectedCSMs>
+            <ConnectedCSM FileName="transfer-xyz-gripper">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="324" ProviderSocket="/opt/CSM_324.sock">
+                  <CDIDefinition SwitchName="MotorY-cdi" DeviceName="PCA_FluidSystem_MC_MotorY" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-transfer-parampool.xml" />
+                  <CommandLineSwitch SwitchName="--Positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--MotionConfig" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-transfer-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--ReferencePointOffset" Value="${ICSHAREPATH}/teaching-data/reagent-pipettortransfer-reference-point-offset.xml" />
+                  <CommandLineSwitch SwitchName="--HeadInfo" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-transfer-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--CycleTime" Value="0" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="transfer-xyz-gripper-324" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="316">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_Pipettor1_2_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_Pipettor1_2_MC_pump1" />
+                  <CDIDefinition SwitchName="pump2-cdi" DeviceName="PCA_Pipettor1_2_MC_pump2" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_Pipettor1_2_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_Pipettor1_2_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/reagent-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--MotionMonitoringDataPath" Value="${ICSHAREPATH}/sensor-data/reagent-pipettor1-316/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="12" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="0" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_316.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-316" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="317">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_Pipettor3_4_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_Pipettor3_4_MC_pump1" />
+                  <CDIDefinition SwitchName="pump2-cdi" DeviceName="PCA_Pipettor3_4_MC_pump2" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_Pipettor3_4_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_Pipettor3_4_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/reagent-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--MotionMonitoringDataPath" Value="${ICSHAREPATH}/sensor-data/reagent-pipettor2-317/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="12" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="1" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_317.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-317" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="318">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_Pipettor5_6_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_Pipettor5_6_MC_pump1" />
+                  <CDIDefinition SwitchName="pump2-cdi" DeviceName="PCA_Pipettor5_6_MC_pump2" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_Pipettor5_6_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_Pipettor5_6_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/reagent-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--MotionMonitoringDataPath" Value="${ICSHAREPATH}/sensor-data/reagent-pipettor3-318/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="12" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="2" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_318.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-318" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="319">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_Pipettor7_8_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_Pipettor7_8_MC_pump1" />
+                  <CDIDefinition SwitchName="pump2-cdi" DeviceName="PCA_Pipettor7_8_MC_pump2" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_Pipettor7_8_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_Pipettor7_8_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/reagent-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--MotionMonitoringDataPath" Value="${ICSHAREPATH}/sensor-data/reagent-pipettor4-319/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="12" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="3" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_319.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-319" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="325">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_SensorModul_MC_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_SensorModul_MC_pump_dummy" />
+                  <CDIDefinition SwitchName="pump2-cdi" DeviceName="PCA_SensorModul_MC_pump2_dummy" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_SensorModul_STM32_Device0" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_SensorModul_MC_clld" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-sensormodule-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/reagent-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--MotionMonitoringDataPath" Value="${ICSHAREPATH}/sensor-data/reagent-ultrasound-sensor-325/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/reagent-pipettortransfer-newgen/config/reagent-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="12" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="8" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_325.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-325" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+          </ConnectedCSMs>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="process-pipettortransfer-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="309" ProviderSocket="/opt/CSM_309.sock">
+              <CSMDefinition CSMName="Pipettor_1-id" ConnectedModuleID="310" ConnectToSocket="/opt/CSM_310.sock" />
+              <CSMDefinition CSMName="Pipettor_2-id" ConnectedModuleID="311" ConnectToSocket="/opt/CSM_311.sock" />
+              <CSMDefinition CSMName="Transfer-id" ConnectedModuleID="312" ConnectToSocket="/opt/CSM_312.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_1-socket" Value="/opt/CSM_310.sock" />
+              <CommandLineSwitch SwitchName="--Pipettor_2-socket" Value="/opt/CSM_311.sock" />
+              <CommandLineSwitch SwitchName="--Transfer-socket" Value="/opt/CSM_312.sock" />
+              <CommandLineSwitch SwitchName="--pathPositioningXMLFile" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+              <CommandLineSwitch SwitchName="--pathConfigParamXMLFile" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-parampool.xml" />
+              <CommandLineSwitch SwitchName="--pathHeadInfoXMLFile" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-headinfo.xml" />
+              <CommandLineSwitch SwitchName="--InstrumentType" Value="NewGen1000" />
+              <CommandLineSwitch SwitchName="--cycleTime" Value="100" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+          <ConnectedCSMs>
+            <ConnectedCSM FileName="transfer-xyz-gripper">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="312" ProviderSocket="/opt/CSM_312.sock">
+                  <CDIDefinition SwitchName="MotorX-cdi" DeviceName="PCA_ProcessHeadFront_MC1_TransP_XMotor" />
+                  <CDIDefinition SwitchName="MotorY-cdi" DeviceName="PCA_ProcessTransfer_MotorY" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-transfer-parampool.xml" />
+                  <CommandLineSwitch SwitchName="--MotionConfig" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-transfer-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--ReferencePointOffset" Value="${ICSHAREPATH}/teaching-data/process-pipettortransfer-reference-point-offset.xml" />
+                  <CommandLineSwitch SwitchName="--HeadInfo" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-transfer-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--Positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--CycleTime" Value="10" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="transfer-xyz-gripper-312" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="310">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_ProcessHeadFront_MC1_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_ProcessHeadFront_MC2_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="PCA_ProcessHeadFront_MC2_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_ProcessHeadFront_STM32_pipettingboard" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_ProcessHeadFront_MC2_clld2" />
+                  <CDIDefinition SwitchName="clldDummy-cdi" DeviceName="PCA_ProcessHeadFront_MC1_cllddummy" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/process-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="2" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="0" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_310.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-310" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="pipettor-newgen">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" Verbose="false" CPUAffinity="-1" TraceLevel="4" />
+                <CSMSpecific ModuleID="311">
+                  <CDIDefinition SwitchName="zaxis-cdi" DeviceName="PCA_ProcessHeadBack_MC1_zaxis" />
+                  <CDIDefinition SwitchName="pump-cdi" DeviceName="PCA_ProcessHeadBack_MC2_pump" />
+                  <CDIDefinition SwitchName="squeeze-cdi" DeviceName="PCA_ProcessHeadBack_MC2_squeeze" />
+                  <CDIDefinition SwitchName="pipettingboard-cdi" DeviceName="PCA_ProcessHeadBack_STM32_pipettingboard" />
+                  <CDIDefinition SwitchName="clld-cdi" DeviceName="PCA_ProcessHeadBack_MC2_clld2" />
+                  <CDIDefinition SwitchName="clldDummy-cdi" DeviceName="PCA_ProcessHeadBack_MC1_cllddummy" />
+                  <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+                  <CommandLineSwitch SwitchName="--motion-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-motionconfig.xml" />
+                  <CommandLineSwitch SwitchName="--head-info" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-headinfo.xml" />
+                  <CommandLineSwitch SwitchName="--module-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-moduleconfig.xml" />
+                  <CommandLineSwitch SwitchName="--pipettingboard-config" Value="${UNITCONFIGPATH}/process-pipettortransfer-newgen/config/process-pipettortransfer-pipettor-pipettingboardconfig.xml" />
+                  <CommandLineSwitch SwitchName="--positioning" Value="${UNITCONFIGPATH}/NewGen_ProcessCell_Positioning.xml" />
+                  <CommandLineSwitch SwitchName="--pip-params" Value="${ICSHAREPATH}/pipetting-parameter-sets/process-transfer-a/" />
+                  <CommandLineSwitch SwitchName="--shift-path" Value="${ICSHAREPATH}/teaching-data/" />
+                  <CommandLineSwitch SwitchName="--datacapturing-path" Value="${ICSHAREPATH}/sensor-data" />
+                  <CommandLineSwitch SwitchName="--pipettortype" Value="2" />
+                  <CommandLineSwitch SwitchName="--clldchannel" Value="1" />
+                  <CommandLineSwitch SwitchName="--provider-socket" Value="/opt/CSM_311.sock" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="pipettor-newgen-311" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+          </ConnectedCSMs>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

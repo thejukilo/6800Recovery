@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu/libfsrverify.so.2.0.7
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libfsrverify
+/usr/share/doc/libfsrverify/changelog.gz
+/usr/share/doc/libfsrverify/copyright
+/lib/x86_64-linux-gnu/libfsrverify.so.2

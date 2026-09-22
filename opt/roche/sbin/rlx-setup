@@ -1,0 +1,58 @@
+#!/bin/sh
+
+bootid=""
+if [ -f /.rlx-bootid ]; then
+    bootid=`cat /.rlx-bootid`
+fi
+
+if [ -e /opt/roche/etc/project-version ]; then  # customer project
+    projectversion=`cat /opt/roche/etc/project-version`
+elif [ -e /opt/roche/etc/rlx-version ]; then  # rlxprj
+    projectversion=`cat /opt/roche/etc/rlx-version`
+elif [ -e /opt/roche/etc/rlx-project-release ]; then  # obsolete
+    projectversion=`cat /opt/roche/etc/rlx-project-release`
+fi
+
+# write first software history entry if needed
+if [ ! -f /opt/roche/var/log/rlx-software-history.log ]; then
+  timestamp=`date -R`
+  echo "$timestamp;$projectversion;;1;$bootid" > /opt/roche/var/log/rlx-software-history.log
+fi
+
+# fix timezone if needed
+valid_timezones=`timedatectl list-timezones`
+current_tz=`cat /etc/timezone`
+found=0
+for tz in $valid_timezones
+do
+    if [ "$current_tz" = "$tz" ]; then
+        found=1
+        break
+    fi
+done
+if [ $found -eq 0 ]; then
+    timedatectl --no-ask-password set-timezone "UTC"
+fi
+
+
+# write bootentry on first startup
+UPGRADE_STATUS="notrunning"
+if [ -f /rlx-upgrade ]; then
+    . /rlx-upgrade
+fi
+
+if [ ! -x /usr/bin/cloud-init ]; then
+    # snapshots are not supported in cloud-only images
+    if [ -d /sys/firmware/efi -a "$UPGRADE_STATUS" != "inprogress-rlx" ]; then
+        if mountpoint -q /boot/efi; then
+            projectname=`cut -d/ -f1 /opt/roche/etc/projectinfo`
+            if [ ! -f /boot/efi/EFI/rlx/${bootid}_${projectname}_$projectversion.efi ]; then
+                set -e
+                /opt/roche/sbin/rlx-create-efi-boot.sh clearbootentries
+                set +e
+            fi
+        fi
+    fi
+fi
+
+run-parts /opt/roche/lib/rlx-startup.d

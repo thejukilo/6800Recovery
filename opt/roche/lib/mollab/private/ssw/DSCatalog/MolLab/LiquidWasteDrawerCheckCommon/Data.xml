@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="210C3C573EC4E6ADFE1AB4EA8ECF9AAD44D21651A79B" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="LiquidWasteDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <!-- Internal Results -->
+        <data:Result Name="irCurrentContainerIndex" Type="Integer">
+          <data:Description>
+            <base:Title>Liquid Waste Container Loop Counter</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLedFunctionalityCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify LED functionality check (transition to off and then green).</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irVerifyDispenseCapsClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify the dispense cap being closed and locked.</base:Title>
+          </data:Description>
+        </data:Result>
+        <!-- Check-Wide Result -->
+        <data:Result Name="rLiquidWasteDrawerConfirmedOpen" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Overture Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirms that the drawer is opened.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSensorConfirmsDrawerBeingOpened" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Overture Validated By Sensor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensor confirms that the drawer is opened.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Liquid Waste 1 Container Results -->
+        <data:Result Name="rLiquidWaste1VerifyDispenseCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify Dispense Cap Closure For Liquid Waste 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of dispense cap's closure.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste1LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning off and then to green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste1SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste1SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste1SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste1SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 1 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Liquid Waste 2 Container Results -->
+        <data:Result Name="rLiquidWaste2VerifyDispenseCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify Dispense Cap Closure For Liquid Waste 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of dispense cap's closure.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste2LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning off and then to green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste2SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste2SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste2SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste2SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 2 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Liquid Waste 3 Container Results -->
+        <data:Result Name="rLiquidWaste3VerifyDispenseCapClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify Dispense Cap Closure For Liquid Waste 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of dispense cap's closure.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste3LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 3 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning off and then to Green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste3SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 3 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste3SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 3 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste3SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 3 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLiquidWaste3SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Liquid Waste 3 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Post Loop Results -->
+        <data:Result Name="rLiquidWasteDrawerClosedAndLocked" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Closure And Lock Detection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Drawer closure and lock detection at the end of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSensorCheckingLiquidWasteDrawerClosedAndLocked" Type="Boolean">
+          <data:Description>
+            <base:Title>Sensor Checking Drawer Closure And Lock</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sensor readback of drawer closure and lock.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

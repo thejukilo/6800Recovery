@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="49661E5780CC2AF43D1C61DE8D28F567ADD568B103D6" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="InstrumentTeachCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>The pipetting parameter set to be used</base:Title>
+          </data:Description>
+          <data:Value>8893befa-0be7-4846-95c5-8c2c7bf6b6f1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>170E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>525E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInnerWashVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+          <data:Value>104E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pOuterWashVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+          <data:Value>8E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irOpenDrawersFound" Type="String">
+          <data:Description>
+            <base:Title>Open Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open Drawers Found During Preliminary Checks.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irConsumableDrawerWasOpen" Type="Boolean">
+          <data:Description>
+            <base:Title>Consumable Drawers Open State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Consumable drawers must be closed for this check to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irIsTeachToolPresent" Type="Boolean">
+          <data:Description>
+            <base:Title>Teach Tool Present in Transfer Module</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reflects whether Teach-Tool was found to be present in the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irErrorEncountered" Type="Boolean">
+          <data:Description>
+            <base:Title>Error Encountered</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether an error was encountered during the execution of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irChosenWashReagentContainer">
+          <data:Description>
+            <base:Title>Chosen Wash Reagent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Chosen wash reagent container.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rRackHandlerTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Transfer Module Rack Handler Teaching Result</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if transfer module's rack handler was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentStorageTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Reagent Storage Teaching Result</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if transfer module's reagent storage was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInterimReagentStorageATeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Interim Reagent Storage (a) Teaching Result</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if processing module (A)'s interim reagent storage was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerCalibration" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Calibration Result</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler is successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingTransferHeadPreTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Processing Module (a) Processing Transfer Head Pre-Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if processing module (A)'s processing transfer head was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleHandlerATeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Processing Module (a) Handler Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if processing module (A)'s handler was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleReagentTransferHeadTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Processing Module (a) Reagent Transfer Head Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if processing module (A)'s reagent transfer head was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferModuleHandlerTaught" Type="Boolean">
+          <data:Description>
+            <base:Title>Transfer Module'S Handler Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if transfer module's handler was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnAmplificationPlateTransferPosition" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Amplification Plate Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler taught on amplification plate transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnReagentElevator" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Reagent Drawer Elevator</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler taught on reagent drawer elevator.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnProcessingModuleATransferPosition" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Processing Module (a) Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler taught on processing module (A)'s amplification plate handler transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateHandlerTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Amplification Plate Handler Taught</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if amplification plate handler taught successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnTransferModuleTransferPosition" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Transfer Module'S Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler was taught on transfer module's transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSampleTransferHeadTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Transfer Mdule'S Sample Transfer Head Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if transfer module's sample transfer head was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnProcessingModuleADrawerTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Processing Module (a)'S Drawer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler was taught on processing module (A)'s drawer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMainHandlerOnTransferModuleDrawerTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Main Handler Taught on Transfer Module'S Drawer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if main handler was taught on transfer module's drawer position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleAProcessingTransferHeadTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Processing Module (a)'S Processing Transfer Head Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Set to true if processing module (A)'s processing transfer head was successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetABmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset B</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor B (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetACmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset C</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor C (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rYOffsetADmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Teaching Offset D</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head teaching Y offset in millimeters for pipettor D (relative to pipettor A).</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rMaxYOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>STH Maximum Teaching Offset Value</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head maximum teaching Y offset in millimeters between any two piepettors.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMaxYOffsetPair" Type="String">
+          <data:Description>
+            <base:Title>STH Maximum Teaching Offset Pair</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample Transfer Head pipettor pair with maximum teaching Y offset.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rProcessingTransferHeadOffsetRefPipettor" Type="String">
+          <data:Description>
+            <base:Title>PTH Teaching Reference Pipettor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching reference pipettor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rProcessingTransferHeadXOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>PTH Teaching Offset Value in X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching offset value in the X-axis.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rProcessingTransferHeadYOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>PTH Teaching Offset Value in Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching offset value in the Y-axis.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

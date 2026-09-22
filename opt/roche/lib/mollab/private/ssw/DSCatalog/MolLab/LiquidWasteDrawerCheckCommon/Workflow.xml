@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="FBE5E50032FDA598AB721AA6A40CC237AB9C8F4B1583" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="LiquidWasteDrawerCheckCommon" ID="LiquidWasteDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashWasteDrawerAction" Type="Confirm" Result="rLiquidWasteDrawerConfirmedOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Opening Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash/waste drawer is being pusehd out. Please confirm that the drawer is pushed out successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyDrawerOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Drawer Overture</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the drawer has been opened by reading the sensor state...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashWasteDrawerInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Wash/Waste Drawer Completely</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please completely open the wash/waste drawer of the processing module and then completely pull the liquid waste drawer out. Press 'Next' once done.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLiquidWasteContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Liquid Waste Reagent Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking liquid waste reagent containers..</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadEmptyLiquidWasteContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Empty Liquid Waste Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load three empty liquid waste containers and close the liquid waste dispense caps...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Looped for three containers -->
+      <ds:Step Name="VerifyWasteContainerDispenseCapsClosed" Type="Confirm" Result="irVerifyDispenseCapsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Liquid Waste Dispense Caps Closed And Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the dispense cap for liquid waste container [R.irCurrentContainerIndex] is closed and locked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfImminentLedFunctionalityCheck" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check Imminent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for liquid waste container [R.irCurrentContainerIndex] will be set to 'Off' for three seconds and set to 'Green' once 'Next' is pressed. Please be ready to observe...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for liquid waste container [R.irCurrentContainerIndex] is being set to 'Off' for three seconds and then set to 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmFunctionalityOfLiquidWasteContainerLed" Type="Confirm" Result="irLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm User Of The LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the LED for liquid waste container was [R.irCurrentContainerIndex] was set to off for three seconds and then set to 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockDispenseCapToRemoveContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Liquid Waste Container Cap</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking liquid waste container cap...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitContainerRemoval">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The dispense cap for liquid waste container was [R.irCurrentContainerIndex] has been unlocked. Please:</base:Paragraph>
+              <base:Paragraph>1 - Remove liquid waste container [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>2 - Close and lock the liquid waste [R.irCurrentContainerIndex] dispense cap</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLiquidWasteContainersToInsertFullContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Liquid Waste Container Cap</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking liquid waste container cap...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitFullWasteContainerInsertion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load A Full Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a full container in liquid waste container position [R.irCurrentContainerIndex] and close the liquid waste dispense cap.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLiquidWasteContainersToReplaceContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Liquid Waste Container Cap</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking liquid waste container cap...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitLiquidWasteContainerReplacement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The dispense cap for liquid waste container was [R.irCurrentContainerIndex] has been unlocked. Please:</base:Paragraph>
+              <base:Paragraph>1 - Remove the current liquid waste container [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>2 - Place an empty container in liquid waste container position [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>3 - Close and lock the liquid waste dispense cap on liquid waste container position [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- If the user forgets to remove AD Plate then repeat the step -->
+          <workflow:Decision Result="irCurrentContainerIndex" NextStep="VerifyWasteContainerDispenseCapsClosed">
+            <workflow:Condition Operator="LE" Value="3" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- End of loop for the three containers -->
+      <ds:Step Name="CloseWashWasteDrawerAction" Type="Confirm" Result="rLiquidWasteDrawerClosedAndLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please push-in the liquid waste drawer and close the wash/waste drawer and then confirm that it has been closed and locked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyWashWasteDrawerClosure">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking To Ensure Wash/Waste Drawer Is Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking sensors to detect whether closure was successfully detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

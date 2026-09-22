@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="94E399846CAA5986BC01E6A82587F7653C07972BDB35" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ProcessingTransferHeadTipGrippingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Id of the involved process Cell</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rCheckTips1">
+          <data:Description>
+            <base:Title>Tipgripping and Handling Works (Head 1).</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>TipGripping and Handling works.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTipGripHead1">
+          <data:Description>
+            <base:Title>Tip-Gripping Head 1 Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tip-Gripping Head 1 Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTipReleaseHead1">
+          <data:Description>
+            <base:Title>Tip-Release Head 1 Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tip-Release Head 1 Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rCheckTips2">
+          <data:Description>
+            <base:Title>Tipgripping and Handling Works (Head 2).</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>TipGripping and Handling works.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTipGripHead2">
+          <data:Description>
+            <base:Title>Tip-Gripping Head 2 Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tip-Gripping Head 2 Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTipReleaseHead2">
+          <data:Description>
+            <base:Title>Tip-Release Head 2 Is Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tip-Release Head 2 Is Working</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTipsVerified">
+          <data:Description>
+            <base:Title>All the Processing Tips Are Picked Up Properly</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The user confirmed that all the processing tips are picked up properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

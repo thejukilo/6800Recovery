@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <!-- Unit BulkManagement A -->
+    <ConnectedCSM FileName="newgen-bulkmanagement">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="350" ProviderSocket="/opt/CSM_350.sock">
+          <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+          <CSMDefinition ConnectedModuleID="328" CSMName="FluidSystem-id" ConnectToSocket="/opt/CSM_328.sock" />
+          <CSMDefinition ConnectedModuleID="329" CSMName="BulkWashWasteDrawer-id" ConnectToSocket="/opt/CSM_329.sock" />
+          <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+          <CommandLineSwitch SwitchName="--ParameterPool" Value="${UNITCONFIGPATH}/settings/config/newgen-bulkmanagement-parampool.xml" />
+          <CommandLineSwitch SwitchName="--ComponentId" Value="A" />
+          <CommandLineSwitch SwitchName="--FluidSystem-socket" Value="/opt/CSM_328.sock" />
+          <CommandLineSwitch SwitchName="--BulkWashWasteDrawer-socket" Value="/opt/CSM_329.sock" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.bulkmanagement.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.bulkmanagement.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.bulkmanagement.a.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.bulkmanagement.a.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="fluidsystem-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="328" ProviderSocket="/opt/CSM_328.sock">
+              <CDIDefinition SwitchName="downholder_1CDI" DeviceName="PCA_FluidSystem_MC_downholder_1CDI" />
+              <CDIDefinition SwitchName="downholder_2CDI" DeviceName="PCA_FluidSystem_MC_downholder_2CDI" />
+              <CDIDefinition SwitchName="liquidsystemstmcontrollerCDI" DeviceName="PCA_FluidSystem_STM32_liquidsystemstmcontroller" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/fluidsystem-newgen/config/fluidsystem-newgen-motionconfig.xml" />
+              <CommandLineSwitch SwitchName="--pathConfigParamXMLFile" Value="${UNITCONFIGPATH}/fluidsystem-newgen/config/fluidsystem-newgen-parampool.xml" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+        <ConnectedCSM FileName="bulkwashwastedrawer-newgen">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="329" ProviderSocket="/opt/CSM_329.sock">
+              <CDIDefinition SwitchName="RHCWashWasteDrawer-cdi" DeviceName="PCA_WashWasteDrawer_RHC_RHCWashWasteDrawer" />
+              <CDIDefinition SwitchName="SMS1WashWasteDrawer-cdi" DeviceName="PCA_WashWasteDrawer_SMS1_SMS1WashWasteDrawer" />
+              <CDIDefinition SwitchName="SMS2WashWasteDrawer-cdi" DeviceName="PCA_WashWasteDrawer_SMS2_SMS2WashWasteDrawer" />
+              <CDIDefinition SwitchName="RHCBulkDrawer-cdi" DeviceName="PCA_BulkDrawer_RHC_RHCBulkDrawer" />
+              <CDIDefinition SwitchName="SMS1BulkDrawer-cdi" DeviceName="PCA_BulkDrawer_SMS1_SMS1BulkDrawer" />
+              <CDIDefinition SwitchName="SMS2BulkDrawer-cdi" DeviceName="PCA_BulkDrawer_SMS2_SMS2BulkDrawer" />
+              <CSMDefinition ConnectedModuleID="330" CSMName="RFIDReaderWashBuffer1-id" ConnectToSocket="/opt/CSM_330.sock" />
+              <CSMDefinition ConnectedModuleID="331" CSMName="RFIDReaderWashBuffer2-id" ConnectToSocket="/opt/CSM_331.sock" />
+              <CSMDefinition ConnectedModuleID="336" CSMName="RFIDReaderWashBuffer3-id" ConnectToSocket="/opt/CSM_336.sock" />
+              <CSMDefinition ConnectedModuleID="337" CSMName="RFIDReaderDiluent1-id" ConnectToSocket="/opt/CSM_337.sock" />
+              <CSMDefinition ConnectedModuleID="338" CSMName="RFIDReaderDiluent2-id" ConnectToSocket="/opt/CSM_338.sock" />
+              <CSMDefinition ConnectedModuleID="339" CSMName="RFIDReaderLysis1-id" ConnectToSocket="/opt/CSM_339.sock" />
+              <CSMDefinition ConnectedModuleID="340" CSMName="RFIDReaderLysis2-id" ConnectToSocket="/opt/CSM_340.sock" />
+              <CSMDefinition ConnectedModuleID="998" CSMName="MAM_HDI-id" />
+              <XMLConfigurationFile SwitchName="--parameter_pool_configuration_path" XMLFileName="${UNITCONFIGPATH}/bulkwashwastedrawer-newgen/config/bulkwashwastedrawer_parampool.xml" />
+              <XMLConfigurationFile SwitchName="--rfid_label_definition_path" XMLFileName="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+              <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/bulkwashwastedrawer-newgen/config/bulkwashwastedrawer-sms-config.xml" />
+              <XMLConfigurationFile SwitchName="--RHCConfig" XMLFileName="${UNITCONFIGPATH}/bulkwashwastedrawer-newgen/config/bulkwashwastedrawer-rhc-config.xml"/>
+              <CommandLineSwitch SwitchName="--RFIDReaderWashBuffer1-socket" Value="/opt/CSM_330.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderWashBuffer2-socket" Value="/opt/CSM_331.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderWashBuffer3-socket" Value="/opt/CSM_336.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderDiluent1-socket" Value="/opt/CSM_337.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderDiluent2-socket" Value="/opt/CSM_338.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderLysis1-socket" Value="/opt/CSM_339.sock" />
+              <CommandLineSwitch SwitchName="--RFIDReaderLysis2-socket" Value="/opt/CSM_340.sock" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+          <ConnectedCSMs>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="330" ProviderSocket="/opt/CSM_330.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB1" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-330" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="331" ProviderSocket="/opt/CSM_331.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB2" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-331" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="336" ProviderSocket="/opt/CSM_336.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB3" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-336" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="337" ProviderSocket="/opt/CSM_337.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderD1" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-337" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="338" ProviderSocket="/opt/CSM_338.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderD2" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-338" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="339" ProviderSocket="/opt/CSM_339.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderL1" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-339" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+            <ConnectedCSM FileName="rfidreader">
+              <CSMConfigureParameters>
+                <System RealtimePriority="47" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+                <CSMSpecific ModuleID="340" ProviderSocket="/opt/CSM_340.sock">
+                  <CDIDefinition SwitchName="RFIDReader-cdi" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderL2" />
+                  <CommandLineSwitch SwitchName="--rfid_label_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/DataConcept.xml" />
+                  <CommandLineSwitch SwitchName="--security_definition_path" Value="${UNITCONFIGPATH}/rfid-x800-var/SecurityDefinitions.sec" />
+                  <CommandLineSwitch SwitchName="--key_library_path" Value="${UNITCONFIGPATH}/rfid-x800-var/KeyLibrary.sec" />
+                  <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+                  <CommandLineSwitch SwitchName="--port_mode" Value="1" />
+                  <CommandLineSwitch SwitchName="--entity-process-name" Value="rfidreader-340" />
+                </CSMSpecific>
+              </CSMConfigureParameters>
+            </ConnectedCSM>
+          </ConnectedCSMs>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

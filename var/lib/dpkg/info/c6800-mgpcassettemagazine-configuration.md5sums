@@ -1,0 +1,6 @@
+508bee9d1379b5f3052c34b96487d06f  opt/roche/etc/mollab/private/mgp-cassette-magazine/h/config/mgpcassettemagazine-motionconfig.xml
+0aaaff3b50497e60056e53f89f30ab9f  opt/roche/etc/mollab/private/mgp-cassette-magazine/h/config/mgpcassettemagazine-parampool.xml
+e986d7907d2e71a9005d313ccc285a17  opt/roche/etc/mollab/private/mgp-cassette-magazine/h/startup/ecc.xml
+abab575ee27ab3a6598e6a1c40edcbb8  opt/roche/etc/mollab/private/mgp-cassette-magazine/h/startup/ecs_MgpCassetteMagazine_H.xml
+8af7d80da8ebca9f1847ffa65e75594e  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/mgpcassettemagazine-newgen-212-mam-config.xml
+de1fde5bf88e9de995de7f5ee00185ce  opt/roche/etc/mollab/private/rabbitmq/definitions/mgpcassettemagazine_h_definition.json

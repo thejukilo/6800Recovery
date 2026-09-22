@@ -1,0 +1,1 @@
+log prefix "rlx-firewall OUTPUT:DROP " level info

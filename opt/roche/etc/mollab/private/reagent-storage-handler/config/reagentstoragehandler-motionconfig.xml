@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Markus Meier (Roche Diagnostics AG) -->
+<MotionConfig xsi:noNamespaceSchemaLocation="motionconfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Motor MotorName="DrawerMotor" HomePosition="0.000">
+    <Device>
+      <MotorType>DC</MotorType>
+      <UnitBase>486</UnitBase>
+      <PositionDirection>Forward</PositionDirection>
+      <SampleRate>2500Hz</SampleRate>
+      <EmergencyStop>Off</EmergencyStop>
+    </Device>
+    <TrajectoryPlanner DefaultTrajectoryPlannerSetId="0">
+      <TrajectoryPlannerSet Id="0">
+        <VelocityLimit>0.18</VelocityLimit>
+        <AccelerationLimit>0.6</AccelerationLimit>
+        <DecelerationLimit>0.6</DecelerationLimit>
+        <LowerPositionLimit>-0.1</LowerPositionLimit>
+        <UpperPositionLimit>0.25</UpperPositionLimit>
+        <JerkLimit>20000</JerkLimit>
+      </TrajectoryPlannerSet>
+      <DynamicSet>
+        <DynamicSetIndex>0</DynamicSetIndex>
+        <DesiredVelocity>0.03</DesiredVelocity>
+        <DesiredAcceleration>0.5</DesiredAcceleration>
+      </DynamicSet>
+      <DynamicSet>
+        <DynamicSetIndex>1</DynamicSetIndex>
+        <DesiredVelocity>0.15</DesiredVelocity>
+        <DesiredAcceleration>0.5</DesiredAcceleration>
+      </DynamicSet>
+    </TrajectoryPlanner>
+    <PositionController Id="0">
+      <PValue>8</PValue>
+      <DValue>0.015</DValue>
+      <IValue>40</IValue>
+      <ISaturation>1</ISaturation>
+      <CurrentLimit>0.3</CurrentLimit>
+      <ControlDeviationLimit>0.002</ControlDeviationLimit>
+      <ControlStructure>ClosedLoop</ControlStructure>
+      <ControllerType>Position</ControllerType>
+      <FeedbackSign>Negative</FeedbackSign>
+    </PositionController>
+    <CurrentController>
+      <PValue>500</PValue>
+      <IValue>2000000</IValue>
+      <ISaturation>1111</ISaturation>
+      <ControlDeviationLimit>1</ControlDeviationLimit>
+    </CurrentController>
+    <Encoder>
+      <EncoderType>IncrementPosition</EncoderType>
+      <NumberOfLines>128</NumberOfLines>
+    </Encoder>
+    <SingleBitInput PortName="Init_DCMY_R_Drawer">
+      <TypeOfInput>Fast</TypeOfInput>
+      <PhysicalInputNumber>10</PhysicalInputNumber>
+      <SignalInverting>NotInverted</SignalInverting>
+      <ActiveEdge>Rising</ActiveEdge>
+    </SingleBitInput>
+    <SingleBitInput PortName="CasPresent_R_Drawer">
+      <TypeOfInput>Slow</TypeOfInput>
+      <PhysicalInputNumber>2</PhysicalInputNumber>
+      <SignalInverting>NotInverted</SignalInverting>
+      <ActiveEdge>Rising</ActiveEdge>
+    </SingleBitInput>
+    <SingleBitInput PortName="CassettePresenceRising">
+      <TypeOfInput>Slow</TypeOfInput>
+      <PhysicalInputNumber>2</PhysicalInputNumber>
+      <SignalInverting>NotInverted</SignalInverting>
+      <ActiveEdge>Rising</ActiveEdge>
+      <!--DebouncingEdge>Both</DebouncingEdge>
+      <DebouncingTime>0.1</DebouncingTime>
+      <SuspendTime>0.0</SuspendTime-->
+    </SingleBitInput>
+    <SingleBitInput PortName="CassettePresenceFalling">
+      <TypeOfInput>Slow</TypeOfInput>
+      <PhysicalInputNumber>2</PhysicalInputNumber>
+      <SignalInverting>NotInverted</SignalInverting>
+      <ActiveEdge>Falling</ActiveEdge>
+      <!--DebouncingEdge>Both</DebouncingEdge>
+      <DebouncingTime>0.1</DebouncingTime>
+      <SuspendTime>0.0</SuspendTime-->
+    </SingleBitInput>
+    <MotorConfigDC>
+      <MotorConstant>0.0254</MotorConstant>
+      <TerminalResistance>78.8</TerminalResistance>
+      <TerminalInductance>0.00387</TerminalInductance>
+      <ThermalLimit>125</ThermalLimit>
+      <ThermalResistanceWindingToHousing>10.5</ThermalResistanceWindingToHousing>
+      <ThermalTimeConstantWinding>11</ThermalTimeConstantWinding>
+      <ThermalResistanceHousingToAmbient>21.3</ThermalResistanceHousingToAmbient>
+      <ThermalTimeConstantHousing>362</ThermalTimeConstantHousing>
+    </MotorConfigDC>
+    <Plant>
+      <MassInertia>0</MassInertia>
+      <GravitationalTorque>0</GravitationalTorque>
+      <VelocityDependantFriction>0</VelocityDependantFriction>
+      <VelocityIndependentFrictionTorque>0</VelocityIndependentFrictionTorque>
+      <HBridgeDriverVoltage>24</HBridgeDriverVoltage>
+    </Plant>
+    <Init>
+      <InitDynamicSetIndexSlow>0</InitDynamicSetIndexSlow>
+      <InitDynamicSetIndexNormal>0</InitDynamicSetIndexNormal>
+      <AdditionalMoveDynamicSetIndex>1</AdditionalMoveDynamicSetIndex>
+      <InitSubConfig InitID="0">
+        <InitType>Sensor</InitType>
+        <InitDirection>Backward</InitDirection>
+        <InitPos>0.0</InitPos>
+        <InitState>Initialized</InitState>
+        <RelatedPortName>Init_DCMY_R_Drawer</RelatedPortName>
+      </InitSubConfig>
+    </Init>
+  </Motor>
+  <InitFlow FlowID="0">
+    <SequenceConfigID>1</SequenceConfigID>
+  </InitFlow>
+  <InitSequence SequenceID="1">
+    <InitPattern RelatedMotorName="DrawerMotor">
+      <InitStep>
+        <InitSingleStep>
+          <InitID>0</InitID>
+        </InitSingleStep>
+      </InitStep>
+      <SequenceConfigID>2</SequenceConfigID>
+    </InitPattern>
+  </InitSequence>
+  <InitSequence SequenceID="2">
+    <InitPattern RelatedMotorName="DrawerMotor">
+      <MoveAxis>
+        <DynamicSetIndex>0</DynamicSetIndex>
+        <MoveConfig>
+          <MoveHome />
+        </MoveConfig>
+      </MoveAxis>
+    </InitPattern>
+  </InitSequence>
+</MotionConfig>

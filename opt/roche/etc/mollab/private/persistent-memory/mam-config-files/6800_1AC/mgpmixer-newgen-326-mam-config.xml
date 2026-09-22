@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+         xmlns:util="http://www.roche.com/util" 
+         xsi:schemaLocation="MAM_ProjectConfig_1.00.03.xsd">
+		<csmConfig>
+			<csm name="CSM_MGPMixer" seid="144" moduleId="326">
+			<parPool type="uint8" structure="array" noElements="100" id="9" 
+		   	name="ConfigData_1"
+            defaultValue="0"
+            minValue="0"
+            maxValue="255">
+      		<persistDef memoryId="3620" periodInSec="-1"/>
+   			</parPool>
+   			<parPool type="uint8" structure="array" noElements="100" id="10" 
+   			name="ConfigData_2"
+            defaultValue="0"
+            minValue="0"
+            maxValue="255">
+      		<persistDef memoryId="3620" periodInSec="-1"/>
+   			</parPool>
+   			<parPool type="uint16" structure="scalar" id="11"
+            name="OpCountNumberOfInitializationsMotor1"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint16" structure="scalar" id="12"
+            name="OpCountNumberOfInitializationsMotor2"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint16" structure="scalar" id="13"
+            name="OpCountNumberOfInitializationsMotor3"
+            defaultValue="0"
+            minValue="0"
+            maxValue="65535">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint32" structure="scalar" id="14" name="OpCountNumberOfMovementsMotor1"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint32" structure="scalar" id="15" name="OpCountNumberOfMovementsMotor2"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint32" structure="scalar" id="16" name="OpCountNumberOfMovementsMotor3"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint32" structure="scalar" id="17" name="OpCountDurationOfOperation"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+   			<parPool type="uint32" structure="scalar" id="19" name="NumberOfRuns"
+            defaultValue="0"
+            minValue="0"
+            maxValue="4294967295">
+      		<persistDef memoryId="2117" periodInSec="14400"/>
+   			</parPool>
+			</csm>
+  </csmConfig>
+</dia:mam>

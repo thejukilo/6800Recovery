@@ -1,0 +1,709 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.runresourcemanagement.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AssembledRunsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.RunScheduleChanged",
+      "arguments": {}
+    },
+	  {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.TestDefinitionDataUpdated",
+      "arguments": {}
+    },
+	  {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.ProcessingPlateMagazineInventoryChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.TipRackMagazineInventoryChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.BulkContainerPositionContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.BulkContainerPositionContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.LysisContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.LysisContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.LysisContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.LysisContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.DiluentContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.DiluentContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.DiluentContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.DiluentContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.MgpCassetteInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.MgpCassetteInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.WashReagentContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.WashReagentContainerValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.WashReagentContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.WashReagentContainerInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.WashReagentReservoirValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.WashReagentReservoirValidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.WashReagentReservoirInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.WashReagentReservoirInvalidated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.PrimingStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.PrimingStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.PrimingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.PrimingFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.MgpCassetteRfidRead",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.MgpCassetteRfidRead",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStartInitiated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStartAborted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunAborted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderAccepted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderDiscarded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderProcessingStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderRevoked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.DiluentContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.DiluentContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LysisContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.LysisContainerSelected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.AmplificationPlateMagazineInventoryChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.MgpCassetteMagazineInventoryChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.CarrierTransferStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.CarrierTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.WorkflowManagementOperationalStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunResourceManagement.GenericResourceEndOfUseReached",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.LiquidWasteContainerContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.LiquidWasteContainerContentUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.A.SolidWasteFillLevelChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SolidWasteStation.B.SolidWasteFillLevelChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.A.WashReagentReservoirStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.BulkManagement.B.WashReagentReservoirStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.A.BulkReagentTubesIdle",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModule.B.BulkReagentTubesIdle",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateDrawer.DrawerFillLevelChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerA.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ConsumablesDrawerB.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DrawerLock.ReagentCassetteDrawer.DrawerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.A.MgpCassetteRfidUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.ProcessingModuleControl.B.MgpCassetteRfidUpdated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunResourceManagement.ResourceReallocationRequired",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.AmplificationPlateTransferStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.AmplificationPlateTransferFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.AmplificationPlateTransferFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.UnloadingAmplificationPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.UnloadingAmplificationPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.UnloadingAmplificationPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.UnloadingAmplificationPlateStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.I.UnloadingAmplificationPlateFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.J.UnloadingAmplificationPlateFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.N.UnloadingAmplificationPlateFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.runresourcemanagement.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateMagazine.O.UnloadingAmplificationPlateFailed",
+      "arguments": {}
+    }
+  ]
+}

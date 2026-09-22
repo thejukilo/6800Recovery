@@ -1,0 +1,9 @@
+{
+  "appID": "UI-Jaeger",
+  "appOrder": 70,
+  "appLabel": "12.FHO.AppLibrary.UI.Jaeger",
+  "entryPoint": "http://localhost:16686/jaeger",
+  "roles": ["X800.RSR"],
+  "iconPath": "https://localhost:5001/ui.jaeger/jaeger.svg",
+  "isDmApp": false
+}

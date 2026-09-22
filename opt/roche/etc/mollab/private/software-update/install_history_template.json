@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "<PACKAGE_ID>",
+    "DisplayName": "System Software version <PACKAGE_VERSION>",
+	  "ReleaseNotesFilename": null,
+    "PackageType": "SystemUpdate",
+    "OnDate": "<INSTALLATION_DATE>",
+    "ByUser": "RSR"
+  }
+]

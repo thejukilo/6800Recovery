@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+	<ParameterPoolEntry ID="1" Type="uint8"  Value="12"   Array="false" Name="CapacityPosition1"/>
+	<ParameterPoolEntry ID="2" Type="uint8"  Value="12"   Array="false" Name="CapacityPosition2"/>
+	<ParameterPoolEntry ID="4" Type="uint16" Value="5"    Array="false" Name="SolenoidTimeout"/>
+	<ParameterPoolEntry ID="6" Type="uint16" Value="4"    Array="false" Name="EjectorTimeout"/>
+</ModuleConfiguration>

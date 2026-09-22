@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by ﻿PC User (Roche Diagnostics AG) -->
+<PositionSpecification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" className="NewGenMainHandler_Pilot_1_0" description="Stacker Handler" instrument="NewGen_MainHandler_Pilot_1.0" xsi:noNamespaceSchemaLocation="lib_00000129_GenericPositioning_PositionSchema_0.02.00.xsd">
+  <DocumentInfo state="Draft" version="001">
+    <Creation>
+      <Creator role="Author" department="FCA Handling" name="VTR"/>
+    </Creation>
+    <Approval>
+      <Approver role="Co-Author" department="FCA Handling" name="TOZ"/>
+    </Approval>
+    <Changes>
+      <Change date="2011-04-05" reason="Change of Bottom Position of MMX1, MMX2, EB, IC_QS, Pase to match Reagent Cassette V04 " name="" version="Pilot1.0_01"/>
+      <Change date="2011-04-06" reason="Adjustment of ControlTube to match RMC Cassette V04" name="" version="Pilot1.0_02"/>
+      <Change date="2011-04-11" reason="Change of Subposition RMCRack of ReagentElevator from -0.036 to -0.041 and of RefPoint_ReagentElevator from 0.000 to -0.005" name="" version="Pilot1.0_03"/>
+      <Change date="2011-04-12" reason="Adjustment of Pick Positions of all resources to match new Grippersheets (6408664001)" name="" version="Pilot1.0_04"/>
+      <Change date="2011-06-15" reason="Adjustment of z-Positions of Control Tube to match Sample cell Positioning" name="" version="Pilot1.0_05"/>
+      <Change date="2011-06-30" reason="Update to new Reagent Cassette V05, Reagent Cassette (ID4003) SubPosition Column 1: y-Shift -0.0509 --&gt; -0.0492, Column 2: y-Shift -0.0324 --&gt; -0.0307, Column 3: y-Shift -0.00104 --&gt; -0.00775, Column 4: y-Shift 0.0186 --&gt; 0.0187, Column 5: y-Shift 0.0476 --&gt; 0.0461, Gripping: z-Shift 0.058 --&gt; 0.0566, Reagent Vessels (7004, 7005, 7006, 7007, 7008, 7024, 7025, 7026, 7027, 7028): Adjustment of Top, Bottom, VelocityTransition, Travel, LDActivationShift and LookUpTable ReagentCassettePick (ID7017) Auxiliary Object 0.0075 --&gt; 0.0085" name="VTR" version="Pilot1.0_06"/>
+      <Change date="2011-07-07" reason="Update for Pilot, Gripping Positions lower for compensating tolerances, Gripping Close Distance higher to compensate change in MotionConfigs, bigger RefPoints (Retrofit):  ADPlate (ID4000) Subpos 13 Gripping zShift: 0.0097 --&gt; 0.0094, P-plate48 (ID4001) Subpos 7 Gripping: zShift: 0.0495 --&gt; 0.04815, Combo tip Rack (ID4002) Subpos 13 Gripping: zShift: 0.0973 --&gt; 0.0957 ReagentCassette (ID4003) Subpos 6 Gripping: zShift: 0.0566 --&gt; 0.0561 MGPCassette (ID4004) Subpos 2 Gripping: zShift: 0.05575 --&gt; 0.05475 ADFilmFrame(ID4005) Subpos 1 ADFilmFramePick: zShift: 0.0083 --&gt; 0.0078 TeachPressureTestTool (ID4008) Subpos 6 Gripping: zShift: 0.0971 --&gt; 0.0946 MGP-Container (ID7009) Topshift:0.06085-0.06115, BottomShift: 0.003 --&gt; 0.0035, TravelShift: 0.06085 --&gt; 0.06115 ComboTipRack_Pick (ID 7014), Auxiliary Object 25: 0.0078 --&gt; 0.00805 PPlate_Pick (ID 7016), Auxiliary Object 25: 0.009 --&gt; 0.00925 ReagentCassette_Pick (ID 7017), Auxiliary Object 25: 0.0085 --&gt; 0.00875 MGPCassette_Pick (ID 7018), Auxiliary Object 25: 0.0077 --&gt; 0.00795  " name="VTR" version="Pilot1.0_07"/>
+      <Change date="2011-07-08" reason="Undo changes of ADFilmFram_Pick (ID 7013), Auxiliary Object 25: 0.00775 --&gt; 0.0095 " name="VTR" version="Pilot1.0_08"/>
+      <Change date="2011-07-11" reason="Undo change of gripping position of Combo Tip Rack, MGP Cassette, P-plate, as chage is not possible for Stacker Handler, P-plate48 (ID4001) Subpos 7 Gripping: zShift: 0.04815 --&gt; 0.0495, Combo tip Rack (ID4002) Subpos 13 Gripping: zShift: 0.0957 --&gt; 0.0973  MGPCassette (ID4004) Subpos 2 Gripping: zShift: 0.05475 --&gt; 0.05575 " name="VTR" version="Pilot1.0_09"/>
+      <Change date="2011-07-11" reason="Change zHeight of Reagent Elevator (ID 58) Subposition Reagent Cassette 1: - 0.0515 --&gt; - 0.0499" name="VTR" version="Pilot1.0_10"/>
+      <Change date="2011-07-11" reason="Update for Pilot: RefPoint PC1/2 Stacker Module 1(ID 2052, 2080) yshift: 0.0865 --&gt; - 0.0945, RefPoint AD Transfer 300/1000(ID 2055, 2082) xshift: 1.351 --&gt; 1.350/2.121--&gt;2.120, RefPoint Reagent Elevator (ID2054) zShift: -0.005 --&gt; 0" name="VTR" version="Pilot1.0_11"/>
+      <Change date="2011-07-14" reason="Update for Pilot: ADTransferPositionNewGen300/1000 (ID61/ID85) : zShift 0.189 --&gt; 0.191 SubPosition Default zShift: -0.008 --&gt; -0.007 RefPoint_ADTransferPositionNewGen300/1000 (ID2055/ID2082) : zShift 0.199 --&gt; 0.201 DetectionMoveDistanceAbsolut x, y -0.005 --&gt; -0.01, x/y shift: 0.005 --&gt; 0.01, -0.005--&gt; -0.01, All other Ref_Points (ID 2050, 2051, 2052, 2053, 2054, 2056, 2057, 2058, 2059, 2080, 2081, 2083, 2084) DetectionMoveDistanceAbsolut x, y -0.005 --&gt; -0.0065, x/y shift: 0.005 --&gt; 0.0065, -0.005--&gt; -0.0065" name="VTR" version="Pilot1.0_12"/>
+      <Change date="2011-08-29" reason="New RMCRack_New (4010), RMCRack_Column_New (4060) and ControlTube_New (7049) and RMCRack_Pick_New (7050) added, Values are not correct, the New RMC Cassette was just added to have  the same interface later on" name="VTR" version="Pilot1.0_13"/>
+      <Change date="2011-08-29" reason="Add New RMCRack_New as loadable Object on Handover Station Sample Cell" name="VTR" version="Pilot1.0_14"/>
+      <Change date="2011-08-30" reason="Rename RMCRack_New (4010), RMCRack_Column_New (4060) and ControlTube_New (7049) and RMCRack_Pick_New (7050) to RMCRack_2 (4010), RMCRack_Column_2 (4060) and ControlTube_2 (7049) and RMCRack_Pick_2 (7050) and RMCRack (4007), RMCRack_Column (4057) and ControlTube (7029) and RMCRack_Pick (7030) to RMCRack_1 (4007), RMCRack_Column_1 (4057) and ControlTube_1 (7029) and RMCRack_Pick_1 (7030)" name="VTR" version="Pilot1.0_15"/>
+      <Change date="2011-08-31" reason="Rename RMC again: RMCRack_2 (4010), RMCRack_Column_2 (4060) and ControlTube_2 (7049) and RMCRack_Pick_2 (7050) to RMCCassette_2 (4010), RMCMiniRack_2 (4060) and ControlVial_2 (7049) and RMCCassette_Pick_2 (7050) and RMCRack (4007), RMCRack_Column (4057) and ControlTube (7029) and RMCRack_Pick (7030) to RMCCassette_1 (4007), RMCMiniRack_1 (4057) and ControlVial_1 (7029) and RMCCassette_Pick_1 (7030)" name="VTR" version="Pilot1.0_16"/>
+      <Change date="2011-09-01" reason="Adapt values of Subposition Gripping RMCCassette_2 (4010) to new drawings, change names of SubPositions of RMCCassette_1 and 2 and RMCMini_Rack_1 and 2" name="VTR" version="Pilot1.0_17"/>
+      <Change date="2011-10-07" reason="Change zHeight of Reagent Elevator (ID 58) Subposition Reagent Cassette 1: - 0.0499 --&gt; - 0.0531 as the change of 2011-07-11 was in the wrong direction" name="VTR" version="Pilot1.0_18"/>
+      <Change date="2011-10-13" reason="Adjustment of TeachPressureTestTool z-Height" name="VTR" version="Pilot1.0_19"/>
+      <Change date="2011-10-27" reason="Delete Comment of RMC Cassette" name="VTR" version="Pilot1.0_20"/>
+      <Change date="2011-11-07" reason="Shift z-Position of Combo tip rack 48 Stacker 1-4, of P-plate Stacker 1-2 of PC1 and 2 and of MGP Stacker of PC 1 and 2 for 0.002 upwards. Shift Gripping Position of Combo Tip Rack, MGP Cassette and P-plate 0.001 downwards" name="VTR" version="Pilot1.0_21"/>
+      <Change date="2011-11-08" reason="Bottom Position and LookUpTable of P-plate Well adjusted" name="VTR" version="Pilot1.0_22"/>
+      <Change date="2011-11-08" reason="Adjustement of AD-plate to match Process Cell (adding WayPoint) and of Reagent and MGP Containers" name="VTR" version="Pilot1.0_23"/>
+      <Change date="2011-12-20" reason="Renaming Stacker, Reference Points, Reagent Cassette and Reagent Container, Deleting unused Reagent Containers" name="VTR" version="Pilot1.0_24"/>
+      <Change date="2011-12-20" reason="Adjustement of AD-plate to close gripper enough as double stage gripping is not impemented yet" name="VTR" version="Pilot1.0_25"/>
+      <Change date="2012-01-13" reason="Revert changes from 2011-12-20 and made this by the AD-Frame" name="VTR/AFR" version="Pilot1.0_26"/>
+      <Change date="2012-01-20" reason="Update Reagent Vessel LookUpTables to RL9" name="VTR" version="Pilot1.0_27"/>
+      <Change date="2012-01-23" reason="Remove second Reference Points for Stacker Modules of Process Cells" name="VTR" version="Pilot1.0_28"/>
+      <Change date="2012-02-07" reason="Update to spring mounted Gripper" name="VTR" version="Pilot1.0_29"/>
+      <Change date="2012-03-16" reason="Change DetectionMovementDistanceAbs of Reference Points for z-direction to negative" name="STZ" version="Pilot1.0_30"/>
+      <Change date="2012-03-19" reason="Add WayPoint SubPosition for Reagent Elevator" name="STZ" version="Pilot1.0_31"/>
+      <Change date="2012-04-06" reason="z-Height of Gripping Position of AD-plate WayPoint must be 0.015 instead of 0.0114 in Process Cell, adjustment to have the same value in all cells" name="VTR" version="Pilot1.0_32"/>
+      <Change date="2012-09-27" reason="Add both SampleCell Stacker Ref-Points to the Stacker module in front of the SampleCell" name="AFR" version="Pilot1.0_33"/>
+      <Change date="2012-11-07" reason="Change Subpositions of Reagent Cassette to compensate unequal tolerances in positive and negative direction" name="VTR" version="Pilot1.0_33"/>
+      <Change date="2013-05-27" reason="Change gripping of AD plates: Tighter if out of stacker and looser if out of process cell (sealed)" name="SURO" version="Pilot1.0_34"/>
+      <Change date="2015-01-27" reason="New Teaching Procedure and teach z axis first" name="MAKO" version="Pilot1.0_35"/>
+      <Change date="2015-07-07" reason="Adjust sign of DetectionMovementDistanceAbs attribute values to new software behavior. (- means teach from inside, + from outside)" name="MAKO" version="Pilot1.0_36"/>
+      <Change date="2017-01-31" reason="Change PPlate_Pick(7016) AuxiliaryObject value to 0.038415 and add PPlate_Pick_WayPoint(7116) with AuxiliaryObject value 0.037415 and add subposition Gripping_Waypoint(7116) to Carrier PPlate(4001) with zHeight 0.0585 and add LoadableObject PPlate_Pick_WayPoint(7116) to Carrier PPlate(4001)" name="PAKE" version="series"/>
+      <Change date="2022-11-22" reason="Extracted 6800 configuration in this file by removing 8800 specific configuration" name="mariani" version="newgen2.0"/>
+      <Change date="2023-08-04" reason="Every consumable can be putdown to every transfer position" name="koniora" version="newgen2.0"/>
+      <Change date="2023-12-07" reason="For RefPoint_ADTransferPositionNewGen number is removed from the name since each instrument type uses individual files. " name=" " version="newgen2.0"/>
+    </Changes>
+  </DocumentInfo>
+  <ModuleList>
+    <Module id="53" areUserDefinedContainersLoadable="false" name="Stacker_D_ComboTipRack48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.5875" relShiftY="0.125" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList ZDependency="x-direction">
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_StackerModule_A"/>
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_StackerModule_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.0918"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ComboTipRack48" LoadableObjectID="4002"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="54" areUserDefinedContainersLoadable="false" name="Stacker_E_ComboTipRack48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.7025" relShiftY="0.125" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList ZDependency="x-direction">
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_StackerModule_A"/>
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_StackerModule_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.0918"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ComboTipRack48" LoadableObjectID="4002"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="55" areUserDefinedContainersLoadable="false" name="Stacker_F_PPlate48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.8355" relShiftY="0.125" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_StackerModule_A"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.044"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="PPlate48" LoadableObjectID="4001"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="56" areUserDefinedContainersLoadable="false" name="Stacker_G_PPlate48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.9715" relShiftY="0.125" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_StackerModule_A"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.044"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="PPlate48" LoadableObjectID="4001"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="57" areUserDefinedContainersLoadable="false" name="Stacker_H_MGPCassette">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="1.0865" relShiftY="0.125" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_StackerModule_A"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.05025"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="MGPCassette" LoadableObjectID="4004"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="58" areUserDefinedContainersLoadable="false" name="ReagentElevator_C">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.41" relShiftY="0.127" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ReagentElevator"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="ReagentCassette">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.0531"/>
+        </SubPosition>
+        <SubPosition id="3" name="RMCRack_2">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.044"/>
+        </SubPosition>
+        <SubPosition id="4" name="WayPoint">
+          <relShift relShiftX="0" relShiftY="-0.01" relShiftZ="0.019"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003">
+          <SubPositionRangeList>
+            <SubPositionRange max="1" min="1"/>
+            <SubPositionRange max="4" min="4"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="RMCCassette_2" LoadableObjectID="4010">
+          <SubPositionRangeList>
+            <SubPositionRange max="3" min="3"/>
+            <SubPositionRange max="4" min="4"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Module>
+    <Module id="59" areUserDefinedContainersLoadable="false" name="Stacker_I_ADPlate96">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="1.2165" relShiftY="0.117" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_StackerModule_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.0087"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADPlate96" LoadableObjectID="4000"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="60" areUserDefinedContainersLoadable="false" name="Stacker_J_ADPlate96">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="1.3615" relShiftY="0.117" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_StackerModule_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.0087"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADPlate96" LoadableObjectID="4000"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="61" areUserDefinedContainersLoadable="false" name="ADTransferPositionNewGen300">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="1.412" relShiftY="0.125" relShiftZ="0.191"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ADTransferPosition"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADPlate96" LoadableObjectID="4000"/>
+      </LoadableObjectList>
+    </Module>
+    <Module id="62" areUserDefinedContainersLoadable="false" name="HandoverStation_ConsumableCell_SampleCell">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0.3845" relShiftY="0.346" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_Handover_A"/>
+        <ModuleReferencePoint ReferencePointName="RefPoint_SampleCell_Handover_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.008"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="PPlate48" LoadableObjectID="4001"/>
+        <LoadableObject LoadableObjectName="ComboTipRack48" LoadableObjectID="4002"/>
+        <LoadableObject LoadableObjectName="RMCCassette_2" LoadableObjectID="4010"/>
+        <LoadableObject LoadableObjectName="TeachPressureTestTool" LoadableObjectID="4008"/>
+        <!-- Needed for cleanup -->
+        <LoadableObject LoadableObjectName="ADPlate96" LoadableObjectID="4000"/>
+        <LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+        <LoadableObject LoadableObjectName="MGPCassette" LoadableObjectID="4004"/>
+        <LoadableObject LoadableObjectName="ADFilmFrame" LoadableObjectID="4005"/>
+        <!-- Needed for cleanup -->
+      </LoadableObjectList>
+    </Module>
+    <Module id="63" areUserDefinedContainersLoadable="false" name="HandoverStation_ConsumableCell_ProcessCell_A">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="1.1475" relShiftY="0.375" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <ReferencePointList>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_Handover_A"/>
+        <ModuleReferencePoint ReferencePointName="RefPoint_ProcessCell_A_Handover_B"/>
+      </ReferencePointList>
+      <SubPositionList>
+        <SubPosition id="1" name="Default">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="-0.008"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADPlate96" LoadableObjectID="4000"/>
+        <LoadableObject LoadableObjectName="PPlate48" LoadableObjectID="4001"/>
+        <LoadableObject LoadableObjectName="ComboTipRack48" LoadableObjectID="4002"/>
+        <LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+        <LoadableObject LoadableObjectName="MGPCassette" LoadableObjectID="4004"/>
+        <LoadableObject LoadableObjectName="ADFilmFrame" LoadableObjectID="4005"/>
+        <LoadableObject LoadableObjectName="TeachPressureTestTool" LoadableObjectID="4008"/>
+        <!-- Needed for cleanup -->
+        <LoadableObject LoadableObjectName="RMCCassette_2" LoadableObjectID="4010"/>
+        <!-- Needed for cleanup -->
+      </LoadableObjectList>
+    </Module>
+  </ModuleList>
+  <CarrierList>
+    <Carrier id="4000" areUserDefinedContainersLoadable="false" name="ADPlate96">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="13" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0094"/>
+        </SubPosition>
+        <SubPosition id="14" name="ADFilmFrame">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0052"/>
+        </SubPosition>
+        <SubPosition id="15" name="Gripping_WayPoint">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0104"/>
+        </SubPosition>
+        <SubPosition id="16" name="Gripping_Sealed_WayPoint">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0094"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADPlate_Pick" LoadableObjectID="7015">
+          <SubPositionRangeList>
+            <SubPositionRange min="13" max="13"/>
+            <SubPositionRange min="15" max="16"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="ADPlate_Pick_WayPoint" LoadableObjectID="7115">
+          <SubPositionRangeList>
+            <SubPositionRange min="13" max="13"/>
+            <SubPositionRange min="15" max="15"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="ADPlate_Sealed_Pick_WayPoint" LoadableObjectID="7215">
+          <SubPositionRangeList>
+            <SubPositionRange min="13" max="13"/>
+            <SubPositionRange min="16" max="16"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="ADFilmFrame" LoadableObjectID="4005">
+          <SubPositionRangeList>
+            <SubPositionRange min="14" max="14"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4001" areUserDefinedContainersLoadable="false" name="PPlate48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="7" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0485"/>
+          <!-- relShiftZ is the normal pick position -->
+        </SubPosition>
+        <SubPosition id="8" name="Gripping_WayPoint">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0585"/>
+          <!-- relShiftZ is the waypoint after the second grip is a bit above of the normal pick -->
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="PPlate_Pick" LoadableObjectID="7016">
+          <SubPositionRangeList>
+            <SubPositionRange min="7" max="8"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="PPlate_Pick_WayPoint" LoadableObjectID="7116">
+          <SubPositionRangeList>
+            <SubPositionRange min="7" max="8"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4002" areUserDefinedContainersLoadable="false" name="ComboTipRack48">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="13" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0963"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ComboTipRack48_Pick" LoadableObjectID="7014">
+          <SubPositionRangeList>
+            <SubPositionRange min="13" max="13"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4003" areUserDefinedContainersLoadable="false" name="ReagentCassette">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="6" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0561"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ReagentCassette_Pick" LoadableObjectID="7017">
+          <SubPositionRangeList>
+            <SubPositionRange min="6" max="6"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4004" areUserDefinedContainersLoadable="false" name="MGPCassette">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="2" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.05475"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="MGPCassette_Pick" LoadableObjectID="7018">
+          <SubPositionRangeList>
+            <SubPositionRange min="2" max="2"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4005" areUserDefinedContainersLoadable="false" name="ADFilmFrame">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="1" name="ADFilmFramePick">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0078"/>
+        </SubPosition>
+        <SubPosition id="10" name="ADFilmFramePick_WayPoint">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0108"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="ADFilmFrame_Pick" LoadableObjectID="7013">
+          <SubPositionRangeList>
+            <SubPositionRange max="10" min="1"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+        <LoadableObject LoadableObjectName="ADFilmFrame_Pick_WayPoint" LoadableObjectID="7113">
+          <SubPositionRangeList>
+            <SubPositionRange max="10" min="1"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4008" areUserDefinedContainersLoadable="false" name="TeachPressureTestTool">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="6" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.0946"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="TeachPressureTestTool_Pick" LoadableObjectID="7035">
+          <SubPositionRangeList>
+            <SubPositionRange min="6" max="6"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+    <Carrier id="4010" areUserDefinedContainersLoadable="false" name="RMCCassette_2">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <SubPositionList>
+        <SubPosition id="5" name="Gripping">
+          <relShift relShiftX="0" relShiftY="0" relShiftZ="0.046"/>
+        </SubPosition>
+      </SubPositionList>
+      <LoadableObjectList>
+        <LoadableObject LoadableObjectName="RMCCassette_Pick_2" LoadableObjectID="7050">
+          <SubPositionRangeList>
+            <SubPositionRange max="5" min="5"/>
+          </SubPositionRangeList>
+        </LoadableObject>
+      </LoadableObjectList>
+    </Carrier>
+  </CarrierList>
+  <ContainerList>
+    <Container DiveInVolume="0" maxVolume="0" id="7013" IsTransportable="true" name="ADFilmFrame_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.03975" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7014" IsTransportable="true" name="ComboTipRack48_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.038525" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7015" IsTransportable="true" name="ADPlate_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.03675" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7016" IsTransportable="true" name="PPlate_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.038415" ParameterID="25"/>
+        <!-- dont close the gripper entirely, 1 mm open-->
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7116" IsTransportable="true" name="PPlate_Pick_WayPoint" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.037415" ParameterID="25"/>
+        <!-- close the gripper completely in waypoint after-->
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7017" IsTransportable="true" name="ReagentCassette_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.037465" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7018" IsTransportable="true" name="MGPCassette_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.03862" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7050" IsTransportable="true" name="RMCCassette_Pick_2" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.037745" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7035" IsTransportable="true" name="TeachPressureTestTool_Pick" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.0392" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7113" IsTransportable="true" name="ADFilmFrame_Pick_WayPoint" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.03565" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7115" IsTransportable="true" name="ADPlate_Pick_WayPoint" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.036125" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+    <Container DiveInVolume="0" maxVolume="0" id="7215" IsTransportable="true" name="ADPlate_Sealed_Pick_WayPoint" minVolume="0">
+      <LocalPointOfOrigin>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LocalPointOfOrigin>
+      <TopShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TopShift>
+      <BottomShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </BottomShift>
+      <AttachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </AttachShift>
+      <DetachShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </DetachShift>
+      <OpenShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </OpenShift>
+      <CloseShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </CloseShift>
+      <VelocityTransitionShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </VelocityTransitionShift>
+      <LdActivationShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </LdActivationShift>
+      <TravelShift>
+        <relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+      </TravelShift>
+      <VolumeToZLevel>
+        <VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+        <VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+      </VolumeToZLevel>
+      <AuxiliaryObjectList>
+        <AuxiliaryObject ParameterValue="0.037125" ParameterID="25"/>
+      </AuxiliaryObjectList>
+    </Container>
+  </ContainerList>
+  <ReferencePointList>
+    <ReferencePoint id="2050" name="RefPoint_SampleCell_StackerModule_A" ReferencePointShape="Circular">
+      <relShift relShiftX="0.295" relShiftY="0.0945" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2051" name="RefPoint_SampleCell_StackerModule_B" ReferencePointShape="Circular">
+      <relShift relShiftX="0.515" relShiftY="0.0945" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2052" name="RefPoint_ProcessCell_A_StackerModule_A" ReferencePointShape="Circular">
+      <relShift relShiftX="0.9035" relShiftY="0.0945" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2053" name="RefPoint_ProcessCell_A_StackerModule_B" ReferencePointShape="Circular">
+      <relShift relShiftX="1.294" relShiftY="0.117" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2054" name="RefPoint_ReagentElevator" ReferencePointShape="Circular">
+      <relShift relShiftX="0.41" relShiftY="0.051" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2055" name="RefPoint_ADTransferPosition" ReferencePointShape="Circular">
+      <relShift relShiftX="1.350" relShiftY="0.125" relShiftZ="0.201"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.007">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.01" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.01" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.01" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.01" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.01" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.01" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.01" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.01" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.01" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.01" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.01" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.01" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.01" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.01" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.01" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2056" name="RefPoint_SampleCell_Handover_A" ReferencePointShape="Circular">
+      <relShift relShiftX="0.328" relShiftY="0.304" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2057" name="RefPoint_SampleCell_Handover_B" ReferencePointShape="Circular">
+      <relShift relShiftX="0.441" relShiftY="0.304" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2058" name="RefPoint_ProcessCell_A_Handover_A" ReferencePointShape="Circular">
+      <relShift relShiftX="1.091" relShiftY="0.333" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2059" name="RefPoint_ProcessCell_A_Handover_B" ReferencePointShape="Circular">
+      <relShift relShiftX="1.204" relShiftY="0.333" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2080" name="RefPoint_ProcessCell_B_StackerModule_A" ReferencePointShape="Circular">
+      <relShift relShiftX="1.6735" relShiftY="0.0945" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2081" name="RefPoint_ProcessCell_B_StackerModule_B" ReferencePointShape="Circular">
+      <relShift relShiftX="2.064" relShiftY="0.117" relShiftZ="0"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2083" name="RefPoint_ProcessCell_B_Handover_A" ReferencePointShape="Circular">
+      <relShift relShiftX="1.861" relShiftY="0.333" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+    <ReferencePoint id="2084" name="RefPoint_ProcessCell_B_Handover_B" ReferencePointShape="Circular">
+      <relShift relShiftX="1.974" relShiftY="0.333" relShiftZ="0.01"/>
+      <!-- For the x and the y axis, the detection procedure goes as follows:
+                 1. Go to start position, move from inside out to detect
+                    point 1, don't move back. Don't measure its position
+                    (relative weight zero). We just want to find the point to
+                    let the head there.
+                 2. Go from the current position outside in, detect point 1
+                    with "outer" relative weight. Don't move back to start
+                    point, since it lays outside.
+                 3. Move to start (center) and go from inside out to detect
+                    point 2 with "inner" weight. Don't move back.
+                 4. Move from current position outside in, detect point 2
+                    again. Use "outer" relative weight. Don't move back, since
+                    the start lays outside.
+                 5. Move to start (center) and go from inside out to detect
+                    point 1 with "inner" weight. Move back.
+                 With this procedure, each detection point is detected twice,
+                 once from each direction. The RelativeWeight attribute allows
+                 to adjust the "medium" detection position depending on the
+                 accuracy of the inside and outside detection. You can adjust
+                 to influence of each detection point on the final result, too.
+            -->
+      <!-- z Direction -->
+      <DetectionPoint DetectionDirection="z-direction" DetectionMovementDistanceAbs="-0.01">
+        <relShift relShiftX="0.0" relShiftY="0.0" relShiftZ="0.0"/>
+      </DetectionPoint>
+      <!-- x Direction -->
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="-0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0.0065" relShiftY="0" relShiftZ="0"/>
+      </DetectionPoint>
+      <!-- y Direction -->
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.0">
+        <!-- Detection point 1, approach from inside, but don't measure -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 1, approach from outside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE" RelativeWeight="0.98134">
+        <!-- Detection point 2, approach from inside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="0.0065" MoveToDetectionPointSearchStart="NEVER" RelativeWeight="0.001033">
+        <!-- Detection point 2, approach from outside -->
+        <relShift relShiftX="0" relShiftY="-0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+      <DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0065" MoveToDetectionPointSearchStart="BEFORE_AND_AFTER" RelativeWeight="0.98134">
+        <!-- Detection point 1, approach from inside -->
+        <relShift relShiftX="0" relShiftY="0.0065" relShiftZ="0"/>
+      </DetectionPoint>
+    </ReferencePoint>
+  </ReferencePointList>
+</PositionSpecification>

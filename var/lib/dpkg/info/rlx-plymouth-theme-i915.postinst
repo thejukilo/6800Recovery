@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+MODULES=/etc/initramfs-tools/modules
+
+pathfind() {
+    OLDIFS="$IFS"
+    IFS=:
+    for p in $PATH; do
+        if [ -x "$p/$*" ]; then
+            IFS="$OLDIFS"
+            return 0
+        fi
+    done
+    IFS="$OLDIFS"
+    echo "$* is not found in PATH"
+    return 1
+}
+
+if ! pathfind plymouth-set-default-theme; then exit 1; fi
+
+if ! grep -qe "^drm$" ${MODULES}
+then
+    echo drm >> ${MODULES}
+fi
+
+if ! grep -qe "^i915 modeset=1$" ${MODULES}
+then
+    echo "i915 modeset=1" >> ${MODULES}
+fi

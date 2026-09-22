@@ -1,0 +1,5 @@
+chain PRE-FORWARD {
+	type filter hook forward priority filter -1;
+	include "/etc/nftables.d/pre-forward/*.nft"
+	iifname $main_netif ct state != {established,related} drop
+}

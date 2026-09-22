@@ -1,0 +1,20 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "shared-data/logs/DataManagerGateway_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][DMG][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 314572800
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+    "ExcludedNamePrefixes": [ "Roche.NewGen.DataManagerGateway.", "Roche.CX800.", "Roche.MolLab." ]
+  }
+}

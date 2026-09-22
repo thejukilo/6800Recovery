@@ -1,0 +1,7 @@
+Name: RLX pam_securetty configuration
+Default: yes
+Priority: 320
+
+Auth-Type: Primary
+Auth:
+	required	pam_securetty.so

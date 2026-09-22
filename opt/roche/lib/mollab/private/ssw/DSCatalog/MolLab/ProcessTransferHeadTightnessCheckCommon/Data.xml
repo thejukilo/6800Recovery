@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F027CB32BB211CAB1E2F8DB63022CEB2BE88C1DAE313" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="ProcessTransferHeadTightnessCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>True if the Service Check Is for Execution in Operations</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pHeadIndex" Type="Integer" Unit="">
+          <data:Description>
+            <base:Title>Transfer head index</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pPipettingParameters" Type="String">
+          <data:Description>
+            <base:Title>The pipetting parameters to use</base:Title>
+          </data:Description>
+          <data:Value>698b99a2-d475-4552-922a-148da16e436d</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="String" Name="rTightnessResultPassedArray" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Passed Array</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness Result Passed Array</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rTightnessResultFailedArray" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Failed Array</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness Result Failed Array</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rTightnessResultString">
+          <data:Description>
+            <base:Title>Tightness Result Array</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness Result Array</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rPassed" Array="false">
+          <data:Description>
+            <base:Title>All Pressure Values in Range.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All Pressure Values in Range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

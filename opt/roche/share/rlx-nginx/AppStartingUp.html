@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RLX</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+reload_time = 10 * 1000;  // ms
+fail_timeout = 3 * 60 * 1000;  // ms
+url = window.location.href;
+bigbang = performance.now();
+error_state = false;
+
+function reloader() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        if (xhttp.status == 502) {
+            if (!error_state && performance.now() - bigbang > fail_timeout) {
+                error_state = true;
+                console.log("too any retries, showing error message");
+                title = document.getElementById('title');
+                title.innerHTML = "Application failed to start";
+
+                msg = document.getElementById('msg');
+                msg.innerHTML = "Contact Roche.";
+            }
+            setTimeout(reloader, reload_time);
+        } else {
+            console.log("gateway seems ok, reloading page");
+            location.reload();
+        }
+    }
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
+reloader();
+        </script>
+    </head>
+    <body>
+        <h1 id="title">System is starting up!</h1>
+        <p id="msg">You will be redirected automatically once ready.</p>
+    </body>
+</html>

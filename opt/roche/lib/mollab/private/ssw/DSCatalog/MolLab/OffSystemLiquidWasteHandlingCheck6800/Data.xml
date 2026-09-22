@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B81064F0E99595158EA311C139CE019C3FCFCEED7F7D" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="OffSystemLiquidWasteHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pLiquidTransferVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The amount of liquid to transfer to the off-system liquid waste in milliliters.</base:Title>
+          </data:Description>
+          <data:Value>840E-06</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAirTransferVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The amount of air to transfer to the off-system liquid waste in milliliters.</base:Title>
+          </data:Description>
+          <data:Value>1680E-06</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irHasOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Off-System Liquid Waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if off-system liquid waste is enabled.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTransferSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Transfer succeeded.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The verification of connectors S44, S47 and S48 was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTightnessSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Tightness succeeded.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying the tightness of the off-system liquid waste tubing succeeded.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

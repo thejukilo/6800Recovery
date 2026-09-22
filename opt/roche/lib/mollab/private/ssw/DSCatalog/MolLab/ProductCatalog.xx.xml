@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:ProductCatalog Version="1.0.0.0000" Hash="6D1E4347CF1B3E29C69DA9989C61D0183BD1EC4B5AE2" xmlns:ds="urn:ds" xmlns:base="urn:base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../Tools/Schemas/LabCore.Diagnose/dsProductCatalog.xsd">
+  <ds:PublicKeyToken>F66F2757647D4D03</ds:PublicKeyToken>
+  <ds:Pathes>
+    <base:Product Path="" />
+    <base:Picture Path="Pictures" />
+  </ds:Pathes>
+  <ds:Defaults>
+    <base:PictureSize Height="400" />
+  </ds:Defaults>
+  <ds:Group Name="Installation qualification and Operational qualification">
+    <ds:Product Name="CX800.InstrumentInstallationQualification(IQ)Cobas6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>InstrumentInstallationQualification(IQ)Cobas6800</base:Description>
+      <base:Options>
+        <base:Report>
+          <base:Template Name="../../ReportTemplates/ServiceReport_cobas6800_InstallationQualification_Certificate.xml" Description="Report" Watermark="true" />
+        </base:Report>
+      </base:Options>
+    </ds:Product>
+    <ds:Product Name="CX800.InstrumentOperationalQualification(OQ)Cobas6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>InstrumentOperationalQualification(OQ)Cobas6800</base:Description>
+      <base:Options>
+        <base:Report>
+          <base:Template Name="../../ReportTemplates/ServiceReport_cobas6800_OperationalQualification_Certificate.xml" Description="Report" Watermark="true" />
+        </base:Report>
+      </base:Options>
+    </ds:Product>
+  </ds:Group>
+  <ds:Group Name="Service checks">
+    <ds:Product Name="CX800.Instrument6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>Instrument6800</base:Description>
+      <base:Options />
+    </ds:Product>
+    <ds:Product Name="CX800.TransferModule6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>TransferModule6800</base:Description>
+      <base:Options />
+    </ds:Product>
+    <ds:Product Name="CX800.ProcessingModule6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>ProcessingModule6800</base:Description>
+      <base:Options />
+    </ds:Product>
+    <ds:Product Name="CX800.AnalyticModule6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>AnalyticModule6800</base:Description>
+      <base:Options />
+    </ds:Product>
+    <ds:Product Name="CX800.MainHandler6800" ArtNr="09575154001" Instrument="MolLab" Version="1.0.0.0000">
+      <base:Description>MainHandler6800</base:Description>
+      <base:Options />
+    </ds:Product>
+  </ds:Group>
+</ds:ProductCatalog>

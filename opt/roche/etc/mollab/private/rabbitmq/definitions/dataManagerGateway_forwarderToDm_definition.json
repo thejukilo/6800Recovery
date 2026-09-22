@@ -1,0 +1,341 @@
+{
+    "queues": [
+      {
+        "name": "roche.newgen.datamanagergateway.to.dm.q",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      }
+    ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleRackLoaded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleRackUnloaded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.SampleRackRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.TransferModule.InvalidSampleRackRemoved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.InstrumentSoftwareConfigurationChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderAccepted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.SampleWorkOrderRevoked",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderDiscarded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderProcessingStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderProcessingFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderProcessingAborted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.ControlWorkOrderCreated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderFlagged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.UiApi.AuditableEventOccurred",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AssembledRunsChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.RunScheduleChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunResourceManagement.MissingResourcesChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.CreateControlWorkOrders",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.IsReagentCassetteValidatedByNegativeControl",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.IsReagentCassetteValidatedByPositiveControls",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.IsReagentLotValidatedByNegativeControl",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.DataManagerGateway.IsReagentLotValidatedByPositiveControls",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunFinished",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunManagement.RunAborted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.WorkOrderTrackingDataCollected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkflowManagement.WorkOrderProcessingDataCollected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.TransferModule.InstrumentStateIndicatorChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Calculation.PreliminaryResultCalculated",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Calculation.PreliminaryResultCalculationFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticModule.WorkOrderMeasurementCollected",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.WorkOrderManagement.WorkOrderLeftInProcessing",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.MolecularProcessOptimizationModeEnabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.MolecularProcessOptimizationModeDisabled",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.EnableMolecularProcessOptimizationModeFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.DisableMolecularProcessOptimizationModeFailed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AllocationSlotReserved",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AllocationSlotRealized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AllocationSlotDiscarded",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.datamanagergateway.to.dm.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.RunPlanning.AllocationSlotRevoked",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# OSAL path mapping for USB copy functions from docker containers
+# format is /host/path : /docker/path
+
+/opt/roche/var/lib/mollab/private/software-update/tmp            : /app/data/tmp
+/opt/roche/var/lib/mollab/private/software-update/import         : /app/data/import
+/opt/roche/var/lib/mollab/shared/problem-reports                 : /app/shared-data/problem-reports
+/opt/roche/var/lib/mollab/shared/exports                         : /app/shared-data/exports
+/opt/roche/var/lib/mollab/shared/screenshots                     : /app/shared-data/screenshots
+/opt/roche/var/lib/mollab/shared/service-software-checks-reports : /app/shared-data/service-software-checks-reports
+/opt/roche/var/lib/mollab/shared/service-software-checks         : /app/shared-data/service-software-checks
+/opt/roche/var/lib/mollab/shared/temp                            : /app/shared-data/temp
+/opt/roche/var/lib/mollab/shared/download-repository             : /app/shared-data/download-repository
+/opt/roche/var/lib/mollab/shared/import-repository               : /app/shared-data/import-repository
+/opt/roche/var/lib/mollab/shared/service-images                  : /app/shared-data/service-images

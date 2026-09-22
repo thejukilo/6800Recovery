@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="2C379028692A080CAC584217908E847C5E2CC080949A" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ProcessingTransferHeadTipGrippingCheckCommon" ID="ProcessingTransferHeadTipGrippingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRackTransferPosition1Info" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the first tip rack on the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Movement</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRackTransferPosition2Info" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the second tip rack on the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Movement</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PickUpPTipsInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pick Up Tips</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to start the tip pick up.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PickUpPTips">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Pick Up Tips</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTips" Type="Confirm" Result="rTipsVerified">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify The Tips.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Were all the processing tips picked up correctly?</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PutDownTips">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Putting Down Tips</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnTipRack1Info" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to clean up the tip rack.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnTipRack2Info" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the tip rack from the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveTipRack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the tip rack from the transfer position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Opening downholders (if not already open).</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

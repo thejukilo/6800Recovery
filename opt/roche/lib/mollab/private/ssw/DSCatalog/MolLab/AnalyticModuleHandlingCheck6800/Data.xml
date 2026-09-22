@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="9AD61D6A3D6C85980ADADDD17007FC374731622535C5" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AnalyticModuleHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>'True' means check is being executed in the 'operations' environment.</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rGripperRedLightSensorWorking">
+          <data:Description>
+            <base:Title>Gripper Red Light Sensor Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Evaluates the amplification plate gripper red light sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rMovements" Array="true" Size="6">
+          <data:Description>
+            <base:Title>Ad Plate Movements</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>AD Plate Movements</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rSuccessful">
+          <data:Description>
+            <base:Title>Check Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the check has been successful as a whole.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Integer" Name="irNumberOfAnalyticUnits">
+          <data:Description>
+            <base:Title>Number of Analytic Cyclers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reflects the number of analytic cyclers found</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irDrawersWereNotEmpty">
+          <data:Description>
+            <base:Title>User Forgot to Unload Ad Plates</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If true, then user had forgotten to remove the AD plates from analytic module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

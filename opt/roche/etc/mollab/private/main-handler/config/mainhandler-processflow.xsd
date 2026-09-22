@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by ﻿PC User (Roche Diagnostics AG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="lib_00000207_HandlingUtilities_HUCommonConfig_0.02.00.xsd"/>
+	<xs:element name="MainHandlerProcessFlow">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MovePatterns" type="MovePatterns"/>
+				<xs:element name="LogProcessFlowPositions" type="LogProcessFlowPositions"/>
+				<xs:element name="RefPointProcessFlowPositions" type="RefPointProcessFlowPositions"/>
+				<xs:element name="ChangeParkPositions" type="ChangeParkPositions">
+					<xs:unique name="Unique_FromTo">
+						<xs:selector xpath="ChangeParkPosition"/>
+						<xs:field xpath="@From"/>
+						<xs:field xpath="@To"/>
+					</xs:unique>
+				</xs:element>
+				<xs:element name="ParkPositions" type="ParkPositions"/>
+				<xs:element name="AxisOffsets" type="AxisOffsets"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="Unique_PatternName">
+			<xs:selector xpath="MovePatterns/MovePattern"/>
+			<xs:field xpath="@PatternName"/>
+		</xs:unique>
+		<xs:unique name="Unique_ParkPosName">
+			<xs:selector xpath="ParkPositions/ParkPosition"/>
+			<xs:field xpath="@ParkPos"/>
+		</xs:unique>
+		<xs:key name="Key_PatternName">
+			<xs:selector xpath="MovePatterns/MovePattern"/>
+			<xs:field xpath="@PatternName"/>
+		</xs:key>
+		<xs:keyref name="KeyRef_PatternNameTo" refer="Key_PatternName">
+			<xs:selector xpath="LogProcessFlowPositions/LogProcessFlowPosition/LogPosProcessFlow/MoveTo"/>
+			<xs:field xpath="PatternName"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_PatternNameTurnPlate" refer="Key_PatternName">
+			<xs:selector xpath="LogProcessFlowPositions/LogProcessFlowPosition/LogPosProcessFlow/TurnPlate"/>
+			<xs:field xpath="PatternName"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_PatternNameChangeParkPos" refer="Key_PatternName">
+			<xs:selector xpath="ChangeParkPositions/ChangeParkPosition/MoveSequence"/>
+			<xs:field xpath="PatternName"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_PatternNameRefPoint" refer="Key_PatternName">
+			<xs:selector xpath="RefPointProcessFlowPositions/RefPointProcessFlowPosition/MoveSequence"/>
+			<xs:field xpath="PatternName"/>
+		</xs:keyref>
+		<xs:key name="Key_ParkPosName">
+			<xs:selector xpath="ParkPositions/ParkPosition"/>
+			<xs:field xpath="@ParkPos"/>
+		</xs:key>
+		<xs:keyref name="KeyRef_ParkPos" refer="Key_ParkPosName">
+			<xs:selector xpath="LogProcessFlowPositions/LogProcessFlowPosition"/>
+			<xs:field xpath="@ParkPos"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_ParkPosRefPoint" refer="Key_ParkPosName">
+			<xs:selector xpath="RefPointProcessFlowPositions/RefPointProcessFlowPosition"/>
+			<xs:field xpath="@ParkPos"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:complexType name="RefPointDefinition">
+		<xs:sequence>
+			<xs:element name="RefPointID" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MovePatterns">
+		<xs:sequence>
+			<xs:element name="MovePattern" type="MovePattern" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MovePattern">
+		<xs:sequence>
+			<xs:element name="ParallelMoves" type="ParallelMoves" maxOccurs="10"/>
+		</xs:sequence>
+		<xs:attribute name="PatternName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ParallelMoves">
+		<xs:sequence>
+			<xs:element name="MoveAxis" type="MoveAxis" maxOccurs="6"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MoveAxis">
+		<xs:sequence>
+			<xs:element name="AxisName" type="xs:NMTOKEN"/>
+			<xs:element name="MoveDistance" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LogProcessFlowPositions">
+		<xs:sequence>
+			<xs:element name="LogProcessFlowPosition" type="LogProcessFlowPosition" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LogProcessFlowPosition">
+		<xs:sequence>
+			<xs:element name="ModuleDefinition" type="LogicalPositionConfig" maxOccurs="unbounded"/>
+			<xs:element name="LogPosProcessFlow" type="LogPosProcessFlow"/>
+			<xs:element name="WaitDistance" type="WaitDistance" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ParkPos" type="ParkPos" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="RefPointProcessFlowPositions">
+		<xs:sequence>
+			<xs:element name="RefPointProcessFlowPosition" type="RefPointProcessFlowPosition" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RefPointProcessFlowPosition">
+		<xs:sequence>
+			<xs:element name="RefPointDefinition" type="RefPointDefinition" maxOccurs="unbounded"/>
+			<xs:element name="MoveSequence" type="MoveSequence"/>
+			<xs:element name="ChangeParkPosition" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="YDirectionTeachAxis" type="YDirectionTeachAxis" use="required"/>
+		<xs:attribute name="ParkPos" type="ParkPos" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ChangeParkPositions">
+		<xs:sequence>
+			<xs:element name="ChangeParkPosition" type="ChangeParkPosition" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChangeParkPosition">
+		<xs:sequence>
+			<xs:element name="MoveSequence" type="MoveSequence"/>
+		</xs:sequence>
+		<xs:attribute name="From" type="ParkPos" use="required"/>
+		<xs:attribute name="To" type="ParkPos" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="LogPosProcessFlow">
+		<xs:sequence>
+			<xs:element name="MoveTo" type="MoveSequence">
+				<xs:annotation>
+					<xs:documentation>This sequence define how you can move from the "Park" position to the Logical  Position. The z / h position will be corrected at the end of the sequence to the right (teached) Logical Position.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ChangeParkPosAllowed" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="TurnPlate" type="MoveSequence" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This sequence difine how to turn a plate (FillFrame) on the given position.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MoveSequence">
+		<xs:sequence>
+			<xs:element name="PatternName" type="xs:NMTOKEN"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WaitDistance">
+		<xs:sequence>
+			<xs:element name="X_Dist" type="xs:double"/>
+		</xs:sequence>
+		<xs:attribute name="ParkPos" type="ParkPos" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ParkPositions">
+		<xs:sequence>
+			<xs:element name="ParkPosition" type="ParkPosition" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParkPosition">
+		<xs:sequence>
+			<xs:element name="RZ_Pos" type="xs:double"/>
+			<xs:element name="Z_Pos" type="xs:double"/>
+			<xs:element name="H_Pos" type="xs:double"/>
+			<xs:element name="RG_Pos" type="xs:double"/>
+		</xs:sequence>
+		<xs:attribute name="ParkPos" type="ParkPos" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AxisOffsets">
+        <xs:annotation>
+        	<xs:documentation>The distance of rotation axes to certain fixed positions</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+			<xs:element name="YOffsetOfXAxis" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>The y position of the rz rotating axis. (The rz axis may only move in x.)</xs:documentation>
+				</xs:annotation></xs:element>
+			<xs:element name="OffsetGripperToRotateGripper" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>The distance of the rg rotating axis from the tool center.</xs:documentation>
+				</xs:annotation></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ParkPos">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Left"/>
+			<xs:enumeration value="LeftADPlate"/>
+			<xs:enumeration value="Right"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YDirectionTeachAxis">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="RZ"/>
+			<xs:enumeration value="H"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

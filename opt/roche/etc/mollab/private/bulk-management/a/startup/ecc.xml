@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPConfiguration.xsd">
+  <ICApplicationInfo ICApplicationName="newgen-bulkmanagement" ICApplicationVersion="X" />
+  <StartConfigurationID>BulkManagement_A</StartConfigurationID>
+  <ECPConfiguration ConfigurationID="BulkManagement_A">
+    <ECPSWConfigurationFile>ecs_A.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false" />
+    <DisableHWCommunication DisableHWCommunication="true" />
+  </ECPConfiguration>
+  <ECPConfiguration ConfigurationID="BulkManagement_B">
+    <ECPSWConfigurationFile>ecs_B.xml</ECPSWConfigurationFile>
+    <ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+    <BINPath>/opt/roche/bin/</BINPath>
+    <FWRPath>/opt/roche/fwr/</FWRPath>
+    <FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false" />
+    <DisableHWCommunication DisableHWCommunication="true" />
+  </ECPConfiguration>
+  <SystemConfiguration>
+    <Toolchain></Toolchain>
+    <BackboneStartCDI>16</BackboneStartCDI>
+    <BackboneInterfacePort>eno1</BackboneInterfacePort>
+    <DefaultStackSize_kbytes>256</DefaultStackSize_kbytes>
+    <Shutdown_TimeBeforeSendSIGKill_sec>60</Shutdown_TimeBeforeSendSIGKill_sec>
+    <Startup_TimeBeforeNextCSMHierarchy_sec>1</Startup_TimeBeforeNextCSMHierarchy_sec>
+    <FTPPath>${HOME}/ftp/</FTPPath>
+  </SystemConfiguration>
+  <EnvironmentConfiguration>
+    <EnvBINPath>/opt/roche/bin/</EnvBINPath>
+  </EnvironmentConfiguration>
+</ECP>

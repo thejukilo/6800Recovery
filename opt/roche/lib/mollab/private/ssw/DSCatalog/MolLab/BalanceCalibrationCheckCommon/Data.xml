@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6E4E95E55C08AC07D2E7424FFCAE367C10925360E15B" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="BalanceCalibrationCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pBalanceIPAddress" Type="String">
+          <data:Description>
+            <base:Title>Balance IP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The IP address of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>192.168.95.248</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPPort" Type="Integer">
+          <data:Description>
+            <base:Title>TCP Port Address of the balance</base:Title>
+          </data:Description>
+          <data:Value>8001</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pIsSampleHead" Type="Boolean">
+          <data:Description>
+            <base:Title>Is sample transfer head</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceUSTBTolerance" Type="Double">
+          <data:Description>
+            <base:Title>Tolerance Value for balance USTB setting.</base:Title>
+          </data:Description>
+          <data:Value>2.5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceUSTBTime" Type="Double">
+          <data:Description>
+            <base:Title>Time Value for balance USTB setting.</base:Title>
+          </data:Description>
+          <data:Value>1.8</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rBalanceSerial" Type="Serial">
+          <data:Description>
+            <base:Title>On board weighing system (OWS)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The serial number of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceFirmwareVersion" Type="String">
+          <data:Description>
+            <base:Title>Balance Firmware Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The firmware version of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceTypeAndCapacity" Type="String">
+          <data:Description>
+            <base:Title>Balance Type and Capacity</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The type and capacity of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceTemp" Type="String" Unit="°C">
+          <data:Description>
+            <base:Title>Balance Temperature</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The temperature of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBalanceTaredWithEmptyWeighingPan" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Tared With Empty Weighing Pan</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The balance successfully started taring with the empty weighing pan.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBalanceTaredWithReferenceWeight" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Tared With Empty Reference Weight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The balance successfully tared with the reference 10g weight.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rBalanceTaringComplete" Type="Boolean">
+          <data:Description>
+            <base:Title>Balance Taring Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The balance was successfully tared.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rIsSampleHead" Type="Boolean">
+          <data:Description>
+            <base:Title>Is Sample Transfer Head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Is sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rRetryAttempts" Type="Integer">
+          <data:Description>
+            <base:Title>Retry Attempts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of retry attempts</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="3" Operator="LT" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irRetry" Type="Boolean">
+          <data:Description>
+            <base:Title>Retry Calibration</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Retry to calibrate</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

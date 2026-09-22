@@ -1,0 +1,10 @@
+498a483ff9657c76f1d58867b8a9a5c7  lib/systemd/system/opt-roche-var-lib-mollab-private-software\x2dupdate-tmp.mount
+adbd48a493e8120838a3c556a74551b5  opt/roche/etc/mollab/private/rabbitmq/definitions/softwareUpdate_definition.json
+f6d7330af46929f642bad078579536a7  opt/roche/etc/mollab/private/software-update/appsettings.json
+d62d2a06286257bba4dacef049f96e29  opt/roche/etc/mollab/private/software-update/certificates/integrity.cer
+db766f15583cacb7d8463f957bffcbd3  opt/roche/etc/mollab/private/software-update/install_history_template.json
+c5422238f0c6f053970e243c7a87cee5  opt/roche/etc/mollab/private/software-update/serilog.json
+5ac563b7386f376d331a4d4169fdca59  opt/roche/lib/mollab/private/instrument/install.d/8_softwareupdate
+db003dd95726c56e59c769c30bfd3477  opt/roche/lib/mollab/private/software-update/swupdate.py
+d21187cef47c3393e13d27943340a861  usr/share/doc/newgen-softwareupdate-configuration/changelog.gz
+5edb34ef695b2b12940f4b94013633b7  usr/share/doc/newgen-softwareupdate-configuration/copyright

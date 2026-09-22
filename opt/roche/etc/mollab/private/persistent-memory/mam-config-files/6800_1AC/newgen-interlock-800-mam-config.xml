@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:util="http://www.roche.com/util"
+  xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig_1.00.03.xsd">
+  <csmConfig>
+    <csm name="CSM_InterlockNewGen" seid="232" moduleId="800">
+      <parPool type="uint8" structure="array" noElements="100" id="600" name="ConfigData_1" defaultValue="0" minValue="0" maxValue="255">
+        <persistDef memoryId="3780" periodInSec="-1" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="610" name="OpCountInterlockActive" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="621" name="OpCountDoorInitsSC" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="622" name="OpCountDoorInitsPCA" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="623" name="OpCountDoorInitsPCB" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="624" name="OpCountMovableInits" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="631" name="OpCountDoorMovesSC" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="632" name="OpCountDoorMovesPCA" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="633" name="OpCountDoorMovesPCB" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="634" name="OpCountMovableMoves" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2004" periodInSec="14400" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="641" name="OpCountActuatorDoorSC" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="-1" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="642" name="OpCountActuatorDoorPCA" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="-1" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="643" name="OpCountActuatorDoorPCB" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="-1" />
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="644" name="OpCountActuatorsMovable" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="999999" periodInSec="-1" />
+      </parPool>      
+    </csm>
+  </csmConfig>
+</dia:mam>

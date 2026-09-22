@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="76E2A7EF18471DAEC2B711E044341049F1AB7CC1BA51" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TransferModuleHandlerTeachCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList />
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rPlateHandlerTeachSuccessful">
+          <data:Description>
+            <base:Title>Was Plate-Handler Teach Success</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If true, the transfer module's plate handler teaching has been successfully completed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTransferModuleReinitialization">
+          <data:Description>
+            <base:Title>Was Transfer Module Successfully Reinitialized</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>If true, the transfer module handler has been successfully reinitialized.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,63 @@
+#!/bin/sh
+
+WORK_DIR=$1
+UPGRADE_STATUS=$2
+
+LOG_DIR="/opt/roche/var/log"
+
+errlog=$WORK_DIR/rlx-upgrade.log
+exec >> $errlog 2>&1
+set -x
+
+. /usr/lib/rlx-osal/rlx-upgrade.inc.sh
+
+if [ -z "$WORK_DIR" ]; then
+  log_error "$0: no work dir specified"
+fi
+
+
+##### read upgrade.status
+
+# FIXME: move to cpp ?
+
+project=`cut -d/ -f1 /opt/roche/etc/projectinfo`
+if [ -e $WORK_DIR/archive/releaseversion ]; then
+    version=`cat $WORK_DIR/archive/releaseversion`
+else
+    version='na'
+fi
+end=`date +%s`
+start=`cat $WORK_DIR/upgrade.start`
+duration_sec=$((end-start))
+if [ "$duration_sec" -gt 60 ]; then
+    duration="$((duration_sec / 60))' $((duration_sec % 60))''"
+else
+    duration="$duration_sec''"
+fi
+set +x
+echo
+echo ================================================================
+echo "Software Project:     $project"
+echo "New Software Version: $version"
+echo "Upgrade Duration:     $duration"
+echo "Upgrade End Time:     `date -R`"
+echo ================================================================
+echo
+
+UPGRADE_INFO_FILE=/rlx-upgrade
+if [ -f "$UPGRADE_INFO_FILE" ]; then
+    sed -i "s/.*UPGRADE_STATUS=.*/UPGRADE_STATUS=\"$UPGRADE_STATUS\"/" $UPGRADE_INFO_FILE
+    echo "UPGRADE_DURATION=\"$duration_sec\"" >> $UPGRADE_INFO_FILE
+fi
+
+# move log file
+ts=`stat -c %y $WORK_DIR/upgrade.start | tr -d - | tr -d : | sed 's/ /T/' | sed 's/\.[0-9]\+ //'`
+cp $WORK_DIR/rlx-upgrade.log $LOG_DIR/rlx-upgrade-$version-$ts.log
+rm -f $LOG_DIR/rlx-upgrade.log
+# NOTE: absolute path cannot be used below for rlx-upgrade-$version-$ts.log
+#       because we expect relative link in rlx-osal-plugin-system-snapshots:rlx-snapshot script
+ln -s rlx-upgrade-$version-$ts.log $LOG_DIR/rlx-upgrade.log
+
+rm -rf $WORK_DIR
+rm -f /run/osal-upgrade.lock
+rm -f /tmp/.rlx-busy

@@ -1,0 +1,7 @@
+I:3429363
+E:ID_PATH=platform-i8042-serio-0
+E:ID_PATH_TAG=platform-i8042-serio-0
+E:ID_FOR_SEAT=leds-platform-i8042-serio-0
+G:seat
+Q:seat
+V:1

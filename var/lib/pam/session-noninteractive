@@ -1,0 +1,7 @@
+Module: null
+[default=1]			pam_permit.so
+Module: rlx
+required	pam_limits.so
+optional	pam_umask.so
+Module: unix
+required	pam_unix.so

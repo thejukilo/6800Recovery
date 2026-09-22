@@ -1,0 +1,317 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.analyticunit.a1.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AmplificationPlateHandler.AmplificationPlateHandlerZaxisInitialized",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.Infrastructure.ProcessingModuleA.InfrastructurePowerSupplyStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReinitializeAnalyticUnit",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ForcedReinitializeAnalyticUnit",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.HeatUpCoverHeater",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.StopHeatingCoverHeater",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.OpenLoadingTray",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.CloseLoadingTray",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.StartPcrProcess",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SetHousingFan",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadLedTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadCoverMarkerDetectionParameters",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SearchHotPixels",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.PerformImageAcquisition",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadCameraTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SetFilterWheels",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SetLed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadReferenceChannelValue",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReleasePlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.PressPlate",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadPresenceSensor",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadLightSourceIntensity",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.Heatup",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadCameraExposureTime",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.HeatUpThermalCycler",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.DisableThermalCyclerHeating",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SetBlockCyclerFans",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadSensorStates",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.ReadReferenceChannelSensitivity",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.SetFixCoverHeaterTemperature",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.PrepareAnalyticUnitShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.AnalyticUnit.A1.AcquireAnalyticUnitHardwareInfo",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.analyticunit.a1.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    }
+  ]
+}

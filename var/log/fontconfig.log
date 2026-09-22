@@ -1,0 +1,25 @@
+Font directories:
+	/usr/share/fonts
+	/usr/local/share/fonts
+	/usr/share/fonts/opentype
+	/usr/share/fonts/truetype
+	/usr/share/fonts/opentype/cantarell
+	/usr/share/fonts/opentype/noto
+	/usr/share/fonts/truetype/dejavu
+	/usr/share/fonts/truetype/noto
+/usr/share/fonts: caching, new cache contents: 0 fonts, 2 dirs
+/usr/share/fonts/opentype: caching, new cache contents: 0 fonts, 2 dirs
+/usr/share/fonts/opentype/cantarell: caching, new cache contents: 5 fonts, 0 dirs
+/usr/share/fonts/opentype/noto: caching, new cache contents: 30 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 2 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 6 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 268 fonts, 0 dirs
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/opentype: skipping, looped directory detected
+/usr/share/fonts/truetype: skipping, looped directory detected
+/usr/share/fonts/opentype/cantarell: skipping, looped directory detected
+/usr/share/fonts/opentype/noto: skipping, looped directory detected
+/usr/share/fonts/truetype/dejavu: skipping, looped directory detected
+/usr/share/fonts/truetype/noto: skipping, looped directory detected
+/var/cache/fontconfig: cleaning cache directory
+fc-cache: succeeded

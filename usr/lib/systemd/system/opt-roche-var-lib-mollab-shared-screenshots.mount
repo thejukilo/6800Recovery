@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/screenshots to /opt/roche/var/lib/mollab/shared/screenshots
+
+[Mount]
+What=/mnt/data/shared/screenshots
+Where=/opt/roche/var/lib/mollab/shared/screenshots
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+9b21a87c98efc44aeff64584db3bd5dd  lib/systemd/system/newgen-autotesttools.service
+88294eb74bbfc589e729fe0c88bd52c3  opt/roche/home/LICENSE.chromedriver
+44259f719c2dc9937cbe2637089e05d9  opt/roche/home/chromedriver
+dc2bc145b9c2e9ee55f7ad81c8e02e59  opt/roche/home/java/openlogic-openjdk-jre-17.0.10+7-linux-x64.tar.gz
+10f114ac20fcbed50faabdf637a6f95a  opt/roche/home/selenium-server-4.20.0.jar
+940b60a7068b5cd1adc39da25f73117e  opt/roche/home/selenium-server-config.toml
+33ff35de907e6ada7f05dda6adb564fd  opt/roche/home/startup_newgen-autotesttools.sh
+8a010a8d399da03c5fd4665c27e28e56  usr/share/doc/newgen-autotesttools/changelog.gz
+8c3b3ba293e08015bad0cd94102f079a  usr/share/doc/newgen-autotesttools/copyright

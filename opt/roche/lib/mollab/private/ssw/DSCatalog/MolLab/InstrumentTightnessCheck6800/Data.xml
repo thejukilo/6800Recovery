@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="8EADE39B2956EBD221B3B1F45189170C69607EF8230F" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="InstrumentTightnessCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <!--sample transfer head-->
+        <data:Parameter Name="pPipettorIndexSampleHead" Type="Integer" Unit="">
+          <data:Description>
+            <base:Title>Index of Pipettor for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Index of Pipettor for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParamsSampleHead" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pipetting parameter for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>ad485cca-fd60-424f-b99b-5f95969639ea</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeSampleHead" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>Wait time for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait time for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>300</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPumpStartPositionHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>Pump start position for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pump start position for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>5E-7</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPumpMovementHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>Pump movement for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pump movement for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>5E-8</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialPressureDifferenceHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>Initial pressure difference for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initial pressure difference for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3000</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitNegativeHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>Pressure loss limit negative for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pressure loss limit negative for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>600</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitPositiveHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>Pressure loss limit positive for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pressure loss limit positive for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>600</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pStabilizationTimeHigh" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>Stabilization time for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Stabilization time for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMeasurementTimeHigh" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>Measurement time for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Measurement time for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>15</data:Value>
+        </data:Parameter>
+        <!--Reagent transfer head-->
+        <data:Parameter Name="pPipParamsReagentHead" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter set to use for reagent transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pipetting parameter set to use for reagent transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>210E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>460E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Wash Needle Volume</base:Title>
+          </data:Description>
+          <data:Value>80E-6</data:Value>
+        </data:Parameter>
+        <!--Process head-->
+        <data:Parameter Name="pPipParamsProcessHead" Type="String">
+          <data:Description>
+            <base:Title>Pipetting parameter for processing transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pipetting parameter for processing transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>698b99a2-d475-4552-922a-148da16e436d</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeProcessHead" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>Wait time for processing transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait time for processing transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>300</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irTeachToolPresent" Type="Boolean">
+          <data:Description>
+            <base:Title>Teach Tool Presence Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The teach tool shall be present as a precondition.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load check prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load check prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load check prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load check was successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <!--sample transfer head-->
+        <data:Result Name="rSampleHeadTightnessResultPipettor" Type="Boolean">
+          <data:Description>
+            <base:Title>Tightness Result Pipettor for sample transfer head</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness Result Pipettor for sample transfer head</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSampleHeadTightnessOutcome" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Sample transfer head tightness outcome</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sample transfer head tightness outcome</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <!--Reagent transfer head-->
+        <data:Result Name="rReagentHeadTight" Type="Boolean">
+          <data:Description>
+            <base:Title>The Reagent Transfer Head for Processing Module Is Tight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The reagent transfer head for processing module is tight</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentHeadTightnessOutcome" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Reagent Transfer Head Tightness Outcome for Each Channel</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent transfer head tightness outcome for each channel</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <!--Process head A1-->
+        <data:Result Type="String" Name="rProcessHeadTightnessResultPassedArrayA1" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Passed Array for processing transfer head A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result passed array for processing transfer head A1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rProcessHeadTightnessResultFailedArrayA1" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Failed Array for processing transfer head A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result failed array for processing transfer head A1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rProcessHeadTightnessResultStringA1">
+          <data:Description>
+            <base:Title>Tightness Result Array for processing transfer head A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result array for processing transfer head A1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessHeadTightnessCheckPassedA1" Array="false">
+          <data:Description>
+            <base:Title>All Pressure values in range for processing transfer head A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All pressure values in range for processing transfer head A1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!--Process head A2-->
+        <data:Result Type="String" Name="rProcessHeadTightnessResultPassedArrayA2" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Passed Array for processing transfer head A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result passed array for processing transfer head A2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rProcessHeadTightnessResultFailedArrayA2" Array="true" Size="48">
+          <data:Description>
+            <base:Title>Tightness Result Failed Array for processing transfer head A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result failed array for processing transfer head A2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="rProcessHeadTightnessResultStringA2">
+          <data:Description>
+            <base:Title>Tightness Result Array for processing transfer head A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tightness result array for processing transfer head A2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessHeadTightnessCheckPassedA2" Array="false">
+          <data:Description>
+            <base:Title>All Pressure values in range for processing transfer head A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All pressure values in range for processing transfer head A2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

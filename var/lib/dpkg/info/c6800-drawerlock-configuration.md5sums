@@ -1,0 +1,13 @@
+18d95f2fadd12e2157c87f9147f3eb5e  opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/a/config/locking-rhcconfig.xml
+0a46fc1685f0366f139a51a10b802346  opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/a/config/locking-smstage.xml
+e05f8068099cf0b28929c3c5f00f1f43  opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/a/startup/ecc.xml
+a5033fb689f18ed6704d6363558fae43  opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/a/startup/ecs_ConsumablesDrawerA.xml
+18d95f2fadd12e2157c87f9147f3eb5e  opt/roche/etc/mollab/private/drawer-lock/reagent-cassette-drawer/config/locking-rhcconfig.xml
+0a46fc1685f0366f139a51a10b802346  opt/roche/etc/mollab/private/drawer-lock/reagent-cassette-drawer/config/locking-smstage.xml
+e05f8068099cf0b28929c3c5f00f1f43  opt/roche/etc/mollab/private/drawer-lock/reagent-cassette-drawer/startup/ecc.xml
+273c43584e90d666b995b097e49da29a  opt/roche/etc/mollab/private/drawer-lock/reagent-cassette-drawer/startup/ecs_ReagentCassetteDrawer.xml
+c309e1c989a7b87e90e103c365f1fae8  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/locking-232-mam-config.xml
+a50660ef01ebc2c0b29cc7755fde63ca  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/locking-233-mam-config.xml
+cd1d20ee0ec14cc770db3d2e06a2409b  opt/roche/etc/mollab/private/rabbitmq/definitions/drawerlock_consumablesdrawera_definition.json
+d21882fca736ccfd776ecf6624627e15  opt/roche/etc/mollab/private/rabbitmq/definitions/drawerlock_reagentcassettedrawer_definition.json
+85f47199dad46a4dba8b40bebe426878  opt/roche/lib/mollab/firmware/drawer-lock/fwr_00000171_SMStage_2.06.02.2202.srec

@@ -1,0 +1,7 @@
+714b30ee58c842583c9cd0707c92f9d2  opt/roche/etc/aide/rlx-aide.conf
+f37304cb48536c2988be6e192b9230b4  opt/roche/lib/rlx-osal/libosal-plugin-integrity-check.la
+827baace7f518be526760a9562b14295  opt/roche/lib/rlx-osal/libosal-plugin-integrity-check.so
+5a53326ac5c0166e546372e266d1ef11  opt/roche/sbin/rlx-integrity-check
+6f7109482fc07b933f1d6eea328cb27e  usr/lib/python3/dist-packages/rlx_osal/plugins/integrity_check_pb2.py
+aebf55c48764f5a36a81ea07cace5a6e  usr/share/doc/rlx-osal-plugin-integrity-check/changelog.gz
+958cfdef2a053b77bd915c5556049fda  usr/share/doc/rlx-osal-plugin-integrity-check/copyright

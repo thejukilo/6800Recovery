@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="C8412A20597F5D0D0AB53B1949CB2DBCC1DC1E0AB251" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitRampCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Specific for operations check flag.</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="AnalyticUnitId">
+          <data:Description>
+            <base:Title>The Cycler to use to calculate the results.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: A1, A2, B1, B2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="ADProcessDefinitionFile">
+          <data:Description>
+            <base:Title>The Filename from the ADProcessDefinition XML file.</base:Title>
+          </data:Description>
+          <data:Value>RampTestShort.xml</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="Boolean" Name="Field">
+          <data:Description>
+            <base:Title>Whether the Test is used in field or not. If used in field there are some results without criteria.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Alternatives are: True or False</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rCanExecuteRun" Type="Boolean">
+          <data:Description>
+            <base:Title>Adprocess Can Be Executed.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADProcess can be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

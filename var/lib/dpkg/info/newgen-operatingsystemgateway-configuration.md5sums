@@ -1,0 +1,5 @@
+11fdbf360c3e430cac55a54ed2f9cb9a  opt/roche/etc/mollab/private/operating-system-gateway/appsettings.json
+a35303a06e99ef117ffa027ef2a2b34e  opt/roche/etc/mollab/private/operating-system-gateway/serilog.json
+1394541947b990b27dd274a03fefbdb2  opt/roche/etc/mollab/private/rabbitmq/definitions/operatingSystemGateway_definition.json
+9d9ea0e7771754514bd61c1cec3bd565  usr/share/doc/newgen-operatingsystemgateway-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-operatingsystemgateway-configuration/copyright

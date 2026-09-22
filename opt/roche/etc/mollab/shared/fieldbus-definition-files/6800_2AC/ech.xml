@@ -1,0 +1,1694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPHWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPHWConfiguration.xsd">
+  <BackboneSlave SlaveMailboxInOutSize="384" SlaveName="Backbone01_Various" SlavePosition="1" SlaveType="Backbone" CANBaudRatePortB="500KBit">
+    <FirmwareBackboneInfos>
+      <FirmwareBackboneRoche HWArticleNumber="06241042001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000281" Name="LAN_to_six_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+    </FirmwareBackboneInfos>
+    <Node BackbonePort="PortA" NodeType="Dummy" NodeName="SC_BackboneNode" NodePosition="0" NodeID="0">
+      <FirmwareNodeInfos />
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_BackboneNode_Base" />
+      <Device DeviceName="MAM_SC_LanToSixCan" DeviceID="1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="1" NodeName="SC_Fuseboard" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06353860001" HWIndexNumber="">
+          <ApplicationFirmware Name="Fuseboard" Unit="infrastructure" SEID="00000258" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Fuseboard_Infrastructure" />
+      <Device DeviceID="2" DeviceName="MAM_SC_Fuseboard" />
+      <Device DeviceID="3" DeviceName="SC_Fuseboard_InterlockTrigger" />
+      <Device DeviceID="4" DeviceName="SC_Fuseboard_Interlock" />
+      <Device DeviceID="5" DeviceName="SC_Fuseboard_SUSPA">
+        <FirmwareDeviceInfo>
+          <FirmwareThirdParty HardwareVersion="V3.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V4.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.01">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.02">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.1.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.2.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="1" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+        </FirmwareDeviceInfo>
+      </Device>
+      <Device DeviceID="6" DeviceName="SC_Fuseboard_PowerSupplyMain" />
+      <Device DeviceID="52" DeviceName="SC_Fuseboard_SUSPA2">
+        <FirmwareDeviceInfo>
+          <FirmwareThirdParty HardwareVersion="V3.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V4.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.01">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.02">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.1.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.2.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="2" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-2" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+        </FirmwareDeviceInfo>
+      </Device>
+      <Device DeviceID="53" DeviceName="SC_Fuseboard_SUSPAMovable">
+        <FirmwareDeviceInfo>
+          <FirmwareThirdParty HardwareVersion="V3.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V4.0.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.01">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.0.02">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.1.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="V5.2.00">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV5" Unit="safety-interlock" SEID="00000689" Extension=".hex" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="nohw">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="suspa-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--setcascadenumber" Value="3" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="suspa-fwrdownloader-3" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="5" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="SuspaDoorControlV3" Unit="safety-interlock" SEID="00000419" Extension=".s19" Version="nohw" />
+          </FirmwareThirdParty>
+        </FirmwareDeviceInfo>
+      </Device>
+    </Node>
+    <Node BackbonePort="PortA" NodeID="2" NodeName="SC_Fuseboard_SMS" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06353860001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="infrastructure" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Fuseboard_SMS_Rollo" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="3" NodeName="PCA_Fuseboard" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06353860001" HWIndexNumber="">
+          <ApplicationFirmware Name="Fuseboard" Unit="infrastructure" SEID="00000258" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Fuseboard_Infrastructure" />
+      <Device DeviceID="1" DeviceName="PCA_Fuseboard_MovableInstrumentLock" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_Fuseboard" />
+      <Device DeviceID="4" DeviceName="PCA_Fuseboard_FrameSealer">
+        <FirmwareDeviceInfo>
+          <FirmwareThirdParty HardwareVersion="3.2">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV4" Unit="sealing-station" SEID="00000330" Extension=".HEX" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="3.3">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV4" Unit="sealing-station" SEID="00000330" Extension=".HEX" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="3.4">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV4" Unit="sealing-station" SEID="00000330" Extension=".HEX" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="3.5">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV4" Unit="sealing-station" SEID="00000330" Extension=".HEX" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="5.0">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV5" Unit="sealing-station" SEID="00000330" Extension=".HEX" />
+          </FirmwareThirdParty>
+          <FirmwareThirdParty HardwareVersion="9.0">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="framesealer-newgen-third-party-downloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--entity-process-name" Value="framesealer-fwrdownloader-A" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="FrameSealerV9" Unit="sealing-station" SEID="00000665" Extension=".HEX" />
+          </FirmwareThirdParty>
+        </FirmwareDeviceInfo>
+      </Device>
+      <Device DeviceID="5" DeviceName="PCA_Fuseboard_PowerSupplyAC_ADA2" />
+      <Device DeviceID="6" DeviceName="PCA_Fuseboard_PowerSupplyAC_ADA1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="4" NodeName="PCA_Fuseboard_SMS" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06353860001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="infrastructure" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Fuseboard_SMS_Rollo" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="5" NodeName="AC_PlateHandler_1" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="AC_PlateHandler_1_Base" />
+      <Device DeviceID="1" DeviceName="AC_PlateHandler_1_MotorX" />
+      <Device DeviceID="2" DeviceName="AC_PlateHandler_1_MotorY" />
+      <Device DeviceID="3" DeviceName="AC_PlateHandler_1_MotorGripper" />
+      <Device DeviceID="4" DeviceName="MAM_AC_PlateHandler_1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="6" NodeName="AC_PlateHandler_2_RHC" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-drawer" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-drawer" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-drawer" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_PlateHandler_2_RHC_dummy" />
+      <Device DeviceID="1" DeviceName="MAM_AC_PlateHandler_2_RHC" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="7" NodeName="AC_PlateHandler_2_SMS" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-drawer" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-drawer" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-drawer" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="AC_PlateHandler_2_SMS_Base" />
+      <Device DeviceID="1" DeviceName="AC_PlateHandler_2_SMS_PusherADOutputDrawer" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="8" NodeName="AC_PlateHandler_2_MC" NodePosition="8" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-drawer" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-drawer" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="AC_PlateHandler_2_MC_Base" />
+      <Device DeviceID="1" DeviceName="AC_PlateHandler_2_MC_MotorZ" />
+      <Device DeviceID="2" DeviceName="AC_PlateHandler_2_MC_ADOutputDrawer" />
+      <Device DeviceID="3" DeviceName="AC_PlateHandler_2_MC_ADTransferPosition" />
+      <Device DeviceID="4" DeviceName="MAM_AC_PlateHandler_2_RHC_MC" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="1" NodeName="SC_ReagentStorage_SlaveToSlave" NodePosition="0" NodeType="CANOpenNode">
+      <FirmwareNodeInfos />
+      <Device DeviceID="0" DeviceName="SC_ReagentStorage_SlaveToSlave_0" SlaveToSlave="true" />
+      <Device DeviceID="1" DeviceName="SC_ReagentStorage_SlaveToSlave_1" SlaveToSlave="true" />
+      <Device DeviceID="2" DeviceName="SC_ReagentStorage_SlaveToSlave_2" SlaveToSlave="true" />
+      <Device DeviceID="3" DeviceName="SC_ReagentStorage_SlaveToSlave_3" SlaveToSlave="true" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="120" NodeName="SC_ReagentStorage" NodePosition="1" NodeType="CANOpenNodeMaster">
+      <FirmwareNodeInfos>
+        <FirmwareThirdParty HardwareVersion="3">
+          <FirmwareVersion />
+          <FirmwareDownloadExecutable FileName="reagentstorage-fwrdownloader">
+            <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+          </FirmwareDownloadExecutable>
+          <FirmwareDownloadExecutableTimeout seconds="720" />
+          <FirmwareFile Name="ReagentStorage" Unit="reagent-storage-handler" SEID="00000196" Extension=".bin" />
+        </FirmwareThirdParty>
+        <FirmwareThirdParty HardwareVersion="4">
+          <FirmwareVersion />
+          <FirmwareDownloadExecutable FileName="reagentstorage-fwrdownloader">
+            <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+          </FirmwareDownloadExecutable>
+          <FirmwareDownloadExecutableTimeout seconds="720" />
+          <FirmwareFile Name="ReagentStorage" Unit="reagent-storage-handler" SEID="00000196" Extension=".bin" />
+        </FirmwareThirdParty>
+        <FirmwareThirdParty HardwareVersion="5">
+          <FirmwareVersion />
+          <FirmwareDownloadExecutable FileName="reagentstorage-fwrdownloader">
+            <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+          </FirmwareDownloadExecutable>
+          <FirmwareDownloadExecutableTimeout seconds="720" />
+          <FirmwareFile Name="ReagentStorage" Unit="reagent-storage-handler" SEID="00000196" Extension=".bin" />
+        </FirmwareThirdParty>
+        <FirmwareThirdParty HardwareVersion="50">
+          <FirmwareVersion />
+          <FirmwareDownloadExecutable FileName="reagentstorage-fwrdownloader">
+            <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+          </FirmwareDownloadExecutable>
+          <FirmwareDownloadExecutableTimeout seconds="720" />
+          <FirmwareFile Name="ReagentStorage" Unit="reagent-storage-handler" SEID="00000690" Extension=".bin" />
+        </FirmwareThirdParty>
+        <FirmwareThirdParty HardwareVersion="51">
+          <FirmwareVersion />
+          <FirmwareDownloadExecutable FileName="reagentstorage-fwrdownloader">
+            <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+          </FirmwareDownloadExecutable>
+          <FirmwareDownloadExecutableTimeout seconds="720" />
+          <FirmwareFile Name="ReagentStorage" Unit="reagent-storage-handler" SEID="00000690" Extension=".bin" />
+        </FirmwareThirdParty>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_ReagentStorage_ReagentStorage" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="1" NodeName="SC_PlateHandler_1" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_PlateHandler_1_Base" />
+      <Device DeviceID="1" DeviceName="SC_PlateHandler_1_MotorGripper" />
+      <Device DeviceID="2" DeviceName="MAM_SC_PlateHandler_1" />
+      <Device DeviceID="3" DeviceName="SC_PlateHandler_1_MotorZ" />
+      <Device DeviceID="4" DeviceName="SC_PlateHandler_1_MotorX" />
+      <Device DeviceID="7" DeviceName="SC_PlateHandler_1_DetectionLB" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="2" NodeName="SC_PlateHandler_2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_PlateHandler_2_Base" />
+      <Device DeviceID="1" DeviceName="SC_PlateHandler_2_RFIDReadingStationMotor" />
+      <Device DeviceID="2" DeviceName="SC_PlateHandler_2_PPlate48ParkAMotor" />
+      <Device DeviceID="3" DeviceName="SC_PlateHandler_2_MotorY" />
+      <Device DeviceID="4" DeviceName="SC_PlateHandler_2_PPlate48ParkBMotor" />
+      <Device DeviceID="5" DeviceName="MAM_SC_PlateHandler_2" />
+      <Device DeviceID="7" DeviceName="SC_PlateHandler_2_DetectionLB" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="1" NodeName="SC_StackerHandler_1" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="main-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="main-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_StackerHandler_1_Base" />
+      <Device DeviceID="1" DeviceName="SC_StackerHandler_1_MotorGripper" />
+      <Device DeviceID="2" DeviceName="SC_StackerHandler_1_MotorRG" />
+      <Device DeviceID="3" DeviceName="SC_StackerHandler_1_MotorZ" />
+      <Device DeviceID="4" DeviceName="SC_StackerHandler_1_MotorH" />
+      <Device DeviceID="5" DeviceName="MAM_SC_StackerHandler_1" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="2" NodeName="SC_StackerHandler_2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="main-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493379001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="main-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="main-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_StackerHandler_2_Base" />
+      <Device DeviceID="1" DeviceName="SC_StackerHandler_2_MotorRZ" />
+      <Device DeviceID="2" DeviceName="SC_StackerHandler_2_MotorX" />
+      <Device DeviceID="3" DeviceName="MAM_SC_StackerHandler_2" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="1" NodeName="SC_ProcessPark" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_ProcessPark_Base" />
+      <Device DeviceID="1" DeviceName="SC_ProcessPark_TransferS" />
+      <Device DeviceID="2" DeviceName="MAM_SC_ProcessPark_TransferS" />
+      <Device DeviceID="3" DeviceName="SC_ProcessPark_Downholder1" />
+      <Device DeviceID="4" DeviceName="SC_ProcessPark_Downholder2" />
+      <Device DeviceID="7" DeviceName="SC_ProcessPark_Detection" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="2" NodeName="SC_Pipettor1_MC" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_Pipettor1_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_Pipettor1_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="SC_Pipettor1_MC_pump" />
+      <Device DeviceID="3" DeviceName="SC_Pipettor1_MC_MotorXAirPipettor1" />
+      <Device DeviceID="4" DeviceName="SC_Pipettor1_MC_squeeze" />
+      <Device DeviceID="5" DeviceName="MAM_SC_Pipettor1_MC" />
+      <Device DeviceID="7" DeviceName="SC_Pipettor1_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="3" NodeName="SC_Pipettor1_STM32" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Pipettor1_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="4" NodeName="SC_Pipettor2_MC" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_Pipettor2_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_Pipettor2_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="SC_Pipettor2_MC_pump" />
+      <Device DeviceID="3" DeviceName="SC_Pipettor2_MC_MotorXAirPipettor2" />
+      <Device DeviceID="4" DeviceName="SC_Pipettor2_MC_squeeze" />
+      <Device DeviceID="5" DeviceName="MAM_SC_Pipettor2_MC" />
+      <Device DeviceID="7" DeviceName="SC_Pipettor2_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="5" NodeName="SC_Pipettor2_STM32" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Pipettor2_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="6" NodeName="SC_Pipettor3_MC" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_Pipettor3_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_Pipettor3_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="SC_Pipettor3_MC_pump" />
+      <Device DeviceID="3" DeviceName="SC_Pipettor3_MC_MotorXAirPipettor3" />
+      <Device DeviceID="4" DeviceName="SC_Pipettor3_MC_squeeze" />
+      <Device DeviceID="5" DeviceName="MAM_SC_Pipettor3_MC" />
+      <Device DeviceID="7" DeviceName="SC_Pipettor3_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="7" NodeName="SC_Pipettor3_STM32" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Pipettor3_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="8" NodeName="SC_Pipettor4_MC" NodePosition="8" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="transfer-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_Pipettor4_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_Pipettor4_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="SC_Pipettor4_MC_pump" />
+      <Device DeviceID="3" DeviceName="SC_Pipettor4_MC_MotorXAirPipettor4" />
+      <Device DeviceID="4" DeviceName="SC_Pipettor4_MC_squeeze" />
+      <Device DeviceID="5" DeviceName="MAM_SC_Pipettor4_MC" />
+      <Device DeviceID="7" DeviceName="SC_Pipettor4_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="9" NodeName="SC_Pipettor4_STM32" NodePosition="9" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490973001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="transfer-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="SC_Pipettor4_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="1" NodeName="SC_SampleIO" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="rack-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="rack-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_SampleIO_Base" />
+      <Device DeviceID="1" DeviceName="SC_SampleIO_MotorX" />
+      <Device DeviceID="2" DeviceName="SC_SampleIO_MotorY" />
+      <Device DeviceID="3" DeviceName="SC_SampleIO_MotorZ" />
+      <Device DeviceID="4" DeviceName="MAM_SC_SampleIO_MC" />
+      <Device DeviceID="7" DeviceName="SC_SampleIO_Detections" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="2" NodeName="SC_SampleIO_RHC" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="rack-handler" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="rack-handler" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="rack-handler" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_SampleIO_RHC_Base" />
+      <Device DeviceID="1" DeviceName="SC_SampleIO_RHC_Sensor" />
+      <Device DeviceID="2" DeviceName="SC_ConsumablePark_RHC_RFIDReader" />
+      <Device DeviceID="3" DeviceName="SC_SampleIO_RHC_JadakImager">
+        <FirmwareDeviceInfo>
+          <FirmwareThirdParty HardwareVersion="0">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="newgen-samplerecognitioncamera-fwrdownloader">
+              <CommandLineSwitch SwitchName="--bci-socket" Value="/tmp/BCI-Startup.sock" />
+              <CommandLineSwitch SwitchName="--serialportid" Value="1" />
+              <CommandLineSwitch SwitchName="--trace-level" Value="4" />
+            </FirmwareDownloadExecutable>
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="JadakImager" Unit="rack-handler" SEID="00000343" Extension=".ldr" />
+          </FirmwareThirdParty>
+          <!-- trigger cognex update -->
+          <FirmwareThirdParty HardwareVersion="20">
+            <FirmwareVersion />
+            <FirmwareDownloadExecutable FileName="newgen-samplerecognitioncamera-fwrdownloader" />
+            <FirmwareDownloadExecutableTimeout seconds="1200" />
+            <FirmwareFile Name="CognexImager" Unit="rack-handler" SEID="00000716" Extension=".job" />
+          </FirmwareThirdParty>
+        </FirmwareDeviceInfo>
+      </Device>
+      <Device DeviceID="4" DeviceName="SC_ReagentDrawer_RHC_RFIDReader" />
+      <Device DeviceID="5" DeviceName="MAM_SC_SampleIO_RHC" />
+      <Device DeviceID="6" DeviceName="SC_Infrastructure_ClimateSensor" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="3" NodeName="SC_SampleIO_SMS" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="rack-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="rack-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="rack-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_SampleIO_SMS_Base" />
+      <Device DeviceID="1" DeviceName="SC_SampleIO_SMS_Conveyor" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="4" NodeName="SC_SampleIO_MC" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="rack-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="rack-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_SampleIO_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_SampleIO_MC_GripperMotor" />
+      <Device DeviceID="2" DeviceName="SC_SampleIO_MC_TubeTurnerMotor" />
+      <Device DeviceID="3" DeviceName="SC_SampleIO_MC_SpringMotor" />
+      <Device DeviceID="4" DeviceName="MAM_SC_SampleIO_RHC_MC" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="5" NodeName="SC_TipStackerCD_RHC" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="tip-rack-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="tip-rack-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="tip-rack-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_TipStackerCD_RHC_Base" />
+      <Device DeviceID="1" DeviceName="SC_TipStackerCD_RHC_BarcodeReader1" />
+      <Device DeviceID="2" DeviceName="SC_TipStackerCD_RHC_BarcodeReader2" />
+      <Device DeviceID="3" DeviceName="SC_TipStackerCD_RHC_RFIDReader" />
+      <Device DeviceID="4" DeviceName="SC_TipStackerCD_RHC_LockCellDrawer" />
+      <Device DeviceID="5" DeviceName="MAM_SC_TipStackerCD_RHC" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="6" NodeName="SC_TipStackerCD_SMS" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="reagent-storage-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="reagent-storage-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="reagent-storage-handler" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_TipStackerCD_SMS_Base" />
+      <Device DeviceID="1" DeviceName="SC_TipStackerCD_SMS_SliderMotor" />
+      <Device DeviceID="2" DeviceName="SC_TipStackerCD_SMS_PusherCellDrawer" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="7" NodeName="SC_TipStackerCD_MC" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="reagent-storage-handler" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="reagent-storage-handler" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="SC_TipStackerCD_MC_Base" />
+      <Device DeviceID="1" DeviceName="SC_TipStackerCD_MC_StackerMotor1" />
+      <Device DeviceID="2" DeviceName="SC_TipStackerCD_MC_StackerMotor2" />
+      <Device DeviceID="3" DeviceName="SC_TipStackerCD_MC_DrawerMotor" />
+      <Device DeviceID="4" DeviceName="MAM_SC_TipStackerCD_RHC_MC" />
+    </Node>
+  </BackboneSlave>
+  <BackboneSlave SlaveMailboxInOutSize="384" SlaveName="Backbone02_ProcessCellA" SlavePosition="2" SlaveType="Backbone">
+    <FirmwareBackboneInfos>
+      <FirmwareBackboneRoche HWArticleNumber="06241042001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000281" Name="LAN_to_six_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+    </FirmwareBackboneInfos>
+    <Node BackbonePort="PortA" NodeType="Dummy" NodeName="PCA_BackboneNode" NodePosition="0" NodeID="0">
+      <FirmwareNodeInfos />
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_BackboneNode_Base" />
+      <Device DeviceName="MAM_PCA_LanToSixCan" DeviceID="1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="1" NodeName="PCA_ProcessHeadFront_MC1" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09442057001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadFront_MC1_Base" />
+      <Device DeviceID="2" DeviceName="PCA_ProcessHeadFront_MC1_TransP_XMotor" />
+      <Device DeviceID="3" DeviceName="PCA_ProcessHeadFront_MC1_zaxis" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_ProcessHeadFront_MC1" />
+      <Device DeviceID="7" DeviceName="PCA_ProcessHeadFront_MC1_cllddummy" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="2" NodeName="PCA_ProcessHeadFront_MC2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428313001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadFront_MC2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_ProcessHeadFront_MC2_pump" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_ProcessHeadFront_MC2" />
+      <Device DeviceID="3" DeviceName="PCA_ProcessHeadFront_MC2_squeeze" />
+      <Device DeviceID="5" DeviceName="PCA_ProcessHeadFront_MC2_clld1" />
+      <Device DeviceID="6" DeviceName="PCA_ProcessHeadFront_MC2_clld2" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="3" NodeName="PCA_ProcessHeadFront_STM32" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428313001" HWIndexNumber="">
+          <ApplicationFirmware Name="HD48_Module" Unit="processing-module-control" SEID="00000102" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05450152001" HWIndexNumber="">
+          <ApplicationFirmware Name="HD48_Module" Unit="processing-module-control" SEID="00000102" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadFront_STM32_pipettingboard" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="1" NodeName="PCA_ProcessHeadBack_MC1" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09442057001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadBack_MC1_Base" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_ProcessHeadBack_MC1" />
+      <Device DeviceID="3" DeviceName="PCA_ProcessHeadBack_MC1_zaxis" />
+      <Device DeviceID="7" DeviceName="PCA_ProcessHeadBack_MC1_cllddummy" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="2" NodeName="PCA_ProcessHeadBack_MC2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428313001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadBack_MC2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_ProcessHeadBack_MC2_pump" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_ProcessHeadBack_MC2" />
+      <Device DeviceID="3" DeviceName="PCA_ProcessHeadBack_MC2_squeeze" />
+      <Device DeviceID="5" DeviceName="PCA_ProcessHeadBack_MC2_clld1" />
+      <Device DeviceID="6" DeviceName="PCA_ProcessHeadBack_MC2_clld2" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="3" NodeName="PCA_ProcessHeadBack_STM32" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428313001" HWIndexNumber="">
+          <ApplicationFirmware Name="HD48_Module" Unit="processing-module-control" SEID="00000102" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05450152001" HWIndexNumber="">
+          <ApplicationFirmware Name="HD48_Module" Unit="processing-module-control" SEID="00000102" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_ProcessHeadBack_STM32_pipettingboard" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="1" NodeName="PCA_HeatingStation2" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09421980001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="heating-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="heating-station" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_HeatingStation2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_HeatingStation2_Z" />
+      <Device DeviceID="2" DeviceName="PCA_HeatingStation2_Downholder" />
+      <Device DeviceID="3" DeviceName="PCA_HeatingStation2_Heating1" />
+      <Device DeviceID="4" DeviceName="PCA_HeatingStation2_Heating2" />
+      <Device DeviceID="5" DeviceName="MAM_PCA_HeatingStation2" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="2" NodeName="PCA_SeparationStation2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09421980001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09526439001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_SeparationStation2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_SeparationStation2_Magnets" />
+      <Device DeviceID="2" DeviceName="PCA_SeparationStation2_Downholder" />
+      <Device DeviceID="3" DeviceName="MAM_PCA_SeparationStation2" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="3" NodeName="PCA_SeparationStation1" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09421980001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09526439001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="separation-station" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_SeparationStation1_Base" />
+      <Device DeviceID="1" DeviceName="PCA_SeparationStation1_Magnets" />
+      <Device DeviceID="2" DeviceName="PCA_SeparationStation1_Downholder" />
+      <Device DeviceID="3" DeviceName="MAM_PCA_SeparationStation1" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="4" NodeName="PCA_HeatingStation1" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09421980001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="heating-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="heating-station" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_HeatingStation1_Base" />
+      <Device DeviceID="1" DeviceName="PCA_HeatingStation1_Z" />
+      <Device DeviceID="2" DeviceName="PCA_HeatingStation1_Downholder" />
+      <Device DeviceID="3" DeviceName="PCA_HeatingStation1_Heating1" />
+      <Device DeviceID="4" DeviceName="PCA_HeatingStation1_Heating2" />
+      <Device DeviceID="5" DeviceName="MAM_PCA_HeatingStation1" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="5" NodeName="PCA_ADParkPosition" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09421980001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="cooling-station" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="cooling-station" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_ADParkPosition_Base" />
+      <Device DeviceID="1" DeviceName="MAM_PCA_ADParkPosition" />
+      <Device DeviceID="2" DeviceName="PCA_ADParkPosition_Downholder" />
+      <Device DeviceID="3" DeviceName="PCA_ADParkPosition_Peltier" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="6" NodeName="PCA_MGPMixer" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_MGPMixer_Base" />
+      <Device DeviceID="1" DeviceName="PCA_MGPMixer_Downholder" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_MGPMixer" />
+      <Device DeviceID="3" DeviceName="PCA_MGPMixer_Shaker1" />
+      <Device DeviceID="4" DeviceName="PCA_MGPMixer_Shaker2" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="7" NodeName="PCA_PPStacker_RHC" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="processing-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="processing-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="processing-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_PPStacker_RHC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_PPStacker_RHC_BarcodeReader1" />
+      <Device DeviceID="2" DeviceName="PCA_PPStacker_RHC_BarcodeReader2" />
+      <Device DeviceID="3" DeviceName="PCA_PPStacker_RHC_RFIDReader" />
+      <Device DeviceID="4" DeviceName="PCA_PPStacker_RHC_LockCellDrawer" />
+      <Device DeviceID="5" DeviceName="MAM_PCA_PPlateStacker_RHC" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="8" NodeName="PCA_PPStacker_SMS" NodePosition="8" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="drawer-lock" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="drawer-lock" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="drawer-lock" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_PPStacker_SMS_Base" />
+      <Device DeviceID="1" DeviceName="PCA_PPStacker_SMS_PusherCellDrawer" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="9" NodeName="PCA_PPStacker_MC" NodePosition="9" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-plate-magazine" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-plate-magazine" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_PPStacker_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_PPStacker_MC_StackerMotor1" />
+      <Device DeviceID="2" DeviceName="PCA_PPStacker_MC_StackerMotor2" />
+      <Device DeviceID="3" DeviceName="PCA_PPStacker_MC_StackerMotor3" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_PPlateStacker_RHC_MC" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="10" NodeName="PCA_ADStacker_RHC" NodePosition="10" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="amplification-plate-magazine" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ADStacker_RHC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_ADStacker_RHC_BarcodeReader1" />
+      <Device DeviceID="2" DeviceName="PCA_ADStacker_RHC_BarcodeReader2" />
+      <Device DeviceID="3" DeviceName="MAM_PCA_ADStacker_RHC" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="11" NodeName="PCA_ADStacker_SMS" NodePosition="11" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-magazine" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-magazine" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="07914130001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="amplification-plate-magazine" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_ADStacker_SMS_Device0" />
+    </Node>
+    <Node BackbonePort="PortC" NodeID="12" NodeName="PCA_ADStacker_MC" NodePosition="12" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09398830001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-magazine" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="amplification-plate-magazine" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ADStacker_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_ADStacker_MC_StackerMotor1" />
+      <Device DeviceID="2" DeviceName="PCA_ADStacker_MC_StackerMotor2" />
+      <Device DeviceID="3" DeviceName="MAM_PCA_ADStacker_RHC_MC" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="1" NodeName="PCA_WashWasteDrawer_RHC" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="bulk-management" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_WashWasteDrawer_RHC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_WashWasteDrawer_RHC_RHCWashWasteDrawer" />
+      <Device DeviceID="2" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB1" />
+      <Device DeviceID="3" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB2" />
+      <Device DeviceID="4" DeviceName="PCA_WashWasteDrawer_RHC_RFIDReaderWB3" />
+      <Device DeviceID="5" DeviceName="MAM_PCA_WashWasteDrawer_RHC" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="2" NodeName="PCA_WashWasteDrawer_SMS1" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="bulk-management" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_WashWasteDrawer_SMS1_Base" />
+      <Device DeviceID="1" DeviceName="PCA_WashWasteDrawer_SMS1_SMS1WashWasteDrawer" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="3" NodeName="PCA_WashWasteDrawer_SMS2" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="bulk-management" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_WashWasteDrawer_SMS2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_WashWasteDrawer_SMS2_SMS2WashWasteDrawer" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="4" NodeName="PCA_InterimReagentStorage_RHC" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="08837074001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="interim-reagent-storage" SEID="00000170" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="interim-reagent-storage" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_InterimReagentStorage_RHC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_InterimReagentStorage_RHC_Cooler" />
+      <Device DeviceID="2" DeviceName="PCA_InterimReagentStorage_RHC_RFIDReader" />
+      <Device DeviceID="3" DeviceName="PCA_MGPMixer_RHC_RFIDReader" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_InterimReagentStorage_RHC" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="5" NodeName="PCA_InterimReagentStorage_SMS" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="08837074001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="interim-reagent-storage" SEID="00000171" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06338534001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="interim-reagent-storage" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_InterimReagentStorage_SMS_Device0" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="6" NodeName="PCA_InterimReagentStorage_MC" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="08837074001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="interim-reagent-storage" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="interim-reagent-storage" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_InterimReagentStorage_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_InterimReagentStorage_MC_MotorX" />
+      <Device DeviceID="2" DeviceName="PCA_InterimReagentStorage_MC_MotorY" />
+      <Device DeviceID="3" DeviceName="PCA_InterimReagentStorage_MC_MotorZ" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_InterimReagentStorage_RHC_MC" />
+      <Device DeviceID="5" DeviceName="PCA_InterimReagentStorage_MC_Sensors" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="7" NodeName="PCA_FluidSystem_MC" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428348001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="bulk-management" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09745939001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="bulk-management" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="bulk-management" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_FluidSystem_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_FluidSystem_MC_downholder_1CDI" />
+      <Device DeviceID="2" DeviceName="PCA_FluidSystem_MC_downholder_2CDI" />
+      <Device DeviceID="3" DeviceName="PCA_FluidSystem_MC_MotorY" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_FluidSystem_MC" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="8" NodeName="PCA_FluidSystem_STM32" NodePosition="8" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09428348001" HWIndexNumber="">
+          <ApplicationFirmware Name="NEWGEN_REAGENT_FLUID" Unit="bulk-management" SEID="00000104" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09745939001" HWIndexNumber="">
+          <ApplicationFirmware Name="NEWGEN_REAGENT_FLUID" Unit="bulk-management" SEID="00000104" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05586798001" HWIndexNumber="">
+          <ApplicationFirmware Name="NEWGEN_REAGENT_FLUID" Unit="bulk-management" SEID="00000104" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_FluidSystem_STM32_liquidsystemstmcontroller" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="9" NodeName="PCA_BulkDrawer_RHC" NodePosition="9" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="ResourceHandlingController" Unit="bulk-management" SEID="00000170" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_BulkDrawer_RHC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_BulkDrawer_RHC_RHCBulkDrawer" />
+      <Device DeviceID="2" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderD1" />
+      <Device DeviceID="3" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderD2" />
+      <Device DeviceID="4" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderL1" />
+      <Device DeviceID="5" DeviceName="PCA_BulkDrawer_RHC_RFIDReaderL2" />
+      <Device DeviceID="6" DeviceName="MAM_PCA_BulkDrawer_RHC" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="10" NodeName="PCA_BulkDrawer_SMS1" NodePosition="10" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="bulk-management" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_BulkDrawer_SMS1_SMS1BulkDrawer" />
+    </Node>
+    <Node BackbonePort="PortD" NodeID="11" NodeName="PCA_BulkDrawer_SMS2" NodePosition="11" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06259758001" HWIndexNumber="">
+          <ApplicationFirmware Name="SMStage" Unit="bulk-management" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_BulkDrawer_SMS2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_BulkDrawer_SMS2_SMS2BulkDrawer" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="1" NodeName="PCA_Pipettor1_2_MC" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_Pipettor1_2_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_Pipettor1_2_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="PCA_Pipettor1_2_MC_pump1" />
+      <Device DeviceID="3" DeviceName="PCA_Pipettor1_2_MC_pump2" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_Pipettor1_2" />
+      <Device DeviceID="7" DeviceName="PCA_Pipettor1_2_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="2" NodeName="PCA_Pipettor1_2_STM32" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Pipettor1_2_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="3" NodeName="PCA_Pipettor3_4_MC" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_Pipettor3_4_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_Pipettor3_4_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="PCA_Pipettor3_4_MC_pump1" />
+      <Device DeviceID="3" DeviceName="PCA_Pipettor3_4_MC_pump2" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_Pipettor3_4" />
+      <Device DeviceID="7" DeviceName="PCA_Pipettor3_4_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="4" NodeName="PCA_Pipettor3_4_STM32" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Pipettor3_4_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="5" NodeName="PCA_Pipettor5_6_MC" NodePosition="5" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_Pipettor5_6_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_Pipettor5_6_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="PCA_Pipettor5_6_MC_pump1" />
+      <Device DeviceID="3" DeviceName="PCA_Pipettor5_6_MC_pump2" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_Pipettor5_6" />
+      <Device DeviceID="7" DeviceName="PCA_Pipettor5_6_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="6" NodeName="PCA_Pipettor5_6_STM32" NodePosition="6" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Pipettor5_6_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="7" NodeName="PCA_Pipettor7_8_MC" NodePosition="7" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_Pipettor7_8_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_Pipettor7_8_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="PCA_Pipettor7_8_MC_pump1" />
+      <Device DeviceID="3" DeviceName="PCA_Pipettor7_8_MC_pump2" />
+      <Device DeviceID="4" DeviceName="MAM_PCA_Pipettor7_8" />
+      <Device DeviceID="7" DeviceName="PCA_Pipettor7_8_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="8" NodeName="PCA_Pipettor7_8_STM32" NodePosition="8" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_Pipettor7_8_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="9" NodeName="PCA_SensorModul_MC" NodePosition="9" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_SensorModul_MC_Base" />
+      <Device DeviceID="1" DeviceName="PCA_SensorModul_MC_zaxis" />
+      <Device DeviceID="2" DeviceName="PCA_SensorModul_MC_pump_dummy" />
+      <Device DeviceID="3" DeviceName="MAM_PCA_SensorModul" />
+      <Device DeviceID="4" DeviceName="PCA_SensorModul_MC_pump2_dummy" />
+      <Device DeviceID="7" DeviceName="PCA_SensorModul_MC_clld" />
+    </Node>
+    <Node BackbonePort="PortE" NodeID="10" NodeName="PCA_SensorModul_STM32" NodePosition="10" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09490965001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="05804795001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06762042001" HWIndexNumber="">
+          <ApplicationFirmware Name="MODULAR_Z" Unit="processing-module-control" SEID="00000314" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="PCA_SensorModul_STM32_Device0" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="1" NodeName="PCA_PlateHandler_1" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_PlateHandler_1_Base" />
+      <Device DeviceID="1" DeviceName="PCA_PlateHandler_1_MotorGripper" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_PlateHandler_1" />
+      <Device DeviceID="3" DeviceName="PCA_PlateHandler_1_MotorZ" />
+      <Device DeviceID="4" DeviceName="PCA_PlateHandler_1_MotorY" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="2" NodeName="PCA_PlateHandler_2" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_PlateHandler_2_Base" />
+      <Device DeviceID="1" DeviceName="PCA_PlateHandler_2_MotorY_Waste_New" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_PlateHandler_2" />
+      <Device DeviceID="3" DeviceName="PCA_PlateHandler_2_MotorX" />
+      <Device DeviceID="4" DeviceName="PCA_PlateHandler_2_MotorY_Waste_Old" />
+    </Node>
+    <Node BackbonePort="PortF" NodeID="3" NodeName="PCA_ProcessTransfer" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493344001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber="">
+          <ApplicationFirmware Name="MotionControl" Unit="processing-module-control" SEID="00000336" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="PCA_ProcessTransfer_Base" />
+      <Device DeviceID="1" DeviceName="PCA_ProcessTransfer_MotorY" />
+      <Device DeviceID="2" DeviceName="MAM_PCA_ProcessTransfer" />
+      <Device DeviceID="3" DeviceName="PCA_ProcessTransfer_Downholder1" />
+      <Device DeviceID="4" DeviceName="PCA_ProcessTransfer_Downholder2" />
+      <Device DeviceID="7" DeviceName="PCA_ProcessTransfer_Detection" />
+    </Node>
+  </BackboneSlave>
+  <BackboneSlave SlaveMailboxInOutSize="384" SlaveName="Backbone03_AnalyticCellA2" SlavePosition="3" SlaveType="Backbone">
+    <FirmwareBackboneInfos>
+      <FirmwareBackboneRoche HWArticleNumber="09439226001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000269" Name="LAN_to_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+      <FirmwareBackboneRoche HWArticleNumber="06241042001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000281" Name="LAN_to_six_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+    </FirmwareBackboneInfos>
+    <Node BackbonePort="PortA" NodeType="Dummy" NodeName="A2_BackboneNode" NodePosition="0" NodeID="0">
+      <FirmwareNodeInfos />
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="A2_BackboneNode_Base" />
+      <Device DeviceName="MAM_AC_A2_LanToSixCan" DeviceID="1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="1" NodeName="AC_A2_LoadingModul" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493379001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000336" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09589694001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="SMStage" Unit="analytic-unit" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="AC_A2_LoadingModul_Base" />
+      <Device DeviceID="1" DeviceName="AC_A2_LoadingModul_CoverMotor" />
+      <Device DeviceID="2" DeviceName="AC_A2_LoadingModul_DrawerMotor" />
+      <Device DeviceID="3" DeviceName="AC_A2_LoadingModul_MonitorDevice" />
+      <Device DeviceID="4" DeviceName="MAM_AC_A2_LoadingModul" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="2" NodeName="AC_A2_DetectionControl" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05511801001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DetCtrl2" Unit="analytic-unit" SEID="00000199" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09428518001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DetCtrl2" Unit="analytic-unit" SEID="00000199" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="08088675001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="DetectionControl3" Unit="analytic-unit" SEID="00000670" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A2_DetectionControl_det" />
+      <Device DeviceID="1" DeviceName="AC_A2_DetectionControl_filterwheels" />
+      <Device DeviceID="2" DeviceName="AC_A2_DetectionControl_photoled" />
+      <Device DeviceID="3" DeviceName="AC_A2_DetectionControl_refch" />
+      <Device DeviceID="4" DeviceName="AC_A2_DetectionControl_photoeeprom" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="3" NodeName="AC_A2_FilterWheels_MC" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000336" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09428518001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="08088675001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="SMStage" Unit="analytic-unit" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A2_FilterWheels_MC_Device0" />
+      <Device DeviceID="1" DeviceName="AC_A2_FilterWheels_MC_Device1" SlaveToSlave="true" />
+      <Device DeviceID="2" DeviceName="MAM_AC_A2_FilterWheels" />
+      <Device DeviceID="3" DeviceName="AC_A2_FilterWheels_MC_Device3" SlaveToSlave="true" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="4" NodeName="AC_A2_ThermoCycler" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05549507001" HWIndexNumber="">
+          <ApplicationFirmware Name="NewGen_ThermoCycler" Unit="analytic-unit" SEID="00000172" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09548041001" HWIndexNumber="">
+          <ApplicationFirmware Name="ThermoCyclerNewGen2" Unit="analytic-unit" SEID="00000687" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A2_ThermoCycler_blockctrl" />
+      <Device DeviceID="1" DeviceName="AC_A2_ThermoCycler_coverctrl" />
+      <Device DeviceID="2" DeviceName="AC_A2_ThermoCycler_cyclerctrl" />
+      <Device DeviceID="3" DeviceName="AC_A2_ThermoCycler_temploggerctrl" />
+      <Device DeviceID="4" DeviceName="AC_A2_ThermoCycler_slavetoslave" SlaveToSlave="true" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="1" NodeName="AC_A2_DataReduction" NodePosition="0" NodeType="RocheNodeFix">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05512123001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DataReduction2" Unit="analytic-unit" SEID="00000198" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09439226001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="DataReduction3" Unit="analytic-unit" SEID="00000666" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A2_DataReduction_red" />
+      <Device DeviceID="1" DeviceName="AC_A2_DataReduction_camera" />
+      <Device DeviceID="2" DeviceName="AC_A2_DataReduction_algo" />
+      <Device DeviceID="3" DeviceName="AC_A2_DataReduction_internal" />
+    </Node>
+  </BackboneSlave>
+  <BackboneSlave SlaveMailboxInOutSize="384" SlaveName="Backbone04_AnalyticCellA1" SlavePosition="4" SlaveType="Backbone">
+    <FirmwareBackboneInfos>
+      <FirmwareBackboneRoche HWArticleNumber="09439226001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000269" Name="LAN_to_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+      <FirmwareBackboneRoche HWArticleNumber="06241042001" HWIndexNumber="">
+        <ApplicationFirmware SEID="00000281" Name="LAN_to_six_CAN" Unit="fieldbusgateway" />
+      </FirmwareBackboneRoche>
+    </FirmwareBackboneInfos>
+    <Node BackbonePort="PortA" NodeType="Dummy" NodeName="A1_BackboneNode" NodePosition="0" NodeID="0">
+      <FirmwareNodeInfos />
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="A1_BackboneNode_Base" />
+      <Device DeviceName="MAM_AC_A1_LanToSixCan" DeviceID="1" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="1" NodeName="AC_A1_LoadingModul" NodePosition="1" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="09437118001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09493379001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000336" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09589694001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="SMStage" Unit="analytic-unit" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <!--This is dummy is device needed to avoid FieldbusGateway configuration validation failures during scan-->
+      <Device DeviceID="0" DeviceName="AC_A1_LoadingModul_Base" />
+      <Device DeviceID="1" DeviceName="AC_A1_LoadingModul_CoverMotor" />
+      <Device DeviceID="2" DeviceName="AC_A1_LoadingModul_DrawerMotor" />
+      <Device DeviceID="3" DeviceName="AC_A1_LoadingModul_MonitorDevice" />
+      <Device DeviceID="4" DeviceName="MAM_AC_A1_LoadingModul" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="2" NodeName="AC_A1_DetectionControl" NodePosition="2" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05511801001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DetCtrl2" Unit="analytic-unit" SEID="00000199" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09428518001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DetCtrl2" Unit="analytic-unit" SEID="00000199" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="08088675001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="DetectionControl3" Unit="analytic-unit" SEID="00000670" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A1_DetectionControl_det" />
+      <Device DeviceID="1" DeviceName="AC_A1_DetectionControl_filterwheels" />
+      <Device DeviceID="2" DeviceName="AC_A1_DetectionControl_photoled" />
+      <Device DeviceID="3" DeviceName="AC_A1_DetectionControl_refch" />
+      <Device DeviceID="4" DeviceName="AC_A1_DetectionControl_photoeeprom" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="3" NodeName="AC_A1_FilterWheels_MC" NodePosition="3" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="06256139001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000336" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09428518001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="MotionControl" Unit="analytic-unit" SEID="00000604" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="08088675001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="SMStage" Unit="analytic-unit" SEID="00000171" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A1_FilterWheels_MC_Device0" />
+      <Device DeviceID="1" DeviceName="AC_A1_FilterWheels_MC_Device1" SlaveToSlave="true" />
+      <Device DeviceID="2" DeviceName="MAM_AC_A1_FilterWheels" />
+      <Device DeviceID="3" DeviceName="AC_A1_FilterWheels_MC_Device3" SlaveToSlave="true" />
+    </Node>
+    <Node BackbonePort="PortA" NodeID="4" NodeName="AC_A1_ThermoCycler" NodePosition="4" NodeType="RocheNodeDaisy">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05549507001" HWIndexNumber="">
+          <ApplicationFirmware Name="NewGen_ThermoCycler" Unit="analytic-unit" SEID="00000172" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09548041001" HWIndexNumber="">
+          <ApplicationFirmware Name="ThermoCyclerNewGen2" Unit="analytic-unit" SEID="00000687" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A1_ThermoCycler_blockctrl" />
+      <Device DeviceID="1" DeviceName="AC_A1_ThermoCycler_coverctrl" />
+      <Device DeviceID="2" DeviceName="AC_A1_ThermoCycler_cyclerctrl" />
+      <Device DeviceID="3" DeviceName="AC_A1_ThermoCycler_temploggerctrl" />
+      <Device DeviceID="4" DeviceName="AC_A1_ThermoCycler_slavetoslave" SlaveToSlave="true" />
+    </Node>
+    <Node BackbonePort="PortB" NodeID="1" NodeName="AC_A1_DataReduction" NodePosition="0" NodeType="RocheNodeFix">
+      <FirmwareNodeInfos>
+        <FirmwareNodeRoche HWArticleNumber="05512123001" HWIndexNumber=""> <!-- AC1.X -->
+          <ApplicationFirmware Name="DataReduction2" Unit="analytic-unit" SEID="00000198" />
+        </FirmwareNodeRoche>
+        <FirmwareNodeRoche HWArticleNumber="09439226001" HWIndexNumber=""> <!-- AC2.X -->
+          <ApplicationFirmware Name="DataReduction3" Unit="analytic-unit" SEID="00000666" />
+        </FirmwareNodeRoche>
+      </FirmwareNodeInfos>
+      <Device DeviceID="0" DeviceName="AC_A1_DataReduction_red" />
+      <Device DeviceID="1" DeviceName="AC_A1_DataReduction_camera" />
+      <Device DeviceID="2" DeviceName="AC_A1_DataReduction_algo" />
+      <Device DeviceID="3" DeviceName="AC_A1_DataReduction_internal" />
+    </Node>
+  </BackboneSlave>
+</ECPHWConfiguration>

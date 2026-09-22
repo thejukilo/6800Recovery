@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PipParamFile xsi:noNamespaceSchemaLocation="PipParams.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PipParamFileHeader>
+    <tipType>NewGen_RTip</tipType>
+    <xsdFileName>PipParams.xsd</xsdFileName>
+    <xsdVersion>7.0</xsdVersion>
+    <physicalID>37aa0559-ad4f-42e9-a43b-b098cb66b9bf</physicalID>
+    <logicalID>Cobas6800_8800_ReagentHead_LBPipetting_Prime</logicalID>
+    <description>LB</description>
+    <fileName>Cobas6800_8800_ReagentHead_LBPipetting_Prime.xml</fileName>
+    <lastModified>16.12.2022 10:53:13</lastModified>
+    <version>12.20</version>
+  </PipParamFileHeader>
+  <Parameters>
+    <Global>
+      <LAG>0</LAG>
+      <TAG>0</TAG>
+    </Global>
+    <Wash>
+      <washInnerDispVel>6E-07</washInnerDispVel>
+      <washOuterDispVel>6E-07</washOuterDispVel>
+      <washOuterResidenceTime>0</washOuterResidenceTime>
+      <washSTAG>0</washSTAG>
+      <WashAdditional>
+        <washSTAGVel>5E-08</washSTAGVel>
+        <washSTAGAcc>1E-06</washSTAGAcc>
+        <washInnerZVel>0.15</washInnerZVel>
+        <washInnerZAcc>0.5</washInnerZAcc>
+        <washInnerDispAcc>9.6E-06</washInnerDispAcc>
+        <washOuterZVel>0.15</washOuterZVel>
+        <washOuterZAcc>0.5</washOuterZAcc>
+        <washOuterDispAcc>9.6E-06</washOuterDispAcc>
+        <washOuterZSwappingVel>0.15</washOuterZSwappingVel>
+        <washOuterZSwappingAcc>0.5</washOuterZSwappingAcc>
+      </WashAdditional>
+    </Wash>
+    <VolCorrectionTable>
+      <VolCorrectionElement>
+        <targetVol>1E-09</targetVol>
+        <correctionVol>1E-09</correctionVol>
+      </VolCorrectionElement>
+      <VolCorrectionElement>
+        <targetVol>1.25E-06</targetVol>
+        <correctionVol>1.295E-06</correctionVol>
+      </VolCorrectionElement>
+      <VolCorrectionElement>
+        <targetVol>2.5E-06</targetVol>
+        <correctionVol>2.59E-06</correctionVol>
+      </VolCorrectionElement>
+    </VolCorrectionTable>
+  </Parameters>
+</PipParamFile>

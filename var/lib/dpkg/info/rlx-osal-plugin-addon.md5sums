@@ -1,0 +1,10 @@
+3faa5719e70d44259c6ee50489ef7688  opt/roche/lib/rlx-osal/libosal-plugin-addon.la
+e7644c9ac764fad5d8a998817a6e3a1f  opt/roche/lib/rlx-osal/libosal-plugin-addon.so
+62510e8fd96d9f5e9449acb2b6d680fa  opt/roche/sbin/rlx-addon-extract
+d1ce8379d665b2b691a2354f58340c51  opt/roche/sbin/rlx-addon-install
+4be3164de23a843ad67f57b3e9e83bd7  opt/roche/sbin/rlx-addon-install-helm-chart
+43a2c9e0b51bdc282275c4969de0a85f  opt/roche/sbin/rlx-addon-remove
+1b43a23af0db74258b127148546e9b71  usr/lib/python3/dist-packages/rlx_osal/plugins/addon_pb2.py
+11f1150a812e00f2fb358016dd4d9661  usr/lib/rlx-osal-plugin-addon/rlx-addon.inc.sh
+dd332b63fd951b20d98ce771eb00bb32  usr/share/doc/rlx-osal-plugin-addon/changelog.gz
+f1c2aa7666d232993107132669f7d58f  usr/share/doc/rlx-osal-plugin-addon/copyright

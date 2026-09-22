@@ -1,0 +1,10 @@
+[Unit]
+Description=RLX OS Basic Setup
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/roche/sbin/rlx-setup
+
+[Install]
+WantedBy=multi-user.target

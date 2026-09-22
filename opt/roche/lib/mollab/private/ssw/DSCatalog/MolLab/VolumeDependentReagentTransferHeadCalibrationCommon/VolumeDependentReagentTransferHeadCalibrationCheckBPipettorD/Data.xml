@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5F32D5DA0EC7806565178BB22892F12FFFAA6F1A0D7A" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckBPipettorD">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Module ID</base:Title>
+          </data:Description>
+          <data:Value>B</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipettorIndex" Type="String">
+          <data:Description>
+            <base:Title>PipIndex</base:Title>
+          </data:Description>
+          <data:Value>D</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

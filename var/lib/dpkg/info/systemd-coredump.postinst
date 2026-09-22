@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = configure ]; then
+    # enable systemd-coredump right after package installation
+    if [ -d /run/systemd/system ]; then
+        systemctl daemon-reload && systemctl start systemd-coredump.socket || true
+    fi
+    /lib/systemd/systemd-sysctl /usr/lib/sysctl.d/50-coredump.conf || true
+fi
+
+# Automatically added by dh_installsysusers/13.11.4
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+   systemd-sysusers ${DPKG_ROOT:+--root="$DPKG_ROOT"} systemd-coredump.conf
+fi
+# End automatically added section
+

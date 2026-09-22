@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A39C46A31A49177CEACB9DC4D47661965734273B046C" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ProcessHeadTeachCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Id of the involved process Cell</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pDoPreTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Do a preteach of the processHead</base:Title>
+          </data:Description>
+          <data:Value>true</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rDoPreTeach" Type="Boolean">
+          <data:Description>
+            <base:Title>Preteach Was Executed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Preteach Was Executed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTeachTipRackParkPosition1" Type="Boolean">
+          <data:Description>
+            <base:Title>Teaching Successful for Tiprackparkposition1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching Successful for Tiprackparkposition1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTeachTipRackParkPosition2" Type="Boolean">
+          <data:Description>
+            <base:Title>Teaching Successful for Tiprackparkposition2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching Successful for Tiprackparkposition2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingTransferHeadOffsetRefPipettor" Type="String">
+          <data:Description>
+            <base:Title>PTH Teaching Reference Pipettor</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching reference pipettor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rProcessingTransferHeadXOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>PTH Teaching Offset Value in X</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching offset value in the X-axis.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Double" Name="rProcessingTransferHeadYOffsetmm" Unit="mm" Format="%.3f">
+          <data:Description>
+            <base:Title>PTH Teaching Offset Value in Y</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing Transfer Head teaching offset value in the Y-axis.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

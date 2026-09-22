@@ -1,0 +1,15 @@
+/.
+/opt
+/opt/roche
+/opt/roche/etc
+/opt/roche/etc/mollab
+/opt/roche/etc/mollab/private
+/opt/roche/etc/mollab/private/rabbitmq
+/opt/roche/etc/mollab/private/rabbitmq/definitions
+/opt/roche/etc/mollab/private/rabbitmq/definitions/00_default.json
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/mollab-rabbitmqserver-configuration
+/usr/share/doc/mollab-rabbitmqserver-configuration/changelog.gz
+/usr/share/doc/mollab-rabbitmqserver-configuration/copyright

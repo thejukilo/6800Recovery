@@ -1,0 +1,15 @@
+7c89216887a3673330bcf49490e0e1c2  usr/lib/python3/dist-packages/frozenlist-1.3.3.dist-info/METADATA
+b5634fce2d5ef0214e815fb74de70130  usr/lib/python3/dist-packages/frozenlist-1.3.3.dist-info/RECORD
+c13f6bc7b941a2ab944849c72693283a  usr/lib/python3/dist-packages/frozenlist-1.3.3.dist-info/WHEEL
+8e0dbd99fb6fca908d940949d4dad235  usr/lib/python3/dist-packages/frozenlist-1.3.3.dist-info/top_level.txt
+059051919a2374eca4c624fb3e241ed7  usr/lib/python3/dist-packages/frozenlist/__init__.py
+f6ae02458b1f8f9ecb0f342417229d65  usr/lib/python3/dist-packages/frozenlist/__init__.pyi
+549fcc2db4603ae01660c7a8c6b244c3  usr/lib/python3/dist-packages/frozenlist/_frozenlist.cpython-311-x86_64-linux-gnu.so
+c5d7b846a216bf4a86d87848e2a2df43  usr/lib/python3/dist-packages/frozenlist/_frozenlist.pyx
+3522f1a61602da93a3a5e4600cc1f05f  usr/lib/python3/dist-packages/frozenlist/py.typed
+a89e5d8f9dbb7f43e98b6574725678a3  usr/share/doc/python3-frozenlist/README.rst
+94b7551d4f7f3bb30c012d0b73ea80b3  usr/share/doc/python3-frozenlist/changelog.Debian.amd64.gz
+ecff3a9130ed6b80d815712b9e029ce3  usr/share/doc/python3-frozenlist/changelog.Debian.gz
+0b80914d5147fee5864ef460290916f5  usr/share/doc/python3-frozenlist/changelog.gz
+8c2ded053485bd0d3082c0746b88deec  usr/share/doc/python3-frozenlist/copyright
+4ba0e0c91dc547647c162b94201bae0e  usr/share/doc/python3-frozenlist/index.rst

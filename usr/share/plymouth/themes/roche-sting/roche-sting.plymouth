@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Roche
+Description=Roche Diagnostics RLX bootsplash script for cX800
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/roche-sting
+ScriptFile=/usr/share/plymouth/themes/roche-sting/roche-sting.script

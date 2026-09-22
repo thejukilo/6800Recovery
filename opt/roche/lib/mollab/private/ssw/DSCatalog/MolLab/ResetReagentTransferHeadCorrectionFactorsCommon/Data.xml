@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="810C3CF28D43289FA811FA02ADC5045E1546D11DFE57" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ResetReagentTransferHeadCorrectionFactorsCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irChannelASelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel A Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelBSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel B Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelCSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel C Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelDSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel D Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelESelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel E Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelFSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel F Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelGSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel G Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelHSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel H Selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether the channel is selected or not.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irSelectedChannels" Type="String">
+          <data:Description>
+            <base:Title>Selected Channels Summary</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Channel selection summary for confirmation.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irAnyChannelSelected" Type="Boolean">
+          <data:Description>
+            <base:Title>Any Channel Selected</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates whether any channel has been selected by the user.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irChannelSelectionConfirmation" Type="Boolean">
+          <data:Description>
+            <base:Title>Channel Selection Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Confirmation of the selected channel.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Group Name="Calibration Factors A" Display="Table">
+          <data:Description>Calibration Factors A</data:Description>
+          <data:Result Name="rLabelA" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary A</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary A</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsA" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsA" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsA" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsA" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors B" Display="Table">
+          <data:Description>Calibration Factors B</data:Description>
+          <data:Result Name="rLabelB" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary B</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary B</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsB" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsB" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsB" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsB" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors C" Display="Table">
+          <data:Description>Calibration Factors C</data:Description>
+          <data:Result Name="rLabelC" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary C</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary A</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsC" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsC" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsC" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsC" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors D" Display="Table">
+          <data:Description>Calibration Factors D</data:Description>
+          <data:Result Name="rLabelD" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary D</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary D</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsD" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsD" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsD" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsD" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors E" Display="Table">
+          <data:Description>Calibration Factors E</data:Description>
+          <data:Result Name="rLabelE" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary E</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary E</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsE" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsE" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsE" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsE" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors F" Display="Table">
+          <data:Description>Calibration Factors F</data:Description>
+          <data:Result Name="rLabelF" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary F</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary F</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsF" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsF" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsF" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsF" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors G" Display="Table">
+          <data:Description>Calibration Factors G</data:Description>
+          <data:Result Name="rLabelG" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary G</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary G</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsG" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsG" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsG" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsG" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Group Name="Calibration Factors H" Display="Table">
+          <data:Description>Calibration Factors H</data:Description>
+          <data:Result Name="rLabelH" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Factor Summary H</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Factor Summary H</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir800ulFactorsH" Type="String" Array="true">
+            <data:Description>
+              <base:Title>800Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>800ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir50ulFactorsH" Type="String" Array="true">
+            <data:Description>
+              <base:Title>50Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>50ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="ir10ulFactorsH" Type="String" Array="true">
+            <data:Description>
+              <base:Title>10Ul Factors</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>10ul factors</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+          <data:Result Name="irGainFactorsH" Type="String" Array="true">
+            <data:Description>
+              <base:Title>Gain Factor 1.X</base:Title>
+              <base:Paragraphs>
+                <base:Paragraph>Gain factor from 1.x software.</base:Paragraph>
+              </base:Paragraphs>
+            </data:Description>
+          </data:Result>
+        </data:Group>
+        <data:Result Type="String" Name="rFailedChannel">
+          <data:Description>
+            <base:Title>Failed Channel</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The channel where the reset failed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="None" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="AB1ADC9BCEB5BACD4E35796BD06E995B76464B1D9FA5" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTipHandlingCheckCommon" ID="SampleTransferHeadTipHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareInit" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the transfer module is being prepared.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="PlaceTipRackOnConsumablePark2">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRack2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place a new tip rack on the transfer position of the transfer module.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadTipHandlingCheck_sPlaceComboTipRack2.jpg" Hash="7F7F9DB4D5BEF1EA4C7B7162B736CB67AFA2CA1E" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="LoadTipRack2">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRackOnConsumablePark2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place a full tip rack onto the tip rack park position 2 of the transfer module.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack Transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the tip rack is loaded on the tip rack park position 2.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="PlaceTipRackOnConsumablePark1">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRack1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place a new tip rack on the transfer position of the transfer module.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadTipHandlingCheck_sPlaceComboTipRack1.jpg" Hash="F94BA381FEE43F448215F1C5726005F2226F407E" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="LoadTipRack1">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceTipRackOnConsumablePark1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place a full tip rack onto the tip rack park position 1 of the transfer module</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack Transfer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the tip rack is loaded on tip rack park position 1</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDownholders">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The downholders of the tip rack park positions are being closed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TipGrippingActionPark1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Gripping Sample Transfer Head - Park Position 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the handling is being executed on tip rack park position 1...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TipGrippingActionPark2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Gripping Sample Transfer Head - Park Position 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the handling is being executed on tip rack park position 2...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rLoopsRemaining" NextStep="TipGrippingActionPark1">
+            <workflow:Condition Operator="GE" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenDownholders">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The downholders of the tip rack park positions are being opened.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="RemoveBothTipRacks">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The first tip rack will be moved to the transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irSkipUnloadConfirmation" NextStep="UnloadTipRack2">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveTipRack1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload the first tip rack from the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue once this is done.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Tip Rack 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The second tip rack will be moved to the transfer position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irSkipUnloadConfirmation" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveTipRack2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Tip Rack 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload the second tip rack from the transfer position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue once this is done.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="rIsModule" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveBothTipRacks" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Tip Racks</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove both tip racks.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is complete.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

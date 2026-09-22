@@ -1,0 +1,7 @@
+fd3ee510f0f26ef8cbc36fb52b6c4228  lib/systemd/system/opt-roche-var-lib-mollab-shared-screenshots.mount
+81668fb58e560d6ceeadeebbc4ad087f  opt/roche/etc/mollab/private/rabbitmq/definitions/uiApi_definition.json
+db67b63abeeb3c2f0d5e9c181445e647  opt/roche/etc/mollab/private/ui-api/appsettings.json
+b56985dab00a54401bf2bc871cb7514c  opt/roche/etc/mollab/private/ui-api/serilog.json
+699f5d10b864e79a8f004e0aa3e3656e  opt/roche/lib/mollab/private/instrument/install.d/5_uiapi
+70e9bc77927881b45e265daaa105b4c8  usr/share/doc/newgen-uiapi-configuration/changelog.gz
+32234298d3fb044f3283fde69f5f9f73  usr/share/doc/newgen-uiapi-configuration/copyright

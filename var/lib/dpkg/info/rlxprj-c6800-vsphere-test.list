@@ -1,0 +1,11 @@
+/.
+/etc
+/etc/cloud
+/etc/cloud/cloud.cfg.d
+/etc/cloud/cloud.cfg.d/rlx.cfg
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/rlxprj-c6800-vsphere-test
+/usr/share/doc/rlxprj-c6800-vsphere-test/changelog.gz
+/usr/share/doc/rlxprj-c6800-vsphere-test/copyright

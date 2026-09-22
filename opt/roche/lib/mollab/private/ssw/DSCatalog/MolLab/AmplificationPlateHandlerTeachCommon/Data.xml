@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="E1DD3F27DE279BCAD81ED43C8E7443B198570A55CD23" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AmplificationPlateHandlerTeachCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pCheckVariant" Type="String">
+          <data:Description>
+            <base:Title>Check Type</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check type parameter to split the checks into the different versions.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rTeachDrawer">
+          <data:Description>
+            <base:Title>Teaching Drawer Position Was Successfull</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Drawer position was taught successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rTeachTransferPosition">
+          <data:Description>
+            <base:Title>Teaching Transfer Position Was Successfull</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transfer position was taught successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rAllAnalyticalUnitsTaught">
+          <data:Description>
+            <base:Title>Analytical Units Taught</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Analytical Units taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rTeachAnalyticUnits" Array="true">
+          <data:Description>
+            <base:Title>Teaching Analytic Units</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Teaching reference point of analytic units.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

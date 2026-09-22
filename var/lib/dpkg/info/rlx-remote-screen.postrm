@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installinit/13.11.4
+if [ "$1" = "remove" ] && [ -x "/etc/init.d/rlx-remote-screen" ] ; then
+	chmod -x "/etc/init.d/rlx-remote-screen" >/dev/null || true
+fi
+if [ -z "${DPKG_ROOT:-}" ] && [ "$1" = "purge" ] ; then
+	update-rc.d rlx-remote-screen remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_systemd_start/13.11.4
+if [ "$1" = remove ] && [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section

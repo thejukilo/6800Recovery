@@ -1,0 +1,4 @@
+Template: rlx-osal/network-online
+Type: boolean
+Default: false
+Description: Wait for network to be online during boot?

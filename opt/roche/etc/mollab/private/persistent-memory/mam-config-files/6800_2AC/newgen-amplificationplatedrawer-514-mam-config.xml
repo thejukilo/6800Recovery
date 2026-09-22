@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+  xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="CSM_ADOutputDrawer" seid="184" moduleId="514">
+      <dataPool type="uint8" structure="scalar" id="4" name="FillLevelPosition1" defaultValue="0">
+        <persistDef memoryId="2302" periodInSec="-1"/>
+      </dataPool>
+      <dataPool type="uint8" structure="scalar" id="5" name="FillLevelPosition2" defaultValue="0">
+        <persistDef memoryId="2302" periodInSec="-1"/>
+      </dataPool>
+      <parPool type="uint8" structure="array" noElements="100" id="100" name="ConfigData_1" defaultValue="0" minValue="0" maxValue="255">
+        <persistDef memoryId="3000" periodInSec="-1"/>
+      </parPool>
+      <parPool type="uint16" structure="scalar" id="7" name="OpCountMotorInit" defaultValue="0" minValue="0" maxValue="0xFFFF">
+        <persistDef memoryId="2302" periodInSec="-1"/>
+      </parPool>
+      <parPool type="uint32" structure="scalar" id="8" name="OpCountMovements" defaultValue="0" minValue="0" maxValue="0xFFFFFFFF">
+        <persistDef memoryId="2302" periodInSec="-1"/>
+      </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

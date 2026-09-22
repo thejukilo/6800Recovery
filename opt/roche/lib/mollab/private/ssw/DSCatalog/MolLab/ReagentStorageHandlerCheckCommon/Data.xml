@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="DF968E7EA90E93E392A2638B5DFFC05353C19F8DB82E" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentStorageHandlerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rPresenceSensorWorking">
+          <data:Description>
+            <base:Title>Does the Presence Sensor Work Correct?</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Does the Presence Sensor Work Correct?</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rOpen">
+          <data:Description>
+            <base:Title>Open Can Be Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The user confirms that the transfer module drawer can reach the Open position</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rClosed">
+          <data:Description>
+            <base:Title>Closed Can Be Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The user confirms that the transfer module drawer can reach the Closed position</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandover">
+          <data:Description>
+            <base:Title>Handover Can Be Reached</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The user confirms that the transfer module drawer can reach the Handover position</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irDrawerClosed">
+          <data:Description>
+            <base:Title>Drawer Is Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True only if the drawer lock reports state "ClosedLocked".</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

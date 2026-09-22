@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         
+         xmlns:fn="http://www.w3.org/2005/02/xpath-functions"         
+         xmlns:util="http://www.roche.com/util" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+ <csmConfig>
+  <csm name="ThermalCycler_NewGen" seid="187" moduleId="503">
+  <dataPool defaultValue="0" id="4" name="NbrOfCoverHeatings" structure="scalar" type="uint32">
+    <persistDef memoryId="3160" periodInSec="-1" />
+  </dataPool>
+  <dataPool defaultValue="0" id="5" name="NbrOfPeltierCycles" structure="scalar" type="uint32">
+    <persistDef memoryId="3160" periodInSec="-1" />
+  </dataPool>
+  <dataPool defaultValue="0" id="6" name="NbrOfMeltings" structure="scalar" type="uint32">
+    <persistDef memoryId="3160" periodInSec="-1" />
+  </dataPool>
+  </csm>
+</csmConfig>
+</dia:mam>

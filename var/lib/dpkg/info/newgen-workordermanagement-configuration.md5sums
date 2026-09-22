@@ -1,0 +1,5 @@
+1a8bef305e416e5a3ff38c4714227650  opt/roche/etc/mollab/private/rabbitmq/definitions/workOrderManagement_definition.json
+197b9828053651ff01b55f0c52ebfcd2  opt/roche/etc/mollab/private/work-order-management/appsettings.json
+37691027ef452f18a998504ced3e969e  opt/roche/etc/mollab/private/work-order-management/serilog.json
+0a696f4cf60db20d1f4f155322c1cd3f  usr/share/doc/newgen-workordermanagement-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-workordermanagement-configuration/copyright

@@ -1,0 +1,41 @@
+<!doctype html>
+<html dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>PDF viewer</title>
+
+    <link rel="stylesheet" href="lib/pdf_viewer.css" />
+    <link rel="stylesheet" type="text/css" href="viewer.css" />
+
+    <script src="lib/pdf.js"></script>
+    <script src="lib/pdf_viewer.js"></script>
+  </head>
+
+  <body>
+    <div id="viewerContainer">
+      <div id="viewer" class="pdfViewer"></div>
+    </div>
+
+    <div id="loadingBar">
+      <div class="progress"></div>
+      <div class="glimmer"></div>
+    </div>
+
+    <div id="errorWrapper" hidden="true">
+      <div id="errorMessageLeft">
+        <span id="errorMessage"></span>
+        <button id="errorShowMore">More Information</button>
+        <button id="errorShowLess">Less Information</button>
+      </div>
+      <div id="errorMessageRight">
+        <button id="errorClose">Close</button>
+      </div>
+      <div class="clearBoth"></div>
+      <textarea id="errorMoreInfo" hidden="true" readonly="readonly"></textarea>
+    </div>
+
+    <script src="viewer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+77598444e3d858852c59d4ec909005bf  opt/roche/etc/mollab/shared/manufacturing-data.json
+28403e13e77466412170e1eef47e6fe9  opt/roche/etc/project-version
+1192a80b29a73ef3a3e738a5756da136  opt/roche/etc/rlx-exclude-lvm
+eeb55124d9adbf6c5d4a62ffbd50d5b3  opt/roche/lib/mollab/private/instrument/shutdown.d/8_shutdownUI
+b8c5230ce26090e1e7cf63f764a44c96  opt/roche/lib/mollab/private/instrument/startup.d/1_tmp_cleanup
+f26e4e86d97fbedc5b8ad30e4fe1d3ed  opt/roche/lib/mollab/private/instrument/startup.d/8_containerStartup
+f85b6628de6e3403e99c1f8931ceeb4e  opt/roche/lib/mollab/private/instrument/startup.d/8_startupUI
+6925026127aa17f91e957e844a30cdb2  usr/share/doc/newgen-config/changelog.gz
+8bf9294e4cd93032c384890f1693ee4a  usr/share/doc/newgen-config/copyright

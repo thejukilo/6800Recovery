@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="6F617A0B79732B69A6708A4A8981045EF8033829FC97" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="MGPCassetteHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="Integer" Name="pShakeTime" Unit="sec">
+          <data:Description>
+            <base:Title>The time the MGP cassette is being shaked</base:Title>
+          </data:Description>
+          <data:Value>30</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="pModuleId">
+          <data:Description>
+            <base:Title>The Id of the used process cell</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rMGPMove">
+          <data:Description>
+            <base:Title>Movemgp</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette can be moved.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rReadRFID">
+          <data:Description>
+            <base:Title>Read Rfid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The RFID can be read.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rMGPShake">
+          <data:Description>
+            <base:Title>Shakemgp</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette can be shaked</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rManualUnload">
+          <data:Description>
+            <base:Title>Manual Unload</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette can be manually unloaded.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rFixedTightly">
+          <data:Description>
+            <base:Title>Mgp Fixed Tightly</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The MGP cassette is fixed tightly to the mixer.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="EDCB91561E1EE0A90063C73FC9D5A921F9E67E8B1BFE" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTeachCommon" ID="SampleTransferHeadTeachCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareInit" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Teach">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teach</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the teach is in progress...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DisplayTeachingOffsetValues" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Teaching Offset Values</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculated Y-axis offsets for the Sample Transfer Heads relative to Head A:</base:Paragraph>
+              <base:Paragraph>- Sample Head B: [R.rYOffsetABmm] mm</base:Paragraph>
+              <base:Paragraph>- Sample Head C: [R.rYOffsetACmm] mm</base:Paragraph>
+              <base:Paragraph>- Sample Head D: [R.rYOffsetADmm] mm</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Maximum calculated Y-offset: [R.rMaxYOffsetmm] mm between Heads [R.rMaxYOffsetPair].</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please consult the service documentation to check if further action is necessary given the current offset values.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Press 'Finish' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

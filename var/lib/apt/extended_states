@@ -1,0 +1,2104 @@
+Package: fontconfig
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnetfilter-conntrack3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: lsb-release
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fonts-cantarell
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libssh2-1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libperl5.36
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-interimreagentstorage-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-xorg-input-evdev
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcups2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-present0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwrap0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libkeyutils1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-blinker
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libyajl2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-amplificationplatedrawer-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxtables12
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcurl4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dmeventd
+Architecture: amd64
+Auto-Installed: 1
+
+Package: initramfs-tools-core
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-analyticunit-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: console-setup
+Architecture: amd64
+Auto-Installed: 1
+
+Package: udev
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxxf86vm1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgdbm-compat4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3.11
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-colorama
+Architecture: amd64
+Auto-Installed: 1
+
+Package: exfatprogs
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-tiprackmagazine-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-drawerlock-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-py
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-coolingstation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-tz
+Architecture: amd64
+Auto-Installed: 1
+
+Package: mollab-rabbitmqserver-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: pciutils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnftnl11
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgssapi-krb5-2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: netbase
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfsrverify
+Architecture: amd64
+Auto-Installed: 1
+
+Package: readline-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: docker-compose
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnghttp2-14
+Architecture: amd64
+Auto-Installed: 1
+
+Package: containernetworking-plugins
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pyasn1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: openssh-client
+Architecture: amd64
+Auto-Installed: 1
+
+Package: iptables
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dosfstools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-fieldbusgateway-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglx-mesa0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libonig5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnl-3-200
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdatrie1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-workordermanagement-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libthai0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: golang-github-containers-image
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnl-genl-3-200
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-dateutil
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xkb-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxrender1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus-user-session
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-remote-screen
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnftables1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglvnd0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fbset
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsensors-config
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aioamqp
+Architecture: amd64
+Auto-Installed: 1
+
+Package: ftp
+Architecture: amd64
+Auto-Installed: 1
+
+Package: hicolor-icon-theme
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpg
+Architecture: amd64
+Auto-Installed: 1
+
+Package: perl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libtirpc-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: tzdata
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libx11-xcb1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxshmfence1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-operatingsystemgateway-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libunwind8
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpango-1.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: kbd
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-cffi-backend
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-rsa2l-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-xorg-core
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libaio1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-minimal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: chrony
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxkbfile1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-texttable
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpam-systemd
+Architecture: amd64
+Auto-Installed: 1
+
+Package: busybox
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblzo2-2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwayland-cursor0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpgm-5.3-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-transfermodule-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-runresourcemanagement-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-c6800-vsphere-test
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-lib2to3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-plymouth-theme-i915
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-processingmodule-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-websockify
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-samplesupplymodule-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: ucf
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libavahi-common-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-cx800-config-test
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcolord2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcap2-bin
+Architecture: amd64
+Auto-Installed: 1
+
+Package: vim
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-websocket
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-dri2-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsasl2-2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-dri3-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcairo2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgbm1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-user-permissions
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-requests-oauthlib
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-nibridge-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpciaccess0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcursor1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libexpat1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-remote-screen
+Architecture: amd64
+Auto-Installed: 1
+
+Package: zip
+Architecture: amd64
+Auto-Installed: 1
+
+Package: nginx
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-mgpcassettemagazine-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-user
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxmuu1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-google-auth
+Architecture: amd64
+Auto-Installed: 1
+
+Package: nginx-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libefivar1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libblas3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: debsums
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-frozenlist
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-infrastructure-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdeflate0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libatk-bridge2.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfido2-1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: x11-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: kmod
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnorm1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwayland-server0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-runplanning-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglx0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus-daemon
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-ssw-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-solidwastestation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-distro
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-uiapi-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-launchy
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjansson4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-xorg
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfribidi0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-typing-extensions
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-ui
+Architecture: amd64
+Auto-Installed: 1
+
+Package: librtmp1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsubid4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: adwaita-icon-theme
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgpm2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: vim-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblvm2cmd2.03
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libproc2-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libtiff6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm-nouveau2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgfortran5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libhavege2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libip4tc2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpixman-1-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: tigervnc-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfreetype6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: pci.ids
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libmtdev1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gnupg2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxau6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxaw7
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-requests
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-transfer-module-control-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpopt0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libslirp0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libapparmor1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libllvm15
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcomposite1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libmspack0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiosignal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjsoncpp25
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-sealingstation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-cx800-vm
+Architecture: amd64
+Auto-Installed: 1
+
+Package: openssh-server
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-heatingstation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdbus-1-3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-urllib3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: runit-helper
+Architecture: amd64
+Auto-Installed: 1
+
+Package: nginx-light
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxdamage1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpython3.11-minimal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgdk-pixbuf-2.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-cachetools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus-bin
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gnupg
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsasl2-modules-db
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-xorg
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpg-wks-server
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libkrb5support0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-kubernetes
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-cx800-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-processingplatemagazine-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcairo-gobject2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-ui.service-software
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxatracker2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblerc4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libbpf1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libmnl0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxml2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxmu6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-integrity-check
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xz-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-sqlalchemy
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgraphite2-3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libbsd0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-jsonpatch
+Architecture: amd64
+Auto-Installed: 1
+
+Package: cloud-guest-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-runmanagement-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-firewall
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdconf1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxpm4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfontconfig1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgpgme11
+Architecture: amd64
+Auto-Installed: 1
+
+Package: aide
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libasound2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libldap-2.5-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: systemd
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-amplificationplatehandler-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpg-agent
+Architecture: amd64
+Auto-Installed: 1
+
+Package: console-setup-linux
+Architecture: amd64
+Auto-Installed: 1
+
+Package: mollab-instrument-service
+Architecture: amd64
+Auto-Installed: 1
+
+Package: wget
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libz3-4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxss1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcvt0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: shared-mime-info
+Architecture: amd64
+Auto-Installed: 1
+
+Package: ieee-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblocale-gettext-perl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-datamanagergateway-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fdisk
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgl1-mesa-dri
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libyaml-0-2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpng16-16
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-user-config-fallback
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libreadline8
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiohttp
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gettext-base
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-netaddr
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxrandr2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-xorg-legacy
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-attr
+Architecture: amd64
+Auto-Installed: 1
+
+Package: sensible-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxfont2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pkg-resources
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-simhw-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfontenc1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-cirrina
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libmhash2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fontconfig-config
+Architecture: amd64
+Auto-Installed: 1
+
+Package: grub-efi-amd64
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfdisk1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gdisk
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libassuan0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnpth0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libx11-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: eject
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-screenshot
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxmlsec1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsodium23
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-workflowmanagement-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfuse3-3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-jsonschema
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-web
+Architecture: amd64
+Auto-Installed: 1
+
+Package: lvm2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: locales
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-docker
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-oauthlib
+Architecture: amd64
+Auto-Installed: 1
+
+Package: klibc-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libssl3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpangocairo-1.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxkbcommon0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxtst6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libefiboot1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libkrb5-3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-webshell
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-docopt
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libatk1.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xauth
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-softwareupdate-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: linux-image-amd64
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-addon
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-render0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: cloud-init
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-psutil
+Architecture: amd64
+Auto-Installed: 1
+
+Package: linux-base
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-multidict
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-openssl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-amplificationplatemagazine-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-setup
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-web-remote-screen
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjpeg62-turbo
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-click
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fonts-noto-core
+Architecture: amd64
+Auto-Installed: 1
+
+Package: isc-dhcp-client
+Architecture: amd64
+Auto-Installed: 1
+
+Package: media-types
+Architecture: amd64
+Auto-Installed: 1
+
+Package: maim
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiohttp-session-file
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libatspi2.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: open-vm-tools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-async-timeout
+Architecture: amd64
+Auto-Installed: 1
+
+Package: systemd-resolved
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-numpy
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-dotenv
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-bulkmanagement-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xserver-xorg-video-vmware
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libklibc
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-json-pointer
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libice6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: cgroupfs-mount
+Architecture: amd64
+Auto-Installed: 1
+
+Package: mollab-persistentmemory-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnsl2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnfnetlink0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnss3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libk5crypto3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: haveged
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-jinja2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpangoft2-1.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: plymouth
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-reagentstoragehandler-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpython3.11-stdlib
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dmsetup
+Architecture: amd64
+Auto-Installed: 1
+
+Package: systemd-coredump
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-pam-config
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-instrumentstate-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnss3-tools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-serial
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-netifaces
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-consumablepark-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-remote-access
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-certifi
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsqlite3-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: pinentry-curses
+Architecture: amd64
+Auto-Installed: 1
+
+Package: conmon
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwebp7
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjson-c5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpgsm
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-markupsafe
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxslt1.1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdevmapper-event1.02.1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus-session-bus-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: x11-xkb-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcryptsetup12
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libasound2-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-jwt
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libthai-data
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libip6tc2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-base
+Architecture: amd64
+Auto-Installed: 1
+
+Package: vim-runtime
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libavahi-common3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-maintenance-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-calculation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: ca-certificates
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-rackhandler-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: tnftp
+Architecture: amd64
+Auto-Installed: 1
+
+Package: grub-efi-amd64-bin
+Architecture: amd64
+Auto-Installed: 1
+
+Package: grub2-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-nginx
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfile-readbackwards-perl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pem
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-glx0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-rlx-osal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-ssw
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglew2.2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-rsa
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-protobuf
+Architecture: amd64
+Auto-Installed: 1
+
+Package: uidmap
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-c6800-vm
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-six
+Architecture: amd64
+Auto-Installed: 1
+
+Package: procps
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxinerama1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdpkg-perl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjbig0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwayland-egl1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpython3-stdlib
+Architecture: amd64
+Auto-Installed: 1
+
+Package: linux-image-6.1.0-23-amd64
+Architecture: amd64
+Auto-Installed: 1
+
+Package: bash-completion
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglapi-mesa
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libglib2.0-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-yaml
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-yarl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: openssh-sftp-server
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-interlock-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libc-l10n
+Architecture: amd64
+Auto-Installed: 1
+
+Package: btrfs-progs
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fonts-noto-cjk
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libbrotli1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-zmq
+Architecture: amd64
+Auto-Installed: 1
+
+Package: grub-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgtk-3-0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: htop
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libzmq5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3.11-minimal
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm-amdgpu1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dconf-gsettings-backend
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm-radeon1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsensors5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: sudo
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-datacollection-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-randr0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlxprj-cx800-test
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsystemd-shared
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-usb-storage
+Architecture: amd64
+Auto-Installed: 1
+
+Package: plymouth-label
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-distutils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: keyboard-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnginx-mod-http-echo
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gtk-update-icon-cache
+Architecture: amd64
+Auto-Installed: 1
+
+Package: efibootmgr
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libkmod2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxext6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: initramfs-tools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgtk-3-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiohttp-session
+Architecture: amd64
+Auto-Installed: 1
+
+Package: cpio
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dirmngr
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-ui-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libksba8
+Architecture: amd64
+Auto-Installed: 1
+
+Package: jq
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libharfbuzz0b
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libquadmath0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libprotobuf32
+Architecture: amd64
+Auto-Installed: 1
+
+Package: systemd-sysv
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fonts-dejavu-core
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-idna
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gnupg-utils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: mollab-jaeger-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-ssh-user-keys
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-chardet
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-osal-plugin-system-snapshots
+Architecture: amd64
+Auto-Installed: 1
+
+Package: curl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-dockerpty
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libegl-mesa0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libargon2-1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libcbor0.8
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpam-fsr
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-configobj
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gnupg-l10n
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-setuptools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpg-wks-client
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-shm0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libplymouth5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpci3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: golang-github-containers-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dconf-service
+Architecture: amd64
+Auto-Installed: 1
+
+Package: perl-modules-5.36
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgl1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libncursesw6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-cryptography
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libegl1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-hw-config
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libx11-6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-amplificationplatetransferposition-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-charset-normalizer
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libjq1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libwayland-client0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libiniparser1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiohttp-swagger
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblapack3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pyrsistent
+Architecture: amd64
+Auto-Installed: 1
+
+Package: liblcms2-2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libelf1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus-system-bus-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-separationstation-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-plymouth-theme
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libtirpc3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: dbus
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libepoxy0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libslopy7.6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: rlx-ssh-server
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-sync1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-rndnodered-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libedit2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libicu72
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pyasn1-modules
+Architecture: amd64
+Auto-Installed: 1
+
+Package: at-spi2-common
+Architecture: amd64
+Auto-Installed: 1
+
+Package: iproute2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libavahi-client3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: gpgconf
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdevmapper1.02.1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: grub-efi
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-processing-module-control-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libosal5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: xinit
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libsm6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-troubleshooting-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-analyticmodule-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgdbm6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libpsl5
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-teachingdata
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdrm-intel1
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-greenlet
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxfixes3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libfile-fnmatch-perl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: newgen-autotesttools
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxdmcp6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: c6800-mainhandler-configuration
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxi6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-systemd
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxt6
+Architecture: amd64
+Auto-Installed: 1
+
+Package: tigervnc-scraping-server
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pampy
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pamqp
+Architecture: amd64
+Auto-Installed: 1
+
+Package: plymouth-themes
+Architecture: amd64
+Auto-Installed: 1
+
+Package: openssl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-aiofiles
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-pydantic
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxmlsec1-openssl
+Architecture: amd64
+Auto-Installed: 1
+
+Package: nftables
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxcb-xfixes0
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libnspr4
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libevdev2
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libgdk-pixbuf2.0-common
+Architecture: amd64
+Auto-Installed: 1
+

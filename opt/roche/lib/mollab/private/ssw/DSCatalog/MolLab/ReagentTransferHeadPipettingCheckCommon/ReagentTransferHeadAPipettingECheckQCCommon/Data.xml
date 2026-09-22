@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="AB399168F3F10E40C3D7CF7937A92D4901F7F2A3DE8B" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadAPipettingECheckQCCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Module ID</base:Title>
+          </data:Description>
+          <data:Value>A</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipIndex" Type="String">
+          <data:Description>
+            <base:Title>PipIndex</base:Title>
+          </data:Description>
+          <data:Value>E</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialDispenseMaxInaccuracy" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Initial Dispense Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the initial dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>2.8</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxImprecision" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Maximum Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum imprecision of the multi dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>1.1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxInaccuracy" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the multi dispense.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3.6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxImprecisionLowVol" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Low Volume Maximum Imprecision</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum imprecision of the multi dispense low volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3.25</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseMaxInaccuracyLowVol" Type="Double" Unit="%">
+          <data:Description>
+            <base:Title>Multi dispense Low Volume Maximum Inaccuracy</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum inaccuracy of the aspiration dispense low volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>7</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMultiDispenseOuterRepetitions" Type="Integer">
+          <data:Description>
+            <base:Title>Multi dispense outer repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>None for operations</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

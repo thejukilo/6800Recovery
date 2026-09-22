@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="5AA57C6FA739C5A01446B9084B47EE4317FE5AB5FCAF" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ProcessingModuleADryCheckCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pTrackFluidics" Type="Boolean">
+          <data:Description>
+            <base:Title>Track fluidics</base:Title>
+          </data:Description>
+          <data:Value>false</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPerformReservoirToOverflow" Type="Boolean">
+          <data:Description>
+            <base:Title>Whether to overfill the wash reagent reservoir to overflow.</base:Title>
+          </data:Description>
+          <data:Value>false</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pEmptyLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Decision if the user has to empty the wash/waste at the end of the check.</base:Title>
+          </data:Description>
+          <data:Value>true</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleIndex" Type="Integer">
+          <data:Description>
+            <base:Title>Index of the involved processing module</base:Title>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+          <data:Value>ProcessingModuleA</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep1" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 1</base:Title>
+          </data:Description>
+          <data:Value>130E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep2" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 2</base:Title>
+          </data:Description>
+          <data:Value>130E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep3" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 3</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep4" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 4</base:Title>
+          </data:Description>
+          <data:Value>-1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep5" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 5</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep6" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 6</base:Title>
+          </data:Description>
+          <data:Value>100E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep7" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 7</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep8" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 8</base:Title>
+          </data:Description>
+          <data:Value>100E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep9" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 9</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep10" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 10</base:Title>
+          </data:Description>
+          <data:Value>100E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep11" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 11</base:Title>
+          </data:Description>
+          <data:Value>130E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep12" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 12</base:Title>
+          </data:Description>
+          <data:Value>130E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep13" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 13</base:Title>
+          </data:Description>
+          <data:Value>200E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep13OffSystem" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in off system step 13</base:Title>
+          </data:Description>
+          <data:Value>1680E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep14" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 14</base:Title>
+          </data:Description>
+          <data:Value>1E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeStep15" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Volume for all actions in step 15</base:Title>
+          </data:Description>
+          <data:Value>1E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

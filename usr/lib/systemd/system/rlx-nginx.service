@@ -1,0 +1,10 @@
+[Unit]
+Description=Generate DH param for nginx web server
+ConditionPathIsSymbolicLink=/etc/ssl/dhparam.pem
+
+[Service]
+Type=simple
+ExecStart=/usr/share/rlx-nginx/create-dhparam.sh
+
+[Install]
+WantedBy=multi-user.target

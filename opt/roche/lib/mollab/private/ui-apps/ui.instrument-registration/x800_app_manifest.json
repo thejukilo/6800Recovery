@@ -1,0 +1,8 @@
+{
+  "appID": "UI-InstrumentRegistration",
+  "appOrder": 10,
+  "appLabel": "12.FHO.AppLibrary.UI.InstrumentRegistration",
+  "entryPoint": "instrument-registration",
+  "roles": ["X800.RSR"],
+  "isDmApp": false
+}

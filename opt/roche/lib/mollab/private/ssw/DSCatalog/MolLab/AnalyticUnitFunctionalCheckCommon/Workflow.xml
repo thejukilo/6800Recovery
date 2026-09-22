@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="1E9AC8877CC385E46C6CCAC3082C1A951CAA105D7217" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticUnitFunctionalCheckCommon" ID="TRQ597642">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing modules...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Preparations">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait until the instrument is prepared ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadAmplificationPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LoadAmplificationPlate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load the prepared amplification plate in the analytic unit drawer with the barcode facing to the back.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckForPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check For Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if plate is present</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ExecutePCR">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Executing PCR</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The instrument is running PCR cycles, please wait ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irPCRSucceeded" NextStep="OpenTray">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision Result="irPCRSucceeded" NextStep="CalculatingResults">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CalculatingResults">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Calculating Results</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculating the results according to measured data</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenTray">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Opening</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer opens...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemovePlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the amplification plate and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseTray">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Drawer Closing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the analytic unit drawer closes...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="D89AE13097693391BC7004C87B4D2A8E79E70E8D61B6" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadChannelCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Id of the processsing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>158E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>404E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWashVolume" Type="Double">
+          <data:Description>
+            <base:Title>WashVolume</base:Title>
+          </data:Description>
+          <data:Value>104e-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>Pipetting Parameter Set</base:Title>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pDispenseVolumeInMicroliter" Type="Double">
+          <data:Description>
+            <base:Title>Dispense volume in microliter.</base:Title>
+          </data:Description>
+          <data:Value>500</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pLiquidLevelSensorToleranceInMicroliter" Type="Double">
+          <data:Description>
+            <base:Title>Ultrasonic scan volume tolerance in microliter.</base:Title>
+          </data:Description>
+          <data:Value>150</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rVolumesOutOfTolerance" Type="String" Array="true" Size="8">
+          <data:Description>
+            <base:Title>Wells for Which the Ultrasonic Scan Measured a Volume Out of Tolerance, and Associated Dispense Needle.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wells for Which the Ultrasonic Scan Measured a Volume Out of Tolerance, and Associated Dispense Needle.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

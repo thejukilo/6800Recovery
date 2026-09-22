@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GenericTestFunction xmlns:base="urn:base" xmlns:product="urn:product" xmlns:group="urn:group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:test="urn:test" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsProduct.xsd">
+    <group:TestFunction Name="WasteConsumablesCheckACommon" Type="WasteConsumablesCheckCommon">
+        <product:Description>
+            <base:Title>Waste consumables check PM A</base:Title>
+            <base:Paragraphs>
+                <base:Paragraph>Checks whether the tip racks and processing plates can be wasted from both rows.</base:Paragraph>
+                <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+                <base:Paragraph>Preconditions:</base:Paragraph>
+                <base:Paragraph>- Solid waste bin must be empty</base:Paragraph>
+                <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+                <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+                <base:Paragraph>Required Time: 10 min</base:Paragraph>
+				<base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+				<base:Paragraph>Required Equipment:</base:Paragraph>
+                <base:Paragraph>- 2 cobas omni pipette tips</base:Paragraph>
+                <base:Paragraph>- 2 cobas omni processing plate</base:Paragraph>
+            </base:Paragraphs>
+        </product:Description>
+        <test:Files>
+            <test:Workflow Version="1.0.0.0000" />
+            <test:Data Version="1.0.0.0000" />
+            <test:DataExt Version="1.0.0.0000" />
+            <test:Assembly Version="1.0.0.0000" />
+        </test:Files>
+    </group:TestFunction>
+</GenericTestFunction>

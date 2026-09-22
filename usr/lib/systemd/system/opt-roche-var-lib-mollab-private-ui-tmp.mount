@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/tmp/private/ui to /opt/roche/var/lib/mollab/private/ui/tmp
+
+[Mount]
+What=/mnt/tmp/private/ui
+Where=/opt/roche/var/lib/mollab/private/ui/tmp
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

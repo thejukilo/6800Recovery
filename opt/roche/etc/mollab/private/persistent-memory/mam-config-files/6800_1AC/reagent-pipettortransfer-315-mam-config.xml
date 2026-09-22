@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+        <csm name="ProcessCell_ReagentTransfer" seid="168" moduleId="315">
+			<parPool type="uint8" structure="array" id="100" name="ConfigData_ReagentChannel1"
+                defaultValue="0"
+				minValue="0"
+				maxValue="255"
+				noElements="100">
+                <persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="101" name="ConfigData_ReagentChannel2"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="102" name="ConfigData_ReagentChannel3"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="103" name="ConfigData_ReagentChannel4"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="104" name="ConfigData_ConfigData_HeadFluidic"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="105" name="ConfigData_Pump_MZR1"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="106" name="ConfigData_Pump_MZR2"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="107" name="ConfigData_Pump_MZR3"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="108" name="ConfigData_Pump_MZR4"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="109" name="ConfigData_Pump_MZR5"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="110" name="ConfigData_Pump_MZR6"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="111" name="ConfigData_Pump_MZR7"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="112" name="ConfigData_Pump_MZR8"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="113" name="ConfigData_SolenoidValve1"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="114" name="ConfigData_SolenoidValve2"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="115" name="ConfigData_SolenoidValve3"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="116" name="ConfigData_UltraSonic"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="117" name="ConfigData_Needle1"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="118" name="ConfigData_Needle2"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="119" name="ConfigData_Needle3"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="120" name="ConfigData_Needle4"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="121" name="ConfigData_Needle5"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="122" name="ConfigData_Needle6"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="123" name="ConfigData_Needle7"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+			<parPool type="uint8" structure="array" id="124" name="ConfigData_Needle8"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255"
+                noElements="100">
+				<persistDef memoryId="3620" periodInSec="-1"/>
+			</parPool>
+		</csm>
+  </csmConfig>
+</dia:mam>

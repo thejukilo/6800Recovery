@@ -1,0 +1,5 @@
+f0a143eaa322e8d9a49bdd5f2c7a6db9  opt/roche/etc/mollab/private/rabbitmq/definitions/runManagement_definition.json
+2dac45663612d4b0b1e145188cda2f9e  opt/roche/etc/mollab/private/run-management/appsettings.json
+c5405baa5d27ab1b38e4c0d9fdcd531a  opt/roche/etc/mollab/private/run-management/serilog.json
+e757c5aa8d00e15919a9d3613fce575e  usr/share/doc/newgen-runmanagement-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-runmanagement-configuration/copyright

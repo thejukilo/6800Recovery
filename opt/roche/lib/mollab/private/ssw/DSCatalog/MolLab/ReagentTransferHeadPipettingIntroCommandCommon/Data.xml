@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="15B64F174DF0A601C7ACE37497F9869E64DF3185066D" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadPipettingIntroCommandCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name Of The Involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="PipParamsWash" Type="String">
+          <data:Description>
+            <base:Title>Pipetting Parameter Wash Buffer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pipetting parameter to use for wash buffer pipetting</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>8893befa-0be7-4846-95c5-8c2c7bf6b6f1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="PipParamsDiluentPipetting" Type="String">
+          <data:Description>
+            <base:Title>Pipetting Parameter Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Pipetting parameter to use for diluent pipetting</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>8893befa-0be7-4846-95c5-8c2c7bf6b6f1</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>154E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>612E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredDiluentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>208E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="WashVolumeWB" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Wash Volume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume Used To Wash The Needles</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>104E-6</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="WashVolumeSD" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Wash Volume</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Volume Used To Wash The Needles</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>208E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rOwsVersion" Type="Integer">
+          <data:Description>
+            <base:Title>Ows Version Used</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ows Version Used</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="None" Value="0">
+              <data:Description>Choose a version</data:Description>
+            </data:Member>
+            <data:Member Name="WMC15-SH/01 (old version)" Value="1">
+              <data:Description>WMC15-SH/01 (old version)</data:Description>
+            </data:Member>
+            <data:Member Name="SPC115-100 (new version)" Value="2">
+              <data:Description>SPC115-100 (new version)</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rPlacementOfWeighingSystem" Type="Boolean">
+          <data:Description>
+            <base:Title>Correct Weighing System Placement Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Operator confirming that weighing system is placed as per instruction.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPipettingIntroSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Reagent Transfer Head Pipetting Introduction Success</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Balance placed and tested and other preparations were made.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irChosenWashReagentContainer">
+          <data:Description>
+            <base:Title>Chosen Wash Reagent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Chosen wash reagent container.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="String" Name="irChosenDiluentContainer">
+          <data:Description>
+            <base:Title>Chosen Diluent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Chosen diluent container.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

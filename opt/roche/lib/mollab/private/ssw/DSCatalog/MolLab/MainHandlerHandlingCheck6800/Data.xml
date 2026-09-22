@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="51F393D9A44744B71EE43F0427BF972F32E06E04B9A4" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="MainHandlerHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rHandleReagent">
+          <data:Description>
+            <base:Title>Handle Reagent Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent cassettes can be handled by the main handler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleControl">
+          <data:Description>
+            <base:Title>Handle Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Control cassettes can be handled by the main handler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandlePPlate">
+          <data:Description>
+            <base:Title>Handle Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing plates can be handled by the main handler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleTipRacks">
+          <data:Description>
+            <base:Title>Handle Tip Racks</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Tip racks can be handled by the main handler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleADPlate">
+          <data:Description>
+            <base:Title>Handle Ad Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>AD plates can be handled by the main handler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rHandleMGPCassette">
+          <data:Description>
+            <base:Title>Handle Mgp Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>MGP cassettes can be handled by the StackerHandler.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irDrawerStateOk">
+          <data:Description>
+            <base:Title>Internal Drawer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal Drawer State</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

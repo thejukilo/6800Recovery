@@ -1,0 +1,8 @@
+{
+  "appID": "UI-FileExplorer",
+  "appOrder": 30,
+  "appLabel": "12.FHO.AppLibrary.UI.FileExplorer",
+  "entryPoint": "file-explorer",
+  "roles": ["X800.Operator", "X800.LabManager", "X800.RSR"],
+  "isDmApp": false
+}

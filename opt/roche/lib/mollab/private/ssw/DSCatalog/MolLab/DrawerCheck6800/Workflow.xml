@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="C0550A13A0BF1EF37BD052EE328BACB70A9D5EE589E5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="DrawerCheck6800Common" ID="DrawerCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Init Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the drawers are initializing...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="DetectOpenDrawers" Type="Loop">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Detecting Open Drawers...</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow DisableNextStep="true">
+          <workflow:Decision Result="irOpenDrawer" NextStep="ParkReagentStorageHandler">
+            <workflow:Condition Operator="EQ" Value="ReagentCassetteDrawer" />
+          </workflow:Decision>
+          <workflow:Decision Result="irOpenDrawer" NextStep="CloseConsumableDrawerA">
+            <workflow:Condition Operator="EQ" Value="ConsumablesDrawerA" />
+          </workflow:Decision>
+          <workflow:Decision Result="irCheckReagentCassetteDrawer" NextStep="OpenConsumableDrawerA">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision Result="irOpenDrawer" NextStep="OpenReagentCassetteDrawer">
+            <workflow:Condition Operator="EQ" Value="" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenReagentCassetteDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Transfer Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the transfer module drawer is unlocked.</base:Paragraph>
+              <base:Paragraph>Then open the drawer completely</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Reagent_Drawer_Opened.jpg" Hash="6BCA787AC89636B40E80B6128BAAC8DDB4884547" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ParkReagentStorageHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Reagent Storage Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the reagent storage handler to be parked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseReagentCassetteDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Transfer Module Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the transfer module drawer.</base:Paragraph>
+              <base:Paragraph>Please make sure that you close the drawer completely.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Reagent_Drawer_Closed.jpg" Hash="23B3F186858209F7B18814B061688F50BE3F2CE9" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOpenDrawer" NextStep="DetectOpenDrawers">
+            <workflow:Condition Operator="NE" Value="" />
+          </workflow:Decision>
+          <workflow:Decision Result="irCheckConsumableDrawerA" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenConsumableDrawerA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Processing Module Drawer A</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the processing module drawer is unlocked.</base:Paragraph>
+              <base:Paragraph>Then open the drawer completely</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleADrawer_Opened.jpg" Hash="622081A7B0BA5E7D2A63B62DB2D4B493588971D4" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseConsumableDrawerA">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Processing Module Drawer A</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the drawer.</base:Paragraph>
+              <base:Paragraph>Please make sure that you close the drawer completely.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ProcessingModuleADrawer_Closed.jpg" Hash="826F79DC5FFA47B21CFCCBEBA549303686587731" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irOpenDrawer" NextStep="DetectOpenDrawers">
+            <workflow:Condition Operator="NE" Value="" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Completed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Completed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The check is completed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

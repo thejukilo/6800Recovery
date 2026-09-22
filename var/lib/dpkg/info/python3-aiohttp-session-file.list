@@ -1,0 +1,16 @@
+/.
+/usr
+/usr/lib
+/usr/lib/python3
+/usr/lib/python3/dist-packages
+/usr/lib/python3/dist-packages/aiohttp_session_file
+/usr/lib/python3/dist-packages/aiohttp_session_file/__init__.py
+/usr/lib/python3/dist-packages/aiohttp_session_file-0.0.3.egg-info
+/usr/lib/python3/dist-packages/aiohttp_session_file-0.0.3.egg-info/PKG-INFO
+/usr/lib/python3/dist-packages/aiohttp_session_file-0.0.3.egg-info/dependency_links.txt
+/usr/lib/python3/dist-packages/aiohttp_session_file-0.0.3.egg-info/requires.txt
+/usr/lib/python3/dist-packages/aiohttp_session_file-0.0.3.egg-info/top_level.txt
+/usr/share
+/usr/share/doc
+/usr/share/doc/python3-aiohttp-session-file
+/usr/share/doc/python3-aiohttp-session-file/changelog.gz

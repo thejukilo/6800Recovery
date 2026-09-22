@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Roche
+Description=Roche Diagnostics RLX bootsplash script for cX800
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/roche-cx800
+ScriptFile=/usr/share/plymouth/themes/roche-cx800/roche-cx800.script

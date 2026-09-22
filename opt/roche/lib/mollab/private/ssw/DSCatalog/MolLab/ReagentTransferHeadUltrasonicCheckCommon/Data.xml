@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7162B2C3DA598D562E20E341EC0BCDFAB64721EA206B" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadUltrasonicCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>True if the Service Check Is for Execution in Operations</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Id of the Processing Module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pTargetVolume" Type="Double" Unit="µl">
+          <data:Description>
+            <base:Title>The Volume Expected in the PPlate</base:Title>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeTolerance" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>The Tolerance Allowed to the Specified Volume</base:Title>
+          </data:Description>
+          <data:Value>150E-9</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingStation1Positive">
+          <data:Description>
+            <base:Title>Ultrasonic Sensor Separation Station 1 Positive Tolerance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested with the separation station 1 and positive tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingStation1PositiveWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Positive Range in Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of positive range in separation station 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingStation1Negative">
+          <data:Description>
+            <base:Title>Ultrasonic Sensor Separation Station 1 Negative Tolerance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested with the separation station 1 and negative tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingStation1NegativeWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Negative Range in Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of negative range in separation station 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingStation2Positive">
+          <data:Description>
+            <base:Title>Ultrasonic Sensor Separation Station 2 Positive Tolerance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested with the separation station 2 and positive tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingStation2PositiveWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Positive Range in Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of positive range in separation station 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingStation2Negative">
+          <data:Description>
+            <base:Title>Ultrasonic Sensor Separation Station 2 Negative Tolerance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested with the separation station 2 and negative tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingStation2NegativeWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Negative Range in Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of negative range in separation station 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingSequencePositive">
+          <data:Description>
+            <base:Title>Scanning With Positive Tolerance in Sequence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested in sequence with positive tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingSequencePositiveWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Positive Range in Sequence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of positive range in sequence.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rUltrasonicWorkingSequenceNegative">
+          <data:Description>
+            <base:Title>Scanning With Negative Tolerance in Sequence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The ultrasonic sensor of the reagent transfer head is working correctly.</base:Paragraph>
+              <base:Paragraph>Tested in sequence with negative tolerance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="True" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="String" Name="rUltrasonicWorkingSequenceNegativeWells" Array="true">
+          <data:Description>
+            <base:Title>Wells Out of Negative Range in Sequence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The array of wells out of negative range in sequence.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

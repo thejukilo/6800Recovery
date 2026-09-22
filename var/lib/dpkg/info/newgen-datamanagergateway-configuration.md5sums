@@ -1,0 +1,6 @@
+d090b8ab20b947651d58a8f2cceffaf8  opt/roche/etc/mollab/private/data-manager-gateway/appsettings.json
+5604449818a84dc6e70d5075ddac21a5  opt/roche/etc/mollab/private/data-manager-gateway/serilog.json
+237e45b5d57a8e5899abef5a040619d7  opt/roche/etc/mollab/private/rabbitmq/definitions/dataManagerGateway_forwarderToDm_definition.json
+ae8fbf76be388b4488ea04413269b830  opt/roche/etc/mollab/private/rabbitmq/definitions/dataManagerGateway_internal_definition.json
+b3ff5c83b8229fcefd2fb64a247ce098  usr/share/doc/newgen-datamanagergateway-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/newgen-datamanagergateway-configuration/copyright

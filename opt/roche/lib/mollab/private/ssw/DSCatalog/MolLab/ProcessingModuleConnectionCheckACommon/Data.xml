@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="7EF099BC38D91E21E8784B075CF0D6CFAA596F3B6B6C" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ProcessingModuleConnectionCheckACommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Id of the Involved processing module</base:Title>
+          </data:Description>
+          <data:Value>A</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pProcessingPlateMagazineIds" Type="String" Array="true" Size="2">
+          <data:Description>
+            <base:Title>Processing plate magazine IDs</base:Title>
+          </data:Description>
+          <data:Value>F</data:Value>
+          <data:Value>G</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMGPCassetteMagazineId" Type="String">
+          <data:Description>
+            <base:Title>MGP cassette magazine ID</base:Title>
+          </data:Description>
+          <data:Value>H</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pAmplificationPlateMagazineIds" Type="String" Array="true" Size="2">
+          <data:Description>
+            <base:Title>Amplification plate magazine IDs</base:Title>
+          </data:Description>
+          <data:Value>I</data:Value>
+          <data:Value>J</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rProcessingModuleInfrastructure" Type="String">
+          <data:Description>
+            <base:Title>Processing Module Infrastructure State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module infrastructure state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleControl" Type="String">
+          <data:Description>
+            <base:Title>Processing Module Control State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module control state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rReagentHead" Type="String">
+          <data:Description>
+            <base:Title>Reagent Transfer Head State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reagent transfer head state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingHead" Type="String">
+          <data:Description>
+            <base:Title>Processing Head State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing head state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingModuleHandler" Type="String">
+          <data:Description>
+            <base:Title>Processing Module Handler State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module handler state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMGPMixer" Type="String">
+          <data:Description>
+            <base:Title>Mgp Mixer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>MGP mixer state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <!-- processing module Results: bulk Management -->
+        <data:Result Name="rContainersAggregateState" Type="String">
+          <data:Description>
+            <base:Title>Bulk Container Aggregate State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk container aggregate state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDrawersAggregateStateA" Type="String">
+          <data:Description>
+            <base:Title>Bulk Drawer Aggregate States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk drawer aggregate states</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rFluidSystemAggregateState" Type="String">
+          <data:Description>
+            <base:Title>Fluid System Aggregate State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Fluid system aggregate state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInterimReagentStorage" Type="String">
+          <data:Description>
+            <base:Title>Interim Reagent Storage State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Interim reagent storage state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateParkPosition" Type="String">
+          <data:Description>
+            <base:Title>Amplification Plate Park Position State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Amplification plate park position state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSealingStation" Type="String">
+          <data:Description>
+            <base:Title>Sealing Station State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Sealing station state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSolidWasteStation" Type="String">
+          <data:Description>
+            <base:Title>Solid Waste Station State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Solid waste station state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation1" Type="String">
+          <data:Description>
+            <base:Title>Heating Station 1 State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating station 1 state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rHeatingStation2" Type="String">
+          <data:Description>
+            <base:Title>Heating Station 2 State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Heating station 2 state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSeparationStation1" Type="String">
+          <data:Description>
+            <base:Title>Separation Station 1 State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Separation station 1 state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSeparationStation2" Type="String">
+          <data:Description>
+            <base:Title>Separation Station 2 State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Separation station 2 state</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="Ready" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateMagazinesStates" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Amplification Plate Magazines States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Amplification plate magazines states</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rAmplificationPlateMagazinesStatesOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Amplification Plate Magazines Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all the amplification plate magazines "Ready"</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rProcessingPlateMagazinesStates" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Processing Plate Magazines States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing plate magazines states</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rProcessingPlateMagazinesStatesOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Processing Plate Magazines Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all the processing plate magazines "Ready"</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMgpCassetteMagazineStates" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Mgp Cassette Magazines States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Mgp cassette magazines states</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMgpCassetteMagazineStatesOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Mgp Cassette Magazines Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all the mgp cassette magazines "Ready"</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDrawerStates" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Drawer States</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Drawer states</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rDrawerStatesOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer States Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Are all the drawers "Ready"</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

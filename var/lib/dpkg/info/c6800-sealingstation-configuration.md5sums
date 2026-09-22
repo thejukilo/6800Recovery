@@ -1,0 +1,8 @@
+d815df31533d430eccda4a5d3692e26a  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-sealingstation-308-mam-config.xml
+a7bcf7f6ee2600172ec221faad8bc558  opt/roche/etc/mollab/private/rabbitmq/definitions/sealingstation_a_definition.json
+0e2fd72a7b77b6760ba5293bd4ed3fe0  opt/roche/etc/mollab/private/sealing-station/a/config/sealingstation-parampool.xml
+602a0059c4ef856db769645af430896f  opt/roche/etc/mollab/private/sealing-station/a/startup/ecc.xml
+8fa4340444f2691d5e465c9bf7b3104b  opt/roche/etc/mollab/private/sealing-station/a/startup/ecs_A.xml
+552df7aed1bccf49d6ff37a4e0d04650  opt/roche/lib/mollab/firmware/sealing-station/fwr_00000330_FrameSealerV4_V4.02.HEX
+f3486f375a2abf49f0663ee5c63a79af  opt/roche/lib/mollab/firmware/sealing-station/fwr_00000330_FrameSealerV5_V5.20.HEX
+08e518e278246111b45a15005157af9d  opt/roche/lib/mollab/firmware/sealing-station/fwr_00000665_FrameSealerV9_V1.01.HEX

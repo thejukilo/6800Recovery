@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F798427979309352FE7CD325FEDBE0572011E6488B8E" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="WashReagentReservoirAndDegassingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>'True' means check is being executed in the 'operations' environment.</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMaxDrainTime" Type="Integer" Unit="sec">
+          <data:Description>
+            <base:Title>Maximum time to drain the internal reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The maximum time to drain the internal reservoir.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>91</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredWashReagentVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Wash Reagent Volume</base:Title>
+          </data:Description>
+          <data:Value>2.7E-3</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pRequiredLiquidWasteVolume" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Required Liquid Waste Volume</base:Title>
+          </data:Description>
+          <data:Value>3.615E-3</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pVolumeFromMaxLevelSensorToMinLevelSensor" Type="Double" Unit="m^3">
+          <data:Description>
+            <base:Title>Volume to be drained from internal reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The volume to be drained (with tolerance) from the internal reservoir to reach the min sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>690E-6</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rTeachSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal Reservoir Taught</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The internal reservoir has been successfully taught.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInternalReservoirFilled" Type="Boolean">
+          <data:Description>
+            <base:Title>Internal Reservoir Filled</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The internal reservoir has been successfully filled.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>False</data:Value>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rSecondsDrained" Type="Integer">
+          <data:Description>
+            <base:Title>Time Needed to Drain the Internal Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The time needed to drain the internal reservoir in seconds.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LT" Parameter="pMaxDrainTime" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine1" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine2" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadCheckPrerequisiteLine3" Type="String">
+          <data:Description>
+            <base:Title>Load Check Prerequisite 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Container which requires more volume.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Boolean" Name="irLoadCheckSuccessful">
+          <data:Description>
+            <base:Title>Load Check Was Successful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the required bulk reagents were loaded successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

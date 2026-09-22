@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="17648E0720883EADD273C357B2D6931B80DC09AD5B27" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ADPlatePreparationCommon" ID="ADPlatePreparationCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the initialization is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="Preparation">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="Preparation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the processing module is set up.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irUseWashReagent" NextStep="LoadADPlateInstruction">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadCassetteInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Reagent Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Load a tool optical verification cassette on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Load_reagent_processing_module.jpg" Hash="8AE09F2CB757C2BD844C11A41B11B7CE77FAF093" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer Reagent Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndUnloadCassette" NextStep="UnloadCassette">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadADPlateInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>[R.irRemainingRunsInfo]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Place an amplification plate without the cover on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Load_AD_Plate_Processing_Module.jpg" Hash="10CF8D4F42DC2809031732631952CB5DF5A51684" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndUnloadCassette" NextStep="UnloadCassette">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadADCoverInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Amplification Plate Cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Place the amplification plate cover on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Important: The Barcode should face the rear of the instrument.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Load_AD_Plate_Cover.jpg" Hash="7218992C17A266C67A0FEE75C495F204F6635607" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WashNeedlesActionBeforePip">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Washing Needles</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irAbortAndUnloadCassette" NextStep="UnloadCassette">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PipettingAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reagent Pipetting</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the pipetting is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WashNeedlesActionAfterPip">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Needles Washing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferADBottom">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer ad plate bottom</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferADCover">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer ad plate cover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WaitForSealer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wait Sealer Heating</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the sealer is heating up ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TransferADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transfer ad plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SealADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sealing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadADPlate">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unloading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the transfer is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadADPlateInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Removal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the amplification plate from the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The amplification plate should be stored in a dark environment until it used for the functional check. The reagent is light sensitive.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irUseWashReagent" NextStep="SetResults">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadCassette">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reagent Unloading</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the transfer is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irShowInvalidRfidDetails" NextStep="ShowCassetteRfidFailure">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="irAbortAndUnloadCassette" NextStep="SetResults">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnloadCassetteInstruction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reagent Removal</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the tool optical verification cassette from the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irShowInvalidRfidDetails" NextStep="SetResults">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ShowCassetteRfidFailure" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Rfid Details</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Invalid rfid!</base:Paragraph>
+              <base:Paragraph>Roche Unique Identifier - Expected: 6644341190, Read: [R.rCassetteRfidIdentifier]</base:Paragraph>
+              <base:Paragraph>Expiration date - Expected: Any date in the future, Read: [R.rCassetteRfidExpiryDate]</base:Paragraph>
+              <base:Paragraph>Remaining Tests - Expected: from 96 to 480, Read: [R.rCassetteRfidRemainingTests]</base:Paragraph>
+              <base:Paragraph>Remaining Runs - Expected: from 1 to 5, Read: [R.rCassetteRfidRemainingRuns]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Remove the tool optical verification cassette from the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SetResults">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Setting results...</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Setting results...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

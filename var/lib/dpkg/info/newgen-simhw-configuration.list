@@ -1,0 +1,17 @@
+/.
+/opt
+/opt/roche
+/opt/roche/var
+/opt/roche/var/lib
+/opt/roche/var/lib/mollab
+/opt/roche/var/lib/mollab/private
+/opt/roche/var/lib/mollab/private/simhw
+/opt/roche/var/lib/mollab/private/simhw/curves
+/opt/roche/var/lib/mollab/private/simhw/simdata
+/opt/roche/var/lib/mollab/private/simhw/simloading-default
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/newgen-simhw-configuration
+/usr/share/doc/newgen-simhw-configuration/changelog.gz
+/usr/share/doc/newgen-simhw-configuration/copyright

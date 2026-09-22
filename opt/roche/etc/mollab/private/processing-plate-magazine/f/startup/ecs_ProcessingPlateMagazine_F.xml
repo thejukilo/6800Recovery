@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <!-- ProcessingPlateMagazine F -->
+    <ConnectedCSM FileName="newgen-processingplatemagazine">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="216" ProviderSocket="/opt/CSM_216.sock">
+          <CDIDefinition SwitchName="MagazineMotor-cdi" DeviceName="PCA_PPStacker_MC_StackerMotor1" />
+          <CSMDefinition CSMName="BCReader-id" ConnectedModuleID="217" ConnectToSocket="/opt/CSM_217.sock" />
+          <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/processingplatemagazine-stacker1-motionconfig.xml" />
+          <CommandLineSwitch SwitchName="--param_pool_config_path" Value="${UNITCONFIGPATH}/settings/config/processingplatemagazine-parampool.xml" />
+          <CommandLineSwitch SwitchName="--MagazineId" Value="F" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.processingplatemagazine.f.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.processingplatemagazine.f.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.processingplatemagazine.f.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.processingplatemagazine.f.q" />
+          <CommandLineSwitch SwitchName="--BCReader-socket" Value="/opt/CSM_217.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM FileName="barcodereader">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="217" ProviderSocket="/opt/CSM_217.sock">
+              <CDIDefinition SwitchName="BarcodeReader-cdi" DeviceName="PCA_PPStacker_RHC_BarcodeReader1" />
+              <CommandLineSwitch SwitchName="--serial_port_id" Value="0" />
+              <CommandLineSwitch SwitchName="--barcode_reader_type" Value="1" />
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

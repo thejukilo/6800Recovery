@@ -1,0 +1,61 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+   purge)
+      rm -f /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+      # See bugs.debian.org/674237
+      # (keep this comment until this is merged in Ubuntu)
+      rm -f /etc/apt/apt.conf.d/90cloud-init-pipelining
+      ;;
+   remove)
+      rm -f /etc/cloud/cloud.cfg.d/90cloud-init-pipelining
+      ;;
+esac
+
+# Automatically added by dh_installinit/13.11.4
+if [ "$1" = "remove" ] && [ -x "/etc/init.d/cloud-final" ] ; then
+	chmod -x "/etc/init.d/cloud-final" >/dev/null || true
+fi
+if [ -z "${DPKG_ROOT:-}" ] && [ "$1" = "purge" ] ; then
+	update-rc.d cloud-final remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installinit/13.11.4
+if [ "$1" = "remove" ] && [ -x "/etc/init.d/cloud-config" ] ; then
+	chmod -x "/etc/init.d/cloud-config" >/dev/null || true
+fi
+if [ -z "${DPKG_ROOT:-}" ] && [ "$1" = "purge" ] ; then
+	update-rc.d cloud-config remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installinit/13.11.4
+if [ "$1" = "remove" ] && [ -x "/etc/init.d/cloud-init" ] ; then
+	chmod -x "/etc/init.d/cloud-init" >/dev/null || true
+fi
+if [ -z "${DPKG_ROOT:-}" ] && [ "$1" = "purge" ] ; then
+	update-rc.d cloud-init remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installinit/13.11.4
+if [ "$1" = "remove" ] && [ -x "/etc/init.d/cloud-init-local" ] ; then
+	chmod -x "/etc/init.d/cloud-init-local" >/dev/null || true
+fi
+if [ -z "${DPKG_ROOT:-}" ] && [ "$1" = "purge" ] ; then
+	update-rc.d cloud-init-local remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_systemd_start/13.11.4
+if [ "$1" = remove ] && [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_systemd_enable/13.11.4
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'cloud-config.service' 'cloud-final.service' 'cloud-init-hotplugd.socket' 'cloud-init-local.service' 'cloud-init.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+

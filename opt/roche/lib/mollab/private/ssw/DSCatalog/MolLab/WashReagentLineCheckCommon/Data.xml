@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="64579BB246BDD7FF1C4219D59039D2694404E5B347C4" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsData.xsd">
+  <ds:TestFunction Name="WashReagentLineCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Type="String" Name="pModuleId">
+          <data:Description>
+            <base:Title>The Id of the used processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="pWashReagentPipettingParameter">
+          <data:Description>
+            <base:Title>Wash reagent pipetting parameter file GUID</base:Title>
+          </data:Description>
+          <data:Value>e6ae2ce1-92fe-4412-9abd-ccde6d111a3d</data:Value>
+        </data:Parameter>
+        <data:Parameter Type="Integer" Name="pRepetitions">
+          <data:Description>
+            <base:Title>Number of repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The number of repetitions to be executed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>3</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rSelectedWashReagentContainerPosition" Type="Integer">
+          <data:Description>
+            <base:Title>The selected wash reagent container position</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="WashReagent1" Value="0">
+              <data:Description>Wash reagent container 1</data:Description>
+            </data:Member>
+            <data:Member Name="WashReagent2" Value="1">
+              <data:Description>Wash reagent container 2</data:Description>
+            </data:Member>
+            <data:Member Name="WashReagent3" Value="2">
+              <data:Description>Wash reagent container 3</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="rSelectedWasteContainerPosition" Type="Integer">
+          <data:Description>
+            <base:Title>The selected liquid waste container position</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="WasteContainer1" Value="0">
+              <data:Description>Liquid waste container 1</data:Description>
+            </data:Member>
+            <data:Member Name="WasteContainer2" Value="1">
+              <data:Description>Liquid waste container 2</data:Description>
+            </data:Member>
+            <data:Member Name="WasteContainer3" Value="2">
+              <data:Description>Liquid waste container 3</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irSelectedWasteContainerPositionOffSystemLiquidWaste" Type="Integer">
+          <data:Description>
+            <base:Title>The selected liquid waste container position</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="WasteContainer2" Value="1">
+              <data:Description>Liquid waste container 2</data:Description>
+            </data:Member>
+            <data:Member Name="WasteContainer3" Value="2">
+              <data:Description>Liquid waste container 3</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irSelectedWashReagentContainerId" Type="Integer">
+          <data:Description>
+            <base:Title>The selected wash reagent container id (1-based indexing)</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irSelectedWasteContainerId" Type="Integer">
+          <data:Description>
+            <base:Title>The selected waste container id (1-based indexing)</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rPathFromWashReagentToInternalReservoir" Type="String">
+          <data:Description>
+            <base:Title>The tubing path from the selected wash reagent container position to internal wash reservoir</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rPathFromInternalReservoirToLiquidWasteContainer" Type="String">
+          <data:Description>
+            <base:Title>The tubing path from internal wash reservoir to the selected liquid waste container position</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rWashReagentContainerHasEnoughVolume" Type="Boolean">
+          <data:Description>
+            <base:Title>The selected wash reagent container has enough volume to pump</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rTransferFromReservoirToWasteSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Successfully pumped from internal wash reagent reservoir to liquid waste container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+              <base:Paragraph>The tubing path : Please refer the result rPathFromInternalReservoirToLiquidWasteContainer</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rWasLiquidTransferredSuccessfully" Type="Boolean">
+          <data:Description>
+            <base:Title>The liquid was transferred successfully</base:Title>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irReservoirIsFull" Type="Integer">
+          <data:Description>
+            <base:Title>Whether the wash reagent reservoir is full</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="Yes" Value="0">
+              <data:Description>Yes</data:Description>
+            </data:Member>
+            <data:Member Name="No" Value="1">
+              <data:Description>No</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irLiquidTransferredOption" Type="Integer">
+          <data:Description>
+            <base:Title>The liquid was transferred from the selected wash reagent container to the selected liquid waste container</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="Yes" Value="0">
+              <data:Description>Yes</data:Description>
+            </data:Member>
+            <data:Member Name="No" Value="1">
+              <data:Description>No</data:Description>
+            </data:Member>
+            <data:Member Name="Repeat" Value="2">
+              <data:Description>Repeat transfer</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irLiquidTransferredOptionWithoutRepeat" Type="Integer">
+          <data:Description>
+            <base:Title>The liquid was transferred from the selected wash reagent container to the selected liquid waste container</base:Title>
+          </data:Description>
+          <data:Enum>
+            <data:Member Name="Yes" Value="0">
+              <data:Description>Yes</data:Description>
+            </data:Member>
+            <data:Member Name="No" Value="1">
+              <data:Description>No</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irRepetitionsRemaining" Type="Integer">
+          <data:Description>
+            <base:Title>Remaining repetitions</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The number of remaining repetitions.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irHasOffSystemLiquidWaste" Type="Boolean">
+          <data:Description>
+            <base:Title>Whether off-system liquid waste handling is enabled.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

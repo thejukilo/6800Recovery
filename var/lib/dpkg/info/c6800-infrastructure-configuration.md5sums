@@ -1,0 +1,15 @@
+493192898b6a93a244667869be820533  opt/roche/etc/mollab/private/infrastructure/processing-module/a/config/infrastructure-parampool-processcell.xml
+02c80005ff430d141995ea35cc9285a6  opt/roche/etc/mollab/private/infrastructure/processing-module/a/config/infrastructure-sms-config.xml
+1d4e560bfc2cbb5f372c5bd0155f2d36  opt/roche/etc/mollab/private/infrastructure/processing-module/a/startup/ecc.xml
+f4e5dbb9a138adc35196eb63400132c9  opt/roche/etc/mollab/private/infrastructure/processing-module/a/startup/ecs_ProcessingModuleA_1AC.xml
+3a760e5460c4463541d9d8d5ba3f6323  opt/roche/etc/mollab/private/infrastructure/processing-module/a/startup/ecs_ProcessingModuleA_2AC.xml
+4e0107b8dd00aeee7f63646db0a28218  opt/roche/etc/mollab/private/infrastructure/transfer-module/config/infrastructure-parampool-samplecell.xml
+02c80005ff430d141995ea35cc9285a6  opt/roche/etc/mollab/private/infrastructure/transfer-module/config/infrastructure-sms-config.xml
+1d4e560bfc2cbb5f372c5bd0155f2d36  opt/roche/etc/mollab/private/infrastructure/transfer-module/startup/ecc.xml
+ef068ab3d2f14de37e005022e8a7fcef  opt/roche/etc/mollab/private/infrastructure/transfer-module/startup/ecs_TransferModule.xml
+6c5482dedc57c8a2c16dd23d8081f636  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/infrastructure-newgen-900-mam-config.xml
+aad2d4344416c75b9516ba727c500d4c  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/infrastructure-newgen-901-mam-config.xml
+87bfe60acd47cdb00ba30664fdbf8b1a  opt/roche/etc/mollab/private/rabbitmq/definitions/infrastructure_processingmodulea_definition.json
+7249481b56a312836daa311d26c699c7  opt/roche/etc/mollab/private/rabbitmq/definitions/infrastructure_transfermodule_definition.json
+85f47199dad46a4dba8b40bebe426878  opt/roche/lib/mollab/firmware/infrastructure/fwr_00000171_SMStage_2.06.02.2202.srec
+59e8be325b21e036b2bcbeea33925f2e  opt/roche/lib/mollab/firmware/infrastructure/fwr_00000258_Fuseboard_1.03.04.2300.srec

@@ -1,0 +1,15 @@
+/.
+/lib
+/lib/systemd
+/lib/systemd/system
+/lib/systemd/system/newgen-xorg.service
+/opt
+/opt/roche
+/opt/roche/home
+/opt/roche/home/startup_newgen-xorg.sh
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/newgen-xorg
+/usr/share/doc/newgen-xorg/changelog.gz
+/usr/share/doc/newgen-xorg/copyright

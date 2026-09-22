@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="48DBD9A1FCC11675B1E5A37F80FD5EEA0164970D1EC0" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingCheckCommon" ID="SampleTransferHeadPipettingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reinitializes the used units, if not in ready state, turns off the fans and loads the ppfs.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConnectBalanceCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Connect to Balance</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The connection to the onboard weighing system is now being checked.</base:Paragraph>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDownHolders">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close downholders.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceVessel" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure the correct weighing pan is mounted on the onboard weighing system.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>To avoid faulty results make sure that the backdoor of transfer module is closed.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceVessel.jpg" Hash="95F53F734F59CDA2943C206835823AFE4B36E9F2" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseAirflowScreen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Airflow Screen</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Closing the airflow screen...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LowVolumeVerification">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Low Volume Verification</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculates and verifies the inaccuracy and imprecision for the low dispense volumes.</base:Paragraph>
+              <base:Paragraph>Wait while the process is being executed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="HighVolumeVerification">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>High Volume Verification</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Calculates and verifies the inaccuracy and imprecision for the high dispense volumes.</base:Paragraph>
+              <base:Paragraph>Wait while the process is being executed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Finalize Check.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>- Opens the downholders of tip rack park position 1 and tip rack park position 2.</base:Paragraph>
+              <base:Paragraph>- Opens the airflow screen.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

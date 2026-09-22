@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="0992DEC4F99CEDAF3767A78B5487D4BBFCFD3C105352" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="TransferModuleHandlingCheckCommon" ID="TransferModuleHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="Initialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initializing</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing, please wait.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="ParkHandler">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Park Handler</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the service software parks the transfer module handler on the park position...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 5 -->
+      <ds:Step Name="UserChecksEmpty" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty Transfer Module</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please make sure that the transfer module is empty and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EnsurePositionsAreEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Ensure Positions are Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Check if all required positions are empty before starting.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadConsumable" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Loading Consumable</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a [P.pConsumableType] on the transfer position of the transfer module. If the consumable has a barcode, it should face the front of the instrument.</base:Paragraph>
+              <base:Paragraph>The [P.pConsumableType] will be moved to the [R.irNextPosition] position once 'Next' is pressed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="PlateHandler_S.jpg" Hash="860BDCD89D9D68887F53EA03C67F9988332AA4F5" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyConsumableHandover">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Consumable Loaded</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the consumable is present on the transfer position of the transfer module...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="MoveConsumable" />
+      </ds:Step>
+      <ds:Step Name="PreparationForNextMove">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparing for the Next Move</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Preparing for the next move, please wait...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveConsumableConfirmation" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Consumable Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The [P.pConsumableType] will be moved to the [R.irPositionToConfirmMoveTo] position.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveConsumable">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Consumable</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the [P.pConsumableType] to be moved to the [R.irPositionToConfirmMoveTo] position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyDownholderClosed" Type="Confirm" Result="irDownholderClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Downholders are Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please verify that the downholders are closed on the [R.irCurrentPosition] position and the consumable is secured in place.</base:Paragraph>
+              <base:Paragraph>The [P.pConsumableType] will be moved to the [R.irNextPosition] position once 'Next' is pressed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReturnConsumable">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving Consumable Back to Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the [P.pConsumableType] to be moved from the [R.irCurrentPosition] position to the [R.irNextPosition] position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EvaluateFinished">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluate Finish</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Deciding next step. Please wait for the check to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irCheckFinished" NextStep="PreparationForNextMove">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="RemoveConsumable" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Consumable</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the [P.pConsumableType] from the transfer position and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

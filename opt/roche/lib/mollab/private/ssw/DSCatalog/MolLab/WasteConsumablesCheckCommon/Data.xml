@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="150007C3FEBCFB656E240A1619F0F24BAD5EFC8336CA" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="WasteConsumablesCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Operations execution</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="irIsOperationsCheck">
+          <data:Description>
+            <base:Title>Operations Execution</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Operations Execution</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irGcsShallEmptyContainerAtStart">
+          <data:Description>
+            <base:Title>Gcs Required to Empty Solid Waste Container at Start Because It Is ＜ 75% Full.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Gcs Required to Empty Solid Waste Container at Start Because It Is ＜ 75% Full.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rSolidWasteFillLevelAtStart" Type="Double">
+          <data:Description>
+            <base:Title>Solid Waste Fill Level at Start</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Represents the solid waste fill level at start of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rPresenceSensorSolidWasteStationUpperOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Upper Presence Sensor Solid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if upper presence sensor of solid waste station is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorSolidWasteStationLowerOk" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Lower Presence Sensor Solid Waste Station</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if lower presence sensor of solid waste station is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorLiquidWasteStation1Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Liquid Waste Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of liquid waste station 1 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorLiquidWasteStation2Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Liquid Waste Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of liquid waste station 2 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorSeparationStation1Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Separation Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of separation station 1 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorSeparationStation2Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Separation Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of separation station 2 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorTipRackParkingStation1Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Tip Rack Parking Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of tip rack parking station 1 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPresenceSensorTipRackParkingStation2Ok" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Presence Sensor Tip Rack Parking Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks if presence sensor of tip rack parking station 2 is working properly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTipRack1WasteSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Waste Tip Rack 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the tip rack 1 was wasted successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rTipRack2WasteSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Waste Tip Rack 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the tip rack 2 was wasted successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlate1AndInsertWasteSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Waste P-Plate 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the p-plate 1 was wasted successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlate2AndInsertWasteSuccessful" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Waste P-Plate 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checks whether the p-plate 2 was wasted successfully.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCheckDownholdersLiquidStation1Closed" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Liquid Station 1 Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the downholders of liquid station 1 were closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCheckDownholdersLiquidStation2Closed" Type="Boolean">
+          <data:Description>
+            <base:Title>Check Liquid Station 2 Downholders</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>True if the downholders of liquid station 2 were closed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

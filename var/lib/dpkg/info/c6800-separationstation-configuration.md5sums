@@ -1,0 +1,14 @@
+e7f3d7a69237e47b894b37359a87cf0f  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-separationstation-306-mam-config.xml
+c5b2c87e021fdd3ffb5af585a3c26c68  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-separationstation-307-mam-config.xml
+8233d6ff230644fc65460b64b2a14409  opt/roche/etc/mollab/private/rabbitmq/definitions/separationstation_a1_definition.json
+43b2b4ba203c00a15123b32c92211ea0  opt/roche/etc/mollab/private/rabbitmq/definitions/separationstation_a2_definition.json
+cad0b8d82aeeabdfa419f04fb9b184e1  opt/roche/etc/mollab/private/separation-station/a1/config/separationstation-motion-config.xml
+a43d89f99504b2cfe4097e5f8b5b2aff  opt/roche/etc/mollab/private/separation-station/a1/config/separationstation-parampool.xml
+f031cdb0dff1d405840d474bc141aa08  opt/roche/etc/mollab/private/separation-station/a1/startup/ecc.xml
+a9258209d89c646154f9e6b3f6b2d5ce  opt/roche/etc/mollab/private/separation-station/a1/startup/ecs_A1.xml
+cad0b8d82aeeabdfa419f04fb9b184e1  opt/roche/etc/mollab/private/separation-station/a2/config/separationstation-motion-config.xml
+a43d89f99504b2cfe4097e5f8b5b2aff  opt/roche/etc/mollab/private/separation-station/a2/config/separationstation-parampool.xml
+f031cdb0dff1d405840d474bc141aa08  opt/roche/etc/mollab/private/separation-station/a2/startup/ecc.xml
+ce2a32900d378b44d617714a08465a2d  opt/roche/etc/mollab/private/separation-station/a2/startup/ecs_A2.xml
+b135c17bf836e190acdaf7aab5f01105  opt/roche/lib/mollab/firmware/separation-station/fwr_00000336_MotionControl_2.03.03.0000.srec
+ba5bb5adaa33ec0398720f90b1601d79  opt/roche/lib/mollab/firmware/separation-station/fwr_00000604_MotionControl_2.03.03.0000.srec

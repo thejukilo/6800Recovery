@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:Product Instrument="MolLab" Name="CX800.TransferModule6800" ArtNr="09575154001" Version="1.0.0.0000" Hash="1F2DB2720337069905AD9C298107A37E472B05D4F0EE" xmlns:base="urn:base" xmlns:product="urn:product" xmlns:group="urn:group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:test="urn:test" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../Tools/Schemas/LabCore.Diagnose/dsProduct.xsd">
+  <ds:Description>
+    <base:Title>Transfer Module 6800</base:Title>
+    <base:Paragraphs>
+      <base:Paragraph />
+      <base:Paragraph>These is a list of all checks specific to cobas 6800 transfer module. It is not possible to create a certificate.</base:Paragraph>
+      <base:Paragraph />
+    </base:Paragraphs>
+  </ds:Description>
+  <ds:Group Name="Infrastructure">
+    <product:Description>
+      <base:Title>Infrastructure</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Infrastructure checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="TransferModuleInfrastructureCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Infrastructure check TM</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the functionalities of the infrastructure on the transfer module.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- The front cover of the transfer module is opened</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 6 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="BarcodeReadingStation">
+    <product:Description>
+      <base:Title>Barcode Reading Station</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Barcode reading station checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="BarcodeScannerAdjustmentCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Barcode scanner adjustment</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Adjusts the barcode scanner (valid for all versions).</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Postconditions: Ensure the black cover is attached to the scanner</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="BarcodeScannerCalibrationCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Barcode scanner calibration</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the barcode scanner (valid for all versions).</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Ensure the black cover is attached to the scanner before starting this check</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: Tool calibration rack</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="RackHandling">
+    <product:Description>
+      <base:Title>Rack Handling</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Rack handling checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="RackHandlerTeachCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack handler teach</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the rack handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="RackHandlerCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack handler check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the rack handling.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Sample supply module is operational (if connected)</base:Paragraph>
+          <base:Paragraph>- Carrier type 5-position rack without stabilizers configured in the carrier and rack configuration</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 5-position rack without stabilizers (13 mm)</base:Paragraph>
+          <base:Paragraph>- 5 cobas omni secondary tubes (13x75 mm)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="RackTransportCheckAfterLoadToOutputCommon" Type="RackTransportCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack transport check (1 rack from Input to Output)</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It transports a sample rack from the input to the output</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Sample supply module is initialized</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: One 5-position rack without stabilizers (MPA rack)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="RackTransportCheckAfterLoadToErrorCommon" Type="RackTransportCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack transport check (1 rack from Input to Error)</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It transports a sample rack from the input to the error output</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Sample supply module is initialized</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: One 5-position rack without stabilizers (MPA rack)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="RackTransportCheckAfterLoadToOutput10Common" Type="RackTransportCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack transport check (10 racks from Input to Output)</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It transports 10 sample racks from the input to the output</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Sample supply module is initialized</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 10 5-position racks without stabilizers (MPA rack)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="RackTransportCheckAfterLoadToError10Common" Type="RackTransportCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Rack transport check (10 racks from Input to Error)</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It transports 10 sample racks from the input to the error output</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Sample supply module is initialized</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 10 5-position racks without stabilizers (MPA rack)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="TransferModuleHandler">
+    <product:Description>
+      <base:Title>Transfer Module Handler</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Transfer module handler checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="TransferModuleHandlerTeachCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Transfer module handler teach</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the transfer module handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 3 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="TransferModuleHandlerTipRackHandlingCheckCommon" Type="TransferModuleHandlingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Transfer module handler tip rack handling check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the handling of a tip rack with the transfer module handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on transfer module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 cobas omni pipette tips</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="TransferModuleHandlerProcessingPlateHandlingCheckCommon" Type="TransferModuleHandlingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Transfer module handler processing plate handling check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the handling of a processing plate with the transfer module handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on transfer module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:        1 cobas omni processing plate</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="TransferModuleHandlerControlCassetteHandlingCheckCommon" Type="TransferModuleHandlingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Transfer module handler control cassette handling check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the handling of a control cassette with the transfer module handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on transfer module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 cobas omni training control kit</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="SampleTransferHead">
+    <product:Description>
+      <base:Title>Sample Transfer Head</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Sample transfer head checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="SampleTransferHeadTeachCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer heads teach</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the sample pipettors.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadTightnessCheckOQCommon" Type="SampleTransferHeadTightnessCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer heads tightness check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the tightness of the sample pipettors.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: Teach tool must be placed on the teach tool park position</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 3 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: Teach tool</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadTipHandlingCheckPostRepairCommon" Type="SampleTransferHeadTipHandlingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer heads tip handling check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks sample transfer tip handling.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover open</base:Paragraph>
+          <base:Paragraph>- No consumables on transfer module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 2 cobas omni pipette tips</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="SampleTransferHeadPipetting">
+    <product:Description>
+      <base:Title>Sample Transfer Head Pipetting</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Sample transfer head pipetting checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="SampleTransferHeadPipettingIntroCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head pipetting intro</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It helps to install the onboard weighing system (OWS) in the transfer module and to prepare all the material required to perform the test.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The cobas omni secondary tubes have to be filled with at least 1.2ml of cobas omni wash reagent</base:Paragraph>
+          <base:Paragraph>- No consumables on transfer module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 onboard weighing system (OWS)</base:Paragraph>
+          <base:Paragraph>- 1 tool holder for balance</base:Paragraph>
+          <base:Paragraph>- 1 5-position rack without stabilizers (MPA rack)</base:Paragraph>
+          <base:Paragraph>- 5 cobas omni secondary tubes, each filled with a minimum of 1.2 ml wash reagent</base:Paragraph>
+          <base:Paragraph>- 2 cobas omni pipette tips</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Supported balance - holder combinations:</base:Paragraph>
+          <base:Paragraph> - WMC15-SH/01 (fix mounted spirit level and cable) + holder for WMC15-SH/01 (blue cable fixations)</base:Paragraph>
+          <base:Paragraph> - WMC15-SH/01 (fix mounted spirit level and cable) + holder for SPC115-100 (spirit level cut out, black velcro cable fixation)</base:Paragraph>
+          <base:Paragraph> - SPC115-100 (no fix mounted spirit level and cable) + holder for SPC115-100 (spirit level cut out, black velcro cable fixation)</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Hint: At the beginning of the check, the two onboard weighing systems/holders will be illustrated.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="BalanceCalibrationCheckSampleHeadCommon" Type="BalanceCalibrationCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head OWS calibration</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Calibrates the balance.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is opened</base:Paragraph>
+          <base:Paragraph>- Sample transfer head pipetting intro command was executed</base:Paragraph>
+          <base:Paragraph>- It is recommended to have the balance powered on for 30 minutes before executing the check</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: </base:Paragraph>
+          <base:Paragraph>- The balance and weighing pan </base:Paragraph>
+          <base:Paragraph>- 1 Mettler Toledo pair of tweezers</base:Paragraph>
+          <base:Paragraph>- 1 Mettler Toledo calibration standard weight (10g)</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required consumables/reagents: None </base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingFillBalanceCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head pipetting fill OWS</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It dispenses the correct liquid volume on weighing cup of the onboard weighing system.</base:Paragraph>
+          <base:Paragraph></base:Paragraph>
+          <base:Paragraph>Note: If an error occurs during aspiration, the used tip will be dropped at the rear of the transfer module and the check will fail. The dropped tip needs to be cleaned up manually</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: The sample transfer head pipetting intro and onboard weighing system calibration must be performed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingACommon" Type="SampleTransferHeadPipettingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head A pipetting check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the pipetting precision and accuracy of the sample pipettor A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting intro</base:Paragraph>
+          <base:Paragraph>- Perform the onboard weighing system calibration</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting fill onboard weighing system</base:Paragraph>
+          <base:Paragraph>- Close the back door of the transfer module</base:Paragraph>
+          <base:Paragraph />
+          <base:Paragraph>Note: If an error occurs during aspiration, the used tip will be dropped at the rear of the transfer module and the check will fail. The dropped tip needs to be cleaned up manually</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+          <base:Paragraph />
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingBCommon" Type="SampleTransferHeadPipettingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head B pipetting check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the pipetting precision and accuracy of the sample pipettor B.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting intro</base:Paragraph>
+          <base:Paragraph>- Perform the onboard weighing system calibration</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting fill onboard weighing system</base:Paragraph>
+          <base:Paragraph>- Close the back door of the transfer module</base:Paragraph>
+          <base:Paragraph />
+          <base:Paragraph>Note: If an error occurs during aspiration, the used tip will be dropped at the rear of the transfer module and the check will fail. The dropped tip needs to be cleaned up manually</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+          <base:Paragraph />
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingCCommon" Type="SampleTransferHeadPipettingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head C pipetting check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the pipetting precision and accuracy of the sample pipettor C.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting intro</base:Paragraph>
+          <base:Paragraph>- Perform the onboard weighing system calibration</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting fill onboard weighing system</base:Paragraph>
+          <base:Paragraph>- Close the back door of the transfer module</base:Paragraph>
+          <base:Paragraph />
+          <base:Paragraph>Note: If an error occurs during aspiration, the used tip will be dropped at the rear of the transfer module and the check will fail. The dropped tip needs to be cleaned up manually</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+          <base:Paragraph />
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingDCommon" Type="SampleTransferHeadPipettingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head D pipetting check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the pipetting precision and accuracy of the sample pipettor D.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting intro</base:Paragraph>
+          <base:Paragraph>- Perform the onboard weighing system calibration</base:Paragraph>
+          <base:Paragraph>- Perform the sample transfer head pipetting fill onboard weighing system</base:Paragraph>
+          <base:Paragraph>- Close the back door of the transfer module</base:Paragraph>
+          <base:Paragraph />
+          <base:Paragraph>Note: If an error occurs during aspiration, the used tip will be dropped at the rear of the transfer module and the check will fail. The dropped tip needs to be cleaned up manually</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+          <base:Paragraph />
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="SampleTransferHeadPipettingEndingCommandCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sample transfer head pipetting end</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It helps to remove the tool onboard weighing system and all consumables.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="TeachToolParkAndControlCassetteParkPositions">
+    <product:Description>
+      <base:Title>Teach Tool Park / Control Cassette Park Positions</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Teach Tool Park / Control Cassette Park Positions checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="TeachToolLightbarrierCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Teach tool park position light barrier check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the light barrier of the teach tool park position.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- The teach tool is placed on the teach tool park position</base:Paragraph>
+          <base:Paragraph>- Transfer module transfer position is empty</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:    Teach tool</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ConsumableParkRfidOrderCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Control cassette park position RFID order check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the order of RFID antennas of the control cassette park position.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 control cassette (e.g. cobas omni training control kit)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ReagentStorageAndReagentStorageHandler">
+    <product:Description>
+      <base:Title>Reagent Storage / Reagent Storage Handler</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Reagent storage / Reagent storage handler checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="ReagentStorageElevatorAdjustmentCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage elevator adjustment</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It helps to adjust the reagent storage elevator.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Reagent storage adjusted according to service documentation</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is opened</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 4 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: Tool reagent storage lift (adjustment tool)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentStorageTeachCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage teach</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the reagent storage.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentStorageCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the correct functionality of the reagent storage.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 3 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 reagent cassette (with valid RFID)</base:Paragraph>
+          <base:Paragraph>- 1 control cassette (containing at least 1 control mini rack with RFID,</base:Paragraph>
+          <base:Paragraph>- which is readable and matches the supported cassette type)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentStorageCoolingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage cooling check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It check the cooling functionality of the reagent storage.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: Service door of the reagent storage is closed.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 28 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentStorageHandlerCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage handler check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct function of the reagent storage handler</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Transfer module front cover is opened</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 control cassette (RFID not needed)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentStorageHandlerRfidOrderCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent storage handler RFID order check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the order of RFID antennas</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Instrument in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Transfer module front cover is opened</base:Paragraph>
+          <base:Paragraph>- Transfer module drawer is closed and locked</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 control cassette with 4 control mini racks (with RFIDs, which are readable and match the supported cassette type)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="Transfer module drawer">
+    <product:Description>
+      <base:Title>Transfer Module Drawer</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Transfer module drawer checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="DrawerCheckTransferModule6800" Type="DrawerCheck6800">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Transfer module drawer check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the transfer module drawer.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 2 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ComboTipMagazineDLoadingCheckCommon" Type="MagazineLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Tip rack magazine D loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the tip rack magazine D.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: Transfer module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 4 cobas omni Pipette tips</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+    <group:TestFunction Name="ComboTipMagazineELoadingCheckCommon" Type="MagazineLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Tip rack magazine E loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the tip rack magazine E.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Transfer module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 4 cobas omni Pipette tips</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+      <test:Files>
+        <test:Workflow Version="1.0.0.0000" />
+        <test:Data Version="1.0.0.0000" />
+        <test:DataExt Version="1.0.0.0000" />
+        <test:Assembly Version="1.0.0.0000" />
+      </test:Files>
+    </group:TestFunction>
+  </ds:Group>
+</ds:Product>

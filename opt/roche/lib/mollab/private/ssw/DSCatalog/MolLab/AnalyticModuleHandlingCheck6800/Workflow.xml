@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="341A4AAA66CC341466CD55DB238F583FDEBA813AA5CA" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="AnalyticModuleHandlingCheck6800" ID="AnalyticModuleHandlingCheck6800">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareAndInitialize" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare and Initialize</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADTransferPosition">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Amplification Plate Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate transfer position is being opened ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a sealed amplification plate into the amplification plate transfer position, such that the barcode faces the rear of the instrument.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadAmplificationPlateInCyclerA2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move Amplification Plate to Analytic Unit: A2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveFirstADToOutputDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move the Amplification Plate to the Amplification Plate Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- In case of instruments with a single analytic cycler, we proceed with opening 
+               the Drawer and taking it from there -->
+          <workflow:Decision Result="irNumberOfAnalyticUnits" NextStep="OpenADTransferPositionThirdTime">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenADTransferPositionSecondTime">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Amplification Plate Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate transfer position is being opened ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceSecondADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Second Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a second sealed amplification plate into the amplification plate transfer position, such that the barcode faces the rear of the instrument.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadAmplificationPlateInCyclerA1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move Amplification Plate to Analytic Unit: A1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveSecondADToOutputDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move the Amplification Plate to the Amplification Plate Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADOutputDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Amplification Plate Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the amplification plate waste drawer, remove amplification plate(s) and close the amplification plate waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyingDrawerSensorState">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Drawer Sensor State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while verifying analytic unit drawer sensor state...</base:Paragraph>
+              <base:Paragraph>NOTE: No plates should be present on the drawer at this point.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- If the user forgets to remove AD Plate then repeat the step -->
+          <workflow:Decision Result="irDrawersWereNotEmpty" NextStep="OpenADOutputDrawer">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="OpenADTransferPositionThirdTime">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Amplification Plate Transfer Position</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the amplification plate transfer position is being opened ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceThirdADPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Amplification Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place a sealed amplification plate into the amplification plate transfer position, such that the barcode faces the rear of the instrument.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MoveThirdADToOutputDrawer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Move the Amplification Plate to the Amplification Plate Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenADOutputDrawerSecondTime">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Amplification Plate Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the amplification plate waste drawer, remove amplification plate(s) and close the amplification plate waste drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyingDrawerSensorStateSecondTime">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Drawer Sensor State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while verifying analytic unit drawer sensor state...</base:Paragraph>
+              <base:Paragraph>NOTE: No plates should be present on the drawer at this point.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- If the user forgets to remove AD Plate then repeat the step -->
+          <workflow:Decision Result="irDrawersWereNotEmpty" NextStep="OpenADOutputDrawerSecondTime">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="CheckConclusion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup and Check Conclusion Drawer Sensor State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while verifying finalizing the check...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

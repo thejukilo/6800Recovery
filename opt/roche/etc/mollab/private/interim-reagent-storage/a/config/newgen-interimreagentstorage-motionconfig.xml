@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotionConfig xsi:noNamespaceSchemaLocation="MotionConfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <NoMotor NoMotorName="MotionSensors" DeviceId="1">
+  <Device>
+    <MotorType>NoMotorDevice</MotorType>
+    <UnitBase>1</UnitBase>
+    <PositionDirection>Forward</PositionDirection>
+    <SampleRate>1250Hz</SampleRate>
+    <EmergencyStop>Off</EmergencyStop>
+  </Device>
+
+  <SingleBitInput PortName="CassettePresentFalling">
+    <TypeOfInput>Slow</TypeOfInput>
+    <PhysicalInputNumber>1</PhysicalInputNumber>
+    <SignalInverting>NotInverted</SignalInverting>
+    <ActiveEdge>Falling</ActiveEdge>
+    <DebouncingEdge>Both</DebouncingEdge>
+    <DebouncingTime>0.1</DebouncingTime>
+    <SuspendTime>0.0</SuspendTime>
+  </SingleBitInput>
+  
+  <SingleBitInput PortName="CassettePresentRising">
+    <TypeOfInput>Slow</TypeOfInput>
+    <PhysicalInputNumber>1</PhysicalInputNumber>
+    <SignalInverting>NotInverted</SignalInverting>
+    <ActiveEdge>Rising</ActiveEdge>
+    <DebouncingEdge>Both</DebouncingEdge>
+    <DebouncingTime>0.1</DebouncingTime>
+    <SuspendTime>0.0</SuspendTime>
+  </SingleBitInput>
+ </NoMotor>
+</MotionConfig>

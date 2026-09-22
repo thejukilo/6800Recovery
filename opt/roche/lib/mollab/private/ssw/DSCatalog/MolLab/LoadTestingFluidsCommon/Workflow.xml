@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="DDB5543CB36DD7017A094F6109BDB18F6DF2994C5971" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="LoadTestingFluidsCommon" ID="[SSW-TRQ-XXXXXX]">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashWasteDrawerAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Opening Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the wash/waste drawer is openend.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashWasteDrawerInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Wash/Waste Drawer Completely</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the wash/waste drawer of the processing module completely and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EmptySolidWaste" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Solid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please put a new waste bag in the solid waste container and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ResetSolidWasteFillLevel">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reset Fill Level</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Resetting the fill level of the solid wastestation.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="UnlockWashReagent">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="UnlockLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlock the liquid waste containers in all the liquid waste positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReplaceLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load an empty liquid waste container in all the liquid waste positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockWashReagent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Wash Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlock the cobas omni wash reagent container in all the wash reagent positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReplaceWashReagent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Wash Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a full cobas omni wash reagent container in all the wash reagent positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenBulkReagentDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Bulk Reagent Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the bulk reagent drawer and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockDiluent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlock the cobas omni specimen diluent bottles.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReplaceDiluent">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load full cobas omni specimen diluent bottles in both specimen diluent positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockLysis">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlock the cobas omni lysis reagent bottles.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReplaceLysis">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a full cobas omni lysis reagent bottle in both lysis positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDrawers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close all opened drawers and then press 'Finish' to conclude the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,8 @@
+{
+  "appID": "UI-InstrumentSettings",
+  "appOrder": 40,
+  "appLabel": "12.FHO.AppLibrary.UI.InstrumentSettings",
+  "entryPoint": "instrument-settings",
+  "roles": ["X800.LabManager", "X800.RSR"],
+  "isDmApp": false
+}

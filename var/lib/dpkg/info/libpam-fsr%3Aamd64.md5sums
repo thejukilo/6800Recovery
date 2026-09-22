@@ -1,0 +1,4 @@
+480a7725ce074c56f04faee6a9285209  lib/x86_64-linux-gnu/security/pam_fsr.so.1.0.5
+e5a9cc24bfb1569b76ab1866deb2df2b  usr/share/doc/libpam-fsr/changelog.gz
+97557f87f50879b387424a1894683c3d  usr/share/doc/libpam-fsr/copyright
+a60cb837c0ba588fab7fdc1a32620dd7  usr/share/pam-configs/fsr

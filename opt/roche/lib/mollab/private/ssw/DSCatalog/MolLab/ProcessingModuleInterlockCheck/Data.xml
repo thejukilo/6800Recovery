@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="A584F0D2252ABDDB0962DA566BE3047421533D307A0F" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="ProcessingModuleInterlockCheck">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pMoveDoorButtonTimeoutSeconds" Type="Double" Unit="">
+          <data:Description>
+            <base:Title>Move door button timeout in seconds</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Defines the maximum time in seconds the user is given to move the door using the hardware button.</base:Paragraph>
+              <base:Paragraph>Allowed range: [0.1-60s]</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>59</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rProcessModuleFrontDoorClosed">
+          <data:Description>
+            <base:Title>Processing Module Front Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module front door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessModuleFrontDoorOpen">
+          <data:Description>
+            <base:Title>Processing Module Front Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module front door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessModuleDrawerClosed">
+          <data:Description>
+            <base:Title>Processing Module Drawer Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module drawer door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessModuleDrawerOpen">
+          <data:Description>
+            <base:Title>Processing Module Drawer Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module drawer door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessModuleBackDoorClosed">
+          <data:Description>
+            <base:Title>Processing Module Back Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module back door is closed</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rProcessModuleBackDoorOpen">
+          <data:Description>
+            <base:Title>Processing Module Back Open</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module back door is open</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rEuchnerModuleProcessModuleFrontDoorOK">
+          <data:Description>
+            <base:Title>Euchner Module PM Front Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module front door euchner module is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rEuchnerModuleProcessModuleBackDoorOK">
+          <data:Description>
+            <base:Title>Euchner Module PM Back Door Ok</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Processing module back door euchner module is OK</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

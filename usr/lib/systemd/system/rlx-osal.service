@@ -1,0 +1,14 @@
+[Unit]
+Description=RLX OS Abstraction Layer
+After=rlx-setup.service
+
+[Service]
+User=root
+Environment="PATH=/opt/roche/sbin:/opt/roche/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+EnvironmentFile=-/etc/default/rlx-osal
+ExecStart=/opt/roche/sbin/rlx-osal
+Restart=always
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

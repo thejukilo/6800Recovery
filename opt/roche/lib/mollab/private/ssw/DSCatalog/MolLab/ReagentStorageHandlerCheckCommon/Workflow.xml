@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="EB02EB850A23CA2FE684EB6CFF31E4709AA8381E79EB" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../../Libraries/InCore/Deployment/Schemas/DS/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentStorageHandlerCheckCommon" ID="InterimReagentStorageTeachCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement step 1 -->
+      <ds:Step Name="InitMovement" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait until the movement has finished...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 2 -->
+      <ds:Step Name="CheckDrawerClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check Drawer Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if drawer is closed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irDrawerClosed" NextStep="CloseSliderInfo">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision Result="irDrawerClosed" NextStep="CloseDrawerManually">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 3: [A1] Alternative case: drawer not closed -->
+      <ds:Step Name="CloseDrawerManually">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Drawer Manually</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the transfer module drawer.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="CheckDrawerClosed" />
+      </ds:Step>
+      <!-- Requirement step 3: Continue with normal case... -->
+      <ds:Step Name="CloseSliderInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Slider</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press 'Next' to move the slider of the reagent storage handler to the "Closed" position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 4 -->
+      <ds:Step Name="CloseSliderAndConfirm" Type="Confirm" Result="rClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Slider and Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The slider shall now close automatically. At the end, please confirm it moved to the "Closed" position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement steps 5 & 6 -->
+      <ds:Step Name="UserPlaceRmcAndCheckPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the control cassette on the slider.</base:Paragraph>
+              <base:Paragraph>The check will proceed once a new presence sensor state is detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveRmcAndCheckPresence">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the control cassette from the slider.</base:Paragraph>
+              <base:Paragraph>The check will proceed once a new presence sensor state is detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenSliderInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Slider</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press "Next" to move the slider of the reagent storage to the "Open" position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenSliderAndConfirm" Type="Confirm" Result="rOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Slider and Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The slider shall now open automatically. At the end, please confirm it moved to the "Opened" position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SliderToHandoverInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Slider to Handover and Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please press "Next" to move the slider of the reagent storage handler to the "Handover" position.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SliderToHandoverAndConfirm" Type="Confirm" Result="rHandover">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Slider to Handover and Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The slider shall now move automatically to the "Handover" position. At the end, please confirm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

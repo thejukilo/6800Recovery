@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="AE8A25F95062A074E7818408AA13A18EAD82A664A68F" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingFillBalanceCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pBalanceIPAddress" Type="String">
+          <data:Description>
+            <base:Title>Balance IP</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The IPAddress of the Mettler Toledo Cube balance.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>192.168.95.248</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pBalanceIPPort" Type="Integer">
+          <data:Description>
+            <base:Title>TCP Port Adress of the balance</base:Title>
+          </data:Description>
+          <data:Value>8001</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeForBalance" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>Balance wait Time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait Time for the balance</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>4</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pWaitTimeBetweenMedianValues" Type="Double" Unit="sec">
+          <data:Description>
+            <base:Title>Balance wait Time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait Time for the balance</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>0</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pValueCountForMedianWeight" Type="Integer">
+          <data:Description>
+            <base:Title>Value count for median weight</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Count of measurements to build the median weight value</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>11</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pUsedNetWeightCommand" Type="String">
+          <data:Description>
+            <base:Title>Used NetWeight Command</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Used NetWeight Command</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>SI</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPipParams" Type="String">
+          <data:Description>
+            <base:Title>sample transfer head QC Pipetting</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>sample transfer head QC Pipetting.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>ad485cca-fd60-424f-b99b-5f95969639ea</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rInitialDispenseVolMicroLiters" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Dispense Initial Volume (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Dispense Inital Volume (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rMaxInitiallDispenseVolDeltaInMicroLiters" Type="Double" Format="%.2n" Unit="ul">
+          <data:Description>
+            <base:Title>Maximum Dispense Initial Volume Delta (Ul)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Maximum Dispense-Initial-Volume Delta (ul)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="50" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

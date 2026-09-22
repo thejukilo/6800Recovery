@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by ﻿PC User (Roche Diagnostics AG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="MotionConfig">
+		<xs:annotation>
+			<xs:documentation>Configuration of a Motion Plug-In</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Motor" type="MotorConfig" minOccurs="0" maxOccurs="unbounded">
+					<xs:unique name="Unique_PositionCtrlID">
+						<xs:selector xpath="PositionController"/>
+						<xs:field xpath="@Id"/>
+					</xs:unique>
+					<xs:unique name="Unique_TeachInputPort">
+						<xs:selector xpath="Teach/RelatedPortName"/>
+						<xs:field xpath="."/>
+					</xs:unique>
+					<xs:key name="Key_InputPortName">
+						<xs:selector xpath="SingleBitInput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:key name="Key_OutputPortName">
+						<xs:selector xpath="SingleBitOutput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:key name="Key_PortName">
+						<xs:selector xpath="SingleBitInput | SingleBitOutput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:keyref name="KeyRef_ProFETPortName" refer="Key_OutputPortName">
+						<xs:selector xpath="ProFETOutput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_InitPortName" refer="Key_InputPortName">
+						<xs:selector xpath="Init/InitSubConfig"/>
+						<xs:field xpath="RelatedPortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_TeachPortName" refer="Key_InputPortName">
+						<xs:selector xpath="Teach/RelatedPortName"/>
+						<xs:field xpath="."/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_MonitorPortName" refer="Key_PortName">
+						<xs:selector xpath="Monitoring/Signal"/>
+						<xs:field xpath="PortName"/>
+					</xs:keyref>
+					<xs:unique name="Unique_PortName">
+						<xs:selector xpath="SingleBitInput | SingleBitOutput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:unique>
+					<xs:unique name="Unique_InitID">
+						<xs:selector xpath="Init/InitSubConfig"/>
+						<xs:field xpath="@InitID"/>
+					</xs:unique>
+					<xs:unique name="Unique_TeachID">
+						<xs:selector xpath="Teach"/>
+						<xs:field xpath="@TeachID"/>
+					</xs:unique>
+					<xs:unique name="Unique_MonitoringID">
+						<xs:selector xpath="Monitoring"/>
+						<xs:field xpath="@MonitoringID"/>
+					</xs:unique>
+					<xs:keyref name="KeyRef_BreakPortName" refer="Key_OutputPortName">
+						<xs:selector xpath="AxisBreak/RelatedPortName"/>
+						<xs:field xpath="."/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_CalibInitIDSensorToCalibrate" refer="Unique_InitID">
+						<xs:selector xpath="CalibConfigAxis/SensorToCalibrate/InitID"/>
+						<xs:field xpath="."/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_CalibInitIDReferenceSensor" refer="Unique_InitID">
+						<xs:selector xpath="CalibConfigAxis/ReferenceSensor/InitID"/>
+						<xs:field xpath="."/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_DirectIOOutput" refer="Key_OutputPortName">
+						<xs:selector xpath="DirectIO"/>
+						<xs:field xpath="@OutputPortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_DirectIOInput" refer="Key_InputPortName">
+						<xs:selector xpath="DirectIO"/>
+						<xs:field xpath="@InputPortName"/>
+					</xs:keyref>
+				</xs:element>
+				<xs:element name="NoMotor" type="NoMotorConfig" minOccurs="0" maxOccurs="unbounded">
+					<xs:key name="Key_InputPortNameNoMotorDev">
+						<xs:selector xpath="SingleBitInput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:key name="Key_PortNameNoMotorDev">
+						<xs:selector xpath="SingleBitInput | SingleBitOutput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:key name="Key_OutputPortNameNoMotorDev">
+						<xs:selector xpath="SingleBitOutput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:key>
+					<xs:unique name="Unique_MonitoringIDNoMotor">
+						<xs:selector xpath="Monitoring"/>
+						<xs:field xpath="@MonitoringID"/>
+					</xs:unique>
+					<xs:unique name="Unique_PortNameNoMotorDev">
+						<xs:selector xpath="SingleBitInput | SingleBitOutput | MultipleBitInput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:unique>
+					<xs:keyref name="KeyRef_ProFETPortNameNoMotorDev" refer="Key_OutputPortNameNoMotorDev">
+						<xs:selector xpath="ProFETOutput"/>
+						<xs:field xpath="@PortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_MonitorPortNameNoMotorDev" refer="Key_PortNameNoMotorDev">
+						<xs:selector xpath="Monitoring/Signal"/>
+						<xs:field xpath="PortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_DirectIOInputNoMotor" refer="Key_InputPortNameNoMotorDev">
+						<xs:selector xpath="DirectIO"/>
+						<xs:field xpath="@InputPortName"/>
+					</xs:keyref>
+					<xs:keyref name="KeyRef_DirectIOOutputNoMotor" refer="Key_OutputPortNameNoMotorDev">
+						<xs:selector xpath="DirectIO"/>
+						<xs:field xpath="@OutputPortName"/>
+					</xs:keyref>
+				</xs:element>
+				<xs:element name="CLLD" type="CLLD" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="SPISlave" type="SPISlave" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="TempController" type="TempControllerConfig" minOccurs="0" maxOccurs="unbounded">
+					<xs:unique name="SensorName_Unique">
+						<xs:selector xpath="TempSensor"/>
+						<xs:field xpath="@TempSensorName"/>
+					</xs:unique>
+					<xs:keyref name="TempCtrlSensorName_KeyRef" refer="SensorName_Unique">
+						<xs:selector xpath="TemperaturController"/>
+						<xs:field xpath="@ControlSensorName"/>
+					</xs:keyref>
+					<xs:keyref name="MonitorSensorName_KeyRef" refer="SensorName_Unique">
+						<xs:selector xpath="TempMonitor"/>
+						<xs:field xpath="@MonitorSensorName"/>
+					</xs:keyref>
+					<xs:keyref name="AmbientSensorName_KeyRef" refer="SensorName_Unique">
+						<xs:selector xpath="AmbientTempCorrection"/>
+						<xs:field xpath="@AmbientSensorName"/>
+					</xs:keyref>
+					<xs:unique name="TempBandType_Unique">
+						<xs:selector xpath="TempBand"/>
+						<xs:field xpath="@Type"/>
+					</xs:unique>
+					<xs:unique name="TempTableName_Unique">
+						<xs:selector xpath="TempTable"/>
+						<xs:field xpath="@TempTableName"/>
+					</xs:unique>
+					<xs:keyref name="TempTableName_KeyRef" refer="TempTableName_Unique">
+						<xs:selector xpath="TempSensor"/>
+						<xs:field xpath="TempTableName"/>
+					</xs:keyref>
+				</xs:element>
+				<xs:element name="InitFlow" type="InitFlowConfig" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="InitSequence" type="InitSequenceConfig" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="CalibConfigModule" type="CalibConfigModule" minOccurs="0"/>
+				<xs:element name="MotionSurveillance" type="MotionSurveillance" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="Unique_AxisName">
+			<xs:selector xpath="Motor"/>
+			<xs:field xpath="@MotorName"/>
+		</xs:unique>
+		<xs:unique name="Unique_SequenceConfigID">
+			<xs:selector xpath="InitSequence"/>
+			<xs:field xpath="@SequenceID"/>
+		</xs:unique>
+		<xs:unique name="Unique_InitFlowID">
+			<xs:selector xpath="InitFlow"/>
+			<xs:field xpath="@FlowID"/>
+		</xs:unique>
+		<xs:key name="Key_SingleBitInputNameMotor">
+			<xs:selector xpath="Motor/SingleBitInput"/>
+			<xs:field xpath="@PortName"/>
+		</xs:key>
+		<xs:keyref name="KeyRef_SingleBitInputPortName" refer="Key_SingleBitInputNameMotor">
+			<xs:selector xpath="InitSequence/InitPattern/SensorCheck"/>
+			<xs:field xpath="@SensorName"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_InitSequenceMotorName" refer="Unique_AxisName">
+			<xs:selector xpath="InitSequence/InitPattern"/>
+			<xs:field xpath="@RelatedMotorName"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_InitPatternSequenceConfigID" refer="Unique_SequenceConfigID">
+			<xs:selector xpath="InitSequence/InitPattern"/>
+			<xs:field xpath="SequenceConfigID"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_InitStepSequenceConfigID" refer="Unique_SequenceConfigID">
+			<xs:selector xpath="InitSequence/InitPattern/InitStep/*"/>
+			<xs:field xpath="SequenceConfigID"/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_SensorCheckSequenceConfigID" refer="Unique_SequenceConfigID">
+			<xs:selector xpath="InitSequence/InitPattern/SensorCheck/*"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_InitFlowSequenceConfigID" refer="Unique_SequenceConfigID">
+			<xs:selector xpath="InitFlow/SequenceConfigID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_CalibAxisRefSensorPreInitFlowID" refer="Unique_InitFlowID">
+			<xs:selector xpath="Motor/CalibConfigAxis/ReferenceSensor/PreInitFlowID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_CalibAxisRefSensorPostInitFlowID" refer="Unique_InitFlowID">
+			<xs:selector xpath="Motor/CalibConfigAxis/ReferenceSensor/PostInitFlowID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_CalibAxisSensorToCalibPreInitFlowID" refer="Unique_InitFlowID">
+			<xs:selector xpath="Motor/CalibConfigAxis/SensorToCalibrate/PreInitFlowID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_CalibAxisSensorToCalibPostInitFlowID" refer="Unique_InitFlowID">
+			<xs:selector xpath="Motor/CalibConfigAxis/SensorToCalibrate/PostInitFlowID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+		<xs:keyref name="KeyRef_CalibModuleAxisName" refer="Unique_AxisName">
+			<xs:selector xpath="CalibConfigModule/MotorName"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+	</xs:element>
+	<xs:complexType name="MotorConfig">
+		<xs:annotation>
+			<xs:documentation>Configuration of one Motor</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Device" type="Device"/>
+			<xs:element name="TrajectoryPlanner" type="TrajectoryPlanner" minOccurs="0">
+				<xs:key name="Key_TrajectoryPlannerSetID">
+					<xs:selector xpath="TrajectoryPlannerSet"/>
+					<xs:field xpath="@Id"/>
+				</xs:key>
+				<xs:keyref name="KeyRef_TrajectoryPlannerID" refer="Key_TrajectoryPlannerSetID">
+					<xs:selector xpath="."/>
+					<xs:field xpath="@DefaultTrajectoryPlannerSetId"/>
+				</xs:keyref>
+			</xs:element>
+			<xs:element name="PositionController" type="PositionController" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:element name="CurrentController" type="CurrentController"/>
+				<xs:element name="CurrentControllerEcMotor" type="CurrentControllerEcMotor"/>
+			</xs:choice>
+			<xs:element name="Encoder" type="Encoder" minOccurs="0"/>
+			<xs:element name="SingleBitInput" type="SingleBitInput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SingleBitOutput" type="SingleBitOutput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="MultipleBitInput" type="MultipleBitInput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProFETOutput" type="ProFETOutput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DirectIO" type="DirectIO" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="MotorConfigDC" type="MotorTypeConfigDC"/>
+				<xs:element name="MotorConfigEC" type="MotorTypeConfigEC"/>
+				<xs:element name="MotorConfigStepper" type="MotorTypeConfigStepper"/>
+			</xs:choice>
+			<xs:element name="Plant" type="Plant" minOccurs="0"/>
+			<xs:element name="Init" type="InitConfig" minOccurs="0"/>
+			<xs:element name="AxisBreak" type="AxisBreakConfig" minOccurs="0"/>
+			<xs:element name="CalibConfigAxis" type="CalibConfigAxis" minOccurs="0"/>
+			<xs:element name="Teach" type="TeachConfig" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Monitoring" type="Monitoring" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StepLossSupervisor" type="StepLossSupervisor" minOccurs="0"/>
+			<xs:element name="Counters" type="AxisCounter" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="MotorName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="CDI" type="xs:hexBinary" use="optional"/>
+		<xs:attribute name="DeviceId" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="HomePosition" type="xs:double" use="optional"/>
+		<xs:attribute name="ByteOrder" type="ByteOrder" default="LittleEndian"/>
+	</xs:complexType>
+	<xs:complexType name="NoMotorConfig">
+		<xs:annotation>
+			<xs:documentation>Configuration of one NoMotor-Device</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Device" type="Device"/>
+			<xs:element name="SingleBitInput" type="SingleBitInput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SingleBitOutput" type="SingleBitOutput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="MultipleBitInput" type="MultipleBitInput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProFETOutput" type="ProFETOutput" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DirectIO" type="DirectIO" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Monitoring" type="Monitoring" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="NoMotorName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="CDI" type="xs:hexBinary" use="optional"/>
+		<xs:attribute name="DeviceId" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="ByteOrder" type="ByteOrder" default="LittleEndian"/>
+	</xs:complexType>
+	<xs:complexType name="SPISlave">
+		<xs:sequence>
+			<xs:element name="SPISlaveAddress" type="SPISlaveAddress" default="0"/>
+			<xs:element name="ClockDivisionCoefficient" type="xs:unsignedShort" default="1"/>
+			<xs:element name="DelayCoefficient" type="xs:unsignedByte" default="1"/>
+			<xs:element name="TransmitDelayCoefficient" type="xs:unsignedByte" default="1"/>
+			<xs:element name="ShiftDirection" type="SPIShiftDirection" default="MSB_First"/>
+			<xs:element name="ClockPolarity" type="SPIClockPolarity" default="IdleLow"/>
+			<xs:element name="ClockPhase" type="SPIClockPhase" default="SecondEdge"/>
+		</xs:sequence>
+		<xs:attribute name="SPIName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="CDI" type="xs:hexBinary" use="optional"/>
+		<xs:attribute name="DeviceId" type="xs:unsignedInt" use="optional">
+			<xs:annotation>
+				<xs:documentation>It's allowed that the Device ID of several SPI-Slaves are the same</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ByteOrder" type="ByteOrder" default="LittleEndian"/>
+	</xs:complexType>
+	<xs:complexType name="TempControllerConfig">
+		<xs:annotation>
+			<xs:documentation>Configuration of one Temperature Controller</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Device" type="Device"/>
+			<xs:element name="TempTable" type="TempTable" maxOccurs="unbounded"/>
+			<xs:element name="TempSensor" type="TempSensor" maxOccurs="unbounded"/>
+			<xs:element name="TemperaturController" type="TemperaturController"/>
+			<xs:element name="HeaterConfig" type="HeaterConfig"/>
+			<xs:element name="CurrentController" type="CurrentController"/>
+			<xs:element name="TempMonitor" type="TempMonitor" minOccurs="0"/>
+			<xs:element name="TempBand" type="TempBand" minOccurs="2" maxOccurs="unbounded"/>
+			<xs:element name="AmbientTempCorrection" type="AmbientTempCorrection" minOccurs="0"/>
+			<xs:element name="SwitchOnTimeCounter" type="PoolTimeCounter" minOccurs="0"/>
+			<xs:element name="Monitoring" type="Monitoring" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="TempControllerName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="CDI" type="xs:hexBinary" use="optional"/>
+		<xs:attribute name="DeviceId" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="ByteOrder" type="ByteOrder" default="LittleEndian"/>
+	</xs:complexType>
+	<xs:complexType name="MotorTypeConfigDC">
+		<xs:annotation>
+			<xs:documentation>Structur for Specify DC Motor</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MotorConstant" type="xs:double" default="0.0292"/>
+			<xs:element name="TerminalResistance" type="xs:double" default="0.605"/>
+			<xs:element name="TerminalInductance" type="xs:double" default="0.000191"/>
+			<xs:element name="ThermalLimit" type="xs:double" default="50"/>
+			<xs:element name="ThermalResistanceWindingToHousing" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantWinding" type="xs:double" default="2.0"/>
+			<xs:element name="ThermalResistanceHousingToAmbient" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantHousing" type="xs:double" default="2.0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MotorTypeConfigEC">
+		<xs:annotation>
+			<xs:documentation>Structur for Specify EC Motor</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MotorConstant" type="xs:double" default="0.0292"/>
+			<xs:element name="TerminalResistance" type="xs:double" default="0.605"/>
+			<xs:element name="TerminalInductance" type="xs:double" default="0.000191"/>
+			<xs:element name="ThermalLimit" type="xs:double" default="50"/>
+			<xs:element name="ThermalResistanceWindingToHousing" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantWinding" type="xs:double" default="2.0"/>
+			<xs:element name="ThermalResistanceHousingToAmbient" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantHousing" type="xs:double" default="2.0"/>
+			<xs:element name="NumberOfPolePairs" type="xs:unsignedByte" default="0"/>
+			<xs:element name="HallSensorPolarity" type="HallSensorPolarity" default="Negative"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MotorTypeConfigStepper">
+		<xs:annotation>
+			<xs:documentation>Structur for Specify Stepper Motor</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="StepsPerRotation" type="xs:unsignedInt" default="200"/>
+			<xs:element name="PhaseResistance" type="xs:double" default="3.9"/>
+			<xs:element name="PhaseInductance" type="xs:double" default="0.0003"/>
+			<xs:element name="PhaseMovingCurrent" type="xs:double" default="0.5"/>
+			<xs:element name="PhaseStoppingCurrent" type="xs:double" default="0.1"/>
+			<xs:element name="ThermalLimit" type="xs:double" default="50"/>
+			<xs:element name="ThermalResistanceWindingToHousing" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantWinding" type="xs:double" default="2.0"/>
+			<xs:element name="ThermalResistanceHousingToAmbient" type="xs:double" default="5"/>
+			<xs:element name="ThermalTimeConstantHousing" type="xs:double" default="2.0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Device">
+		<xs:sequence>
+			<xs:element name="MotorType" type="MotorType" default="DC"/>
+			<xs:element name="UnitBase" type="xs:double" default="1.0"/>
+			<xs:element name="Unit" type="xs:Name" default="unknown" minOccurs="0"/>
+			<xs:element name="ScalingFactorID" type="xs:unsignedInt" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID of the Parameter Pool item for the scaling-factor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PositionDirection" type="PositionDirection" default="Forward"/>
+			<xs:element name="SampleRate" type="SampleRate" default="1250Hz"/>
+			<xs:element name="EmergencyStop" type="EStop" default="Off"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrajectoryPlanner">
+		<xs:sequence>
+			<xs:element name="TrajectoryPlannerSet" type="TrajectoryPlannerSet" maxOccurs="unbounded"/>
+			<xs:element name="StopRoughDeceleration" type="xs:double" minOccurs="0"/>
+			<xs:element name="DynamicSet" type="DynamicSet" minOccurs="0" maxOccurs="16"/>
+		</xs:sequence>
+		<xs:attribute name="DefaultTrajectoryPlannerSetId" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TrajectoryPlannerSet">
+		<xs:sequence>
+			<xs:element name="VelocityLimit" type="xs:double" default="30"/>
+			<xs:element name="AccelerationLimit" type="xs:double" default="100"/>
+			<xs:element name="DecelerationLimit" type="xs:double" default="100"/>
+			<xs:element name="LowerPositionLimit" type="xs:double" default="-30"/>
+			<xs:element name="UpperPositionLimit" type="xs:double" default="30"/>
+			<xs:element name="JerkLimit" type="xs:double" default="30"/>
+		</xs:sequence>
+		<xs:attribute name="Id" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DynamicSet">
+		<xs:sequence>
+			<xs:element name="DynamicSetIndex" type="xs:unsignedByte" default="0"/>
+			<xs:element name="DesiredVelocity" type="xs:double" default="30"/>
+			<xs:element name="DesiredAcceleration" type="xs:double" default="100"/>
+			<xs:element name="DesiredDeceleration" type="xs:double" default="100" minOccurs="0"/>
+			<xs:element name="DesiredJerkAcceleration" type="xs:double" minOccurs="0"/>
+			<xs:element name="DesiredJerkDeceleration" type="xs:double" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PositionController">
+		<xs:sequence>
+			<xs:element name="PValue" type="xs:double" default="50"/>
+			<xs:element name="DValue" type="xs:double" default="0.01"/>
+			<xs:element name="IValue" type="xs:double" default="1.0"/>
+			<xs:element name="ISaturation" type="xs:double" default="2.0"/>
+			<xs:element name="CurrentLimit" type="xs:double" default="2.0"/>
+			<xs:element name="ControlDeviationLimit" type="xs:double" default="0.5"/>
+			<xs:element name="ControlStructure" type="ControlStructure" default="ClosedLoop"/>
+			<xs:element name="ControllerType" type="ControllerType" default="Velocity"/>
+			<xs:element name="FeedbackSign" type="FeedbackSign" default="Negative"/>
+		</xs:sequence>
+		<xs:attribute name="Id" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CurrentController">
+		<xs:sequence>
+			<xs:element name="PValue" type="xs:double" default="200"/>
+			<xs:element name="IValue" type="xs:double" default="10000"/>
+			<xs:element name="ISaturation" type="xs:double" default="1111"/>
+			<xs:element name="ControlDeviationLimit" type="xs:double" default="5.0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CurrentControllerEcMotor">
+		<xs:sequence>
+			<xs:element name="PqValue" type="xs:double" default="200"/>
+			<xs:element name="IqValue" type="xs:double" default="10000"/>
+			<xs:element name="IqSaturation" type="xs:double" default="1111"/>
+			<xs:element name="ControlDeviationLimitq" type="xs:double" default="5.0"/>
+			<xs:element name="PdValue" type="xs:double" default="200"/>
+			<xs:element name="IdValue" type="xs:double" default="10000"/>
+			<xs:element name="IdSaturation" type="xs:double" default="1111"/>
+			<xs:element name="ControlDeviationLimitd" type="xs:double" default="5.0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Encoder">
+		<xs:sequence>
+			<xs:element name="EncoderType" type="EncoderType" default="IncrementPosition"/>
+			<xs:element name="NumberOfLines" type="xs:unsignedInt" default="200"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SingleBitInput">
+		<xs:sequence>
+			<xs:element name="TypeOfInput" type="InputType" default="Slow"/>
+			<xs:element name="PhysicalInputNumber" type="xs:unsignedByte" default="0"/>
+			<xs:element name="SignalInverting" type="SignalPolarity" default="NotInverted"/>
+			<xs:element name="ActiveEdge" type="Edge" default="Rising"/>
+			<xs:element name="Unit" type="xs:Name" default="unknown" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MultipleBitInput">
+		<xs:sequence>
+			<xs:element name="TypeOfInput" type="InputType" default="Slow"/>
+			<xs:element name="SignalIndex" type="SignalIndex" default="0" minOccurs="0"/>
+			<xs:element name="TriggerLevel" type="xs:double" default="1.0"/>
+			<xs:element name="ActiveEdge" type="Edge" default="Rising" minOccurs="0"/>
+			<xs:element name="Unit" type="xs:Name" default="unknown" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SingleBitOutput">
+		<xs:sequence>
+			<xs:element name="TypeOfOutput" type="OutputType" default="ProFET"/>
+			<xs:element name="PhysicalOutputPort" type="xs:unsignedByte" default="0"/>
+			<xs:element name="InitValue" type="xs:boolean" default="false"/>
+			<xs:element name="Unit" type="xs:Name" default="unknown" minOccurs="0"/>
+			<xs:element name="SwitchOnTimeCounter" type="PoolTimeCounter" minOccurs="0"/>
+			<xs:element name="SwitchCounter" type="PoolCounter" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ProFETOutput">
+		<xs:sequence>
+			<xs:element name="FullOnTime" type="xs:double"/>
+			<xs:element name="PWMDutyCycle" type="xs:unsignedByte"/>
+			<xs:element name="Timeout" type="xs:unsignedByte"/>
+			<xs:element name="OpenLoadCheckEnable" type="EventEnable" default="Disabled"/>
+			<xs:element name="CouplingEvent" type="EventEnable" default="Disabled"/>
+		</xs:sequence>
+		<xs:attribute name="PortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DirectIO">
+		<xs:sequence>
+			<xs:element name="DisconnectState" type="SignalLevel" default="Stay"/>
+			<xs:element name="AutoConnect" type="xs:boolean"/>
+		</xs:sequence>
+		<xs:attribute name="InputPortName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="OutputPortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Plant">
+		<xs:sequence>
+			<xs:element name="MassInertia" type="xs:double" default="0"/>
+			<xs:element name="GravitationalTorque" type="xs:double" default="0"/>
+			<xs:element name="VelocityDependantFriction" type="xs:double" default="0"/>
+			<xs:element name="VelocityIndependentFrictionTorque" type="xs:double" default="0"/>
+			<xs:element name="HBridgeDriverVoltage" type="HBridgeVoltage" default="24"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StepLossSupervisor">
+		<xs:sequence>
+			<xs:element name="NumberOfEdges" type="xs:unsignedByte"/>
+			<xs:element name="StepErrorThreshold" type="xs:double"/>
+			<xs:element name="RepetitionDistance" type="xs:double"/>
+			<xs:element name="SensorName0" type="xs:NMTOKEN"/>
+			<xs:element name="SensorName1" type="xs:NMTOKEN" minOccurs="0"/>
+			<xs:element name="StepLossSupervisorEdge" type="StepLossSupervisorEdge"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StepLossSupervisorEdge">
+		<xs:sequence>
+			<xs:element name="EdgePosition" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CLLD">
+		<xs:sequence>
+			<xs:element name="CLLDChannel" type="CLLDChannel" maxOccurs="unbounded"/>
+			<xs:element name="CLLDID" type="CLLDSignalIndex" default="CLLDInstance0"/>
+			<xs:element name="PhysicalOutputNumberForMeasurementSequenceOut" type="xs:unsignedByte" default="0"/>
+			<xs:element name="TypeOfOutputForNeedleGroundOut" type="OutputType" default="Fast"/>
+			<xs:element name="PhysicalOutputNumberForNeedleGroundOut" type="xs:unsignedByte" default="0"/>
+			<xs:element name="TypeOfOutputForMotorStopOut" type="OutputType" default="Fast"/>
+			<xs:element name="PhysicalOutputNumberForMotorStopOut" type="xs:unsignedByte" default="0"/>
+			<xs:element name="OutputPinDetection" type="CLLDExternalBehavior" default="DependsOnDetection"/>
+            <xs:element name="CLLDSet" type="CLLDSet" maxOccurs="unbounded"/>
+            <xs:element name="DefaultCLLDSetIndex" type="xs:unsignedByte" default="0"/>
+            <xs:element name="CLLDSetSpikeRemoverProperties" type="CLLDSetSpikeRemoverProperties" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DefaultCLLDSpikeRemoverSetIndex" type="xs:unsignedByte" default="0"/>
+			<xs:element name="MeasureSequenceSignalSource" type="CLLDUseMeasureSequenceSignal" default="Internal_CLLD0" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="CLLDName" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="CDI" type="xs:hexBinary" use="optional"/>
+		<xs:attribute name="DeviceId" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="ByteOrder" type="ByteOrder" default="LittleEndian"/>
+	</xs:complexType>
+	<xs:complexType name="CLLDChannel">
+		<xs:sequence>
+			<xs:element name="TypeOfOutputForMeasurementSequenceOut" type="OutputType" default="Fast"/>
+			<xs:element name="SlotMask" type="xs:unsignedByte" default="0"/>
+		</xs:sequence>
+		<xs:attribute name="ChannelId" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CLLDSet">
+		<xs:sequence>
+			<xs:element name="FrequencyPredivider" type="CLLDFrequencyPredivider" default="1"/>
+			<xs:element name="MeasureTimeUnit" type="CLLDMeasureTimeUnit" default="0_6"/>
+			<xs:element name="LongTermAverageDuration" type="xs:unsignedShort" default="0"/>
+			<xs:element name="StartLongTermAverageDuration" type="xs:unsignedShort" default="0"/>
+			<xs:element name="ShortTermAverageDuration" type="xs:unsignedByte" default="0"/>
+			<xs:element name="LevelDelta" type="xs:unsignedShort" default="0"/>
+			<xs:element name="LevelOutputPin" type="CLLDLevelOutputPin" default="ToHighWhileCChange"/>
+			<xs:element name="OscillatorSignalSteering" type="CLLDOscillatorSignalSteering" default="Standard"/>
+		</xs:sequence>
+		<xs:attribute name="CLLDSetIndex" type="xs:unsignedByte" use="required"/>
+	</xs:complexType>
+    <xs:complexType name="CLLDSetSpikeRemoverProperties">
+        <xs:sequence>
+            <xs:element name="SpikeRemoveLevel" type="xs:unsignedShort" default="65535"/>
+            <xs:element name="SpikeBundleSize" type="xs:unsignedByte" default="0"/>
+            <xs:element name="SpikeRemoverSign" type="xs:unsignedByte" default="0"/>
+        </xs:sequence>
+        <xs:attribute name="CLLDSetSpikeRemoverPropertiesIndex" type="xs:unsignedByte" use="required"/>
+    </xs:complexType>
+	<xs:complexType name="InitConfig">
+		<xs:sequence>
+			<xs:element name="InitDynamicSetIndexSlow" type="xs:unsignedByte"/>
+			<xs:element name="InitDynamicSetIndexNormal" type="xs:unsignedByte"/>
+			<xs:element name="AdditionalMoveDynamicSetIndex" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>DynamicSet-Index for a preparation Move (move before) or a post move (move back)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InitSubConfig" type="InitSubConfig" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InitSubConfig">
+		<xs:sequence>
+			<xs:element name="InitType" type="InitType" default="Sensor"/>
+			<xs:element name="InitDirection" type="InitDirection" default="Forward" minOccurs="0"/>
+			<xs:element name="InitPos" type="xs:double" default="0.0"/>
+			<xs:element name="InitState" type="MotorInitState" default="Initialized"/>
+			<xs:element name="ParameterPoolIdForInitOffset" type="xs:unsignedShort" minOccurs="0"/>
+			<xs:element name="InitMoveDistanceBefore" type="xs:double" default="0.0" minOccurs="0"/>
+			<xs:element name="InitMoveDistanceAfter" type="xs:double" default="0.0" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Move distance after Init.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RelatedPortName" type="xs:NMTOKEN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This name must be identical with the name of a SingleBit- or MultipleBit-Input.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="InitID" type="xs:unsignedByte" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="InitFlowConfig">
+		<xs:sequence>
+			<xs:element name="SequenceConfigID" type="xs:unsignedInt" maxOccurs="50"/>
+		</xs:sequence>
+		<xs:attribute name="FlowID" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="InitSequenceConfig">
+		<xs:choice>
+			<xs:element name="InitPattern" type="InitPatternConfig" maxOccurs="20"/>
+			<xs:element name="SendEvent" type="SendEventConfig"/>
+			<xs:element name="Terminate" type="xs:token"/>
+		</xs:choice>
+		<xs:attribute name="SequenceID" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SendEventConfig">
+		<xs:sequence>
+			<xs:element name="Reason" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InitStepConfig">
+		<xs:sequence>
+			<xs:element name="InitSingleStep" type="InitSingleStepConfig"/>
+			<xs:element name="AdditionalSensorStep" type="AdditionalSensorConfig" minOccurs="0" maxOccurs="10"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SensorCheckConfig">
+		<xs:sequence>
+			<xs:element name="ResultLow_SequenceConfigID" type="xs:unsignedInt"/>
+			<xs:element name="ResultHigh_SequenceConfigID" type="xs:unsignedInt"/>
+		</xs:sequence>
+		<xs:attribute name="SensorName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="InitSingleStepConfig">
+		<xs:sequence>
+			<xs:element name="InitID" type="xs:unsignedByte"/>
+			<xs:element name="SequenceConfigID" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalSensorConfig">
+		<xs:sequence>
+			<xs:element name="SensorName" type="xs:NMTOKEN"/>
+			<xs:element name="SequenceConfigID" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InitPatternConfig">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="MoveAxis" type="MoveAxisConfig"/>
+				<xs:element name="SetPosition" type="xs:double"/>
+				<xs:element name="InitStep" type="InitStepConfig"/>
+				<xs:element name="SensorCheck" type="SensorCheckConfig"/>
+				<xs:element name="EnableDevice" type="xs:token"/>
+				<xs:element name="DisableDevice" type="xs:token"/>
+				<xs:element name="PoolCheck" type="PoolCheckConfig"/>
+				<xs:element name="SetOutputPort" type="SetOutputPort"/>
+			</xs:choice>
+			<xs:element name="SequenceConfigID" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="RelatedMotorName" type="xs:NMTOKEN" use="required">
+			<xs:annotation>
+				<xs:documentation>This name must be identical with the name of a Motor.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PoolCheckConfig">
+		<xs:sequence>
+			<xs:element name="PoolID" type="xs:unsignedShort"/>
+			<xs:element name="PoolCompareConfig" type="PoolCompareConfig" maxOccurs="unbounded"/>
+			<xs:element name="DefaultSequenceConfigID" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PoolType" type="PoolType" use="required"/>
+		<xs:attribute name="ItemType" type="DataType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PoolCompareConfig">
+		<xs:sequence>
+			<xs:element name="SequenceConfigID" type="xs:unsignedInt"/>
+		</xs:sequence>
+		<xs:attribute name="MinValue" type="xs:NMTOKEN" use="required">
+			<xs:annotation>
+				<xs:documentation>true if the compared pool-value is equal or grater then this value</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MaxValue" type="xs:NMTOKEN" use="required">
+			<xs:annotation>
+				<xs:documentation>true if the compared pool-value is equal or smaller then ths value</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TeachConfig">
+		<xs:sequence>
+			<xs:element name="RelatedPortName" type="xs:NMTOKEN" maxOccurs="10"/>
+			<xs:element name="TeachDynamicSetIndex" type="xs:unsignedByte"/>
+			<xs:element name="CheckInputBeforeTeach" type="CheckInputBeforeTeach" default="CheckBefore" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="TeachID" type="xs:unsignedByte" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AxisBreakConfig">
+		<xs:sequence>
+			<xs:element name="RelatedPortName" type="xs:NMTOKEN"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Monitoring">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="TriggerCondition" type="MonitorTriggerConditionType" default="NoCondition"/>
+				<xs:sequence>
+					<xs:element name="TriggerConditionAdvancedStarting" type="MonitoringTriggerConditionAdvancedConfigStarting" minOccurs="0" maxOccurs="3"/>
+					<xs:element name="TriggerConditionAdvancedStoping" type="MonitoringTriggerConditionAdvancedConfigStopping" minOccurs="0" maxOccurs="3"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:element name="DownSamplingFactor" type="xs:unsignedInt"/>
+			<xs:element name="BufferHandlingMode" type="MonitorBufferHandlingMode" default="SingleShot"/>
+			<xs:element name="Signal" type="MonitorSignal" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="MonitoringID" type="xs:unsignedByte" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MonitoringTriggerConditionAdvancedConfigStarting">
+		<xs:sequence>
+			<xs:element name="ConditionId" type="MonitoringConditionId" default="1"/>
+			<xs:element name="TriggerSignal" type="MonitorSignal"/>
+			<xs:element name="TriggerCondition" type="MonitorTriggerCondition" default="NoCondition"/>
+			<xs:element name="ThresholdValue" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MonitoringTriggerConditionAdvancedConfigStopping">
+		<xs:sequence>
+			<xs:element name="ConditionId" type="MonitoringConditionId" default="1"/>
+			<xs:element name="TriggerSignal" type="MonitorSignal"/>
+			<xs:element name="TriggerCondition" type="MonitorTriggerCondition" default="NoCondition"/>
+			<xs:element name="ThresholdValue" type="xs:double"/>
+			<xs:element name="StoppingTime" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MonitorSignal">
+		<xs:sequence>
+			<xs:element name="MonitorSignalType" type="MonitorSignalType" default="NoSignal"/>
+			<xs:choice>
+				<xs:element name="PortName" type="xs:NMTOKEN" minOccurs="0"/>
+				<xs:element name="CLLDIdentifier" type="CLLDSignalIndex" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MotionSurveillance">
+		<xs:sequence>
+			<xs:element name="StepTimeStampTraceLevel" type="StepTimeStampTraceLevel" default="Off"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TemperaturController">
+		<xs:sequence>
+			<xs:element name="PValue" type="xs:double" default="200">
+				<xs:annotation>
+					<xs:documentation>[A/K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DValue" type="xs:double" default="10000">
+				<xs:annotation>
+					<xs:documentation>[A/(K/s)]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IValue" type="xs:double" default="10000">
+				<xs:annotation>
+					<xs:documentation>[A/ Integral(K)]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ISaturation" type="xs:double" default="1111">
+				<xs:annotation>
+					<xs:documentation>[A]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PositiveCurrentLimit" type="xs:double" default="5.0">
+				<xs:annotation>
+					<xs:documentation>[A]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NegativeCurrentLimit" type="xs:double" default="5.0">
+				<xs:annotation>
+					<xs:documentation>[A]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ControlSensorName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HeaterConfig">
+		<xs:sequence>
+			<xs:element name="Hystereses" type="xs:unsignedByte" default="0">
+				<xs:annotation>
+					<xs:documentation>[%]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MinTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaxTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VoltageLimit" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[%]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaxGradient" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[K/s]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TempSensor">
+		<xs:sequence>
+			<xs:element name="TempTableName" type="xs:NMTOKEN" default="0"/>
+			<xs:element name="MeasurementCircuit" type="xs:unsignedByte" default="0"/>
+			<xs:element name="ADCNumber" type="xs:unsignedByte" default="0"/>
+			<xs:element name="PortNumber" type="xs:unsignedByte" default="0"/>
+			<xs:element name="SteeringOutput1Type" type="OutputType" default="NoOutput"/>
+			<xs:element name="SteeringOutput1Number" type="xs:unsignedByte" default="0"/>
+			<xs:element name="SteeringOutput2Type" type="OutputType" default="NoOutput"/>
+			<xs:element name="SteeringOutput2Number" type="xs:unsignedByte" default="0"/>
+			<xs:element name="SteeringOutput3Type" type="OutputType" default="NoOutput"/>
+			<xs:element name="SteeringOutput3Number" type="xs:unsignedByte" default="0"/>
+			<xs:element name="LinearCorrection" type="LinearCorrectionType"/>
+			<xs:element name="SensorDiscTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SensorShortTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AbsMinTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AbsMaxTemp" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="TempSensorName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TempTable">
+		<xs:sequence>
+			<xs:element name="TempValue" type="TempTableSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="TempTableName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TempTableSet">
+		<xs:sequence>
+			<xs:element name="TempValue" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SensorValue" type="xs:unsignedShort">
+				<xs:annotation>
+					<xs:documentation>[Digit]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TempMonitor">
+		<xs:sequence>
+			<xs:element name="MaxCtrlMonDiff" type="xs:double" default="0.0"/>
+			<xs:element name="FilterCtrlMonDiff" type="xs:double" default="0.0"/>
+		</xs:sequence>
+		<xs:attribute name="MonitorSensorName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TempBand">
+		<xs:sequence>
+			<xs:element name="LowerLimit" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UpperLimit" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FilterTempBand" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[s]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Type" type="TempBandType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AmbientTempCorrection">
+		<xs:sequence>
+			<xs:element name="AmbientTemp1" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmbientCorrection1" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmbientTemp2" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[°C]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmbientCorrection2" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmbientCalcTime" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>[s]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="AmbientSensorName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AxisCounter">
+		<xs:sequence>
+			<xs:element name="MoveCounter" type="PoolCounter" minOccurs="0"/>
+			<xs:element name="InitCounter" type="PoolCounter" minOccurs="0"/>
+			<xs:element name="SwitchOnTimeCounter" type="PoolTimeCounter" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PoolCounter">
+		<xs:sequence>
+			<xs:element name="PoolType" type="PoolType"/>
+			<xs:element name="PoolId" type="xs:unsignedShort"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PoolTimeCounter">
+		<xs:sequence>
+			<xs:element name="PoolType" type="PoolType"/>
+			<xs:element name="PoolId" type="xs:unsignedShort"/>
+			<xs:element name="CyclicUpdate" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MoveConfig">
+		<xs:choice>
+			<xs:element name="MovePosition" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Attention: use only move abs if the axis was initialized before!!!</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MoveDistance" type="xs:double"/>
+			<xs:element name="MoveHome" type="xs:token"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="MoveAxisConfig">
+		<xs:sequence>
+			<xs:element name="DynamicSetIndex" type="xs:unsignedByte"/>
+			<xs:element name="MoveConfig" type="MoveConfig"/>
+			<xs:element name="AdditionalSensorStep" type="AdditionalSensorConfig" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="DefaultSequenceConfigID" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SetOutputPort">
+		<xs:sequence>
+			<xs:element name="PortLevel" type="SignalLevel" default="Low"/>
+		</xs:sequence>
+		<xs:attribute name="OutputPortName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="LinearCorrectionPoolType">
+		<xs:sequence>
+			<xs:element name="PoolType" type="PoolType"/>
+			<xs:element name="PoolId_M" type="xs:unsignedShort"/>
+			<xs:element name="PoolId_B" type="xs:unsignedShort"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LinearCorrectionFixType">
+		<xs:sequence>
+			<xs:element name="LinearCorrectionM" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[1]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LinearCorrectionB" type="xs:double" default="0.0">
+				<xs:annotation>
+					<xs:documentation>[K]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LinearCorrectionType">
+		<xs:choice>
+			<xs:element name="LinearCorrectionPool" type="LinearCorrectionPoolType"/>
+			<xs:element name="LinearCorrectionFix" type="LinearCorrectionFixType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CalibConfigModule">
+		<xs:sequence>
+			<xs:element name="MotorName" type="xs:NMTOKEN" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalibConfigAxis">
+		<xs:sequence>
+			<xs:element name="ReferenceSensor" type="SensorCalibrationConfig" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The first of this list is a real init, the furter ones are only move interruptable into a sensor => pay attention that the axis is not in the bumper at the end. If more the one is given, the offsets will be averaged.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SensorToCalibrate" type="SensorCalibrationConfig" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Move interruptable into a sensor => pay attention that the axis is not in the bumper at the end. If more the one is given, the offsets will be averaged.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParameterPoolID" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:documentation>Pool ID where to store the value </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Inverse" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If this is true, the "Init" move is the first from the SensorToCalibrate and therefore the calculation is addapted.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SensorCalibrationConfig">
+		<xs:sequence>
+			<xs:element name="PreInitFlowID" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="InitID" type="xs:unsignedByte"/>
+			<xs:element name="PostInitFlowID" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MotorType">
+		<xs:annotation>
+			<xs:documentation>Enum for the motor type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="DC"/>
+			<xs:enumeration value="EC"/>
+			<xs:enumeration value="Stepper"/>
+			<xs:enumeration value="PeripheralDevice"/>
+			<xs:enumeration value="NoMotorDevice"/>
+			<xs:enumeration value="TemperatureDevice"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PositionDirection">
+		<xs:annotation>
+			<xs:documentation>Enum for the direction (positionController)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Forward"/>
+			<xs:enumeration value="Backward"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InitDirection">
+		<xs:annotation>
+			<xs:documentation>Enum for the direction (positionController)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Forward"/>
+			<xs:enumeration value="Backward"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SampleRate">
+		<xs:annotation>
+			<xs:documentation>Enum for the sample rate</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="1Hz"/>
+			<xs:enumeration value="2Hz"/>
+			<xs:enumeration value="3_33Hz"/>
+			<xs:enumeration value="5Hz"/>
+			<xs:enumeration value="10Hz"/>
+			<xs:enumeration value="20Hz"/>
+			<xs:enumeration value="1250Hz"/>
+			<xs:enumeration value="2500Hz"/>
+			<xs:enumeration value="5000Hz"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EStop">
+		<xs:annotation>
+			<xs:documentation>Enum for the emergency stop</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Off"/>
+			<xs:enumeration value="On"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControlStructure">
+		<xs:annotation>
+			<xs:documentation>Enum for the control structure</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="OpenLoop"/>
+			<xs:enumeration value="ClosedLoop"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FeedbackSign">
+		<xs:annotation>
+			<xs:documentation>Enum for the Feeadback path sign</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Positive"/>
+			<xs:enumeration value="Negative"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControllerType">
+		<xs:annotation>
+			<xs:documentation>Enum for the controller type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Position"/>
+			<xs:enumeration value="Velocity"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EncoderType">
+		<xs:annotation>
+			<xs:documentation>Enum for the encoder type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="IncrementPosition"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InputType">
+		<xs:annotation>
+			<xs:documentation>Enum for the input type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Fast"/>
+			<xs:enumeration value="Slow"/>
+			<xs:enumeration value="Encoder"/>
+			<xs:enumeration value="CLLD"/>
+			<xs:enumeration value="MotorCurrent"/>
+			<xs:enumeration value="PositionDeviation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OutputType">
+		<xs:annotation>
+			<xs:documentation>Enum for the output type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Fast"/>
+			<xs:enumeration value="Slow"/>
+			<xs:enumeration value="ProFET"/>
+			<xs:enumeration value="NoOutput"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalIndex">
+		<xs:restriction base="xs:unsignedInt"/>
+	</xs:simpleType>
+	<xs:simpleType name="SignalLevel">
+		<xs:annotation>
+			<xs:documentation>Enum for the Singal Level</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Low"/>
+			<xs:enumeration value="High"/>
+			<xs:enumeration value="Stay"/>
+			<xs:enumeration value="AsBeforeConnected"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HBridgeVoltage">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:minInclusive value="15"/>
+			<xs:maxInclusive value="48"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignalPolarity">
+		<xs:annotation>
+			<xs:documentation>Enum for the signal polarity</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="NotInverted"/>
+			<xs:enumeration value="Inverted"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Edge">
+		<xs:annotation>
+			<xs:documentation>Enum for the edge detection</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Falling"/>
+			<xs:enumeration value="Rising"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InitType">
+		<xs:annotation>
+			<xs:documentation>Enum for the Init type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="SetPos"/>
+			<xs:enumeration value="Bumper"/>
+			<xs:enumeration value="Sensor"/>
+			<xs:enumeration value="SetInitialized"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PoolType">
+		<xs:annotation>
+			<xs:documentation>Enum for the CSM-Pool type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="DataPool"/>
+			<xs:enumeration value="ParameterPool"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataType">
+		<xs:annotation>
+			<xs:documentation>Enum for the CSM-Pool type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="double"/>
+			<xs:enumeration value="int32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDSignalIndex">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD SignalIndex</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="CLLDInstance0"/>
+			<xs:enumeration value="CLLDInstance1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDExternalBehavior">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD ExternalBehavior</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="SetOutputPinToLow"/>
+			<xs:enumeration value="SetOutputPinToHigh"/>
+			<xs:enumeration value="DependsOnDetection"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDFrequencyPredivider">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD FrequencyPredivider</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="16"/>
+			<xs:enumeration value="32"/>
+			<xs:enumeration value="64"/>
+			<xs:enumeration value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDMeasureTimeUnit">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD MeasureTimeUnit</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="0_6"/>
+			<xs:enumeration value="1_3"/>
+			<xs:enumeration value="2_6"/>
+			<xs:enumeration value="5_2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDLevelOutputPin">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD LevelOutputPin</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ToHighWhileCIncrease"/>
+			<xs:enumeration value="ToHighWhileCDecrease"/>
+			<xs:enumeration value="ToHighWhileCChange"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDOscillatorSignalSteering">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD Oscillator Signal Steering</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Off"/>
+			<xs:enumeration value="On"/>
+			<xs:enumeration value="Standard"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CLLDUseMeasureSequenceSignal">
+		<xs:annotation>
+			<xs:documentation>Enum for the CLLD Measure Sequence Signal Source</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="External"/>
+			<xs:enumeration value="Internal_CLLD0"/>
+			<xs:enumeration value="Internal_CLLD1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SPIShiftDirection">
+		<xs:annotation>
+			<xs:documentation>Enum for the SPI shift direction</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="MSB_First"/>
+			<xs:enumeration value="LSB_First"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SPIClockPolarity">
+		<xs:annotation>
+			<xs:documentation>Enum for the SPI Clock polarity</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="IdleLow"/>
+			<xs:enumeration value="IdleHigh"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SPIClockPhase">
+		<xs:annotation>
+			<xs:documentation>Enum for the SPI Clock phase</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FirstEdge"/>
+			<xs:enumeration value="SecondEdge"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SPISlaveAddress">
+		<xs:annotation>
+			<xs:documentation>Enum for the SPI Slave address</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonitorTriggerConditionType">
+		<xs:annotation>
+			<xs:documentation>Enum for the Monitor Trigger Condition Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="NoCondition"/>
+			<xs:enumeration value="DeviceStateMoving"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonitoringConditionId">
+		<xs:annotation>
+			<xs:documentation>Enum for the Monitor Condition ID</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonitorTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Enum for the Monitor Trigger Condition</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="NoCondition"/>
+			<xs:enumeration value="LessThan"/>
+			<xs:enumeration value="LessOrEqualThan"/>
+			<xs:enumeration value="EqualTo"/>
+			<xs:enumeration value="NotEqualTo"/>
+			<xs:enumeration value="GreaterOrEqualThan"/>
+			<xs:enumeration value="GreaterThan"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonitorSignalType">
+		<xs:annotation>
+			<xs:documentation>Enum for the Monitor Signal Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="NoSignal"/>
+			<xs:enumeration value="ControllerErrorFlag"/>
+			<xs:enumeration value="DesiredPosition"/>
+			<xs:enumeration value="ActualPosition"/>
+			<xs:enumeration value="PositionError"/>
+			<xs:enumeration value="DesiredVelocity"/>
+			<xs:enumeration value="DesiredAcceleration"/>
+			<xs:enumeration value="DesiredCurrent"/>
+			<xs:enumeration value="ActualCurrent"/>
+			<xs:enumeration value="CurrentError"/>
+			<xs:enumeration value="DesiredCurrentSlaveHB"/>
+			<xs:enumeration value="ActualCurrentSlaveHB"/>
+			<xs:enumeration value="ECHallSensorState"/>
+			<xs:enumeration value="I2tWindingTemperature"/>
+			<xs:enumeration value="SquaredCurrentForI2t"/>
+			<xs:enumeration value="ActualVelocity"/>
+			<xs:enumeration value="VelocityError"/>
+			<xs:enumeration value="CurrentErrorSlaveHB"/>
+			<xs:enumeration value="DeviceState"/>
+			<xs:enumeration value="MovingState"/>
+			<xs:enumeration value="SingleBitInputPort"/>
+			<xs:enumeration value="MultipleBitInputPort"/>
+			<xs:enumeration value="SingleBitOutputPort"/>
+			<xs:enumeration value="CLLDFrequency"/>
+			<xs:enumeration value="CLLDLargeAverage"/>
+			<xs:enumeration value="CLLDPeakAverage"/>
+			<xs:enumeration value="CLLDState"/>
+			<xs:enumeration value="CLLDOutputPinBehavior"/>
+			<xs:enumeration value="CLLDShortTermStartPointer"/>
+			<xs:enumeration value="CLLDShortTermEndPointer"/>
+			<xs:enumeration value="CLLDLongTermStartPointer"/>
+			<xs:enumeration value="CLLDLongTermEndPointer"/>
+			<xs:enumeration value="ECCCommutationState"/>
+			<xs:enumeration value="PosCtrlProportionalPart"/>
+			<xs:enumeration value="PosCtrlIntegralPart"/>
+			<xs:enumeration value="PosCtrlDerivationPart"/>
+			<xs:enumeration value="PosCtrlFeedForwardPart"/>
+			<xs:enumeration value="VoltageConsumptionInPercent"/>
+			<xs:enumeration value="TempCtrlAmbient"/>
+			<xs:enumeration value="TempCtrlSensor"/>
+			<xs:enumeration value="TempCtrlMonSensor"/>
+			<xs:enumeration value="TempCtrlTempHeaterSetpoint"/>
+			<xs:enumeration value="TempCtrlTempHeaterSetpointAmbientCorrected"/>
+			<xs:enumeration value="StepLossSupervisorInitState"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonitorBufferHandlingMode">
+		<xs:annotation>
+			<xs:documentation>Enum for the Monitor Buffer Handling mode</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="SingleShot"/>
+			<xs:enumeration value="RingBuffer"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ByteOrder">
+		<xs:annotation>
+			<xs:documentation>Enum for Byte Order</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="LittleEndian"/>
+			<xs:enumeration value="BigEndian"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HallSensorPolarity">
+		<xs:annotation>
+			<xs:documentation>Enum for the output type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Negative"/>
+			<xs:enumeration value="Positive"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StepTimeStampTraceLevel">
+		<xs:annotation>
+			<xs:documentation>Enum for the Start and End Time Stamps of the Steps by trace level</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Off"/>
+			<xs:enumeration value="Emergency"/>
+			<xs:enumeration value="Alert"/>
+			<xs:enumeration value="Critical"/>
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Notice"/>
+			<xs:enumeration value="Info"/>
+			<xs:enumeration value="Debug"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CheckInputBeforeTeach">
+		<xs:annotation>
+			<xs:documentation>Enum to define if the input has to check the state before teach or not</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="CheckBefore"/>
+			<xs:enumeration value="DoNotCheck"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventEnable">
+		<xs:annotation>
+			<xs:documentation>Enum for enable / disable the event</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Disabled"/>
+			<xs:enumeration value="Enabled"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TempBandType">
+		<xs:annotation>
+			<xs:documentation>Enum to specify the temperatur band</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ProcessBand"/>
+			<xs:enumeration value="ErrorBand"/>
+			<xs:enumeration value="ProcessBandAtRamp"/>
+			<xs:enumeration value="ErrorBandAtRamp"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MotorInitState">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Uninitialized"/>
+			<xs:enumeration value="Initialized"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

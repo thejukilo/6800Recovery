@@ -1,0 +1,1 @@
+iifname $main_netif tcp dport ssh accept

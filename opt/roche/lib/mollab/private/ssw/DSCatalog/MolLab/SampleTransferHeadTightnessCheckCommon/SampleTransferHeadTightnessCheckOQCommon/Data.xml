@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="99C16A6F31626017348C43687A38BA4C02FEA8C06938" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="SampleTransferHeadTightnessCheckOQCommon">
+    <base:Content>
+      <base:File Type="DataExt" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Perform the tightness check first with low parameters if true.</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPumpStartPositionHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpStartPosition</base:Title>
+          </data:Description>
+          <data:Value>5E-7</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPumpMovementHigh" Type="Double" Unit="m3">
+          <data:Description>
+            <base:Title>PumpMovement</base:Title>
+          </data:Description>
+          <data:Value>5E-8</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pInitialPressureDifferenceHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>InitialPressureDifference</base:Title>
+          </data:Description>
+          <data:Value>3000</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitNegativeHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitNegative</base:Title>
+          </data:Description>
+          <data:Value>600</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pPressureLossLimitPositiveHigh" Type="Double" Unit="Pa">
+          <data:Description>
+            <base:Title>PressureLossLimitPositive</base:Title>
+          </data:Description>
+          <data:Value>600</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pStabilizationTimeHigh" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>StabilizationTime</base:Title>
+          </data:Description>
+          <data:Value>5</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pMeasurementTimeHigh" Type="Double" Unit="s">
+          <data:Description>
+            <base:Title>MeasurementTime</base:Title>
+          </data:Description>
+          <data:Value>15</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

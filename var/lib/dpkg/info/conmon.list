@@ -1,0 +1,14 @@
+/.
+/usr
+/usr/bin
+/usr/bin/conmon
+/usr/share
+/usr/share/doc
+/usr/share/doc/conmon
+/usr/share/doc/conmon/README.md
+/usr/share/doc/conmon/changelog.Debian.gz
+/usr/share/doc/conmon/changelog.gz
+/usr/share/doc/conmon/copyright
+/usr/share/man
+/usr/share/man/man8
+/usr/share/man/man8/conmon.8.gz

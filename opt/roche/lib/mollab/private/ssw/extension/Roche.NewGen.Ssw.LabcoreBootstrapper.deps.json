@@ -1,0 +1,2346 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {},
+    ".NETCoreApp,Version=v8.0/linux-x64": {
+      "Roche.NewGen.Ssw.LabcoreBootstrapper/1.0.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.NetAnalyzers": "8.0.0",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "8.0.0",
+          "OpenTelemetry.Exporter.Jaeger": "1.5.1",
+          "Roche.LabCore.Bootstrapping": "2.2.0",
+          "Roche.LabCore.Bootstrapping.Configuration": "2.2.0",
+          "Roche.LabCore.Bootstrapping.Unity": "2.2.0",
+          "Roche.MolLab.Logging.Serilog": "3.1.0.1071284",
+          "Roche.MolLab.Messaging.RabbitMQ": "6.0.2.1207371",
+          "Roche.MolLab.PerformanceMonitoring": "3.0.0.1100163",
+          "Roche.MolLab.Time": "4.0.0.1013884",
+          "Roche.MolLab.Tracing.Registration": "4.1.0.1107469",
+          "Roche.NewGen.ServiceCheckExecutionRecord": "1.0.0.726936",
+          "Roche.NewGen.Ssw": "1.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Sinks.Console": "6.0.0",
+          "Serilog.Sinks.File": "6.0.0",
+          "StyleCop.Analyzers": "1.2.0-beta.556",
+          "System.Collections.Immutable": "8.0.0",
+          "System.Reactive": "6.0.1",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "Roche.NewGen.Ssw.Reference": "1.0.0.0",
+          "Roche.NewGen.Ssw.Instrument.Reference": "1.0.0.0"
+        },
+        "runtime": {
+          "Roche.NewGen.Ssw.LabcoreBootstrapper.dll": {}
+        }
+      },
+      "AutoMapper/2.2.0-preview.8": {
+        "runtime": {
+          "lib/net8.0/AutoMapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.8"
+          }
+        }
+      },
+      "DryIoc.dll/5.4.3": {
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "assemblyVersion": "5.4.3.0",
+            "fileVersion": "5.4.3.0"
+          }
+        }
+      },
+      "Google.Protobuf/3.22.5": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.22.5.0",
+            "fileVersion": "3.22.5.0"
+          }
+        }
+      },
+      "Grpc.Core.Api/2.52.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.52.0.0"
+          }
+        }
+      },
+      "Grpc.Net.Client/2.52.0": {
+        "dependencies": {
+          "Grpc.Net.Common": "2.52.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.Net.Client.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.52.0.0"
+          }
+        }
+      },
+      "Grpc.Net.Common/2.52.0": {
+        "dependencies": {
+          "Grpc.Core.Api": "2.52.0"
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.52.0.0"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.NetAnalyzers/8.0.0": {},
+      "Microsoft.Extensions.Configuration/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/8.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.724.31311"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0",
+          "Microsoft.Extensions.FileProviders.Physical": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0",
+          "System.Text.Json": "8.0.4"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Json.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/8.0.1": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0",
+          "System.Text.Json": "8.0.4"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "8.0.0.1",
+            "fileVersion": "8.0.724.31311"
+          }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "System.Diagnostics.DiagnosticSource": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0",
+          "Microsoft.Extensions.FileSystemGlobbing": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Physical.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/8.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Configuration/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Configuration.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/8.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/5.0.0": {},
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
+      "OpenTelemetry/1.9.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Logging.Configuration": "8.0.0",
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.9.0"
+        },
+        "runtime": {
+          "lib/net8.0/OpenTelemetry.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.0.1312"
+          }
+        }
+      },
+      "OpenTelemetry.Api/1.9.0": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/OpenTelemetry.Api.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.0.1312"
+          }
+        }
+      },
+      "OpenTelemetry.Api.ProviderBuilderExtensions/1.9.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "OpenTelemetry.Api": "1.9.0"
+        },
+        "runtime": {
+          "lib/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.0.1312"
+          }
+        }
+      },
+      "OpenTelemetry.Exporter.Jaeger/1.5.1": {
+        "dependencies": {
+          "OpenTelemetry": "1.9.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/net6.0/OpenTelemetry.Exporter.Jaeger.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.5.1.929"
+          }
+        }
+      },
+      "OpenTelemetry.Exporter.OpenTelemetryProtocol/1.9.0": {
+        "dependencies": {
+          "Google.Protobuf": "3.22.5",
+          "Grpc.Net.Client": "2.52.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "OpenTelemetry": "1.9.0"
+        },
+        "runtime": {
+          "lib/net8.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.0.1312"
+          }
+        }
+      },
+      "RabbitMQ.Client/6.8.1": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.8.1.0"
+          }
+        }
+      },
+      "Roche.Dia.Common/1.5.4.2": {
+        "dependencies": {
+          "Roche.Dia.Utils.Guard": "1.5.4.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.Dia.Common.dll": {
+            "assemblyVersion": "1.5.4.2",
+            "fileVersion": "1.5.4.2"
+          }
+        }
+      },
+      "Roche.Dia.Logging/1.0.2.7": {
+        "dependencies": {
+          "Roche.Dia.Utils.Guard": "1.5.4.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.Dia.Logging.dll": {
+            "assemblyVersion": "1.0.2.7",
+            "fileVersion": "1.0.2.7"
+          }
+        }
+      },
+      "Roche.Dia.Utils.Guard/1.5.4.2": {
+        "runtime": {
+          "lib/netstandard2.0/Roche.Dia.Utils.Guard.dll": {
+            "assemblyVersion": "1.5.4.2",
+            "fileVersion": "1.5.4.2"
+          }
+        }
+      },
+      "Roche.LabCore.Bootstrapping/2.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/Roche.LabCore.Bootstrapping.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.1959"
+          }
+        }
+      },
+      "Roche.LabCore.Bootstrapping.Configuration/2.2.0": {
+        "dependencies": {
+          "Roche.LabCore.Bootstrapping": "2.2.0",
+          "Roche.LabCore.Tracing.Configuration": "2.2.0",
+          "System.Configuration.ConfigurationManager": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.LabCore.Bootstrapping.Configuration.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.1959"
+          }
+        }
+      },
+      "Roche.LabCore.Bootstrapping.Unity/2.2.0": {
+        "dependencies": {
+          "Roche.LabCore.Bootstrapping": "2.2.0",
+          "Unity": "5.11.9"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.LabCore.Bootstrapping.Unity.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.1959"
+          }
+        }
+      },
+      "Roche.LabCore.Diagnose/2.2.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.LabCore.Diagnose.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.2.0"
+          }
+        }
+      },
+      "Roche.LabCore.Diagnose.TestManager/2.2.2": {
+        "dependencies": {
+          "Roche.LabCore.Diagnose": "2.2.2"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.LabCore.Diagnose.TestManager.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.2.0"
+          }
+        }
+      },
+      "Roche.LabCore.Tracing.Configuration/2.2.0": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.LabCore.Tracing.Configuration.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.0.1959"
+          }
+        }
+      },
+      "Roche.MolLab.Configuration/3.4.0.1064437": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Configuration.dll": {
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.FieldBusGateway.Messages.Service/6.0.0.1279435": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.FieldBusGateway.Messages.Service.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.FileSystem/3.0.1.1117321": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.FileSystem.dll": {
+            "assemblyVersion": "3.0.1.0",
+            "fileVersion": "3.0.1.0"
+          }
+        }
+      },
+      "Roche.MolLab.InstrumentState.Messages/5.0.0.1316132": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.SharedMessageDefinitions": "1.0.0.1270161"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.InstrumentState.Messages.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Logging.Extensions/3.1.0.1071284": {
+        "dependencies": {
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Logging.Extensions.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Logging.Interface/3.0.0.651378": {
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Logging.Interface.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Logging.Messaging/6.0.0.1279476": {
+        "dependencies": {
+          "Roche.MolLab.Logging.Extensions": "3.1.0.1071284",
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.Messaging.MessageBroker.Interface": "4.0.0.1067216"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Logging.Messaging.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Logging.Serilog/3.1.0.1071284": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0",
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378",
+          "Serilog.Settings.Configuration": "8.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Logging.Serilog.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.Common/6.0.2.1207371": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378",
+          "Roche.MolLab.Messaging.MessageBroker.Interface": "4.0.0.1067216"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.Common.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.Interface/5.0.0.1066655": {
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.Interface.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.MessageBroker.Interface/4.0.0.1067216": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.MessageBroker.Interface.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.RabbitMQ/6.0.2.1207371": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "RabbitMQ.Client": "6.8.1",
+          "Roche.MolLab.Configuration": "3.4.0.1064437",
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378",
+          "Roche.MolLab.Messaging.Common": "6.0.2.1207371"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.RabbitMQ.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.Reactive/6.0.2.1207371": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.MolLab.Messaging.MessageBroker.Interface": "4.0.0.1067216",
+          "System.Reactive": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.Reactive.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "Roche.MolLab.Messaging.Utils/3.1.0.1279978": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.MolLab.Logging.Extensions": "3.1.0.1071284",
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378",
+          "Roche.MolLab.Logging.Messaging": "6.0.0.1279476",
+          "Roche.MolLab.Modularity": "3.0.0.1009901",
+          "Roche.MolLab.Threading": "3.1.0.1015411",
+          "System.Reactive.Linq": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Messaging.Utils.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Modularity/3.0.0.1009901": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Modularity.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.PerformanceMonitoring/3.0.0.1100163": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.MolLab.Configuration": "3.4.0.1064437",
+          "Roche.MolLab.Logging.Extensions": "3.1.0.1071284",
+          "Roche.MolLab.Messaging.MessageBroker.Interface": "4.0.0.1067216"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.PerformanceMonitoring.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.PersistentMemory.Messages.Service/5.0.0.1279709": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.PersistentMemory.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Reactive/3.1.2.1278959": {
+        "dependencies": {
+          "System.Reactive": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Reactive.dll": {
+            "assemblyVersion": "3.1.2.0",
+            "fileVersion": "3.1.2.0"
+          }
+        }
+      },
+      "Roche.MolLab.SharedMessageDefinitions/1.0.0.1270161": {},
+      "Roche.MolLab.Threading/3.1.0.1015411": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Threading.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Time/4.0.0.1013884": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Time.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Tracing.Extensions/4.1.0.1107469": {
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Tracing.Extensions.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.Tracing.Registration/4.1.0.1107469": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "OpenTelemetry": "1.9.0",
+          "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.9.0",
+          "Roche.MolLab.Configuration": "3.4.0.1064437"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.Tracing.Registration.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.UiApi.Messages/2.0.0.1316134": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.SharedMessageDefinitions": "1.0.0.1270161"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.UiApi.Messages.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "Roche.MolLab.UnitLifecycle/7.2.0.1288648": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.MolLab.Logging.Extensions": "3.1.0.1071284",
+          "Roche.MolLab.Logging.Interface": "3.0.0.651378",
+          "Roche.MolLab.Logging.Messaging": "6.0.0.1279476",
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.Threading": "3.1.0.1015411",
+          "Roche.MolLab.Tracing.Extensions": "4.1.0.1107469"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.MolLab.UnitLifecycle.dll": {
+            "assemblyVersion": "7.2.0.0",
+            "fileVersion": "7.2.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AmplificationPlateDrawer.Messages.Service/4.0.0.1314194": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AmplificationPlateDrawer.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AmplificationPlateHandler.Messages.Service/4.0.0.1279968": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AmplificationPlateHandler.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AmplificationPlateMagazine.Messages.Service/5.0.0.1314274": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AmplificationPlateMagazine.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AmplificationPlateTransferPosition.Messages.Service/4.0.0.1314296": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AmplificationPlateTransferPosition.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AnalyticModule.Messages/5.0.0.1279730": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.SharedMessageDefinitions": "1.0.0.1270161"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AnalyticModule.Messages.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.AnalyticUnit.Messages.Service/7.0.0.1314217": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.AnalyticUnit.Messages.Service.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.BulkManagement.Messages.Service/6.0.0.1314070": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.BulkManagement.Messages.Service.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.ConsumablePark.Messages.Service/5.0.0.1314064": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.ConsumablePark.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.CoolingStation.Messages.Service/4.0.0.1314366": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.CoolingStation.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.DrawerLock.Messages.Service/5.0.0.1314058": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.DrawerLock.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.HeatingStation.Messages.Service/5.0.0.1314056": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.HeatingStation.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.Infrastructure.Messages.Service/5.0.0.1279691": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.Infrastructure.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.InstrumentState.Messages/4.0.0.1314049": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.SharedMessageDefinitions": "1.0.0.1270161"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.InstrumentState.Messages.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.InterimReagentStorage.Messages.Service/4.0.0.1314044": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.InterimReagentStorage.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.MainHandler.Messages.Service/4.0.0.1314041": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.MainHandler.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.MgpCassetteMagazine.Messages.Service/4.0.0.1314280": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.MgpCassetteMagazine.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.ProcessingModuleControl.Messages.Service/7.0.0.1314013": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.ProcessingModuleControl.Messages.Service.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.ProcessingPlateMagazine.Messages.Service/4.0.0.1314010": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.ProcessingPlateMagazine.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.RackHandler.Messages.Service/5.0.0.1314008": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.RackHandler.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.ReagentStorageHandler.Messages.Service/4.0.0.1314006": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.ReagentStorageHandler.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.SafetyInterlock.Messages.Service/5.0.0.1313987": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.SafetyInterlock.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.SealingStation.Messages.Service/5.0.0.1313998": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.SealingStation.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.SeparationStation.Messages.Service/5.0.0.1313981": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.SeparationStation.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.ServiceCheckExecutionRecord/1.0.0.726936": {
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.ServiceCheckExecutionRecord.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.SolidWasteStation.Messages.Service/5.0.0.1314378": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.SolidWasteStation.Messages.Service.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.SSW.Messages/4.0.0.1314278": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655",
+          "Roche.MolLab.SharedMessageDefinitions": "1.0.0.1270161"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.SSW.Messages.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.TipRackMagazine.Messages.Service/4.0.0.1279598": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.TipRackMagazine.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.TransferModuleControl.Messages.Service/4.0.0.1314281": {
+        "dependencies": {
+          "Roche.MolLab.Messaging.Interface": "5.0.0.1066655"
+        },
+        "runtime": {
+          "lib/net8.0/Roche.NewGen.TransferModuleControl.Messages.Service.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Roche.X800.Instrument.Rfid/1.5.14.785075": {
+        "dependencies": {
+          "Roche.Dia.Common": "1.5.4.2",
+          "Roche.Dia.Logging": "1.0.2.7",
+          "Roche.Dia.Utils.Guard": "1.5.4.2",
+          "System.Configuration.ConfigurationManager": "5.0.0",
+          "Unity": "5.11.9"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Roche.X800.Instrument.Rfid.dll": {
+            "assemblyVersion": "0.0.0.9999",
+            "fileVersion": "0.0.0.9999"
+          }
+        }
+      },
+      "Serilog/4.0.0": {
+        "runtime": {
+          "lib/net8.0/Serilog.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Serilog.Enrichers.Thread/4.0.0": {
+        "dependencies": {
+          "Serilog": "4.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Enrichers.Thread.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Serilog.Settings.Configuration/8.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.DependencyModel": "8.0.1",
+          "Serilog": "4.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Settings.Configuration.dll": {
+            "assemblyVersion": "8.0.2.0",
+            "fileVersion": "8.0.2.0"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/6.0.0": {
+        "dependencies": {
+          "Serilog": "4.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.File/6.0.0": {
+        "dependencies": {
+          "Serilog": "4.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.File.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8"
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.8.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.8": {
+        "dependencies": {
+          "SkiaSharp": "2.88.8"
+        },
+        "native": {
+          "runtimes/linux-x64/native/libSkiaSharp.so": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {},
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {},
+      "StyleCop.Analyzers/1.2.0-beta.556": {
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.556"
+        }
+      },
+      "StyleCop.Analyzers.Unstable/1.2.0.556": {},
+      "System.Collections.Immutable/8.0.0": {},
+      "System.Configuration.ConfigurationManager/5.0.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "5.0.0",
+          "System.Security.Permissions": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/8.0.0": {},
+      "System.Drawing.Common/5.0.0": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "System.Memory/4.5.5": {},
+      "System.Reactive/6.0.1": {
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1.7420"
+          }
+        }
+      },
+      "System.Reactive.Linq/6.0.1": {
+        "dependencies": {
+          "System.Reactive": "6.0.1",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Reactive.Linq.dll": {
+            "assemblyVersion": "3.0.6000.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Security.AccessControl/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "System.Security.Permissions/5.0.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "5.0.0",
+          "System.Windows.Extensions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/5.0.0": {},
+      "System.Text.Encodings.Web/8.0.0": {},
+      "System.Text.Json/8.0.4": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0"
+        }
+      },
+      "System.Threading.Channels/7.0.0": {},
+      "System.Threading.Tasks.Extensions/4.5.4": {},
+      "System.Windows.Extensions/5.0.0": {
+        "dependencies": {
+          "System.Drawing.Common": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Unity/5.11.9": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Unity.Container.dll": {
+            "assemblyVersion": "5.11.10.0",
+            "fileVersion": "5.11.10.0"
+          }
+        }
+      },
+      "Unity.Abstractions/5.11.7": {
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Unity.Abstractions.dll": {
+            "assemblyVersion": "5.11.7.0",
+            "fileVersion": "5.11.7.0"
+          }
+        }
+      },
+      "Roche.NewGen.Ssw/1.0.0": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Roche.LabCore.Diagnose.TestManager": "2.2.2",
+          "Roche.MolLab.FileSystem": "3.0.1.1117321",
+          "Roche.MolLab.InstrumentState.Messages": "5.0.0.1316132",
+          "Roche.MolLab.PerformanceMonitoring": "3.0.0.1100163",
+          "Roche.MolLab.Time": "4.0.0.1013884",
+          "Roche.MolLab.UiApi.Messages": "2.0.0.1316134",
+          "Roche.MolLab.UnitLifecycle": "7.2.0.1288648",
+          "Roche.NewGen.InstrumentState.Messages": "4.0.0.1314049",
+          "Roche.NewGen.ServiceCheckExecutionRecord": "1.0.0.726936",
+          "Roche.NewGen.Ssw.Instrument": "1.0.0",
+          "System.Reactive": "6.0.1",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "Roche.NewGen.Ssw.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
+        }
+      },
+      "Roche.NewGen.Ssw.Instrument/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "2.2.0-preview.8",
+          "DryIoc.dll": "5.4.3",
+          "Roche.LabCore.Diagnose": "2.2.2",
+          "Roche.MolLab.Configuration": "3.4.0.1064437",
+          "Roche.MolLab.FieldBusGateway.Messages.Service": "6.0.0.1279435",
+          "Roche.MolLab.Logging.Extensions": "3.1.0.1071284",
+          "Roche.MolLab.Messaging.Reactive": "6.0.2.1207371",
+          "Roche.MolLab.Messaging.Utils": "3.1.0.1279978",
+          "Roche.MolLab.PersistentMemory.Messages.Service": "5.0.0.1279709",
+          "Roche.MolLab.Reactive": "3.1.2.1278959",
+          "Roche.NewGen.AmplificationPlateDrawer.Messages.Service": "4.0.0.1314194",
+          "Roche.NewGen.AmplificationPlateHandler.Messages.Service": "4.0.0.1279968",
+          "Roche.NewGen.AmplificationPlateMagazine.Messages.Service": "5.0.0.1314274",
+          "Roche.NewGen.AmplificationPlateTransferPosition.Messages.Service": "4.0.0.1314296",
+          "Roche.NewGen.AnalyticModule.Messages": "5.0.0.1279730",
+          "Roche.NewGen.AnalyticUnit.Messages.Service": "7.0.0.1314217",
+          "Roche.NewGen.BulkManagement.Messages.Service": "6.0.0.1314070",
+          "Roche.NewGen.ConsumablePark.Messages.Service": "5.0.0.1314064",
+          "Roche.NewGen.CoolingStation.Messages.Service": "4.0.0.1314366",
+          "Roche.NewGen.DrawerLock.Messages.Service": "5.0.0.1314058",
+          "Roche.NewGen.HeatingStation.Messages.Service": "5.0.0.1314056",
+          "Roche.NewGen.Infrastructure.Messages.Service": "5.0.0.1279691",
+          "Roche.NewGen.InterimReagentStorage.Messages.Service": "4.0.0.1314044",
+          "Roche.NewGen.MainHandler.Messages.Service": "4.0.0.1314041",
+          "Roche.NewGen.MgpCassetteMagazine.Messages.Service": "4.0.0.1314280",
+          "Roche.NewGen.ProcessingModuleControl.Messages.Service": "7.0.0.1314013",
+          "Roche.NewGen.ProcessingPlateMagazine.Messages.Service": "4.0.0.1314010",
+          "Roche.NewGen.ReagentStorageHandler.Messages.Service": "4.0.0.1314006",
+          "Roche.NewGen.SSW.Messages": "4.0.0.1314278",
+          "Roche.NewGen.SafetyInterlock.Messages.Service": "5.0.0.1313987",
+          "Roche.NewGen.SealingStation.Messages.Service": "5.0.0.1313998",
+          "Roche.NewGen.SeparationStation.Messages.Service": "5.0.0.1313981",
+          "Roche.NewGen.SolidWasteStation.Messages.Service": "5.0.0.1314378",
+          "Roche.NewGen.TipRackMagazine.Messages.Service": "4.0.0.1279598",
+          "Roche.NewGen.TransferModuleControl.Messages.Service": "4.0.0.1314281",
+          "Roche.NewGen.RackHandler.Messages.Service": "5.0.0.1314008",
+          "Roche.X800.Instrument.Rfid": "1.5.14.785075",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.8",
+          "System.Reactive": "6.0.1",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "Unity.Abstractions": "5.11.7"
+        },
+        "runtime": {
+          "Roche.NewGen.Ssw.Instrument.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
+        }
+      },
+      "Roche.NewGen.Ssw.Reference/1.0.0.0": {
+        "runtime": {
+          "Roche.NewGen.Ssw.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Roche.NewGen.Ssw.Instrument.Reference/1.0.0.0": {
+        "runtime": {
+          "Roche.NewGen.Ssw.Instrument.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Roche.NewGen.Ssw.LabcoreBootstrapper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AutoMapper/2.2.0-preview.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WOUxJ028sv8biBFI/GOVDByx7pfVIlTkphVkhjRO9AIDDY9HT+Zr1Pq0spb89kmxpZzUDigeWev465YGVebF4Q==",
+      "path": "automapper/2.2.0-preview.8",
+      "hashPath": "automapper.2.2.0-preview.8.nupkg.sha512"
+    },
+    "DryIoc.dll/5.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yhXOG3SOxeWYxBAWskNRDD8fzw5hriEawv4VN4WKaFHOuubiop4kxe2rkWTEyCnTgRVgxVUSQCDBBkZqwPm1iQ==",
+      "path": "dryioc.dll/5.4.3",
+      "hashPath": "dryioc.dll.5.4.3.nupkg.sha512"
+    },
+    "Google.Protobuf/3.22.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tTMtDZPbLxJew8pk7NBdqhLqC4OipfkZdwPuCEUNr2AoDo1siUGcxFqJK0wDewTL8ge5Cjrb16CToMPxBUHMGA==",
+      "path": "google.protobuf/3.22.5",
+      "hashPath": "google.protobuf.3.22.5.nupkg.sha512"
+    },
+    "Grpc.Core.Api/2.52.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SQiPyBczG4vKPmI6Fd+O58GcxxDSFr6nfRAJuBDUNj+PgdokhjWJvZE/La1c09AkL2FVm/jrDloG89nkzmVF7A==",
+      "path": "grpc.core.api/2.52.0",
+      "hashPath": "grpc.core.api.2.52.0.nupkg.sha512"
+    },
+    "Grpc.Net.Client/2.52.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hWVH9g/Nnjz40ni//2S8UIOyEmhueQREoZIkD0zKHEPqLxXcNlbp4eebXIOicZtkwDSx0TFz9NpkbecEDn6rBw==",
+      "path": "grpc.net.client/2.52.0",
+      "hashPath": "grpc.net.client.2.52.0.nupkg.sha512"
+    },
+    "Grpc.Net.Common/2.52.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-di9qzpdx525IxumZdYmu6sG2y/gXJyYeZ1ruFUzB9BJ1nj4kU1/dTAioNCMt1VLRvNVDqh8S8B1oBdKhHJ4xRg==",
+      "path": "grpc.net.common/2.52.0",
+      "hashPath": "grpc.net.common.2.52.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.NetAnalyzers/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DxiTgkCl3CGq1rYmBX2wjY7XGbxiBdL4J+/AJIAFLKy5z70NxhnVRnPghnicXZ8oF6JKVXlW3xwznRbI3ioEKg==",
+      "path": "microsoft.codeanalysis.netanalyzers/8.0.0",
+      "hashPath": "microsoft.codeanalysis.netanalyzers.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0J/9YNXTMWSZP2p2+nvl8p71zpSwokZXZuJW+VjdErkegAnFdO1XlqtA62SJtgVYHdKu3uPxJHcMR/r35HwFBA==",
+      "path": "microsoft.extensions.configuration/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3lE/iLSutpgX1CC0NOW70FJoGARRHbyKmG7dc0klnUZ9Dd9hS6N/POPWhKhMLCEuNN5nXEY5agmlFtH562vqhQ==",
+      "path": "microsoft.extensions.configuration.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7IQhGK+wjyGrNsPBjJcZwWAr+Wf6D4+TwOptUt77bWtgNkiV8tDEbhFS+dDamtQFZ2X7kWG9m71iZQRj2x3zgQ==",
+      "path": "microsoft.extensions.configuration.binder/8.0.2",
+      "hashPath": "microsoft.extensions.configuration.binder.8.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-plvZ0ZIpq+97gdPNNvhwvrEZ92kNml9hd1pe3idMA7svR0PztdzVLkoWLcRFgySYXUJc3kSM3Xw3mNFMo/bxRA==",
+      "path": "microsoft.extensions.configuration.environmentvariables/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.environmentvariables.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-McP+Lz/EKwvtCv48z0YImw+L1gi1gy5rHhNaNIY2CrjloV+XY8gydT8DjMR6zWeL13AFK+DioVpppwAuO1Gi1w==",
+      "path": "microsoft.extensions.configuration.fileextensions/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.fileextensions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C2wqUoh9OmRL1akaCcKSTmRU8z0kckfImG7zLNI8uyi47Lp+zd5LWAD17waPQEqCz3ioWOCrFUo+JJuoeZLOBw==",
+      "path": "microsoft.extensions.configuration.json/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.json.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8S3bsm50ig6JSyrbcJJ8bW2b9QLGouz+G1miK3UTaOWmMtFwNNNzUf4AleyDWUmTrWMLNnFSLEQtxmxgNQnNQ==",
+      "path": "microsoft.extensions.dependencyinjection/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5Ou6varcxLBzQ+Agfm0k0pnH7vrEITYlXMDuE6s7ZHlZHz6/G8XJ3iISZDr5rfwfge6RnXJ1+Wc479mMn52vjA==",
+      "path": "microsoft.extensions.dependencymodel/8.0.1",
+      "hashPath": "microsoft.extensions.dependencymodel.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JHYCQG7HmugNYUhOl368g+NMxYE/N/AiclCYRNlgCY9eVyiBkOHMwK4x60RYMxv9EL3+rmj1mqHvdCiPpC+D4Q==",
+      "path": "microsoft.extensions.diagnostics.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZbaMlhJlpisjuWbvXr4LdAst/1XxH3vZ6A0BsgTphZ2L4PGuxRLz7Jr/S7mkAAnOn78Vu0fKhEgNF5JO3zfjqQ==",
+      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UboiXxpPUpwulHvIAVE36Knq0VSHaAmfrFkegLyBZeaADuKezJ/AIXYAW8F5GBlGk/VaibN2k/Zn1ca8YAfVdA==",
+      "path": "microsoft.extensions.fileproviders.physical/8.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OK+670i7esqlQrPjdIKRbsyMCe9g5kSLpRRQGSr4Q58AOYEe/hCnfLZprh7viNisSUUQZmMrbbuDaIrP+V1ebQ==",
+      "path": "microsoft.extensions.filesystemglobbing/8.0.0",
+      "hashPath": "microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
+      "path": "microsoft.extensions.logging/8.0.0",
+      "hashPath": "microsoft.extensions.logging.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Configuration/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ixXXV0G/12g6MXK65TLngYN9V5hQQRuV+fZi882WIoVJT7h5JvoYoxTEwCgdqwLjSneqh1O+66gM8sMr9z/rsQ==",
+      "path": "microsoft.extensions.logging.configuration/8.0.0",
+      "hashPath": "microsoft.extensions.logging.configuration.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
+      "path": "microsoft.extensions.options/8.0.0",
+      "hashPath": "microsoft.extensions.options.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0f4DMRqEd50zQh+UyJc+/HiBsZ3vhAQALgdkcQEalSH1L2isdC7Yj54M3cyo5e+BeO5fcBQ7Dxly8XiBBcvRgw==",
+      "path": "microsoft.extensions.options.configurationextensions/8.0.0",
+      "hashPath": "microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
+      "path": "microsoft.extensions.primitives/8.0.0",
+      "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "OpenTelemetry/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7scS6BUhwYeSXEDGhCxMSezmvyCoDU5kFQbmfyW9iVvVTcWhec+1KIN33/LOCdBXRkzt2y7+g03mkdAB0XZ9Fw==",
+      "path": "opentelemetry/1.9.0",
+      "hashPath": "opentelemetry.1.9.0.nupkg.sha512"
+    },
+    "OpenTelemetry.Api/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xz8ZvM1Lm0m7BbtGBnw2JlPo++YKyMp08zMK5p0mf+cIi5jeMt2+QsYu9X6YEAbjCxBQYwEak5Z8sY6Ig2WcwQ==",
+      "path": "opentelemetry.api/1.9.0",
+      "hashPath": "opentelemetry.api.1.9.0.nupkg.sha512"
+    },
+    "OpenTelemetry.Api.ProviderBuilderExtensions/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L0D4LBR5JFmwLun5MCWVGapsJLV0ANZ+XXu9NEI3JE/HRKkRuUO+J2MuHD5DBwiU//QMYYM4B22oev1hVLoHDQ==",
+      "path": "opentelemetry.api.providerbuilderextensions/1.9.0",
+      "hashPath": "opentelemetry.api.providerbuilderextensions.1.9.0.nupkg.sha512"
+    },
+    "OpenTelemetry.Exporter.Jaeger/1.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gBDpVDSqyTgsiPdMeHWjwlJnQAcVaF4BH0fnTwZScSjFqSHEuwmvRbOzvn44tGbVttOA1qpqPPid+OyrszMRXQ==",
+      "path": "opentelemetry.exporter.jaeger/1.5.1",
+      "hashPath": "opentelemetry.exporter.jaeger.1.5.1.nupkg.sha512"
+    },
+    "OpenTelemetry.Exporter.OpenTelemetryProtocol/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qzFOP3V2eYIVbug3U4BJzzidHe9JhAJ42WZ/H8pUp/45Ry3MQQg/+e/ZieClJcxKnpbkXi7dUq1rpvuNp+yBYA==",
+      "path": "opentelemetry.exporter.opentelemetryprotocol/1.9.0",
+      "hashPath": "opentelemetry.exporter.opentelemetryprotocol.1.9.0.nupkg.sha512"
+    },
+    "RabbitMQ.Client/6.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "path": "rabbitmq.client/6.8.1",
+      "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
+    },
+    "Roche.Dia.Common/1.5.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5hYsbhCXO1qbOhEvOBtdl7YdGYBNd7yNDh2d3e82gvYiLjZBqgVeqI8HcAV8E8QqPJD+6VIxMvYWtONKV7Edjw==",
+      "path": "roche.dia.common/1.5.4.2",
+      "hashPath": "roche.dia.common.1.5.4.2.nupkg.sha512"
+    },
+    "Roche.Dia.Logging/1.0.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qc9xIK+lG3QyElPpNZmqxd3+aSt9YP1oosVoBDyH0KrUsM5D4Hf1wm/Ev6edsXxo6tj+3paAC5cOAVdCM8BOZw==",
+      "path": "roche.dia.logging/1.0.2.7",
+      "hashPath": "roche.dia.logging.1.0.2.7.nupkg.sha512"
+    },
+    "Roche.Dia.Utils.Guard/1.5.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VEa+MQFzQ+Ru+KaCYHg7epDB7y/FSrU8WUz03l2DDFtnSmaj2xuFrNJJuF9OzR4trdr1bieyb5G63QTQWEnY4w==",
+      "path": "roche.dia.utils.guard/1.5.4.2",
+      "hashPath": "roche.dia.utils.guard.1.5.4.2.nupkg.sha512"
+    },
+    "Roche.LabCore.Bootstrapping/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3muF5GRv11/xGv2g7TLhotS1q08BkScBrJyHuqrTFYnlvUjoljXD4dFCU0Uww81z6BE2bVB9CJBsXQrN2gl8TA==",
+      "path": "roche.labcore.bootstrapping/2.2.0",
+      "hashPath": "roche.labcore.bootstrapping.2.2.0.nupkg.sha512"
+    },
+    "Roche.LabCore.Bootstrapping.Configuration/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gn4M5wg9a736+HbHLK/kb8v6QL9VFa6fjkOKp8Mt0G8709udCPMNO68mwZNhlRlxBzfo7fWfyx08sWURyYBU9Q==",
+      "path": "roche.labcore.bootstrapping.configuration/2.2.0",
+      "hashPath": "roche.labcore.bootstrapping.configuration.2.2.0.nupkg.sha512"
+    },
+    "Roche.LabCore.Bootstrapping.Unity/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A6XY1zkfA+UppDat5Qdu1m+W4f91RRd5VBtQkKbuBcm9t5acXXX37FsvdRBDrZZfyoXs3nAHELIdRKPbKRL+QQ==",
+      "path": "roche.labcore.bootstrapping.unity/2.2.0",
+      "hashPath": "roche.labcore.bootstrapping.unity.2.2.0.nupkg.sha512"
+    },
+    "Roche.LabCore.Diagnose/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qu404dh4fNN/XJ1OotRGuX7P1dyEl8iLc2zJoOPXK9HggOg2+SsPBzhD3ZPBOxpzeIWPw65bjUptEEV1xPGqYA==",
+      "path": "roche.labcore.diagnose/2.2.2",
+      "hashPath": "roche.labcore.diagnose.2.2.2.nupkg.sha512"
+    },
+    "Roche.LabCore.Diagnose.TestManager/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SdPxGLiG+qhjfoP+ArlkTYBdetTQD1XEowR9RjxJvZdTv+uEZ0AuOcFQvci0K/qmDfRZRSP1R3FMmB3aBbCcAA==",
+      "path": "roche.labcore.diagnose.testmanager/2.2.2",
+      "hashPath": "roche.labcore.diagnose.testmanager.2.2.2.nupkg.sha512"
+    },
+    "Roche.LabCore.Tracing.Configuration/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sZsRlJLIlTuLip5WKTlzHMH+oWF513v6Z+fMK5SjKNchUdL3fwBXX0tYV697LDxgsVnxDN8CoP2ppDOY6ObfEw==",
+      "path": "roche.labcore.tracing.configuration/2.2.0",
+      "hashPath": "roche.labcore.tracing.configuration.2.2.0.nupkg.sha512"
+    },
+    "Roche.MolLab.Configuration/3.4.0.1064437": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2kDEir/x9SENbiniKXnUGek8HmWXnYcmROpTRKaSj6dMY7E1TlkBYpEbmjW5YKfNew6O+KFzBp0JmBphd5Fb8w==",
+      "path": "roche.mollab.configuration/3.4.0.1064437",
+      "hashPath": "roche.mollab.configuration.3.4.0.1064437.nupkg.sha512"
+    },
+    "Roche.MolLab.FieldBusGateway.Messages.Service/6.0.0.1279435": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VEVOkX79VghT+OWLGlVT7EYQhh4++osadHWqf0VAc/kCB5onIHpZSU8Hgqup2uKwKxL7OYiXx7OLSYpMnSGedQ==",
+      "path": "roche.mollab.fieldbusgateway.messages.service/6.0.0.1279435",
+      "hashPath": "roche.mollab.fieldbusgateway.messages.service.6.0.0.1279435.nupkg.sha512"
+    },
+    "Roche.MolLab.FileSystem/3.0.1.1117321": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SjzQ5x+YCPGuZE+xWmDQvWfdJoDgbhkJ0JamwCDY+ThuAWUvCTRnzdnIbRSXjknLOCdLfbS8dFLso11ecm0PPg==",
+      "path": "roche.mollab.filesystem/3.0.1.1117321",
+      "hashPath": "roche.mollab.filesystem.3.0.1.1117321.nupkg.sha512"
+    },
+    "Roche.MolLab.InstrumentState.Messages/5.0.0.1316132": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-exi8aRSSvDjVoIeKcg0rFmD0H9tT3tBaOnCQUPKfUl3I/AiCKXfnmZKYosIWxyqcoyLtlLVjFsXCnpiOtCoARg==",
+      "path": "roche.mollab.instrumentstate.messages/5.0.0.1316132",
+      "hashPath": "roche.mollab.instrumentstate.messages.5.0.0.1316132.nupkg.sha512"
+    },
+    "Roche.MolLab.Logging.Extensions/3.1.0.1071284": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kEbY3NtyGfA0u+U+MvS4fQWFsoJI2NuIqhWZRXPJ16HIN7Kl39voF5tcnjSAWerFpBpoAhfGXVneEpEkx9tCbg==",
+      "path": "roche.mollab.logging.extensions/3.1.0.1071284",
+      "hashPath": "roche.mollab.logging.extensions.3.1.0.1071284.nupkg.sha512"
+    },
+    "Roche.MolLab.Logging.Interface/3.0.0.651378": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C2EuuV9nWBxtt6np1uL5MSSq+x72HKdPibQ2/3MaaPi4sVj9Ub2XPbHV7Sx5s3TxhyOZ8aCQpjMOgrO/EDEK9g==",
+      "path": "roche.mollab.logging.interface/3.0.0.651378",
+      "hashPath": "roche.mollab.logging.interface.3.0.0.651378.nupkg.sha512"
+    },
+    "Roche.MolLab.Logging.Messaging/6.0.0.1279476": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HwjzMlYimhMQ9RGzK8/zSvPLl7uLFaFxN38Gi7F123Qzy8J2Yorn9zE8hVu6GnEvvcOx24C+zcIpJF+Chv9frQ==",
+      "path": "roche.mollab.logging.messaging/6.0.0.1279476",
+      "hashPath": "roche.mollab.logging.messaging.6.0.0.1279476.nupkg.sha512"
+    },
+    "Roche.MolLab.Logging.Serilog/3.1.0.1071284": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EgfnMD6b/s5xyUTN0aZdnFIa68FFvMTrWOu0u8sLjnlzW4n+sjHGHoAoXU9RqdteFExWeJA6jNyiAIQktibeEA==",
+      "path": "roche.mollab.logging.serilog/3.1.0.1071284",
+      "hashPath": "roche.mollab.logging.serilog.3.1.0.1071284.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.Common/6.0.2.1207371": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dFKQeaIp93Hl8C/5aHRmbjBy7Ty5h9voXUMg74QCt6SmiG0dREDivhuXRCOmEcNWQPMdk+Jt4UgKoCbaeRGcYA==",
+      "path": "roche.mollab.messaging.common/6.0.2.1207371",
+      "hashPath": "roche.mollab.messaging.common.6.0.2.1207371.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.Interface/5.0.0.1066655": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4n2Kz5HlKL+hNWr1PZNInD7Swc4ESm2a8CyK9BpsFO8EdsutFaAolGaXd2rqutFYiNFAk3UTMZfqj7m8lbsbDA==",
+      "path": "roche.mollab.messaging.interface/5.0.0.1066655",
+      "hashPath": "roche.mollab.messaging.interface.5.0.0.1066655.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.MessageBroker.Interface/4.0.0.1067216": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cAFXrWAs8yiSQxlCmiV2VWbfACCuLMFxMyJvGcUWHhVPnXhUvbZON0Yf3P9/Jh+4EkBt0wwEd00WBgtRLPRT1A==",
+      "path": "roche.mollab.messaging.messagebroker.interface/4.0.0.1067216",
+      "hashPath": "roche.mollab.messaging.messagebroker.interface.4.0.0.1067216.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.RabbitMQ/6.0.2.1207371": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e4XBJmNxbmvXQhDJdeH3xVXif4M1Gqpo26uUIx1ABzBfjFRf3iwUAnh3nohMUfxPfGN7uKr7Tj+gHEVhPjNZDw==",
+      "path": "roche.mollab.messaging.rabbitmq/6.0.2.1207371",
+      "hashPath": "roche.mollab.messaging.rabbitmq.6.0.2.1207371.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.Reactive/6.0.2.1207371": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WVi1kBZZ38/1TIay+CqN0EYs6GbU+zjJ4syTvhTZYOxSy9u9aH6dzHnG2JiNIv+6Lq5Rzw/7J3vVo7KBsZkuOQ==",
+      "path": "roche.mollab.messaging.reactive/6.0.2.1207371",
+      "hashPath": "roche.mollab.messaging.reactive.6.0.2.1207371.nupkg.sha512"
+    },
+    "Roche.MolLab.Messaging.Utils/3.1.0.1279978": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0s7KlVSFGE9WO16kBYBnLc9uCXQJQ1TDtydoFyFb/ZLPjbbONIHuE+MCxWPHTi2VGANKwVkp1OoFjhlF7tHyXA==",
+      "path": "roche.mollab.messaging.utils/3.1.0.1279978",
+      "hashPath": "roche.mollab.messaging.utils.3.1.0.1279978.nupkg.sha512"
+    },
+    "Roche.MolLab.Modularity/3.0.0.1009901": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cDrEc19QkEcfHzSYopR0WKRL7qmyFjCC3RPH+yjYccFdaPBCFMer9Snl5jju9rrvpf6VqpGpajWccuN4BXlBWA==",
+      "path": "roche.mollab.modularity/3.0.0.1009901",
+      "hashPath": "roche.mollab.modularity.3.0.0.1009901.nupkg.sha512"
+    },
+    "Roche.MolLab.PerformanceMonitoring/3.0.0.1100163": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NtImb5HQy2PYoI+KxXCYsFt+G4qgctL25xyEKZQFlsa+rMoblRe9hOwRSyd48OLSOzymstZ2yHl77h+8gz/92Q==",
+      "path": "roche.mollab.performancemonitoring/3.0.0.1100163",
+      "hashPath": "roche.mollab.performancemonitoring.3.0.0.1100163.nupkg.sha512"
+    },
+    "Roche.MolLab.PersistentMemory.Messages.Service/5.0.0.1279709": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w7SkTKFjanKmPKLsJViqqlwL9iacMug2KTL+RqJo9eVh0c8pPsDXADQq8oK7tNt6ufWub6ytmcsa4lWL39gyaw==",
+      "path": "roche.mollab.persistentmemory.messages.service/5.0.0.1279709",
+      "hashPath": "roche.mollab.persistentmemory.messages.service.5.0.0.1279709.nupkg.sha512"
+    },
+    "Roche.MolLab.Reactive/3.1.2.1278959": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vT6jOK6LbP2fYonFSwi+BwCyLkCOkrTRdtuEOqtpCIbwRiKvptBEKEp36aDsmfsHfSrAOOwrqc9loA6d4rH9Eg==",
+      "path": "roche.mollab.reactive/3.1.2.1278959",
+      "hashPath": "roche.mollab.reactive.3.1.2.1278959.nupkg.sha512"
+    },
+    "Roche.MolLab.SharedMessageDefinitions/1.0.0.1270161": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DiMIvbMhcPgfnRXLFeIpMxQlyMMIV1FpDwrJIXMKOeMMhY/bePZ5JxNgBfk2icsFpPtCehl3beIT/8tXqrfY3A==",
+      "path": "roche.mollab.sharedmessagedefinitions/1.0.0.1270161",
+      "hashPath": "roche.mollab.sharedmessagedefinitions.1.0.0.1270161.nupkg.sha512"
+    },
+    "Roche.MolLab.Threading/3.1.0.1015411": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R11772bNHIjhniVouCtFfbXGMT0/FBzUtmdwlYKu8pKiW5yHBgEE1BMbIp4Dj4yQtayiS0JR/YyvbLho+a9SdQ==",
+      "path": "roche.mollab.threading/3.1.0.1015411",
+      "hashPath": "roche.mollab.threading.3.1.0.1015411.nupkg.sha512"
+    },
+    "Roche.MolLab.Time/4.0.0.1013884": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B5krDfdj5J4tgTfLIB8i5vivBeMc7YTsKf+q+FyTLdcEHKV6+rToKp+PoD0ssS6WF/mSF3sqEkwYd+ZOIZXcWg==",
+      "path": "roche.mollab.time/4.0.0.1013884",
+      "hashPath": "roche.mollab.time.4.0.0.1013884.nupkg.sha512"
+    },
+    "Roche.MolLab.Tracing.Extensions/4.1.0.1107469": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FI4Rom77bejBsz/JFvdEqhIa88fAMqd7juR2jneYmxlUxBz/PXRYQCfprTutOAbwmLnDLh0M+xM7Dg0CQLFtwA==",
+      "path": "roche.mollab.tracing.extensions/4.1.0.1107469",
+      "hashPath": "roche.mollab.tracing.extensions.4.1.0.1107469.nupkg.sha512"
+    },
+    "Roche.MolLab.Tracing.Registration/4.1.0.1107469": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gB/5CtPFUINV/5Y8CtAutuak4oTGRzyELs4v/6zrInPxihJCF+5RfKV5yqGz94sIc3aL5IguHQCKfkCWSyi0xA==",
+      "path": "roche.mollab.tracing.registration/4.1.0.1107469",
+      "hashPath": "roche.mollab.tracing.registration.4.1.0.1107469.nupkg.sha512"
+    },
+    "Roche.MolLab.UiApi.Messages/2.0.0.1316134": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hxfnZX9qeHFFJjiPnzU0RCgjnonvJt+6oKhdU0Y5ROx2XdRqsUffKT7NM9/MsQvn9R1OQZ4nkkXH6f+SEPSNyA==",
+      "path": "roche.mollab.uiapi.messages/2.0.0.1316134",
+      "hashPath": "roche.mollab.uiapi.messages.2.0.0.1316134.nupkg.sha512"
+    },
+    "Roche.MolLab.UnitLifecycle/7.2.0.1288648": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kL8QZchfwia6UCn3uWYV2gnb6eROvmcczg6cxExRCNt91tJ8NNC7nv2DJcvoJ2HMJOIg4xr61/5gqdVyYRpkMA==",
+      "path": "roche.mollab.unitlifecycle/7.2.0.1288648",
+      "hashPath": "roche.mollab.unitlifecycle.7.2.0.1288648.nupkg.sha512"
+    },
+    "Roche.NewGen.AmplificationPlateDrawer.Messages.Service/4.0.0.1314194": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YcLMZAD2ItApMtXh1s1luQnH55FWF4YdmtbYeugMNROzKDdID2AFi9Bz1xfHhMIJLJF3dZvmD0+WB8AkGbp8XA==",
+      "path": "roche.newgen.amplificationplatedrawer.messages.service/4.0.0.1314194",
+      "hashPath": "roche.newgen.amplificationplatedrawer.messages.service.4.0.0.1314194.nupkg.sha512"
+    },
+    "Roche.NewGen.AmplificationPlateHandler.Messages.Service/4.0.0.1279968": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1K936ya/Ma9v4a+UoShxg5ewTPT7Mzk5uUIh7XQdy9UQ+nSFssoWZO+mW636LwQoiVZbR+j90bQPNRWey1S3Hw==",
+      "path": "roche.newgen.amplificationplatehandler.messages.service/4.0.0.1279968",
+      "hashPath": "roche.newgen.amplificationplatehandler.messages.service.4.0.0.1279968.nupkg.sha512"
+    },
+    "Roche.NewGen.AmplificationPlateMagazine.Messages.Service/5.0.0.1314274": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FrnH7cLJ7easrFK6bIExyT2qB+TNq48cAfknGbkEnVpRhg3T6rS0GA/KyBxTi2Sw2vpp2mGzowt90c4d2WNnjw==",
+      "path": "roche.newgen.amplificationplatemagazine.messages.service/5.0.0.1314274",
+      "hashPath": "roche.newgen.amplificationplatemagazine.messages.service.5.0.0.1314274.nupkg.sha512"
+    },
+    "Roche.NewGen.AmplificationPlateTransferPosition.Messages.Service/4.0.0.1314296": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PuPzRRDnFCY1esE8baYC9c+QmBPOY1LdTV7vZux7jv2W2LQDzRGlaXgYbfcVp0p8dHLYHduFCJlGQJMUaBcs+Q==",
+      "path": "roche.newgen.amplificationplatetransferposition.messages.service/4.0.0.1314296",
+      "hashPath": "roche.newgen.amplificationplatetransferposition.messages.service.4.0.0.1314296.nupkg.sha512"
+    },
+    "Roche.NewGen.AnalyticModule.Messages/5.0.0.1279730": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R67D5F7rgmv4N/oxnxflGvSznexkhfcjk7sfO8lLDrQcHaoM9R70GGBsw0dTMchcRI/J/uXCvveNsJDhGRKiuQ==",
+      "path": "roche.newgen.analyticmodule.messages/5.0.0.1279730",
+      "hashPath": "roche.newgen.analyticmodule.messages.5.0.0.1279730.nupkg.sha512"
+    },
+    "Roche.NewGen.AnalyticUnit.Messages.Service/7.0.0.1314217": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DhAb1P1N1tWHlChTAhncnVtUGg4MR2+Icc2zOlPxeFeMsXsaj/WEEA1alIG6//wyJuTi9c+Irnl274VpweYUIA==",
+      "path": "roche.newgen.analyticunit.messages.service/7.0.0.1314217",
+      "hashPath": "roche.newgen.analyticunit.messages.service.7.0.0.1314217.nupkg.sha512"
+    },
+    "Roche.NewGen.BulkManagement.Messages.Service/6.0.0.1314070": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LNMpxkO9Yxoo81M5SUUCdGiOghMOEPvlgHBqSCVJI15GrqKGY3LxwZknG2UD/IKrXobwu5WJuzx+tM/2x+5sEA==",
+      "path": "roche.newgen.bulkmanagement.messages.service/6.0.0.1314070",
+      "hashPath": "roche.newgen.bulkmanagement.messages.service.6.0.0.1314070.nupkg.sha512"
+    },
+    "Roche.NewGen.ConsumablePark.Messages.Service/5.0.0.1314064": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s4VyIMDBgg6QAzv5MLoGSkoI2Y11QiirOUtxrgHwDq1eCwDppRbkOBM9UjymHP/icv384jCNp/bgGxrsiLZshQ==",
+      "path": "roche.newgen.consumablepark.messages.service/5.0.0.1314064",
+      "hashPath": "roche.newgen.consumablepark.messages.service.5.0.0.1314064.nupkg.sha512"
+    },
+    "Roche.NewGen.CoolingStation.Messages.Service/4.0.0.1314366": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iWmRjhyvrnfUu88jrWe0NsI1RpCfh81HZbDqXPkHwCpholby8YkhSO9a5wc8cTTCWdED6m2C0w/KMToIKuKJqQ==",
+      "path": "roche.newgen.coolingstation.messages.service/4.0.0.1314366",
+      "hashPath": "roche.newgen.coolingstation.messages.service.4.0.0.1314366.nupkg.sha512"
+    },
+    "Roche.NewGen.DrawerLock.Messages.Service/5.0.0.1314058": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sFgOsMcjJ3N+RB2H9T75SPiYdPSQQpCIBrqom3DTPSyZU9bqYMoEGqrnzv5IflhkO/wbtOM0QV5hGDsY6qi1Ig==",
+      "path": "roche.newgen.drawerlock.messages.service/5.0.0.1314058",
+      "hashPath": "roche.newgen.drawerlock.messages.service.5.0.0.1314058.nupkg.sha512"
+    },
+    "Roche.NewGen.HeatingStation.Messages.Service/5.0.0.1314056": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aMp9FgZHF8+hWGz9PpUM+MKAsvxEzBMBlUzQ0vAMGUI4NloFvLXjqdC73uDohKZsUH3ayKFuBtRzDgE9gUjoQw==",
+      "path": "roche.newgen.heatingstation.messages.service/5.0.0.1314056",
+      "hashPath": "roche.newgen.heatingstation.messages.service.5.0.0.1314056.nupkg.sha512"
+    },
+    "Roche.NewGen.Infrastructure.Messages.Service/5.0.0.1279691": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rMrQ/gUn6hs5KgYmCnbH1ZIAuNcs3zn6ntdyMTXEhhpxtcCSNpqzMIGHv7AI2RaWoVKfa2P1t/8le+cHfEJ+tw==",
+      "path": "roche.newgen.infrastructure.messages.service/5.0.0.1279691",
+      "hashPath": "roche.newgen.infrastructure.messages.service.5.0.0.1279691.nupkg.sha512"
+    },
+    "Roche.NewGen.InstrumentState.Messages/4.0.0.1314049": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7MPBSAGCm584Pkxet/x/EL+nW3hQf3+9PRLN4yF1DsIutQHX0Wd6+IPJkX/sVvhIV2IPMuIZNASXNPAexriHGA==",
+      "path": "roche.newgen.instrumentstate.messages/4.0.0.1314049",
+      "hashPath": "roche.newgen.instrumentstate.messages.4.0.0.1314049.nupkg.sha512"
+    },
+    "Roche.NewGen.InterimReagentStorage.Messages.Service/4.0.0.1314044": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uESkLvesqJh6HNlGlyw8TURESuDwkzBWVo+0QLO6P5l6kntE8IdbIofTYnXOD6zX2Po1PAO3nEybsYkxIrkJvQ==",
+      "path": "roche.newgen.interimreagentstorage.messages.service/4.0.0.1314044",
+      "hashPath": "roche.newgen.interimreagentstorage.messages.service.4.0.0.1314044.nupkg.sha512"
+    },
+    "Roche.NewGen.MainHandler.Messages.Service/4.0.0.1314041": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ixDKMuBBfZrHqfectNXy6XQ1Vq4hVJAJd6ZhC75cENTu3blF7loHaiQQKlabRlTrydeZh6J88a0uxLcFyzGhdw==",
+      "path": "roche.newgen.mainhandler.messages.service/4.0.0.1314041",
+      "hashPath": "roche.newgen.mainhandler.messages.service.4.0.0.1314041.nupkg.sha512"
+    },
+    "Roche.NewGen.MgpCassetteMagazine.Messages.Service/4.0.0.1314280": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CtqTFmnJ8n4Gy8rFsOpsv0QgCyv2kKO7jdBDQRP0sjM6AtA17EU9Jv8R1mRsoFvy51yyitLYNo1U5gv2LBukdA==",
+      "path": "roche.newgen.mgpcassettemagazine.messages.service/4.0.0.1314280",
+      "hashPath": "roche.newgen.mgpcassettemagazine.messages.service.4.0.0.1314280.nupkg.sha512"
+    },
+    "Roche.NewGen.ProcessingModuleControl.Messages.Service/7.0.0.1314013": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0jgF6bBbnTEbAk4/huyfCQ7q6JOnGYKWmAZJbZ28r/avIoUFjBksKE98Xz++TcdYL3svwUuoY+TZ5B3Au/Zlcg==",
+      "path": "roche.newgen.processingmodulecontrol.messages.service/7.0.0.1314013",
+      "hashPath": "roche.newgen.processingmodulecontrol.messages.service.7.0.0.1314013.nupkg.sha512"
+    },
+    "Roche.NewGen.ProcessingPlateMagazine.Messages.Service/4.0.0.1314010": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KlYF9bkPCOa/YqAVgTgxUdx0Y8LgkwWfLoCH9RCtnpxpmKH0ArZKP2k5p10dzm+ugRHi7X/31LjkARWoFnyolA==",
+      "path": "roche.newgen.processingplatemagazine.messages.service/4.0.0.1314010",
+      "hashPath": "roche.newgen.processingplatemagazine.messages.service.4.0.0.1314010.nupkg.sha512"
+    },
+    "Roche.NewGen.RackHandler.Messages.Service/5.0.0.1314008": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2GLzZlCUlN6jIl+wx3osVDVyef1gmbgtAdv3UkaNQjJ8NDUMacnif826A0QTKoiJ/SEGnXsirdxVCuHW+WITzg==",
+      "path": "roche.newgen.rackhandler.messages.service/5.0.0.1314008",
+      "hashPath": "roche.newgen.rackhandler.messages.service.5.0.0.1314008.nupkg.sha512"
+    },
+    "Roche.NewGen.ReagentStorageHandler.Messages.Service/4.0.0.1314006": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qL8QukSuykmIOruHtagKr0qS2AmIQPVYp2nTXWshHp+fTKSTHVVW9Bn59+QNQgHgf8zz+ofCc1t8cTR9ly2F8w==",
+      "path": "roche.newgen.reagentstoragehandler.messages.service/4.0.0.1314006",
+      "hashPath": "roche.newgen.reagentstoragehandler.messages.service.4.0.0.1314006.nupkg.sha512"
+    },
+    "Roche.NewGen.SafetyInterlock.Messages.Service/5.0.0.1313987": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V/KJd85ESY++u/TGrv6YeKugLvVE0loubL8eOMnpCWjGLhm56Jl51ddeV1OjxVbnBVP7xfTnBEgCM8B0kY/o9Q==",
+      "path": "roche.newgen.safetyinterlock.messages.service/5.0.0.1313987",
+      "hashPath": "roche.newgen.safetyinterlock.messages.service.5.0.0.1313987.nupkg.sha512"
+    },
+    "Roche.NewGen.SealingStation.Messages.Service/5.0.0.1313998": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aHliQHgOVw8tQzJd3jkcBuOA0UagPlEprrs9IC5jE29CWeZ9I8jfAmQPqbexlJpHhvsuDBmO/ta631X6NANc+A==",
+      "path": "roche.newgen.sealingstation.messages.service/5.0.0.1313998",
+      "hashPath": "roche.newgen.sealingstation.messages.service.5.0.0.1313998.nupkg.sha512"
+    },
+    "Roche.NewGen.SeparationStation.Messages.Service/5.0.0.1313981": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A1XX5VmgRSnHTBu8LfRyLSeYvFp+ZnwtWCtYMWhX72i/ZbeElHuOzqFNR/Y3pH8kX5Y6AAh/s+GunPHRK1vkXw==",
+      "path": "roche.newgen.separationstation.messages.service/5.0.0.1313981",
+      "hashPath": "roche.newgen.separationstation.messages.service.5.0.0.1313981.nupkg.sha512"
+    },
+    "Roche.NewGen.ServiceCheckExecutionRecord/1.0.0.726936": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5qBoKIWGYct9t50ths4RRyZU8fE7dHfd39FiYZDor63bgF8wEPPKboktROyFq5eL3SwHd7QXhAv8LL+icwcSqg==",
+      "path": "roche.newgen.servicecheckexecutionrecord/1.0.0.726936",
+      "hashPath": "roche.newgen.servicecheckexecutionrecord.1.0.0.726936.nupkg.sha512"
+    },
+    "Roche.NewGen.SolidWasteStation.Messages.Service/5.0.0.1314378": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8SuEjstKnPL/ncRsShQv5xrkHKjiKjhbXMKgaeFTORl+V5bDnra1NiojUD/tBNJIzI/n6896+wx6w7AzcWCTQ==",
+      "path": "roche.newgen.solidwastestation.messages.service/5.0.0.1314378",
+      "hashPath": "roche.newgen.solidwastestation.messages.service.5.0.0.1314378.nupkg.sha512"
+    },
+    "Roche.NewGen.SSW.Messages/4.0.0.1314278": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9TcvEQIGjx3UHfZYFkk3NuZyBD7lfwjnLu03z/hAn1k7r5DaAyjfJIMON42/0P1EedPvmAwrcaO846ZoNBBgpw==",
+      "path": "roche.newgen.ssw.messages/4.0.0.1314278",
+      "hashPath": "roche.newgen.ssw.messages.4.0.0.1314278.nupkg.sha512"
+    },
+    "Roche.NewGen.TipRackMagazine.Messages.Service/4.0.0.1279598": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9IEkFsirpbh23U6WAB2baQ3clnXv+aB/vqTd2LvnFOryCUXHDc1YoQl/fmM4uSw6UsbZdMxb7aMt2LHGLbwmWw==",
+      "path": "roche.newgen.tiprackmagazine.messages.service/4.0.0.1279598",
+      "hashPath": "roche.newgen.tiprackmagazine.messages.service.4.0.0.1279598.nupkg.sha512"
+    },
+    "Roche.NewGen.TransferModuleControl.Messages.Service/4.0.0.1314281": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7mQHFvh5K5bmjoGiTPSGU92/psVGAcbTZN855i5rkN4ZtG+C0w9T8avY4l9wxqSEyqI/TJ6a5QnQpqXopIZtLw==",
+      "path": "roche.newgen.transfermodulecontrol.messages.service/4.0.0.1314281",
+      "hashPath": "roche.newgen.transfermodulecontrol.messages.service.4.0.0.1314281.nupkg.sha512"
+    },
+    "Roche.X800.Instrument.Rfid/1.5.14.785075": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u88drqPJ1NtTFYhlxwMoWV7uS4HlD2zno+TeW85KiTV2lOqsQS7S8wtTUo0UjCOdOqvVkJlE5m+e0quL4Um39Q==",
+      "path": "roche.x800.instrument.rfid/1.5.14.785075",
+      "hashPath": "roche.x800.instrument.rfid.1.5.14.785075.nupkg.sha512"
+    },
+    "Serilog/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2jDkUrSh5EofOp7Lx5Zgy0EB+7hXjjxE2ktTb1WVQmU00lDACR2TdROGKU0K1pDTBSJBN1PqgYpgOZF8mL7NJw==",
+      "path": "serilog/4.0.0",
+      "hashPath": "serilog.4.0.0.nupkg.sha512"
+    },
+    "Serilog.Enrichers.Thread/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C7BK25a1rhUyr+Tp+1BYcVlBJq7M2VCHlIgnwoIUVJcicM9jYcvQK18+OeHiXw7uLPSjqWxJIp1EfaZ/RGmEwA==",
+      "path": "serilog.enrichers.thread/4.0.0",
+      "hashPath": "serilog.enrichers.thread.4.0.0.nupkg.sha512"
+    },
+    "Serilog.Settings.Configuration/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hn8HCAmupon7N0to20EwGeNJ+L3iRzjGzAHIl8+8CCFlEkVedHvS6NMYMb0VPNMsDgDwOj4cPBPV6Fc2hb0/7w==",
+      "path": "serilog.settings.configuration/8.0.2",
+      "hashPath": "serilog.settings.configuration.8.0.2.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQGWqVMClCP2yEyTXPIinSr5c+CBGUvBybPxjAGcf7ctDhadFhrQw03Mv8rJ07/wR5PDfFjewf2LimvXCDzpbA==",
+      "path": "serilog.sinks.console/6.0.0",
+      "hashPath": "serilog.sinks.console.6.0.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.File/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lxjg89Y8gJMmFxVkbZ+qDgjl+T4yC5F7WSLTvA+5q0R04tfKVLRL/EHpYoJ/MEQd2EeCKDuylBIVnAYMotmh2A==",
+      "path": "serilog.sinks.file/6.0.0",
+      "hashPath": "serilog.sinks.file.6.0.0.nupkg.sha512"
+    },
+    "SkiaSharp/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+      "path": "skiasharp/2.88.8",
+      "hashPath": "skiasharp.2.88.8.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/DoKtdyvRgCC5GR/SH+ps3ZiOjmf0BYpAyrhWQELFOO1hdcqddrDVJjDNCOJ41vV+NlS5b3kcDoZZ7jLhFjyXg==",
+      "path": "skiasharp.nativeassets.linux.nodependencies/2.88.8",
+      "hashPath": "skiasharp.nativeassets.linux.nodependencies.2.88.8.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
+      "path": "skiasharp.nativeassets.macos/2.88.8",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
+      "path": "skiasharp.nativeassets.win32/2.88.8",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512"
+    },
+    "StyleCop.Analyzers/1.2.0-beta.556": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-llRPgmA1fhC0I0QyFLEcjvtM2239QzKr/tcnbsjArLMJxJlu0AA5G7Fft0OI30pHF3MW63Gf4aSSsjc5m82J1Q==",
+      "path": "stylecop.analyzers/1.2.0-beta.556",
+      "hashPath": "stylecop.analyzers.1.2.0-beta.556.nupkg.sha512"
+    },
+    "StyleCop.Analyzers.Unstable/1.2.0.556": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ==",
+      "path": "stylecop.analyzers.unstable/1.2.0.556",
+      "hashPath": "stylecop.analyzers.unstable.1.2.0.556.nupkg.sha512"
+    },
+    "System.Collections.Immutable/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AurL6Y5BA1WotzlEvVaIDpqzpIPvYnnldxru8oXJU2yFxFUy3+pNXjXd1ymO+RA0rq0+590Q8gaz2l3Sr7fmqg==",
+      "path": "system.collections.immutable/8.0.0",
+      "hashPath": "system.collections.immutable.8.0.0.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aM7cbfEfVNlEEOj3DsZP+2g9NRwbkyiAv2isQEzw7pnkDg9ekCU2m1cdJLM02Uq691OaCS91tooaxcEn8d0q5w==",
+      "path": "system.configuration.configurationmanager/5.0.0",
+      "hashPath": "system.configuration.configurationmanager.5.0.0.nupkg.sha512"
+    },
+    "System.Diagnostics.DiagnosticSource/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c9xLpVz6PL9lp/djOWtk5KPDZq3cSYpmXoJQY524EOtuFl5z9ZtsotpsyrDW40U1DRnQSYvcPKEUV0X//u6gkQ==",
+      "path": "system.diagnostics.diagnosticsource/8.0.0",
+      "hashPath": "system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SztFwAnpfKC8+sEKXAFxCBWhKQaEd97EiOL7oZJZP56zbqnLpmxACWA8aGseaUExciuEAUuR9dY8f7HkTRAdnw==",
+      "path": "system.drawing.common/5.0.0",
+      "hashPath": "system.drawing.common.5.0.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
+    "System.Reactive/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rHaWtKDwCi9qJ3ObKo8LHPMuuwv33YbmQi7TcUK1C264V3MFnOr5Im7QgCTdLniztP3GJyeiSg5x8NqYJFqRmg==",
+      "path": "system.reactive/6.0.1",
+      "hashPath": "system.reactive.6.0.1.nupkg.sha512"
+    },
+    "System.Reactive.Linq/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XC+ZxI74RhP10po29httLW82gjtVQYkLaGM36FIpjd0+lroTerWViadxSXjcWiFPslsdvqNTPrIT+oIA3i4Rfw==",
+      "path": "system.reactive.linq/6.0.1",
+      "hashPath": "system.reactive.linq.6.0.1.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
+      "path": "system.security.accesscontrol/5.0.0",
+      "hashPath": "system.security.accesscontrol.5.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HGxMSAFAPLNoxBvSfW08vHde0F9uh7BjASwu6JF9JnXuEPhCY3YUqURn0+bQV/4UWeaqymmrHWV+Aw9riQCtCA==",
+      "path": "system.security.cryptography.protecteddata/5.0.0",
+      "hashPath": "system.security.cryptography.protecteddata.5.0.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uE8juAhEkp7KDBCdjDIE3H9R1HJuEHqeqX8nLX9gmYKWwsqk3T5qZlPx8qle5DPKimC/Fy3AFTdV7HamgCh9qQ==",
+      "path": "system.security.permissions/5.0.0",
+      "hashPath": "system.security.permissions.5.0.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
+      "path": "system.security.principal.windows/5.0.0",
+      "hashPath": "system.security.principal.windows.5.0.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "path": "system.text.encodings.web/8.0.0",
+      "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
+      "path": "system.text.json/8.0.4",
+      "hashPath": "system.text.json.8.0.4.nupkg.sha512"
+    },
+    "System.Threading.Channels/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+      "path": "system.threading.channels/7.0.0",
+      "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    },
+    "System.Windows.Extensions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c1ho9WU9ZxMZawML+ssPKZfdnrg/OjR3pe0m9v8230z3acqphwvPJqzAkH54xRYm5ntZHGG1EPP3sux9H3qSPg==",
+      "path": "system.windows.extensions/5.0.0",
+      "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
+    },
+    "Unity/5.11.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2bGJwQ4FSKQiuDd2riU8Ul2792v60DroVmsJLpuwlTCQq54P3sAwKlqLjQkPP/LRxL6m6CgxNOh485XEEW7ajg==",
+      "path": "unity/5.11.9",
+      "hashPath": "unity.5.11.9.nupkg.sha512"
+    },
+    "Unity.Abstractions/5.11.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3ztwGEpe35UJlCUswXoi4uVDp8bJsgPsOmO71nZnNXh51II7t54AbezDbS6sR2z4QnMOpNGDaXbsEkyg6dIfOQ==",
+      "path": "unity.abstractions/5.11.7",
+      "hashPath": "unity.abstractions.5.11.7.nupkg.sha512"
+    },
+    "Roche.NewGen.Ssw/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Roche.NewGen.Ssw.Instrument/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Roche.NewGen.Ssw.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Roche.NewGen.Ssw.Instrument.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/.
+/usr
+/usr/bin
+/usr/bin/maim
+/usr/share
+/usr/share/doc
+/usr/share/doc/maim
+/usr/share/doc/maim/README.md.gz
+/usr/share/doc/maim/changelog.Debian.amd64.gz
+/usr/share/doc/maim/changelog.Debian.gz
+/usr/share/doc/maim/copyright
+/usr/share/man
+/usr/share/man/man1
+/usr/share/man/man1/maim.1.gz

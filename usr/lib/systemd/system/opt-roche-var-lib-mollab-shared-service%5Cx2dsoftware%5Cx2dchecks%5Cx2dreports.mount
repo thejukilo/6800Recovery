@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/service-software-checks-reports to /opt/roche/var/lib/mollab/shared/service-software-checks-reports
+
+[Mount]
+What=/mnt/data/shared/service-software-checks-reports
+Where=/opt/roche/var/lib/mollab/shared/service-software-checks-reports
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

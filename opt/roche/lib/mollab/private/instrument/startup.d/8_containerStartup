@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+echo "Before docker-compose up"
+
+cd /opt/roche/lib/mollab/docker
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+
+# Wait briefly for the XDG_RUNTIME_DIR to appear
+while [ ! -d $XDG_RUNTIME_DIR ]; do sleep .1; done
+echo "$XDG_RUNTIME_DIR is ready"
+
+# Recommended to clean leftover files in writable layers with transient store podman for a clean startup
+podman system prune --external
+
+# Start "infrastructure" first. This is purely a performance optimization, as it shortens the time all other containers need to wait until the infrastructure is ready.
+# This does NOT guarantee in ANY WAY that the containers are up and running before other containers are started.
+docker-compose --profile infrastructure up -d
+
+# Build the "no-start" containers in between, so that that the infrastructure get a head start, as starting all containers usually is very CPU intensive.
+docker-compose --profile no-start up --no-start
+
+docker-compose --profile "${MolLab_InstrumentType:?}" up -d
+
+echo "After docker-compose up"

@@ -1,0 +1,6 @@
+20ce87d3ed27071526352ec06d406bb5  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/MAM_Memory.xml
+8559ed3ee69c366669b6f7246af30190  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_2AC/MAM_Memory.xml
+fad11a82819ae875e85edd54400e38d4  opt/roche/etc/mollab/shared/fieldbus-definition-files/6800_1AC/ech.xml
+ba3ee3625ed27ad847fb98f77affbe23  opt/roche/etc/mollab/shared/fieldbus-definition-files/6800_2AC/ech.xml
+96286f88f119dc6357eb6e22f4374b9a  usr/share/doc/c6800-hw-config/changelog.gz
+b606081c0bc375f5f0fad1e1dce80c0e  usr/share/doc/c6800-hw-config/copyright

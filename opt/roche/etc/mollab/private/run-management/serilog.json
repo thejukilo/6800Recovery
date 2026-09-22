@@ -1,0 +1,20 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "shared-data/logs/RunManagement_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][RM][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 314572800
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+    "ExcludedNamePrefixes": [ "Roche.NewGen.RunManagement.", "Roche.CX800.", "Roche.MolLab." ]
+  }
+}

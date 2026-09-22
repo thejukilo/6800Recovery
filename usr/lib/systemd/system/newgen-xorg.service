@@ -1,0 +1,14 @@
+[Unit]
+Description=Xorg
+After=mollab-instrument-service.service
+
+[Service]
+User=roche
+ExecStart=/opt/roche/home/startup_newgen-xorg.sh
+ExecStop=sudo /usr/bin/pkill Xorg
+KillMode=none
+Restart=on-success
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target

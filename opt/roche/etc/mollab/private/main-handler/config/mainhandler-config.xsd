@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by ﻿PC User (Roche Diagnostics AG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="lib_00000207_HandlingUtilities_HUCommonConfig_0.02.00.xsd"/>
+	<xs:element name="MainHandlerConfig">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AxesConfig" type="AxesConfig" minOccurs="0"/>
+				<xs:element name="ZHeightMappingList" type="ZHeightMappingListConfig" minOccurs="0"/>
+				<xs:element name="ZHeightRefPointMappingList" type="ZHeightRefPointMappingListConfig" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="AxisConfig">
+		<xs:sequence>
+			<xs:element name="SettlingTime" type="xs:double" minOccurs="0"/>
+			<xs:element name="DisableAxisInStandby" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="DeviceName" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AxesConfig">
+		<xs:sequence>
+			<xs:element name="AxisConfig" type="AxisConfig" maxOccurs="4"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZHeightMappingListConfig">
+		<xs:sequence>
+			<xs:element name="ZHeightMappingConfig" type="ZHeightMappingConfig" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZHeightMappingConfig">
+		<xs:sequence>
+			<xs:element name="LogicalPosition" type="LogicalPositionConfig" maxOccurs="unbounded"/>
+			<xs:element name="PickPlaceConfig" type="PickPlaceConfig"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PickPlaceConfig">
+		<xs:sequence>
+			<xs:element name="ZHeightEmpty" type="xs:double" minOccurs="0"/>
+			<xs:element name="ZHeightLoaded" type="xs:double" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZHeightRefPointMappingListConfig">
+		<xs:sequence>
+			<xs:element name="ZHeightRefPointMappingConfig" type="ZHeightRefPointMappingConfig" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZHeightRefPointMappingConfig">
+		<xs:sequence>
+			<xs:element name="RefPointId" type="xs:unsignedInt" maxOccurs="unbounded"/>
+			<xs:element name="ZHeight" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

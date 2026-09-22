@@ -1,0 +1,141 @@
+{
+  "queues": [
+    {
+      "name": "roche.newgen.separationstation.a2.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PersistentMemoryStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.MamConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.InstrumentState.InstrumentStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.SafetyInterlockStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SafetyInterlock.HardwareMovementsAllowed",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.CloseSeparationStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.MoveMagnets",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.OpenSeparationStationDownholder",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.ReinitializeSeparationStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.ForcedReinitializeSeparationStation",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.ReadSeparationStationPresenceSensorState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.DisableSeparationStationActuators",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.PrepareSeparationStationShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.newgen.separationstation.a2.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.c68_8800.SeparationStation.A2.ReadSeparationStationSensorStates",
+      "arguments": {}
+    }
+  ]
+}

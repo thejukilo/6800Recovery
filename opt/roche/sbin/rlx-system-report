@@ -1,0 +1,349 @@
+#!/bin/bash
+
+DEST_DIR=${1:-/opt/roche/var/rlx/system-reports}
+OUTPUT_FILE=${2:-system-report.zip}
+LOG_DAYS=$3                      # the default for /opt/roche/sbin/journalcsv is -1, it will only take effect if value > 0
+FILE_LIST=${4:-0}                # if RLX_SYSTEM_REPORT is set to 1, then 1 to include list of files in the system report, 0 to exclude
+RLX_SYSTEM_REPORT=${5:-0}        # set to 1 include system report, 0 to exclude
+APP_REPORT=${6:-0}               # set to 1 include in the system report, 0 to exclude
+APP_REPORT_AMOUNT=$7             # set to 1 as default, if APP_REPORT is included: amount of application log files to include in the report
+RLX_INTEGRITY_CHECK=${8:-0}      # if RLX_SYSTEM_REPORT is set to 1, then 1 to include in the system report, 0 to exclude
+TMP_DIR=${9:-/opt/roche/var/tmp} # temporary directory to collect reports (deleted once the script exits)
+
+log_error() {
+    echo "ERROR: $*" >&2
+}
+
+# Set default values for parameters
+if [ -z "$APP_REPORT_AMOUNT" ] || [ "$APP_REPORT_AMOUNT" -eq 0 ]; then
+    APP_REPORT_AMOUNT=1
+fi
+
+if [ "$FILE_LIST" -eq 0 ] && [ "$RLX_SYSTEM_REPORT" -eq 0 ] && [ "$APP_REPORT" -eq 0 ] && [ "$RLX_INTEGRITY_CHECK" -eq 0 ]; then
+    log_error "Did not select any reports to include"
+    exit 132 # ERR_NO_SELECTION
+fi
+
+WORK_DIR_BASE=$(mktemp -d "${TMP_DIR}/system-report-XXXXXX")
+
+if ! mkdir -p "$WORK_DIR_BASE"; then
+  log_error "creating working directory $WORK_DIR_BASE"
+  exit 133 # ERR_NO_REPORTS
+fi
+
+WORK_DIR=$WORK_DIR_BASE
+
+# The destination directory must be owned by the roche user, so the Maintenance Web is able to
+# remove the files inside.
+chown roche:roche "$DEST_DIR"
+
+cleanup() {
+    if [ -v WORK_DIR_BASE ]; then
+        rm -rf "$WORK_DIR_BASE" 2> /dev/null || true
+    fi
+}
+
+create_workdir() {
+    if [ ! -d "$1" ]; then
+        if ! mkdir -p "$1"; then
+            log_error "could not create working directory $1. Check the system logs for more information"
+            exit 131 # ERR_WORKDIR
+        fi
+    fi
+}
+
+trap cleanup EXIT
+
+collect_system_reports() {
+    if [ "$APP_REPORT" -eq 1 ]; then
+        WORK_DIR=$WORK_DIR_BASE/SystemReport
+    fi
+
+    create_workdir "$WORK_DIR"
+
+    if ! (hostname > "$WORK_DIR"/hostname); then
+        logger -p warning "WARNING: could not create hostname report"
+    fi
+
+
+    cp /opt/roche/var/log/rlx-addon.log "$WORK_DIR"/ || true
+    cp /opt/roche/var/log/rlx-addon-history.log "$WORK_DIR"/ || true
+
+    cp /opt/roche/var/log/rlx-software-history.log "$WORK_DIR"/ || true
+    cp /sys/devices/virtual/dmi/id/product_name "$WORK_DIR"/hosttype || true
+
+    if [ "$FILE_LIST" -eq 1 ]; then
+        ls -lR / > "$WORK_DIR"/ls-lR.txt 2> /dev/null || true
+    fi
+
+    if ! (du -d 5 --exclude=/sys --exclude=/dev --exclude=/proc / > "$WORK_DIR"/disk_usage); then
+        logger -p warning "WARNING: could not create disk usage report"
+    fi
+
+    if ! (df -k > "$WORK_DIR"/disk); then
+        logger -p warning "WARNING: could not create disk report"
+    fi
+
+    systemctl list-sockets --all > "$WORK_DIR"/systemctl_sockets || true
+    systemctl list-units --all > "$WORK_DIR"/systemctl_units || true
+    systemctl list-timers --all > "$WORK_DIR"/systemctl_timers || true
+
+    cp /rlx-disk-resize_*.log "$WORK_DIR"/ 2> /dev/null || true
+
+    if [ -f /usr/bin/efibootmgr ]; then
+        if ! (efibootmgr > "$WORK_DIR"/efibootmgr); then
+            logger -p warning "WARNING: could not create efibootmgr report"
+        fi
+    fi
+
+    if ! (uptime > "$WORK_DIR"/uptime); then
+        logger -p warning "WARNING: could not create uptime report"
+    fi
+
+    if ! (dmesg > "$WORK_DIR"/dmesg); then
+        logger -p warning "WARNING: could not create dmesg report"
+    fi
+
+    if ! (free -m > "$WORK_DIR"/memory); then
+        logger -p warning "WARNING: could not create memory report"
+    fi
+
+    if ! (lsblk -ObJa > "$WORK_DIR"/lsblk); then
+        logger -p warning "WARNING: could not create lsblk report"
+    fi
+
+    NIC=eth0
+    if [ -f /etc/default/rlx-osal ]; then
+        if grep -q RLX_MAIN_NETIF /etc/default/rlx-osal; then
+            NIC=$(grep RLX_MAIN_NETIF /etc/default/rlx-osal | cut -d= -f2)
+        fi
+    fi
+    if [ -f /opt/roche/etc/rlx/networkmap ]; then
+        NIC=$(grep ^main /opt/roche/etc/rlx/networkmap | awk '{print $NF}')
+    fi
+    if ! (ip addr show "$NIC" > "$WORK_DIR"/network); then
+        logger -p warning "WARNING: could not create network report"
+    fi
+
+    if ! (timedatectl > "$WORK_DIR"/timedate); then
+        logger -p warning "WARNING: could not create timedate report"
+    fi
+
+    if ! (networkctl status -a > "$WORK_DIR"/netconfig); then
+        logger -p warning "WARNING: could not create network status report"
+    fi
+
+    if ! (dpkg -l > "$WORK_DIR"/packages); then
+        logger -p warning "WARNING: could not create list of packages report"
+    fi
+
+    if ! (cat /etc/machine-id > "$WORK_DIR"/machine-id); then
+        logger -p warning "WARNING: could not create machine-id report"
+    fi
+
+    if [ -f /usr/bin/lspci ]; then
+        if ! (lspci -k > "$WORK_DIR"/lspci); then
+            logger -p warning "WARNING: could not create lspci report"
+        fi
+    fi
+
+    if [ -f /usr/bin/lsusb ]; then
+        if ! (lsusb > "$WORK_DIR"/lsusb); then
+            logger -p warning "WARNING: could not create lsusb report"
+        fi
+    fi
+
+    if [ -f /usr/sbin/lsmod ]; then
+        if ! (lsmod > "$WORK_DIR"/lsmod); then
+            logger -p warning "WARNING: could not create lsmod report"
+        fi
+    fi
+
+    if [ -f /usr/sbin/nft ]; then
+        if ! (nft list table filter > "$WORK_DIR"/nft-list-tables); then
+            logger -p warning "WARNING: could not create nft table list report"
+        fi
+    fi
+
+    export KUBECONFIG=/opt/roche/home/.kube/config
+
+    if [ -f /usr/bin/docker ]; then
+        if ! (docker stats -a --no-stream > "$WORK_DIR"/docker-stats); then
+            logger -p warning "WARNING: could not create docker-stats report"
+        fi
+        if ! (docker images -a > "$WORK_DIR"/docker-images); then
+            logger -p warning "WARNING: could not create docker-images report"
+        fi
+        # Docker logs were introduced to replace not functional kubernetes logs, let's use them only with kubernetes
+        if [ -f $KUBECONFIG ]; then
+            mkdir -p "$WORK_DIR"/docker-logs
+            for dc in $(docker ps -a --format '{{.Names}}'); do docker logs "$dc" >&"${WORK_DIR}/docker-logs/$dc"; done
+        fi
+    fi
+
+    if [ -f /usr/bin/kubectl ] && [ -f $KUBECONFIG ]; then
+        mkdir -p "$WORK_DIR"/k8s
+        if ! (kubectl get pods -A -o wide > "$WORK_DIR"/k8s/k8s-pods); then
+            logger -p warning "WARNING: could not create k8s pods report"
+        else
+            # describe pods
+            pods_info=$(kubectl get pods -A | tail -n+2 | awk '{print $1":"$2}')
+            for info in $pods_info; do
+                ns=$(echo "$info" | cut -d: -f1)
+                pod=$(echo "$info" | cut -d: -f2)
+                kubectl describe pod "$pod" -n "$ns" > "$WORK_DIR"/k8s/k8s-describe-"${pod}"_"${ns}"
+            done
+        fi
+
+        if ! (kubectl get services -A -o wide > "$WORK_DIR"/k8s/k8s-services); then
+            logger -p warning "WARNING: could not create k8s services report"
+        fi
+
+        if ! (kubectl get deployments -A -o wide > "$WORK_DIR"/k8s/k8s-deployments); then
+            logger -p warning "WARNING: could not create k8s deployments report"
+        fi
+
+        if ! (kubectl get nodes -A -o wide > "$WORK_DIR"/k8s/k8s-nodes); then
+            logger -p warning "WARNING: could not create k8s nodes report"
+        fi
+
+        if ! (kubectl get secrets -A -o wide > "$WORK_DIR"/k8s/k8s-secrets); then
+            logger -p warning "WARNING: could not create k8s secrets report"
+        fi
+
+        if ! (kubectl get events --sort-by='.metadata.creationTimestamp' -A -o wide > "$WORK_DIR"/k8s/k8s-events); then
+            logger -p warning "WARNING: could not create k8s events report"
+        fi
+
+        if ! (kubectl get namespaces -A -o wide > "$WORK_DIR"/k8s/k8s-namespaces); then
+            logger -p warning "WARNING: could not create k8s namespaces report"
+        fi
+    fi
+
+    if ! (
+        /opt/roche/sbin/journalcsv -d "$LOG_DAYS" > "$WORK_DIR"/system-logs.csv
+    ); then
+        logger -p warning "WARNING: could not create system logs report"
+    fi
+
+    if [ "$RLX_INTEGRITY_CHECK" -eq 1 ]; then
+        if [ -f /opt/roche/sbin/rlx-integrity-check ]; then
+            /opt/roche/sbin/rlx-integrity-check > "$WORK_DIR"/integrity-check-report
+        fi
+    fi
+
+    if [ -x /sbin/lvs ]; then
+        if ! (vgs > "$WORK_DIR"/lvminfo); then
+            logger -p warning "WARNING: could not create lvminfo report"
+        fi
+
+        if ! (lvs >> "$WORK_DIR"/lvminfo); then
+            logger -p warning "WARNING: could not append to lvminfo report"
+        fi
+    fi
+
+    if [ -f /bin/btrfs ]; then
+        if ! (btrfs qgroup show -r / > "$WORK_DIR"/btrfsinfo); then
+            logger -p warning "WARNING: could not create btrfsinfo report"
+        fi
+    fi
+}
+
+copy_system_reports() {
+    if [ -d "$WORK_DIR" ]; then
+        cp -f /var/log/installer*.log "$WORK_DIR"/ 2> /dev/null || true
+        cp -f /opt/roche/var/log/rlx-upgrade-*.log "$WORK_DIR"/ 2> /dev/null || true
+        cp -f /opt/roche/var/log/software-upgrade-*.log "$WORK_DIR"/ 2> /dev/null || true
+        cp -f /opt/roche/var/log/rlx-k8s-*.log "$WORK_DIR"/ 2> /dev/null || true
+        cp -f /opt/roche/etc/projectinfo "$WORK_DIR"/
+    else
+      log_error "copying system reports. Working directory $WORK_DIR doesn't exist"
+    fi
+}
+
+collect_application_reports() {
+    if [ -e "/opt/roche/etc/rlx/rlx-application-logs.conf" ]; then
+        . /opt/roche/etc/rlx/rlx-application-logs.conf
+        # shellcheck disable=SC2153
+        APP_LOG_PATH=$APPLOGPATH
+        # shellcheck disable=SC2153
+        APP_LOG_PATTERN=$APPLOGPATTERN
+    else
+        APP_LOG_PATH=$DEST_DIR
+        APP_LOG_PATTERN="PR_*.zip"
+    fi
+
+    APP_LOGS=$(
+        find "$APP_LOG_PATH" \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -name "$APP_LOG_PATTERN" \
+            -printf "%T@;%p\n" \
+            | sort -n \
+            | awk -F ';' '{print $2}' \
+            | tail -n "$APP_REPORT_AMOUNT"
+    )
+}
+
+copy_application_reports() {
+    if [ "$RLX_SYSTEM_REPORT" -eq 1 ]; then
+        WORK_DIR="${WORK_DIR_BASE}/ApplicationReport"
+    fi
+
+    create_workdir "$WORK_DIR"
+
+    if [ -n "$APP_LOGS" ]; then
+        (
+            IFS=$'\n'
+            for file in $APP_LOGS; do
+                cp "$file" "${WORK_DIR}/"
+            done
+        )
+    else
+        logger -p warning "WARNING: No application logs. $APP_LOG_PATH is empty"
+    fi
+}
+
+if [ "$RLX_SYSTEM_REPORT" -eq 1 ]; then
+    if ! collect_system_reports; then
+      log_error "collecting system report"
+    fi
+    if ! copy_system_reports; then
+      log_error "copying system report"
+    fi
+fi
+
+if [ "$APP_REPORT" -eq 1 ]; then
+    if ! collect_application_reports; then
+      log_error "collecting application report"
+    fi
+    if ! copy_application_reports; then
+      log_error "copying application report"
+    fi
+fi
+
+compress_report() {
+    WORK_DIR=$WORK_DIR_BASE
+
+    # FIXME: why ? so we dont see root as owner after downloading und unzipping?
+    chown roche:roche -R "$WORK_DIR"
+
+    # just in case so zip will not try to update file
+    if ! rm -f "$DEST_DIR"/"$OUTPUT_FILE"; then
+      log_error "deleting output file ${DEST_DIR}/${OUTPUT_FILE}. Check the system logs for more information"
+      exit 134 # ERR_ZIP
+    fi
+
+    if ! find "$WORK_DIR" -mindepth 1 | grep -q .; then
+        log_error "no reports were generated. Check the system logs for more information"
+        exit 133 # ERR_NO_REPORTS
+    else
+        (cd "$WORK_DIR" &&
+            zip -r -q "${DEST_DIR}/${OUTPUT_FILE}" ./*)
+    fi
+}
+
+if ! compress_report; then
+    log_error "compressing system report"
+    exit 134 # ERR_ZIP
+fi

@@ -1,0 +1,4 @@
+chrony 	 /etc/chrony/chrony.conf
+chrony 	 /etc/chrony/chrony.keys
+grub-efi-amd64 	 /etc/default/grub
+openssh-server 	 /etc/ssh/sshd_config

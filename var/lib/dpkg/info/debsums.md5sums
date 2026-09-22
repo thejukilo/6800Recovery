@@ -1,0 +1,16 @@
+243bb2d2ecf8f9381384bd12b4c56bdf  usr/bin/debsums
+e94d7179b008960df541ac9a13143514  usr/bin/rdebsums
+66fbdb198670ed6aa2d07b638631d636  usr/share/bash-completion/completions/debsums
+9629f475f80847ab4d4f1af11410072f  usr/share/doc/debsums/NEWS.Debian.gz
+0f9de4a3631418790b57c27a57e987cf  usr/share/doc/debsums/README
+714649036f2e18757a0de9af71fae80a  usr/share/doc/debsums/changelog.gz
+770d751553e6559e9eaefd2e11ccf7e9  usr/share/doc/debsums/copyright
+08ee7daec878279ffd34d073c2f93098  usr/share/lintian/overrides/debsums
+3e6816d2a6bcfaa9dffb021030a9250b  usr/share/man/de/man1/debsums.1.gz
+716df0cc4c9f79cf3e19ae4ec9e31811  usr/share/man/es/man1/debsums.1.gz
+eb48a9b3ca8ad2db13d2d6d66d813938  usr/share/man/fr/man1/debsums.1.gz
+b142cdd43e089ace4b78ede1e6d2a04a  usr/share/man/man1/debsums.1.gz
+6c762efb36a5d62162ca8757fc9d41c1  usr/share/man/man1/rdebsums.1.gz
+d8940530fd4d7a23d7a1317838a89d1b  usr/share/man/pt/man1/debsums.1.gz
+78d73baedcee8800acb89e36ce7b37ce  usr/share/man/ru/man1/debsums.1.gz
+2b2a90b49fe0a5f73cc46c7fdb6139ad  usr/share/man/sv/man1/debsums.1.gz

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="9C0F7EA3EE7389383045223B48B3DC7F2453872C0799" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ConsumableParkRfidOrderCheckCommon" ID="ConsumableParkRfidOrderCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Initializing the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRfidAntenna1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check RFID Antenna 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Prepare a control cassette with one mini rack at position 1.</base:Paragraph>
+              <base:Paragraph>Place the control cassette in the control cassette park position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to check the RFID antenna 1</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ConsumableParkRfidOrderCheck_RfidAntenna1.jpg" Hash="045295863871E5398E619798B43DB0B9C7077ECC" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadRfid1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reading RFID Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading RFID data...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRfidAntenna2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check RFID Antenna 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Insert a second mini rack at position 2.</base:Paragraph>
+              <base:Paragraph>Place the control cassette in the control cassette park position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to check the RFID antenna 2</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ConsumableParkRfidOrderCheck_RfidAntenna2.jpg" Hash="DFB5D4AC7F4EF1EFB5E61B497448808AC7F08DF7" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadRfid2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reading RFID Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading RFID data...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRfidAntenna3" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check RFID Antenna 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Insert a third mini rack at position 3.</base:Paragraph>
+              <base:Paragraph>Place the control cassette in the control cassette park position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to check the RFID antenna 3</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ConsumableParkRfidOrderCheck_RfidAntenna3.jpg" Hash="C8752D8298CA0B38276C675192E1A8FE2F3F56C5" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadRfid3">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reading RFID Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading RFID data...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CheckRfidAntenna4" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Check RFID Antenna 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Insert the last mini rack at position 4.</base:Paragraph>
+              <base:Paragraph>Place the control cassette in the control cassette park position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to check the RFID antenna 4</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ConsumableParkRfidOrderCheck_RfidAntenna4.jpg" Hash="2528D9ECFFDD96B03F95FAD9DD43909C2E8A8CA9" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ReadRfid4">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reading RFID Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading RFID data...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveControlCassette" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Control Cassette</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Remove the control cassette and press 'Finish'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

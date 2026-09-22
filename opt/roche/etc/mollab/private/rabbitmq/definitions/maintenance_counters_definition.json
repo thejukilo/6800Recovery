@@ -1,0 +1,101 @@
+{
+    "queues": [
+      {
+        "name": "roche.newgen.maintenance.counters.q",
+        "vhost": "/",
+        "durable": false,
+        "auto_delete": false,
+        "arguments": {}
+      }
+    ],
+    "bindings": [
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.MolLab.InstrumentState.Ping",
+        "arguments": {}
+      },
+      {
+        "source": "roche.requests.dx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.Maintenance.ResetCounterValue",
+        "arguments": {}
+      },
+      {
+        "source": "roche.requests.dx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.Maintenance.ExtendCounterGracePeriod",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.Maintenance.CounterDueStateChanged",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.AnalyticModule.PcrExecutionStarted",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModule.A.SamplePreparationExecutionStarted",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModule.B.SamplePreparationExecutionStarted",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFinished",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.TransferModule.SampleTransferExecutionFailed",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModule.A.CarrierTransferStarted",
+        "arguments": {}
+      },
+      {
+        "source": "roche.events.tx",
+        "vhost": "/",
+        "destination": "roche.newgen.maintenance.counters.q",
+        "destination_type": "queue",
+        "routing_key": "Roche.c68_8800.ProcessingModule.B.CarrierTransferStarted",
+        "arguments": {}
+      }
+    ]
+  }

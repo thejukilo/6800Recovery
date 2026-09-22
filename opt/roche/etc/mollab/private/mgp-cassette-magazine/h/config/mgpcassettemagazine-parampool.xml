@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+	<ParameterPoolEntry ID="1" Name="Position0" Value="0.09675" Type="double" Array="false" Description="Maschinell Load"/>
+	<ParameterPoolEntry ID="2" Name="Position1" Value="0.0742" Type="double" Array="false" Description="Normal Position with 1 Cas"/>
+	<ParameterPoolEntry ID="3" Name="Position2" Value="0.0122" Type="double" Array="false"  Description="Normal Position with 2 Cas"/>
+	<ParameterPoolEntry ID="4" Name="Position3" Value="0.0122" Type="double" Array="false" Description="Not Used for MGP"/>
+	<ParameterPoolEntry ID="5" Name="Position4" Value="0.0122" Type="double"  Array="false" Description="Not Used for MGP"/>
+	<ParameterPoolEntry ID="6" Name="Unload" Value="0.02255" Type="double" Array="false" Description=""/>
+	<ParameterPoolEntry ID="7" Name="UserUnload" Value="0.028" Type="double" Array="false" Description=""/>
+	<ParameterPoolEntry ID="8" Name="Load" Value="-0.03845" Type="double" Array="false" Description=""/>
+	<ParameterPoolEntry ID="9" Name="UserLoad" Value="0.012" Type="double" Array="false" Description=""/>
+	<ParameterPoolEntry ID="10" Name="CheckConsumableOffset" Value="0.005" Type="double" Array="false" Description=""/>
+  <ParameterPoolEntry ID="11" Name="ReadLabelOffset" Value="0.000" Type="double" Array="false" Description="Relativ offset to move up before start reading" />
+  <ParameterPoolEntry ID="12" Name="ReadLabelMoveDistance" Value="0.00" Type="double" Array="false" Description="Move Distance to ensure that whole Label was read." />
+  <ParameterPoolEntry ID="13" Name="MechanicalPosCorrection" Value="0.0004" Type="double" Array="false" Description="Mechanical Tolerance correction Value" />
+  <ParameterPoolEntry ID="14" Name="ReferencePointToNormalPositionOffset" Value="-0.002" Type="double" Array="false" Description="Offset of LBInput Interrupt Position to desired normal position" />
+  <ParameterPoolEntry ID="15" Name="ConsumableHeightTolerance" Value="0.007" Type="double" Array="false" Description="Desired Tolerance within the consumable height has to be" />
+	<ParameterPoolEntry ID="16" Name="WaitTimeLoad" Value="15" Type="uint16" Array="false" Description=""/>
+	<ParameterPoolEntry ID="17" Name="WaitTimeUserLoad" Value="15" Type="uint16" Array="false" Description=""/>
+	<ParameterPoolEntry ID="18" Name="WaitTimeBeforeGetSignal" Value="2" Type="uint16" Array="false" Description=""/>
+	<ParameterPoolEntry ID="19" Name="Capacity" Value="2" Type="uint8" Array="false" Description=""/>
+  <ParameterPoolEntry ID="20" Name="ConsumableType" Value="1" Type="int32" Array="false" Description=""/>
+  <ParameterPoolEntry ID="21" Name="UsedRFIDAntenna" Value="1" Type="uint8" Array="false" Description="define the antenna id to use" />
+  <ParameterPoolEntry ID="22" Name="IgnoreCheckCassettePresent" Value="true" Type="bool" Array="false" Description="Defines if the Cassette Present Check on StopStackerProc shall be ignored." />
+</ModuleConfiguration>

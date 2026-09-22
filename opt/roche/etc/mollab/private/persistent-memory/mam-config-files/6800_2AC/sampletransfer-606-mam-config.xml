@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+	<csmConfig>
+		<csm name="SampleTransfer" seid="195" moduleId="606">
+		   <parPool type="double" structure="array" noElements="4" id="3"
+		            name="CalibAirPipettorToolOffsetX"
+		            defaultValue="0.0,NaN,NaN,NaN"
+		            minValue="-0.1"
+		            maxValue="0.1">
+		      <persistDef memoryId="3960" periodInSec="-1"/>
+		   </parPool>
+       <parPool type="double" structure="array" noElements="4" id="4"
+                name="CalibAirPipettorToolOffsetY"
+                defaultValue="0.0,NaN,NaN,NaN"
+                minValue="-0.1"
+                maxValue="0.1">
+          <persistDef memoryId="3960" periodInSec="-1"/>
+       </parPool>
+		   <parPool type="enum" structure="array" noElements="4" id="15"
+		            name="RunSettingsTipStatePipettor"
+		            defaultValue="0"
+		            minValue="0"
+		            maxValue="1">
+		      <persistDef memoryId="3960" periodInSec="-1"/>
+		   </parPool>
+		   <parPool type="uint16" structure="scalar" id="26" name="OpCountInitX1" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFF">
+		      <persistDef memoryId="2006" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint16" structure="scalar" id="27" name="OpCountInitX2" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFF">
+		      <persistDef memoryId="2008" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint16" structure="scalar" id="28" name="OpCountInitX3" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFF">
+		      <persistDef memoryId="2010" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint16" structure="scalar" id="29" name="OpCountInitX4" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFF">
+		      <persistDef memoryId="2012" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint16" structure="scalar" id="30" name="OpCountInitY" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFF">
+		      <persistDef memoryId="2013" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint32" structure="scalar" id="31" name="OpCountMoveX1" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2006" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint32" structure="scalar" id="32" name="OpCountMoveX2" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2008" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint32" structure="scalar" id="33" name="OpCountMoveX3" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2010" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint32" structure="scalar" id="34" name="OpCountMoveX4" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2012" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		   <parPool type="uint32" structure="scalar" id="35" name="OpCountMoveY" defaultValue="0"
+		            minValue="0"
+		            maxValue="0xFFFFFFFF">
+		      <persistDef memoryId="2013" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+		   </parPool>
+		</csm>
+	</csmConfig>
+</dia:mam>

@@ -1,0 +1,4 @@
+ct state { established, related } accept
+ct state invalid drop
+oifname "lo" accept
+meta l4proto icmp icmp type { destination-unreachable, time-exceeded, parameter-problem, router-advertisement, router-solicitation } accept

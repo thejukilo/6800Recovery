@@ -1,0 +1,6 @@
+84caef3ee9dbed9ec80abcc1136121a1  usr/bin/slirp4netns
+1d89795060000fcfd227d6c87d7b1315  usr/share/doc/slirp4netns/README.Debian
+7bcccf1ba1b1b9661a3074bcfc7338eb  usr/share/doc/slirp4netns/README.md.gz
+c211d78fc7ef469bcc86822e7997eb4a  usr/share/doc/slirp4netns/changelog.Debian.gz
+57dee47d2333db79a7c994d01194f460  usr/share/doc/slirp4netns/copyright
+0fcdaf5ffa94c29a0ce2f95f65c6d031  usr/share/man/man1/slirp4netns.1.gz

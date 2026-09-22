@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/system-reports to /opt/roche/var/lib/mollab/shared/system-reports
+
+[Mount]
+What=/mnt/data/shared/system-reports
+Where=/opt/roche/var/lib/mollab/shared/system-reports
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

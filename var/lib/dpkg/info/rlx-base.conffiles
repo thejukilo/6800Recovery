@@ -1,0 +1,3 @@
+/etc/apt/apt.conf.d/77recommends
+/etc/apt/apt.conf.d/77translations
+/etc/inputrc.rlx

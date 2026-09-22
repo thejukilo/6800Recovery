@@ -1,0 +1,77 @@
+{
+  "queues": [
+    {
+      "name": "roche.mollab.persistentmemory.q",
+      "vhost": "/",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentInitializationStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.InstrumentShutDownStarted",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.InstrumentState.Ping",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.FieldbusGatewayStateChanged",
+      "arguments": {}
+    },
+    {
+      "source": "roche.events.tx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.FieldBusGateway.FieldbusConfigured",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.GetCurrentState",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.PreparePersistentMemoryShutdown",
+      "arguments": {}
+    },
+    {
+      "source": "roche.requests.dx",
+      "vhost": "/",
+      "destination": "roche.mollab.persistentmemory.q",
+      "destination_type": "queue",
+      "routing_key": "Roche.MolLab.PersistentMemory.CreateReadableMemoryDump",
+      "arguments": {}
+    }
+  ]
+}

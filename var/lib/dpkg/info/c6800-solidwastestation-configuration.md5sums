@@ -1,0 +1,6 @@
+882ff5bd33d362781d5352142b7c8581  opt/roche/etc/mollab/private/persistent-memory/mam-config-files/6800_1AC/newgen-solidwastestation-303-mam-config.xml
+a5fcb75e4e0678488f0b67e988fe009b  opt/roche/etc/mollab/private/rabbitmq/definitions/solidwastestation_a_definition.json
+552d9b2084db43d82c1c7e4fd630dd9d  opt/roche/etc/mollab/private/solid-waste-station/a/config/consumablewaste-motionconfig.xml
+6ce63a2ae36048073a576a2b9ae50bca  opt/roche/etc/mollab/private/solid-waste-station/a/config/consumablewaste-parampool.xml
+86994bc2328790432865bd486a69dd33  opt/roche/etc/mollab/private/solid-waste-station/a/startup/ecc.xml
+26fdb17728b3c86c182264e15878b8f6  opt/roche/etc/mollab/private/solid-waste-station/a/startup/ecs_A.xml

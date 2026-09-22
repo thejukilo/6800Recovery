@@ -1,0 +1,51 @@
+#!/bin/bash
+
+timeout=300 # timeout in seconds
+allow_file=/var/lib/rlx-remote-access/sh/allow
+
+BOLD=$(tput bold 2>/dev/null || echo "")
+RED=$(tput setaf 1 2>/dev/null || echo "")
+GREEN=$(tput setaf 2 2>/dev/null || echo "")
+RESET=$(tput sgr0 2>/dev/null || echo "")
+
+function request_access() {
+  /usr/bin/python3 - <<EOF
+from rlx_osal import OSAL
+o = OSAL()
+o.RequestShellAccess()
+EOF
+
+  SECONDS=0
+  echo -e "\n"
+
+  while [ $SECONDS -le $timeout ]; do
+    # countdown timer
+    time_left=$(date -d@$((timeout - SECONDS)) -u +%M:%S)
+    echo -ne "\033[2A" # move cursor up 2 lines
+    echo -e "Waiting for authorization (${GREEN}${BOLD}${time_left}${RESET})\n"
+
+    allowed=$(cat $allow_file 2>/dev/null)
+
+    if [ $SECONDS -eq $timeout ]; then
+      echo -e "${RED}Timeout has been reached${RESET}\n"
+
+    elif [ "$allowed" = 1 ]; then
+      status=0
+      break
+
+    fi
+
+    sleep 1
+  done
+}
+
+if [ -f $allow_file ] && [ "$(<$allow_file)" = 0 ]; then
+  echo -e "Shell access is currently ${RED}${BOLD}disabled${RESET}\n"
+  request_access || exit 15
+elif [ ! -f $allow_file ]; then
+  exit 2
+else
+  exit 0
+fi
+
+[ -n "$status" ] && exit "$status" || exit 1

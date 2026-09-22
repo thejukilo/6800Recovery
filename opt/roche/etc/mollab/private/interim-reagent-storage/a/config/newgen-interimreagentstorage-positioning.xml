@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by ﻿COE User (Roche Diagnostics AG) -->
+<PositionSpecification className="NewGenInterimReagentStorage" description="InterimReagentStorage" instrument="NewGen_InterimReagentStorage_Pilot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/GenericPositioning_PositionSchema.xsd">
+	<DocumentInfo state="Draft" version="001">
+		<Creation>
+			<Creator role="Author" department="FCA Handling" name="VTR"/>
+		</Creation>
+		<Approval>
+			<Approver role="Co-Author" department="FCA Handling" name="AFR"/>
+		</Approval>
+		<Changes>
+			<Change date="" reason="" name="" version=""/>
+		</Changes>
+	</DocumentInfo>
+	<ModuleList>
+		<Module id="201" areUserDefinedContainersLoadable="false" name="Default">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.01575"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Top"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Default">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="2" name="MoveDown">
+					<relShift relShiftX="0.01375" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="3" name="RFID">
+					<relShift relShiftX="0.01375" relShiftY="0" relShiftZ="-0.01685"/>
+				</SubPosition>
+				<SubPosition id="4" name="Scale">
+					<relShift relShiftX="0.01375" relShiftY="0" relShiftZ="-0.2565"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="202" areUserDefinedContainersLoadable="false" name="StoragePosition_A3">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="-0.05075" relShiftY="-0.1336" relShiftZ="-0.2635"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="203" areUserDefinedContainersLoadable="false" name="StoragePosition_B3">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0.03925" relShiftY="-0.1336" relShiftZ="-0.2635"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="204" areUserDefinedContainersLoadable="false" name="StoragePosition_A2">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="-0.05075" relShiftY="-0.1336" relShiftZ="-0.3375"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="205" areUserDefinedContainersLoadable="false" name="StoragePosition_B2">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0.03925" relShiftY="-0.1336" relShiftZ="-0.3375"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="206" areUserDefinedContainersLoadable="false" name="StoragePosition_A1">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="-0.05075" relShiftY="-0.1336" relShiftZ="-0.4115"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+		<Module id="207" areUserDefinedContainersLoadable="false" name="StoragePosition_B1">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0.03925" relShiftY="-0.1336" relShiftZ="-0.4115"/>
+			</LocalPointOfOrigin>
+			<ReferencePointList>
+				<ModuleReferencePoint ReferencePointName="RefPoint_InterimReagentStorage_Storage"/>
+			</ReferencePointList>
+			<SubPositionList>
+				<SubPosition id="1" name="Place">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.007"/>
+				</SubPosition>
+				<SubPosition id="2" name="Pick">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="ReagentCassette" LoadableObjectID="4003"/>
+			</LoadableObjectList>
+		</Module>
+	</ModuleList>
+	<CarrierList>
+		<Carrier id="4003" areUserDefinedContainersLoadable="false" name="ReagentCassette">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<SubPositionList>
+				<SubPosition id="1" name="Column1">
+					<relShift relShiftX="-0.0315" relShiftY="-0.0422" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="2" name="Column2">
+					<relShift relShiftX="-0.0315" relShiftY="-0.0228" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="3" name="Column3">
+					<relShift relShiftX="-0.0315" relShiftY="-0.0033" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="4" name="Column4">
+					<relShift relShiftX="-0.0315" relShiftY="0.0228" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="5" name="Column5">
+					<relShift relShiftX="-0.0315" relShiftY="0.0488" relShiftZ="0"/>
+				</SubPosition>
+				<SubPosition id="6" name="Gripping">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0.055"/>
+				</SubPosition>
+				<SubPosition id="7" name="InterimReagentStorageGripping">
+					<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+				</SubPosition>
+			</SubPositionList>
+			<LoadableObjectList>
+				<LoadableObject LoadableObjectName="MMX1_96Ticks" LoadableObjectID="7004">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="MMX2_96Ticks" LoadableObjectID="7005">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="EB_96Ticks" LoadableObjectID="7006">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="IC_QS_96Ticks" LoadableObjectID="7007">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="Pase_96Ticks" LoadableObjectID="7008">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="MMX1_960Ticks" LoadableObjectID="7024">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="MMX2_960Ticks" LoadableObjectID="7025">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="EB_960Ticks" LoadableObjectID="7026">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="IC_QS_960Ticks" LoadableObjectID="7027">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="Pase_960Ticks" LoadableObjectID="7028">
+					<SubPositionRangeList>
+						<SubPositionRange min="1" max="5"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="ReagentCassette_Pick" LoadableObjectID="7017">
+					<SubPositionRangeList>
+						<SubPositionRange min="6" max="6"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+				<LoadableObject LoadableObjectName="InterimReagentStorage_Pick" LoadableObjectID="7201">
+					<SubPositionRangeList>
+						<SubPositionRange min="7" max="7"/>
+					</SubPositionRangeList>
+				</LoadableObject>
+			</LoadableObjectList>
+		</Carrier>
+	</CarrierList>
+	<ContainerList>
+		<Container DiveInVolume="0" maxVolume="0" id="7004" IsTransportable="false" name="MMX1_96Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0205"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0205"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7005" IsTransportable="false" name="MMX2_96Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0205"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0205"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7006" IsTransportable="false" name="EB_96Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7007" IsTransportable="false" name="IC_QS_96Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7008" IsTransportable="false" name="Pase_96Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7024" IsTransportable="false" name="MMX1_960Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7025" IsTransportable="false" name="MMX2_960Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0438"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7026" IsTransportable="false" name="EB_960Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7027" IsTransportable="false" name="IC_QS_960Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7028" IsTransportable="false" name="Pase_960Ticks" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0048"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0.0608"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7017" IsTransportable="true" name="ReagentCassette_Pick" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+			<AuxiliaryObjectList>
+				<AuxiliaryObject ParameterValue="0.0057" ParameterID="25"/>
+			</AuxiliaryObjectList>
+		</Container>
+		<Container DiveInVolume="0" maxVolume="0" id="7201" IsTransportable="true" name="InterimReagentStorage_Pick" minVolume="0">
+			<LocalPointOfOrigin>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LocalPointOfOrigin>
+			<TopShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</TopShift>
+			<BottomShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</BottomShift>
+			<AttachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</AttachShift>
+			<DetachShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</DetachShift>
+			<OpenShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</OpenShift>
+			<CloseShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</CloseShift>
+			<VelocityTransitionShift>
+				<relShift relShiftZ="0" relShiftY="0" relShiftX="0"/>
+			</VelocityTransitionShift>
+			<LdActivationShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</LdActivationShift>
+			<TravelShift>
+				<relShift relShiftX="0" relShiftY="0" relShiftZ="0"/>
+			</TravelShift>
+			<VolumeToZLevel>
+				<VolumeZLevelValuePair Z-Level="0" Volume="0"/>
+				<VolumeZLevelValuePair Z-Level="100" Volume="100"/>
+			</VolumeToZLevel>
+		</Container>
+	</ContainerList>
+	<ReferencePointList>
+		<ReferencePoint id="2201" name="RefPoint_InterimReagentStorage_Top" ReferencePointShape="Rectangular">
+			<relShift relShiftX="0" relShiftY="0" relShiftZ="-0.01575"/>
+			<DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0015">
+				<relShift relShiftX="-0.00975" relShiftY="0" relShiftZ="0"/>
+			</DetectionPoint>
+			<DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.0015">
+				<relShift relShiftX="0.0235" relShiftY="0" relShiftZ="0"/>
+			</DetectionPoint>
+			<DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0015">
+				<relShift relShiftX="0.01375" relShiftY="-0.003" relShiftZ="0"/><!-- Pre-Pilot Pilot hat den Wert -0.003 -->
+			</DetectionPoint>
+			<DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.0015">
+				<relShift relShiftX="0.01375" relShiftY="0.001" relShiftZ="0"/>
+			</DetectionPoint>
+			<!--Z teachen machen wir nicht da der Z-Motor durch die sehr grosse Untersetzung eine zu grosse Kraft entwickelt-->
+		</ReferencePoint>
+		<ReferencePoint id="2202" name="RefPoint_InterimReagentStorage_Storage" ReferencePointShape="Rectangular">
+			<relShift relShiftX="-0.05075" relShiftY="-0.0017" relShiftZ="-0.2635"/>
+			<DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.002">
+				<relShift relShiftX="0.002" relShiftY="-0.0635" relShiftZ="0"/>
+			</DetectionPoint>
+			<DetectionPoint DetectionDirection="x-direction" DetectionMovementDistanceAbs="-0.002">
+				<relShift relShiftX="-0.002" relShiftY="-0.0635" relShiftZ="0"/>
+			</DetectionPoint>
+			<DetectionPoint DetectionDirection="y-direction" DetectionMovementDistanceAbs="-0.003">
+				<relShift relShiftX="0.0455" relShiftY="-0.0017" relShiftZ="0"/>
+			</DetectionPoint>
+		</ReferencePoint>
+	</ReferencePointList>
+</PositionSpecification>

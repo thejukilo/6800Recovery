@@ -1,0 +1,13 @@
+/.
+/opt
+/opt/roche
+/opt/roche/lib
+/opt/roche/lib/mollab
+/opt/roche/lib/mollab/docker
+/opt/roche/lib/mollab/docker/docker-compose.override.yml
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/newgen-startup-vm
+/usr/share/doc/newgen-startup-vm/changelog.gz
+/usr/share/doc/newgen-startup-vm/copyright

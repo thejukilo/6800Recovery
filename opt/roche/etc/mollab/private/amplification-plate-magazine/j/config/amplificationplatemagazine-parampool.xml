@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="1" Name="Position0" Value="0.0520" Type="double" Array="false" Description="Postion0 in m, Maschinell Load" />
+  <ParameterPoolEntry ID="2" Name="Position1" Value="0.0505" Type="double" Array="false" Description="Postion1 in m, Normal Position with 1 Plate" />
+  <ParameterPoolEntry ID="3" Name="Position2" Value="0.0345" Type="double" Array="false" Description="Postion2 in m, Normal Position with 2 Plate" />
+  <ParameterPoolEntry ID="4" Name="Position3" Value="0.0185" Type="double" Array="false" Description="Postion3 in m, Normal Position with 3 Plate" />
+  <ParameterPoolEntry ID="5" Name="Position4" Value="0.0025" Type="double" Array="false" Description="Postion4 in m, Normal Position with 4 Plate" />
+  <ParameterPoolEntry ID="6" Name="Unload" Value="0.0075" Type="double" Array="false" Description="Relative Move for Maschinell Unload" />
+  <ParameterPoolEntry ID="7" Name="UserUnload" Value="-0.007" Type="double" Array="false" Description="Abs. Position under the Solenoid to handle with it" />
+  <ParameterPoolEntry ID="8" Name="Load" Value="-0.0085" Type="double" Array="false" Description=" Abs. Move Actually Position + Load" />
+  <ParameterPoolEntry ID="9" Name="UserLoad" Value="-0.007" Type="double" Array="false" Description="Abs. Position under the Solenoid to handle with it" />
+  <ParameterPoolEntry ID="10" Name="CheckConsumableOffset" Value="0.004" Type="double" Array="false" Description="" />
+  <ParameterPoolEntry ID="11" Name="ReadLabelOffset" Value="0.008" Type="double" Array="false" Description="Relativ offset to move up before start reading" />
+  <ParameterPoolEntry ID="12" Name="ReadLabelMoveDistance" Value="0.014" Type="double" Array="false" Description="Move Distance to ensure that whole Label was read." />
+  <ParameterPoolEntry ID="13" Name="MechanicalPosCorrection" Value="0.0000" Type="double" Array="false" Description="Mechanical Tolerance correction Value" />
+  <ParameterPoolEntry ID="14" Name="ReferencePointToNormalPositionOffset" Value="0.0045" Type="double" Array="false" Description="Offset of LBInput Interrupt Position to desired normal position" />
+  <ParameterPoolEntry ID="15" Name="ConsumableHeightTolerance" Value="0.0035" Type="double" Array="false" Description="Desired Tolerance within the consumable height has to be" />
+  <ParameterPoolEntry ID="16" Name="WaitTimeLoad" Value="5" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="17" Name="WaitTimeUserLoad" Value="15" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="18" Name="WaitTimeBeforeGetSignal" Value="2" Type="uint16" Array="false" Description="" />
+  <ParameterPoolEntry ID="19" Name="Capacity" Value="4" Type="uint8" Array="false" Description="" />
+  <ParameterPoolEntry ID="20" Name="ConsumableType" Value="4" Type="int32" Array="false" Description="" />
+  <ParameterPoolEntry ID="22" Name="IgnoreCheckCassettePresent" Value="true" Type="bool" Array="false" Description="Defines if the Cassette Present Check on StopStackerProc shall be ignored." />
+</ModuleConfiguration>

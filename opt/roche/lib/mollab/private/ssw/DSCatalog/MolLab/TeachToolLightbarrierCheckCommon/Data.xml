@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="08ACD6990FC1AE055C7A5F44BDE297847249B9A99B89" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="TeachToolLightbarrierCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ResultList>
+        <data:Result Type="Boolean" Name="rLightbarrierPresenceBefore">
+          <data:Description>
+            <base:Title>Lightbarrier Detects Teach Tool Before Moving It Away</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The lightbarrier can successfully detect the presence of the teach tool.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="true" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rLightbarrierAbsence">
+          <data:Description>
+            <base:Title>Lightbarrier Detects No Object After Moving It Out</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The lightbarrier can successfully detect no object is present on the position.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="true" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rLightbarrierPresenceAfter">
+          <data:Description>
+            <base:Title>Lightbarrier Detects Teach Tool After Moving It Back</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The lightbarrier can successfully detect the presence of the teach tool.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="true" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Type="Boolean" Name="rLightbarrierCheckSucessful">
+          <data:Description>
+            <base:Title>Light Barrier Check Sucessful</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Describes light barrier check sucessful or failure status.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Value="true" Operator="EQ" />
+          </data:Validation>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

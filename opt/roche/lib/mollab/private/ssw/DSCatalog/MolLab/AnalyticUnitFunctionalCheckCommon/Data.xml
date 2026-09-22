@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="EF34591F4FF3D1A48DD7D9190B201DCBCF2A2B49E3FC" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="AnalyticUnitFunctionalCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pAnalyticUnit" Type="String">
+          <data:Description>
+            <base:Title>Analytic Unit</base:Title>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Type="String" Name="ADProcessDefinitionFile">
+          <data:Description>
+            <base:Title>The Filename from the ADProcessDefinition XML file.</base:Title>
+          </data:Description>
+          <data:Value>ADImprecisionRun.xml</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rImprecisionChannel1" Type="Double">
+          <data:Description>
+            <base:Title>Imprecision Channel 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the imprecision of the Channel 1 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="0.5" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInhomogeneityChannel1" Type="Double">
+          <data:Description>
+            <base:Title>Inhomogeneity Channel 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the Inhomogeneity of the Channel 1 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="70" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMinimumExcitationPowerChannel1" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Excitation Power Channel 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum measured excitation power of channel 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rStoredMinimumExcitationPowerChannel1" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Eeprom Led Intensity Channel 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum LED intensity from the EEPROM of channel 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rValidExcitationPowerChannel1" Type="Boolean">
+          <data:Description>
+            <base:Title>Valid Excitation Power Channel 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The measured excitation power is greater than or equal to the stored excitation power for channel 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rImprecisionChannel2" Type="Double">
+          <data:Description>
+            <base:Title>Imprecision Channel 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the imprecision of channel 2 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="0.5" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInhomogeneityChannel2" Type="Double">
+          <data:Description>
+            <base:Title>Inhomogeneity Channel 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the Inhomogeneity of channel 2 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="70" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMinimumExcitationPowerChannel2" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Excitation Power Channel 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum excitation power of channel 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rStoredMinimumExcitationPowerChannel2" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Eeprom Led Intensity Channel 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum LED intensity from the EEPROM of channel 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rValidExcitationPowerChannel2" Type="Boolean">
+          <data:Description>
+            <base:Title>Valid Excitation Power Channel 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The measured excitation power is greater than or equal to the stored excitation power for channel 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rImprecisionChannel3" Type="Double">
+          <data:Description>
+            <base:Title>Imprecision Channel 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the imprecision of channel 3 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="0.5" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInhomogeneityChannel3" Type="Double">
+          <data:Description>
+            <base:Title>Inhomogeneity Channel 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the Inhomogeneity of channel 3 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="70" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMinimumExcitationPowerChannel3" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Excitation Power Channel 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum excitation power of channel 3.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rStoredMinimumExcitationPowerChannel3" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Eeprom Led Intensity Channel 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum LED intensity from the EEPROM of channel 3.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rValidExcitationPowerChannel3" Type="Boolean">
+          <data:Description>
+            <base:Title>Valid Excitation Power Channel 3</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The measured excitation power is greater than or equal to the stored excitation power for channel 3.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rImprecisionChannel4" Type="Double">
+          <data:Description>
+            <base:Title>Imprecision Channel 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the imprecision of channel 4 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="0.5" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInhomogeneityChannel4" Type="Double">
+          <data:Description>
+            <base:Title>Inhomogeneity Channel 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the Inhomogeneity of channel 4 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="70" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMinimumExcitationPowerChannel4" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Excitation Power Channel 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum excitation power of channel 4.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rStoredMinimumExcitationPowerChannel4" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Eeprom Led Intensity Channel 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum LED intensity from the EEPROM of channel 4.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rValidExcitationPowerChannel4" Type="Boolean">
+          <data:Description>
+            <base:Title>Valid Excitation Power Channel 4</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The measured excitation power is greater than or equal to the stored excitation power for channel 4.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rImprecisionChannel5" Type="Double">
+          <data:Description>
+            <base:Title>Imprecision Channel 5</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the imprecision of channel 5 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="0.5" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rInhomogeneityChannel5" Type="Double">
+          <data:Description>
+            <base:Title>Inhomogeneity Channel 5</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the Inhomogeneity of channel 5 in percent.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="LE" Value="70" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rMinimumExcitationPowerChannel5" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Excitation Power Channel 5</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum excitation power of channel 5.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rStoredMinimumExcitationPowerChannel5" Type="Double">
+          <data:Description>
+            <base:Title>Minimum Eeprom Led Intensity Channel 5</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Shows the minimum LED intensity from the EEPROM of channel 5.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rValidExcitationPowerChannel5" Type="Boolean">
+          <data:Description>
+            <base:Title>Valid Excitation Power Channel 5</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The measured excitation power is greater than or equal to the stored excitation power for channel 5.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rOutOfRangeEprom" Type="String" Array="true">
+          <data:Description>
+            <base:Title>Channels Out of Range (Eprom)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>List of all channels reported out of range defined in EPROM. Empty if all in range.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="irPCRSucceeded" Type="Boolean">
+          <data:Description>
+            <base:Title>Was Pcr Successful.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Indicates if the PCR was successful.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

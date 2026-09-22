@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="BD4CE5831E19C85600CDD2C285C84636ED40190848E9" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="WashReagentDrawerCheckCommon" ID="WashReagentDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashReagentDrawerAction" Type="Confirm" Result="rWashReagentDrawerConfirmedOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Opening Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The wash/waste drawer is being pushed out. Please confirm that the drawer is successfully pushed out. </base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyDrawerOpen">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verifying Drawer Overture</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the drawer has been opened by reading the sensor state...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenWashReagentDrawerInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Wash/Waste Drawer Completely</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please completely open the wash/waste drawer of the processing module and pull the wash reagent drawer out completely. Press 'Next' when done.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockWashReagentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlock Wash Reagent Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking wash reagent containers..</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadWashReagentContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Wash Reagent Containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load three full wash reagent containers and close the wash reagent aspiration arms...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Looped for three containers -->
+      <ds:Step Name="VerifyWashContainerAspirationCapsClosed" Type="Confirm" Result="irVerifyAspirationCapsClosed">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Wash Reagent Aspiration Arms Closed And Locked</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the aspiration arm for wash reagent container [R.irCurrentContainerIndex] is closed and locked, and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfImminentLedFunctionalityCheck" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check Imminent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for wash reagent container [R.irCurrentContainerIndex] will be set to 'Off' for three seconds followed by 'Red' for three seconds and then 'Green' once 'Next' is pressed. Please be ready to observe...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="InformingUserOfLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>LED for wash reagent container [R.irCurrentContainerIndex] is being set to 'Off' for three seconds followed by 'Red' for three seconds and then 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmFunctionalityOfWashReagentContainerLed" Type="Confirm" Result="irLedFunctionalityCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm User Of The LED Functionality Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the LED for wash reagent container [R.irCurrentContainerIndex] was set to 'Off' and 'Red' for three seconds each respectively and then set to 'Green'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockAspirationCapToRemoveContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Wash Reagent Container Cap</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking wash reagent container aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitContainerRemoval">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Wash Reagent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspiration arm for wash reagent container [R.irCurrentContainerIndex] has been unlocked. Please perform the following actions:</base:Paragraph>
+              <base:Paragraph>1 - Remove wash reagent container [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>2 - Close and lock the wash reagent [R.irCurrentContainerIndex] aspiration arm</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockWashReagentContainersToInsertEmptyContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Wash Reagent Container Aspiration Arm</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking wash reagent container aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitEmptyWasteContainerInsertion">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Empty Wash Reagent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load the empty container in wash reagent container position [R.irCurrentContainerIndex] and close the wash reagent aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnlockWashReagentContainersToReplaceContainer">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unlocking Wash Reagent Container Cap</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlocking wash reagent container aspiration arm...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="AwaitWashReagentContainerReplacement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace Wash Reagent Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The aspiration arm for wash reagent container [R.irCurrentContainerIndex] has been unlocked. Please perform the following actions:</base:Paragraph>
+              <base:Paragraph>1 - Remove the current empty wash reagent container [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>2 - Place a full container in wash reagent container position [R.irCurrentContainerIndex]</base:Paragraph>
+              <base:Paragraph>3 - Close and lock the wash reagent aspiration arm on wash reagent container position [R.irCurrentContainerIndex]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <!-- If the user forgets to remove AD Plate then repeat the step -->
+          <workflow:Decision Result="irCurrentContainerIndex" NextStep="VerifyWashContainerAspirationCapsClosed">
+            <workflow:Condition Operator="LE" Value="3" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- End of loop for the three containers -->
+      <ds:Step Name="CloseWashReagentDrawerAction" Type="Confirm" Result="rWashReagentDrawerClosedAndLocked">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please push-in the wash reagent drawer and close the wash/waste drawer and confirm that it has been closed and locked.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyWashWasteDrawerClosure">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Checking To Ensure Wash/Waste Drawer Is Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking sensors to detect whether closure was successfully detected...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

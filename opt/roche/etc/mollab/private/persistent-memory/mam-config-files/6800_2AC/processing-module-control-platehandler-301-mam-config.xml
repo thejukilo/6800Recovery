@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:mam xmlns:dia="http://dia.roche.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/opt/roche/config/MAM_ProjectConfig.xsd">
+  <csmConfig>
+    <csm name="ProcessCell_A_PlateHandler" seid="133" moduleId="301">
+       <parPool type="enum" structure="scalar" id="4" name="IgnoreDetectionDirectionX"
+                defaultValue="0"
+                minValue="0"
+                maxValue="1">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="enum" structure="scalar" id="5" name="IgnoreDetectionDirectionY"
+                defaultValue="0"
+                minValue="0"
+                maxValue="1">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="enum" structure="scalar" id="6" name="IgnoreDetectionDirectionZ"
+                defaultValue="0"
+                minValue="0"
+                maxValue="1">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="7" name="MinMoveTimeDelta"
+                defaultValue="0.05"
+                minValue="0"
+                maxValue="1">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="8" name="CalibInitOffsetX"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="9" name="CalibInitOffsetY"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="10" name="CalibInitOffsetZ"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="11" name="CalibInitOffsetGripper"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="12" name="CalibShiftTool1X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="13" name="CalibShiftTool1Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="14" name="CalibShiftTool1Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="15" name="CalibShiftTool2X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="16" name="CalibShiftTool2Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="17" name="CalibShiftTool2Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="18" name="CalibShiftTool3X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="19" name="CalibShiftTool3Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="20" name="CalibShiftTool3Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="21" name="CalibShiftTool4X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="22" name="CalibShiftTool4Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="23" name="CalibShiftTool4Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="24" name="CalibShiftTool5X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="25" name="CalibShiftTool5Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="26" name="CalibShiftTool5Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="27" name="PreTeach1X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="28" name="PreTeach1Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="29" name="PreTeach1Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="30" name="CalibShiftTool6X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="31" name="CalibShiftTool6Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="32" name="CalibShiftTool6Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="33" name="CalibShiftTool7X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="34" name="CalibShiftTool7Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="35" name="CalibShiftTool7Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="36" name="CalibShiftTool8X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="37" name="CalibShiftTool8Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="38" name="CalibShiftTool8Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="39" name="CalibShiftTool9X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="40" name="CalibShiftTool9Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="41" name="CalibShiftTool9Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="42" name="CalibShiftTool10X"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="43" name="CalibShiftTool10Y"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="44" name="CalibShiftTool10Z"
+                defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="45" name="PreTeach2X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="46" name="PreTeach2Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="47" name="PreTeach2Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="48" name="PreTeach3X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="49" name="PreTeach3Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="50" name="PreTeach3Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="51" name="PreTeach4X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="52" name="PreTeach4Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="53" name="PreTeach4Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="54" name="PreTeach5X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="55" name="PreTeach5Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="56" name="PreTeach5Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="57" name="PreTeach6X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="58" name="PreTeach6Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="59" name="PreTeach6Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="60" name="PreTeach7X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="61" name="PreTeach7Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="62" name="PreTeach7Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="63" name="PreTeach8X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="64" name="PreTeach8Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="65" name="PreTeach8Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="66" name="PreTeach9X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="67" name="PreTeach9Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="68" name="PreTeach9Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="69" name="PreTeach10X" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="70" name="PreTeach10Y" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="double" structure="scalar" id="71" name="PreTeach10Z" defaultValue="0"
+                minValue="-1000000000"
+                maxValue="1000000000">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="72" name="ConfigData_1"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="3620" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="73" name="ConfigData_2"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="74" name="ConfigData_3"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="75" name="ConfigData_4"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="76" name="ConfigData_5"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="77" name="ConfigData_6"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="78" name="ConfigData_7"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="79" name="ConfigData_8"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="80" name="ConfigData_9"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="81" name="ConfigData_10"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="82" name="ConfigData_11"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="83" name="ConfigData_12"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="84" name="ConfigData_13"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="85" name="ConfigData_14"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="86" name="ConfigData_15"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="87" name="ConfigData_16"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="88" name="ConfigData_17"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="89" name="ConfigData_18"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="90" name="ConfigData_19"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="91" name="ConfigData_20"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="92" name="ConfigData_21"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="93" name="ConfigData_22"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="94" name="ConfigData_23"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="95" name="ConfigData_24"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="96" name="ConfigData_25"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="97" name="ConfigData_26"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="98" name="ConfigData_27"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="99" name="ConfigData_28"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="100" name="ConfigData_29"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="101" name="ConfigData_30"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="102" name="ConfigData_31"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="103" name="ConfigData_32"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="104" name="ConfigData_33"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="105" name="ConfigData_34"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="106" name="ConfigData_35"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="107" name="ConfigData_36"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="108" name="ConfigData_37"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="109" name="ConfigData_38"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="110" name="ConfigData_39"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="111" name="ConfigData_40"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="112" name="ConfigData_41"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="113" name="ConfigData_42"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="114" name="ConfigData_43"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="115" name="ConfigData_44"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="116" name="ConfigData_45"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="117" name="ConfigData_46"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="118" name="ConfigData_47"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="119" name="ConfigData_48"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="120" name="ConfigData_49"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint8" structure="array" noElements="100" id="121" name="ConfigData_50"
+                defaultValue="0"
+                minValue="0"
+                maxValue="255">
+          <persistDef memoryId="999999" periodInSec="-1"/>
+       </parPool>
+       <parPool type="uint16" structure="scalar" id="122" name="OpCountInitX" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFF">
+          <persistDef memoryId="2138" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint16" structure="scalar" id="123" name="OpCountInitY" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint16" structure="scalar" id="124" name="OpCountInitZ" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint16" structure="scalar" id="125" name="OpCountInitGripper"
+                defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint32" structure="scalar" id="126" name="OpCountMoveX" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFFFFFF">
+          <persistDef memoryId="2138" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint32" structure="scalar" id="127" name="OpCountMoveY" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFFFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint32" structure="scalar" id="128" name="OpCountMoveZ" defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFFFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="uint32" structure="scalar" id="129" name="OpCountMoveGripper"
+                defaultValue="0"
+                minValue="0"
+                maxValue="0xFFFFFFFF">
+          <persistDef memoryId="2139" periodInSec="14400"/><!-- 4h = 4*60*60s -->
+       </parPool>
+       <parPool type="int32" structure="scalar" id="130" name="RunSettingAttachedContainer"
+                defaultValue="0"
+                minValue="0"
+                maxValue="10000">
+          <persistDef memoryId="3620" periodInSec="-1"/>
+       </parPool>
+    </csm>
+  </csmConfig>
+</dia:mam>

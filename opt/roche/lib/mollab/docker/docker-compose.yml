@@ -1,0 +1,2026 @@
+volumes:
+  rabbitmq:
+    name: rabbitmq
+
+services:
+  rabbitmq:
+    mem_limit: 1G
+    image: eu.repository.roche.com/mollab-general-docker-all-v/mollab-rabbitmqserver-podman:1.2.1.1316995
+    container_name: rabbitmq
+    profiles: ["infrastructure"]
+    volumes:
+      - /opt/roche/etc/mollab/private/rabbitmq/definitions:/etc/rabbitmq/definitions/:ro
+      - rabbitmq:/var/lib/rabbitmq
+      - /opt/roche/var/lib/mollab/shared/logs:/var/log/rabbitmq
+    network_mode: "host"
+    oom_score_adj: 1000
+
+  loggingserver:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-l/mollab-loggingserver:2.0.1.1331730
+    container_name: loggingserver
+    profiles: ["infrastructure"]
+    volumes:
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/tmp/log/
+      - /opt/roche/var/lib/mollab/shared/logs:/var/log
+    network_mode: "slirp4netns"
+    oom_score_adj: 1000
+
+  jaeger:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-l/mollab-jaeger:1.1.0.887478
+    container_name: jaeger
+    profiles: ["infrastructure"]
+    volumes:
+      - /opt/roche/var/lib/mollab/private/jaeger:/usr/share/data
+    ports:
+      - "4318:4318"     # agent - OTLP over HTTP
+      - "5778:5778"     # agent - config, sampling strategies
+      - "16685:16685"   # query - grpc
+      - "16686:16686"   # query - frontend
+    network_mode: "slirp4netns"
+    oom_score_adj: 1000
+
+  rsa2l:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-l/mollab-rsa2l:1.1.0.943455
+    container_name: rsa2l
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/rsa2l:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/rsa2l/config:/app/RSA2L/config
+      - /opt/roche/var/lib/mollab/private/rsa2l/upload:/app/gateway/upload/
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns"
+    oom_score_adj: 1000
+    user: root
+
+  heatingstation.a1:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-heatingstation:3.1.1.1340653
+    container_name: heatingstation.a1
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/heating-station/a1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A1"
+      UNIT_FULL_NAME: "HeatingStation"
+      UNIT_SHORT_NAME: "HS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  heatingstation.a2:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-heatingstation:3.1.1.1340653
+    container_name: heatingstation.a2
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/heating-station/a2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A2"
+      UNIT_FULL_NAME: "HeatingStation"
+      UNIT_SHORT_NAME: "HS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  heatingstation.b1:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-heatingstation:3.1.1.1340653
+    container_name: heatingstation.b1
+    profiles: ["8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/heating-station/b1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B1"
+      UNIT_FULL_NAME: "HeatingStation"
+      UNIT_SHORT_NAME: "HS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  heatingstation.b2:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-heatingstation:3.1.1.1340653
+    container_name: heatingstation.b2
+    profiles: ["8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/heating-station/b2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B2"
+      UNIT_FULL_NAME: "HeatingStation"
+      UNIT_SHORT_NAME: "HS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  solidwastestation.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-solidwastestation:2.1.1.1340649
+    container_name: solidwastestation.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/solid-waste-station/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A"
+      UNIT_FULL_NAME: "SolidWasteStation"
+      UNIT_SHORT_NAME: "SWS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  solidwastestation.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-solidwastestation:2.1.1.1340649
+    container_name: solidwastestation.b
+    profiles: ["8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/solid-waste-station/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B"
+      UNIT_FULL_NAME: "SolidWasteStation"
+      UNIT_SHORT_NAME: "SWS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatehandler:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatehandler:2.1.1.1335512
+    container_name: amplificationplatehandler
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/amplification-plate-handler/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/amplification-plate-handler/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "AmplificationPlateHandler"
+      UNIT_SHORT_NAME: "APH"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatetransferposition:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatetransferposition:1.1.1.1340650
+    container_name: amplificationplatetransferposition
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/amplification-plate-transfer-position/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "AmplificationPlateTransferPosition"
+      UNIT_SHORT_NAME: "APT"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatedrawer:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatedrawer:2.1.1.1340651
+    container_name: amplificationplatedrawer
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/amplification-plate-drawer/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "AmplificationPlateDrawer"
+      UNIT_SHORT_NAME: "APD"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  separationstation.a1:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-separationstation:3.1.1.1340610
+    container_name: separationstation.a1
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/separation-station/a1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A1"
+      UNIT_FULL_NAME: "SeparationStation"
+      UNIT_SHORT_NAME: "SES"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  separationstation.a2:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-separationstation:3.1.1.1340610
+    container_name: separationstation.a2
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/separation-station/a2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A2"
+      UNIT_FULL_NAME: "SeparationStation"
+      UNIT_SHORT_NAME: "SES"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  separationstation.b1:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-separationstation:3.1.1.1340610
+    container_name: separationstation.b1
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/separation-station/b1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B1"
+      UNIT_FULL_NAME: "SeparationStation"
+      UNIT_SHORT_NAME: "SES"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  separationstation.b2:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-separationstation:3.1.1.1340610
+    container_name: separationstation.b2
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/separation-station/b2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B2"
+      UNIT_FULL_NAME: "SeparationStation"
+      UNIT_SHORT_NAME: "SES"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  sealingstation.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-sealingstation:1.1.1.1340229
+    container_name: sealingstation.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/sealing-station/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A"
+      UNIT_FULL_NAME: "SealingStation"
+      UNIT_SHORT_NAME: "SLS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  sealingstation.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-sealingstation:1.1.1.1340229
+    container_name: sealingstation.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/sealing-station/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B"
+      UNIT_FULL_NAME: "SealingStation"
+      UNIT_SHORT_NAME: "SLS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  coolingstation.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-coolingstation:3.1.1.1340648
+    container_name: coolingstation.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/cooling-station/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A"
+      UNIT_FULL_NAME: "CoolingStation"
+      UNIT_SHORT_NAME: "CS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  coolingstation.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-coolingstation:3.1.1.1340648
+    container_name: coolingstation.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/cooling-station/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B"
+      UNIT_FULL_NAME: "CoolingStation"
+      UNIT_SHORT_NAME: "CS"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  fieldbusgateway:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-fieldbusgateway:1.4.0.1340300
+    container_name: fieldbusgateway
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/fieldbusgateway/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/fieldbusgateway/:/root/.private
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+      - /opt/roche/lib/mollab/firmware:/opt/roche/fwr
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "FieldbusGateway"
+      UNIT_SHORT_NAME: "FBG"
+      ICSHAREPATH: "/root/.icdata"
+      UNITPRIVATEPATH: "/root/.private"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  persistentmemory:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-l/mollab-persistentmemory:1.1.1.1340306
+    container_name: persistentmemory
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/persistent-memory/mam-config-files:/opt/roche/config/mam:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/persistent-memory:/root/.icdata/persistent-memory
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "PersistentMemory"
+      UNIT_SHORT_NAME: "PME"
+      ICSHAREPATH: "/root/.icdata"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  reagentstoragehandler:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-reagentstoragehandler:3.1.1.1340652
+    container_name: reagentstoragehandler
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/reagent-storage-handler/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "ReagentStorageHandler"
+      UNIT_SHORT_NAME: "RSH"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  bulkmanagement.a:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-bulkmanagement:2.2.1.1340802
+    container_name: bulkmanagement.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/bulk-management/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A"
+      UNIT_FULL_NAME: "BulkManagement"
+      UNIT_SHORT_NAME: "BM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      x800_OffSystemLiquidWaste:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  bulkmanagement.b:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-bulkmanagement:2.2.1.1340802
+    container_name: bulkmanagement.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/bulk-management/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B"
+      UNIT_FULL_NAME: "BulkManagement"
+      UNIT_SHORT_NAME: "BM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      x800_OffSystemLiquidWaste:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  drawerlock.reagentcassettedrawer:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-drawerlock:3.2.1.1340679
+    container_name: drawerlock.reagentcassettedrawer
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/drawer-lock/reagent-cassette-drawer/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "ReagentCassetteDrawer"
+      UNIT_FULL_NAME: "DrawerLock"
+      UNIT_SHORT_NAME: "RD"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  drawerlock.consumablesdrawer.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-drawerlock:3.2.1.1340679
+    container_name: drawerlock.consumablesdrawer.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "ConsumablesDrawerA"
+      UNIT_FULL_NAME: "DrawerLock"
+      UNIT_SHORT_NAME: "CDA"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  drawerlock.consumablesdrawer.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-drawerlock:3.2.1.1340679
+    container_name: drawerlock.consumablesdrawer.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/drawer-lock/consumable-drawer/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "ConsumablesDrawerB"
+      UNIT_FULL_NAME: "DrawerLock"
+      UNIT_SHORT_NAME: "CDB"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  rackhandler:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-rackhandler:3.2.1.1340680
+    container_name: rackhandler
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/rack-handler/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/rack-handler/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared/service-images:/home/roche/share/CalibrateImages
+      - /opt/roche/var/lib/mollab/shared/error-images/rack-issues:/home/roche/share/ErrorImages/RackIssues
+      - /opt/roche/var/lib/mollab/shared/error-images/tube-issues:/home/roche/share/ErrorImages/TubeIssues
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "RackHandler"
+      UNIT_SHORT_NAME: "RH"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      ICSERVICEIMAGEPATH: "/home/roche/share/CalibrateImages"
+      ICERRORIMAGEPATH: "/home/roche/share/ErrorImages"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  mainhandler:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-mainhandler:3.1.1.1340769
+    container_name: mainhandler
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/main-handler/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/main-handler/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "MainHandler"
+      UNIT_SHORT_NAME: "MH"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  infrastructure.transfermodule:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-infrastructure:3.2.1.1340625
+    container_name: infrastructure.transfermodule
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/infrastructure/transfer-module/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "TransferModule"
+      UNIT_FULL_NAME: "Infrastructure"
+      UNIT_SHORT_NAME: "TM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  infrastructure.processingmodule.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-infrastructure:3.2.1.1340625
+    container_name: infrastructure.processingmodule.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/infrastructure/processing-module/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "ProcessingModuleA"
+      UNIT_FULL_NAME: "Infrastructure"
+      UNIT_SHORT_NAME: "PMA"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  infrastructure.processingmodule.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-infrastructure:3.2.1.1340625
+    container_name: infrastructure.processingmodule.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/infrastructure/processing-module/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "ProcessingModuleB"
+      UNIT_FULL_NAME: "Infrastructure"
+      UNIT_SHORT_NAME: "PMB"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingplatemagazine.f:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingplatemagazine:3.1.0.1340641
+    container_name: processingplatemagazine.f
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-plate-magazine/f/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "ProcessingPlateMagazine"
+      UNIT_INSTANCE_ID: "F"
+      UNIT_SHORT_NAME: "PPM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingplatemagazine.g:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingplatemagazine:3.1.0.1340641
+    container_name: processingplatemagazine.g
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-plate-magazine/g/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "ProcessingPlateMagazine"
+      UNIT_INSTANCE_ID: "G"
+      UNIT_SHORT_NAME: "PPM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingplatemagazine.l:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingplatemagazine:3.1.0.1340641
+    container_name: processingplatemagazine.l
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-plate-magazine/l/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "ProcessingPlateMagazine"
+      UNIT_INSTANCE_ID: "L"
+      UNIT_SHORT_NAME: "PPM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingplatemagazine.k:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingplatemagazine:3.1.0.1340641
+    container_name: processingplatemagazine.k
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-plate-magazine/k/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "ProcessingPlateMagazine"
+      UNIT_INSTANCE_ID: "K"
+      UNIT_SHORT_NAME: "PPM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  tiprackmagazine.a:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-tiprackmagazine:3.1.0.1340640
+    container_name: tiprackmagazine.a
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/tip-rack-magazine/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "TipRackMagazine"
+      UNIT_INSTANCE_ID: "A"
+      UNIT_SHORT_NAME: "TRM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  tiprackmagazine.b:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-tiprackmagazine:3.1.0.1340640
+    container_name: tiprackmagazine.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/tip-rack-magazine/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "TipRackMagazine"
+      UNIT_INSTANCE_ID: "B"
+      UNIT_SHORT_NAME: "TRM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  tiprackmagazine.d:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-tiprackmagazine:3.1.0.1340640
+    container_name: tiprackmagazine.d
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/tip-rack-magazine/d/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "TipRackMagazine"
+      UNIT_INSTANCE_ID: "D"
+      UNIT_SHORT_NAME: "TRM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  tiprackmagazine.e:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-tiprackmagazine:3.1.0.1340640
+    container_name: tiprackmagazine.e
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/tip-rack-magazine/e/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "TipRackMagazine"
+      UNIT_INSTANCE_ID: "E"
+      UNIT_SHORT_NAME: "TRM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  consumablepark:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-consumablepark:2.1.1.1335553
+    container_name: consumablepark
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/consumable-park/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "ConsumablePark"
+      UNIT_SHORT_NAME: "CP"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingmodulecontrol.a:
+    mem_limit: 512M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingmodulecontrol:2.2.1.1274460
+    container_name: processingmodulecontrol.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-module-control/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/processing-module-control/a/sensor-data:/root/.icdata/sensor-data
+      - /opt/roche/var/lib/mollab/private/processing-module-control/a/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared/tmp/pipetting-parameter-sets:/root/.icdata/pipetting-parameter-sets
+    environment:
+      UNIT_FULL_NAME: "ProcessingModuleControl"
+      UNIT_INSTANCE_ID: "A"
+      UNIT_SHORT_NAME: "PMC"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingmodulecontrol.b:
+    mem_limit: 512M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingmodulecontrol:2.2.1.1274460
+    container_name: processingmodulecontrol.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/processing-module-control/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/processing-module-control/b/sensor-data:/root/.icdata/sensor-data
+      - /opt/roche/var/lib/mollab/private/processing-module-control/b/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared/tmp/pipetting-parameter-sets:/root/.icdata/pipetting-parameter-sets
+    environment:
+      UNIT_FULL_NAME: "ProcessingModuleControl"
+      UNIT_INSTANCE_ID: "B"
+      UNIT_SHORT_NAME: "PMC"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  transfermodulecontrol:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-transfermodulecontrol:2.2.1.1243338
+    container_name: transfermodulecontrol
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/transfer-module-control/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/transfer-module-control/sensor-data:/root/.icdata/sensor-data
+      - /opt/roche/var/lib/mollab/private/transfer-module-control/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared/tmp/pipetting-parameter-sets:/root/.icdata/pipetting-parameter-sets
+    environment:
+      UNIT_FULL_NAME: "TransferModuleControl"
+      UNIT_INSTANCE_ID: ""
+      UNIT_SHORT_NAME: "TMC"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatemagazine.i:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatemagazine:2.2.0.1340542
+    container_name: amplificationplatemagazine.i
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/amplification-plate-magazine/i/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+    environment:
+      UNIT_FULL_NAME: "AmplificationPlateMagazine"
+      UNIT_INSTANCE_ID: "I"
+      UNIT_SHORT_NAME: "APM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatemagazine.j:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatemagazine:2.2.0.1340542
+    container_name: amplificationplatemagazine.j
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/amplification-plate-magazine/j/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+    environment:
+      UNIT_FULL_NAME: "AmplificationPlateMagazine"
+      UNIT_INSTANCE_ID: "J"
+      UNIT_SHORT_NAME: "APM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatemagazine.n:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatemagazine:2.2.0.1340542
+    container_name: amplificationplatemagazine.n
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/amplification-plate-magazine/n/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+    environment:
+      UNIT_FULL_NAME: "AmplificationPlateMagazine"
+      UNIT_INSTANCE_ID: "N"
+      UNIT_SHORT_NAME: "APM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  amplificationplatemagazine.o:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-amplificationplatemagazine:2.2.0.1340542
+    container_name: amplificationplatemagazine.o
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/amplification-plate-magazine/o/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+    environment:
+      UNIT_FULL_NAME: "AmplificationPlateMagazine"
+      UNIT_INSTANCE_ID: "O"
+      UNIT_SHORT_NAME: "APM"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  mgpcassettemagazine.h:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-mgpcassettemagazine:1.1.0.1340643
+    container_name: mgpcassettemagazine.h
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/mgp-cassette-magazine/h/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "MgpCassetteMagazine"
+      UNIT_INSTANCE_ID: "H"
+      UNIT_SHORT_NAME: "MGP"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  mgpcassettemagazine.m:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-mgpcassettemagazine:1.1.0.1340643
+    container_name: mgpcassettemagazine.m
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/mgp-cassette-magazine/m/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "MgpCassetteMagazine"
+      UNIT_INSTANCE_ID: "M"
+      UNIT_SHORT_NAME: "MGP"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  safetyinterlock:
+    mem_limit: 128M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-safetyinterlock:2.1.1.1243352
+    container_name: safetyinterlock
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/safety-interlock/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+      - /opt/roche/var/lib/mollab/shared:/root/.icdata
+    environment:
+      UNIT_INSTANCE_ID: ""
+      UNIT_FULL_NAME: "SafetyInterlock"
+      UNIT_SHORT_NAME: "SI"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      x800_MovablePlatform:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  analyticunit.a2:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-analyticunit:5.2.1.1340805
+    container_name: analyticunit.a2
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/analytic-unit/a2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A2"
+      UNIT_FULL_NAME: "AnalyticUnit"
+      UNIT_SHORT_NAME: "AU"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  analyticunit.a1:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-analyticunit:5.2.1.1340805
+    container_name: analyticunit.a1
+    profiles: ["6800_2AC", "8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/analytic-unit/a1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "A1"
+      UNIT_FULL_NAME: "AnalyticUnit"
+      UNIT_SHORT_NAME: "AU"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  analyticunit.b2:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-analyticunit:5.2.1.1340805
+    container_name: analyticunit.b2
+    profiles: ["8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/analytic-unit/b2/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B2"
+      UNIT_FULL_NAME: "AnalyticUnit"
+      UNIT_SHORT_NAME: "AU"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  analyticunit.b1:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-analyticunit:5.2.1.1340805
+    container_name: analyticunit.b1
+    profiles: ["8800"]
+    ulimits:
+      memlock: -1
+      rtprio: -1
+      nice: -20
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /opt/roche/etc/mollab/private/analytic-unit/b1/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_INSTANCE_ID: "B1"
+      UNIT_FULL_NAME: "AnalyticUnit"
+      UNIT_SHORT_NAME: "AU"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  inputmethodservice:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-inputmethodservice:0.1.1.1336269
+    container_name: inputmethodservice
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    ports:
+      - "9980:9980"
+    volumes:
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns"
+    oom_score_adj: 1000
+
+  analyticmodule:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-analyticmodule:1.0.1.1345054
+    container_name: analyticmodule
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/analytic-module:/app/config:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  calculation:
+    mem_limit: 2G
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-calculation:1.0.0.1345043
+    container_name: calculation
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/calculation:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/calculation:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  datacollection:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-v/mollab-datacollection:1.2.0.1344100
+    container_name: datacollection
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/data-collection:/app/config:ro
+      - /opt/roche/etc/mollab/shared:/app/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/data-collection:/app/data
+      - /opt/roche/var/lib/mollab/private:/app/private-data:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+      - $XDG_RUNTIME_DIR/podman/podman.sock:/var/run/docker.sock
+    environment:
+      MolLab_Gtin:
+      MolLab_InstrumentType:
+      MolLab_SerialNumber:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  datamanagergateway:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-datamanagergateway:1.0.0.1345056
+    container_name: datamanagergateway
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/data-manager-gateway:/app/config:ro
+      - /opt/roche/etc/mollab/shared:/app/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/data-manager-gateway:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - "www.x800dm.com:162.132.241.189"
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  instrumentstate:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-instrumentstate:1.0.1.1344778
+    container_name: instrumentstate
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/instrument-state:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/instrument-state:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingmodule.a:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingmodule:1.0.1.1344791
+    container_name: processingmodule.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/processing-module/a:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/processing-module/a:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  processingmodule.b:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-processingmodule:1.0.1.1344791
+    container_name: processingmodule.b
+    profiles: ["8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/processing-module/b:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/processing-module/b:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  operatingsystemgateway:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-v/mollab-operatingsystemgateway:3.0.0.1344101
+    container_name: operatingsystemgateway
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/operating-system-gateway:/app/config:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+      - $XDG_RUNTIME_DIR/podman/podman.sock:/var/run/docker.sock
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  transfermodule:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-transfermodule:1.0.1.1344399
+    container_name: transfermodule
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/transfer-module:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/transfer-module:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  workflowmanagement:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-workflowmanagement:1.0.1.1344408
+    container_name: workflowmanagement
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/workflow-management:/app/config:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  workordermanagement:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-workordermanagement:1.0.0.1344430
+    container_name: workordermanagement
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/work-order-management:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/work-order-management:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  uiapi:
+    mem_limit: 512M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-uiapi:1.0.0.1347242
+    container_name: uiapi
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/ui-api:/app/config:ro
+      - /opt/roche/etc/mollab/shared:/app/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/ui-api:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+      - /opt/roche/lib/mollab/private/ui-apps:/app/ui-apps:ro
+      - /opt/roche/lib/mollab/private/user-assistance:/app/user-assistance:ro
+      - /opt/roche/etc/mollab/private/ui:/app/ui-config:ro
+    environment:
+      - ASPNETCORE_URLS=https://+:5001
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/shared-data/certificates/x800-certificate.p12
+      - MolLab_SerialNumber
+      - MolLab_InstrumentType
+    ports:
+      - "127.0.0.1:5001:5001"
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  maintenance:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-maintenance:1.0.0.1344780
+    container_name: maintenance
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/maintenance:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/maintenance:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_InstrumentType:
+      x800_MovablePlatform:
+      x800_OffSystemLiquidWaste:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  runplanning:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-runplanning:1.0.0.1344782
+    container_name: runplanning
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/run-planning:/app/config:ro
+      - /opt/roche/var/lib/mollab/private/run-planning:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  runmanagement:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-runmanagement:1.0.0.1344779
+    container_name: runmanagement
+    profiles: [ "6800_1AC", "6800_2AC", "8800" ]
+    volumes:
+      - /opt/roche/etc/mollab/private/run-management:/app/config:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  runresourcemanagement:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-runresourcemanagement:1.0.2.1344407
+    container_name: runresourcemanagement
+    profiles: [ "6800_1AC", "6800_2AC", "8800" ]
+    volumes:
+      - /opt/roche/etc/mollab/private/run-resource-management:/app/config:ro
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      x800_OffSystemLiquidWaste:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  interimreagentstorage.a:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-interimreagentstorage:3.2.1.1340682
+    container_name: interimreagentstorage.a
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/interim-reagent-storage/a/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/interim-reagent-storage/a/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "InterimReagentStorage"
+      UNIT_INSTANCE_ID: "A"
+      UNIT_SHORT_NAME: "IRS"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  interimreagentstorage.b:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-interimreagentstorage:3.2.1.1340682
+    container_name: interimreagentstorage.b
+    profiles: ["8800"]
+    cap_add:
+      - SYS_NICE
+      - IPC_LOCK
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/roche/etc/mollab/private/interim-reagent-storage/b/:/opt/roche/config/settings/:ro
+      - /opt/roche/etc/mollab/shared/fieldbus-definition-files/${MolLab_InstrumentType}:/opt/roche/config/fieldbus-definition-files:ro
+      - /opt/roche/var/lib/mollab/private/interim-reagent-storage/b/teaching-data:/root/.icdata/teaching-data
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_unit_logs_socket:/var/run/log/
+      - /opt/roche/var/lib/mollab/shared/tmp/ic_external_sockets:/tmp
+    environment:
+      UNIT_FULL_NAME: "InterimReagentStorage"
+      UNIT_INSTANCE_ID: "B"
+      UNIT_SHORT_NAME: "IRS"
+      ICSHAREPATH: "/root/.icdata"
+      UNITCONFIGPATH: "/opt/roche/config/"
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+  nibridge:
+    mem_limit: 256M
+    cpus: 0.2
+    image: eu.repository.roche.com/mollab-general-docker-all-v/mollab-nibridge:2.2.0
+    container_name: ni-bridge
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    volumes:
+      - /opt/roche/etc/mollab/private/ni-bridge/cacerts:/bridgedata/cacerts:ro
+      - /opt/roche/var/lib/mollab/private/ni-bridge:/bridgedata
+    environment:
+      - RUST_LOG=Info
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    restart: unless-stopped
+    logging:
+      driver: journald
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+
+  softwareupdate:
+    mem_limit: 256M
+    image: eu.repository.roche.com/mollab-general-docker-all-v/mollab-softwareupdate:2.3.2.1344109
+    profiles: ["6800_1AC", "6800_2AC", "8800"]
+    container_name: softwareupdate
+    volumes:
+      - /opt/roche/etc/mollab/private/software-update:/app/config:ro
+      - /opt/roche/etc/mollab/shared:/app/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/software-update:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      MolLab_Gtin:
+      MolLab_SerialNumber:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+
+
+  rndnodered:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/rndnodered:3.0.1.1102529
+    container_name: rndnodered
+    profiles: ["no-start"]
+    network_mode: "host"
+    volumes:
+      - /opt/roche/etc/mollab/private/rndnodered/messages:/data/instrument-definitions/cobas68-88:ro
+      - /opt/roche/etc/mollab/private/rndnodered/settings.js:/data/settings.js:ro
+      - /opt/roche/var/lib/mollab/private/rndnodered:/data
+      - /opt/roche/var/lib/mollab/shared/logs:/usr/lib/node_modules/node-red/.npm/_logs
+    oom_score_adj: 1000
+    user: root
+
+  sswdiagnose:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-ssw-diagnose:2.2.3.1283957
+    container_name: sswdiagnose
+    hostname: x800-sswdiagnose
+    profiles: ["no-start"]
+    ports:
+      - "127.0.0.1:5003:5003"
+    volumes:
+      - /opt/roche/lib/mollab/private/ssw/extension:/data/extension:ro
+      - /opt/roche/lib/mollab/private/ssw/DSCatalog:/data/DSCatalog:ro
+      - /opt/roche/lib/mollab/private/ssw/ReportTemplates:/data/ReportTemplates:ro
+      - /opt/roche/etc/mollab/shared:/data/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/ssw:/data
+      - /opt/roche/var/lib/mollab/shared:/data/shared
+      - /opt/roche/var/lib/mollab/shared/service-software-checks-reports:/data/Reports
+    environment:
+      x800_MovablePlatform:
+      x800_OffSystemLiquidWaste:
+      x800_AnalyticCyclersCount:
+      MolLab_SerialNumber:
+      MolLab_InstrumentType:
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2
+    entrypoint: ["dotnet", "Roche.LabCore.Diagnose.API.dll"]
+
+  troubleshooting:
+    mem_limit: 256M
+    image: rmd-x800family-docker.repository-ng.intranet.roche.com/newgen-troubleshooting:1.0.0.1141991
+    container_name: troubleshooting
+    profiles: [ "no-start" ]
+    ports:
+      - "127.0.0.1:5002:5002"
+    volumes:
+      - /opt/roche/etc/mollab/private/troubleshooting:/app/config:ro
+      - /opt/roche/etc/mollab/shared:/app/shared-config:ro
+      - /opt/roche/var/lib/mollab/private/troubleshooting:/app/data
+      - /opt/roche/var/lib/mollab/shared:/app/shared-data
+    environment:
+      - ASPNETCORE_URLS=https://+:5002
+      - ASPNETCORE_HTTPS_PORT=5002
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/shared-data/certificates/x800-certificate.p12
+      - MolLab_SerialNumber
+      - MolLab_InstrumentType
+    logging:
+      driver: journald
+    network_mode: "slirp4netns:allow_host_loopback=true"
+    oom_score_adj: 1000
+    extra_hosts:
+      - rabbitmq-server:10.0.2.2
+      - otel:10.0.2.2

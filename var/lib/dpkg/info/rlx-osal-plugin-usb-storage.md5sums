@@ -1,0 +1,5 @@
+ed681240d81fcb643680d4ee2cec6511  opt/roche/lib/rlx-osal/libosal-plugin-usb-storage.la
+b2949bfea95c7c9e15fe25d4b4303924  opt/roche/lib/rlx-osal/libosal-plugin-usb-storage.so
+d2d307c71fcfc9d6c8eee918ac128441  usr/lib/python3/dist-packages/rlx_osal/plugins/usb_storage_pb2.py
+854eb8fdc55b7d9031edf306e510b5bb  usr/share/doc/rlx-osal-plugin-usb-storage/changelog.gz
+958cfdef2a053b77bd915c5556049fda  usr/share/doc/rlx-osal-plugin-usb-storage/copyright

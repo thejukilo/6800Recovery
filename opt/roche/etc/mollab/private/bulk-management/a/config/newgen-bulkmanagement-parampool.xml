@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+    <ParameterPoolEntry ID="8" Type="int16" Array="false" Name="BulkTemperatureHigh" Value="3700"/>
+	<ParameterPoolEntry ID="9" Type="int16" Array="false" Name="BulkTemperatureLow" Value="1500"/>
+</ModuleConfiguration>
+

@@ -1,0 +1,20 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Verbose",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "shared-data/logs/Troubleshooting_.log",
+          "outputTemplate": "[{UtcTimestamp:O}][TSH][{Level:u1}][{Logger}][{ThreadId}]{Message:lj}{Exception}[EOL]{NewLine}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+          "rollOnFileSizeLimit": false,
+          "fileSizeLimitBytes": 209715200
+        }
+      }
+    ],
+    "Enrich": [ "WithThreadId", "WithUtcTimestamp" ],
+    "ExcludedNamePrefixes": [ "Roche.NewGen.Troubleshooting.", "Roche.CX800.", "Roche.MolLab." ]
+  }
+}

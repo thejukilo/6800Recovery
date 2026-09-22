@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="737BC3C31E95659B942D00627472018AEE11D7B978F9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ExtendedPrimeCheckCommon" ID="ExtendedPrimeCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <!-- Requirement steps 1 to 6 -->
+      <ds:Step Name="InitAction" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the processing module is being initialized...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 7 -->
+      <ds:Step Name="LoadFirstTipRack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load First Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the first tip rack on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 8 (verify transfer position), 9 (load rack) and 10 (separate waste insert) [E2] -->
+      <ds:Step Name="LoadFirstTipRackAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load First Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the first tip rack is loading...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 11 -->
+      <ds:Step Name="LoadSecondTipRack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the second tip rack on the processing module transfer position.</base:Paragraph>
+              <base:Paragraph>Press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 12 (verify transfer position), 13 (load rack) and 14 (separate waste insert), and 15 (verify overflow) [E3] -->
+      <ds:Step Name="LoadSecondTipRackAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Second Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the second tip rack is loading...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashLysis1ActionOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashLysis1ActionOnSystem">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 16 -->
+      <ds:Step Name="WashLysis1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Lysis reagent bottle 1 to the Wash Station [R.irUiVolumeStep1Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 1 [R.irUiVolumeStep1Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S10 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 17 -->
+      <ds:Step Name="WashLysis2ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Lysis reagent bottle 2 to Wash Station [R.irUiVolumeStep2Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 2 [R.irUiVolumeStep2Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S11 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S39)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 18 -->
+      <ds:Step Name="DegasLysis1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From Lysis reagent bottle 1 to Liquid Waste Container 1 [R.irUiVolumeStep3Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S10 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 19 -->
+      <ds:Step Name="EmptyToLiquidWaste1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The Wash Reagent Reservoir is emptied to the Liquid Waste Container 1.</base:Paragraph>
+              <base:Paragraph>(via S21 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="FillWashReservoirWithWashReagent1ActionCommon" />
+      </ds:Step>
+      <!--        OFF SYSTEM DUPLICATE START -->
+      <!-- Requirement step A2.1 (off system) -->
+      <ds:Step Name="WashLysis1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Lysis reagent bottle 1 to the Wash Station [R.irUiVolumeStep1Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off-system liquid waste [R.irUiVolumeStep1Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S10 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step A2.2 (off system) -->
+      <ds:Step Name="WashLysis2ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Lysis reagent bottle 2 to Wash Station [R.irUiVolumeStep2Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Off-System Liqid Waste [R.irUiVolumeStep2Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S11 - S14 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step A2.3 (off system) -->
+      <ds:Step Name="DegasLysis1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Lysis Reagent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From Lysis reagent bottle 1 to the off-system liquid waste [R.irUiVolumeStep3Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S10 - S22 - Degassing Pump - S23 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step A2.4 (off system) -->
+      <ds:Step Name="EmptyToLiquidWaste1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The Wash Reagent Reservoir is emptied to the off-system liquid waste.</base:Paragraph>
+              <base:Paragraph>(via S21 - S22 - Degassing Pump - S23 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!--        OFF SYSTEM DUPLICATE FINISHED-->
+      <ds:Step Name="FillWashReservoirWithWashReagent1ActionCommon">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The Wash Reagent Reservoir is filled with Wash Reagent 1.</base:Paragraph>
+              <base:Paragraph>(via S1 - S4 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer1ActionOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer1ActionOnSystem">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep6Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 1 [R.irUiVolumeStep6Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="FillWashReservoirWithWashReagent2ActionCommon" />
+      </ds:Step>
+      <!--        OFF SYSTEM DUPLICATE START -->
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep6Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off-system liquid waste [R.irUiVolumeStep6Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!--        OFF SYSTEM DUPLICATE FINISHED-->
+      <ds:Step Name="FillWashReservoirWithWashReagent2ActionCommon">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The Wash Reagent Reservoir is filled with Wash Reagent 2.</base:Paragraph>
+              <base:Paragraph>(via S2 - S5 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer2ActionOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer2ActionOnSystem">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer2ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep8Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 2 [R.irUiVolumeStep8Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S39)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="FillWashReagentReservoirWithWashReagent3ActionCommon" />
+      </ds:Step>
+      <!--        DUPLICATE START-->
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer2ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep8Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off-system liquid waste [R.irUiVolumeStep8Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!--        DUPLICATE END-->
+      <ds:Step Name="FillWashReagentReservoirWithWashReagent3ActionCommon">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>The Wash Reagent Reservoir is filled with Wash Reagent 3.</base:Paragraph>
+              <base:Paragraph>(via S3 - S6 - S7 - Wash Buffer Pump - S8)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer3ActionOffSystem">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irHasOffSystemLiquidWaste" NextStep="WashReagentReservoirToWashStationToLiquidWasteContainer3ActionOnSystem">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer3ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep10Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Container 3 [R.irUiVolumeStep10Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - S40)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent1ToWashStationToLiquidWasteStation1ToLiquidWasteContainer1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 1 to the Wash Station [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste station 1 [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 1 to Liquid Waste Container 1 [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S15 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S33 - S29 - Process Waste Pump - S30 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent2ToWashStationToLiquidWasteStation2ToLiquidWasteContainer2ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 2 to the Wash Station [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Station 2 [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 2 to Liquid Waste Container 2 [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S16 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S34 - S31 - Process Waste Pump - S32 - S39)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent1ToLiquidWasteContainer1ActionOnSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 1 to the Liquid Waste Container 1 [R.irUiVolumeStep13Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S15 - S22 - Degassing Pump - S23 - S38)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irPerformReservoirToOverflow" NextStep="WashReagent1ToWashReagentReservoirToOverflowContainerActionCommon">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irPerformReservoirToOverflow" NextStep="OpenDownholder">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!--        DUPLICATE-->
+      <ds:Step Name="WashReagentReservoirToWashStationToLiquidWasteContainer3ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Wash Reagent Reservoir</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep10Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the off-system liquid waste [R.irUiVolumeStep10Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S28 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent1ToWashStationToLiquidWasteStation1ToLiquidWasteContainer1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 1 to the Wash Station [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste station 1 [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 1 to off-system liquid waste [R.irUiVolumeStep11Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S15 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S33 - S29 - Process Waste Pump - S30 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent2ToWashStationToLiquidWasteStation2ToLiquidWasteContainer2ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 2 to the Wash Station [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to the Liquid Waste Station 2 [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Liquid Waste Station 2 to the off-system liquid waste [R.irUiVolumeStep12Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S16 - S19 - Reagent Transfer Head - Wash Station - S26 - Reagent Wash Pump - S27 - S34 - S31 - Process Waste Pump - S32 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Diluent1ToLiquidWasteContainer1ActionOffSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cobas Omni Specimen Diluent</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Diluent bottle 1 to the off-system liquid waste [R.irUiVolumeStep13Ml] ml</base:Paragraph>
+              <base:Paragraph>(via S15 - S22 - Degassing Pump - S23 - [R.irOffSystemLiquidWasteValveName] - check valve)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irPerformReservoirToOverflow" NextStep="WashReagent1ToWashReagentReservoirToOverflowContainerActionCommon">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irPerformReservoirToOverflow" NextStep="OpenDownholder">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!--        DUPLICATE END-->
+      <ds:Step Name="WashReagent1ToWashReagentReservoirToOverflowContainerActionCommon">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Overflow Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent 1 to the Wash Reagent Reservoir [R.irUiVolumeStep14Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash reagent reservoir to the Overflow Container</base:Paragraph>
+              <base:Paragraph>(via S1 - S4 - S7 - Wash Buffer Pump - S8 - Wash Reagent Reservoir - S24 - S25)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WashReagentReservoirToWashStationToOverflowContainerActionCommon">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Overflow Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while process is running...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>From the Wash Reagent Reservoir to the Wash Station [R.irUiVolumeStep15Ml] ml</base:Paragraph>
+              <base:Paragraph>From the Wash Station to Overflow Container</base:Paragraph>
+              <base:Paragraph>(via S9 - Reagent Transfer Head - Wash Station - S41)</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDownholder">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Downholder</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the downholders are opening...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RemoveRacks" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Remove Tip Rack And Waste Inserts</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove both tip racks and waste inserts then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 33: Drain & Verify Overflow Bottle -->
+      <ds:Step Name="DrainWashStation">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Draining</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Draining wash station...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VisualCheckOfOverflowBottleNext" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please check the Overflow Container and empty it.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irEmptyLiquidWaste" NextStep="OpenWashWasteDrawerAction">
+            <workflow:Condition Operator="EQ" Value="true" />
+          </workflow:Decision>
+          <workflow:Decision Result="irEmptyLiquidWaste" NextStep="Completed">
+            <workflow:Condition Operator="EQ" Value="false" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <!-- Requirement step 32 a) unlocks and pushes out the wash/waste drawer -->
+      <ds:Step Name="OpenWashWasteDrawerAction">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Opening Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the wash/waste drawer is openend.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 b) instructs the user to completely open the wash/waste drawer -->
+      <ds:Step Name="OpenWashWasteDrawerInfo" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open Wash/Waste Drawer Completely</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please open the wash/waste drawer of the processing module completely and then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 c) unlocks all waste dispense caps of the liquid waste container positions -->
+      <ds:Step Name="UnlockLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unlock the liquid waste containers in all the liquid waste positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 
+            d) instructs the user to pull out the liquid waste drawer,
+            e) instructs the user to empty all empty liquid waste containers and to close the waste dispense caps -->
+      <ds:Step Name="ReplaceLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid Waste Container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load an empty liquid waste container in all the liquid waste positions.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <!-- Requirement step 32 
+            f) instructs the user to push in the liquid waste drawer,
+            g) instructs the user to close the wash/waste drawer. -->
+      <ds:Step Name="UserCloseWasteDrawer" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close Wash/Waste Drawer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please close the wash/waste drawer and press 'Next'...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Completed" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Clean Up</base:Title>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

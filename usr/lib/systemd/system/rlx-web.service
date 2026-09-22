@@ -1,0 +1,15 @@
+[Unit]
+Description=RLX Maintenance Web UI
+After=rlx-osal.service network.target
+Requires=nginx.service
+
+[Service]
+User=roche
+ExecStart=/usr/bin/python3 -m rlx_web --host=127.0.0.1 --port=8086
+Restart=always
+RestartSec=5
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

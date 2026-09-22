@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="003357F07401085475F7EF5C735E7C625F6F98443010" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="LysisReagentLineCheckCommon" ID="LysisReagentLineCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Initialization" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the module is initializing ...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SelectSource" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid source selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one lysis reagent container position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_LysisLiquidLine_Source.jpg" Hash="403E8CB4A837F6E72A060F413D9E8EDCB854F849" />
+          <workflow:Input Result="rSelectedLysisPosition">
+            <workflow:Description>The selected lysis position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChooseDestination">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select destination based on off-system liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectDestination" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="SelectDestinationOffSystemLiquidWaste" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectDestination" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid destination selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one liquid waste position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_LiquidLine_Destination.jpg" Hash="D1449AEBC788DCB8E5EEFAC87D5FE8E299B0AD72" />
+          <workflow:Input Result="rSelectedWasteContainerPosition">
+            <workflow:Description>The selected liquid waste container position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow NextStep="PrepareSelectedCombination" />
+      </ds:Step>
+      <ds:Step Name="SelectDestinationOffSystemLiquidWaste" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Liquid destination selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Select one liquid waste position and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="New_LiquidLine_Destination.jpg" Hash="D1449AEBC788DCB8E5EEFAC87D5FE8E299B0AD72" />
+          <workflow:Input Result="irSelectedWasteContainerPositionOffSystemLiquidWaste">
+            <workflow:Description>The selected liquid waste container position</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareSelectedCombination">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Prepare source and destination</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Preparing the values for the selected combination of source and destination.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="OpenDrawers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Open drawer and unlock containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Open the drawers completely and press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ChooseEmptyLiquidWasteFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select waste containers based on off-system liquid waste</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="EmptyLiquidWasteFirst" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="EmptyLiquidWasteFirstOffSystemLiquidWaste" Result="irHasOffSystemLiquidWaste">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload, empty and load liquid waste containers 1, 2 and 3 and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="ArrangeLysisContainers" />
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteFirstOffSystemLiquidWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Unload, empty and load liquid waste containers 2 and 3 and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ArrangeLysisContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Lock lysis container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>- Pull up all aspiration arms, rearrange the loaded lysis reagent bottles or load a lysis reagent bottle with valid RFID on the selected position, if necessary, and close the aspiration arm of the selected container:  [R.irSelectedLysisContainerId].</base:Paragraph>
+              <base:Paragraph>- Keep the drawers open.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="GetVolumeToPump" Result="rLysisHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReplaceLysisFirst">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace lysis reagent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Not enough volume or invalid RFID detected. Replace the lysis reagent container [R.irSelectedLysisContainerId] with a non-empty container and a valid RFID and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="GetVolumeToPump" Result="rLysisHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="ReplaceLysisFirst" Result="rLysisHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="GetVolumeToPump" Type="Next">
+        <workflow:GUI InputValidation="true">
+          <workflow:Description>
+            <base:Title>Get volume to pump</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Enter the volume in ml to be transferred from lysis reagent container [R.irSelectedLysisContainerId] to liquid waste container [R.irSelectedWasteContainerId].</base:Paragraph>
+              <base:Paragraph>The entered volume of the lysis reagent will be transferred from lysis reagent container [R.irSelectedLysisContainerId] to liquid waste container [R.irSelectedWasteContainerId] when you press 'Next'.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: 250 ml equals approximately 1 cm and the full container is 840 ml.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="rPumpVolumeLysis">
+            <workflow:Description>The volume to pump (ml): </workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ValidateLysisFillLevel">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Validate the fill level</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Validating the fill level of the lysis reagent container [R.irSelectedLysisContainerId].</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="TransferLysisContainerToWaste" Result="rLysisHasEnoughVolume">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="ReplaceLysisSecond">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Replace lysis reagent container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Replace the lysis reagent container [R.irSelectedLysisContainerId] with minimum [R.rPumpVolumeLysis] ml volume and a valid RFID and close the aspiration arm.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow NextStep="ValidateLysisFillLevel" />
+      </ds:Step>
+      <ds:Step Name="TransferLysisContainerToWaste">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Transferring lysis reagent to liquid waste container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Transferring lysis reagent from the lysis reagent container [R.irSelectedLysisContainerId] to the liquid waste container [R.irSelectedWasteContainerId]...</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Liquid path:</base:Paragraph>
+              <base:Paragraph>[R.rLiquidPathFromLysisToWaste]</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="LysisLiquidLine_Full.jpg" Hash="FE1EB7CC4F0B905081D7CDF0AB3A86343008772F" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="RepetitionFlow">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select next step</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectNextStep" Result="irRepetitionsRemaining">
+            <workflow:Condition Operator="GT" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="SelectNextStepWithoutRepeat" Result="irRepetitionsRemaining">
+            <workflow:Condition Operator="LE" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectNextStep" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify transfer of lysis reagent to liquid waste container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that lysis reagent was transferred from the lysis reagent container [R.irSelectedLysisContainerId] to the liquid waste container [R.irSelectedWasteContainerId] and select one of the following options:</base:Paragraph>
+              <base:Paragraph>Yes - The liquid was transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>No - The liquid was not transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>Repeat transfer - Repeat the liquid transfer from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>After closing the liquid waste dispense cap and making the selection, press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph>Note: The liquid waste has been unlocked, make sure to open and close the selected waste cap to enable the 'Next' Button and be able to proceed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="irLiquidTransferredOption">
+            <workflow:Description>Select your option:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="EvaluateSelection" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FailureNotification" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="GetVolumeToPump" Result="irLiquidTransferredOption">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectNextStepWithoutRepeat" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify transfer of lysis reagent to liquid waste container</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verify that lysis reagent was transferred from the lysis reagent container [R.irSelectedLysisContainerId] to the liquid waste container [R.irSelectedWasteContainerId] and select one of the following options:</base:Paragraph>
+              <base:Paragraph>Yes - The liquid was transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph>No - The liquid was not transferred from the selected source to the selected destination.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>After closing the liquid waste dispense cap and making the selection, press 'Next' to continue.</base:Paragraph>
+              <base:Paragraph>Note: The liquid waste has been unlocked, make sure to open and close the selected waste cap to enable the 'Next' Button and be able to proceed. </base:Paragraph>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Input Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Description>Select your option:</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="EvaluateSelection" Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+          <workflow:Decision NextStep="FailureNotification" Result="irLiquidTransferredOptionWithoutRepeat">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="FailureNotification" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Failed confirmation steps</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>No lysis was transferred from from the lysis reagent container [R.irSelectedLysisContainerId] to the liquid waste container [R.irSelectedWasteContainerId].</base:Paragraph>
+              <base:Paragraph>Check the tubing based on the liquid path as shown in the image and press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="LysisLiquidLine_Full.jpg" Hash="FE1EB7CC4F0B905081D7CDF0AB3A86343008772F" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EvaluateSelection">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Evaluates selection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph />
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseAllLysisContainers">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Lock all lysis reagent containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Replace the lysis container if empty and close all the aspiration arms of the lysis reagent containers.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="EmptyLiquidWasteSecond">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Empty liquid waste containers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ensure that all liquid waste containers are empty and close the waste dispense caps.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="CloseDrawers" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Close drawers</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Close the bulk reagent and wash/waste drawers.</base:Paragraph>
+              <base:Paragraph>Please press 'Finish' to complete the check.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

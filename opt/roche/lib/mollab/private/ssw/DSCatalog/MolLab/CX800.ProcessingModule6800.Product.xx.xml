@@ -1,0 +1,1222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:Product Instrument="MolLab" Name="CX800.ProcessingModule6800" ArtNr="09575154001" Version="1.0.0.0000" Hash="E58042EFB7381396C1239C85BB454A1E592C20000B54" xmlns:base="urn:base" xmlns:product="urn:product" xmlns:group="urn:group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:test="urn:test" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../Tools/Schemas/LabCore.Diagnose/dsProduct.xsd">
+  <ds:Description>
+    <base:Title>Processing Module 6800</base:Title>
+    <base:Paragraphs>
+      <base:Paragraph />
+      <base:Paragraph>This is a list of all checks specific to the CX800 Pilot. It is not possible to create a certificate.</base:Paragraph>
+      <base:Paragraph />
+    </base:Paragraphs>
+  </ds:Description>
+  <ds:Group Name="Infrastructure">
+    <product:Description>
+      <base:Title>Infrastructure</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Infrastructure checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="ProcessingModuleInfrastructureCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Infrastructure check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the functionalities of the infrastructure on the processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 6 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ProcessingModuleHandler">
+    <product:Description>
+      <base:Title>Processing Module Handler</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Processing module handler checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="PlateHandlerTeachCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing module handler teach PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the processing module handler A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 4 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="PlateHandlerPHandlingCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing module handler handling check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks that all consumables can be handled by the processing module handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>- Front cover of the processing module is opened</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 cobas omni processing plate</base:Paragraph>
+          <base:Paragraph>- 1 cobas omni amplification plate</base:Paragraph>
+          <base:Paragraph>- 1 cobas omni pipette tips</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ProcessingTransferHead">
+    <product:Description>
+      <base:Title>Processing Transfer Head</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Processing transfer head checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="ProcessHeadTeachCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing transfer heads teach PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the processing transfer head of the processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 9 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- Pre-teach tool</base:Paragraph>
+          <base:Paragraph>- Teach tool</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ProcessTransferHeadTightnessCheckAACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing transfer head 1 (front) tightness check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks that the processing head 1 (front head) is tight.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: Teach tool</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ProcessTransferHeadTightnessCheckABCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing transfer head 2 (rear) tightness check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks that the processing head 2 (rear head) is tight.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: Teach tool</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ProcessingTransferHeadTipGrippingCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing transfer heads tip gripping check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks that all tips can be handled with processing head A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 2 tip racks</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ReagentTransferHead">
+    <product:Description>
+      <base:Title>Reagent Transfer Head</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Reagent transfer head checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="ReagentHeadATeachCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head teach PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It teaches the reagent transfer head A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 4 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 162 ml wash reagent in the wash reagent reservoir, else 1000 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 412 ml liquid waste capacity</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadTightnessCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head tightness check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks if the needles are tight.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 210 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadNeedleBentDetectionCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head needle bent detection check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks if the needles are bent.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 90 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 340 ml liquid waste capacity</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadUltrasonicCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head ultrasonic check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks the reagent transfer head's liquid level sensor in processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 2 cobas omni processing plates</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadChannelCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks if any needles are wrongly connected.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover open</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 cobas omni processing plates</base:Paragraph>
+          <base:Paragraph>- 158 ml wash reagent in the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 404 ml liquid waste capacity</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ResetReagentTransferHeadCorrectionFactorsACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reset Reagent Transfer Head Correction Factors PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Resets the gain and calibration factors of the selected channels in the processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Micro gear pump exchanged for reagent transfer head channel(s).</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 3 minutes</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ReagentTransferHeadPipetting">
+    <product:Description>
+      <base:Title>Reagent Transfer Head Pipetting</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Reagent transfer head pipetting checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="ReagentTransferHeadPipettingIntroCommandACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head pipetting intro PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- The front cover of the processing module is open</base:Paragraph>
+          <base:Paragraph>- The load reagent command was executed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- Tool onboard weighing system (OWS)</base:Paragraph>
+          <base:Paragraph>- Tool holder for onboard weighing system</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 154 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 208 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 612 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="BalanceCalibrationCheckReagentHeadACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head OWS calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Calibrates the balance.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- Reagent transfer head pipetting intro was executed</base:Paragraph>
+          <base:Paragraph>- It is recommended to have the balance powered on for 30 minutes before executing the check</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: </base:Paragraph>
+          <base:Paragraph>- The balance </base:Paragraph>
+          <base:Paragraph>- 1 Mettler Toledo pair of tweezers</base:Paragraph>
+          <base:Paragraph>- 1 Mettler Toledo calibration standard weight (10g)</base:Paragraph>
+          <base:Paragraph>- Weighing boat</base:Paragraph>
+          <base:Paragraph>- Draft shield for weighing boat</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required consumables/reagents: None </base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorA">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel A calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorB">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel B calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorC">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel C calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorD">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel D calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorE">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel E calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorF">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel F calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorG">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel G calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="VolumeDependentReagentTransferHeadCalibrationCheckAPipettorH">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Volume-dependent reagent transfer head channel H calibration PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It calibrates the microgear pump of the selected reagent transfer head channels</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The reagent transfer head pipetting intro and balance calibration check should have been performed</base:Paragraph>
+          <base:Paragraph>- Make sure the correct weighing boat (06677908001) has been placed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 8 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 130 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 430 ml liquid waste capacity</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Caution: Reagent transfer head moves during calibration!</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingACheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel A pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingBCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel B pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingCCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel C pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingDCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel D pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingECheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel E pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingFCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel F pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingGCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel G pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadAPipettingHCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head channel H pipetting check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the pipetting accuracy of the reagent transfer head using the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro and reagent transfer head balance calibration were executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 170 ml wash reagent in the wash reagent reservoir, else 910 ml in wash reagent container to fill the wash reagent reservoir</base:Paragraph>
+          <base:Paragraph>- 44 ml specimen diluent</base:Paragraph>
+          <base:Paragraph>- 525 ml liquid waste capacity (300 ml tolerance included)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ReagentTransferHeadPipettingEndingCommandACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Reagent transfer head pipetting end PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Used to remove the onboard weighing system.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Reagent transfer head pipetting intro was executed successfully</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required bulk reagent and waste volumes (will be checked automatically and can be loaded during execution):</base:Paragraph>
+          <base:Paragraph>- 365 ml liquid waste capacity</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="SealingStation">
+    <product:Description>
+      <base:Title>Sealing Station</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Sealing station checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="SealingStationCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Sealing station check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks that the sealing station can seal an amplification plate correctly.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:        1 cobas omni amplification plate</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="HeatingStation">
+    <product:Description>
+      <base:Title>Heating Station</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Heating Station checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="HeatingStationFunctionalCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Heating stations functional check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check verifies that the heating stations of the processing module A work correctly.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 processing plate</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="MGPCassetteShaker">
+    <product:Description>
+      <base:Title>MGP Cassette Shaker</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>MGP cassette shaker checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="MGPCassetteHandlingCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>MGP cassette handling check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It checks that the MGP cassette can be handled by the processing module A handler.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Processing module A front cover is open</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 cobas omni MGP reagent cassette</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="SolidWasteStation">
+    <product:Description>
+      <base:Title>Solid Waste Station</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Solid waste station checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="WasteConsumablesCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Waste consumables check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks whether the tip racks and processing plates can be wasted from both rows.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Solid waste bin must be empty</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 cobas omni pipette tips</base:Paragraph>
+          <base:Paragraph>- 2 cobas omni processing plate</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="FluidicSupply">
+    <product:Description>
+      <base:Title>Fluidic Supply (Pumps and Valves)</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Fluidic supply (pumps and valves)</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="LoadTestingFluidsACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Load reagents PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It verifies that the processing module A fluidics can be loaded with reagents.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 specimen diluent containers</base:Paragraph>
+          <base:Paragraph>- 2 lysis reagent containers</base:Paragraph>
+          <base:Paragraph>- 3 wash reagent containers</base:Paragraph>
+          <base:Paragraph>- In case of enabled on-system liquid waste handling, 3 liquid waste containers</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ProcessingModuleAFlushCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Flush check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check flushes the instrument.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>- Overflow bottle is empty</base:Paragraph>
+          <base:Paragraph>- Load reagents command is executed with the required equipment</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15-20 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 tip racks</base:Paragraph>
+          <base:Paragraph>- Empty bottle kit</base:Paragraph>
+          <base:Paragraph>- 3 wash reagent containers filled with deionized water</base:Paragraph>
+          <base:Paragraph>- 2 specimen diluent bottles filled with deionized water</base:Paragraph>
+          <base:Paragraph>- 2 lysis reagent bottles filled with deionized water</base:Paragraph>
+          <base:Paragraph>- In case of enabled on-system liquid waste handling: 3 empty liquid waste containers</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ProcessingModuleADryCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Dry check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check dries the instrument.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>- Overflow bottle is empty</base:Paragraph>
+          <base:Paragraph>- Load reagents command is executed with the required equipment</base:Paragraph>
+          <base:Paragraph>  (wash reagent containers, specimen diluent bottles and lysis bottles are removed)</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 20 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 tip racks</base:Paragraph>
+          <base:Paragraph>- In case of enabled on-system liquid waste handling: 3 empty liquid waste containers</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="WashReagentReservoirAndDegassingCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Wash reagent reservoir and degassing check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check teaches and verifies the correct functioning of the wash reagent reservoir and the degassing pump.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Overflow bottle is empty</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 20 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: </base:Paragraph>
+          <base:Paragraph>- 2700 ml wash reagent in a wash reagent container with valid RFID.</base:Paragraph>
+          <base:Paragraph>- In case of enabled on-system liquid waste handling, 3615 ml liquid waste capacity (300 ml tolerance included) with valid RFID.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="FlushMaintenanceCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Flush maintenance check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Service function to flush the liquid waste tubing in the processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: Liquid waste stations must be empty.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph> - 1 full wash reagent container with RFID, which is readable and matches the supported type</base:Paragraph>
+          <base:Paragraph> - 3 empty liquid waste containers</base:Paragraph>
+          <base:Paragraph> - 3-5% NaOH solution (approx. 140 ml per liquid waste station)</base:Paragraph>
+          <base:Paragraph> - 2 Waste inserts</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Warning!</base:Paragraph>
+          <base:Paragraph>Please read your country specific MSDS (available on PIM.web) before use.</base:Paragraph>
+          <base:Paragraph>Direct contact with cleaning solutions might cause skin irritation, inflammation, or burns. Refer to about reagents and working solutions.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="DiluentReagentLineCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Diluent reagent line check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It pumps fluid through the diluent reagent line to check the proper function of the selected fluid path.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 diluent bottle with valid RFID (filled with diluent reagent)</base:Paragraph>
+          <base:Paragraph>liquid waste containers: </base:Paragraph>
+          <base:Paragraph>  * in case of enabled on-system liquid waste handling: 3 liquid waste containers (empty)</base:Paragraph>
+          <base:Paragraph>  * in case of enabled off-system liquid waste handling: 2 liquid waste containers (empty)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="WashReagentLineCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Wash reagent line check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It pumps fluid through the wash reagent line to check the proper function of the selected fluid path.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 wash reagent bottle with valid RFID (filled with wash reagent)</base:Paragraph>
+          <base:Paragraph>liquid waste containers: </base:Paragraph>
+          <base:Paragraph>  * in case of enabled on-system liquid waste handling: 3 liquid waste containers (empty)</base:Paragraph>
+          <base:Paragraph>  * in case of enabled off-system liquid waste handling: 2 liquid waste containers (empty)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="LysisReagentLineCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Lysis reagent line check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>It pumps fluid through the lysis reagent line to check the proper function of the selected fluid path.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 lysis bottle with valid RFID (filled with lysis reagent)</base:Paragraph>
+          <base:Paragraph>liquid waste containers: </base:Paragraph>
+          <base:Paragraph>  * in case of enabled on-system liquid waste handling: 3 liquid waste containers (empty)</base:Paragraph>
+          <base:Paragraph>  * in case of enabled off-system liquid waste handling: 2 liquid waste containers (empty)</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ExtendedPrimeCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Extended prime check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check primes the instrument.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is open</base:Paragraph>
+          <base:Paragraph>- Overflow bottle is empty</base:Paragraph>
+          <base:Paragraph>- Load reagents command is executed with the required equipment</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 20 min</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 tip racks </base:Paragraph>
+          <base:Paragraph>- 3 wash reagent containers (valid RFIDs) </base:Paragraph>
+          <base:Paragraph>- 2 specimen diluent bottles (valid RFIDs) </base:Paragraph>
+          <base:Paragraph>- 2 lysis reagent bottles (valid RFIDs) </base:Paragraph>
+          <base:Paragraph>- In case of enabled on-system liquid waste handling: 3 empty liquid waste containers </base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ValveBlockCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Valve blocks check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Valves Check.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Processing module flush check was run</base:Paragraph>
+          <base:Paragraph>- processing module front cover is opened</base:Paragraph>
+          <base:Paragraph>- No consumables on processing module deck</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 45 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 wash reagent container from Empty bottle kit (filled with deionized water)</base:Paragraph>
+          <base:Paragraph>- 1 diluent reagent bottle from Empty bottle kit (filled with deionized water)</base:Paragraph>
+          <base:Paragraph>- 1 lysis reagent bottle from Empty bottle kit (filled with deionized water)</base:Paragraph>
+          <base:Paragraph>- Liquid waste containers:</base:Paragraph>
+          <base:Paragraph>  - In case of enabled on-system liquid waste handling: 3 liquid waste containers (empty)</base:Paragraph>
+          <base:Paragraph>  - In case of enabled off-system liquid waste handling: 2 liquid waste containers (empty)</base:Paragraph>
+          <base:Paragraph>  - 2 tip racks</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="OffSystemLiquidWasteHandlingCheck6800">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Off-system liquid waste handling check 6800</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check verifies the integrity of the off-system liquid waste handling.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Off-system liquid waste upgrade installed.</base:Paragraph>
+          <base:Paragraph>- Off-system liquid waste handling configuration enabled.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 1 diluent bottle, filled with deionized water (from empty bottle kit).</base:Paragraph>
+          <base:Paragraph>- 4 empty liquid waste containers.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="ProcessingModuleDrawers">
+    <product:Description>
+      <base:Title>Processing Module Drawers</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Processing module drawers checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="DrawerCheckProcessingModule6800">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing module drawer check 6800</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the processing module drawer.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 2 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="PPlateMagazineFLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing plate magazine F loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the processing plate magazine F.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Processing module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 4 cobas omni processing plates</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="PPlateMagazineGLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Processing plate magazine G loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the processing plate magazine G.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Processing module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 4 cobas omni processing plates</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="MGPCassetteMagazineHLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>MGP cassette magazine H check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the MGP cassette magazine H.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Processing module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 2 cobas omni MGP reagent cassettes</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ADPlateMagazineILoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Amplification plate magazine I loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the amplification plate magazine I.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Processing module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 amplification plate cassette with 4 amplification plates</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="ADPlateMagazineJLoadingCheckCommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Amplification plate magazine J loading check</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Checks the correct functionality of the amplification plate magazine J.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Processing module drawer is closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 5 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 amplification plate cassette with 4 amplification plates</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="LysisDiluentDrawerCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Lysis/diluent drawer check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check verifies the integrity of lysis/diluent container related sensors.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Lysis/Diluent drawer closed.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 9 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 2 full diluent bottles with valid RFIDs, which are readable and match the supported type.</base:Paragraph>
+          <base:Paragraph>- 2 full lysis reagent bottles with valid RFID tags, which are readable and match the supported type.</base:Paragraph>
+          <base:Paragraph>- 1 empty lysis reagent bottle.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="WashReagentDrawerCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Wash reagent drawer check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check verifies the integrity of wash reagent container related sensors.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Wash/waste drawer closed.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 3 full wash reagent containers with RFIDs, which are readable and match the supported type</base:Paragraph>
+          <base:Paragraph>- 1 empty wash reagent container with RFID, which is readable and matches the supported type</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="LiquidWasteDrawerCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Liquid waste drawer check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>This check verifies the integrity of liquid waste container related sensors.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Precondition: Wash/waste drawer closed</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 7 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment:</base:Paragraph>
+          <base:Paragraph>- 3 empty liquid waste containers</base:Paragraph>
+          <base:Paragraph>- 1 liquid waste container filled with deionized water</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="InterimReagentStorage">
+    <product:Description>
+      <base:Title>Interim Reagent Storage</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Interim reagent storage checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <group:TestFunction Name="InterimReagentStorageTeachCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Interim reagent storage teach PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Teaches the interim reagent storage of processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions: None</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 1 minute</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: None</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+    <group:TestFunction Name="InterimReagentStorageCoolingCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Interim reagent storage cooling check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Interim reagent storage cooling check - processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- Interim reagent storage must be empty.</base:Paragraph>
+          <base:Paragraph>- Processing module front cover is opened.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 15 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 reagent cassette with valid RFID, which is readable and matches the supported type.</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+  <ds:Group Name="AmplificationPlate">
+    <product:Description>
+      <base:Title>Amplification Plate</base:Title>
+      <base:Paragraphs>
+        <base:Paragraph>Amplification plate checks</base:Paragraph>
+      </base:Paragraphs>
+    </product:Description>
+    <!--        Amplification plate park position functional check-->
+    <group:TestFunction Name="AmplificationPlateParkFunctionalCheckACommon">
+      <!-- Auto-Generated text from description file. -->
+      <product:Description>
+        <base:Title>Amplification plate park position functional check PM A</base:Title>
+        <base:Paragraphs>
+          <base:Paragraph>Tests the functionality of the amplification plate park of the processing module A.</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Preconditions:</base:Paragraph>
+          <base:Paragraph>- The instrument is in interlock service mode</base:Paragraph>
+          <base:Paragraph>- Processing Module front cover is open</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Time: 10 minutes</base:Paragraph>
+          <base:Paragraph>-----------------------------------------------------------------------------------------------</base:Paragraph>
+          <base:Paragraph>Required Equipment: 1 amplification plate</base:Paragraph>
+        </base:Paragraphs>
+      </product:Description>
+    </group:TestFunction>
+  </ds:Group>
+</ds:Product>

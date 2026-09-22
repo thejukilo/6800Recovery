@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ECPConfiguration_.xsd">
+	<ICApplicationInfo ICApplicationName="Infrastructure" ICApplicationVersion=""/>
+	<StartConfigurationID>hw</StartConfigurationID>
+	<ECPConfiguration ConfigurationID="TransferModule_6800_1AC">
+		<ECPSWConfigurationFile>ecs_TransferModule.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="TransferModule_6800_2AC">
+		<ECPSWConfigurationFile>ecs_TransferModule.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="TransferModule_8800">
+		<ECPSWConfigurationFile>ecs_TransferModule.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="ProcessingModuleA_6800_1AC">
+		<ECPSWConfigurationFile>ecs_ProcessingModuleA_1AC.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="ProcessingModuleA_6800_2AC">
+		<ECPSWConfigurationFile>ecs_ProcessingModuleA_2AC.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="ProcessingModuleA_8800">
+		<ECPSWConfigurationFile>ecs_ProcessingModuleA_2AC.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+	<ECPConfiguration ConfigurationID="ProcessingModuleB_8800">
+		<ECPSWConfigurationFile>ecs_ProcessingModuleB_2AC.xml</ECPSWConfigurationFile>
+		<ECPHWConfigurationFile>/opt/roche/config/fieldbus-definition-files/ech.xml</ECPHWConfigurationFile>
+		<BINPath>/opt/roche/bin/</BINPath>
+		<FWRPath>/opt/roche/fwr/</FWRPath>
+		<FirmwareUpdate BackboneAppFWR="false" CANNodeBootFWR="false" CANNodeAppFWR="false" ThirdPartyFWR="false" EnableHWIndexCheck="false" EnableHWArticleNumberCheck="false"/>
+		<DisableHWCommunication DisableHWCommunication="true"/>
+	</ECPConfiguration>
+
+	<SystemConfiguration>
+		<Toolchain></Toolchain>
+		<BackboneStartCDI>16</BackboneStartCDI>
+		<BackboneInterfacePort>eno1</BackboneInterfacePort>
+		<DefaultStackSize_kbytes>256</DefaultStackSize_kbytes>
+		<Shutdown_TimeBeforeSendSIGKill_sec>60</Shutdown_TimeBeforeSendSIGKill_sec>
+		<Startup_TimeBeforeNextCSMHierarchy_sec>0</Startup_TimeBeforeNextCSMHierarchy_sec>
+		<FTPPath/>
+	</SystemConfiguration>
+
+	<EnvironmentConfiguration>
+		<EnvBINPath>/opt/roche/bin/</EnvBINPath>
+	</EnvironmentConfiguration>
+</ECP>

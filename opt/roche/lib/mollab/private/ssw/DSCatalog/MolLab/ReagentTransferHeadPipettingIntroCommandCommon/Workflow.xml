@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="92963DDBF2551C1EB428F630ECDEFC799030906B4EFF" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="ReagentTransferHeadPipettingIntroCommandCommon" ID="ReagentTransferHeadPipettingIntroCommandCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareInit" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadCheck">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Checking if enough bulk reagents are loaded.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Hint: When the wash reagent reservoir needs to be filled, this step will take more time.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="SelectOWSVersion">
+            <workflow:Condition Operator="EQ" Value="True" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="LoadMissingBulkReagents" Type="Next">
+        <workflow:GUI>
+          <!-- Auto generated text, adjust in Unit.SSW/Source/CommonCheckComponents/LoadCheck/LoadCheckSteps.xml -->
+          <workflow:Description>
+            <base:Title>Load Missing Bulk Reagents</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Bulk reagent check loading state:</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine1]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine2]</base:Paragraph>
+              <base:Paragraph>[R.irLoadCheckPrerequisiteLine3]</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Open the drawer and load the missing bulk reagents. Afterwards close the intakes, the drawer and confirm by pressing Next.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision Result="irLoadCheckSuccessful" NextStep="LoadCheck">
+            <workflow:Condition Operator="EQ" Value="False" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="SelectOWSVersion" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select the Onboard Weighing System Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please select which version of the onboard weighing system will be used, then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Supported_Balance_and_Holder_Combinations.jpg" Hash="6CBF01A977AE28316F443035B40B798687E9056E" />
+          <workflow:Input Result="rOwsVersion">
+            <workflow:Description>OWS Version Used</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectOWSVersion" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="StopFans">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Stop Fans</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Wait while the fans are stopped.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StartIntroduction" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Start Introduction of the Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Both the reagent transfer head and processing transfer heads are moved away for balance placement. Press 'Next' to start.</base:Paragraph>
+              <base:Paragraph>Caution: The heads are moving.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="StartIntroductionMovement">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Positioning Reagent Transfer Head and Processing Transfer Heads</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="PlaceBalanceOWSv2" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceBalance" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Position the Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the work surface cover releasing the two locks.</base:Paragraph>
+              <base:Paragraph>Place the onboard weighing system with the provided holder into the Interim Reagent Storage and mount the indicated weighing pan and draft shield.</base:Paragraph>
+              <base:Paragraph>Level the onboard weighing system using the four leveling screws, keeping the bubble in the proper position.</base:Paragraph>
+              <base:Paragraph>Make sure, that the cable of the onboard weighing system is not interfering with any other moving part and that the fixed cable does not exceed the height of the weighing pan.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please connect the onboard weighing system to the service port at the back of the instrument.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Caution: Only plug in the power cable of the onboard weighing system after all other connections are set and the weighing pan is mounted.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ReagentTransferHeadPipettingIntroCommand_sPlaceBalanceOWSv1_truncated.jpg" Hash="8B2EF501EC9E6121C93FCEC1BEA0BD5F3D1041F0" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="PlaceBalanceCheck" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceBalanceOWSv2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Position the Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the work surface cover releasing the two locks</base:Paragraph>
+              <base:Paragraph>Place the onboard weighing system with the provided holder into the Interim Reagent Storage and mount the indicated weighing pan and draft shield.</base:Paragraph>
+              <base:Paragraph>Level the onboard weighing system using the four leveling screws, keeping the bubble in the proper position.</base:Paragraph>
+              <base:Paragraph>Make sure, that the cable of the onboard weighing system is not interfering with any other moving part and that the fixed cable does not exceed the height of the weighing pan.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please connect the onboard weighing system to the service port at the back of the instrument.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Caution: Only plug in the power cable of the onboard weighing system after all other connections are set and the weighing pan is mounted.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="ReagentTransferHeadPipettingIntroCommand_sPlaceBalanceOWSv2_truncated.jpg" Hash="6348E89F7BFB55A06AE75E7A92729739EED23D4C" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceBalanceCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Onboard Weighing System Connection Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlacementOfWeighingSystem" Type="Confirm" Result="rPlacementOfWeighingSystem">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Correct Placement of Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm that the onboard weighing system has been placed correctly, and that the weighing pan and draft shield are put in place as instructed.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="WashNeedles">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Washing Needles</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the needles are being washed...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

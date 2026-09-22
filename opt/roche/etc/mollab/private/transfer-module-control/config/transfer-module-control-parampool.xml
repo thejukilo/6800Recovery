@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ModuleConfiguration.xsd">
+  <ParameterPoolEntry ID="16" Name="IsStandaloneModeEnabled" Value="0" Type="bool" Array="false" Description="Enable or disable standalone mode: true indicates that no main handler is present." />
+</ModuleConfiguration>

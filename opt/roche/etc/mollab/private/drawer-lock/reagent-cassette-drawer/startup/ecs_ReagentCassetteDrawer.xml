@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <ConnectedCSM FileName="newgen-drawerlock">
+      <CSMConfigureParameters>
+        <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="232" ProviderSocket="/opt/CSM_232.sock">
+          <CDIDefinition SwitchName="SMS-cdi" DeviceName="SC_TipStackerCD_SMS_PusherCellDrawer" />
+          <CDIDefinition SwitchName="RHC-cdi" DeviceName="SC_TipStackerCD_RHC_LockCellDrawer" />
+          <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+          <XMLConfigurationFile SwitchName="--RHCConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/locking-rhcconfig.xml" />
+          <XMLConfigurationFile SwitchName="--SMSConfig" XMLFileName="${UNITCONFIGPATH}/settings/config/locking-smstage.xml" />
+          <CommandLineSwitch SwitchName="--DrawerId" Value="ReagentCassetteDrawer" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.drawerlock.reagentcassettedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.drawerlock.reagentcassettedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.drawerlock.reagentcassettedrawer.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.drawerlock.reagentcassettedrawer.q" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

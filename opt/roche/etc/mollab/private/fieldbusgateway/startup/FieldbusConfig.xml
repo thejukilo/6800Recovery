@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldbusConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/FieldbusConfig.xsd">
+  <FieldbusInterface>enp7s0</FieldbusInterface>
+  <StartingIpAddress>192.168.102.10</StartingIpAddress>
+  <StartCdi>16</StartCdi>
+  <FirmwarePath>/opt/roche/fwr</FirmwarePath>
+  <BinaryPath>/opt/roche/bin</BinaryPath>
+  <ComlayerSocket>/tmp/BCI-Startup.sock</ComlayerSocket>
+  <Comlayer>
+    <BCISocket>/tmp/BCI-Startup.sock</BCISocket>
+    <CpuAfinity>-1</CpuAfinity>
+    <CycleLength>1000</CycleLength>
+    <ExecutablePath>/opt/roche/bin/comlayer</ExecutablePath>
+    <Master>udp</Master>
+    <MasterPriority>82</MasterPriority>
+    <MiddlewarePriority>81</MiddlewarePriority>
+    <RealtimePriority>80</RealtimePriority>
+    <UDPAddress>192.168.102.10</UDPAddress>
+    <OptionalArguments>--trace-level 4 --unit-full-name FieldbusGateway --unit-short-name FBG --disable-trace-color</OptionalArguments>
+  </Comlayer>
+</FieldbusConfig>

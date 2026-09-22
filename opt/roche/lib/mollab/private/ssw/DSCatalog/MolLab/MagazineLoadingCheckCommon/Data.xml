@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="98AAE792E3C919EFCA88ED71FAA798E8F5700F396FA1" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="MagazineLoadingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pDrawerName" Type="String">
+          <data:Description>
+            <base:Title>Drawer name</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The name of the drawer containing the magazine.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pMagazine" Type="String">
+          <data:Description>
+            <base:Title>Letter of the magazine</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Letter of the magazine.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pMagazineName" Type="String">
+          <data:Description>
+            <base:Title>Magazine name</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Name of the magazine.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pConsumableCount" Type="Integer">
+          <data:Description>
+            <base:Title>Number of consumables</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Number of consumables that should be loaded.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pConsumableName" Type="String">
+          <data:Description>
+            <base:Title>Name of the consumable</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Name of the consumable.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Parameter>
+        <data:Parameter Name="pConsumableLoadingDelay" Type="Integer">
+          <data:Description>
+            <base:Title>Consumable load delay time</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Time in ms before the consumable will be loaded after being detected as placed.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Value>500</data:Value>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Type="String" Name="rLabelsRead" Array="true" Size="4">
+          <data:Description>
+            <base:Title>All Read Labels Data</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All read labels data.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Type="Integer" Name="rLabelCorrect">
+          <data:Description>
+            <base:Title>Label Correct</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The label data is correct.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>Label read not tested</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>Label read successfully</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>Label read failed</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Type="String" Name="rExpectedBarcodeEnding">
+          <data:Description>
+            <base:Title>Expected Barcode Ending</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>The expected barcode ending entered by the user.</base:Paragraph>
+              <base:Paragraph>Only used by checks with Barcode.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irIsAdCassette">
+          <data:Description>
+            <base:Title>Ad-Cassette Is Used.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Ad-Cassette Is Used.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irHasRfId">
+          <data:Description>
+            <base:Title>Has Rfid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Has Rfid</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rRfidReading" Type="Integer">
+          <data:Description>
+            <base:Title>Reading of the Rfid</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Reading of the Rfid</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="NE" Value="2" />
+          </data:Validation>
+          <data:Enum>
+            <data:Member Name="NotTested" Value="0">
+              <data:Description>RFID read not tested</data:Description>
+            </data:Member>
+            <data:Member Name="Succeeded" Value="1">
+              <data:Description>RFID read successfully</data:Description>
+            </data:Member>
+            <data:Member Name="Failed" Value="2">
+              <data:Description>RFID read failed</data:Description>
+            </data:Member>
+          </data:Enum>
+        </data:Result>
+        <data:Result Name="irDrawerStateOk">
+          <data:Description>
+            <base:Title>Internal Drawer State</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Internal Drawer State</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLoadedConsumables" Type="Integer">
+          <data:Description>
+            <base:Title>Loaded Consumables.</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Loaded Consumables.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

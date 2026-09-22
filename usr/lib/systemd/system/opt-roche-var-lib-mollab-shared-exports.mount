@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount for /mnt/data/shared/exports to /opt/roche/var/lib/mollab/shared/exports
+
+[Mount]
+What=/mnt/data/shared/exports
+Where=/opt/roche/var/lib/mollab/shared/exports
+Type=ext4
+Options=rw,noexec,nosuid,nodev,bind
+
+[Install]
+WantedBy=multi-user.target

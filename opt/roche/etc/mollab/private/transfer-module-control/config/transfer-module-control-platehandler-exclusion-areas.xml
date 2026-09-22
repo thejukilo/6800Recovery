@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (http://www.altova.com) by ﻿XMLSpy 2011 Professional Ed., Concurrent for 12 users (with SMP from 2010-11-05 to 2011-11-06) (Roche Diagnostics AG) -->
+<ExclusionWithTransitionAreaConfig xsi:noNamespaceSchemaLocation="lib_00000207_HandlingUtilities_ExclusionWithTransitionAreaConfig_0.05.00.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<WorkingSpace>
+		<FrontLeftCorner>
+			<X_Position>0.1865</X_Position>
+			<Y_Position>0.0984</Y_Position>
+			<Z_Position>0.0045</Z_Position>
+		</FrontLeftCorner>
+		<RearRightCorner>
+			<X_Position>0.6345</X_Position>
+			<Y_Position>0.5987</Y_Position>
+			<Z_Position>0.1557</Z_Position>
+		</RearRightCorner>
+	</WorkingSpace>
+	<ExclusionComposition CompositionName="SampleCell_TransferS_Proto10" ZHomeLayerId="0">
+		<ExclusionLayer ZHeight="0.1504" LayerName="NoRestrictions" LayerId="0">
+			<ExclusionAreaGroup GroupId="0" GroupName="AreaGroup_1">
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>1000</X_Position>
+						<Y_Position>1000</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>1001</X_Position>
+						<Y_Position>1001</Y_Position>
+					</RearRightCorner>
+				</Area>
+			</ExclusionAreaGroup>
+		</ExclusionLayer>
+		<ExclusionLayer ZHeight="0.1504" LayerName="EmptyGripper" LayerId="1">
+			<ExclusionAreaGroup GroupId="0" GroupName="AreaGroup_1">
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0</X_Position>
+						<Y_Position>0.34</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.57</X_Position>
+						<Y_Position>0.97</Y_Position>
+					</RearRightCorner>
+				</Area>
+			</ExclusionAreaGroup>
+		</ExclusionLayer>
+		<ExclusionLayer ZHeight="0.1504" LayerName="PPlate_RMCRack" LayerId="2">
+			<ExclusionAreaGroup GroupId="0" GroupName="AreaGroup_1">
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0</X_Position>
+						<Y_Position>0.285</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.77</X_Position>
+						<Y_Position>0.97</Y_Position>
+					</RearRightCorner>
+				</Area>
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0.45</X_Position>
+						<Y_Position>0.12</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.77</X_Position>
+						<Y_Position>0.29</Y_Position>
+					</RearRightCorner>
+				</Area>
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0</X_Position>
+						<Y_Position>0</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.305</X_Position>
+						<Y_Position>0.25</Y_Position>
+					</RearRightCorner>
+				</Area>
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0.335</X_Position>
+						<Y_Position>0.12</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.425</X_Position>
+						<Y_Position>0.29</Y_Position>
+					</RearRightCorner>
+				</Area>
+			</ExclusionAreaGroup>
+		</ExclusionLayer>
+		<ExclusionLayer ZHeight="0.1504" LayerName="ComboTipRack" LayerId="3">
+			<ExclusionAreaGroup GroupId="0" GroupName="AreaGroup_1">
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0</X_Position>
+						<Y_Position>0.115</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.577</X_Position>
+						<Y_Position>0.97</Y_Position>
+					</RearRightCorner>
+				</Area>
+				<Area>
+					<FrontLeftCorner>
+						<X_Position>0.599</X_Position>
+						<Y_Position>0.115</Y_Position>
+					</FrontLeftCorner>
+					<RearRightCorner>
+						<X_Position>0.77</X_Position>
+						<Y_Position>0.97</Y_Position>
+					</RearRightCorner>
+				</Area>
+			</ExclusionAreaGroup>
+		</ExclusionLayer>
+	</ExclusionComposition>
+</ExclusionWithTransitionAreaConfig>

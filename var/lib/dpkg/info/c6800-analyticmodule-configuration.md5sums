@@ -1,0 +1,5 @@
+b3c4414bcd7ca4c92b5e3817d2927592  opt/roche/etc/mollab/private/analytic-module/appsettings.json
+8f6367cc63ad22fadd9126f9c0e13bb3  opt/roche/etc/mollab/private/analytic-module/serilog.json
+f25db024f467e17ab2c347eeb8a36bd8  opt/roche/etc/mollab/private/rabbitmq/definitions/analyticModule_definition.json
+621a163572c174df016f91e352f9f4fe  usr/share/doc/c6800-analyticmodule-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/c6800-analyticmodule-configuration/copyright

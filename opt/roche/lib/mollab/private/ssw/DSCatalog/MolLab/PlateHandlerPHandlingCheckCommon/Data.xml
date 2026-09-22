@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="34D87046869E4993CCF4894E94BC5BA76C2D3C672EA1" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="PlateHandlerPHandlingCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pIsOperationsCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Do not move main handler out of the way if true</base:Title>
+          </data:Description>
+          <data:Value>False</data:Value>
+        </data:Parameter>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>Name of the involved processing module</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <data:Result Name="rPPlateDeliverySep1" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Delivery Sepstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 can be moved to SeparationStation 1 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDownholderSep1" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Downholder Sepstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 cannot be removed from SeparationStation 1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDeliverySep2" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Delivery Sepstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 can be moved to SeparationStation 2 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDownholderSep2" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Downholder Sepstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 cannot be removed from SeparationStation 2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDeliveryHeat1" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Delivery Heatingstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 can be moved to HeatingStation 1 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDownholderHeat1" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Downholder Heatstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 cannot be removed from HeatingStation 1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDeliveryHeat2" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Delivery Heatingstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 can be moved to HeatingStation 2  using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDownholderHeat2" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Downholder Heatstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 cannot be removed from HeatingStation 2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rPPlateDeliveryHandover" Type="Boolean">
+          <data:Description>
+            <base:Title>Pplate Delivery Handover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>PPlate48 can be moved to Handover  using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliveryADPark" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Ad Parkposition</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to Heating using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDownholderADPark" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Downholder Adpark</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate cannot be removed from ADPark</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliverySep1" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Ad Sepstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to SepStation 1 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliverySep2" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Ad Sepstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to SepStation 2 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliveryHeat1" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Ad Heatstation 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to HeatStation 1 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliveryHeat2" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Ad Heatstation 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to HeatStation 2 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rADPlateDeliverySealer" Type="Boolean">
+          <data:Description>
+            <base:Title>Adplate Delivery Frame Sealer</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>ADPlate can be moved to the Framesealer using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCTRDeliveryProcessPark1" Type="Boolean">
+          <data:Description>
+            <base:Title>Combotip Rack Delivery Process Park 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>A ComboTipRack  can be moved to the processPark 1 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCTRDownholderProcessPark1" Type="Boolean">
+          <data:Description>
+            <base:Title>Combotip Rack Downholder Processpark1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Combotip rack cannot be removed from process park 1</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCTRDeliveryProcessPark2" Type="Boolean">
+          <data:Description>
+            <base:Title>Combotip Rack Delivery Process Park 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>A ComboTipRack  can be moved to the processPark 2 using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCTRDownholderProcessPark2" Type="Boolean">
+          <data:Description>
+            <base:Title>Combotip Rack Downholder Processpark2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Combotip rack cannot be removed from process park 2</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rCTRDeliveryHandover" Type="Boolean">
+          <data:Description>
+            <base:Title>Combotip Rack Delivery Handover</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>A ComboTipRack  can be moved to the Handover using the plate handler P</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rNoPlateLightBarriersWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>No Plate Lightbarriers Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the lightbarriers are working correctly with for no plate.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLightBarriersWorking" Type="Boolean">
+          <data:Description>
+            <base:Title>Lightbarriers Working</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>All the lightbarriers are working correctly.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLightBarriers" Type="String" Array="true" Size="14">
+          <data:Description>
+            <base:Title>Working Lightbarrierlist</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Working Lightbarrierlist</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rBrokenLightBarriers" Type="String" Array="true" Size="14">
+          <data:Description>
+            <base:Title>Broken Lightbarrierlist</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Broken Lightbarrierlist</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="rNoPlateLightBarriers" Type="String" Array="true" Size="8">
+          <data:Description>
+            <base:Title>No-Plate Lightbarrierlist (at the End)</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>No-Plate Lightbarrierlist (at the End)</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

@@ -1,0 +1,140 @@
+#!/bin/sh
+
+RESULT=0
+
+if [ -r /opt/roche/ssl/codesign-CERT.pem ]; then
+    echo 'I: Verifying signature: aide'
+    /opt/roche/sbin/ssl-verify.sh /opt/roche/etc/aide/aide.db /opt/roche/etc/aide/aide.db.signature
+    if [ $? -eq 0 ]; then
+        echo 'I: Signature OK: aide'
+    else
+        echo 'E: Signature invalid: aide'
+	RESULT=1
+    fi
+    echo 'I: Verifying signature: debian packages list'
+    /opt/roche/sbin/ssl-verify.sh /opt/roche/var/lib/rlx/base-package.list /opt/roche/var/lib/rlx/base-package.list.signature
+    if [ $? -eq 0 ]; then
+        echo 'I: Signature OK: debian packages list'
+    else
+        echo 'E: Signature invalid: debian packages list'
+        RESULT=1
+    fi
+    if [ -s /opt/roche/var/lib/rlx/docker.images ]; then
+        echo 'I: Verifying signature: docker images list'
+        /opt/roche/sbin/ssl-verify.sh /opt/roche/var/lib/rlx/docker.images /opt/roche/var/lib/rlx/docker.images.signature
+        if [ $? -eq 0 ]; then
+            echo 'I: Signature OK: docker images list'
+        else
+            echo 'E: Signature invalid: docker images list'
+            RESULT=1
+        fi
+    fi
+fi
+
+if [ -s /opt/roche/var/lib/rlx/docker.images ]; then
+    echo 'I: Verifying integrity: docker images'
+    LINES=$(docker images --no-trunc --format '{{.Repository}} {{.Tag}} {{.ID}}' | LANG=C sort | sed -e 's/ sha256:/ /g')
+    # exclude docker images from sw addons (helm)
+    # FIXME add docker sw addons
+    if [ -d /opt/roche/var/addons ]; then
+        for service_configuration in `find /opt/roche/var/addons/ -name "service_configuration.yml"`; do
+                docker_image_registry=`grep "imageregistry:" $service_configuration | awk '{print $NF}'`
+                docker_image_name=`grep "imagename:" $service_configuration | awk '{print $NF}'`
+                docker_image_tag=`grep "imagetag:" $service_configuration | awk '{print $NF}'`
+                # handle case when null values are set
+                if [ "$docker_image_registry" = "null" ]; then
+                    docker_image_registry=""
+                fi
+                if [ "$docker_image_name" = "null" ]; then
+                    docker_image_name=""
+                fi
+                if [ "$docker_image_tag" = "null" ]; then
+                    docker_image_tag=""
+                fi
+                if [ -n "$docker_image_registry" -a -n "$docker_image_name" -a -n "$docker_image_tag" ]; then
+                    docker_image="$docker_image_registry/$docker_image_name $docker_image_tag"
+            	# exclude docker image from listed docker images
+            	LINES=`echo "$LINES" | grep -v ^"$docker_image"`
+                fi
+        done
+    fi
+    LINES=$(echo "$LINES" | comm -3 - /opt/roche/var/lib/rlx/docker.images | wc -l)
+
+    if [ $LINES -eq 0 ]; then
+        echo 'I: Integrity OK: docker images'
+    else
+        RESULT=1
+        echo 'E: Integrity invalid: docker images'
+        TMPFILE=$(mktemp)
+        docker images --no-trunc --format '{{.Repository}} {{.Tag}} {{.ID}}' | LANG=C sort | sed -e 's/ sha256:/ /g' | comm -13 - /opt/roche/var/lib/rlx/docker.images > $TMPFILE
+        while IFS= read -r line; do
+          echo "E: Missing docker image: $line"
+        done < $TMPFILE
+        docker images --no-trunc --format '{{.Repository}} {{.Tag}} {{.ID}}' | LANG=C sort | sed -e 's/ sha256:/ /g' | comm -23 - /opt/roche/var/lib/rlx/docker.images > $TMPFILE
+        while IFS= read -r line; do
+          echo "E: Extraneous docker image: $line"
+        done < $TMPFILE
+        rm -f $TMPFILE
+    fi
+fi
+
+if [ -r /opt/roche/etc/aide/aide.db ]; then
+    echo 'I: Verifying integrity: system files'
+
+    # check integrity of not packaged files
+    aide -c /opt/roche/etc/aide/rlx-aide.conf
+    if [ $? -eq 0 ]; then
+        echo 'I: Integrity OK: system files'
+    else
+        echo 'E: Integrity invalid: system files'
+        RESULT=1
+    fi
+fi
+
+# check base installations (package.list)
+if [ -r /opt/roche/var/lib/rlx/base-package.list ]; then
+    echo 'I: Verifying integrity: system debian packages'
+    # generate debsums checksum
+    #packages=""
+    #while read package
+    #do
+    #    packages="$packages /var/lib/dpkg/info/$package.md5sums"
+    #done < /opt/roche/var/lib/rlx/base-package.list
+    #echo $packages
+    #sha256sum $packages > packages.sha256sum
+
+    # compare packages.sha256sum to the originally provided packages.sha256sum
+
+    debsums -ac $(cat /opt/roche/var/lib/rlx/base-package.list)
+    if [ $? -eq 0 ]; then
+        echo 'I: Integrity OK: system debian packages'
+    else
+        echo 'E: Integrity invalid: system debian packages'
+        RESULT=1
+    fi
+else
+    echo 'I: Verifying integrity: debian package checksums'
+    #fallback: check the checksums of all the packages if there is no base-package.list
+    debsums -c
+    if [ $? -eq 0 ]; then
+        echo 'I: Integrity OK: debian package checksums'
+    else
+        echo 'E: Integrity invalid: debian package checksums'
+        RESULT=1
+    fi
+fi
+
+exit $RESULT
+
+# check each plugin
+## get plugin package.list
+## check signature
+## compare packages.sha256
+## run debsums for plugin packages
+
+
+# ensure we checked all installed packages
+
+# check integrity of system directories (i.e. /etc/profile.d, ...)
+
+# make list of what to check

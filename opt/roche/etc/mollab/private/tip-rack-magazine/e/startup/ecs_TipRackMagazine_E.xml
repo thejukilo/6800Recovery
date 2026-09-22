@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECPSWConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/opt/roche/config/ECPSWConfiguration.xsd">
+  <ConnectedCSMs>
+    <!-- TipRackMagazine E -->
+    <ConnectedCSM FileName="newgen-tiprackmagazine">
+      <CSMConfigureParameters>
+        <System RealtimePriority="45" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+        <CSMSpecific ModuleID="230" ProviderSocket="/opt/CSM_230.sock">
+          <CDIDefinition SwitchName="MagazineMotor-cdi" DeviceName="SC_TipStackerCD_MC_StackerMotor2" />
+          <CSMDefinition CSMName="BCReader-id" ConnectedModuleID="231" ConnectToSocket="/opt/CSM_231.sock" />
+          <CSMDefinition CSMName="MAM_HDI-id" ConnectedModuleID="998" />
+          <XMLConfigurationFile XMLFileName="${UNITCONFIGPATH}/settings/config/tiprack-magazine2-motionconfig.xml" />
+          <CommandLineSwitch SwitchName="--param_pool_config_path" Value="${UNITCONFIGPATH}/settings/config/tiprack-magazine-parampool.xml" />
+          <CommandLineSwitch SwitchName="--MagazineId" Value="E" />
+          <CommandLineSwitch SwitchName="--telemetry_url" Value="otel:4318/v1/traces" />
+          <CommandLineSwitch SwitchName="--use-rabbitmq" />
+          <CommandLineSwitch SwitchName="--rabbitmq-address" Value="amqp://roche:$roche_2023!@rabbitmq-server:5672" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-exchange" Value="roche.requests.dx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-command-queue" Value="roche.newgen.tiprackmagazine.e.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-exchange" Value="roche.events.tx" />
+          <CommandLineSwitch SwitchName="--rabbitmq-event-queue" Value="roche.newgen.tiprackmagazine.e.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-request-queue" Value="roche.newgen.tiprackmagazine.e.q" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-exchange" Value="" />
+          <CommandLineSwitch SwitchName="--rabbitmq-response-queue" Value="roche.newgen.tiprackmagazine.e.q" />
+          <CommandLineSwitch SwitchName="--BCReader-socket" Value="/opt/CSM_231.sock" />
+          <CommandLineSwitch SwitchName="--disable-report-forwarding" />
+          <CommandLineSwitch SwitchName="--ecc" Value="${UNITCONFIGPATH}/settings/startup/ecc.xml" />
+        </CSMSpecific>
+      </CSMConfigureParameters>
+      <ConnectedCSMs>
+        <ConnectedCSM DoNotStart="false" FileName="barcodereader" StackSize_kbytes="128">
+          <CSMConfigureParameters>
+            <System RealtimePriority="46" MiddlewarePriority="76" CPUAffinity="-1" TraceLevel="4" Verbose="false" />
+            <CSMSpecific ModuleID="231" ProviderSocket="/opt/CSM_231.sock">
+              <CDIDefinition SwitchName="BarcodeReader-cdi" DeviceName="SC_TipStackerCD_RHC_BarcodeReader2" />
+              <CommandLineSwitch SwitchName="--serial_port_id" Value="1" />
+              <CommandLineSwitch SwitchName="--barcode_reader_type" Value="1" /> <!-- CLP100:1, CR100:2, Mix_CR_CLP: 3, BCL8:4 -->
+            </CSMSpecific>
+          </CSMConfigureParameters>
+        </ConnectedCSM>
+      </ConnectedCSMs>
+    </ConnectedCSM>
+  </ConnectedCSMs>
+</ECPSWConfiguration>

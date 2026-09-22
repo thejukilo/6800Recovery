@@ -1,0 +1,12 @@
+98d8317a2f3dd49bea0b52285b340743  opt/roche/etc/mollab/private/processing-module/a/appsettings.json
+6fce3bece0baad25024ec91f3e033fca  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_LBPipetting.xml
+f8160eabcdbbd7537dde220dc1a23f0f  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_LBPipetting_Prime.xml
+865a042f33983999927c0e23fdbfd4b3  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_MGPPipetting.xml
+7a205f43cbe3e37b25b6604010f39094  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_SDPipetting.xml
+4c8287f49e8af4d3577faa2ef2a3f128  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_SSW800_PipettingCheck.xml
+6c708a7b6003c0260055b13c36d2759a  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_WBPipetting.xml
+3c2b87466816e3148f4dced2467b1ccb  opt/roche/etc/mollab/private/processing-module/a/pipetting-parameter-sets/Cobas6800_8800_ReagentHead_WBPipetting_TightnessCheck.xml
+2af684614e8b5f608eea64dffdb915d0  opt/roche/etc/mollab/private/processing-module/a/serilog.json
+ac9952d78d9c4bedfe0b985692eb0b4f  opt/roche/etc/mollab/private/rabbitmq/definitions/processingModule_a_definition.json
+08e5bbd00a32548ba78ca190af71a406  usr/share/doc/c6800-processingmodule-configuration/changelog.gz
+994bfe272b607c4436da87b9dc9cacec  usr/share/doc/c6800-processingmodule-configuration/copyright

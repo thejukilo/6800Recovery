@@ -1,0 +1,32 @@
+#!/bin/sh
+
+WORK_DIR=$1
+
+errlog=$WORK_DIR/rlx-upgrade.log
+exec >> $errlog 2>&1
+set -x
+
+if [ -z "$WORK_DIR" ]; then
+    echo "Usage: $0 WORK_DIR" >&2
+    exit 1
+fi
+
+if [ -f "$WORK_DIR/archive/init-upgrade.sh" ]; then
+    exec sh $WORK_DIR/archive/init-upgrade.sh $WORK_DIR
+fi
+
+. /usr/lib/rlx-osal/rlx-upgrade.inc.sh
+
+do_docker=0
+if [ -e /opt/roche/etc/docker-compose.yml ]; then
+  if [ -f $WORK_DIR/archive/docker-containers.tar -o -f $WORK_DIR/archive/docker-containers.dedup.tar ]; then
+    do_docker=1
+  fi
+fi
+
+if [ $do_docker -eq 1 ]; then
+    log_info "Preparing docker upgrade"
+    docker_envbackup
+    docker_down
+fi
+

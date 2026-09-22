@@ -1,0 +1,1 @@
+{"Code128":{"MinLength":4,"MaxLength":23,"Masking":{"IsMaskingEnabled":false,"MaskingPattern":"","IsMaskingIgnoredWhenStartingWithUdecPrefix":false,"UdecPrefix":""}}}

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="B888A7B57B72B56A462DC5271D047F000776EC70F841" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="urn:data" xmlns:base="urn:base" xmlns:workflow="urn:workflow" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="HeatingStationFunctionalCheckCommon" ID="TRQ566808">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="Init" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadProcessingPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a processing plate on the transfer position of the processing module.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="VerifyTransferPositionNotEmpty">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Verify Transfer Position Not Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Verifying that the transfer position is not empty.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="MovePPToHS1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Moving processing plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Moving processing plate, please wait.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmDownholderClosedHS1" Type="Confirm" Result="rConfirmDownholderHS1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Downholder Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm if the downholders of the heating station 1 are closed.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ResetHS1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reseting Heating Station 1</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the process to be finished.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ConfirmDownholderClosedHS2" Type="Confirm" Result="rConfirmDownholderHS2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Confirm Downholder Closed</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please confirm if the downholders of the heating station 2 are closed.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="ResetHS2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Reseting Heating Station 2</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the process to be finished.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="UnloadPPlate" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Unload Processing Plate</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please remove the processing plate from the transfer position.</base:Paragraph>
+              <base:Paragraph>Then press 'Next'.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareHeatingStations">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Preparing Heating Stations</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait for the process to finish.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TemperatureRegulationLow">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Temperature Regulation Low</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature regulation to [P.pLowTargetTemperature] can take up to 15 minutes.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="TemperatureRegulationHigh">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Temperature Regulation High</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Temperature regulation to [P.pHighTargetTemperature] can take up to 10 minutes.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="Cleanup" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Cleanup</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Claning up service check resources...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

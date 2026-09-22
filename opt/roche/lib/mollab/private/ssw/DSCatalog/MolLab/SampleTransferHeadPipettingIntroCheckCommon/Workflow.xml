@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="F62ED6D4C9CA550647BE13AF2FEF834190750F58E091" xmlns:workflow="urn:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsWorkflow.xsd">
+  <ds:TestFunction Name="SampleTransferHeadPipettingIntroCheckCommon" ID="SampleTransferHeadPipettingIntroCheckCommon">
+    <base:Content>
+      <base:File Type="Workflow" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:WorkFlow>
+      <ds:Step Name="PrepareInitStart" NextState="true">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the initialization is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PrepareInit">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Initialization</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="SelectOWSVersion" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Select the Onboard Weighning System Version</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please select which version of the onboard weighing system will be used.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="Supported_Balance_and_Holder_Combinations.jpg" Hash="6CBF01A977AE28316F443035B40B798687E9056E" />
+          <workflow:Input Result="rOwsVersion">
+            <workflow:Description>     OWS version used.</workflow:Description>
+          </workflow:Input>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="SelectOWSVersion" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="0" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceFilledRD5Rack" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Sample Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please ensure that the sample supply module is initialized and ready for a tray and a sample rack to be loaded.</base:Paragraph>
+              <base:Paragraph>Please load a sample rack containing 5 sample tubes, each filled with minimum 1.2 ml Wash reagent on the sample supply module and wait until the rack has been forwarded to the input rail.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' once the rack has reached the input rail to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="RackHandlerCheck_sInsertFivePositionRackWithoutStabilizers1.jpg" Hash="84966BC2255E89C45308F88BD23B906003CBD723" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadFilledRD5Rack">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Load Filled Sample Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceComboTipRack2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a new tip rack on the transfer position of the transfer module.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceComboTipRack2.jpg" Hash="7F7F9DB4D5BEF1EA4C7B7162B736CB67AFA2CA1E" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadComboTipRack2">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceComboTipRack1" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please load a new tip rack on the transfer position of the transfer module.</base:Paragraph>
+              <base:Paragraph>Please press 'Next' to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceComboTipRack1.jpg" Hash="F94BA381FEE43F448215F1C5726005F2226F407E" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="LoadComboTipRack1">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Tip Rack</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="PlaceBalanceOWSv2" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="2" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceBalance" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place and Connect the Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the onboard weighing system with the provided holder into the teach tool park position.</base:Paragraph>
+              <base:Paragraph>Level the onboard weighing system using the 4x leveling screws (red), observing the correct level position (green).</base:Paragraph>
+              <base:Paragraph>Mount the indicated weighing pan and draft shield.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please connect the onboard weighing system to the service Ethernet port at the back of the instrument.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Caution: </base:Paragraph>
+              <base:Paragraph>    -   Only plug in the power cable of the onboard weighing system after all other connections are set and the weighing pan is mounted.</base:Paragraph>
+              <base:Paragraph>    -   The cable of the onboard weighing system is not interfering with any other moving part.</base:Paragraph>
+              <base:Paragraph>    -   The fixated cable shall not exceed the height of the weighing pan.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceConnectBalanceOWSv1.jpg" Hash="5FFCE6FEABDBE9FAEED115F13C00ED1C2C85FEC1" />
+        </workflow:GUI>
+        <workflow:Flow>
+          <workflow:Decision NextStep="PlaceBalanceCheck" Result="rOwsVersion">
+            <workflow:Condition Operator="EQ" Value="1" />
+          </workflow:Decision>
+        </workflow:Flow>
+      </ds:Step>
+      <ds:Step Name="PlaceBalanceOWSv2" Type="Next">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Place and Connect Onboard Weighing System</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please place the onboard weighing system with the provided holder into the teach tool park position.</base:Paragraph>
+              <base:Paragraph>Level the onboard weighing system using the 4x leveling screws (red), observing the correct level position (green).</base:Paragraph>
+              <base:Paragraph>Mount the indicated weighing pan and draft shield.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please connect the onboard weighing system to the service Ethernet port at the back of the instrument.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Caution: </base:Paragraph>
+              <base:Paragraph>    -   Only plug in the power cable of the onboard weighing system after all other connections are set and the weighing pan is mounted.</base:Paragraph>
+              <base:Paragraph>    -   The cable of the onboard weighing system is not interfering with any other moving part.</base:Paragraph>
+              <base:Paragraph>    -   The fixated cable shall not exceed the height of the weighing pan.</base:Paragraph>
+              <base:Paragraph />
+              <base:Paragraph>Please press 'Next' once this is done to continue.</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+          <workflow:Picture Name="SampleHeadPipettingIntro_sPlaceConnectBalanceOWSv2.jpg" Hash="C0A05CD6DC3A259E401FF7491EBB495523D3619E" />
+        </workflow:GUI>
+      </ds:Step>
+      <ds:Step Name="PlaceBalanceCheck">
+        <workflow:GUI>
+          <workflow:Description>
+            <base:Title>Onboard Weighing System Check</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Please wait while the process is running...</base:Paragraph>
+            </base:Paragraphs>
+          </workflow:Description>
+        </workflow:GUI>
+      </ds:Step>
+    </ds:WorkFlow>
+  </ds:TestFunction>
+</ds:TestList>

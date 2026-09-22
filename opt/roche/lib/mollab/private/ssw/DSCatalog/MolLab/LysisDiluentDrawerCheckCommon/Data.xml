@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ds:TestList Hash="4A25C565411E279563BCCAFCC52E7E51BFF31EB12AB8" xmlns:base="urn:base" xmlns:data="urn:data" xmlns:ds="urn:ds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ds ../../../Tools/Schemas/LabCore.Diagnose/dsData.xsd">
+  <ds:TestFunction Name="LysisDiluentDrawerCheckCommon">
+    <base:Content>
+      <base:File Type="Data" Version="1.0.0.0000" />
+    </base:Content>
+    <ds:Data>
+      <data:ParameterList>
+        <data:Parameter Name="pModuleId" Type="String">
+          <data:Description>
+            <base:Title>ModuleId</base:Title>
+          </data:Description>
+        </data:Parameter>
+      </data:ParameterList>
+      <data:ResultList>
+        <!-- Internal Results -->
+        <data:Result Name="irCurrentContainerIndex" Type="Integer">
+          <data:Description>
+            <base:Title>Lysis/Diluent Container Loop Counter</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irCurrentContainerName" Type="String">
+          <data:Description>
+            <base:Title>Current Container's Name</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irLedFunctionalityCheck" Type="Boolean">
+          <data:Description>
+            <base:Title>Verify LED functionality check (transition to off and then green).</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irIsDiluent" Type="Boolean">
+          <data:Description>
+            <base:Title>If set, then we are handling a diluent bottle in the loop.</base:Title>
+          </data:Description>
+        </data:Result>
+        <data:Result Name="irVerifyAspirationArmClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>User confirmation of closure of aspiration arm.</base:Title>
+          </data:Description>
+        </data:Result>
+        <!-- Check-Wide Result -->
+        <data:Result Name="rLysisDiluentDrawerPushedOut" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Push Out Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirms that the drawer has been pushed out successfully by the instrument.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Diluent 1 Container Results -->
+        <data:Result Name="rDiluent1VerifyAspirationArmClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 1 Aspiration Arm Closed Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of closure of aspiration arm for Diluent 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent1LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 1 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent1SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 1 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent1SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 1 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Diluent 2 Container Results -->
+        <data:Result Name="rDiluent2VerifyAspirationArmClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 2 Aspiration Arm Closed Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of closure of aspiration arm for Diluent 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent2LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 2 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent2SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 2 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rDiluent2SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Diluent 2 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Lysis 1 Container Results -->
+        <data:Result Name="rLysis1VerifyAspirationArmClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 Aspiration Arm Closed Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of closure of aspiration arm for Lysis 1.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis1LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis1SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis1SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis1SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis1SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 1 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Lysis 2 Container Results -->
+        <data:Result Name="rLysis2VerifyAspirationArmClosed" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 Aspiration Arm Closed Confirmation</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of closure of aspiration arm for Lysis 2.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis2LedTransitionToGreen" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 LED Transition To Green</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>User confirmation of LED transitioning to off, red and then green.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis2SensorDetectedContainerAbsence" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 Sensor Detection Container Absence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container absence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis2SensorDetectedContainerEmpty" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 Sensor Detection Of Container Empty</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being empty.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis2SensorDetectedContainerPresence" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 Sensor Detection Container Presence</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container presence by the sensor.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rLysis2SensorDetectedContainerFull" Type="Boolean">
+          <data:Description>
+            <base:Title>Lysis 2 Sensor Detection Of Container Full</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Detection of container being full of liquid.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <!-- Post Loop Results -->
+        <data:Result Name="rLysisDiluentDrawerClosedAndLocked" Type="Boolean">
+          <data:Description>
+            <base:Title>Drawer Closure And Lock Detection</base:Title>
+            <base:Paragraphs>
+              <base:Paragraph>Drawer closure and lock detection at the end of the check.</base:Paragraph>
+            </base:Paragraphs>
+          </data:Description>
+          <data:Validation>
+            <data:Condition Operator="EQ" Value="True" />
+          </data:Validation>
+        </data:Result>
+        <data:Result Name="rRecordedTemperature" Type="Double">
+          <data:Description>
+            <base:Title>Recorded Drawer Temperature (°C)</base:Title>
+          </data:Description>
+        </data:Result>
+      </data:ResultList>
+    </ds:Data>
+  </ds:TestFunction>
+</ds:TestList>

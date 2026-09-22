@@ -1,0 +1,110 @@
+#!/bin/sh
+
+UPGRADE_ARCHIVE=$1
+WORK_DIR=$2
+
+starttime=`date -R`
+success=0
+
+finish()
+{ # no log_error in here
+  last_ret=$?
+  if [ $success -eq 0 ]; then
+    echo "*E: Error upgrading the system" >&2
+
+    # write software history entry
+    ts=`stat -c %y $WORK_DIR/upgrade.start | tr -d - | tr -d : | sed 's/ /T/' | sed 's/\.[0-9]\+ //'`
+    echo "$starttime;$version;$ts;$success;" >> /opt/roche/var/log/rlx-software-history.log
+  fi
+  exit $last_ret
+}
+trap finish INT TERM EXIT
+
+. /usr/lib/rlx-osal/rlx-upgrade.inc.sh
+
+if [ -z "$WORK_DIR" ]; then
+  log_error "$0: no work dir specified"
+fi
+
+errlog=$WORK_DIR/rlx-upgrade.log
+exec >> $errlog 2>&1
+set -x
+
+if [ -z "$UPGRADE_ARCHIVE" ]; then
+  log_error "$0: no upgrade archive specified"
+fi
+
+if [ ! -f "$UPGRADE_ARCHIVE" ]; then
+  log_error "$0: file not found: $UPGRADE_ARCHIVE"
+fi
+
+set +x
+cat <<'EOM'
+ ____  _    __  __  _   _                           _
+|  _ \| |   \ \/ / | | | |_ __   __ _ _ __ __ _  __| | ___
+| |_) | |    \  /  | | | | '_ \ / _` | '__/ _` |/ _` |/ _ \
+|  _ <| |___ /  \  | |_| | |_) | (_| | | | (_| | (_| |  __/
+|_| \_\_____/_/\_\  \___/| .__/ \__, |_|  \__,_|\__,_|\___|
+                         |_|    |___/
+
+EOM
+set -x
+
+# remember start time, check upgrade file timestamp
+SYSTEM_TIMESTAMP=$(date --utc +"%s")
+UPGRADE_ARCHIVE_TIMESTAMP=$(date --utc --date="$(tar --utc -vtf "$UPGRADE_ARCHIVE" | head -1 | awk '{print $4, $5}')" +"%s")
+
+[ $UPGRADE_ARCHIVE_TIMESTAMP -gt $SYSTEM_TIMESTAMP ] && log_error "$0: ERROR upgrade file $UPGRADE_ARCHIVE has future timestamp, check system time"
+
+echo "$SYSTEM_TIMESTAMP" > $WORK_DIR/upgrade.start
+
+log_info "Extracting upgrade package"
+extract_archive
+
+log_info "Verifying upgrade"
+verify_signature
+verify_checksums
+verify_upgrade
+verify_toplevel_package
+
+# source upgrade info
+. $WORK_DIR/archive/upgrade.info
+
+if [ -n "$UPGRADE_DURATION" ] ; then
+    log_info "Estimated upgrade duration: $UPGRADE_DURATION minutes"
+else
+    log_info "The upgrade may take several minutes to complete"
+fi
+
+project=`cut -d/ -f1 /opt/roche/etc/projectinfo`
+version=`cat $WORK_DIR/archive/releaseversion`
+if [ -e /opt/roche/etc/project-version ]; then
+    base=`cat /opt/roche/etc/project-version`
+elif [ -e /opt/roche/etc/rlx-project-release ]; then  # obsolete
+    base=`cat /opt/roche/etc/rlx-project-release`
+elif [ -e /opt/roche/etc/rlx-version ]; then
+    base=`cat /opt/roche/etc/rlx-version`
+fi
+
+set +x
+echo
+echo ================================================================
+echo "Software Project:         $project"
+echo "Current Software Version: $base"
+echo "Upgrade Software Version: $version"
+if [ -n "$UPGRADE_DURATION" ]; then
+    echo "Upgrade Duration (Est.):  $UPGRADE_DURATION'"
+fi
+echo "Required Free Diskspace:  $UPGRADE_MINFREE MB"
+echo "Upgrade Start Time:       $starttime"
+echo ================================================================
+echo
+set -x
+
+UPGRADE_INFO_FILE=/rlx-upgrade
+if [ -n "$UPGRADE_DURATION" ] ; then
+    echo "ESTIMATED_UPGRADE_DURATION=\"$UPGRADE_DURATION\"" >> $UPGRADE_INFO_FILE
+fi
+echo "REQUIRED_DISK_SPACE=\"$UPGRADE_MINFREE\"" >> $UPGRADE_INFO_FILE
+
+success=1

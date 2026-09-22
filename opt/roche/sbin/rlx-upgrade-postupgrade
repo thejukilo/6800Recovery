@@ -1,0 +1,26 @@
+#!/bin/sh
+
+WORK_DIR=$1
+
+errlog=$WORK_DIR/rlx-upgrade.log
+exec >> $errlog 2>&1
+set -x
+
+if [ -z "$WORK_DIR" ]; then
+    echo "Usage: $0 WORK_DIR" >&2
+    exit 1
+fi
+
+. /usr/lib/rlx-osal/rlx-upgrade.inc.sh
+
+if [ -f "$WORK_DIR/archive/post-upgrade.sh" ]; then
+    log_info "Executing post-upgrade script ..."
+    sh $WORK_DIR/archive/post-upgrade.sh $WORK_DIR
+fi
+
+plymouth_upgrade_progress 100
+log_info "Upgrade successful, system is restarting ..."
+
+touch /run/rlx-upgrade.success
+success=1
+sleep 10
