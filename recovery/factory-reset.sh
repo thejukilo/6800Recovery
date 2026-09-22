@@ -199,8 +199,14 @@ read -r FINAL
 
 printf '\n'
 inf "Sending factory-reset request ..."
+# Send the credentials inline (no session cookie) so the request authenticates
+# as a fresh session. This bypasses rlx-web's auto-logout: a cookie session can
+# expire during the confirmation prompt (the UI keeps it alive by pinging
+# /api/auto-logout/last-access, which a CLI session does not), which returns 401
+# on the reset. A new session authenticates straight from the request body.
 RESET_CODE=$("${CURL[@]}" -o /dev/null -w '%{http_code}' \
-    -b "$COOKIE_JAR" -X POST "${BASE}/api/system/factoryreset" || true)
+    -X POST "${BASE}/api/system/factoryreset" \
+    -H 'Content-Type: application/json' --data "$JSON_LOGIN" || true)
 
 printf '\n'
 case "$RESET_CODE" in
@@ -215,8 +221,11 @@ case "$RESET_CODE" in
         inf "The reset may already be in progress (the box can drop the"
         inf "connection as it reboots). Verify at the instrument."
         ;;
+    400)
+        die "Reset rejected (HTTP 400) — credentials not accepted on the inline auth. Re-check user/password." 3
+        ;;
     401)
-        die "Session was not accepted (HTTP 401). Re-run and log in again." 3
+        die "Session was not accepted (HTTP 401). Re-run — the tool now sends credentials inline to avoid this." 3
         ;;
     *)
         die "Factory reset returned HTTP ${RESET_CODE}. Reset NOT confirmed." 6
