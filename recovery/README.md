@@ -7,6 +7,7 @@ RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
 |--------|---------|
 | [`factory-reset.sh`](#rlx-factory-reset-over-the-local-api-recovery) | Trigger a Factory Reset via the local maintenance API. |
 | [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
+| [`check-package.sh`](#pre-flight-checking-an-update-package) | Validate an update package before applying it (base match + boot-safe initrd). |
 
 Both are meant to run **from the instrument over SSH**, and both gate any
 destructive action behind a typed **GCS + UI-impossible** consent prompt.
@@ -83,6 +84,41 @@ If `status` shows OSAL `FAILED` / `pending-updates/` empty right after an
 upload, the failure was in **upload/verification** (the `softwareupdate`
 container), not the apply step — triggering `SoftwareUpgradeOffline` won't
 help. Check `journalctl CONTAINER_NAME=softwareupdate` and hand that to GCS.
+
+---
+
+# Pre-flight: checking an update package
+
+`check-package.sh` validates a software-update package **before** you apply it,
+so you don't burn a reboot cycle on a package that will abort or panic. It
+changes nothing.
+
+```bash
+./check-package.sh /path/to/Package.tar.xz          # a package file
+./check-package.sh /path/to/extracted-dir           # already-extracted
+./check-package.sh /boot/efi/EFI/rlx/*<ver>*.initrd # a raw/staged initrd
+./check-package.sh --driver vmw_pvscsi <pkg>        # force the target driver
+```
+
+It reports:
+
+1. **baseversion** — the version the package must be applied on top of, compared
+   to the installed version (`/opt/roche/etc/projectinfo`). A mismatch is the
+   `Error: upgrade package is for version …` abort — caught here before you try.
+2. **releaseversion** — what the package installs.
+3. **initrd storage drivers** — whether the package's initrd contains the driver
+   for **this machine's disk controller**. On a VM this is the whole ballgame: a
+   package whose initrd lacks `vmw_pvscsi` boots fine on the physical instrument
+   but panics on VMware (`VFS: unable to mount root`). The script auto-detects
+   the controller (e.g. `vmw_pvscsi`) and flags a missing driver.
+
+If the initrd is shipped inside a kernel `.deb`/UKI and isn't a loose file, the
+script says so and points you at verifying the **staged** initrd
+(`/boot/efi/EFI/rlx/*<newver>*.initrd`) after it lands.
+
+**On a VM, regardless of the check: take a VMware snapshot before applying the
+update.** It turns any post-upgrade panic into a 10-second revert instead of a
+firmware / live-ISO recovery.
 
 ---
 
