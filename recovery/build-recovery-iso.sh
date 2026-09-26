@@ -108,21 +108,27 @@ GUI_MAPS=()
 cat > "$WORK/autorun" <<'AUTORUN'
 #!/bin/sh
 exec 0</dev/tty1 1>/dev/tty1 2>&1 || true
+export HOME=/root
 mkdir -p /run/rlx
 SRC=""
 for d in "$(dirname "$0")" /run/archiso/bootmnt/autorun /run/archiso/copytoram/autorun /autorun; do
     [ -f "$d/factory-reset-menu.sh" ] && SRC="$d" && break
 done
 [ -n "$SRC" ] && cp "$SRC"/factory-reset-* /run/rlx/ 2>/dev/null
-[ -f "$SRC/brand-logo.png" ] && cp "$SRC/brand-logo.png" /run/rlx/ 2>/dev/null
+[ -n "$SRC" ] && [ -f "$SRC/brand-logo.png" ] && cp "$SRC/brand-logo.png" /run/rlx/ 2>/dev/null
 
-# Graphical screen (GTK under X), if available.
+# Graphical screen (GTK under X), if available. We hand our app to startx as an
+# EXPLICIT client so it cannot fall back to SystemRescue's default xinitrc
+# (which would launch the whole Xfce desktop instead of our screen).
 if [ -x /usr/bin/startx ] && [ -f /run/rlx/factory-reset-gui.py ]; then
-    cat > /root/.xinitrc <<XRC
+    cat > /run/rlx/xsession <<'XS'
+#!/bin/sh
 [ -x /usr/bin/xfwm4 ] && xfwm4 &
-exec env RLX_LOGO=/run/rlx/brand-logo.png python3 /run/rlx/factory-reset-gui.py
-XRC
-    startx -- vt1 -nolisten tcp >/run/rlx/x.log 2>&1
+export RLX_LOGO=/run/rlx/brand-logo.png
+exec python3 /run/rlx/factory-reset-gui.py
+XS
+    chmod +x /run/rlx/xsession
+    startx /run/rlx/xsession -- vt1 -nolisten tcp >/run/rlx/x.log 2>&1
 fi
 
 # Fallback: text menu (X missing, or it exited/failed).
