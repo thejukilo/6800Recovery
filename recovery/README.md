@@ -8,6 +8,7 @@ RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
 | [`factory-reset.sh`](#rlx-factory-reset-over-the-local-api-recovery) | Trigger a Factory Reset via the local maintenance API. |
 | [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
 | [`check-package.sh`](#pre-flight-checking-an-update-package) | Validate an update package before applying it (base match + boot-safe initrd). |
+| [`factory-reset-menu.sh`](#bootable-recovery-usb-menu-driven-factory-reset) | Boot from USB and arm a Factory Reset from a menu when the UI is dead. |
 
 Both are meant to run **from the instrument over SSH**, and both gate any
 destructive action behind a typed **GCS + UI-impossible** consent prompt.
@@ -84,6 +85,71 @@ If `status` shows OSAL `FAILED` / `pending-updates/` empty right after an
 upload, the failure was in **upload/verification** (the `softwareupdate`
 container), not the apply step — triggering `SoftwareUpgradeOffline` won't
 help. Check `journalctl CONTAINER_NAME=softwareupdate` and hand that to GCS.
+
+---
+
+# Bootable recovery USB: menu-driven Factory Reset
+
+`factory-reset-menu.sh` gives you a **menu** (whiptail TUI) to arm a Factory
+Reset when the RLX-Maintenance UI is a black screen. You boot a Linux USB **on
+the instrument**, pick "Arm Factory Reset", and it writes the reset flag to the
+instrument's disk; you then remove the USB and reboot, and the **instrument's
+own recovery step** does the reset on next boot.
+
+> ## ⚠️ Read before using
+> - This **arms a destructive Factory Reset** — the instrument reverts to its
+>   factory snapshot (state and config discarded). **GCS-directed use only**,
+>   and only when the UI cannot do it.
+> - It **refuses** unless it finds an existing factory snapshot (`snapshots/F`)
+>   on the instrument. Arming without one would leave the box unbootable — the
+>   tool checks this for you.
+> - It works only if the instrument **still boots far enough to run its
+>   initramfs** (a black UI on a booting system — your downgrade case). If the
+>   instrument can't boot at all, the flag never fires and this won't help.
+> - It writes to the **instrument's** disk (not the USB). It verifies the disk
+>   is a real RLX system and shows you the device + version before writing.
+
+## What it does (mechanism)
+
+It writes `/rlx-boot` at the top of the instrument's btrfs `root` subvolume:
+
+```
+ACTION=restore-snapshot
+SNAPSHOT_TYPE=factory
+```
+
+That's the exact flag the RLX-Maintenance "Factory Reset" and the OSAL
+`FactoryReset` write. The instrument's initramfs reads it on next boot and
+performs the factory-snapshot restore.
+
+## Building the USB
+
+Any bootable Linux USB with `whiptail` and `btrfs-progs` works. **SystemRescue**
+is a good fit (both included, boots fast):
+
+1. Write the SystemRescue ISO to a USB (Rufus/balenaEtcher on Windows, or
+   `dd`/Ventoy). With **Ventoy** you can just drop the `.iso` on the stick.
+2. Copy `factory-reset-menu.sh` onto the USB (any partition you can reach from
+   the booted system — e.g. the Ventoy data partition, or a second FAT
+   partition).
+3. Boot the USB **on the instrument**, open a root shell, and run it:
+   ```bash
+   # if it came from Windows, strip CR line endings first:
+   sed -i 's/\r$//' factory-reset-menu.sh
+   chmod +x factory-reset-menu.sh
+   sudo ./factory-reset-menu.sh
+   ```
+4. In the menu: **Show status** first (read-only — confirms it found the
+   instrument and that a factory snapshot exists), then **Arm Factory Reset**.
+5. Choose **Reboot**, **remove the USB during reboot** so the *instrument*
+   boots (not the USB), and it factory-resets itself.
+
+To auto-launch the menu at boot instead of running it by hand, add the script
+to your live distro's autorun (e.g. SystemRescue's `autorun`), but the manual
+run above is the robust path.
+
+The menu also offers **Disarm** (delete a pending flag before you reboot) and
+**Show status** (read-only), so a mistaken arm is easy to undo.
 
 ---
 
