@@ -9,6 +9,7 @@ RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
 | [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
 | [`check-package.sh`](#pre-flight-checking-an-update-package) | Validate an update package before applying it (base match + boot-safe initrd). |
 | [`factory-reset-menu.sh`](#bootable-recovery-usb-menu-driven-factory-reset) | Boot from USB and arm a Factory Reset from a menu when the UI is dead. |
+| [`build-recovery-usb.sh`](#making-the-usb) | One-command Linux builder that turns a blank USB into the recovery stick. |
 
 Both are meant to run **from the instrument over SSH**, and both gate any
 destructive action behind a typed **GCS + UI-impossible** consent prompt.
@@ -122,31 +123,52 @@ That's the exact flag the RLX-Maintenance "Factory Reset" and the OSAL
 `FactoryReset` write. The instrument's initramfs reads it on next boot and
 performs the factory-snapshot restore.
 
-## Building the USB
+## Making the USB
 
-Any bootable Linux USB with `whiptail` and `btrfs-progs` works. **SystemRescue**
-is a good fit (both included, boots fast):
+The recovery stick is just a **SystemRescue** live USB (it already bundles
+`whiptail` + `btrfs-progs`, so the menu works offline) carrying
+`factory-reset-menu.sh`. Two ways to build it:
 
-1. Write the SystemRescue ISO to a USB (Rufus/balenaEtcher on Windows, or
-   `dd`/Ventoy). With **Ventoy** you can just drop the `.iso` on the stick.
-2. Copy `factory-reset-menu.sh` onto the USB (any partition you can reach from
-   the booted system — e.g. the Ventoy data partition, or a second FAT
-   partition).
-3. Boot the USB **on the instrument**, open a root shell, and run it:
+### Option 1 — Ventoy (dummy-proof, any OS, GUI)
+
+The reusable, no-scripting path. You need the **Ventoy** installer and a
+**SystemRescue** `.iso` (download each once).
+
+1. Plug in the USB. Run Ventoy (`Ventoy2Disk.exe` on Windows / `Ventoy2Disk.sh`
+   on Linux) → select the USB → **Install**. (This is the only "format" step.)
+2. A large **Ventoy** drive appears. Copy **two files** onto it: the
+   `systemrescue-*.iso` and `factory-reset-menu.sh`.
+3. Done. To make more sticks, Ventoy another USB and copy the same two files.
+
+### Option 2 — `build-recovery-usb.sh` (one command, Linux)
+
+Automates Option 1 from a Linux host (your live Debian, a workstation, WSL2).
+It installs Ventoy to the stick and copies the ISO + menu on for you:
+
+```bash
+sudo ./build-recovery-usb.sh --device /dev/sdX --iso systemrescue-XX.iso \
+     --ventoy /path/to/extracted/ventoy
+```
+
+Safety: it refuses a non-removable disk (unless `--force`), prints the target
+model/size, and makes you retype the device path and `ERASE` before writing.
+Without Ventoy present it falls back to raw-writing the ISO (bootable, but then
+the menu has to ride on a second stick). **It ERASES the chosen device — check
+`--device` with `lsblk` first.**
+
+## Using it on the instrument
+
+1. Boot the USB on the instrument → in the Ventoy menu pick the SystemRescue
+   ISO → let it boot to its root shell.
+2. Run the menu (strip CR endings if it came from Windows):
    ```bash
-   # if it came from Windows, strip CR line endings first:
-   sed -i 's/\r$//' factory-reset-menu.sh
-   chmod +x factory-reset-menu.sh
-   sudo ./factory-reset-menu.sh
+   sed -i 's/\r$//' /ventoy/factory-reset-menu.sh
+   sh /ventoy/factory-reset-menu.sh
    ```
-4. In the menu: **Show status** first (read-only — confirms it found the
-   instrument and that a factory snapshot exists), then **Arm Factory Reset**.
-5. Choose **Reboot**, **remove the USB during reboot** so the *instrument*
-   boots (not the USB), and it factory-resets itself.
-
-To auto-launch the menu at boot instead of running it by hand, add the script
-to your live distro's autorun (e.g. SystemRescue's `autorun`), but the manual
-run above is the robust path.
+3. **Show status** first (read-only — confirms it found the instrument and that
+   a factory snapshot exists), then **Arm Factory Reset**.
+4. Choose **Reboot**, **remove the USB during reboot** so the *instrument* boots
+   (not the USB), and it factory-resets itself.
 
 The menu also offers **Disarm** (delete a pending flag before you reboot) and
 **Show status** (read-only), so a mistaken arm is easy to undo.
