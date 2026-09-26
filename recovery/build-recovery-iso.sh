@@ -20,6 +20,9 @@
 #   --menu PATH  Menu script to embed (default: factory-reset-menu.sh beside this)
 #   --label STR  Boot-menu entry text (default: "cobas 6800 - Factory Reset (recovery)")
 #   --timeout N  Boot-menu auto-boot seconds (default 2; 0 = boot instantly)
+#   --logo PATH  Your logo (SVG or PNG). Placed top-right on the boot screen and
+#                the graphical menu. Needs imagemagick (+ librsvg2-bin for SVG).
+#   --gui PATH   GTK screen-2 app (default: factory-reset-gui.py beside this)
 #   --no-brand   Keep SystemRescue's stock (multi-entry) boot menu
 #   -h, --help   Show help.
 #
@@ -36,6 +39,7 @@ set -euo pipefail
 SELF_DIR="$(cd "$(dirname "$0")" && pwd)"
 ISO=""; OUT="$PWD/rlx-recovery.iso"; MENU="$SELF_DIR/factory-reset-menu.sh"
 BRAND="yes"; LABEL="cobas 6800 - Factory Reset (recovery)"; TIMEOUT="2"
+LOGO=""; GUI_SRC="$SELF_DIR/factory-reset-gui.py"
 
 if [ -t 1 ]; then B="$(printf '\033[1m')"; R="$(printf '\033[31m')"; G="$(printf '\033[32m')"
     C="$(printf '\033[36m')"; Z="$(printf '\033[0m')"; else B=""; R=""; G=""; C=""; Z=""; fi
@@ -50,6 +54,8 @@ while [ $# -gt 0 ]; do case "$1" in
     --menu) MENU="${2:?}"; shift 2 ;;
     --label) LABEL="${2:?}"; shift 2 ;;
     --timeout) TIMEOUT="${2:?}"; shift 2 ;;
+    --logo) LOGO="${2:?}"; shift 2 ;;
+    --gui) GUI_SRC="${2:?}"; shift 2 ;;
     --no-brand) BRAND="no"; shift ;;
     -h|--help) usage 0 ;;
     *) die "Unknown option: $1 (try --help)" 2 ;;
@@ -67,22 +73,62 @@ fi
 
 WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT
 
-# Menu with clean LF line endings.
+# Menu (text fallback) and GUI with clean LF line endings.
 sed 's/\r$//' "$MENU" > "$WORK/factory-reset-menu.sh"
+[ -f "$GUI_SRC" ] && sed 's/\r$//' "$GUI_SRC" > "$WORK/factory-reset-gui.py"
 
-# SystemRescue runs scripts in the /autorun/ directory at boot (autorun is
-# enabled with ar_nowait by default in sysrescue.d). Build /autorun/autorun as
-# a launcher that attaches to the console and runs the menu. The menu is
-# EMBEDDED so there is no runtime path to locate.
-{
-    echo '#!/bin/sh'
-    echo '# RLX recovery: launch the Factory Reset menu on the console at boot.'
-    echo 'exec 0</dev/tty1 1>/dev/tty1 2>&1 || true'
-    echo "cat > /tmp/rlx-frm.sh <<'RLX_MENU_EOF'"
-    cat "$WORK/factory-reset-menu.sh"
-    echo 'RLX_MENU_EOF'
-    echo 'exec bash /tmp/rlx-frm.sh'
-} > "$WORK/autorun"
+# ---- logo + white boot background (only when --logo is given) --------------
+LOGO_MAPS=(); HAS_LOGO="no"
+if [ -n "$LOGO" ]; then
+    [ -f "$LOGO" ] || die "--logo file not found: $LOGO" 2
+    command -v convert >/dev/null 2>&1 || die "ImageMagick 'convert' needed for --logo (apt-get install imagemagick)." 1
+    # normalise the supplied logo to PNG (convert SVG with rsvg if needed)
+    case "$LOGO" in
+        *.svg|*.SVG) command -v rsvg-convert >/dev/null 2>&1 || die "rsvg-convert needed for an SVG logo (apt-get install librsvg2-bin)." 1
+                     rsvg-convert -h 200 -f png -o "$WORK/brand-logo.png" "$LOGO" ;;
+        *)           convert "$LOGO" -resize x200 "$WORK/brand-logo.png" ;;
+    esac
+    # white full-screen boot background with the logo placed top-right (UEFI/grub)
+    convert -size 1024x768 xc:white \( "$WORK/brand-logo.png" -resize x84 \) \
+            -gravity NorthEast -geometry +48+40 -composite "$WORK/bg1024.png"
+    LOGO_MAPS=(
+        -map "$WORK/brand-logo.png" /autorun/brand-logo.png
+        -map "$WORK/bg1024.png"     /rlx/boot-bg.png
+    )
+    HAS_LOGO="yes"
+fi
+
+# GUI maps (embed the graphical screen; harmless if the GUI file is missing)
+GUI_MAPS=()
+[ -f "$WORK/factory-reset-gui.py" ] && GUI_MAPS=( -map "$WORK/factory-reset-gui.py" /autorun/factory-reset-gui.py )
+
+# SystemRescue runs /autorun/autorun at boot. This launcher stages the files off
+# the read-only media, then tries the graphical GTK screen under X; if X or the
+# GUI is unavailable it falls back to the text menu, so the stick always works.
+cat > "$WORK/autorun" <<'AUTORUN'
+#!/bin/sh
+exec 0</dev/tty1 1>/dev/tty1 2>&1 || true
+mkdir -p /run/rlx
+SRC=""
+for d in "$(dirname "$0")" /run/archiso/bootmnt/autorun /run/archiso/copytoram/autorun /autorun; do
+    [ -f "$d/factory-reset-menu.sh" ] && SRC="$d" && break
+done
+[ -n "$SRC" ] && cp "$SRC"/factory-reset-* /run/rlx/ 2>/dev/null
+[ -f "$SRC/brand-logo.png" ] && cp "$SRC/brand-logo.png" /run/rlx/ 2>/dev/null
+
+# Graphical screen (GTK under X), if available.
+if [ -x /usr/bin/startx ] && [ -f /run/rlx/factory-reset-gui.py ]; then
+    cat > /root/.xinitrc <<XRC
+[ -x /usr/bin/xfwm4 ] && xfwm4 &
+exec env RLX_LOGO=/run/rlx/brand-logo.png python3 /run/rlx/factory-reset-gui.py
+XRC
+    startx -- vt1 -nolisten tcp >/run/rlx/x.log 2>&1
+fi
+
+# Fallback: text menu (X missing, or it exited/failed).
+[ -f /run/rlx/factory-reset-menu.sh ] && exec bash /run/rlx/factory-reset-menu.sh
+echo "RLX recovery menu not found on the media."; exec bash
+AUTORUN
 
 # ---- optional branding: collapse the SystemRescue boot menu to one clean,
 #      renamed, quiet, auto-boot entry (BIOS syslinux + UEFI grub) ----------
@@ -106,30 +152,35 @@ APPEND archisobasedir=sysresccd archisolabel=RESCUE1302 iomem=relaxed quiet logl
 SYS
     } > "$WORK/sysresccd_sys.cfg"
 
-    # UEFI: replace grub menu with a single labelled entry. Keep $archiso_param
-    # literal (write a placeholder then substitute the label/timeout).
-    cat > "$WORK/grubsrcd.cfg" <<'GRUB'
-if [ -z "$srcd_skip_init" ]; then
-	set timeout=@@TIMEOUT@@
+    # UEFI: replace grub menu with a single labelled entry. When a logo is given,
+    # show the white background image with dark menu text. Grub $vars are escaped
+    # (\$) so only our shell vars expand.
+    GRUB_BG=""
+    if [ "$HAS_LOGO" = "yes" ]; then
+        GRUB_BG=$'\t\tinsmod png\n\t\tbackground_image /rlx/boot-bg.png\n\t\tset color_normal=black/white\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
+    fi
+    cat > "$WORK/grubsrcd.cfg" <<GRUB
+if [ -z "\$srcd_skip_init" ]; then
+	set timeout=${TIMEOUT}
 	set default=0
 	set pager=1
 	if loadfont /boot/grub/font.pf2 ; then
-		set gfxmode=640x480
+		set gfxmode=1024x768
 		insmod all_video
 		insmod gfxterm
 		terminal_output gfxterm
+${GRUB_BG}
 	fi
 fi
-if [ -z "$archiso_param" ]; then
+if [ -z "\$archiso_param" ]; then
 	archiso_param="archisolabel=RESCUE1302"
 fi
-menuentry '@@LABEL@@' {
+menuentry '${LABEL}' {
 	set gfxpayload=keep
-	linux /sysresccd/boot/x86_64/vmlinuz archisobasedir=sysresccd $archiso_param iomem=relaxed quiet loglevel=3
+	linux /sysresccd/boot/x86_64/vmlinuz archisobasedir=sysresccd \$archiso_param iomem=relaxed quiet loglevel=3
 	initrd /sysresccd/boot/intel_ucode.img /sysresccd/boot/amd_ucode.img /sysresccd/boot/x86_64/sysresccd.img
 }
 GRUB
-    sed -i "s/@@TIMEOUT@@/${TIMEOUT}/; s/@@LABEL@@/${LABEL//\//\\/}/" "$WORK/grubsrcd.cfg"
 
     BRAND_MAPS=(
         -map "$WORK/sysresccd_sys.cfg" /sysresccd/boot/syslinux/sysresccd_sys.cfg
@@ -149,6 +200,8 @@ xorriso -indev "$ISO" -outdev "$OUT" \
         -boot_image any replay \
         -map "$WORK/autorun" /autorun/autorun \
         -map "$WORK/factory-reset-menu.sh" /autorun/factory-reset-menu.sh \
+        "${GUI_MAPS[@]}" \
+        "${LOGO_MAPS[@]}" \
         "${BRAND_MAPS[@]}" \
         -end
 
