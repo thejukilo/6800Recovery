@@ -149,8 +149,17 @@ SystemRescue jargon. Tune it:
 ```bash
 --label "cobas 6800 - Factory Reset"   # boot-entry text
 --timeout 0                            # boot instantly (no menu); default 2s
+--logo roche.png                       # your logo (SVG or PNG): white boot screen
+                                       #   with the logo top-right + a graphical menu
 --no-brand                             # keep SystemRescue's stock boot menu
 ```
+
+With `--logo`, the boot screen becomes a white background with your logo top-right,
+and screen 2 runs as a **graphical** window (white, logo, "Start Factory Reset" /
+"Cancel", warning + confirm) via GTK under X. If X or GTK is unavailable on a given
+machine it automatically falls back to the text menu, so the stick always works.
+`--logo` needs `imagemagick` (and `librsvg2-bin` for an SVG). Supply your own logo
+file — none is bundled.
 
 Then distribute `rlx-recovery.iso`. Each engineer just: **Rufus → select the
 USB → select `rlx-recovery.iso` → Start.** Boot it on the instrument and the
