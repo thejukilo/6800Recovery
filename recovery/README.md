@@ -9,7 +9,8 @@ RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
 | [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
 | [`check-package.sh`](#pre-flight-checking-an-update-package) | Validate an update package before applying it (base match + boot-safe initrd). |
 | [`factory-reset-menu.sh`](#bootable-recovery-usb-menu-driven-factory-reset) | Boot from USB and arm a Factory Reset from a menu when the UI is dead. |
-| [`build-recovery-usb.sh`](#making-the-usb) | One-command Linux builder that turns a blank USB into the recovery stick. |
+| [`build-recovery-iso.sh`](#making-the-usb) | Build one `rlx-recovery.iso` that boots into the menu — flash with Rufus. |
+| [`build-recovery-usb.sh`](#making-the-usb) | Alternative: turn a USB into the recovery stick via Ventoy. |
 
 Both are meant to run **from the instrument over SSH**, and both gate any
 destructive action behind a typed **GCS + UI-impossible** consent prompt.
@@ -125,49 +126,43 @@ performs the factory-snapshot restore.
 
 ## Making the USB
 
-The recovery stick is just a **SystemRescue** live USB (it already bundles
-`whiptail` + `btrfs-progs`, so the menu works offline) carrying
-`factory-reset-menu.sh`. Two ways to build it:
+The recovery media is built on **SystemRescue** (it already bundles `whiptail`
++ `btrfs-progs` and boots on BIOS and UEFI). The menu is `factory-reset-menu.sh`.
 
-### Option 1 — Ventoy (dummy-proof, any OS, GUI)
+### Recommended — build one `rlx-recovery.iso` (flash with Rufus)
 
-The reusable, no-scripting path. You need the **Ventoy** installer and a
-**SystemRescue** `.iso` (download each once).
-
-1. Plug in the USB. Run Ventoy (`Ventoy2Disk.exe` on Windows / `Ventoy2Disk.sh`
-   on Linux) → select the USB → **Install**. (This is the only "format" step.)
-2. A large **Ventoy** drive appears. Copy **two files** onto it: the
-   `systemrescue-*.iso` and `factory-reset-menu.sh`.
-3. Done. To make more sticks, Ventoy another USB and copy the same two files.
-
-### Option 2 — `build-recovery-usb.sh` (one command, Linux)
-
-Automates Option 1 from a Linux host (your live Debian, a workstation, WSL2).
-It installs Ventoy to the stick and copies the ISO + menu on for you:
+`build-recovery-iso.sh` remasters a SystemRescue ISO so it **boots straight
+into the menu**, producing a single `.iso` your field engineers flash to any
+USB with **Rufus** / balenaEtcher, like any Linux ISO. Build it once on a Linux
+host (live Debian, workstation, WSL2) that has `xorriso`:
 
 ```bash
-sudo ./build-recovery-usb.sh --device /dev/sdX --iso systemrescue-XX.iso \
-     --ventoy /path/to/extracted/ventoy
+sudo apt-get install xorriso                    # once
+./build-recovery-iso.sh --iso systemrescue-XX.iso --out rlx-recovery.iso
 ```
 
-Safety: it refuses a non-removable disk (unless `--force`), prints the target
-model/size, and makes you retype the device path and `ERASE` before writing.
-Without Ventoy present it falls back to raw-writing the ISO (bootable, but then
-the menu has to ride on a second stick). **It ERASES the chosen device — check
-`--device` with `lsblk` first.**
+Then distribute `rlx-recovery.iso`. Each engineer just: **Rufus → select the
+USB → select `rlx-recovery.iso` → Start.** Boot it on the instrument and the
+Factory Reset menu appears automatically. (If a particular SystemRescue build
+doesn't auto-run, at its shell run `sh /run/archiso/bootmnt/factory-reset-menu.sh`.)
+
+### Alternative — Ventoy (`build-recovery-usb.sh`, no ISO remaster)
+
+If you'd rather not build an ISO: put **Ventoy** on the stick (one click) and
+drop a SystemRescue ISO + `factory-reset-menu.sh` on its data partition. On
+Linux, `build-recovery-usb.sh --device /dev/sdX --iso systemrescue-XX.iso
+--ventoy DIR` does that for you. It refuses non-removable disks and makes you
+retype the device path and `ERASE` first. With Ventoy you run the menu by hand
+(`sh /ventoy/factory-reset-menu.sh`) rather than it auto-launching.
 
 ## Using it on the instrument
 
-1. Boot the USB on the instrument → in the Ventoy menu pick the SystemRescue
-   ISO → let it boot to its root shell.
-2. Run the menu (strip CR endings if it came from Windows):
-   ```bash
-   sed -i 's/\r$//' /ventoy/factory-reset-menu.sh
-   sh /ventoy/factory-reset-menu.sh
-   ```
-3. **Show status** first (read-only — confirms it found the instrument and that
-   a factory snapshot exists), then **Arm Factory Reset**.
-4. Choose **Reboot**, **remove the USB during reboot** so the *instrument* boots
+1. Boot the recovery USB on the instrument. With the `rlx-recovery.iso` it opens
+   the **Factory Reset menu** automatically; with Ventoy, pick the SystemRescue
+   ISO then run `sh /ventoy/factory-reset-menu.sh`.
+2. **Show status** first (read-only — confirms it found the instrument and that a
+   factory snapshot exists), then **Arm Factory Reset**.
+3. Choose **Reboot**, **remove the USB during reboot** so the *instrument* boots
    (not the USB), and it factory-resets itself.
 
 The menu also offers **Disarm** (delete a pending flag before you reboot) and
