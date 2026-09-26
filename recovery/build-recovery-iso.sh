@@ -54,33 +54,34 @@ fi
 
 WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT
 
-# The autorun launcher SystemRescue runs at boot. It attaches to the console
-# and execs the embedded menu (search a few likely mount paths).
-cat > "$WORK/autorun" <<'AR'
-#!/bin/sh
-# RLX recovery: launch the Factory Reset menu on the console at boot.
-exec 0</dev/tty1 1>/dev/tty1 2>&1 || true
-for p in /run/archiso/bootmnt/factory-reset-menu.sh \
-         /run/archiso/copytoram/factory-reset-menu.sh \
-         /factory-reset-menu.sh /root/factory-reset-menu.sh; do
-    if [ -f "$p" ]; then exec bash "$p"; fi
-done
-echo "RLX recovery: factory-reset-menu.sh not found on the media."
-exec bash
-AR
-
-# Embed the menu with clean LF line endings.
+# Menu with clean LF line endings.
 sed 's/\r$//' "$MENU" > "$WORK/factory-reset-menu.sh"
 
+# SystemRescue runs scripts in the /autorun/ directory at boot (autorun is
+# enabled with ar_nowait by default in sysrescue.d). Build /autorun/autorun as
+# a launcher that attaches to the console and runs the menu. The menu is
+# EMBEDDED so there is no runtime path to locate.
+{
+    echo '#!/bin/sh'
+    echo '# RLX recovery: launch the Factory Reset menu on the console at boot.'
+    echo 'exec 0</dev/tty1 1>/dev/tty1 2>&1 || true'
+    echo "cat > /tmp/rlx-frm.sh <<'RLX_MENU_EOF'"
+    cat "$WORK/factory-reset-menu.sh"
+    echo 'RLX_MENU_EOF'
+    echo 'exec bash /tmp/rlx-frm.sh'
+} > "$WORK/autorun"
+
 inf "Remastering $(basename "$ISO") -> $(basename "$OUT") ..."
-inf "(preserving BIOS + UEFI boot, injecting autorun menu)"
+inf "(preserving BIOS + UEFI boot, injecting /autorun/autorun menu)"
 
 # Replay the original boot setup (keeps it bootable on BIOS + UEFI + isohybrid),
-# then add our two files at the ISO root.
+# then add our launcher into the existing /autorun directory, plus a standalone
+# copy of the menu for manual use.
 xorriso -indev "$ISO" -outdev "$OUT" \
+        -overwrite on \
         -boot_image any replay \
-        -map "$WORK/autorun" /autorun \
-        -map "$WORK/factory-reset-menu.sh" /factory-reset-menu.sh \
+        -map "$WORK/autorun" /autorun/autorun \
+        -map "$WORK/factory-reset-menu.sh" /autorun/factory-reset-menu.sh \
         -end
 
 [ -f "$OUT" ] || die "xorriso did not produce $OUT." 4
@@ -89,6 +90,6 @@ printf '\n'
 ok "${B}Built $OUT${Z} ($SIZE)"
 inf "Flash it to a USB stick with Rufus (Windows) or balenaEtcher — like any Linux ISO."
 inf "Boot the stick on the instrument; it opens the Factory Reset menu automatically."
-inf "If a given SystemRescue build doesn't auto-run, at its shell run:"
-inf "  sh /run/archiso/bootmnt/factory-reset-menu.sh"
+inf "If a build doesn't auto-run, at its shell run the copy on the media:"
+inf "  sh \$(find / -name factory-reset-menu.sh 2>/dev/null | head -1)"
 printf '\n'
