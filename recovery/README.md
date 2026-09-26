@@ -141,6 +141,17 @@ sudo apt-get install xorriso                    # once
 ./build-recovery-iso.sh --iso systemrescue-XX.iso --out rlx-recovery.iso
 ```
 
+By default it also **brands the boot menu**: SystemRescue's confusing multi-entry
+boot menu is collapsed to a single, renamed, quiet, auto-boot entry, so a
+non-technical operator sees only a brief splash then the Factory Reset menu — no
+SystemRescue jargon. Tune it:
+
+```bash
+--label "cobas 6800 - Factory Reset"   # boot-entry text
+--timeout 0                            # boot instantly (no menu); default 2s
+--no-brand                             # keep SystemRescue's stock boot menu
+```
+
 Then distribute `rlx-recovery.iso`. Each engineer just: **Rufus → select the
 USB → select `rlx-recovery.iso` → Start.** Boot it on the instrument and the
 Factory Reset menu appears automatically. (If a particular SystemRescue build
