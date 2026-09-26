@@ -192,6 +192,13 @@ fi
 inf "Remastering $(basename "$ISO") -> $(basename "$OUT") ..."
 inf "(preserving BIOS + UEFI boot, injecting /autorun/autorun menu)"
 
+# xorriso refuses to write into an existing non-empty output ISO, so clear a
+# stale build first (never touch the input ISO).
+if [ -e "$OUT" ]; then
+    [ "$(readlink -f "$OUT")" = "$(readlink -f "$ISO")" ] && die "--out must differ from --iso." 2
+    rm -f "$OUT" || die "Could not remove existing $OUT" 2
+fi
+
 # Replay the original boot setup (keeps it bootable on BIOS + UEFI + isohybrid),
 # then add our launcher into the existing /autorun directory, plus a standalone
 # copy of the menu for manual use, plus (optionally) the branded boot menus.
