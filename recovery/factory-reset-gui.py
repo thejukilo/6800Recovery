@@ -164,11 +164,16 @@ class App(Gtk.Window):
 
     def _done(self):
         b = self._col()
-        b.pack_start(self._label("Factory Reset started", "h1"), False, False, 0)
-        b.pack_start(self._label("You can remove the USB stick.", "sub ok", False), False, False, 0)
+        b.pack_start(self._label("Factory Reset armed", "h1"), False, False, 0)
+        b.pack_start(self._label("The instrument is ready to reset. To start it:", "sub"), False, False, 0)
+        b.pack_start(self._label("1.  Remove the USB stick now.", "sub ok", False), False, False, 0)
+        b.pack_start(self._label("2.  Press Restart below.", "sub ok", False), False, False, 0)
         b.pack_start(self._label(
-            "The instrument will restart and complete the reset on its own. This can "
+            "After it restarts, the instrument completes the reset on its own. This can "
             "take several minutes — do not power it off.", "sub"), False, False, 0)
+        row = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12, margin_top=10)
+        row.pack_start(self._btn("Restart now", "primary", self.on_reboot), False, False, 0)
+        b.pack_start(row, False, False, 0)
         return b
 
     def _cancel(self):
@@ -207,6 +212,11 @@ class App(Gtk.Window):
     def on_confirm(self, *_):
         ok, msg = arm(self.dev)
         self.show("done") if ok else self._fail(msg)
+
+    def on_reboot(self, *_):
+        subprocess.run(["sync"])
+        if run(["systemctl", "reboot"]).returncode != 0:
+            subprocess.Popen(["reboot", "-f"])
 
     def on_cancel(self, *_):
         self.show("cancel")
