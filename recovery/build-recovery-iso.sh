@@ -94,8 +94,12 @@ if ! xorriso -indev "$ISO" -toc 2>/dev/null | grep -qi 'sysresc\|SYSRESC\|RESCUE
     inf "Note: the ISO volume id doesn't look like SystemRescue — continuing anyway."
 fi
 
-WORK="$(mktemp -d)"; DSTAGE=""
-trap 'rm -rf "$WORK" ${DSTAGE:+"$DSTAGE"}' EXIT
+WORK="$(mktemp -d)"; DSTAGE=""; DMNT=""
+cleanup() {
+    [ -n "$DMNT" ] && mountpoint -q "$DMNT" 2>/dev/null && umount "$DMNT" 2>/dev/null
+    rm -rf "$WORK" ${DSTAGE:+"$DSTAGE"} ${DMNT:+"$DMNT"}
+}
+trap cleanup EXIT
 
 # Menu (text fallback) and GUI with clean LF line endings.
 sed 's/\r$//' "$MENU" > "$WORK/factory-reset-menu.sh"
@@ -131,35 +135,53 @@ GUI_MAPS=()
 # /image.cpio.gz). We extract them from the installer ISO and place them at the
 # root of our output ISO; once flashed to USB they sit on the real medium exactly
 # as the standalone installer expects, so the Deploy entry boots it identically.
-DEPLOY_MAPS=(); DNAME=""
+DEPLOY_MAPS=(); DNAME=""; DSRC=""
 if [ -n "$DEPLOY_ISO" ]; then
-    # Stage the (large) files on disk next to --out, never in a RAM-backed /tmp.
-    DSTAGE="$(dirname "$OUT")/.rlx-deploy-stage.$$"; mkdir -p "$DSTAGE"
-    inf "Extracting installer from $(basename "$DEPLOY_ISO") (this copies ~1.7 GB) ..."
-    xorriso -osirrox on -indev "$DEPLOY_ISO" \
-            -extract /vmlinuz        "$DSTAGE/vmlinuz" \
-            -extract /initrd.img     "$DSTAGE/initrd.img" \
-            -extract /image.cpio.gz  "$DSTAGE/image.cpio.gz" >/dev/null 2>&1 \
-        || die "Could not extract /vmlinuz, /initrd.img and /image.cpio.gz from $DEPLOY_ISO — is it a Molior installer ISO?" 4
+    # Get the installer's three root files WITHOUT a 1.7 GB staging copy where we
+    # can: loop-mount the ISO read-only and map its files straight in (no extra
+    # disk). Fall back to extracting (needs ~1.7 GB scratch) only if we can't mount.
+    DMNT="$(mktemp -d)"
+    if mount -o loop,ro "$DEPLOY_ISO" "$DMNT" 2>/dev/null; then
+        DSRC="$DMNT"
+        inf "Reading installer from $(basename "$DEPLOY_ISO") (mounted, no extra disk)."
+    else
+        rmdir "$DMNT" 2>/dev/null; DMNT=""
+        DSTAGE="$(dirname "$OUT")/.rlx-deploy-stage.$$"; mkdir -p "$DSTAGE"; DSRC="$DSTAGE"
+        inf "Extracting installer from $(basename "$DEPLOY_ISO") (needs ~1.7 GB scratch) ..."
+        xorriso -osirrox on -indev "$DEPLOY_ISO" \
+                -extract /vmlinuz        "$DSTAGE/vmlinuz" \
+                -extract /initrd.img     "$DSTAGE/initrd.img" \
+                -extract /image.cpio.gz  "$DSTAGE/image.cpio.gz" \
+                -extract /README.md      "$DSTAGE/README.md" >/dev/null 2>&1 || true
+    fi
     for f in vmlinuz initrd.img image.cpio.gz; do
-        [ -s "$DSTAGE/$f" ] || die "Installer file /$f is missing or empty in $DEPLOY_ISO." 4
+        [ -s "$DSRC/$f" ] || die "Installer file /$f missing in $DEPLOY_ISO — is it a Molior installer ISO?" 4
     done
     # README.md (if present) names the image, e.g.
     #   "= Molior Installer for cobas6800_2.0.3.3330507+local  Mon, 03 Aug ... ="
-    xorriso -osirrox on -indev "$DEPLOY_ISO" -extract /README.md "$DSTAGE/README.md" >/dev/null 2>&1 || true
     if [ -n "$DEPLOY_NAME" ]; then
         DNAME="$DEPLOY_NAME"
-    elif [ -s "$DSTAGE/README.md" ]; then
-        DNAME="$(sed -n '1p' "$DSTAGE/README.md" | sed -E 's/.*Installer for[[:space:]]+([^[:space:]]+).*/\1/; s/_/ /')"
+    elif [ -s "$DSRC/README.md" ]; then
+        DNAME="$(sed -n '1p' "$DSRC/README.md" | sed -E 's/.*Installer for[[:space:]]+([^[:space:]]+).*/\1/; s/_/ /')"
     fi
     [ -n "$DNAME" ] || DNAME="$(basename "$DEPLOY_ISO" .iso)"
     DNAME="${DNAME//\'/}"             # no single quotes (breaks grub menuentry)
     DEPLOY_MAPS=(
-        -map "$DSTAGE/vmlinuz"       /vmlinuz
-        -map "$DSTAGE/initrd.img"    /initrd.img
-        -map "$DSTAGE/image.cpio.gz" /image.cpio.gz
+        -map "$DSRC/vmlinuz"       /vmlinuz
+        -map "$DSRC/initrd.img"    /initrd.img
+        -map "$DSRC/image.cpio.gz" /image.cpio.gz
     )
     inf "Deploy entry: '${DNAME}' (RE-IMAGES the whole instrument disk, UEFI boot)."
+
+    # Disk-space preflight: the output ISO ~= input ISO + the installer files.
+    OUT_DIR="$(dirname "$OUT")"
+    NEED_KB=$(( ( $(stat -c %s "$ISO") + $(stat -c %s "$DSRC/vmlinuz") \
+                  + $(stat -c %s "$DSRC/initrd.img") + $(stat -c %s "$DSRC/image.cpio.gz") ) / 1024 ))
+    NEED_KB=$(( NEED_KB + NEED_KB / 20 + 65536 ))          # +5% slack +64 MB
+    FREE_KB=$(df -Pk "$OUT_DIR" 2>/dev/null | awk 'NR==2{print $4}')
+    if [ -n "$FREE_KB" ] && [ "$FREE_KB" -lt "$NEED_KB" ]; then
+        die "Not enough free space in $OUT_DIR: need ~$(( NEED_KB/1024 )) MB, have $(( FREE_KB/1024 )) MB. Free some space (or write --out to a roomier disk) and retry." 2
+    fi
 fi
 
 # SystemRescue runs /autorun/autorun at boot. This launcher stages the files off
