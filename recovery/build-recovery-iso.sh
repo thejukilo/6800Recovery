@@ -15,16 +15,27 @@
 #   ./build-recovery-iso.sh --iso systemrescue-XX.iso [--out rlx-recovery.iso]
 #
 # Options:
-#   --iso PATH   A SystemRescue ISO you downloaded (https://www.system-rescue.org)
-#   --out PATH   Output ISO (default: ./rlx-recovery.iso)
-#   --menu PATH  Menu script to embed (default: factory-reset-menu.sh beside this)
-#   --label STR  Boot-menu entry text (default: "cobas 6800 - Factory Reset (recovery)")
-#   --timeout N  Boot-menu auto-boot seconds (default 2; 0 = boot instantly)
-#   --logo PATH  Your logo (SVG or PNG). Placed top-right on the boot screen and
-#                the graphical menu. Needs imagemagick (+ librsvg2-bin for SVG).
-#   --gui PATH   GTK screen-2 app (default: factory-reset-gui.py beside this)
-#   --no-brand   Keep SystemRescue's stock (multi-entry) boot menu
-#   -h, --help   Show help.
+#   --iso PATH       A SystemRescue ISO (https://www.system-rescue.org)
+#   --out PATH       Output ISO (default: ./rlx-recovery.iso)
+#   --menu PATH      Menu script to embed (default: factory-reset-menu.sh beside this)
+#   --label STR      Factory-reset menu entry text (default: "Start Factory Reset")
+#   --timeout N      Boot-menu auto-boot seconds (default 2, or 30 when --deploy-iso
+#                    is used so there's time to pick Deploy; 0 = boot instantly)
+#   --logo PATH      Your logo (SVG or PNG). Top-right on the boot screen + GTK menu.
+#                    Needs imagemagick (+ librsvg2-bin for SVG).
+#   --gui PATH       GTK screen-2 app (default: factory-reset-gui.py beside this)
+#   --deploy-iso P   A Molior installer ISO (e.g. 6800.iso). Its installer is folded
+#                    INTO this recovery ISO and offered as a "Deploy <name>" boot
+#                    entry that RE-IMAGES the whole instrument disk (UEFI only).
+#   --deploy-name S  Display name for the Deploy entry (default: read from the
+#                    installer's README.md, else the ISO filename).
+#   --no-brand       Keep SystemRescue's stock (multi-entry) boot menu
+#   -h, --help       Show help.
+#
+# NOTE (--deploy-iso): the installer's /vmlinuz, /initrd.img and /image.cpio.gz are
+# copied to the root of the output ISO, so once flashed to USB they sit on the real
+# medium exactly as the standalone installer expects. The output ISO grows by the
+# installer's size (~1.7 GB); you need a few GB free where --out is written.
 #
 # By default it also "brands" the boot: the confusing SystemRescue boot menu is
 # collapsed to ONE renamed entry that auto-boots quietly into the menu, so a
@@ -38,8 +49,9 @@ set -euo pipefail
 
 SELF_DIR="$(cd "$(dirname "$0")" && pwd)"
 ISO=""; OUT="$PWD/rlx-recovery.iso"; MENU="$SELF_DIR/factory-reset-menu.sh"
-BRAND="yes"; LABEL="cobas 6800 - Factory Reset (recovery)"; TIMEOUT="2"
+BRAND="yes"; LABEL="Start Factory Reset"; TIMEOUT="2"; TIMEOUT_SET="no"
 LOGO=""; GUI_SRC="$SELF_DIR/factory-reset-gui.py"
+DEPLOY_ISO=""; DEPLOY_NAME=""
 
 if [ -t 1 ]; then B="$(printf '\033[1m')"; R="$(printf '\033[31m')"; G="$(printf '\033[32m')"
     C="$(printf '\033[36m')"; Z="$(printf '\033[0m')"; else B=""; R=""; G=""; C=""; Z=""; fi
@@ -53,9 +65,11 @@ while [ $# -gt 0 ]; do case "$1" in
     --out) OUT="${2:?}"; shift 2 ;;
     --menu) MENU="${2:?}"; shift 2 ;;
     --label) LABEL="${2:?}"; shift 2 ;;
-    --timeout) TIMEOUT="${2:?}"; shift 2 ;;
+    --timeout) TIMEOUT="${2:?}"; TIMEOUT_SET="yes"; shift 2 ;;
     --logo) LOGO="${2:?}"; shift 2 ;;
     --gui) GUI_SRC="${2:?}"; shift 2 ;;
+    --deploy-iso) DEPLOY_ISO="${2:?}"; shift 2 ;;
+    --deploy-name) DEPLOY_NAME="${2:?}"; shift 2 ;;
     --no-brand) BRAND="no"; shift ;;
     -h|--help) usage 0 ;;
     *) die "Unknown option: $1 (try --help)" 2 ;;
@@ -63,15 +77,25 @@ esac; done
 LABEL="${LABEL//\'/}"                 # no single quotes (breaks grub menuentry)
 case "$TIMEOUT" in *[!0-9]*) die "--timeout must be whole seconds" 2 ;; esac
 
+# A Deploy entry means the operator must see and choose from the menu, so give a
+# longer default auto-boot window (still defaults to Factory Reset) and force the
+# branded single-choice menu (the Deploy entry lives there).
+if [ -n "$DEPLOY_ISO" ]; then
+    [ "$TIMEOUT_SET" = "yes" ] || TIMEOUT="30"
+    [ "$BRAND" = "no" ] && { inf "--deploy-iso needs the branded menu; ignoring --no-brand."; BRAND="yes"; }
+fi
+
 command -v xorriso >/dev/null 2>&1 || die "xorriso not found. Install it (e.g. apt-get install xorriso)." 1
 [ -n "$ISO" ] && [ -f "$ISO" ] || die "Need --iso PATH to a SystemRescue ISO." 2
 [ -f "$MENU" ] || die "Menu script not found: $MENU" 2
+[ -z "$DEPLOY_ISO" ] || [ -f "$DEPLOY_ISO" ] || die "--deploy-iso file not found: $DEPLOY_ISO" 2
 # sanity: is it really a SystemRescue image?
 if ! xorriso -indev "$ISO" -toc 2>/dev/null | grep -qi 'sysresc\|SYSRESC\|RESCUE'; then
     inf "Note: the ISO volume id doesn't look like SystemRescue — continuing anyway."
 fi
 
-WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT
+WORK="$(mktemp -d)"; DSTAGE=""
+trap 'rm -rf "$WORK" ${DSTAGE:+"$DSTAGE"}' EXIT
 
 # Menu (text fallback) and GUI with clean LF line endings.
 sed 's/\r$//' "$MENU" > "$WORK/factory-reset-menu.sh"
@@ -101,6 +125,42 @@ fi
 # GUI maps (embed the graphical screen; harmless if the GUI file is missing)
 GUI_MAPS=()
 [ -f "$WORK/factory-reset-gui.py" ] && GUI_MAPS=( -map "$WORK/factory-reset-gui.py" /autorun/factory-reset-gui.py )
+
+# ---- optional deploy image: fold a Molior installer ISO into this ISO ------
+# The installer boots from three files at the medium root (/vmlinuz, /initrd.img,
+# /image.cpio.gz). We extract them from the installer ISO and place them at the
+# root of our output ISO; once flashed to USB they sit on the real medium exactly
+# as the standalone installer expects, so the Deploy entry boots it identically.
+DEPLOY_MAPS=(); DNAME=""
+if [ -n "$DEPLOY_ISO" ]; then
+    # Stage the (large) files on disk next to --out, never in a RAM-backed /tmp.
+    DSTAGE="$(dirname "$OUT")/.rlx-deploy-stage.$$"; mkdir -p "$DSTAGE"
+    inf "Extracting installer from $(basename "$DEPLOY_ISO") (this copies ~1.7 GB) ..."
+    xorriso -osirrox on -indev "$DEPLOY_ISO" \
+            -extract /vmlinuz        "$DSTAGE/vmlinuz" \
+            -extract /initrd.img     "$DSTAGE/initrd.img" \
+            -extract /image.cpio.gz  "$DSTAGE/image.cpio.gz" >/dev/null 2>&1 \
+        || die "Could not extract /vmlinuz, /initrd.img and /image.cpio.gz from $DEPLOY_ISO — is it a Molior installer ISO?" 4
+    for f in vmlinuz initrd.img image.cpio.gz; do
+        [ -s "$DSTAGE/$f" ] || die "Installer file /$f is missing or empty in $DEPLOY_ISO." 4
+    done
+    # README.md (if present) names the image, e.g.
+    #   "= Molior Installer for cobas6800_2.0.3.3330507+local  Mon, 03 Aug ... ="
+    xorriso -osirrox on -indev "$DEPLOY_ISO" -extract /README.md "$DSTAGE/README.md" >/dev/null 2>&1 || true
+    if [ -n "$DEPLOY_NAME" ]; then
+        DNAME="$DEPLOY_NAME"
+    elif [ -s "$DSTAGE/README.md" ]; then
+        DNAME="$(sed -n '1p' "$DSTAGE/README.md" | sed -E 's/.*Installer for[[:space:]]+([^[:space:]]+).*/\1/; s/_/ /')"
+    fi
+    [ -n "$DNAME" ] || DNAME="$(basename "$DEPLOY_ISO" .iso)"
+    DNAME="${DNAME//\'/}"             # no single quotes (breaks grub menuentry)
+    DEPLOY_MAPS=(
+        -map "$DSTAGE/vmlinuz"       /vmlinuz
+        -map "$DSTAGE/initrd.img"    /initrd.img
+        -map "$DSTAGE/image.cpio.gz" /image.cpio.gz
+    )
+    inf "Deploy entry: '${DNAME}' (RE-IMAGES the whole instrument disk, UEFI boot)."
+fi
 
 # SystemRescue runs /autorun/autorun at boot. This launcher stages the files off
 # the read-only media, then tries the graphical GTK screen under X; if X or the
@@ -165,6 +225,27 @@ SYS
     if [ "$HAS_LOGO" = "yes" ]; then
         GRUB_BG=$'\t\tinsmod png\n\t\tbackground_image /rlx/boot-bg.png\n\t\tset color_normal=black/white\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
     fi
+
+    # Optional second choice: Deploy (re-image). A submenu whose DEFAULT entry is
+    # Cancel, so an accidental Enter never starts a destructive re-image. It boots
+    # the installer exactly as the standalone ISO does (search for /image.cpio.gz
+    # on the medium, then its /vmlinuz + /initrd.img).
+    DEPLOY_GRUB=""
+    if [ -n "$DEPLOY_ISO" ]; then
+        DEPLOY_GRUB="submenu 'Deploy ${DNAME}   (ERASES the whole instrument)' {
+	menuentry 'Cancel  -  do NOT deploy (go back)' {
+		configfile /boot/grub/grubsrcd.cfg
+	}
+	menuentry 'CONFIRM: erase this instrument and install ${DNAME}' {
+		set gfxpayload=keep
+		search --no-floppy --file --set=root /image.cpio.gz
+		linux /vmlinuz quiet
+		initrd /initrd.img
+		boot
+	}
+}"
+    fi
+
     cat > "$WORK/grubsrcd.cfg" <<GRUB
 if [ -z "\$srcd_skip_init" ]; then
 	set timeout=${TIMEOUT}
@@ -186,6 +267,7 @@ menuentry '${LABEL}' {
 	linux /sysresccd/boot/x86_64/vmlinuz archisobasedir=sysresccd \$archiso_param iomem=relaxed quiet loglevel=3
 	initrd /sysresccd/boot/intel_ucode.img /sysresccd/boot/amd_ucode.img /sysresccd/boot/x86_64/sysresccd.img
 }
+${DEPLOY_GRUB}
 GRUB
 
     BRAND_MAPS=(
@@ -216,14 +298,24 @@ xorriso -indev "$ISO" -outdev "$OUT" \
         "${GUI_MAPS[@]}" \
         "${LOGO_MAPS[@]}" \
         "${BRAND_MAPS[@]}" \
+        "${DEPLOY_MAPS[@]}" \
         -end
 
 [ -f "$OUT" ] || die "xorriso did not produce $OUT." 4
 SIZE="$(du -h "$OUT" | cut -f1)"
 printf '\n'
 ok "${B}Built $OUT${Z} ($SIZE)"
-inf "Flash it to a USB stick with Rufus (Windows) or balenaEtcher — like any Linux ISO."
-inf "Boot the stick on the instrument; it opens the Factory Reset menu automatically."
-inf "If a build doesn't auto-run, at its shell run the copy on the media:"
-inf "  sh \$(find / -name factory-reset-menu.sh 2>/dev/null | head -1)"
+inf "Flash it to a USB stick on Windows with balenaEtcher (pick image, pick USB,"
+inf "Flash) — or Rufus in 'DD Image' mode. Use a raw write so the medium stays exact."
+if [ -n "$DEPLOY_ISO" ]; then
+    printf '\n'
+    inf "${B}Boot menu (UEFI):${Z}"
+    inf "  • Start Factory Reset          -> the recovery / factory-reset screen"
+    inf "  • Deploy ${DNAME}  -> confirm, then RE-IMAGES the whole disk"
+    inf "Default is Factory Reset; the Deploy submenu defaults to Cancel."
+    inf "Test on the VM first: confirm Deploy boots the installer AND that it finds"
+    inf "its payload (it searches the medium for /image.cpio.gz)."
+else
+    inf "Boot the stick on the instrument; it opens the Factory Reset menu automatically."
+fi
 printf '\n'

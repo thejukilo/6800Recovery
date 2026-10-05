@@ -9,7 +9,7 @@ RLX-Maintenance UI is unreachable (e.g. black screen after a downgrade).
 | [`software-update.sh`](#rlx-software-update-from-the-shell) | Inspect update state, and stage + trigger a software update from the shell. |
 | [`check-package.sh`](#pre-flight-checking-an-update-package) | Validate an update package before applying it (base match + boot-safe initrd). |
 | [`factory-reset-menu.sh`](#bootable-recovery-usb-menu-driven-factory-reset) | Boot from USB and arm a Factory Reset from a menu when the UI is dead. |
-| [`build-recovery-iso.sh`](#making-the-usb) | Build one `rlx-recovery.iso` that boots into the menu — flash with Rufus. |
+| [`build-recovery-iso.sh`](#making-the-usb) | Build one `rlx-recovery.iso` that boots into the menu (optionally with a `--deploy-iso` re-image option) — flash with balenaEtcher / Rufus. |
 | [`build-recovery-usb.sh`](#making-the-usb) | Alternative: turn a USB into the recovery stick via Ventoy. |
 
 Both are meant to run **from the instrument over SSH**, and both gate any
@@ -161,10 +161,42 @@ machine it automatically falls back to the text menu, so the stick always works.
 `--logo` needs `imagemagick` (and `librsvg2-bin` for an SVG). Supply your own logo
 file — none is bundled.
 
-Then distribute `rlx-recovery.iso`. Each engineer just: **Rufus → select the
-USB → select `rlx-recovery.iso` → Start.** Boot it on the instrument and the
-Factory Reset menu appears automatically. (If a particular SystemRescue build
-doesn't auto-run, at its shell run `sh /run/archiso/bootmnt/factory-reset-menu.sh`.)
+### Deploying a full OS image (`--deploy-iso`)
+
+To add a **"Deploy"** option that re-images the whole instrument disk, fold a
+Molior installer ISO (e.g. `6800.iso`) into the same recovery ISO:
+
+```bash
+./build-recovery-iso.sh --iso systemrescue-XX.iso --logo roche.svg \
+    --deploy-iso 6800.iso [--deploy-name "cobas6800 2.0.3"]
+```
+
+One combined `.iso` comes out with a branded boot menu offering **two** choices:
+
+- **Start Factory Reset** — the recovery / factory-reset screen (default).
+- **Deploy &lt;name&gt;** — a confirm step (defaults to *Cancel*), then the vendor
+  installer runs and **RE-IMAGES the entire disk** (all data is wiped).
+
+How it works: the installer boots from three files at the medium root
+(`/vmlinuz`, `/initrd.img`, `/image.cpio.gz`). The builder extracts them from the
+installer ISO and places them at the root of the output ISO, so once flashed to USB
+they sit on the real medium exactly as the standalone installer expects — the
+Deploy entry boots it identically (`search --file /image.cpio.gz` → its kernel +
+initrd). The output ISO grows by ~1.7 GB; leave a few GB free where `--out` is.
+Deploy is **UEFI only** (the instruments boot UEFI); with `--deploy-iso` the menu
+auto-boot timeout defaults to 30 s so there is time to choose. The display name is
+read from the installer's `README.md` unless you pass `--deploy-name`.
+
+> **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
+> installer *and* that the installer finds its payload off the flashed medium,
+> before using it on a real instrument.
+
+Then distribute `rlx-recovery.iso`. On Windows each engineer just flashes it with
+**balenaEtcher** (select the image → select the USB → **Flash**) — or **Rufus** in
+**DD Image** mode. Use a raw write so the medium stays byte-exact (important for the
+Deploy payload). Boot it on the instrument; the branded menu appears. (If a
+particular SystemRescue build doesn't auto-run the factory-reset screen, at its
+shell run `sh /run/archiso/bootmnt/factory-reset-menu.sh`.)
 
 ### Alternative — Ventoy (`build-recovery-usb.sh`, no ISO remaster)
 
