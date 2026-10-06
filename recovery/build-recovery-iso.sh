@@ -262,7 +262,7 @@ SYS
 		set gfxpayload=keep
 		search --no-floppy --file --set=root /image.cpio.gz
 		linux /vmlinuz quiet
-		initrd /initrd.img /image.cpio.gz
+		initrd /initrd.img
 		boot
 	}
 }"
