@@ -17,13 +17,14 @@
 #   !!  FOR VM / LAB TESTING ONLY - NEVER image a real instrument with this.  !!
 #   The real instrument must be imaged with the UNMODIFIED vendor ISO.
 #
-# How it patches: it does NOT re-compress the vendor initrd (risky). It appends
-# a tiny override cpio containing only the patched installer-hooks.sh.inc; the
-# kernel unpacks concatenated cpios in order, so the override replaces the
-# original at boot while the vendor initrd stays byte-for-byte intact.
+# How it patches: it unpacks the vendor initrd, edits installer-hooks.sh.inc,
+# and repacks it as a single gzip'd cpio (universally supported by the kernel).
+# CPU microcode early-load (if any) is dropped - irrelevant in a VM. Nothing
+# else in the ISO is touched (kernel, image.cpio.gz, volume label, boot).
 #
-# Run on a LINUX host with xorriso + cpio + unmkinitramfs (Debian: initramfs-tools):
-#   ./patch-installer-iso.sh --iso 6800.iso [--out NAME]
+# Run as ROOT on a LINUX host with xorriso + cpio + gzip + unmkinitramfs
+# (root is needed to repack device nodes / preserve ownership in the initrd):
+#   sudo ./patch-installer-iso.sh --iso 6800.iso [--out NAME]
 #
 # The output name ALWAYS contains "customized" (enforced).
 
@@ -46,8 +47,10 @@ while [ $# -gt 0 ]; do case "$1" in
     *) die "Unknown option: $1 (try --help)" 2 ;;
 esac; done
 
+[ "$(id -u)" = "0" ] || die "Run as root (repacking the initrd needs to recreate device nodes)." 1
 command -v xorriso >/dev/null 2>&1 || die "xorriso not found (apt-get install xorriso)." 1
 command -v cpio >/dev/null 2>&1 || die "cpio not found (apt-get install cpio)." 1
+command -v gzip >/dev/null 2>&1 || die "gzip not found." 1
 command -v unmkinitramfs >/dev/null 2>&1 || die "unmkinitramfs not found (apt-get install initramfs-tools-core)." 1
 [ -n "$ISO" ] && [ -f "$ISO" ] || die "Need --iso PATH to a Molior installer ISO (e.g. 6800.iso)." 2
 
@@ -82,16 +85,14 @@ grep -q 'CUSTOMIZED: skip display-resolution probe' "$HOOKS" \
     || die "Patch did not apply (the display-guard line was not found)." 4
 ok "Patched installer-hooks.sh.inc (display-resolution step skipped)."
 
-# ---- 3. build a tiny override cpio with just the patched file --------------
-# relative path inside the initramfs must be scripts/installer-hooks.sh.inc
-REL="$(printf '%s' "$HOOKS" | sed -E 's#.*/(scripts/installer-hooks\.sh\.inc)$#\1#')"
-mkdir -p "$WORK/ov/$(dirname "$REL")"
-cp "$HOOKS" "$WORK/ov/$REL"
-( cd "$WORK/ov" && printf '%s\n' "$REL" | cpio -o -H newc --quiet ) > "$WORK/overlay.cpio"
-
-# ---- 4. customized initrd = original + override (original kept intact) ------
-cp "$WORK/initrd.img" "$WORK/initrd-customized.img"
-cat "$WORK/overlay.cpio" >> "$WORK/initrd-customized.img"
+# ---- 3. repack the patched tree as ONE gzip'd cpio -------------------------
+# The initramfs root is the directory that holds both ./init and ./scripts.
+MAINROOT="$(dirname "$(dirname "$HOOKS")")"
+[ -f "$MAINROOT/init" ] || die "could not locate the initramfs root (no ./init beside scripts/)." 4
+( cd "$MAINROOT" && find . | cpio -o -H newc --quiet | gzip -9 ) > "$WORK/initrd-customized.img" \
+    || die "repacking the initrd failed (are you root?)." 4
+[ -s "$WORK/initrd-customized.img" ] || die "repacked initrd is empty." 4
+ok "Repacked initrd ($(du -h "$WORK/initrd-customized.img" | cut -f1), gzip)."
 
 # ---- 5. a loud marker file inside the ISO ----------------------------------
 cat > "$WORK/CUSTOMIZED.txt" <<TXT
