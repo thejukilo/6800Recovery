@@ -179,13 +179,17 @@ One combined `.iso` comes out with a branded boot menu offering **two** choices:
 
 How it works: the installer boots from three files at the medium root
 (`/vmlinuz`, `/initrd.img`, `/image.cpio.gz`). The builder extracts them from the
-installer ISO and places them at the root of the output ISO, so once flashed to USB
-they sit on the real medium exactly as the standalone installer expects — the
-Deploy entry boots it identically (`search --file /image.cpio.gz` → its kernel +
-initrd). The output ISO grows by ~1.7 GB; leave a few GB free where `--out` is.
-Deploy is **UEFI only** (the instruments boot UEFI); with `--deploy-iso` the menu
-auto-boot timeout defaults to 30 s so there is time to choose. The display name is
-read from the installer's `README.md` unless you pass `--deploy-name`.
+installer ISO and places them at the root of the output ISO. The Deploy entry then
+boots the kernel with **both** initrds — `initrd /initrd.img /image.cpio.gz` — so
+the big `image.cpio.gz` overlays the full installer environment on top of the thin
+`initrd.img` (this is how the standalone installer boots too; loading only
+`initrd.img` leaves the installer half-populated and it aborts early). The payload
+is loaded into RAM, so the target needs enough memory for it (the instruments have
+~16 GB; give a test VM at least 8 GB). The output ISO grows by ~1.7 GB; leave a few
+GB free where `--out` is. Deploy is **UEFI only** (the instruments boot UEFI); with
+`--deploy-iso` the menu auto-boot timeout defaults to 30 s so there is time to
+choose. The display name is read from the installer's `README.md` unless you pass
+`--deploy-name`.
 
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,
