@@ -179,17 +179,21 @@ One combined `.iso` comes out with a branded boot menu offering **two** choices:
 
 How it works: the installer boots from three files at the medium root
 (`/vmlinuz`, `/initrd.img`, `/image.cpio.gz`). The builder extracts them from the
-installer ISO and places them at the root of the output ISO. The Deploy entry then
-boots the kernel with **both** initrds — `initrd /initrd.img /image.cpio.gz` — so
-the big `image.cpio.gz` overlays the full installer environment on top of the thin
-`initrd.img` (this is how the standalone installer boots too; loading only
-`initrd.img` leaves the installer half-populated and it aborts early). The payload
-is loaded into RAM, so the target needs enough memory for it (the instruments have
-~16 GB; give a test VM at least 8 GB). The output ISO grows by ~1.7 GB; leave a few
-GB free where `--out` is. Deploy is **UEFI only** (the instruments boot UEFI); with
-`--deploy-iso` the menu auto-boot timeout defaults to 30 s so there is time to
-choose. The display name is read from the installer's `README.md` unless you pass
-`--deploy-name`.
+installer ISO and places them at the root of the output ISO, and the Deploy entry
+boots the kernel the way the installer's own GRUB does (`linux /vmlinuz quiet` +
+`initrd /initrd.img`, with `search --file /image.cpio.gz` to find the medium).
+`image.cpio.gz` is the disk-image payload the installer reads at runtime. The output
+ISO grows by ~1.7 GB; leave a few GB free where `--out` is. Deploy is **UEFI only**
+(the instruments boot UEFI); with `--deploy-iso` the menu auto-boot timeout defaults
+to 30 s so there is time to choose. The display name is read from the installer's
+`README.md` unless you pass `--deploy-name`.
+
+> **Status:** proven that the Deploy menu boots the vendor installer, but this
+> particular `6800.iso` has not completed an install in VM testing — it appears to
+> expect its own medium (volume label `MLR:cobas6800` + full vendor file tree) and/or
+> a Roche deployment server. If folding it into one ISO proves insufficient, the
+> fallback is a multi-partition image carrying a byte-exact copy of the installer ISO
+> that the menu chainloads. Validate on a VM before trusting it on an instrument.
 
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,
