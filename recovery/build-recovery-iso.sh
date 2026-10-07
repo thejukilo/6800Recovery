@@ -20,7 +20,8 @@
 #   --menu PATH      Menu script to embed (default: factory-reset-menu.sh beside this)
 #   --label STR      Boot-menu entry text (default: "cobas 6800 Recovery")
 #   --timeout N      Boot-menu auto-boot seconds (default 2; 0 = boot instantly)
-#   --logo PATH      Your logo (SVG or PNG). Top-right on the boot screen + GTK menu.
+#   --logo PATH      Your logo (SVG best, or a PNG at least ~100px tall). Shown
+#                    top-right on the recovery screen; the boot screen turns white.
 #                    Needs imagemagick (+ librsvg2-bin for SVG).
 #   --gui PATH       GTK screen-2 app (default: factory-reset-gui.py beside this)
 #   --deploy-iso P   A Molior installer ISO (e.g. 6800.iso). Its installer is folded
@@ -115,7 +116,7 @@ trap cleanup EXIT
 sed 's/\r$//' "$MENU" > "$WORK/factory-reset-menu.sh"
 [ -f "$GUI_SRC" ] && sed 's/\r$//' "$GUI_SRC" > "$WORK/factory-reset-gui.py"
 
-# ---- logo + white boot background (only when --logo is given) --------------
+# ---- logo for the recovery screen (only when --logo is given) --------------
 LOGO_MAPS=(); HAS_LOGO="no"
 if [ -n "$LOGO" ]; then
     [ -f "$LOGO" ] || die "--logo file not found: $LOGO" 2
@@ -123,16 +124,12 @@ if [ -n "$LOGO" ]; then
     # normalise the supplied logo to PNG (convert SVG with rsvg if needed)
     case "$LOGO" in
         *.svg|*.SVG) command -v rsvg-convert >/dev/null 2>&1 || die "rsvg-convert needed for an SVG logo (apt-get install librsvg2-bin)." 1
-                     rsvg-convert -h 200 -f png -o "$WORK/brand-logo.png" "$LOGO" ;;
-        *)           convert "$LOGO" -resize x200 "$WORK/brand-logo.png" ;;
+                     rsvg-convert -h 184 -f png -o "$WORK/brand-logo.png" "$LOGO" ;;
+        *)           convert "$LOGO" -resize 'x184>' "$WORK/brand-logo.png"   # never enlarge
+                     LH="$(identify -format %h "$WORK/brand-logo.png" 2>/dev/null || echo 0)"
+                     [ "$LH" -ge 92 ] || inf "Note: the logo is only ${LH}px tall; it may look soft. Use an SVG or a larger PNG." ;;
     esac
-    # white full-screen boot background with the logo placed top-right (UEFI/grub)
-    convert -size 1024x768 xc:white \( "$WORK/brand-logo.png" -resize x84 \) \
-            -gravity NorthEast -geometry +48+40 -composite "$WORK/bg1024.png"
-    LOGO_MAPS=(
-        -map "$WORK/brand-logo.png" /autorun/brand-logo.png
-        -map "$WORK/bg1024.png"     /rlx/boot-bg.png
-    )
+    LOGO_MAPS=( -map "$WORK/brand-logo.png" /autorun/brand-logo.png )
     HAS_LOGO="yes"
 fi
 
@@ -287,19 +284,22 @@ APPEND archisobasedir=sysresccd archisolabel=${REC_LABEL} iomem=relaxed quiet lo
 SYS
     } > "$WORK/sysresccd_sys.cfg"
 
-    # UEFI: replace grub menu with a single labelled entry. When a logo is given,
-    # show the white background image with dark menu text. Grub $vars are escaped
-    # (\$) so only our shell vars expand.
+    # UEFI: replace grub menu with a single labelled entry. With --logo the boot
+    # screen is plain white with dark menu text. Grub $vars are escaped (\$) so
+    # only our shell vars expand.
     GRUB_BG=""
     if [ "$HAS_LOGO" = "yes" ]; then
-        GRUB_BG=$'\t\tinsmod png\n\t\tbackground_image /rlx/boot-bg.png\n\t\tset color_normal=white/black\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
+        # Plain white boot screen. (A logo picture is not used here: GRUB shows
+        # it at a fixed resolution, which the instrument's 1920x1080 panel
+        # scales or stretches out of shape. The logo is on the recovery screen.)
+        GRUB_BG=$'\t\tset color_normal=white/white\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
     else
         GRUB_BG=$'\t\tset color_normal=black/black'
     fi
     # GRUB draws its header, the "press e to edit the commands" help and the
     # countdown in color_normal. Above, that colour is the same as the
-    # background (black is transparent over a background image), so only the
-    # menu entries show. Exported so nested menus look the same.
+    # background, so only the menu entries show. Exported so nested menus look
+    # the same.
     GRUB_BG+=$'\n\t\texport color_normal menu_color_normal menu_color_highlight'
 
     cat > "$WORK/grubsrcd.cfg" <<GRUB

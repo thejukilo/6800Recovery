@@ -423,15 +423,18 @@ def grub_edit(cfg, label):
         cfg = re.sub(r"(?m)^(\s*set timeout=)30\s*$", r"\g<1>2", cfg)
     cfg = re.sub(r"(?m)^menuentry 'Start Factory Reset' \{",
                  "menuentry '%s' {" % label.replace("'", ""), cfg)
+    # The logo picture: GRUB shows it at 1024x768, which the instrument's
+    # 1920x1080 panel scales or stretches out of shape. Plain white instead (the
+    # logo is on the recovery screen).
+    white = "background_image" in cfg or "color_normal=white/white" in cfg
+    if "background_image" in cfg:
+        cfg = re.sub(r"(?m)^[ \t]*insmod png[ \t]*\n", "", cfg)
+        cfg = re.sub(r"(?m)^[ \t]*background_image[^\n]*\n", "", cfg)
+        cfg = re.sub(r"set color_normal=\S+", "set color_normal=white/white", cfg, count=1)
     if MARK_GRUB not in cfg and "export color_normal" not in cfg:
         # GRUB draws its header, the "press e to edit" help and the countdown in
-        # color_normal; make that the background colour (black = transparent
-        # over a background image).
-        if "background_image" in cfg:
-            cfg = re.sub(r"set color_normal=\S+", "set color_normal=white/black", cfg, count=1)
-            hide = ""
-        else:
-            hide = "\t\tset color_normal=black/black\n"
+        # color_normal; make that the background colour.
+        hide = "" if white else "\t\tset color_normal=black/black\n"
         cfg, n = re.subn(r"(?m)^(\s*terminal_output gfxterm\s*\n(?:.*\n)*?)(\s*fi\s*\n)",
                          lambda x: x.group(1) + hide + "\t\texport color_normal "
                          "menu_color_normal menu_color_highlight  " + MARK_GRUB + "\n"
@@ -459,6 +462,8 @@ def main():
     ap.add_argument("--out", help="output ISO (name always gets 'customized')")
     ap.add_argument("--label", default="cobas 6800 Recovery",
                     help='boot-menu entry text (default: "cobas 6800 Recovery")')
+    ap.add_argument("--logo", help="replace the recovery-screen logo with this PNG "
+                    "(at least ~100px tall)")
     ap.add_argument("--skip-display", action="store_true",
                     help="also skip the installer's display step (VM testing only)")
     a = ap.parse_args()
@@ -530,7 +535,27 @@ def main():
                 if new != read_at(f, hit[0] * SECTOR, hit[1]):
                     changes.append(("/autorun/" + name, hit[0], hit[1], new, what))
 
-        # 4. is the image on the stick an approved one?
+        # 4. recovery-screen logo: report its size; optionally replace it
+        hit = iso_lookup(f, "/autorun/brand-logo.png")
+        if hit:
+            head = read_at(f, hit[0] * SECTOR, 24)
+            if head[:8] == b"\x89PNG\r\n\x1a\n":
+                w, h = struct.unpack(">II", head[16:24])
+                inf("Logo on the stick: %dx%d px%s." % (w, h, " (small: may look soft)"
+                                                         if h < 92 else ""))
+        if a.logo:
+            data = open(a.logo, "rb").read()
+            if data[:8] != b"\x89PNG\r\n\x1a\n":
+                die("--logo must be a PNG file.", 2)
+            w, h = struct.unpack(">II", data[16:24])
+            if not hit:
+                die("This ISO has no logo to replace (it was built without --logo).", 2)
+            if h < 92:
+                print("  [!!] The new logo is only %dpx tall; it may look soft." % h)
+            changes.append(("/autorun/brand-logo.png", hit[0], hit[1], data,
+                            "logo replaced (%dx%d px)" % (w, h)))
+
+        # 5. is the image on the stick an approved one?
         approved = approved_images(os.path.join(here, "factory-reset-gui.py"))
         ext, size = iso_lookup(f, "/image.cpio.gz")
         inf("Checking the image SHA-256 (reads %d MB) ..." % (size >> 20))

@@ -205,6 +205,16 @@ def start_installer(media):
     kexec = shutil.which("kexec")
     if not kexec:
         return "The 'kexec' tool is missing on this recovery stick."
+    # The installer needs the UEFI runtime services (Secure Boot keys, boot
+    # entries). They are handed on to the next kernel only when the running
+    # kernel exposes its EFI runtime map; without it, refuse rather than risk
+    # an install that cannot set up booting.
+    if os.path.isdir("/sys/firmware/efi") and not os.path.isdir("/sys/firmware/efi/runtime-map"):
+        return ("This recovery stick cannot hand over to the installer safely on this "
+                "instrument (no EFI runtime map). Deploy with the separate installer stick "
+                "(6800.iso) instead.")
+    if not os.path.isdir("/sys/firmware/efi"):
+        return "The instrument was not started in UEFI mode, which the installer needs."
     args = [f"{media}/vmlinuz", f"--initrd={media}/initrd.img", "--append=quiet"]
     r = run([kexec, "-l"] + args)
     if r.returncode != 0:
@@ -374,7 +384,11 @@ def extract_auth_files(image, dest, progress=None):
     return sha
 
 
+_SLOG_LINES = []                          # this attempt's log, for the Details view
+
+
 def slog(msg):
+    _SLOG_LINES.append(msg)
     try:
         os.makedirs(os.path.dirname(SIGNIN_LOG), exist_ok=True)
         with open(SIGNIN_LOG, "a") as f:
@@ -395,6 +409,51 @@ def _mounts_under(path):
 def cleanup_auth():
     for mp in _mounts_under(AUTH):
         run(["umount", "-l", mp])
+
+
+# The token library (libfsrverify) writes only these, all in /var: it reads and
+# flock()s the key revocation index, stores the quick-access password after a
+# valid token, and the unlock code. /etc/fsrverify.conf is read-only settings.
+FSR_VAR_FILES = ("fsrkeyrevocation.dat", "fsrpasswd.dat", "fsrunlockcode.dat")
+
+
+def _ram_var_tmp(root, var_dirs):
+    """Give the sign-in root a private, writable /var and /tmp in RAM, with
+    copies of the instrument's /var/fsr* files. The disk is never written."""
+    # Read them BEFORE mounting: in read-only mode root/var IS the disk's /var,
+    # which the RAM /var is about to cover.
+    src = {}
+    for d in var_dirs:                    # first copy found wins
+        for name in FSR_VAR_FILES:
+            if name not in src and os.path.isfile(f"{d}/{name}"):
+                with open(f"{d}/{name}", "rb") as f:
+                    src[name] = (f"{d}/{name}", f.read())
+    for d in ("var", "tmp"):
+        if not os.path.isdir(f"{root}/{d}"):
+            raise AuthError("The cobas system on this instrument looks incomplete "
+                            "(no /%s), so the token cannot be checked." % d)
+        if run(["mount", "-t", "tmpfs", "-o", "mode=1777" if d == "tmp" else "mode=0755",
+                "rlx-" + d, f"{root}/{d}"]).returncode != 0:
+            raise AuthError("Could not prepare the sign-in (no /%s in memory)." % d)
+    os.makedirs(f"{root}/var/tmp", mode=0o1777, exist_ok=True)
+    for name, (_, data) in src.items():
+        with open(f"{root}/var/{name}", "wb") as f:
+            f.write(data)
+        os.chmod(f"{root}/var/{name}", 0o660)
+    rev = f"{root}/var/fsrkeyrevocation.dat"
+    if os.path.isfile(rev):
+        slog("revocation index: %r (from %s)" % (open(rev).read().strip()[:20],
+                                                 src["fsrkeyrevocation.dat"][0]))
+    else:
+        # The instrument creates it with 0 ("no key revoked") when the library
+        # is installed; without it every token is refused.
+        with open(rev, "w") as f:
+            f.write("0\n")
+        slog("revocation index file not found on the disk; using 0")
+    slog("RAM /var has: %s" % ", ".join(sorted(os.listdir(f"{root}/var"))))
+    conf = f"{root}/etc/fsrverify.conf"
+    slog("fsrverify.conf: %s" % (open(conf).read().strip().replace("\n", " | ")[:200]
+                                  if os.path.isfile(conf) else "none (defaults)"))
 
 
 def prepare_auth_root(progress=None):
@@ -419,8 +478,18 @@ def prepare_auth_root(progress=None):
             raise AuthError("Could not prepare the sign-in (no memory).")
         sha = extract_auth_files(f"{media}/image.cpio.gz", f"{AUTH}/img", progress)
         root, source = f"{AUTH}/img", "image"
+        os.makedirs(f"{root}/var/tmp", exist_ok=True)
+        rev = f"{root}/var/fsrkeyrevocation.dat"
+        if not os.path.isfile(rev):
+            with open(rev, "w") as f:
+                f.write("0\n")
+            slog("revocation index file not in the image; using 0")
+        else:
+            slog("revocation index: %r (from the image)" % open(rev).read().strip()[:20])
     else:
-        # writes (e.g. the token library's own files) go to RAM, never to the disk
+        # Prefer a full overlay (all writes go to RAM). Whether or not it works,
+        # /var and /tmp are replaced below, so nothing the check writes depends
+        # on it.
         run(["mount", "-t", "tmpfs", "rlx-auth", f"{AUTH}/rw"])
         os.makedirs(f"{AUTH}/rw/upper", exist_ok=True)
         os.makedirs(f"{AUTH}/rw/work", exist_ok=True)
@@ -429,24 +498,10 @@ def prepare_auth_root(progress=None):
                  f"lowerdir={lower},upperdir={AUTH}/rw/upper,workdir={AUTH}/rw/work", root])
         if r.returncode != 0:
             slog("overlay mount failed (%s); using the disk read-only" % r.stderr.strip())
-            root = lower                     # read-only fallback
-            run(["mount", "-t", "tmpfs", "rlx-auth", f"{root}/tmp"])
+            root = lower
         else:
             slog("overlay mounted")
-        # The token library opens /var/fsrkeyrevocation.dat for update and locks
-        # it (flock); without that it reports "key index enforcement is not
-        # performed". Give it a private RAM copy, so it works even read-only
-        # and nothing reaches the disk.
-        rev = f"{root}/var/fsrkeyrevocation.dat"
-        if os.path.isfile(rev):
-            copy = f"{AUTH}/rw/fsrkeyrevocation.dat"
-            shutil.copyfile(rev, copy)
-            os.chmod(copy, 0o666)
-            b = run(["mount", "--bind", copy, rev])
-            slog("revocation file: %r, RAM copy bound: %s" %
-                 (open(copy).read().strip()[:20], b.returncode == 0))
-        else:
-            slog("revocation file missing: %s" % rev)
+        _ram_var_tmp(root, [f"{lower}/var", f"{AUTH}/top/var"])
     for d in ("dev", "proc", "tmp"):
         if not os.path.isdir(f"{root}/{d}"):
             try:
@@ -534,6 +589,7 @@ def verify_token(rocheid, token, progress=None):
     """Check a Roche ID + token with the instrument's own login (pam_fsr).
     Returns (ok, message, image_sha or None)."""
     rocheid, token = rocheid.strip(), token.strip()
+    del _SLOG_LINES[:]
     if not rocheid or not token:
         return False, "Enter your Roche ID and token.", None
     try:
@@ -573,7 +629,9 @@ def verify_token(rocheid, token, progress=None):
         log.close()
         reason = log.reason() or "; ".join(res.get("messages") or []) or res.get("error", "")
         for line in log.lines:
-            slog("pam: " + line.strip()[-300:])
+            if "*****" in line or "Attempt to log in" in line or "no default config" in line:
+                continue
+            slog("pam: " + re.sub(r"^<\d+>\w{3}\s+\d+\s+[\d:]+\s+", "", line.strip())[-300:])
         detail = log.detail()
         msg = friendly(reason)
         if reason:
@@ -616,6 +674,7 @@ window, .page { background:#ffffff; }
 .field { font-size:13px; font-weight:700; color:#15191e; }
 .hint { font-size:13px; color:#5b6672; }
 .mono { font-family:monospace; font-size:14px; color:#15191e; }
+.mono.small { font-size:11px; color:#5b6672; }
 .err { color:#c62828; font-size:14px; }
 .warn { background:#fdecec; border:1px solid #f2c2c2; border-radius:8px; padding:14px; }
 .warn .wh { color:#c62828; font-weight:700; font-size:15px; }
@@ -677,7 +736,11 @@ def gui_main():
             head.pack_start(brand, True, True, 0)
             if os.path.isfile(LOGO):
                 try:
-                    pb = GdkPixbuf.Pixbuf.new_from_file_at_scale(LOGO, -1, 46, True)
+                    # high-quality downscale (the stored logo is larger than shown)
+                    full = GdkPixbuf.Pixbuf.new_from_file(LOGO)
+                    h = min(46, full.get_height())
+                    pb = full.scale_simple(max(1, round(full.get_width() * h / full.get_height())),
+                                           h, GdkPixbuf.InterpType.HYPER)
                     head.pack_end(Gtk.Image.new_from_pixbuf(pb), False, False, 0)
                 except Exception:
                     pass
@@ -745,6 +808,11 @@ def gui_main():
             b.pack_start(show, False, False, 0)
             self.login_err = self._label("", "err")
             b.pack_start(self.login_err, False, False, 0)
+            self.details = Gtk.Expander(label="Details")
+            self.details_lbl = self._label("", "mono small", True, 110)
+            self.details_lbl.set_selectable(True)
+            self.details.add(self.details_lbl)
+            b.pack_start(self.details, False, False, 0)
             self.e_id.connect("activate", lambda *_: self.e_tok.grab_focus())
             self.e_tok.connect("activate", self.on_signin)
             row = Gtk.Box(spacing=12, margin_top=8)
@@ -946,6 +1014,9 @@ def gui_main():
             self.e_tok.set_text("")
             if not ok:
                 self.login_err.set_text(msg)
+                self.details_lbl.set_text("\n".join(_SLOG_LINES[-30:]))
+                self.details.set_visible(bool(_SLOG_LINES))
+                self.details.set_expanded(False)
                 self.show("login")
                 self.e_tok.grab_focus()
                 return
@@ -1073,6 +1144,7 @@ def gui_main():
 
     win = App()
     win.show_all()
+    win.details.set_visible(False)
     win.show("login")
     win.e_id.grab_focus()
     Gtk.main()

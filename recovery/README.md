@@ -154,7 +154,9 @@ SystemRescue jargon. Tune it:
 --no-brand                             # keep SystemRescue's stock boot menu
 ```
 
-With `--logo`, the boot screen becomes a white background with your logo top-right,
+With `--logo`, the boot screen becomes plain white (no picture: GRUB would show it
+at a fixed resolution, scaled or stretched on the 1920×1080 panel), the logo goes
+top-right on the recovery screen (use an SVG, or a PNG at least ~100 px tall),
 and screen 2 runs as a **graphical** window via GTK under X (white, logo): a
 **sign-in** with Roche ID + token, then the choices (see *Sign-in and approved
 images* below). If X or GTK is unavailable on a given machine it automatically
