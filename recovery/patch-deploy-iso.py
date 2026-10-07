@@ -370,19 +370,24 @@ def mbr_grow_plan(f, bases, new_end):
     mbr = read_at(f, 0, 512)
     if mbr[510:512] != b"\x55\xaa":
         return []                         # plain CD image: no partition table
-    writes = []
+    writes, table = [], []
     for k in range(4):
         e = 446 + 16 * k
         ptype = mbr[e + 4]
-        start = struct.unpack_from("<I", mbr, e + 8)[0]
+        start, count = struct.unpack_from("<II", mbr, e + 8)
+        table.append("%d: type %#04x start %d sectors %d" % (k + 1, ptype, start, count))
         if ptype == 0xEE:
             die("This ISO uses a GPT layout, which this script cannot extend. "
                 "Build the stick with build-recovery-iso.sh on Linux/WSL instead.")
-        if ptype not in (0, 0xEF) and start * 512 in [b * SECTOR for b in bases]:
+        # The ISO partition starts where one of the directory trees starts. Its
+        # type may be 0x00: isohybrid images (SystemRescue, Arch) mark it so, and
+        # Linux still uses it (e.g. /dev/sda1). Never the EFI partition.
+        if count and ptype != 0xEF and start * 512 in [b * SECTOR for b in bases]:
             writes.append((e + 12, struct.pack("<I", new_end // 512 - start)))
     if not writes:
-        die("Could not find the ISO's partition to extend. Build the stick with "
-            "build-recovery-iso.sh on Linux/WSL instead.")
+        die("Could not find the ISO's partition to extend (tree offsets %s; "
+            "partitions %s). Build the stick with build-recovery-iso.sh on "
+            "Linux/WSL instead." % (bases, "; ".join(table)))
     return writes
 
 
