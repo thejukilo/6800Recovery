@@ -202,6 +202,16 @@ to 30 s so there is time to choose. The display name is read from the installer'
 > installer was only ever run from a raw iso9660 medium, so don't use Rufus
 > *ISO Image mode*, which rewrites the stick as FAT32.
 
+> **No Linux machine? Patch an existing ISO on Windows.** If you already have an
+> `rlx-recovery.iso` built with `--deploy-iso` (before this fix), run
+> `patch-deploy-iso.py` on it. It needs only Python 3 from python.org, or you can
+> drag the ISO onto `patch-deploy-iso.bat`. It writes
+> `…-deploy-customized.iso` with the same one-line installer change, and
+> rewrites the initrd in its original place in the ISO, so nothing else moves.
+> Add `--skip-display` for a VM-only test copy. A zstd-compressed installer
+> initrd needs Python 3.14 or newer. Never change the label in Rufus, and
+> always flash in DD Image mode.
+
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,
 > before using it on a real instrument.
