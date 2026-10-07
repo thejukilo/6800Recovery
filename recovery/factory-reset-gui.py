@@ -18,6 +18,9 @@ LOGO = os.environ.get("RLX_LOGO", "/run/rlx/brand-logo.png")
 DETECT_MNT = "/run/rlx-detect"
 RW_MNT = "/run/rlx-rw"
 FLAG_BODY = "ACTION=restore-snapshot\nSNAPSHOT_TYPE=factory\n"
+# Version the factory snapshot restores to, shown on the first screen. Read from
+# the snapshot when we can find it there; otherwise this value (env override).
+FACTORY_VERSION = os.environ.get("RLX_FACTORY_VERSION", "2.0.0.1251623")
 
 CSS = b"""
 window, .page { background:#ffffff; }
@@ -62,6 +65,29 @@ def detect_rlx():
     return None
 
 
+def factory_version():
+    """Best effort: the version inside the factory snapshot (snapshots/F),
+    else FACTORY_VERSION. Read-only."""
+    devs = run(["blkid", "-t", "TYPE=btrfs", "-o", "device"]).stdout.split()
+    os.makedirs(DETECT_MNT, exist_ok=True)
+    for dev in devs:
+        run(["umount", DETECT_MNT])
+        if run(["mount", "-o", "ro,subvolid=5", dev, DETECT_MNT]).returncode != 0:
+            continue
+        try:
+            for rel in ("snapshots/F/opt/roche/etc/projectinfo",
+                        "snapshots/F/roche/etc/projectinfo",
+                        "snapshots/F/opt/etc/projectinfo"):
+                path = f"{DETECT_MNT}/{rel}"
+                if os.path.isfile(path):
+                    m = re.search(r"\d+(?:\.\d+){2,}", open(path).read())
+                    if m:
+                        return m.group(0)
+        finally:
+            run(["umount", DETECT_MNT])
+    return FACTORY_VERSION
+
+
 def arm(dev):
     os.makedirs(RW_MNT, exist_ok=True)
     run(["umount", RW_MNT])
@@ -81,8 +107,17 @@ def arm(dev):
 class App(Gtk.Window):
     def __init__(self):
         super().__init__()
+        # There is no window manager under startx, so fullscreen() alone is
+        # ignored: size the window to the monitor ourselves.
+        self.set_decorated(False)
+        disp = Gdk.Display.get_default()
+        mon = disp.get_primary_monitor() or disp.get_monitor(0)
+        g = mon.get_geometry()
+        self.move(g.x, g.y)
+        self.set_default_size(g.width, g.height)
+        self.resize(g.width, g.height)
         self.fullscreen()
-        self.set_default_size(1024, 768)
+        self.factory_ver = factory_version()
         prov = Gtk.CssProvider(); prov.load_from_data(CSS)
         Gtk.StyleContext.add_provider_for_screen(
             Gdk.Screen.get_default(), prov, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
@@ -136,8 +171,9 @@ class App(Gtk.Window):
         b = self._col()
         b.pack_start(self._label("Factory Reset", "h1"), False, False, 0)
         b.pack_start(self._label(
-            "This restores the instrument to its factory state. Use it only when "
-            "instructed by GCS and the normal reset in the software isn't possible.",
+            f"This restores the instrument back to its original state ({self.factory_ver}). "
+            "Use it only when instructed by GCS and the normal reset in the software "
+            "isn't possible.",
             "sub"), False, False, 0)
         row = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12, margin_top=10)
         row.pack_start(self._btn("Start Factory Reset", "primary", self.on_start), False, False, 0)

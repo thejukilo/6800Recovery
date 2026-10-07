@@ -202,19 +202,24 @@ to 30 s so there is time to choose. The display name is read from the installer'
 > installer was only ever run from a raw iso9660 medium, so don't use Rufus
 > *ISO Image mode*, which rewrites the stick as FAT32.
 
-> **No Linux machine? Patch an existing ISO on Windows.** If you already have an
-> `rlx-recovery.iso` built with `--deploy-iso` (before this fix), run
-> `patch-deploy-iso.py` on it. It needs only Python 3 from python.org, or you can
-> drag the ISO onto `patch-deploy-iso.bat`. It writes
-> `…-deploy-customized.iso` with the same installer change. The installer
-> checks the label in two scripts (`installer-hooks.sh.inc` and
-> `scripts/init-premount/installer`), and both are patched. The initrd goes
-> back in its original place in the ISO, or at the end of the ISO if it has
-> grown too big to fit. Running it on an ISO made by the earlier one-script
-> version finishes the job and writes `…-new.iso`.
-> Add `--skip-display` for a VM-only test copy. A zstd-compressed installer
-> initrd needs Python 3.14 or newer. Never change the label in Rufus, and
-> always flash in DD Image mode.
+> **No Linux machine? Update an existing ISO on Windows.** Run
+> `patch-deploy-iso.py` on an `rlx-recovery.iso` built with `--deploy-iso`, or
+> drag the ISO onto `patch-deploy-iso.bat`. It needs only Python 3 from
+> python.org (3.14+ if the installer initrd is zstd-compressed). It writes
+> `…-deploy-customized.iso` (or `…-new.iso` when the input is already a
+> customized one) with everything a fresh build would have:
+> - the installer change above, in both scripts that check the label
+>   (`installer-hooks.sh.inc` and `scripts/init-premount/installer`);
+> - the current boot menu: *Deploy cobas 6800: 2.0.3.3330507 image*, with
+>   GRUB's header, its "press `e` to edit" help and the countdown hidden
+>   (`--deploy-title` overrides the text);
+> - the current Factory Reset screen: `factory-reset-gui.py` from the same
+>   folder as the script.
+>
+> Each changed file goes back in its original place in the ISO, or at the end
+> of the ISO if it has grown too big. Running it again on its own output does
+> nothing. Add `--skip-display` for a VM-only test copy. Never change the label
+> in Rufus, and always flash in DD Image mode.
 
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,

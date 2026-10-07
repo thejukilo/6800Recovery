@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
-"""patch-deploy-iso.py - make the Deploy option on a combined recovery ISO work.
+"""patch-deploy-iso.py - update an existing combined recovery ISO, no Linux needed.
 
-Runs on WINDOWS (or Linux/macOS) with plain Python 3, no Linux tools needed.
+Runs on WINDOWS (or Linux/macOS) with plain Python 3.
 
-Problem it fixes: the vendor cobas installer only accepts an install medium
-whose volume label starts with "MLR:" (installer_init: `blkid | grep MLR:`).
-The combined recovery stick has to keep SystemRescue's label (e.g. RESCUE1302),
-so on that stick the installer falls back to a network install, finds no
-network and stops at a BusyBox shell ("Downloading install medium ... No network
-interface found").
+It writes a COPY of an rlx-recovery ISO (built with --deploy-iso) with:
 
-What it does: takes an rlx-recovery ISO that was built with --deploy-iso (it has
-/initrd.img + /image.cpio.gz at its root), and writes a COPY in which every copy
-of that check in the installer's initrd (installer-hooks.sh.inc AND
-scripts/init-premount/installer) also accepts this ISO's own label. Nothing
-else changes: the kernel, the disk image, the boot menu and the label stay the
-same. The patched initrd goes back in its original place in the ISO; if it has
-grown too big for that, it is appended at the end of the ISO instead (the ISO's
-partition is extended to cover it). It also works on an ISO made by an older
-version of this script that patched only the first check.
+1. Deploy fixed. The vendor cobas installer only accepts a medium whose label
+   starts with "MLR:" (`blkid | grep MLR:`, in installer-hooks.sh.inc AND
+   scripts/init-premount/installer). This stick must keep SystemRescue's label
+   (e.g. RESCUE1302), so without the fix the installer reports "could not find
+   install medium" or tries a network install. Every copy of that check is
+   patched to also accept this ISO's own label.
+2. The current boot menu: "Deploy cobas 6800: <version> image", and GRUB's
+   header / "press e to edit" help / countdown hidden.
+3. The current Factory Reset screen (factory-reset-gui.py from this folder).
+
+The kernel, the disk image and the volume label are untouched. Each changed
+file goes back in its original place in the ISO, or, if it grew too big, at the
+end of the ISO (the ISO's partition is extended to cover it). Safe to run again
+on its own output or on an ISO from an older version of this script.
 
     py patch-deploy-iso.py rlx-recovery.iso
     py patch-deploy-iso.py rlx-recovery.iso --out D:\\stick.iso
+    py patch-deploy-iso.py rlx-recovery.iso --deploy-title "cobas 6800: 2.0.3.3330507"
     py patch-deploy-iso.py rlx-recovery.iso --skip-display   (VM testing only)
 
 The output name always contains "customized". Flash it with Rufus in
@@ -89,8 +90,8 @@ def iso_name(rec):
     return n.split(";")[0].rstrip(".")
 
 
-def iso_root_files(f, extent, size):
-    """{NAME: (extent, size)} for the files in the root directory."""
+def iso_dir(f, extent, size):
+    """{NAME: (extent, size, is_dir)} for one directory."""
     out, data = {}, read_at(f, extent * SECTOR, size)
     i = 0
     while i < len(data):
@@ -101,17 +102,32 @@ def iso_root_files(f, extent, size):
         rec = data[i:i + ln]
         if rec[32] > 1 or rec[33] > 1:   # skip "." and ".."
             out[iso_name(rec)] = (struct.unpack_from("<I", rec, 2)[0],
-                                  struct.unpack_from("<I", rec, 10)[0])
+                                  struct.unpack_from("<I", rec, 10)[0],
+                                  bool(rec[25] & 2))
         i += ln
     return out
 
 
-def find_size_records(path, old_size):
-    """Offsets of every directory record (ISO9660, Joliet, and the extra
-    partition-relative tree xorriso may add) that describes the initrd.
-    Found by its both-endian size field, then validated."""
-    pat = struct.pack("<I", old_size) + struct.pack(">I", old_size)
-    hits, chunk, keep = [], 64 << 20, 512
+def iso_lookup(f, path):
+    """(extent, size) of /a/b/c in the primary tree, or None."""
+    _, ext, size = iso_pvd(f)
+    for part in path.strip("/").upper().split("/"):
+        hit = iso_dir(f, ext, size).get(part)
+        if hit is None:
+            return None
+        ext, size, _ = hit
+    return ext, size
+
+
+def find_records(path, targets):
+    """For each (extent, size) in targets: offsets of every directory record
+    that describes that file - in the ISO 9660/Rock Ridge tree, the Joliet tree
+    and any partition-relative tree xorriso added. A record matches when its
+    both-endian size equals the file's and its extent equals the file's minus a
+    small tree offset."""
+    pats = {struct.pack("<I", s) + struct.pack(">I", s): (e, s) for e, s in targets}
+    hits = {t: [] for t in targets}
+    chunk, keep = 64 << 20, 512
     with open(path, "rb") as f:
         base, prev = 0, b""
         while True:
@@ -121,21 +137,22 @@ def find_size_records(path, old_size):
             data = prev + buf
             start = base - len(prev)
             last = len(buf) < chunk
-            j = data.find(pat)
-            while j != -1:
-                rec_off = start + j - 10
-                # a record cut off at the chunk end is seen again in the next chunk
-                whole = last or j - 10 + 255 <= len(data)
-                if j >= 10 and whole and rec_off not in hits:
-                    rec = data[j - 10:j - 10 + 255]
-                    if (len(rec) >= 34 and 34 <= rec[0] <= 255
-                            and rec[2:6] == rec[6:10][::-1]
-                            and 33 + rec[32] <= rec[0]):
-                        name = rec[33:33 + rec[32]]
-                        if (b"INITRD" in name.upper()
-                                or "initrd" in name.decode("utf-16-be", "ignore").lower()):
-                            hits.append(rec_off)
-                j = data.find(pat, j + 1)
+            for pat, (ext, size) in pats.items():
+                j = data.find(pat)
+                while j != -1:
+                    rec_off = start + j - 10
+                    # a record cut off at the chunk end is seen again next chunk
+                    whole = last or j - 10 + 255 <= len(data)
+                    if j >= 10 and whole and rec_off not in hits[(ext, size)]:
+                        rec = data[j - 10:j - 10 + 255]
+                        e_rec = struct.unpack_from("<I", rec, 2)[0]
+                        if (len(rec) >= 34 and 34 <= rec[0] <= 255
+                                and rec[2:6] == rec[6:10][::-1]
+                                and 33 + rec[32] <= rec[0]
+                                and not rec[25] & 2
+                                and 0 <= ext - e_rec < 4096):
+                            hits[(ext, size)].append(rec_off)
+                    j = data.find(pat, j + 1)
             prev = data[-keep:]
             base += len(buf)
     return hits
@@ -346,12 +363,6 @@ def patch_initrd(initrd, ed, room):
     return out, len(out) <= room
 
 
-def tree_bases(f, recs, ext):
-    """Block offset of each directory tree that lists the initrd: 0 for the
-    normal tree, N for a partition-relative tree (xorriso -partition_offset)."""
-    return sorted({ext - struct.unpack_from("<I", read_at(f, r + 2, 4))[0] for r in recs})
-
-
 def mbr_grow_plan(f, bases, new_end):
     """Moving the initrd past the end of the image means the MBR partition that
     holds the ISO filesystem must grow to cover it (the installer reads the
@@ -376,10 +387,51 @@ def mbr_grow_plan(f, bases, new_end):
 
 
 # ------------------------------------------------------------------ main ----
+# ------------------------------------------------------- boot menu (GRUB) ----
+MARK_GRUB = "# RLX: GRUB help text hidden"
+
+
+def nice_title(name):
+    """'cobas6800 2.0.3.3330507+local' -> 'cobas 6800: 2.0.3.3330507'."""
+    m = re.match(r"^([A-Za-z]+)[ _]*([0-9]+)[ _:]+([0-9][0-9.]*[0-9])", name.strip())
+    return "%s %s: %s" % m.groups() if m else name.strip()
+
+
+def grub_edit(cfg, title):
+    """Current boot-menu wording + hidden GRUB help on an older grubsrcd.cfg."""
+    m = re.search(r"submenu 'Deploy (.*?)\s*(?:\(ERASES the whole instrument\))?\s*' \{", cfg)
+    if m:
+        name = re.sub(r"\s+image$", "", m.group(1))
+        title = (title or nice_title(name)).replace("'", "")
+        cfg = cfg[:m.start()] + "submenu 'Deploy %s image' {" % title + cfg[m.end():]
+        cfg = re.sub(r"(menuentry 'CONFIRM: erase this instrument and install )[^']*'",
+                     lambda x: x.group(1) + title + "'", cfg)
+    if MARK_GRUB not in cfg and "export color_normal" not in cfg:
+        # GRUB draws its header, the "press e to edit" help and the countdown in
+        # color_normal; make that the background colour (black = transparent
+        # over a background image), and export it to the Deploy submenu.
+        if "background_image" in cfg:
+            cfg = re.sub(r"set color_normal=\S+", "set color_normal=white/black", cfg, count=1)
+            hide = ""
+        else:
+            hide = "\t\tset color_normal=black/black\n"
+        cfg, n = re.subn(r"(?m)^(\s*terminal_output gfxterm\s*\n(?:.*\n)*?)(\s*fi\s*\n)",
+                         lambda x: x.group(1) + hide + "\t\texport color_normal "
+                         "menu_color_normal menu_color_highlight  " + MARK_GRUB + "\n"
+                         + x.group(2), cfg, count=1)
+        if n != 1:
+            inf("Boot menu layout not recognised; GRUB help text left as is.")
+    return cfg
+
+
+# ------------------------------------------------------------------ main ----
 def main():
-    ap = argparse.ArgumentParser(description="Make Deploy work on a combined recovery ISO.")
+    ap = argparse.ArgumentParser(description="Update a combined recovery ISO (Deploy fix, "
+                                 "boot menu, Factory Reset screen).")
     ap.add_argument("iso", help="rlx-recovery ISO built with --deploy-iso")
     ap.add_argument("--out", help="output ISO (name always gets 'customized')")
+    ap.add_argument("--deploy-title", help='menu text after "Deploy", e.g. '
+                    '"cobas 6800: 2.0.3.3330507" (default: from the existing menu)')
     ap.add_argument("--skip-display", action="store_true",
                     help="also skip the installer's display step (VM testing only)")
     a = ap.parse_args()
@@ -391,7 +443,7 @@ def main():
     if a.out:
         out = a.out
     elif "customized" in os.path.basename(stem).lower():
-        out = stem + "-new.iso"           # re-patching an older customized ISO
+        out = stem + "-new.iso"           # updating an older customized ISO
     else:
         out = stem + "-deploy-customized.iso"
     if "customized" not in os.path.basename(out).lower():
@@ -399,103 +451,132 @@ def main():
     if os.path.abspath(out) == os.path.abspath(src):
         die("--out must be a different file than the input.", 2)
 
+    # Every change is (ISO path, extent, size, new bytes, description).
+    changes = []
     with open(src, "rb") as f:
-        label, rext, rsize = iso_pvd(f)
-        files = iso_root_files(f, rext, rsize)
+        label, _, _ = iso_pvd(f)
         if label.startswith("MLR:"):
             die("This is a vendor installer ISO (label %s). It needs no patch: flash it "
                 "as-is with Rufus in DD Image mode." % label, 2)
-        for n in ("INITRD.IMG", "VMLINUZ", "IMAGE.CPIO.GZ"):
-            if n not in files:
-                die("/%s not found: this ISO has no Deploy option. Build it with "
-                    "build-recovery-iso.sh --deploy-iso first." % n.lower(), 2)
-        ext, size = files["INITRD.IMG"]
-        initrd = read_at(f, ext * SECTOR, size)
-    ok("Recovery ISO, label %s, Deploy payload present." % label)
+        for n in ("/initrd.img", "/vmlinuz", "/image.cpio.gz"):
+            if iso_lookup(f, n) is None:
+                die("%s not found: this ISO has no Deploy option. Build it with "
+                    "build-recovery-iso.sh --deploy-iso first." % n, 2)
+        ok("Recovery ISO, label %s, Deploy payload present." % label)
 
-    room = (size + SECTOR - 1) // SECTOR * SECTOR
-    ed = Editor(label, a.skip_display)
-    res = patch_initrd(initrd, ed, room)
-    if res is None:
-        ok("This ISO is already patched - nothing to do. Flash it in DD Image mode.")
+        # 1. installer initrd: accept this stick's label
+        ext, size = iso_lookup(f, "/initrd.img")
+        ed = Editor(label, a.skip_display)
+        res = patch_initrd(read_at(f, ext * SECTOR, size), ed,
+                           (size + SECTOR - 1) // SECTOR * SECTOR)
+        if res is None:
+            ok("Installer already accepts this stick.")
+        else:
+            changes.append(("/initrd.img", ext, size, res[0],
+                            "installer accepts label %s (%s)" % (label, ", ".join(ed.patched))))
+
+        # 2. boot menu wording + hidden GRUB help
+        hit = iso_lookup(f, "/boot/grub/grubsrcd.cfg")
+        if hit:
+            cfg = read_at(f, hit[0] * SECTOR, hit[1])
+            new = grub_edit(cfg.decode("utf-8"), a.deploy_title).encode("utf-8")
+            if new != cfg:
+                title = re.search(rb"submenu '(Deploy [^']*)'", new)
+                changes.append(("/boot/grub/grubsrcd.cfg", hit[0], hit[1], new,
+                                "boot menu: %s" % (title.group(1).decode() if title else "updated")))
+        else:
+            inf("No branded boot menu in this ISO; menu left as is.")
+
+        # 3. Factory Reset screen from this folder
+        gui_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "factory-reset-gui.py")
+        hit = iso_lookup(f, "/autorun/factory-reset-gui.py")
+        if hit and os.path.isfile(gui_src):
+            new = open(gui_src, "rb").read().replace(b"\r\n", b"\n")
+            if new != read_at(f, hit[0] * SECTOR, hit[1]):
+                changes.append(("/autorun/factory-reset-gui.py", hit[0], hit[1], new,
+                                "Factory Reset screen updated"))
+        elif not os.path.isfile(gui_src):
+            inf("factory-reset-gui.py is not next to this script; screen left as is.")
+
+    if not changes:
+        ok("This ISO is already up to date - nothing to do. Flash it in DD Image mode.")
         return
-    new, fits = res
 
     iso_size = os.path.getsize(src)
-    need = iso_size + len(new) + (64 << 20)
+    need = iso_size + sum(len(c[3]) for c in changes) + (64 << 20)
     free = shutil.disk_usage(os.path.dirname(os.path.abspath(out))).free
     if free < need:
         die("Not enough free space for the copy: need ~%d MB, have %d MB." %
             (need >> 20, free >> 20), 2)
-    recs = find_size_records(src, size)
-    if not recs:
-        die("Could not locate the initrd's directory entries in the ISO.")
 
-    # Where the patched initrd goes: its old place if it fits, else appended
-    # at the end of the image (its directory entries are pointed there).
-    if fits:
-        new_ext = ext
-        writes = []
-    else:
-        new_ext = (iso_size + SECTOR - 1) // SECTOR
-        new_end = (new_ext * SECTOR + len(new) + SECTOR - 1) // SECTOR * SECTOR
-        with open(src, "rb") as f:
-            bases = tree_bases(f, recs, ext)
-            writes = mbr_grow_plan(f, bases, new_end)
+    # Plan where each file goes: its old place if it fits, else the image end.
+    recs = find_records(src, [(c[1], c[2]) for c in changes])
+    end = (iso_size + SECTOR - 1) // SECTOR
+    plan, writes = [], []                 # plan: (path, rec_base, new_ext, data, room)
+    with open(src, "rb") as f:
+        for path, ext, size, data, _ in changes:
+            if not recs[(ext, size)]:
+                die("Could not locate the directory entries of %s in the ISO." % path)
+            rec_base = {r: ext - struct.unpack_from("<I", read_at(f, r + 2, 4))[0]
+                        for r in recs[(ext, size)]}
+            room = (size + SECTOR - 1) // SECTOR * SECTOR
+            if len(data) <= room:
+                plan.append((path, rec_base, ext, data, room))
+            else:
+                room = (len(data) + SECTOR - 1) // SECTOR * SECTOR
+                plan.append((path, rec_base, end, data, room))
+                inf("%s grew; moving it to the end of the ISO." % path)
+                end += room // SECTOR
+        if end * SECTOR > iso_size:       # something was appended
+            bases = sorted({b for _, rb, _, _, _ in plan for b in rb.values()})
+            writes = mbr_grow_plan(f, bases, end * SECTOR)
             for b in bases:               # volume size in every descriptor
                 for s in range(16, 64):
                     vd = read_at(f, (b + s) * SECTOR, 8)
                     if vd[1:6] != b"CD001" or vd[0] == 255:
                         break
                     if vd[0] in (1, 2):
-                        n = new_end // SECTOR - b
+                        n = end - b
                         writes.append(((b + s) * SECTOR + 80,
                                        struct.pack("<I", n) + struct.pack(">I", n)))
-        inf("The patched initrd is larger than the original slot; "
-            "moving it to the end of the ISO.")
-
-    with open(src, "rb") as f:            # tree offset of each directory entry
-        rec_base = {r: ext - struct.unpack_from("<I", read_at(f, r + 2, 4))[0] for r in recs}
 
     inf("Writing %s ..." % os.path.basename(out))
     shutil.copyfile(src, out)
     try:
         with open(out, "r+b") as f:
-            if fits:
-                f.seek(ext * SECTOR)
-                f.write(new + b"\0" * (room - len(new)))
-            else:
+            for path, rec_base, new_ext, data, room in plan:
                 f.seek(new_ext * SECTOR)
-                f.write(new + b"\0" * (new_end - new_ext * SECTOR - len(new)))
-            for r, b in rec_base.items():
-                rel = new_ext - b
-                f.seek(r + 2)
-                f.write(struct.pack("<I", rel) + struct.pack(">I", rel)
-                        + struct.pack("<I", len(new)) + struct.pack(">I", len(new)))
+                f.write(data + b"\0" * (room - len(data)))
+                for r, b in rec_base.items():
+                    f.seek(r + 2)
+                    f.write(struct.pack("<I", new_ext - b) + struct.pack(">I", new_ext - b)
+                            + struct.pack("<I", len(data)) + struct.pack(">I", len(data)))
             for off, data in writes:
                 f.seek(off)
                 f.write(data)
-        # read it back through EVERY directory entry and check the patch is there
+        # read every changed file back through every one of its directory entries
         with open(out, "rb") as f:
-            _, rext2, rsize2 = iso_pvd(f)
-            ext2, size2 = iso_root_files(f, rext2, rsize2)["INITRD.IMG"]
-            for r, b in rec_base.items():
-                e2 = struct.unpack_from("<I", read_at(f, r + 2, 4))[0]
-                s2 = struct.unpack_from("<I", read_at(f, r + 10, 4))[0]
-                if e2 + b != new_ext or s2 != len(new):
-                    raise RuntimeError("directory entry check failed")
-            back = read_at(f, ext2 * SECTOR, size2)
-        if back != new or patch_initrd(back, Editor(label, a.skip_display), room) is not None:
-            raise RuntimeError("verification failed")
+            for path, rec_base, new_ext, data, _ in plan:
+                for r, b in rec_base.items():
+                    e2 = struct.unpack_from("<I", read_at(f, r + 2, 4))[0]
+                    s2 = struct.unpack_from("<I", read_at(f, r + 10, 4))[0]
+                    if e2 + b != new_ext or s2 != len(data):
+                        raise RuntimeError("directory entry check failed for " + path)
+                hit = iso_lookup(f, path)
+                if hit is None or read_at(f, hit[0] * SECTOR, hit[1]) != data:
+                    raise RuntimeError("read-back failed for " + path)
+            back = read_at(f, *(lambda h: (h[0] * SECTOR, h[1]))(iso_lookup(f, "/initrd.img")))
+        if patch_initrd(back, Editor(label, a.skip_display), len(back) + SECTOR) is not None:
+            raise RuntimeError("installer patch verification failed")
     except BaseException as e:
         try:
             os.remove(out)
         except OSError:
             pass
-        die("Writing the patched ISO failed (%s); the output was removed." % e)
+        die("Writing the updated ISO failed (%s); the output was removed." % e)
 
-    ok("Installer now also accepts the label %s in: %s" % (label, ", ".join(ed.patched)))
-    inf("%d ISO directory entries updated." % len(recs))
+    for c in changes:
+        ok(c[4])
     if a.skip_display:
         print("  [!!] --skip-display: FOR VM TESTING ONLY, not for a real instrument.")
     ok("Built %s" % out)

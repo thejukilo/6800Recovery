@@ -176,6 +176,9 @@ if [ -n "$DEPLOY_ISO" ]; then
         DNAME="$(sed -n '1p' "$DSRC/README.md" | sed -E 's/.*Installer for[[:space:]]+([^[:space:]]+).*/\1/; s/_/ /')"
     fi
     [ -n "$DNAME" ] || DNAME="$(basename "$DEPLOY_ISO" .iso)"
+    # "cobas6800 2.0.3.3330507+local" -> "cobas 6800: 2.0.3.3330507" (not for --deploy-name)
+    [ -n "$DEPLOY_NAME" ] || DNAME="$(printf '%s' "$DNAME" \
+        | sed -E 's/^([A-Za-z]+)[ _]*([0-9]+)[ _]+([0-9][0-9.]*[0-9]).*/\1 \2: \3/')"
     DNAME="${DNAME//\'/}"             # no single quotes (breaks grub menuentry)
     # The vendor installer finds its medium ONLY by a volume label starting with
     # "MLR:" (installer_init: `blkid | grep MLR:`); otherwise it falls back to a
@@ -283,8 +286,15 @@ SYS
     # (\$) so only our shell vars expand.
     GRUB_BG=""
     if [ "$HAS_LOGO" = "yes" ]; then
-        GRUB_BG=$'\t\tinsmod png\n\t\tbackground_image /rlx/boot-bg.png\n\t\tset color_normal=black/white\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
+        GRUB_BG=$'\t\tinsmod png\n\t\tbackground_image /rlx/boot-bg.png\n\t\tset color_normal=white/black\n\t\tset menu_color_normal=black/white\n\t\tset menu_color_highlight=white/blue'
+    else
+        GRUB_BG=$'\t\tset color_normal=black/black'
     fi
+    # GRUB draws its header, the "press e to edit the commands" help and the
+    # countdown in color_normal. Above, that colour is the same as the
+    # background (black is transparent over a background image), so only the
+    # menu entries show. Exported so the Deploy submenu looks the same.
+    GRUB_BG+=$'\n\t\texport color_normal menu_color_normal menu_color_highlight'
 
     # Optional second choice: Deploy (re-image). A submenu whose DEFAULT entry is
     # Cancel, so an accidental Enter never starts a destructive re-image. It boots
@@ -292,7 +302,7 @@ SYS
     # on the medium, then its /vmlinuz + /initrd.img).
     DEPLOY_GRUB=""
     if [ -n "$DEPLOY_ISO" ]; then
-        DEPLOY_GRUB="submenu 'Deploy ${DNAME}   (ERASES the whole instrument)' {
+        DEPLOY_GRUB="submenu 'Deploy ${DNAME} image' {
 	menuentry 'Cancel  -  do NOT deploy (go back)' {
 		configfile /boot/grub/grubsrcd.cfg
 	}
@@ -371,7 +381,7 @@ if [ -n "$DEPLOY_ISO" ]; then
     printf '\n'
     inf "${B}Boot menu (UEFI):${Z}"
     inf "  • Start Factory Reset          -> the recovery / factory-reset screen"
-    inf "  • Deploy ${DNAME}  -> confirm, then RE-IMAGES the whole disk"
+    inf "  • Deploy ${DNAME} image  -> confirm, then RE-IMAGES the whole disk"
     inf "Default is Factory Reset; the Deploy submenu defaults to Cancel."
     inf "Test on the VM first: confirm Deploy boots the installer AND that it finds"
     inf "its payload (it searches the medium for /image.cpio.gz)."
