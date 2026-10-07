@@ -209,7 +209,10 @@ throw-away, RAM-backed copy of the instrument's system:
 
 When a token is rejected, the screen shows why: wrong Roche ID or token,
 expired, revoked key, or the wrong kind of token. A keyboard is needed to type
-the token.
+the token. The token library opens and locks `/var/fsrkeyrevocation.dat` for
+update, so it gets a private RAM copy of that file; the instrument's own copy
+is never changed. Each sign-in is logged, without the token, to
+`/run/rlx/signin.log` on the running stick.
 
 **Approved images.** Deploy only installs an `image.cpio.gz` whose SHA-256 is in
 `APPROVED_IMAGES` at the top of `factory-reset-gui.py`:

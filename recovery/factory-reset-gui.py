@@ -27,6 +27,7 @@ LOGO = os.environ.get("RLX_LOGO", "/run/rlx/brand-logo.png")
 DETECT_MNT = "/run/rlx-detect"
 RW_MNT = "/run/rlx-rw"
 AUTH = "/run/rlx-auth"                  # sign-in work area (RAM only)
+SIGNIN_LOG = "/run/rlx/signin.log"      # what the sign-in did (never the token)
 MEDIA_MNT = "/run/rlx-media"
 FLAG_BODY = "ACTION=restore-snapshot\nSNAPSHOT_TYPE=factory\n"
 # Version the factory snapshot restores to, shown on the menu. Read from the
@@ -373,6 +374,15 @@ def extract_auth_files(image, dest, progress=None):
     return sha
 
 
+def slog(msg):
+    try:
+        os.makedirs(os.path.dirname(SIGNIN_LOG), exist_ok=True)
+        with open(SIGNIN_LOG, "a") as f:
+            f.write(time.strftime("%H:%M:%S ") + msg + "\n")
+    except OSError:
+        pass
+
+
 def _mounts_under(path):
     out = []
     for line in open("/proc/mounts"):
@@ -415,13 +425,35 @@ def prepare_auth_root(progress=None):
         os.makedirs(f"{AUTH}/rw/upper", exist_ok=True)
         os.makedirs(f"{AUTH}/rw/work", exist_ok=True)
         root = f"{AUTH}/root"
-        if run(["mount", "-t", "overlay", "overlay", "-o",
-                f"lowerdir={lower},upperdir={AUTH}/rw/upper,workdir={AUTH}/rw/work",
-                root]).returncode != 0:
+        r = run(["mount", "-t", "overlay", "overlay", "-o",
+                 f"lowerdir={lower},upperdir={AUTH}/rw/upper,workdir={AUTH}/rw/work", root])
+        if r.returncode != 0:
+            slog("overlay mount failed (%s); using the disk read-only" % r.stderr.strip())
             root = lower                     # read-only fallback
             run(["mount", "-t", "tmpfs", "rlx-auth", f"{root}/tmp"])
+        else:
+            slog("overlay mounted")
+        # The token library opens /var/fsrkeyrevocation.dat for update and locks
+        # it (flock); without that it reports "key index enforcement is not
+        # performed". Give it a private RAM copy, so it works even read-only
+        # and nothing reaches the disk.
+        rev = f"{root}/var/fsrkeyrevocation.dat"
+        if os.path.isfile(rev):
+            copy = f"{AUTH}/rw/fsrkeyrevocation.dat"
+            shutil.copyfile(rev, copy)
+            os.chmod(copy, 0o666)
+            b = run(["mount", "--bind", copy, rev])
+            slog("revocation file: %r, RAM copy bound: %s" %
+                 (open(copy).read().strip()[:20], b.returncode == 0))
+        else:
+            slog("revocation file missing: %s" % rev)
     for d in ("dev", "proc", "tmp"):
-        os.makedirs(f"{root}/{d}", exist_ok=True)
+        if not os.path.isdir(f"{root}/{d}"):
+            try:
+                os.makedirs(f"{root}/{d}")
+            except OSError:
+                raise AuthError("The cobas system on this instrument looks incomplete "
+                                "(no /%s), so the token cannot be checked." % d)
     run(["mount", "-t", "tmpfs", "rlx-dev", f"{root}/dev"])
     for name, mj, mn in (("null", 1, 3), ("zero", 1, 5), ("random", 1, 8), ("urandom", 1, 9)):
         try:
@@ -429,6 +461,7 @@ def prepare_auth_root(progress=None):
         except OSError:
             pass
     run(["mount", "-t", "proc", "proc", f"{root}/proc"])
+    slog("sign-in check runs from: %s (%s)" % (source, root))
     return root, source, sha
 
 
@@ -465,6 +498,14 @@ class _LogCatcher:
         self.t.join(1)
         self.s.close()
 
+    def detail(self):
+        """The token library's own error line (e.g. why a file failed), if any."""
+        for line in reversed(self.lines):
+            m = re.search(r"FsrAuthLib\[\d+\]:\s*(.+)$", line)
+            if m and "pam_fsr(" not in m.group(1) and "does not exist" not in m.group(1):
+                return re.sub(r"\s*\(Roche\.LabCore[^)]*\)\s*$", "", m.group(1).strip())
+        return ""
+
     def reason(self):
         for line in reversed(self.lines):
             m = re.search(r"Reason:\s*(.+)$", line)
@@ -475,6 +516,9 @@ class _LogCatcher:
 
 def friendly(reason):
     low = reason.lower()
+    if "key index enforcement" in low or "revocation index file" in low:
+        return ("The token is valid, but the instrument's list of revoked keys could "
+                "not be checked.")
     if "expired" in low:
         return "This token has expired. Request a new token."
     if "revo" in low:
@@ -495,8 +539,13 @@ def verify_token(rocheid, token, progress=None):
     try:
         root, source, sha = prepare_auth_root(progress)
     except AuthError as e:
+        slog("sign-in not possible: %s" % e)
         cleanup_auth()
         return False, str(e), None
+    except Exception as e:                  # never leave the screen hanging
+        slog("sign-in preparation failed: %r" % e)
+        cleanup_auth()
+        return False, "The token could not be checked (%s)." % e, None
     log = None
     try:
         os.makedirs(f"{root}/tmp/rlx-pam", exist_ok=True)
@@ -517,13 +566,20 @@ def verify_token(rocheid, token, progress=None):
                     {"ok": False, "error": (p.stderr.strip().splitlines() or ["no answer"])[-1]}
             except (subprocess.TimeoutExpired, ValueError) as e:
                 res = {"ok": False, "error": str(e)}
+            slog("attempt Roche ID %r: ok=%s rc=%s %s" % (rid, res.get("ok"), res.get("rc"),
+                                                          res.get("error", "")))
             if res.get("ok"):
                 return True, rid, sha
         log.close()
         reason = log.reason() or "; ".join(res.get("messages") or []) or res.get("error", "")
+        for line in log.lines:
+            slog("pam: " + line.strip()[-300:])
+        detail = log.detail()
         msg = friendly(reason)
         if reason:
             msg += "\n(" + reason + ")"
+        if detail and detail not in msg:
+            msg += "\n(" + detail + ")"
         return False, msg, sha
     finally:
         if log and not log.stop:
@@ -852,7 +908,10 @@ def gui_main():
                    "about a minute) ...", f)
 
             def work():
-                ok, msg, sha = verify_token(rid, tok, prog)
+                try:
+                    ok, msg, sha = verify_token(rid, tok, prog)
+                except Exception as e:      # never leave the screen on "Checking"
+                    ok, msg, sha = False, "The token could not be checked (%s)." % e, None
                 self._pulsing = False
                 if sha:
                     self.image_sha = sha
