@@ -225,6 +225,16 @@ Reset armed now   : $armed"
 }
 
 # ==========================================================================
+#  Sign in (Roche ID + token, checked by the instrument's own login module).
+#  Same check as the graphical screen: factory-reset-gui.py --cli-login.
+# ==========================================================================
+RLX_DIR="$(cd "$(dirname "$0")" && pwd)"
+if ! { [ -f "$RLX_DIR/factory-reset-gui.py" ] && python3 "$RLX_DIR/factory-reset-gui.py" --cli-login; }; then
+    echo "Not signed in. The recovery tools need a valid Roche ID and token."
+    exit 1
+fi
+
+# ==========================================================================
 #  Main menu
 # ==========================================================================
 while true; do

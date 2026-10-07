@@ -18,16 +18,17 @@
 #   --iso PATH       A SystemRescue ISO (https://www.system-rescue.org)
 #   --out PATH       Output ISO (default: ./rlx-recovery.iso)
 #   --menu PATH      Menu script to embed (default: factory-reset-menu.sh beside this)
-#   --label STR      Factory-reset menu entry text (default: "Start Factory Reset")
-#   --timeout N      Boot-menu auto-boot seconds (default 2, or 30 when --deploy-iso
-#                    is used so there's time to pick Deploy; 0 = boot instantly)
+#   --label STR      Boot-menu entry text (default: "cobas 6800 Recovery")
+#   --timeout N      Boot-menu auto-boot seconds (default 2; 0 = boot instantly)
 #   --logo PATH      Your logo (SVG or PNG). Top-right on the boot screen + GTK menu.
 #                    Needs imagemagick (+ librsvg2-bin for SVG).
 #   --gui PATH       GTK screen-2 app (default: factory-reset-gui.py beside this)
 #   --deploy-iso P   A Molior installer ISO (e.g. 6800.iso). Its installer is folded
-#                    INTO this recovery ISO and offered as a "Deploy <name>" boot
-#                    entry that RE-IMAGES the whole instrument disk (UEFI only).
-#   --deploy-name S  Display name for the Deploy entry (default: read from the
+#                    INTO this recovery ISO; after sign-in the recovery screen offers
+#                    "Deploy <name> image", which RE-IMAGES the whole instrument disk.
+#                    Only images whose SHA-256 is in APPROVED_IMAGES (in
+#                    factory-reset-gui.py) can be deployed; the build tells you.
+#   --deploy-name S  Name used in the build output (default: read from the
 #                    installer's README.md, else the ISO filename).
 #   --no-brand       Keep SystemRescue's stock (multi-entry) boot menu
 #   -h, --help       Show help.
@@ -52,7 +53,7 @@ set -euo pipefail
 
 SELF_DIR="$(cd "$(dirname "$0")" && pwd)"
 ISO=""; OUT="$PWD/rlx-recovery.iso"; MENU="$SELF_DIR/factory-reset-menu.sh"
-BRAND="yes"; LABEL="Start Factory Reset"; TIMEOUT="2"; TIMEOUT_SET="no"
+BRAND="yes"; LABEL="cobas 6800 Recovery"; TIMEOUT="2"; TIMEOUT_SET="no"
 LOGO=""; GUI_SRC="$SELF_DIR/factory-reset-gui.py"
 DEPLOY_ISO=""; DEPLOY_NAME=""
 
@@ -80,11 +81,9 @@ esac; done
 LABEL="${LABEL//\'/}"                 # no single quotes (breaks grub menuentry)
 case "$TIMEOUT" in *[!0-9]*) die "--timeout must be whole seconds" 2 ;; esac
 
-# A Deploy entry means the operator must see and choose from the menu, so give a
-# longer default auto-boot window (still defaults to Factory Reset) and force the
-# branded single-choice menu (the Deploy entry lives there).
+# Deploy is offered by the recovery screen after sign-in, never from the boot
+# menu, so the boot menu must be the branded single entry.
 if [ -n "$DEPLOY_ISO" ]; then
-    [ "$TIMEOUT_SET" = "yes" ] || TIMEOUT="30"
     [ "$BRAND" = "no" ] && { inf "--deploy-iso needs the branded menu; ignoring --no-brand."; BRAND="yes"; }
 fi
 
@@ -212,7 +211,14 @@ if [ -n "$DEPLOY_ISO" ]; then
         -map "$WORK/initrd-deploy.img" /initrd.img
         -map "$DSRC/image.cpio.gz"   /image.cpio.gz
     )
-    inf "Deploy entry: '${DNAME}' (RE-IMAGES the whole instrument disk, UEFI boot)."
+    inf "Deploy: '${DNAME}' (RE-IMAGES the whole instrument disk)."
+    inf "Computing the image SHA-256 ..."
+    IMG_SHA="$(sha256sum "$DSRC/image.cpio.gz" | cut -d' ' -f1)"
+    if [ -f "$GUI_SRC" ] && grep -q "$IMG_SHA" "$GUI_SRC"; then
+        ok "Image SHA-256 $IMG_SHA is approved."
+    else
+        printf '  %s!%s %s\n' "$R" "$Z" "Image SHA-256 $IMG_SHA is NOT in APPROVED_IMAGES (factory-reset-gui.py): the stick will refuse to deploy it."
+    fi
 
     # Disk-space preflight: the output ISO ~= input ISO + the installer files.
     OUT_DIR="$(dirname "$OUT")"
@@ -293,28 +299,8 @@ SYS
     # GRUB draws its header, the "press e to edit the commands" help and the
     # countdown in color_normal. Above, that colour is the same as the
     # background (black is transparent over a background image), so only the
-    # menu entries show. Exported so the Deploy submenu looks the same.
+    # menu entries show. Exported so nested menus look the same.
     GRUB_BG+=$'\n\t\texport color_normal menu_color_normal menu_color_highlight'
-
-    # Optional second choice: Deploy (re-image). A submenu whose DEFAULT entry is
-    # Cancel, so an accidental Enter never starts a destructive re-image. It boots
-    # the installer exactly as the standalone ISO does (search for /image.cpio.gz
-    # on the medium, then its /vmlinuz + /initrd.img).
-    DEPLOY_GRUB=""
-    if [ -n "$DEPLOY_ISO" ]; then
-        DEPLOY_GRUB="submenu 'Deploy ${DNAME} image' {
-	menuentry 'Cancel  -  do NOT deploy (go back)' {
-		configfile /boot/grub/grubsrcd.cfg
-	}
-	menuentry 'CONFIRM: erase this instrument and install ${DNAME}' {
-		set gfxpayload=keep
-		search --no-floppy --file --set=root /image.cpio.gz
-		linux /vmlinuz quiet
-		initrd /initrd.img
-		boot
-	}
-}"
-    fi
 
     cat > "$WORK/grubsrcd.cfg" <<GRUB
 if [ -z "\$srcd_skip_init" ]; then
@@ -337,7 +323,6 @@ menuentry '${LABEL}' {
 	linux /sysresccd/boot/x86_64/vmlinuz archisobasedir=sysresccd \$archiso_param iomem=relaxed quiet loglevel=3
 	initrd /sysresccd/boot/intel_ucode.img /sysresccd/boot/amd_ucode.img /sysresccd/boot/x86_64/sysresccd.img
 }
-${DEPLOY_GRUB}
 GRUB
 
     BRAND_MAPS=(
@@ -379,13 +364,9 @@ inf "Flash it to a USB stick on Windows with balenaEtcher (pick image, pick USB,
 inf "Flash) — or Rufus in 'DD Image' mode. Use a raw write so the medium stays exact."
 if [ -n "$DEPLOY_ISO" ]; then
     printf '\n'
-    inf "${B}Boot menu (UEFI):${Z}"
-    inf "  • Start Factory Reset          -> the recovery / factory-reset screen"
-    inf "  • Deploy ${DNAME} image  -> confirm, then RE-IMAGES the whole disk"
-    inf "Default is Factory Reset; the Deploy submenu defaults to Cancel."
-    inf "Test on the VM first: confirm Deploy boots the installer AND that it finds"
-    inf "its payload (it searches the medium for /image.cpio.gz)."
+    inf "Boot the stick: sign in with a Roche ID + token, then choose Factory Reset"
+    inf "or Deploy ${DNAME} (image checked against its SHA-256 before it installs)."
 else
-    inf "Boot the stick on the instrument; it opens the Factory Reset menu automatically."
+    inf "Boot the stick on the instrument; it opens the sign-in, then Factory Reset."
 fi
 printf '\n'

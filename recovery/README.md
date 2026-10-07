@@ -155,9 +155,10 @@ SystemRescue jargon. Tune it:
 ```
 
 With `--logo`, the boot screen becomes a white background with your logo top-right,
-and screen 2 runs as a **graphical** window (white, logo, "Start Factory Reset" /
-"Cancel", warning + confirm) via GTK under X. If X or GTK is unavailable on a given
-machine it automatically falls back to the text menu, so the stick always works.
+and screen 2 runs as a **graphical** window via GTK under X (white, logo): a
+**sign-in** with Roche ID + token, then the choices (see *Sign-in and approved
+images* below). If X or GTK is unavailable on a given machine it automatically
+falls back to the text menu, which asks for the same sign-in first.
 `--logo` needs `imagemagick` (and `librsvg2-bin` for an SVG). Supply your own logo
 file — none is bundled.
 
@@ -171,22 +172,67 @@ Molior installer ISO (e.g. `6800.iso`) into the same recovery ISO:
     --deploy-iso 6800.iso [--deploy-name "cobas6800 2.0.3"]
 ```
 
-One combined `.iso` comes out with a branded boot menu offering **two** choices:
+One combined `.iso` comes out. The boot menu has a single entry (*cobas 6800
+Recovery*); after signing in, the recovery screen offers **two** choices:
 
-- **Start Factory Reset** — the recovery / factory-reset screen (default).
-- **Deploy &lt;name&gt;** — a confirm step (defaults to *Cancel*), then the vendor
-  installer runs and **RE-IMAGES the entire disk** (all data is wiped).
+- **Factory Reset** — restores the instrument back to its original state.
+- **Deploy &lt;name&gt; image** — checks the image's SHA-256, asks for
+  confirmation, then the vendor installer runs and **RE-IMAGES the entire disk**
+  (all data is wiped).
 
 How it works: the installer boots from three files at the medium root
 (`/vmlinuz`, `/initrd.img`, `/image.cpio.gz`). The builder extracts them from the
-installer ISO and places them at the root of the output ISO, and the Deploy entry
-boots the kernel the way the installer's own GRUB does (`linux /vmlinuz quiet` +
-`initrd /initrd.img`, with `search --file /image.cpio.gz` to find the medium).
-`image.cpio.gz` is the disk-image payload the installer reads at runtime. The output
-ISO grows by ~1.7 GB; leave a few GB free where `--out` is. Deploy is **UEFI only**
-(the instruments boot UEFI); with `--deploy-iso` the menu auto-boot timeout defaults
-to 30 s so there is time to choose. The display name is read from the installer's
-`README.md` unless you pass `--deploy-name`.
+installer ISO and places them at the root of the output ISO. After confirmation
+the recovery screen loads that kernel + initrd with `kexec` (SystemRescue ships
+`kexec-tools`) and jumps into it, exactly as the installer's own GRUB would
+(`linux /vmlinuz quiet` + `initrd /initrd.img`). `image.cpio.gz` is the
+disk-image payload the installer reads at runtime. The output ISO grows by
+~1.7 GB; leave a few GB free where `--out` is. Deploy is **UEFI only** (the
+instruments boot UEFI), and the firmware must be in Secure Boot *Setup Mode*;
+the screen checks this and tells the engineer before starting.
+
+### Sign-in and approved images
+
+**Sign-in.** Nothing on the stick can be used before signing in with a **Roche
+ID + Roche service (FSR) token**. Use the short token (e.g.
+`ABCDE-FGHIJ-KLMNO-PQRS`); `rsr/<id>` is accepted as well as `<id>`. The token is
+checked by the instrument's **own** login module, `pam_fsr` (the same check as a
+service login on the instrument). It verifies Roche's signature against the
+public keys in `/etc/fsr-authentication.keys`, plus expiry and the revocation
+list in `/var/fsrkeyrevocation.dat`. It works offline. The check runs in a
+throw-away, RAM-backed copy of the instrument's system:
+
+- from the **instrument disk** when it has an installed system (read-only,
+  changes go to RAM; nothing is written to the disk);
+- otherwise (blank or unreadable disk) from the **Deploy image** on the stick:
+  the needed files are extracted to RAM, which takes about a minute. The
+  image's SHA-256 is computed in the same pass.
+
+When a token is rejected, the screen shows why: wrong Roche ID or token,
+expired, revoked key, or the wrong kind of token. A keyboard is needed to type
+the token.
+
+**Approved images.** Deploy only installs an `image.cpio.gz` whose SHA-256 is in
+`APPROVED_IMAGES` at the top of `factory-reset-gui.py`:
+
+```python
+APPROVED_IMAGES = {
+    "8ef0089784ce1e88990d83263db5875cda5a35d3181294e90fe99b76f16ca3b5":
+        "cobas 6800: 2.0.3.3330507",
+}
+```
+
+The name there is what the menu shows ("Deploy cobas 6800: 2.0.3.3330507 image").
+To approve a new release, take the SHA-256 of `image.cpio.gz` from the original
+Roche installer ISO and add a line. `build-recovery-iso.sh` and
+`patch-deploy-iso.py` both report whether the image they put on the stick is
+approved. Any other image is shown as **not approved**, with its SHA-256, and
+cannot be deployed.
+
+> These are procedural controls. Anyone with the stick can still boot the plain
+> vendor ISO, edit the boot entry, or remove the disk. They make sure the
+> recovery stick itself is only used by a signed-in Roche engineer, and only with
+> a known image.
 
 > **Installer patch (why the output says `customized`):** the vendor installer
 > finds its medium only by a volume label starting with `MLR:`
@@ -210,11 +256,14 @@ to 30 s so there is time to choose. The display name is read from the installer'
 > customized one) with everything a fresh build would have:
 > - the installer change above, in both scripts that check the label
 >   (`installer-hooks.sh.inc` and `scripts/init-premount/installer`);
-> - the current boot menu: *Deploy cobas 6800: 2.0.3.3330507 image*, with
->   GRUB's header, its "press `e` to edit" help and the countdown hidden
->   (`--deploy-title` overrides the text);
-> - the current Factory Reset screen: `factory-reset-gui.py` from the same
->   folder as the script.
+> - the current boot menu: a single *cobas 6800 Recovery* entry, with GRUB's
+>   header, its "press `e` to edit" help and the countdown hidden (Deploy is no
+>   longer in the boot menu);
+> - the current recovery screen and text menu (`factory-reset-gui.py` and
+>   `factory-reset-menu.sh` from the same folder): sign-in, then Factory Reset
+>   or Deploy with the image checksum check.
+>
+> It also reports whether the image on the stick is in `APPROVED_IMAGES`.
 >
 > Each changed file goes back in its original place in the ISO, or at the end
 > of the ISO if it has grown too big. Running it again on its own output does
@@ -244,8 +293,9 @@ retype the device path and `ERASE` first. With Ventoy you run the menu by hand
 ## Using it on the instrument
 
 1. Boot the recovery USB on the instrument. With the `rlx-recovery.iso` it opens
-   the **Factory Reset menu** automatically; with Ventoy, pick the SystemRescue
-   ISO then run `sh /ventoy/factory-reset-menu.sh`.
+   the **sign-in** and then the menu automatically; with Ventoy, pick the
+   SystemRescue ISO then run `sh /ventoy/factory-reset-menu.sh` (this needs the
+   sign-in check, `factory-reset-gui.py`, next to it).
 2. **Show status** first (read-only — confirms it found the instrument and that a
    factory snapshot exists), then **Arm Factory Reset**.
 3. Choose **Reboot**, **remove the USB during reboot** so the *instrument* boots

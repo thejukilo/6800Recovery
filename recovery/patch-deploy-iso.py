@@ -11,9 +11,13 @@ It writes a COPY of an rlx-recovery ISO (built with --deploy-iso) with:
    (e.g. RESCUE1302), so without the fix the installer reports "could not find
    install medium" or tries a network install. Every copy of that check is
    patched to also accept this ISO's own label.
-2. The current boot menu: "Deploy cobas 6800: <version> image", and GRUB's
-   header / "press e to edit" help / countdown hidden.
-3. The current Factory Reset screen (factory-reset-gui.py from this folder).
+2. The current boot menu: one entry that opens the recovery screen (Deploy
+   is no longer in the boot menu), with GRUB's header / "press e to edit" help
+   / countdown hidden.
+3. The current recovery screen and text menu (factory-reset-gui.py and
+   factory-reset-menu.sh from this folder): Roche ID + token sign-in, then
+   Factory Reset or Deploy, with Deploy only for an approved image SHA-256.
+It also reports whether the image on the stick is approved.
 
 The kernel, the disk image and the volume label are untouched. Each changed
 file goes back in its original place in the ISO, or, if it grew too big, at the
@@ -22,7 +26,6 @@ on its own output or on an ISO from an older version of this script.
 
     py patch-deploy-iso.py rlx-recovery.iso
     py patch-deploy-iso.py rlx-recovery.iso --out D:\\stick.iso
-    py patch-deploy-iso.py rlx-recovery.iso --deploy-title "cobas 6800: 2.0.3.3330507"
     py patch-deploy-iso.py rlx-recovery.iso --skip-display   (VM testing only)
 
 The output name always contains "customized". Flash it with Rufus in
@@ -32,7 +35,7 @@ If the installer initrd is zstd-compressed you need Python 3.14 or newer
 (python.org); older versions can only read gzip/xz/bzip2 initrds.
 """
 
-import argparse, bz2, lzma, os, re, shutil, struct, sys, zlib
+import argparse, bz2, hashlib, lzma, os, re, shutil, struct, sys, zlib
 
 try:                                    # Python 3.14+ ships zstd in the stdlib
     from compression import zstd as _zstd
@@ -391,30 +394,39 @@ def mbr_grow_plan(f, bases, new_end):
     return writes
 
 
-# ------------------------------------------------------------------ main ----
 # ------------------------------------------------------- boot menu (GRUB) ----
 MARK_GRUB = "# RLX: GRUB help text hidden"
 
 
-def nice_title(name):
-    """'cobas6800 2.0.3.3330507+local' -> 'cobas 6800: 2.0.3.3330507'."""
-    m = re.match(r"^([A-Za-z]+)[ _]*([0-9]+)[ _:]+([0-9][0-9.]*[0-9])", name.strip())
-    return "%s %s: %s" % m.groups() if m else name.strip()
+def _drop_block(cfg, start):
+    """Remove the brace block starting at index `start` (and its line)."""
+    i = cfg.index("{", start)
+    depth = 0
+    for j in range(i, len(cfg)):
+        if cfg[j] == "{":
+            depth += 1
+        elif cfg[j] == "}":
+            depth -= 1
+            if depth == 0:
+                end = cfg.find("\n", j)
+                return cfg[:start] + cfg[(end + 1 if end != -1 else len(cfg)):]
+    return cfg
 
 
-def grub_edit(cfg, title):
-    """Current boot-menu wording + hidden GRUB help on an older grubsrcd.cfg."""
-    m = re.search(r"submenu 'Deploy (.*?)\s*(?:\(ERASES the whole instrument\))?\s*' \{", cfg)
+def grub_edit(cfg, label):
+    """Bring an older grubsrcd.cfg to the current boot menu: one entry that
+    opens the recovery screen (Deploy now lives there, behind the sign-in),
+    and GRUB's header / "press e to edit" help / countdown hidden."""
+    m = re.search(r"(?m)^submenu 'Deploy [^']*' \{", cfg)
     if m:
-        name = re.sub(r"\s+image$", "", m.group(1))
-        title = (title or nice_title(name)).replace("'", "")
-        cfg = cfg[:m.start()] + "submenu 'Deploy %s image' {" % title + cfg[m.end():]
-        cfg = re.sub(r"(menuentry 'CONFIRM: erase this instrument and install )[^']*'",
-                     lambda x: x.group(1) + title + "'", cfg)
+        cfg = _drop_block(cfg, m.start())
+        cfg = re.sub(r"(?m)^(\s*set timeout=)30\s*$", r"\g<1>2", cfg)
+    cfg = re.sub(r"(?m)^menuentry 'Start Factory Reset' \{",
+                 "menuentry '%s' {" % label.replace("'", ""), cfg)
     if MARK_GRUB not in cfg and "export color_normal" not in cfg:
         # GRUB draws its header, the "press e to edit" help and the countdown in
         # color_normal; make that the background colour (black = transparent
-        # over a background image), and export it to the Deploy submenu.
+        # over a background image).
         if "background_image" in cfg:
             cfg = re.sub(r"set color_normal=\S+", "set color_normal=white/black", cfg, count=1)
             hide = ""
@@ -429,14 +441,24 @@ def grub_edit(cfg, title):
     return cfg
 
 
+def approved_images(gui_path):
+    """{sha256: name} from APPROVED_IMAGES in factory-reset-gui.py."""
+    try:
+        txt = open(gui_path, encoding="utf-8").read()
+    except OSError:
+        return {}
+    block = re.search(r"APPROVED_IMAGES\s*=\s*\{(.*?)\n\}", txt, re.S)
+    return dict(re.findall(r'"([0-9a-f]{64})"\s*:\s*\n?\s*"([^"]*)"', block.group(1))) if block else {}
+
+
 # ------------------------------------------------------------------ main ----
 def main():
     ap = argparse.ArgumentParser(description="Update a combined recovery ISO (Deploy fix, "
                                  "boot menu, Factory Reset screen).")
     ap.add_argument("iso", help="rlx-recovery ISO built with --deploy-iso")
     ap.add_argument("--out", help="output ISO (name always gets 'customized')")
-    ap.add_argument("--deploy-title", help='menu text after "Deploy", e.g. '
-                    '"cobas 6800: 2.0.3.3330507" (default: from the existing menu)')
+    ap.add_argument("--label", default="cobas 6800 Recovery",
+                    help='boot-menu entry text (default: "cobas 6800 Recovery")')
     ap.add_argument("--skip-display", action="store_true",
                     help="also skip the installer's display step (VM testing only)")
     a = ap.parse_args()
@@ -484,24 +506,49 @@ def main():
         hit = iso_lookup(f, "/boot/grub/grubsrcd.cfg")
         if hit:
             cfg = read_at(f, hit[0] * SECTOR, hit[1])
-            new = grub_edit(cfg.decode("utf-8"), a.deploy_title).encode("utf-8")
+            new = grub_edit(cfg.decode("utf-8"), a.label).encode("utf-8")
             if new != cfg:
-                title = re.search(rb"submenu '(Deploy [^']*)'", new)
                 changes.append(("/boot/grub/grubsrcd.cfg", hit[0], hit[1], new,
-                                "boot menu: %s" % (title.group(1).decode() if title else "updated")))
+                                "boot menu: one entry '%s'; Deploy moved behind the "
+                                "sign-in" % a.label))
         else:
             inf("No branded boot menu in this ISO; menu left as is.")
 
-        # 3. Factory Reset screen from this folder
-        gui_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "factory-reset-gui.py")
-        hit = iso_lookup(f, "/autorun/factory-reset-gui.py")
-        if hit and os.path.isfile(gui_src):
-            new = open(gui_src, "rb").read().replace(b"\r\n", b"\n")
-            if new != read_at(f, hit[0] * SECTOR, hit[1]):
-                changes.append(("/autorun/factory-reset-gui.py", hit[0], hit[1], new,
-                                "Factory Reset screen updated"))
-        elif not os.path.isfile(gui_src):
-            inf("factory-reset-gui.py is not next to this script; screen left as is.")
+        # 3. recovery screen (sign-in, Factory Reset, Deploy) and text menu,
+        #    both taken from this folder
+        here = os.path.dirname(os.path.abspath(__file__))
+        for name, what in (("factory-reset-gui.py", "recovery screen (sign-in, Factory "
+                            "Reset, Deploy) updated"),
+                           ("factory-reset-menu.sh", "text menu updated (sign-in required)")):
+            path = os.path.join(here, name)
+            hit = iso_lookup(f, "/autorun/" + name)
+            if not os.path.isfile(path):
+                die("%s is missing next to this script; download the whole recovery "
+                    "folder again." % name, 2)
+            if hit:
+                new = open(path, "rb").read().replace(b"\r\n", b"\n")
+                if new != read_at(f, hit[0] * SECTOR, hit[1]):
+                    changes.append(("/autorun/" + name, hit[0], hit[1], new, what))
+
+        # 4. is the image on the stick an approved one?
+        approved = approved_images(os.path.join(here, "factory-reset-gui.py"))
+        ext, size = iso_lookup(f, "/image.cpio.gz")
+        inf("Checking the image SHA-256 (reads %d MB) ..." % (size >> 20))
+        h = hashlib.sha256()
+        f.seek(ext * SECTOR)
+        left = size
+        while left:
+            b = f.read(min(left, 8 << 20))
+            if not b:
+                break
+            h.update(b)
+            left -= len(b)
+        img_sha = h.hexdigest()
+        if img_sha in approved:
+            ok("Image %s is approved (%s)." % (img_sha, approved[img_sha]))
+        else:
+            print("  [!!] Image %s is NOT in APPROVED_IMAGES (factory-reset-gui.py): "
+                  "the stick will refuse to deploy it." % img_sha)
 
     if not changes:
         ok("This ISO is already up to date - nothing to do. Flash it in DD Image mode.")
