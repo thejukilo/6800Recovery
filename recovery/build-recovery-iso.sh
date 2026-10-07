@@ -189,10 +189,15 @@ if [ -n "$DEPLOY_ISO" ]; then
     unmkinitramfs "$DSRC/initrd.img" "$WORK/ir" 2>/dev/null || die "Could not unpack the installer initrd.img." 4
     HOOKS="$(find "$WORK/ir" -path '*/scripts/installer-hooks.sh.inc' | head -n1)"
     [ -n "$HOOKS" ] || die "installer-hooks.sh.inc not found in the installer initrd - unexpected layout." 4
-    grep -q 'blkid | grep MLR:' "$HOOKS" || grep -q 'CUSTOMIZED: also accept' "$HOOKS" \
-        || die "Installer medium detection (blkid | grep MLR:) not found - unexpected installer version." 4
-    sed -i "s#blkid | grep MLR:\`#blkid | grep -E 'MLR:|LABEL=\"${REC_LABEL}\"'\` \# CUSTOMIZED: also accept the recovery stick#" "$HOOKS"
-    grep -q 'CUSTOMIZED: also accept' "$HOOKS" || die "Patching the installer medium detection failed." 4
+    # The detection line exists in more than one script (installer-hooks.sh.inc
+    # AND scripts/init-premount/installer); patch every copy.
+    MLR_FILES="$(grep -rl 'blkid | grep MLR:`' "$WORK/ir" || true)"
+    [ -n "$MLR_FILES" ] || die "Installer medium detection (blkid | grep MLR:) not found - unexpected installer version." 4
+    for mf in $MLR_FILES; do
+        sed -i "s#blkid | grep MLR:\`#blkid | grep -E 'MLR:|LABEL=\"${REC_LABEL}\"'\` \# CUSTOMIZED: also accept the recovery stick#" "$mf"
+        grep -q 'CUSTOMIZED: also accept' "$mf" || die "Patching the installer medium detection failed in $mf." 4
+    done
+    ! grep -rq 'blkid | grep MLR:`' "$WORK/ir" || die "An unpatched installer medium check remains." 4
     IRROOT="$(dirname "$(dirname "$HOOKS")")"
     [ -f "$IRROOT/init" ] || die "Could not locate the installer initramfs root." 4
     ( cd "$IRROOT" && find . | cpio -o -H newc --quiet | gzip -9 ) > "$WORK/initrd-deploy.img" \

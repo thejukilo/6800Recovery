@@ -11,11 +11,14 @@ network and stops at a BusyBox shell ("Downloading install medium ... No network
 interface found").
 
 What it does: takes an rlx-recovery ISO that was built with --deploy-iso (it has
-/initrd.img + /image.cpio.gz at its root), and writes a COPY in which that one
-line in the installer's initrd also accepts this ISO's own label. Nothing else
-changes: the kernel, the disk image, the boot menu and the label stay the same.
-The patched initrd is written back into the same place in the ISO, so the ISO's
-layout is unchanged.
+/initrd.img + /image.cpio.gz at its root), and writes a COPY in which every copy
+of that check in the installer's initrd (installer-hooks.sh.inc AND
+scripts/init-premount/installer) also accepts this ISO's own label. Nothing
+else changes: the kernel, the disk image, the boot menu and the label stay the
+same. The patched initrd goes back in its original place in the ISO; if it has
+grown too big for that, it is appended at the end of the ISO instead (the ISO's
+partition is extended to cover it). It also works on an ISO made by an older
+version of this script that patched only the first check.
 
     py patch-deploy-iso.py rlx-recovery.iso
     py patch-deploy-iso.py rlx-recovery.iso --out D:\\stick.iso
@@ -212,114 +215,164 @@ def cpio_end(buf, i):
             return i
 
 
-def cpio_replace(raw, suffix, edit):
-    """Find the file whose name ends with `suffix` in the (possibly concatenated)
-    newc archives in raw, run edit(data) -> new data, and return the new raw.
-    Everything else stays byte-for-byte the same. Returns None if not found."""
-    i = 0
+def cpio_edit(raw, edit):
+    """Run edit(name, data) -> data on every file in the (possibly concatenated)
+    newc archives in raw. Changed files are rewritten; everything else stays
+    byte-for-byte the same. Returns the new raw."""
+    out, i, last = [], 0, 0
     while i < len(raw):
         if raw[i] == 0:
             i += 1
             continue
         if raw[i:i + 5] != b"07070":
-            return None
+            break
         hdr = raw[i:i + 110]
         fields = [int(hdr[6 + 8 * k:14 + 8 * k], 16) for k in range(13)]
         namesize, filesize = fields[11], fields[6]
         name = raw[i + 110:i + 110 + namesize - 1]
         dstart = a4(i + 110 + namesize)
         nxt = a4(dstart + filesize)
-        if name.endswith(suffix) and filesize:
-            new = edit(raw[dstart:dstart + filesize])
-            fields[6] = len(new)
-            if hdr[:6] == b"070702":      # "crc" format: simple byte sum
-                fields[12] = sum(new) & 0xFFFFFFFF
-            newhdr = hdr[:6] + b"".join(b"%08X" % v for v in fields)
-            body = newhdr + raw[i + 110:dstart] + new
-            body += b"\0" * (a4(len(body)) - len(body))
-            return raw[:i] + body + raw[nxt:]
+        if filesize:
+            data = raw[dstart:dstart + filesize]
+            new = edit(name, data)
+            if new != data:
+                fields[6] = len(new)
+                if hdr[:6] == b"070702":  # "crc" format: simple byte sum
+                    fields[12] = sum(new) & 0xFFFFFFFF
+                newhdr = hdr[:6] + b"".join(b"%08X" % v for v in fields)
+                body = newhdr + raw[i + 110:dstart] + new
+                body += b"\0" * (a4(len(body)) - len(body))
+                out += [raw[last:i], body]
+                last = nxt
         i = nxt
-    return None
+    out.append(raw[last:])
+    return b"".join(out)
 
 
 # ------------------------------------------------------------- the patch ----
-def make_edit(label, skip_display):
-    def edit(text):
-        if MARK_MEDIUM not in text:
-            old = b"blkid | grep MLR:`"
-            if text.count(old) != 1:
-                die("The installer's medium detection (blkid | grep MLR:) was not found - "
-                    "unexpected installer version. Nothing was changed.")
-            new = (b"blkid | grep -E 'MLR:|LABEL=\"" + label.encode() + b"\"'` # "
-                   + MARK_MEDIUM)
-            text = text.replace(old, new)
-        if skip_display and MARK_DISPLAY not in text:
-            text, n = re.subn(
-                rb"(?m)^.*EXTRA_INSTALLER_CONFIGURE_DEVICE_RESOLUTION.*!= *\"no\".*$",
-                b"if false ; then # " + MARK_DISPLAY + b" (no GPU in VM)", text)
-            if n != 1:
-                die("The installer's display step was not found - cannot --skip-display.")
-            text = re.sub(rb"(?m)^([ \t]*)stty cols \$cols_orig(.*)$",
-                          rb'\1[ -z "$cols_orig" ] || stty cols $cols_orig\2', text)
-            text = re.sub(rb"(?m)^([ \t]*)stty cols \$cols$",
-                          rb'\1[ -z "$cols" ] || stty cols $cols', text)
+# The installer looks for its medium with this line in TWO places:
+# scripts/installer-hooks.sh.inc (installer_init) and scripts/init-premount/installer.
+# Every copy is patched.
+MEDIUM_OLD = b"blkid | grep MLR:`"
+
+
+class Editor:
+    def __init__(self, label, skip_display):
+        self.new = (b"blkid | grep -E 'MLR:|LABEL=\"" + label.encode() + b"\"'` # "
+                    + MARK_MEDIUM)
+        self.skip_display = skip_display
+        self.hooks_seen = False
+        self.patched = []                 # names of files that carry the patch
+
+    def __call__(self, name, text):
+        if MEDIUM_OLD in text:
+            text = text.replace(MEDIUM_OLD, self.new)
+        if MARK_MEDIUM in text:
+            self.patched.append(name.decode("utf-8", "replace"))
+        if name.endswith(HOOKS_SUFFIX):
+            self.hooks_seen = True
+            if self.skip_display and MARK_DISPLAY not in text:
+                text, n = re.subn(
+                    rb"(?m)^.*EXTRA_INSTALLER_CONFIGURE_DEVICE_RESOLUTION.*!= *\"no\".*$",
+                    b"if false ; then # " + MARK_DISPLAY + b" (no GPU in VM)", text)
+                if n != 1:
+                    die("The installer's display step was not found - cannot --skip-display.")
+                text = re.sub(rb"(?m)^([ \t]*)stty cols \$cols_orig(.*)$",
+                              rb'\1[ -z "$cols_orig" ] || stty cols $cols_orig\2', text)
+                text = re.sub(rb"(?m)^([ \t]*)stty cols \$cols$",
+                              rb'\1[ -z "$cols" ] || stty cols $cols', text)
         return text
-    return edit
 
 
-def patch_initrd(initrd, edit, room):
-    """Return a patched initrd no bigger than `room` bytes."""
-    segs, i = [], 0                       # [kind, bytes, fmt, raw]
+def patch_initrd(initrd, ed, room):
+    """Return a patched initrd no bigger than `room` bytes, or None if it
+    already carries every patch."""
+    segs, i = [], 0                       # [bytes, fmt, raw]
     while i < len(initrd):
         if initrd[i] == 0:
             j = i
             while j < len(initrd) and initrd[j] == 0:
                 j += 1
-            segs.append(["pad", initrd[i:j], None, None])
+            segs.append([initrd[i:j], None, None])
             i = j
         elif initrd[i:i + 5] == b"07070":
             j = cpio_end(initrd, i)
-            segs.append(["cpio", initrd[i:j], None, initrd[i:j]])
+            segs.append([initrd[i:j], "uncompressed", initrd[i:j]])
             i = j
         else:
             fmt = detect(initrd[i:i + 8])
             if fmt is None:
                 die("Unrecognised data inside the installer initrd.")
             raw, used = decompress_one(fmt, initrd[i:])
-            segs.append(["comp", initrd[i:i + used], fmt, raw])
+            segs.append([initrd[i:i + used], fmt, raw])
             i += used
 
+    changed = []
     for k, s in enumerate(segs):
-        if s[3] is None:
+        if s[2] is not None:
+            new_raw = cpio_edit(s[2], ed)
+            if new_raw != s[2]:
+                changed.append((k, new_raw))
+    if not ed.hooks_seen:
+        die("installer-hooks.sh.inc was not found in the installer initrd - is this a "
+            "recovery ISO built with --deploy-iso?")
+    if not ed.patched:
+        die("The installer's medium detection (blkid | grep MLR:) was not found - "
+            "unexpected installer version. Nothing was changed.")
+    if not changed:
+        return None                       # already fully patched
+
+    for k, new_raw in changed:
+        fmt = segs[k][1]
+        if fmt == "uncompressed":
+            segs[k][0] = new_raw
             continue
-        new_raw = cpio_replace(s[3], HOOKS_SUFFIX, edit)
-        if new_raw is None:
-            continue
-        if new_raw == s[3]:
-            return None                   # already patched
-        rest = sum(len(t[1]) for n, t in enumerate(segs) if n != k)
-        if s[0] == "cpio":
-            cands = [("uncompressed", new_raw)]
-        else:
-            inf("Recompressing the installer initrd (can take a minute or two) ...")
-            cands = []
-            for fmt in [s[2]] + [x for x in ("xz",) if x != s[2]]:
-                blob = compress(fmt, new_raw)
-                if blob is not None:
-                    cands.append((fmt, blob))
-                    if rest + len(blob) <= room:
-                        break
-        for fmt, blob in cands:
+        inf("Recompressing the installer initrd (can take a minute or two) ...")
+        rest = sum(len(t[0]) for n, t in enumerate(segs) if n != k)
+        first = None                      # same format as the vendor used
+        for f in [fmt] + [x for x in ("xz",) if x != fmt]:
+            blob = compress(f, new_raw)
+            if blob is None:
+                continue
+            first = first or blob
             if rest + len(blob) <= room:
-                if s[0] == "comp" and fmt != s[2]:
-                    inf("Repacked as %s (was %s) so it fits in the same place." % (fmt, s[2]))
-                segs[k][1] = blob
-                return b"".join(t[1] for t in segs)
-        die("The patched initrd does not fit in the ISO (%d bytes > %d). Build the "
-            "stick with build-recovery-iso.sh on Linux/WSL instead." %
-            (rest + min(len(b) for _, b in cands), room))
-    die("installer-hooks.sh.inc was not found in the installer initrd - is this a "
-        "recovery ISO built with --deploy-iso?")
+                if f != fmt:
+                    inf("Repacked as %s (was %s) so it fits in the same place." % (f, fmt))
+                break
+        else:
+            blob = first                  # will not fit in place: keep the format
+        segs[k][0] = blob
+    out = b"".join(t[0] for t in segs)
+    return out, len(out) <= room
+
+
+def tree_bases(f, recs, ext):
+    """Block offset of each directory tree that lists the initrd: 0 for the
+    normal tree, N for a partition-relative tree (xorriso -partition_offset)."""
+    return sorted({ext - struct.unpack_from("<I", read_at(f, r + 2, 4))[0] for r in recs})
+
+
+def mbr_grow_plan(f, bases, new_end):
+    """Moving the initrd past the end of the image means the MBR partition that
+    holds the ISO filesystem must grow to cover it (the installer reads the
+    medium through that partition, e.g. /dev/sda1). Returns [(offset, bytes)]."""
+    mbr = read_at(f, 0, 512)
+    if mbr[510:512] != b"\x55\xaa":
+        return []                         # plain CD image: no partition table
+    writes = []
+    for k in range(4):
+        e = 446 + 16 * k
+        ptype = mbr[e + 4]
+        start = struct.unpack_from("<I", mbr, e + 8)[0]
+        if ptype == 0xEE:
+            die("This ISO uses a GPT layout, which this script cannot extend. "
+                "Build the stick with build-recovery-iso.sh on Linux/WSL instead.")
+        if ptype not in (0, 0xEF) and start * 512 in [b * SECTOR for b in bases]:
+            writes.append((e + 12, struct.pack("<I", new_end // 512 - start)))
+    if not writes:
+        die("Could not find the ISO's partition to extend. Build the stick with "
+            "build-recovery-iso.sh on Linux/WSL instead.")
+    return writes
 
 
 # ------------------------------------------------------------------ main ----
@@ -334,7 +387,13 @@ def main():
     src = a.iso
     if not os.path.isfile(src):
         die("File not found: %s" % src, 2)
-    out = a.out or os.path.splitext(src)[0] + "-deploy-customized.iso"
+    stem = os.path.splitext(src)[0]
+    if a.out:
+        out = a.out
+    elif "customized" in os.path.basename(stem).lower():
+        out = stem + "-new.iso"           # re-patching an older customized ISO
+    else:
+        out = stem + "-deploy-customized.iso"
     if "customized" not in os.path.basename(out).lower():
         out = os.path.splitext(out)[0] + "-deploy-customized.iso"
     if os.path.abspath(out) == os.path.abspath(src):
@@ -355,12 +414,15 @@ def main():
     ok("Recovery ISO, label %s, Deploy payload present." % label)
 
     room = (size + SECTOR - 1) // SECTOR * SECTOR
-    new = patch_initrd(initrd, make_edit(label, a.skip_display), room)
-    if new is None:
+    ed = Editor(label, a.skip_display)
+    res = patch_initrd(initrd, ed, room)
+    if res is None:
         ok("This ISO is already patched - nothing to do. Flash it in DD Image mode.")
         return
+    new, fits = res
 
-    need = os.path.getsize(src) + (64 << 20)
+    iso_size = os.path.getsize(src)
+    need = iso_size + len(new) + (64 << 20)
     free = shutil.disk_usage(os.path.dirname(os.path.abspath(out))).free
     if free < need:
         die("Not enough free space for the copy: need ~%d MB, have %d MB." %
@@ -369,21 +431,61 @@ def main():
     if not recs:
         die("Could not locate the initrd's directory entries in the ISO.")
 
+    # Where the patched initrd goes: its old place if it fits, else appended
+    # at the end of the image (its directory entries are pointed there).
+    if fits:
+        new_ext = ext
+        writes = []
+    else:
+        new_ext = (iso_size + SECTOR - 1) // SECTOR
+        new_end = (new_ext * SECTOR + len(new) + SECTOR - 1) // SECTOR * SECTOR
+        with open(src, "rb") as f:
+            bases = tree_bases(f, recs, ext)
+            writes = mbr_grow_plan(f, bases, new_end)
+            for b in bases:               # volume size in every descriptor
+                for s in range(16, 64):
+                    vd = read_at(f, (b + s) * SECTOR, 8)
+                    if vd[1:6] != b"CD001" or vd[0] == 255:
+                        break
+                    if vd[0] in (1, 2):
+                        n = new_end // SECTOR - b
+                        writes.append(((b + s) * SECTOR + 80,
+                                       struct.pack("<I", n) + struct.pack(">I", n)))
+        inf("The patched initrd is larger than the original slot; "
+            "moving it to the end of the ISO.")
+
+    with open(src, "rb") as f:            # tree offset of each directory entry
+        rec_base = {r: ext - struct.unpack_from("<I", read_at(f, r + 2, 4))[0] for r in recs}
+
     inf("Writing %s ..." % os.path.basename(out))
     shutil.copyfile(src, out)
     try:
         with open(out, "r+b") as f:
-            f.seek(ext * SECTOR)
-            f.write(new + b"\0" * (room - len(new)))
-            for r in recs:
-                f.seek(r + 10)
-                f.write(struct.pack("<I", len(new)) + struct.pack(">I", len(new)))
-        # read it back the way GRUB would and check the patch is really there
+            if fits:
+                f.seek(ext * SECTOR)
+                f.write(new + b"\0" * (room - len(new)))
+            else:
+                f.seek(new_ext * SECTOR)
+                f.write(new + b"\0" * (new_end - new_ext * SECTOR - len(new)))
+            for r, b in rec_base.items():
+                rel = new_ext - b
+                f.seek(r + 2)
+                f.write(struct.pack("<I", rel) + struct.pack(">I", rel)
+                        + struct.pack("<I", len(new)) + struct.pack(">I", len(new)))
+            for off, data in writes:
+                f.seek(off)
+                f.write(data)
+        # read it back through EVERY directory entry and check the patch is there
         with open(out, "rb") as f:
             _, rext2, rsize2 = iso_pvd(f)
             ext2, size2 = iso_root_files(f, rext2, rsize2)["INITRD.IMG"]
+            for r, b in rec_base.items():
+                e2 = struct.unpack_from("<I", read_at(f, r + 2, 4))[0]
+                s2 = struct.unpack_from("<I", read_at(f, r + 10, 4))[0]
+                if e2 + b != new_ext or s2 != len(new):
+                    raise RuntimeError("directory entry check failed")
             back = read_at(f, ext2 * SECTOR, size2)
-        if back != new or patch_initrd(back, make_edit(label, a.skip_display), room) is not None:
+        if back != new or patch_initrd(back, Editor(label, a.skip_display), room) is not None:
             raise RuntimeError("verification failed")
     except BaseException as e:
         try:
@@ -392,7 +494,8 @@ def main():
             pass
         die("Writing the patched ISO failed (%s); the output was removed." % e)
 
-    ok("Installer now also accepts the label %s (%d directory entries updated)." % (label, len(recs)))
+    ok("Installer now also accepts the label %s in: %s" % (label, ", ".join(ed.patched)))
+    inf("%d ISO directory entries updated." % len(recs))
     if a.skip_display:
         print("  [!!] --skip-display: FOR VM TESTING ONLY, not for a real instrument.")
     ok("Built %s" % out)

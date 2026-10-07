@@ -206,8 +206,12 @@ to 30 s so there is time to choose. The display name is read from the installer'
 > `rlx-recovery.iso` built with `--deploy-iso` (before this fix), run
 > `patch-deploy-iso.py` on it. It needs only Python 3 from python.org, or you can
 > drag the ISO onto `patch-deploy-iso.bat`. It writes
-> `…-deploy-customized.iso` with the same one-line installer change, and
-> rewrites the initrd in its original place in the ISO, so nothing else moves.
+> `…-deploy-customized.iso` with the same installer change. The installer
+> checks the label in two scripts (`installer-hooks.sh.inc` and
+> `scripts/init-premount/installer`), and both are patched. The initrd goes
+> back in its original place in the ISO, or at the end of the ISO if it has
+> grown too big to fit. Running it on an ISO made by the earlier one-script
+> version finishes the job and writes `…-new.iso`.
 > Add `--skip-display` for a VM-only test copy. A zstd-compressed installer
 > initrd needs Python 3.14 or newer. Never change the label in Rufus, and
 > always flash in DD Image mode.
