@@ -665,32 +665,47 @@ def cli_login():
 
 # ------------------------------------------------------------------- GUI -----
 CSS = b"""
-window, .page { background:#ffffff; }
-.h1 { font-size:26px; font-weight:700; color:#15191e; }
+window, .page { background:#f1f5f9; }
+.header { background:#ffffff; box-shadow:0 1px 4px rgba(0,0,0,0.25); padding:0 24px;
+          min-height:64px; }
+.htitle { font-size:22px; color:#1d1d1d; }
+.huser { font-size:14px; color:#5b6672; }
+.card { background:#ffffff; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.25);
+        padding:28px 56px 32px 56px; }
+.ptitle { font-size:20px; color:#0b41cd; }
+.h1 { font-size:22px; font-weight:700; color:#1d1d1d; }
 .h1.danger { color:#c62828; }
 .h1.good { color:#1c7a43; }
 .sub { font-size:15px; color:#5b6672; }
-.brand { font-size:12px; font-weight:700; color:#616c78; }
-.field { font-size:13px; font-weight:700; color:#15191e; }
-.hint { font-size:13px; color:#5b6672; }
-.mono { font-family:monospace; font-size:14px; color:#15191e; }
+.helper { font-size:12px; color:#6b6b6b; }
+.field { font-size:13px; font-weight:700; color:#1d1d1d; }
+.mono { font-family:monospace; font-size:14px; color:#1d1d1d; }
 .mono.small { font-size:11px; color:#5b6672; }
-.err { color:#c62828; font-size:14px; }
-.warn { background:#fdecec; border:1px solid #f2c2c2; border-radius:8px; padding:14px; }
+.err { color:#c62828; font-size:13px; }
+.warn { background:#fdecec; border:1px solid #f2c2c2; border-radius:4px; padding:14px; }
 .warn .wh { color:#c62828; font-weight:700; font-size:15px; }
 .warn .wt { color:#7a1f1f; font-size:14px; }
-entry { font-size:16px; padding:10px; min-width:420px; }
-button { font-size:16px; font-weight:600; padding:14px 18px; border-radius:8px;
-         border:1px solid #d9dfe6; background:#ffffff; color:#15191e; }
-button.primary { background:#0b63b8; color:#ffffff; border-color:#0b63b8; }
-button.danger  { background:#c62828; color:#ffffff; border-color:#c62828; }
+entry.filled { background:#f4f4f2; background-image:none; border:none;
+               border-bottom:1px solid #1d1d1d; border-radius:4px 4px 0 0; box-shadow:none;
+               padding:12px 16px; font-size:15px; min-height:22px; color:#1d1d1d; }
+entry.filled:focus { border-bottom:2px solid #0b41cd; }
+checkbutton label { font-size:12px; color:#6b6b6b; }
+button { font-size:15px; font-weight:600; padding:10px 20px; border-radius:4px;
+         border:1px solid #d9dfe6; background:#ffffff; background-image:none;
+         box-shadow:none; color:#1d1d1d; }
+button.primary { background:#0b41cd; color:#ffffff; border:none; }
+button.primary:disabled { background:#f0f0ee; color:#9e9e9e; }
+button.danger  { background:#c62828; color:#ffffff; border:none; }
 button.choice { padding:18px 22px; min-width:560px; }
-button.choice .ct { font-size:18px; font-weight:700; color:#15191e; }
+button.choice .ct { font-size:18px; font-weight:700; color:#1d1d1d; }
 button.choice .cs { font-size:14px; font-weight:400; color:#5b6672; }
-button.link { border:none; background:transparent; color:#0b63b8; padding:6px 0; }
+button.link { border:none; background:transparent; color:#0b41cd; padding:6px 0; }
+button.hbtn { border:none; background:transparent; color:#1d1d1d; font-weight:500;
+              padding:8px 14px; }
+button.hbtn:hover { background:#eef1f4; }
 .ok { color:#1c7a43; font-weight:700; }
 progressbar trough { min-height:14px; border-radius:7px; }
-progressbar progress { min-height:14px; border-radius:7px; background:#0b63b8; }
+progressbar progress { min-height:14px; border-radius:7px; background:#0b41cd; }
 """
 
 
@@ -730,24 +745,28 @@ def gui_main():
             outer.get_style_context().add_class("page")
             self.add(outer)
 
-            head = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, margin=28)
-            brand = Gtk.Label(label="cobas 6800 / 8800", xalign=0)
-            brand.get_style_context().add_class("brand")
-            head.pack_start(brand, True, True, 0)
-            if os.path.isfile(LOGO):
-                try:
-                    # high-quality downscale (the stored logo is larger than shown)
-                    full = GdkPixbuf.Pixbuf.new_from_file(LOGO)
-                    h = min(46, full.get_height())
-                    pb = full.scale_simple(max(1, round(full.get_width() * h / full.get_height())),
-                                           h, GdkPixbuf.InterpType.HYPER)
-                    head.pack_end(Gtk.Image.new_from_pixbuf(pb), False, False, 0)
-                except Exception:
-                    pass
+            # header bar (as on the instrument's logon screen): title + Exit
+            head = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
+            head.get_style_context().add_class("header")
+            title = Gtk.Label(label="Recovery tools", xalign=0)
+            title.get_style_context().add_class("htitle")
+            head.pack_start(title, False, False, 0)
+            exit_b = Gtk.Button(label="Exit", valign=Gtk.Align.CENTER)
+            exit_b.get_style_context().add_class("hbtn")
+            exit_b.connect("clicked", self.on_exit)
+            head.pack_end(exit_b, False, False, 0)
+            self.hdr_user = Gtk.Label(label="")
+            self.hdr_user.get_style_context().add_class("huser")
+            head.pack_end(self.hdr_user, False, False, 0)
             outer.pack_start(head, False, False, 0)
 
-            self.stack = Gtk.Stack(margin=48, vhomogeneous=False)
-            outer.pack_start(self.stack, True, True, 0)
+            # every screen sits in one white card in the middle
+            card = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
+                           halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
+            card.get_style_context().add_class("card")
+            outer.pack_start(card, True, True, 0)
+            self.stack = Gtk.Stack(vhomogeneous=False, hhomogeneous=False)
+            card.pack_start(self.stack, True, True, 0)
             for name, page in (("login", self._login()), ("busy", self._busy()),
                                ("menu", self._menu()), ("warn", self._warn()),
                                ("done", self._done()), ("imgok", self._imgok()),
@@ -789,36 +808,65 @@ def gui_main():
             return b, t, s
 
         # ---- pages
+        def _logo(self, height):
+            if not os.path.isfile(LOGO):
+                return None
+            try:
+                # high-quality downscale (the stored logo is larger than shown)
+                full = GdkPixbuf.Pixbuf.new_from_file(LOGO)
+                h = min(height, full.get_height())
+                pb = full.scale_simple(max(1, round(full.get_width() * h / full.get_height())),
+                                       h, GdkPixbuf.InterpType.HYPER)
+                return Gtk.Image.new_from_pixbuf(pb)
+            except Exception:
+                return None
+
         def _login(self):
-            b = self._col(10)
-            b.pack_start(self._label("Sign in", "h1"), False, False, 0)
-            b.pack_start(self._label("Sign in with your Roche ID and token to use the "
-                                     "recovery tools.", "sub"), False, False, 6)
-            b.pack_start(self._label("Roche ID", "field", False), False, False, 0)
-            b.pack_start(self._label("Without \u201crsr/\u201d.", "hint", False), False, False, 0)
-            self.e_id = Gtk.Entry(halign=Gtk.Align.START)
-            b.pack_start(self.e_id, False, False, 0)
-            b.pack_start(self._label("Token", "field", False), False, False, 4)
-            b.pack_start(self._label("Use the long token.", "hint", False), False, False, 0)
-            self.e_tok = Gtk.Entry(halign=Gtk.Align.START, visibility=False)
-            self.e_tok.set_width_chars(48)
-            b.pack_start(self.e_tok, False, False, 0)
+            b = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, halign=Gtk.Align.CENTER)
+            logo = self._logo(40)
+            if logo:
+                b.pack_start(logo, False, False, 0)
+            t = Gtk.Label(halign=Gtk.Align.CENTER, margin_top=16, margin_bottom=28)
+            t.set_markup("<b>cobas</b><sup>®</sup> 6800 Instrument software")
+            t.get_style_context().add_class("ptitle")
+            b.pack_start(t, False, False, 0)
+
+            form = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4,
+                           halign=Gtk.Align.CENTER)
+            form.set_size_request(360, -1)
+            self.e_id = Gtk.Entry(placeholder_text="Roche ID")
+            self.e_id.get_style_context().add_class("filled")
+            form.pack_start(self.e_id, False, False, 0)
+            form.pack_start(self._label("Without \u201crsr/\u201d", "helper", False),
+                            False, False, 2)
+            self.e_tok = Gtk.Entry(placeholder_text="Token", visibility=False, margin_top=12)
+            self.e_tok.get_style_context().add_class("filled")
+            form.pack_start(self.e_tok, False, False, 0)
+            form.pack_start(self._label("Use the long token", "helper", False), False, False, 0)
             show = Gtk.CheckButton(label="Show token")
             show.connect("toggled", lambda w: self.e_tok.set_visibility(w.get_active()))
-            b.pack_start(show, False, False, 0)
-            self.login_err = self._label("", "err")
-            b.pack_start(self.login_err, False, False, 0)
+            form.pack_start(show, False, False, 4)
+            self.login_err = self._label("", "err", True, 44)
+            form.pack_start(self.login_err, False, False, 0)
             self.details = Gtk.Expander(label="Details")
-            self.details_lbl = self._label("", "mono small", True, 110)
+            self.details_lbl = self._label("", "mono small", True, 64)
             self.details_lbl.set_selectable(True)
             self.details.add(self.details_lbl)
-            b.pack_start(self.details, False, False, 0)
+            form.pack_start(self.details, False, False, 0)
+            self.b_signin = self._btn("Sign in", "primary", self.on_signin)
+            self.b_signin.set_halign(Gtk.Align.END)
+            self.b_signin.set_sensitive(False)
+            form.pack_start(self.b_signin, False, False, 14)
+            b.pack_start(form, False, False, 0)
+
+            def changed(*_):
+                self.b_signin.set_sensitive(bool(self.e_id.get_text().strip()
+                                                 and self.e_tok.get_text().strip()))
+            self.e_id.connect("changed", changed)
+            self.e_tok.connect("changed", changed)
             self.e_id.connect("activate", lambda *_: self.e_tok.grab_focus())
-            self.e_tok.connect("activate", self.on_signin)
-            row = Gtk.Box(spacing=12, margin_top=8)
-            row.pack_start(self._btn("Sign in", "primary", self.on_signin), False, False, 0)
-            row.pack_start(self._btn("Exit", "", self.on_exit), False, False, 0)
-            b.pack_start(row, False, False, 0)
+            self.e_tok.connect("activate", lambda *_: self.b_signin.get_sensitive()
+                               and self.on_signin())
             return b
 
         def _busy(self):
@@ -845,10 +893,7 @@ def gui_main():
                 "Erases the whole instrument and installs this image.", self.on_deploy)
             b.pack_start(self.c_reset, False, False, 6)
             b.pack_start(self.c_deploy, False, False, 0)
-            row = Gtk.Box(spacing=24, margin_top=6)
-            row.pack_start(self._btn("Sign out", "link", self.on_signout), False, False, 0)
-            row.pack_start(self._btn("Exit", "link", self.on_exit), False, False, 0)
-            b.pack_start(row, False, False, 0)
+            b.pack_start(self._btn("Sign out", "link", self.on_signout), False, False, 6)
             return b
 
         def _warn(self):
@@ -1022,6 +1067,7 @@ def gui_main():
                 return
             self.user = msg
             self.who.set_text("Signed in as %s." % self.user)
+            self.hdr_user.set_text(self.user)
             self.refresh_menu()
 
         def refresh_menu(self):
@@ -1059,10 +1105,11 @@ def gui_main():
 
         def on_signout(self, *_):
             self.user = None
+            self.hdr_user.set_text("")
             self.e_id.set_text("")
             self.e_tok.set_text("")
             self.show("login")
-            self.e_id.grab_focus()
+            self.set_focus(None)
 
         # ---- factory reset
         def on_start(self, *_):
@@ -1146,7 +1193,7 @@ def gui_main():
     win.show_all()
     win.details.set_visible(False)
     win.show("login")
-    win.e_id.grab_focus()
+    win.set_focus(None)                 # keep both field labels visible
     Gtk.main()
 
 
