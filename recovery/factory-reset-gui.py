@@ -247,6 +247,8 @@ SYS_TOP = ("etc", "usr", "var", "bin", "sbin", "lib", "lib64")
 def _auth_wanted(rel):
     if rel in AUTH_ETC or rel in ("bin", "sbin", "lib", "lib64"):
         return True
+    if re.search(r"(^|/)fsr(keyrevocation|passwd|unlockcode)\.dat$", rel):
+        return True
     if rel.startswith(("usr/bin/python3", "usr/lib64/", "lib64/")):
         return True
     if rel.startswith("usr/lib/python3"):
@@ -411,46 +413,103 @@ def cleanup_auth():
         run(["umount", "-l", mp])
 
 
-# The token library (libfsrverify) writes only these, all in /var: it reads and
-# flock()s the key revocation index, stores the quick-access password after a
-# valid token, and the unlock code. /etc/fsrverify.conf is read-only settings.
-FSR_VAR_FILES = ("fsrkeyrevocation.dat", "fsrpasswd.dat", "fsrunlockcode.dat")
+# The token library (libfsrverify) keeps these files in one data folder: it
+# reads and flock()s the key revocation index, stores the quick-access password
+# after a valid token, and the unlock code. Older builds use /var; the current
+# instrument build uses /opt/roche/var/fsr (/opt is its own btrfs subvolume).
+# The folder is read from the instrument's own library each time.
+FSR_FILES = ("fsrkeyrevocation.dat", "fsrpasswd.dat", "fsrunlockcode.dat")
+FSR_DIRS_DEFAULT = ("/var", "/opt/roche/var/fsr")
 
 
-def _ram_var_tmp(root, var_dirs):
-    """Give the sign-in root a private, writable /var and /tmp in RAM, with
-    copies of the instrument's /var/fsr* files. The disk is never written."""
-    # Read them BEFORE mounting: in read-only mode root/var IS the disk's /var,
-    # which the RAM /var is about to cover.
-    src = {}
-    for d in var_dirs:                    # first copy found wins
-        for name in FSR_VAR_FILES:
-            if name not in src and os.path.isfile(f"{d}/{name}"):
-                with open(f"{d}/{name}", "rb") as f:
-                    src[name] = (f"{d}/{name}", f.read())
-    for d in ("var", "tmp"):
-        if not os.path.isdir(f"{root}/{d}"):
-            raise AuthError("The cobas system on this instrument looks incomplete "
-                            "(no /%s), so the token cannot be checked." % d)
-        if run(["mount", "-t", "tmpfs", "-o", "mode=1777" if d == "tmp" else "mode=0755",
-                "rlx-" + d, f"{root}/{d}"]).returncode != 0:
-            raise AuthError("Could not prepare the sign-in (no /%s in memory)." % d)
-    os.makedirs(f"{root}/var/tmp", mode=0o1777, exist_ok=True)
-    for name, (_, data) in src.items():
-        with open(f"{root}/var/{name}", "wb") as f:
-            f.write(data)
-        os.chmod(f"{root}/var/{name}", 0o660)
-    rev = f"{root}/var/fsrkeyrevocation.dat"
-    if os.path.isfile(rev):
-        slog("revocation index: %r (from %s)" % (open(rev).read().strip()[:20],
-                                                 src["fsrkeyrevocation.dat"][0]))
+def fsr_data_dirs(root):
+    """Folders the token library in `root` keeps its files in."""
+    dirs = set(FSR_DIRS_DEFAULT)
+    for libdir in ("usr/lib/x86_64-linux-gnu", "lib/x86_64-linux-gnu"):
+        p = os.path.join(root, libdir)
+        if not os.path.isdir(p):
+            continue
+        for name in os.listdir(p):
+            if not name.startswith("libfsrverify.so"):
+                continue
+            try:
+                data = open(os.path.join(p, name), "rb").read()
+            except OSError:
+                continue
+            for m in re.finditer(rb"(/[A-Za-z0-9_.-][A-Za-z0-9_./-]*?)/fsr(?:keyrevocation|passwd|"
+                                 rb"unlockcode)\.dat", data):
+                dirs.add(m.group(1).decode())
+            for m in re.finditer(rb"(/[A-Za-z0-9_.-][A-Za-z0-9_./-]*/fsr)/?\x00", data):
+                dirs.add(m.group(1).decode())
+    return sorted(d.rstrip("/") for d in dirs if d.startswith("/") and ".." not in d)
+
+
+def _writable_dir(root, d, mount=True):
+    """Make root+d an empty, writable folder in RAM (never on the disk)."""
+    target = root + d
+    if not mount:                         # root is already a RAM copy
+        os.makedirs(target, exist_ok=True)
+        return
+    if os.path.isdir(target):
+        if run(["mount", "-t", "tmpfs", "-o", "mode=0755", "rlx-fsr", target]).returncode:
+            raise AuthError("Could not prepare the sign-in (no %s in memory)." % d)
+        return
+    try:
+        os.makedirs(target)                # works when that part is an overlay
+        return
+    except OSError:
+        pass
+    anc = os.path.dirname(target)          # read-only: cover the nearest folder
+    while not os.path.isdir(anc) and anc.startswith(root + "/"):
+        anc = os.path.dirname(anc)
+    if anc == root or run(["mount", "-t", "tmpfs", "-o", "mode=0755", "rlx-fsr", anc]).returncode:
+        raise AuthError("The token check needs the folder %s, which the cobas system on "
+                        "this instrument does not have and which could not be created in "
+                        "memory." % d)
+    os.makedirs(target, exist_ok=True)
+
+
+def _ram_fsr(root, sources_for, mount=True):
+    """Give the token library writable copies of its data folders (and /tmp)
+    in RAM, holding the instrument's own files. sources_for(dir) lists where
+    that folder's files are on the disk."""
+    dirs = fsr_data_dirs(root)
+    slog("token library data folders: %s" % ", ".join(dirs))
+    # Read the files BEFORE covering anything: in read-only mode the folder
+    # being covered may be the very one they are in.
+    found, rev = {}, None
+    for d in dirs:
+        for src in sources_for(d):
+            for name in FSR_FILES:
+                path = f"{src}/{name}"
+                if name not in found.setdefault(d, {}) and os.path.isfile(path):
+                    with open(path, "rb") as f:
+                        found[d][name] = f.read()
+                    if name == "fsrkeyrevocation.dat" and rev is None:
+                        rev = (path, found[d][name])
+    if mount:
+        if run(["mount", "-t", "tmpfs", "-o", "mode=1777", "rlx-tmp", f"{root}/tmp"]).returncode:
+            raise AuthError("Could not prepare the sign-in (no /tmp in memory).")
+    for d in dirs:
+        _writable_dir(root, d, mount)
+        for name, data in found.get(d, {}).items():
+            with open(f"{root}{d}/{name}", "wb") as f:
+                f.write(data)
+            os.chmod(f"{root}{d}/{name}", 0o660)
+        if not os.path.isfile(f"{root}{d}/fsrkeyrevocation.dat"):
+            # The package creates it with 0 ("no key revoked"); without it every
+            # token is refused.
+            with open(f"{root}{d}/fsrkeyrevocation.dat", "wb") as f:
+                f.write(rev[1] if rev else b"0\n")
+    if "/var" in dirs:
+        os.makedirs(f"{root}/var/tmp", mode=0o1777, exist_ok=True)
+    if rev:
+        slog("revocation index: %r (from %s)" % (rev[1].decode("utf-8", "replace").strip()[:20],
+                                                 rev[0]))
     else:
-        # The instrument creates it with 0 ("no key revoked") when the library
-        # is installed; without it every token is refused.
-        with open(rev, "w") as f:
-            f.write("0\n")
         slog("revocation index file not found on the disk; using 0")
-    slog("RAM /var has: %s" % ", ".join(sorted(os.listdir(f"{root}/var"))))
+    for d in dirs:
+        slog("RAM %s has: %s" % (d, ", ".join(sorted(os.listdir(root + d)))))
     conf = f"{root}/etc/fsrverify.conf"
     slog("fsrverify.conf: %s" % (open(conf).read().strip().replace("\n", " | ")[:200]
                                   if os.path.isfile(conf) else "none (defaults)"))
@@ -478,14 +537,7 @@ def prepare_auth_root(progress=None):
             raise AuthError("Could not prepare the sign-in (no memory).")
         sha = extract_auth_files(f"{media}/image.cpio.gz", f"{AUTH}/img", progress)
         root, source = f"{AUTH}/img", "image"
-        os.makedirs(f"{root}/var/tmp", exist_ok=True)
-        rev = f"{root}/var/fsrkeyrevocation.dat"
-        if not os.path.isfile(rev):
-            with open(rev, "w") as f:
-                f.write("0\n")
-            slog("revocation index file not in the image; using 0")
-        else:
-            slog("revocation index: %r (from the image)" % open(rev).read().strip()[:20])
+        _ram_fsr(root, lambda d: [root + d], mount=False)
     else:
         # Prefer a full overlay (all writes go to RAM). Whether or not it works,
         # /var and /tmp are replaced below, so nothing the check writes depends
@@ -501,7 +553,29 @@ def prepare_auth_root(progress=None):
             root = lower
         else:
             slog("overlay mounted")
-        _ram_var_tmp(root, [f"{lower}/var", f"{AUTH}/top/var"])
+        # /opt is its own subvolume on the instrument (the token library's data
+        # folder is under it): bring it in too, changes again only in RAM.
+        top = f"{AUTH}/top"
+        if os.path.isdir(f"{top}/opt") and not os.path.isdir(f"{root}/opt"):
+            try:
+                os.makedirs(f"{root}/opt")      # overlay: the mount point lives in RAM
+            except OSError:
+                pass
+        if os.path.isdir(f"{top}/opt") and os.path.isdir(f"{root}/opt"):
+            os.makedirs(f"{AUTH}/rw/opt-upper", exist_ok=True)
+            os.makedirs(f"{AUTH}/rw/opt-work", exist_ok=True)
+            r = run(["mount", "-t", "overlay", "overlay", "-o",
+                     f"lowerdir={top}/opt,upperdir={AUTH}/rw/opt-upper,"
+                     f"workdir={AUTH}/rw/opt-work", f"{root}/opt"])
+            if r.returncode == 0:
+                slog("/opt overlay mounted")
+            else:
+                run(["mount", "--bind", f"{top}/opt", f"{root}/opt"])
+                run(["mount", "-o", "remount,bind,ro", f"{root}/opt"])
+                slog("/opt mounted read-only (%s)" % r.stderr.strip())
+        else:
+            slog("no separate /opt subvolume found")
+        _ram_fsr(root, lambda d: [lower + d, top + d])
     for d in ("dev", "proc", "tmp"):
         if not os.path.isdir(f"{root}/{d}"):
             try:
