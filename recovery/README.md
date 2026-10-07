@@ -188,12 +188,19 @@ ISO grows by ~1.7 GB; leave a few GB free where `--out` is. Deploy is **UEFI onl
 to 30 s so there is time to choose. The display name is read from the installer's
 `README.md` unless you pass `--deploy-name`.
 
-> **Status:** proven that the Deploy menu boots the vendor installer, but this
-> particular `6800.iso` has not completed an install in VM testing — it appears to
-> expect its own medium (volume label `MLR:cobas6800` + full vendor file tree) and/or
-> a Roche deployment server. If folding it into one ISO proves insufficient, the
-> fallback is a multi-partition image carrying a byte-exact copy of the installer ISO
-> that the menu chainloads. Validate on a VM before trusting it on an instrument.
+> **Installer patch (why the output says `customized`):** the vendor installer
+> finds its medium only by a volume label starting with `MLR:`
+> (`installer_init`: ``blkid | grep MLR:``). If none is found it switches to a
+> network install from `http://172.16.8.254`, and with no network it stops at a
+> BusyBox shell ("Downloading install medium … No network interface found").
+> This stick has to keep SystemRescue's label (`RESCUE1302`), so the builder
+> patches that one line in the installer initrd to also accept it. Nothing else
+> in the installer changes. As a result `--deploy-iso` must run as **root**, and
+> the output is always named `…-deploy-customized.iso`.
+>
+> **Flash it in raw / DD mode** (Etcher, or Rufus → *DD Image mode*). The
+> installer was only ever run from a raw iso9660 medium, so don't use Rufus
+> *ISO Image mode*, which rewrites the stick as FAT32.
 
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,

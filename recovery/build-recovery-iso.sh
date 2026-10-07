@@ -36,6 +36,9 @@
 # copied to the root of the output ISO, so once flashed to USB they sit on the real
 # medium exactly as the standalone installer expects. The output ISO grows by the
 # installer's size (~1.7 GB); you need a few GB free where --out is written.
+# The installer only recognises a medium labelled "MLR:...", so its initrd is
+# patched to also accept this ISO's label. That makes --deploy-iso need root, and
+# the output name always ends in "-deploy-customized.iso".
 #
 # By default it also "brands" the boot: the confusing SystemRescue boot menu is
 # collapsed to ONE renamed entry that auto-boots quietly into the menu, so a
@@ -58,7 +61,7 @@ if [ -t 1 ]; then B="$(printf '\033[1m')"; R="$(printf '\033[31m')"; G="$(printf
 ok(){ printf '  %s✓%s %s\n' "$G" "$Z" "$1"; }
 inf(){ printf '  %s•%s %s\n' "$C" "$Z" "$1"; }
 die(){ printf '  %s✗%s %s\n' "$R" "$Z" "$1"; exit "${2:-1}"; }
-usage(){ sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'; exit "${1:-0}"; }
+usage(){ sed -n '2,33p' "$0" | sed 's/^# \{0,1\}//'; exit "${1:-0}"; }
 
 while [ $# -gt 0 ]; do case "$1" in
     --iso) ISO="${2:?}"; shift 2 ;;
@@ -92,6 +95,14 @@ command -v xorriso >/dev/null 2>&1 || die "xorriso not found. Install it (e.g. a
 # sanity: is it really a SystemRescue image?
 if ! xorriso -indev "$ISO" -toc 2>/dev/null | grep -qi 'sysresc\|SYSRESC\|RESCUE'; then
     inf "Note: the ISO volume id doesn't look like SystemRescue — continuing anyway."
+fi
+# SystemRescue finds its own files by this volume label (archisolabel=...).
+REC_LABEL="$(xorriso -indev "$ISO" -pvd_info 2>/dev/null | sed -n 's/^Volume Id *: *//p' | head -n1 | tr -d ' ')"
+[ -n "$REC_LABEL" ] || REC_LABEL="RESCUE1302"
+
+# A deploy build carries a modified installer, so its filename always says so.
+if [ -n "$DEPLOY_ISO" ] && ! printf '%s' "$(basename "$OUT")" | grep -qi 'customized'; then
+    OUT="${OUT%.iso}-deploy-customized.iso"
 fi
 
 WORK="$(mktemp -d)"; DSTAGE=""; DMNT=""
@@ -166,10 +177,32 @@ if [ -n "$DEPLOY_ISO" ]; then
     fi
     [ -n "$DNAME" ] || DNAME="$(basename "$DEPLOY_ISO" .iso)"
     DNAME="${DNAME//\'/}"             # no single quotes (breaks grub menuentry)
+    # The vendor installer finds its medium ONLY by a volume label starting with
+    # "MLR:" (installer_init: `blkid | grep MLR:`); otherwise it falls back to a
+    # network install (http://172.16.8.254) and, with no network, a BusyBox shell.
+    # This ISO must keep SystemRescue's label, so patch the installer to ALSO
+    # accept our label. Nothing else in the installer changes. Needs root.
+    command -v unmkinitramfs >/dev/null 2>&1 || die "unmkinitramfs not found (apt-get install initramfs-tools-core)." 1
+    command -v cpio >/dev/null 2>&1 || die "cpio not found (apt-get install cpio)." 1
+    [ "$(id -u)" = "0" ] || die "--deploy-iso must run as root (it repacks the installer initrd)." 1
+    mkdir -p "$WORK/ir"
+    unmkinitramfs "$DSRC/initrd.img" "$WORK/ir" 2>/dev/null || die "Could not unpack the installer initrd.img." 4
+    HOOKS="$(find "$WORK/ir" -path '*/scripts/installer-hooks.sh.inc' | head -n1)"
+    [ -n "$HOOKS" ] || die "installer-hooks.sh.inc not found in the installer initrd - unexpected layout." 4
+    grep -q 'blkid | grep MLR:' "$HOOKS" || grep -q 'CUSTOMIZED: also accept' "$HOOKS" \
+        || die "Installer medium detection (blkid | grep MLR:) not found - unexpected installer version." 4
+    sed -i "s#blkid | grep MLR:\`#blkid | grep -E 'MLR:|LABEL=\"${REC_LABEL}\"'\` \# CUSTOMIZED: also accept the recovery stick#" "$HOOKS"
+    grep -q 'CUSTOMIZED: also accept' "$HOOKS" || die "Patching the installer medium detection failed." 4
+    IRROOT="$(dirname "$(dirname "$HOOKS")")"
+    [ -f "$IRROOT/init" ] || die "Could not locate the installer initramfs root." 4
+    ( cd "$IRROOT" && find . | cpio -o -H newc --quiet | gzip -9 ) > "$WORK/initrd-deploy.img" \
+        || die "Repacking the installer initrd failed." 4
+    ok "Installer patched to find its payload on this stick (label ${REC_LABEL})."
+
     DEPLOY_MAPS=(
-        -map "$DSRC/vmlinuz"       /vmlinuz
-        -map "$DSRC/initrd.img"    /initrd.img
-        -map "$DSRC/image.cpio.gz" /image.cpio.gz
+        -map "$DSRC/vmlinuz"         /vmlinuz
+        -map "$WORK/initrd-deploy.img" /initrd.img
+        -map "$DSRC/image.cpio.gz"   /image.cpio.gz
     )
     inf "Deploy entry: '${DNAME}' (RE-IMAGES the whole instrument disk, UEFI boot)."
 
@@ -236,7 +269,7 @@ LABEL rlxreset
 MENU LABEL ${LABEL}
 LINUX boot/x86_64/vmlinuz
 INITRD boot/intel_ucode.img,boot/amd_ucode.img,boot/x86_64/sysresccd.img
-APPEND archisobasedir=sysresccd archisolabel=RESCUE1302 iomem=relaxed quiet loglevel=3
+APPEND archisobasedir=sysresccd archisolabel=${REC_LABEL} iomem=relaxed quiet loglevel=3
 SYS
     } > "$WORK/sysresccd_sys.cfg"
 
@@ -282,7 +315,7 @@ ${GRUB_BG}
 	fi
 fi
 if [ -z "\$archiso_param" ]; then
-	archiso_param="archisolabel=RESCUE1302"
+	archiso_param="archisolabel=${REC_LABEL}"
 fi
 menuentry '${LABEL}' {
 	set gfxpayload=keep

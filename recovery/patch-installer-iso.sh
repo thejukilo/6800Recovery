@@ -83,6 +83,9 @@ HOOKS="$(find "$WORK/ir" -path '*/scripts/installer-hooks.sh.inc' | head -n1)"
 sed -i '/EXTRA_INSTALLER_CONFIGURE_DEVICE_RESOLUTION.*!= *"no"/c\if false ; then # CUSTOMIZED: skip display-resolution probe (no GPU in VM)' "$HOOKS"
 grep -q 'CUSTOMIZED: skip display-resolution probe' "$HOOKS" \
     || die "Patch did not apply (the display-guard line was not found)." 4
+# The skipped block is what sets $cols_orig/$cols; guard the two trailing
+# `stty cols` calls so they don't print "stty: cols requires an argument".
+sed -i 's/^\([[:space:]]*\)stty cols \$cols_orig\(.*\)$/\1[ -z "$cols_orig" ] || stty cols $cols_orig\2/; s/^\([[:space:]]*\)stty cols \$cols$/\1[ -z "$cols" ] || stty cols $cols/' "$HOOKS"
 ok "Patched installer-hooks.sh.inc (display-resolution step skipped)."
 
 # ---- 3. repack the patched tree as ONE gzip'd cpio -------------------------
