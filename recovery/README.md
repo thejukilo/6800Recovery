@@ -210,16 +210,14 @@ throw-away, RAM-backed copy of the instrument's system:
   the needed files are extracted to RAM, which takes about a minute. The
   image's SHA-256 is computed in the same pass.
 
-The sign-in screen and the menu have an **Exit** button (Restart or Shut
-down; remove the USB stick first). When a token is rejected, the screen shows why: wrong Roche ID or token,
-expired, revoked key, or the wrong kind of token. A keyboard is needed to type
-the token. The token library keeps its files (revocation index, quick-access password,
+The header has an **Exit** button on every screen (Restart or Shut down;
+remove the USB stick first). When a token is rejected the screen just says
+*Invalid login*. A keyboard is needed to type the token. The token library keeps its files (revocation index, quick-access password,
 unlock code) in a data folder: `/opt/roche/var/fsr` on current instrument
 builds, `/var` on older ones. The folder is read from the instrument's own
 library at each sign-in, and gets a private RAM copy of the instrument's files
 (the instrument's `/opt` subvolume is included, read-only); the instrument's
-own copies are never changed. The sign-in screen's **Details** shows what was
-used. Each sign-in is logged, without the token, to
+own copies are never changed. Each sign-in is logged, without the token, to
 `/run/rlx/signin.log` on the running stick.
 
 **Approved images.** Deploy only installs an `image.cpio.gz` whose SHA-256 is in

@@ -19,7 +19,7 @@
 #
 # `factory-reset-gui.py --cli-login` runs only the sign-in on the terminal
 # (exit 0 when signed in); the text menu uses it.
-# Env: RLX_LOGO=<png>, RLX_FACTORY_VERSION=<version shown if not detected>.
+# Env: RLX_LOGO=<png>, RLX_FACTORY_VERSION=<version shown for Factory Reset>.
 
 import getpass, hashlib, json, os, re, shutil, socket, subprocess, sys, threading, time, zlib
 
@@ -30,8 +30,7 @@ AUTH = "/run/rlx-auth"                  # sign-in work area (RAM only)
 SIGNIN_LOG = "/run/rlx/signin.log"      # what the sign-in did (never the token)
 MEDIA_MNT = "/run/rlx-media"
 FLAG_BODY = "ACTION=restore-snapshot\nSNAPSHOT_TYPE=factory\n"
-# Version the factory snapshot restores to, shown on the menu. Read from the
-# snapshot when we can find it there; otherwise this value (env override).
+# Version a Factory Reset restores to, shown on the menu (env override).
 FACTORY_VERSION = os.environ.get("RLX_FACTORY_VERSION", "2.0.0.1251623")
 # Images that may be deployed: SHA-256 of image.cpio.gz -> name shown.
 APPROVED_IMAGES = {
@@ -113,29 +112,6 @@ def detect_rlx():
         finally:
             run(["umount", DETECT_MNT])
     return None
-
-
-def factory_version():
-    """Best effort: the version inside the factory snapshot (snapshots/F),
-    else FACTORY_VERSION. Read-only."""
-    devs = run(["blkid", "-t", "TYPE=btrfs", "-o", "device"]).stdout.split()
-    os.makedirs(DETECT_MNT, exist_ok=True)
-    for dev in devs:
-        run(["umount", DETECT_MNT])
-        if run(["mount", "-o", "ro,subvolid=5", dev, DETECT_MNT]).returncode != 0:
-            continue
-        try:
-            for rel in ("snapshots/F/opt/roche/etc/projectinfo",
-                        "snapshots/F/roche/etc/projectinfo",
-                        "snapshots/F/opt/etc/projectinfo"):
-                path = f"{DETECT_MNT}/{rel}"
-                if os.path.isfile(path):
-                    m = re.search(r"\d+(?:\.\d+){2,}", open(path).read())
-                    if m:
-                        return m.group(0)
-        finally:
-            run(["umount", DETECT_MNT])
-    return FACTORY_VERSION
 
 
 def arm(dev):
@@ -643,22 +619,6 @@ class _LogCatcher:
         return ""
 
 
-def friendly(reason):
-    low = reason.lower()
-    if "key index enforcement" in low or "revocation index file" in low:
-        return ("The token is valid, but the instrument's list of revoked keys could "
-                "not be checked.")
-    if "expired" in low:
-        return "This token has expired. Request a new token."
-    if "revo" in low:
-        return "This token can no longer be used (its key was revoked)."
-    if "signature" in low or "incorrect" in low or "invalid" in low:
-        return "The Roche ID or token is not correct."
-    if "not supported" in low or "token type" in low:
-        return "This kind of token cannot be used here. Use your service (FSR) token."
-    return "Sign-in failed."
-
-
 def verify_token(rocheid, token, progress=None):
     """Check a Roche ID + token with the instrument's own login (pam_fsr).
     Returns (ok, message, image_sha or None)."""
@@ -706,13 +666,8 @@ def verify_token(rocheid, token, progress=None):
             if "*****" in line or "Attempt to log in" in line or "no default config" in line:
                 continue
             slog("pam: " + re.sub(r"^<\d+>\w{3}\s+\d+\s+[\d:]+\s+", "", line.strip())[-300:])
-        detail = log.detail()
-        msg = friendly(reason)
-        if reason:
-            msg += "\n(" + reason + ")"
-        if detail and detail not in msg:
-            msg += "\n(" + detail + ")"
-        return False, msg, sha
+        slog("rejected: %s %s" % (reason, log.detail()))
+        return False, "Invalid login", sha
     finally:
         if log and not log.stop:
             log.close()
@@ -874,9 +829,10 @@ def gui_main():
             b.get_style_context().add_class("choice")
             box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
             t = self._label(title, "ct", False)
-            s = self._label(sub, "cs")
+            s = self._label(sub or "", "cs")
             box.pack_start(t, False, False, 0)
-            box.pack_start(s, False, False, 0)
+            if sub is not None:                 # None: title only
+                box.pack_start(s, False, False, 0)
             b.add(box)
             b.connect("clicked", cb)
             return b, t, s
@@ -922,11 +878,6 @@ def gui_main():
             form.pack_start(show, False, False, 4)
             self.login_err = self._label("", "err", True, 44)
             form.pack_start(self.login_err, False, False, 0)
-            self.details = Gtk.Expander(label="Details")
-            self.details_lbl = self._label("", "mono small", True, 64)
-            self.details_lbl.set_selectable(True)
-            self.details.add(self.details_lbl)
-            form.pack_start(self.details, False, False, 0)
             self.b_signin = self._btn("Sign in", "primary", self.on_signin)
             self.b_signin.set_halign(Gtk.Align.END)
             self.b_signin.set_sensitive(False)
@@ -963,8 +914,7 @@ def gui_main():
             self.c_reset, _, self.c_reset_sub = self._choice(
                 "Factory Reset", "", self.on_start)
             self.c_deploy, self.c_deploy_t, self.c_deploy_sub = self._choice(
-                "Deploy %s image" % deploy_title(),
-                "Erases the whole instrument and installs this image.", self.on_deploy)
+                "Deploy %s image" % deploy_title(), None, self.on_deploy)
             b.pack_start(self.c_reset, False, False, 6)
             b.pack_start(self.c_deploy, False, False, 0)
             b.pack_start(self._btn("Sign out", "link", self.on_signout), False, False, 6)
@@ -1133,9 +1083,6 @@ def gui_main():
             self.e_tok.set_text("")
             if not ok:
                 self.login_err.set_text(msg)
-                self.details_lbl.set_text("\n".join(_SLOG_LINES[-30:]))
-                self.details.set_visible(bool(_SLOG_LINES))
-                self.details.set_expanded(False)
                 self.show("login")
                 self.e_tok.grab_focus()
                 return
@@ -1150,13 +1097,12 @@ def gui_main():
 
             def work():
                 info = detect_rlx()
-                ver = factory_version() if info and info[2] else None
                 media = find_media()
                 self._pulsing = False
-                ui(self._fill_menu, info, ver, media)
+                ui(self._fill_menu, info, media)
             threading.Thread(target=work, daemon=True).start()
 
-        def _fill_menu(self, info, ver, media):
+        def _fill_menu(self, info, media):
             self.media = media
             if not info:
                 self.dev = None
@@ -1170,7 +1116,6 @@ def gui_main():
                                           "snapshot. Contact GCS.")
             else:
                 self.dev = info[0]
-                self.factory_ver = ver or FACTORY_VERSION
                 self.c_reset.set_sensitive(True)
                 self.c_reset_sub.set_text("Restores the instrument back to its original "
                                           "state (%s)." % self.factory_ver)
@@ -1265,7 +1210,6 @@ def gui_main():
 
     win = App()
     win.show_all()
-    win.details.set_visible(False)
     win.show("login")
     win.set_focus(None)                 # keep both field labels visible
     Gtk.main()
