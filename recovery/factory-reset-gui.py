@@ -675,11 +675,10 @@ def gui_main():
             b.pack_start(self._label("Sign in with your Roche ID and token to use the "
                                      "recovery tools.", "sub"), False, False, 6)
             b.pack_start(self._label("Roche ID", "field", False), False, False, 0)
-            self.e_id = Gtk.Entry(halign=Gtk.Align.START, placeholder_text="e.g. vandevel")
+            self.e_id = Gtk.Entry(halign=Gtk.Align.START)
             b.pack_start(self.e_id, False, False, 0)
             b.pack_start(self._label("Token", "field", False), False, False, 4)
-            self.e_tok = Gtk.Entry(halign=Gtk.Align.START, visibility=False,
-                                   placeholder_text="e.g. ABCDE-FGHIJ-KLMNO-PQRS")
+            self.e_tok = Gtk.Entry(halign=Gtk.Align.START, visibility=False)
             b.pack_start(self.e_tok, False, False, 0)
             show = Gtk.CheckButton(label="Show token")
             show.connect("toggled", lambda w: self.e_tok.set_visibility(w.get_active()))

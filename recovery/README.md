@@ -194,8 +194,7 @@ the screen checks this and tells the engineer before starting.
 ### Sign-in and approved images
 
 **Sign-in.** Nothing on the stick can be used before signing in with a **Roche
-ID + Roche service (FSR) token**. Use the short token (e.g.
-`ABCDE-FGHIJ-KLMNO-PQRS`); `rsr/<id>` is accepted as well as `<id>`. The token is
+ID + Roche service (FSR) token**. `rsr/<id>` is accepted as well as `<id>`. The token is
 checked by the instrument's **own** login module, `pam_fsr` (the same check as a
 service login on the instrument). It verifies Roche's signature against the
 public keys in `/etc/fsr-authentication.keys`, plus expiry and the revocation
