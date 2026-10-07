@@ -194,7 +194,8 @@ the screen checks this and tells the engineer before starting.
 ### Sign-in and approved images
 
 **Sign-in.** Nothing on the stick can be used before signing in with a **Roche
-ID + Roche service (FSR) token**. `rsr/<id>` is accepted as well as `<id>`. The token is
+ID + Roche service (FSR) token**. Enter the Roche ID without `rsr/` (it is
+also accepted with it) and the long token. The token is
 checked by the instrument's **own** login module, `pam_fsr` (the same check as a
 service login on the instrument). It verifies Roche's signature against the
 public keys in `/etc/fsr-authentication.keys`, plus expiry and the revocation
@@ -207,7 +208,8 @@ throw-away, RAM-backed copy of the instrument's system:
   the needed files are extracted to RAM, which takes about a minute. The
   image's SHA-256 is computed in the same pass.
 
-When a token is rejected, the screen shows why: wrong Roche ID or token,
+The sign-in screen and the menu have an **Exit** button (Restart or Shut
+down; remove the USB stick first). When a token is rejected, the screen shows why: wrong Roche ID or token,
 expired, revoked key, or the wrong kind of token. A keyboard is needed to type
 the token. The token library opens and locks `/var/fsrkeyrevocation.dat` for
 update, so it gets a private RAM copy of that file; the instrument's own copy

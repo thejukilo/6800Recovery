@@ -592,8 +592,8 @@ def cli_login():
     print("\n  cobas 6800 Recovery - sign in with your Roche ID and token.\n")
     for _ in range(3):
         try:
-            rid = input("  Roche ID: ")
-            tok = getpass.getpass("  Token: ")
+            rid = input("  Roche ID (without \"rsr/\"): ")
+            tok = getpass.getpass("  Token (the long one): ")
         except (EOFError, KeyboardInterrupt):
             return 1
         print("  Checking ...")
@@ -614,6 +614,7 @@ window, .page { background:#ffffff; }
 .sub { font-size:15px; color:#5b6672; }
 .brand { font-size:12px; font-weight:700; color:#616c78; }
 .field { font-size:13px; font-weight:700; color:#15191e; }
+.hint { font-size:13px; color:#5b6672; }
 .mono { font-family:monospace; font-size:14px; color:#15191e; }
 .err { color:#c62828; font-size:14px; }
 .warn { background:#fdecec; border:1px solid #f2c2c2; border-radius:8px; padding:14px; }
@@ -688,7 +689,7 @@ def gui_main():
                                ("menu", self._menu()), ("warn", self._warn()),
                                ("done", self._done()), ("imgok", self._imgok()),
                                ("imgbad", self._imgbad()), ("dconfirm", self._dconfirm()),
-                               ("error", self._error())):
+                               ("exit", self._exit()), ("error", self._error())):
                 self.stack.add_named(page, name)
             self.connect("destroy", Gtk.main_quit)
 
@@ -731,10 +732,13 @@ def gui_main():
             b.pack_start(self._label("Sign in with your Roche ID and token to use the "
                                      "recovery tools.", "sub"), False, False, 6)
             b.pack_start(self._label("Roche ID", "field", False), False, False, 0)
+            b.pack_start(self._label("Without \u201crsr/\u201d.", "hint", False), False, False, 0)
             self.e_id = Gtk.Entry(halign=Gtk.Align.START)
             b.pack_start(self.e_id, False, False, 0)
             b.pack_start(self._label("Token", "field", False), False, False, 4)
+            b.pack_start(self._label("Use the long token.", "hint", False), False, False, 0)
             self.e_tok = Gtk.Entry(halign=Gtk.Align.START, visibility=False)
+            self.e_tok.set_width_chars(48)
             b.pack_start(self.e_tok, False, False, 0)
             show = Gtk.CheckButton(label="Show token")
             show.connect("toggled", lambda w: self.e_tok.set_visibility(w.get_active()))
@@ -743,7 +747,10 @@ def gui_main():
             b.pack_start(self.login_err, False, False, 0)
             self.e_id.connect("activate", lambda *_: self.e_tok.grab_focus())
             self.e_tok.connect("activate", self.on_signin)
-            b.pack_start(self._btn("Sign in", "primary", self.on_signin), False, False, 8)
+            row = Gtk.Box(spacing=12, margin_top=8)
+            row.pack_start(self._btn("Sign in", "primary", self.on_signin), False, False, 0)
+            row.pack_start(self._btn("Exit", "", self.on_exit), False, False, 0)
+            b.pack_start(row, False, False, 0)
             return b
 
         def _busy(self):
@@ -770,7 +777,10 @@ def gui_main():
                 "Erases the whole instrument and installs this image.", self.on_deploy)
             b.pack_start(self.c_reset, False, False, 6)
             b.pack_start(self.c_deploy, False, False, 0)
-            b.pack_start(self._btn("Sign out", "link", self.on_signout), False, False, 6)
+            row = Gtk.Box(spacing=24, margin_top=6)
+            row.pack_start(self._btn("Sign out", "link", self.on_signout), False, False, 0)
+            row.pack_start(self._btn("Exit", "link", self.on_exit), False, False, 0)
+            b.pack_start(row, False, False, 0)
             return b
 
         def _warn(self):
@@ -852,6 +862,20 @@ def gui_main():
             row.pack_start(self._btn("Yes, erase and install", "danger", self.on_deploy_go),
                            False, False, 0)
             row.pack_start(self._btn("Go back", "", lambda *_: self.show("menu")), False, False, 0)
+            b.pack_start(row, False, False, 0)
+            return b
+
+        def _exit(self):
+            b = self._col()
+            b.pack_start(self._label("Exit recovery", "h1"), False, False, 0)
+            b.pack_start(self._label(
+                "Remove the USB stick first, so the instrument starts normally. Nothing "
+                "has been changed unless you confirmed an action.", "sub"), False, False, 0)
+            row = Gtk.Box(spacing=12, margin_top=10)
+            row.pack_start(self._btn("Restart", "primary", self.on_reboot), False, False, 0)
+            row.pack_start(self._btn("Shut down", "", self.on_poweroff), False, False, 0)
+            row.pack_start(self._btn("Go back", "", lambda *_: self.show(
+                "menu" if self.user else "login")), False, False, 0)
             b.pack_start(row, False, False, 0)
             return b
 
@@ -982,6 +1006,14 @@ def gui_main():
             subprocess.run(["sync"])
             if run(["systemctl", "reboot"]).returncode != 0:
                 subprocess.Popen(["reboot", "-f"])
+
+        def on_poweroff(self, *_):
+            subprocess.run(["sync"])
+            if run(["systemctl", "poweroff"]).returncode != 0:
+                subprocess.Popen(["poweroff", "-f"])
+
+        def on_exit(self, *_):
+            self.show("exit")
 
         # ---- deploy
         def on_deploy(self, *_):
