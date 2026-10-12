@@ -278,6 +278,16 @@ cannot be deployed.
 > nothing. Add `--skip-display` for a VM-only test copy. Never change the label
 > in Rufus, and always flash in DD Image mode.
 
+> **Factory Reset only.** For a stick without Deploy, either build without
+> `--deploy-iso` on Linux (smallest ISO), or on Windows drag an existing
+> recovery ISO onto `make-reset-only-iso.bat` (same as
+> `patch-deploy-iso.py <iso> --reset-only`). That writes `…-reset-only.iso`
+> with the same sign-in, Factory Reset, boot menu and look, but the Deploy image
+> and installer removed from every directory tree and their data overwritten
+> with zeros. The ISO keeps its size, because that space sits in the middle of
+> the ISO. The recovery screen only offers Deploy when the stick has an image,
+> so the menu shows Factory Reset alone.
+
 > **Always test a `--deploy-iso` build on the VM first** — confirm Deploy boots the
 > installer *and* that the installer finds its payload off the flashed medium,
 > before using it on a real instrument.

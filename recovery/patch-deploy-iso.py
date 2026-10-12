@@ -27,6 +27,14 @@ on its own output or on an ISO from an older version of this script.
     py patch-deploy-iso.py rlx-recovery.iso
     py patch-deploy-iso.py rlx-recovery.iso --out D:\\stick.iso
     py patch-deploy-iso.py rlx-recovery.iso --skip-display   (VM testing only)
+    py patch-deploy-iso.py rlx-recovery.iso --reset-only     (Factory Reset only)
+
+--reset-only (or drag the ISO onto make-reset-only-iso.bat) writes
+<name>-reset-only.iso: the same stick with the same sign-in and Factory
+Reset, but without Deploy. The image and the installer (image.cpio.gz,
+initrd.img, vmlinuz) are taken out of every directory tree of the ISO and
+their contents are overwritten with zeros, so they are gone from the stick;
+the ISO keeps its size (the space sits in the middle of the ISO).
 
 The output name always contains "customized". Flash it with Rufus in
 "DD Image mode" (or balenaEtcher) and do NOT change the label in Rufus.
@@ -454,6 +462,34 @@ def approved_images(gui_path):
     return dict(re.findall(r'"([0-9a-f]{64})"\s*:\s*\n?\s*"([^"]*)"', block.group(1))) if block else {}
 
 
+# ------------------------------------------------------- remove files ------
+DEPLOY_FILES = ("/image.cpio.gz", "/initrd.img", "/vmlinuz")
+
+
+def unlink_records(f, rec_offsets):
+    """Delete directory records in place. Records never cross a sector, so each
+    affected sector is rebuilt without them and zero-padded (a normal ISO 9660
+    layout); the directory's size and every other record stay as they are."""
+    by_sector = {}
+    for r in rec_offsets:
+        by_sector.setdefault(r // SECTOR, set()).add(r)
+    for sec, rs in sorted(by_sector.items()):
+        base = sec * SECTOR
+        data = read_at(f, base, SECTOR)
+        out, i, gone = bytearray(), 0, 0
+        while i < SECTOR and data[i] != 0:
+            ln = data[i]
+            if base + i in rs:
+                gone += 1
+            else:
+                out += data[i:i + ln]
+            i += ln
+        if gone != len(rs):
+            raise RuntimeError("a directory record was not where expected")
+        f.seek(base)
+        f.write(bytes(out) + b"\0" * (SECTOR - len(out)))
+
+
 # ------------------------------------------------------------------ main ----
 def main():
     ap = argparse.ArgumentParser(description="Update a combined recovery ISO (Deploy fix, "
@@ -464,6 +500,9 @@ def main():
                     help='boot-menu entry text (default: "cobas 6800 Recovery")')
     ap.add_argument("--logo", help="replace the recovery-screen logo with this PNG "
                     "(at least ~100px tall)")
+    ap.add_argument("--reset-only", action="store_true",
+                    help="write a Factory-Reset-only copy: the Deploy image and the "
+                    "installer are removed (output: ...-reset-only.iso)")
     ap.add_argument("--skip-display", action="store_true",
                     help="also skip the installer's display step (VM testing only)")
     a = ap.parse_args()
@@ -472,40 +511,54 @@ def main():
     if not os.path.isfile(src):
         die("File not found: %s" % src, 2)
     stem = os.path.splitext(src)[0]
-    if a.out:
-        out = a.out
-    elif "customized" in os.path.basename(stem).lower():
-        out = stem + "-new.iso"           # updating an older customized ISO
+    if a.reset_only:                      # no installer on it, so no "customized"
+        out = a.out or re.sub(r"(-deploy-customized|-customized|-new|-reset-only)+$", "",
+                              stem) + "-reset-only.iso"
     else:
-        out = stem + "-deploy-customized.iso"
-    if "customized" not in os.path.basename(out).lower():
-        out = os.path.splitext(out)[0] + "-deploy-customized.iso"
+        if a.out:
+            out = a.out
+        elif "customized" in os.path.basename(stem).lower():
+            out = stem + "-new.iso"       # updating an older customized ISO
+        else:
+            out = stem + "-deploy-customized.iso"
+        if "customized" not in os.path.basename(out).lower():
+            out = os.path.splitext(out)[0] + "-deploy-customized.iso"
     if os.path.abspath(out) == os.path.abspath(src):
         die("--out must be a different file than the input.", 2)
 
     # Every change is (ISO path, extent, size, new bytes, description).
-    changes = []
+    # Every removal is (ISO path, extent, size).
+    changes, removals = [], []
     with open(src, "rb") as f:
         label, _, _ = iso_pvd(f)
         if label.startswith("MLR:"):
             die("This is a vendor installer ISO (label %s). It needs no patch: flash it "
                 "as-is with Rufus in DD Image mode." % label, 2)
-        for n in ("/initrd.img", "/vmlinuz", "/image.cpio.gz"):
-            if iso_lookup(f, n) is None:
-                die("%s not found: this ISO has no Deploy option. Build it with "
-                    "build-recovery-iso.sh --deploy-iso first." % n, 2)
-        ok("Recovery ISO, label %s, Deploy payload present." % label)
-
-        # 1. installer initrd: accept this stick's label
-        ext, size = iso_lookup(f, "/initrd.img")
-        ed = Editor(label, a.skip_display)
-        res = patch_initrd(read_at(f, ext * SECTOR, size), ed,
-                           (size + SECTOR - 1) // SECTOR * SECTOR)
-        if res is None:
-            ok("Installer already accepts this stick.")
+        if a.reset_only:
+            # 1. Factory Reset only: take the Deploy image and installer out
+            for n in DEPLOY_FILES:
+                hit = iso_lookup(f, n)
+                if hit:
+                    removals.append((n, hit[0], hit[1]))
+            ok("Recovery ISO, label %s; making a Factory-Reset-only copy." % label)
         else:
-            changes.append(("/initrd.img", ext, size, res[0],
-                            "installer accepts label %s (%s)" % (label, ", ".join(ed.patched))))
+            for n in DEPLOY_FILES:
+                if iso_lookup(f, n) is None:
+                    die("%s not found: this ISO has no Deploy option. Build it with "
+                        "build-recovery-iso.sh --deploy-iso first." % n, 2)
+            ok("Recovery ISO, label %s, Deploy payload present." % label)
+
+            # 1. installer initrd: accept this stick's label
+            ext, size = iso_lookup(f, "/initrd.img")
+            ed = Editor(label, a.skip_display)
+            res = patch_initrd(read_at(f, ext * SECTOR, size), ed,
+                               (size + SECTOR - 1) // SECTOR * SECTOR)
+            if res is None:
+                ok("Installer already accepts this stick.")
+            else:
+                changes.append(("/initrd.img", ext, size, res[0],
+                                "installer accepts label %s (%s)" % (label,
+                                                                     ", ".join(ed.patched))))
 
         # 2. boot menu wording + hidden GRUB help
         hit = iso_lookup(f, "/boot/grub/grubsrcd.cfg")
@@ -514,16 +567,15 @@ def main():
             new = grub_edit(cfg.decode("utf-8"), a.label).encode("utf-8")
             if new != cfg:
                 changes.append(("/boot/grub/grubsrcd.cfg", hit[0], hit[1], new,
-                                "boot menu: one entry '%s'; Deploy moved behind the "
-                                "sign-in" % a.label))
+                                "boot menu: one entry '%s'" % a.label))
         else:
             inf("No branded boot menu in this ISO; menu left as is.")
 
         # 3. recovery screen (sign-in, Factory Reset, Deploy) and text menu,
         #    both taken from this folder
         here = os.path.dirname(os.path.abspath(__file__))
-        for name, what in (("factory-reset-gui.py", "recovery screen (sign-in, Factory "
-                            "Reset, Deploy) updated"),
+        for name, what in (("factory-reset-gui.py", "recovery screen updated (sign-in, "
+                            "Factory Reset%s)" % ("" if a.reset_only else ", Deploy")),
                            ("factory-reset-menu.sh", "text menu updated (sign-in required)")):
             path = os.path.join(here, name)
             hit = iso_lookup(f, "/autorun/" + name)
@@ -556,26 +608,27 @@ def main():
                             "logo replaced (%dx%d px)" % (w, h)))
 
         # 5. is the image on the stick an approved one?
-        approved = approved_images(os.path.join(here, "factory-reset-gui.py"))
-        ext, size = iso_lookup(f, "/image.cpio.gz")
-        inf("Checking the image SHA-256 (reads %d MB) ..." % (size >> 20))
-        h = hashlib.sha256()
-        f.seek(ext * SECTOR)
-        left = size
-        while left:
-            b = f.read(min(left, 8 << 20))
-            if not b:
-                break
-            h.update(b)
-            left -= len(b)
-        img_sha = h.hexdigest()
-        if img_sha in approved:
-            ok("Image %s is approved (%s)." % (img_sha, approved[img_sha]))
-        else:
-            print("  [!!] Image %s is NOT in APPROVED_IMAGES (factory-reset-gui.py): "
-                  "the stick will refuse to deploy it." % img_sha)
+        if not a.reset_only:
+            approved = approved_images(os.path.join(here, "factory-reset-gui.py"))
+            ext, size = iso_lookup(f, "/image.cpio.gz")
+            inf("Checking the image SHA-256 (reads %d MB) ..." % (size >> 20))
+            h = hashlib.sha256()
+            f.seek(ext * SECTOR)
+            left = size
+            while left:
+                b = f.read(min(left, 8 << 20))
+                if not b:
+                    break
+                h.update(b)
+                left -= len(b)
+            img_sha = h.hexdigest()
+            if img_sha in approved:
+                ok("Image %s is approved (%s)." % (img_sha, approved[img_sha]))
+            else:
+                print("  [!!] Image %s is NOT in APPROVED_IMAGES (factory-reset-gui.py): "
+                      "the stick will refuse to deploy it." % img_sha)
 
-    if not changes:
+    if not changes and not removals:
         ok("This ISO is already up to date - nothing to do. Flash it in DD Image mode.")
         return
 
@@ -587,7 +640,10 @@ def main():
             (need >> 20, free >> 20), 2)
 
     # Plan where each file goes: its old place if it fits, else the image end.
-    recs = find_records(src, [(c[1], c[2]) for c in changes])
+    recs = find_records(src, [(c[1], c[2]) for c in changes] + [(e, s) for _, e, s in removals])
+    for path, e, s in removals:
+        if not recs[(e, s)]:
+            die("Could not locate the directory entries of %s in the ISO." % path)
     end = (iso_size + SECTOR - 1) // SECTOR
     plan, writes = [], []                 # plan: (path, rec_base, new_ext, data, room)
     with open(src, "rb") as f:
@@ -631,6 +687,18 @@ def main():
             for off, data in writes:
                 f.seek(off)
                 f.write(data)
+            # Factory Reset only: wipe the removed files' contents, then their
+            # directory entries (after the updates above, which use offsets in
+            # the same directories)
+            for path, e, s in removals:
+                f.seek(e * SECTOR)
+                left = (s + SECTOR - 1) // SECTOR * SECTOR
+                zero = b"\0" * (8 << 20)
+                while left:
+                    n = min(left, len(zero))
+                    f.write(zero[:n])
+                    left -= n
+            unlink_records(f, [r for _, e, s in removals for r in recs[(e, s)]])
         # read every changed file back through every one of its directory entries
         with open(out, "rb") as f:
             for path, rec_base, new_ext, data, _ in plan:
@@ -642,8 +710,22 @@ def main():
                 hit = iso_lookup(f, path)
                 if hit is None or read_at(f, hit[0] * SECTOR, hit[1]) != data:
                     raise RuntimeError("read-back failed for " + path)
-            back = read_at(f, *(lambda h: (h[0] * SECTOR, h[1]))(iso_lookup(f, "/initrd.img")))
-        if patch_initrd(back, Editor(label, a.skip_display), len(back) + SECTOR) is not None:
+            if removals:
+                for path, _, _ in removals:
+                    if iso_lookup(f, path) is not None:
+                        raise RuntimeError("%s is still listed" % path)
+                for need in ("/autorun/factory-reset-gui.py", "/autorun/autorun",
+                             "/sysresccd"):
+                    if iso_lookup(f, need) is None:
+                        raise RuntimeError("%s went missing" % need)
+            else:
+                back = read_at(f, *(lambda h: (h[0] * SECTOR, h[1]))(
+                    iso_lookup(f, "/initrd.img")))
+        if removals:
+            left = find_records(out, [(e, s) for _, e, s in removals])
+            if any(left.values()):
+                raise RuntimeError("a removed file is still listed in another directory tree")
+        elif patch_initrd(back, Editor(label, a.skip_display), len(back) + SECTOR) is not None:
             raise RuntimeError("installer patch verification failed")
     except BaseException as e:
         try:
@@ -654,6 +736,10 @@ def main():
 
     for c in changes:
         ok(c[4])
+    if removals:
+        ok("Deploy image and installer removed (%s; %d MB overwritten with zeros)" %
+           (", ".join(p.lstrip("/") for p, _, _ in removals),
+            sum(s for _, _, s in removals) >> 20))
     if a.skip_display:
         print("  [!!] --skip-display: FOR VM TESTING ONLY, not for a real instrument.")
     ok("Built %s" % out)
